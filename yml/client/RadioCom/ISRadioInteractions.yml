@@ -1,0 +1,69 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISRadioInteractions:
+        methods:
+          - name: getInstance
+            return:
+              - type: ISRadioInteractions
+    classes:
+      ISRadioInteractions:
+        local: true
+        staticMethods:
+          - name: split
+            parameters:
+              - name: str
+                type: string
+              - name: sep
+                type: string
+            return:
+              - type: table
+          - name: playerInRange
+            parameters:
+              - name: _player
+                nullable: true
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+            return:
+              - type: boolean
+          - name: checkPlayer
+            parameters:
+              - name: player
+                nullable: true
+              - name: _guid
+              - name: _interactCodes
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _line
+              - name: _source
+          - name: OnDeviceText
+            parameters:
+              - name: _guid
+              - name: _interactCodes
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _line
+          - name: OnTick
+          - name: addHalo
+            parameters:
+              - name: _str
+                type: string
+              - name: _amount
+              - name: _inverseCols
+          - name: setNoHalo
+            parameters:
+              - name: _type
+              - name: _b

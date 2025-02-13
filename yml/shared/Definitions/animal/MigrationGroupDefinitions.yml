@@ -1,0 +1,11 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MigrationGroupDefinitions:
+        staticFields:
+          deer: {}
+          rabbit: {}
+          small: {}
+          large: {}
+          predator: {}

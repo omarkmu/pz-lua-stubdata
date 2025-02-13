@@ -1,0 +1,149 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      STrapGlobalObject:
+        extends: SGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: STrapSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"STrapGlobalObject"'
+        fields:
+          trapType:
+            type: string
+          trapBait:
+            type: string
+          trapBaitDay:
+            type: number
+          animalAliveHour:
+            type: number
+          lastUpdate:
+            type: number
+          baitAmountMulti:
+            type: number
+          animal:
+            type: table
+          animalHour:
+            type: number
+          openSprite:
+            type: string
+          closedSprite:
+            type: string
+          zone:
+            type: string
+          player:
+            type: string
+          trappingSkill:
+            type: number
+          destroyed:
+            type: boolean
+          bait:
+            type: string
+            nullable: true
+          def: {}
+        methods:
+          - name: initNew
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: calculTrap
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: sendSound
+            parameters:
+              - name: soundName
+                type: string
+              - name: square
+                type: IsoGridSquare
+          - name: addSound
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: isWoodenTrap
+            return:
+              - type: boolean
+          - name: isMetalTrap
+            return:
+              - type: boolean
+          - name: checkDestroy
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: removeBait
+            parameters:
+              - name: character
+          - name: addAliveAnimal
+            parameters:
+              - name: character
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeAnimal
+            parameters:
+              - name: character
+            return:
+              - type: unknown
+                nullable: true
+          - name: checkForAnimal
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: setAnimal
+            parameters:
+              - name: animal
+          - name: addBait
+            parameters:
+              - name: bait
+              - name: age
+              - name: baitAmountMulti
+              - name: player
+          - name: setDef
+          - name: toObject
+            parameters:
+              - name: object
+              - name: transmitData
+          - name: fromModData
+            parameters:
+              - name: modData
+          - name: toModData
+            parameters:
+              - name: modData
+          - name: checkBaitFreshness
+            return:
+              - type: unknown
+          - name: checkTime
+            parameters:
+              - name: animal
+            return:
+              - type: boolean
+                nullable: true
+          - name: reinitModData
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: checkForWallExploit
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: spawnDestroyItems
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: object
+        staticMethods:
+          - name: SpawnDestroyItems
+            parameters:
+              - name: trapType
+              - name: square
+                type: IsoGridSquare
+              - name: object

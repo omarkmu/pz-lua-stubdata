@@ -1,0 +1,18 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CCampfireGlobalObject:
+        extends: CGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: CCampfireSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"CCampfireGlobalObject"'
+        methods:
+          - name: getObject
+            return:
+              - type: unknown

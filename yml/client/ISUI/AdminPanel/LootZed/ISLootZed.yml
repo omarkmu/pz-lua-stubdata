@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLootZed:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISLootZed"'
+          instance:
+            type: ISLootZed
+            nullable: true
+          cheat:
+            defaultValue: "false"
+        fields:
+          no:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          searchEntryBox:
+            type: ISTextEntryBox
+          playerSelect:
+            type: ISComboBox
+          name:
+            nullable: true
+          player: {}
+          titlebarbkg:
+            type: Texture
+        methods:
+          - name: initialise
+          - name: onTextChange
+          - name: onSelectContainerType
+          - name: update
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: titleBarHeight
+            return:
+              - type: number
+          - name: prerender
+          - name: updateButtons
+          - name: render
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: updateContent

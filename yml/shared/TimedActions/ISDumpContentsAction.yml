@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDumpContentsAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISDumpContentsAction"'
+        fields:
+          item: {}
+          sound: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: stopSound
+          - name: finalItem
+            parameters:
+              - name: itemType
+            return:
+              - type: unknown
+                nullable: true
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

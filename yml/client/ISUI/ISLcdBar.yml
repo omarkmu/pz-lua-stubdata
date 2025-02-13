@@ -1,0 +1,108 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLcdBar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: charWidth
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISLcdBar"'
+          indexes:
+            defaultValue: "\"
+              !\\\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\\
+              \\]^_\""
+          unsupported: {}
+          special: {}
+        fields:
+          charW:
+            type: number
+          charH:
+            type: number
+          textMode:
+            type: boolean
+          posCounter:
+            type: number
+          pos:
+            type: number
+          isOn:
+            type: boolean
+          doScroll:
+            type: boolean
+          textCache:
+            type: string
+          text:
+            type: string
+          gridColor:
+            type: table
+          greyCol:
+            type: table
+          ledColor:
+            type: table
+          ledTextColor:
+            type: table
+          lcdwidth:
+            type: number
+          lcdfont: {}
+          lcdback: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: toggleOn
+            parameters:
+              - name: _b
+                type: boolean
+          - name: renderChar
+            parameters:
+              - name: _pos
+              - name: _index
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+              - name: _a
+                type: number
+          - name: isSpecial
+            parameters:
+              - name: _char
+            return:
+              - type: boolean
+          - name: printChar
+            parameters:
+              - name: _pos
+              - name: _char
+          - name: render
+          - name: renderBackground
+            parameters:
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+              - name: _a
+                type: number
+          - name: setDoScroll
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setTextMode
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setText
+            parameters:
+              - name: _text
+                type: string

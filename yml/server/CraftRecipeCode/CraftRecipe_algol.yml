@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CraftRecipeCode:
+        staticFields:
+          SharpenBladeGrindstone: {}
+          SharpenHeadGrindstone: {}
+          EntityRepairFull: {}
+          DismantleBlade: {}
+          AssembleBlade: {}
+          DismantleHead: {}
+          AssembleHead: {}
+          CopyKey: {}
+          GenericFixing: {}
+          GenericBetterFixing: {}
+          GenericEvenBetterFixing: {}
+        staticMethods:
+          - name: ONCREATE_TEST
+            parameters:
+              - name: _craftProcessor
+              - name: thing2
+              - name: thing3
+          - name: ONTEST_TEST
+            parameters:
+              - name: _craftProcessor
+              - name: thing2
+              - name: thing3
+            return:
+              - type: boolean
+          - name: FLAG_TEST
+            parameters:
+              - name: _craftProcessor
+              - name: thing2
+              - name: thing3
+          - name: GenericFixer
+            parameters:
+              - name: craftRecipeData
+              - name: player
+              - name: factor
+                type: number
+              - name: item
+              - name: skill
+                nullable: true
+              - name: head
+                type: boolean
+                nullable: true

@@ -1,0 +1,138 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPickDungCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+              - name: rake
+        staticFields:
+          Type:
+            defaultValue: '"ISPickDungCursor"'
+        fields:
+          radius:
+            type: number
+          character: {}
+          player: {}
+          skipBuildAction:
+            type: boolean
+          noNeedHammer:
+            type: boolean
+          skipWalk:
+            type: boolean
+          renderFloorHelper:
+            type: boolean
+          rake: {}
+          maxRadius:
+            type: number
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: isValidArea
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+          - name: isRunningAction
+            return:
+              - type: ISTimedActionQueue | table
+          - name: getTopLeftOfSquares
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: number
+              - type: number
+              - type: number
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: onJoypadPressButton
+            parameters:
+              - name: joypadIndex
+              - name: joypadData
+                type: JoypadData
+              - name: button
+                type: ISButton
+            return:
+              - type: unknown
+                nullable: true
+          - name: getAPrompt
+            return:
+              - type: unknown
+          - name: getLBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSquares
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: table
+          - name: getClosestSquare
+            parameters:
+              - name: squares
+            return:
+              - type: unknown
+                nullable: true
+          - name: getGrassObject
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: table
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer

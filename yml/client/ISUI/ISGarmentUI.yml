@@ -1,0 +1,199 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGarmentUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+              - name: clothing
+        staticFields:
+          Type:
+            defaultValue: '"ISGarmentUI"'
+          windows: {}
+          ghs:
+            defaultValue: '"<GHC>"'
+          bhs:
+            defaultValue: '"<BHC>"'
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          parts:
+            type: table
+          texturesY:
+            type: number
+          texturesYOffset:
+            type: number
+          texturesHeight:
+            type: number
+          progressY:
+            type: number
+          bodyPartAction:
+            type: table
+          actionToBodyPart:
+            type: table
+          textures:
+            type: table
+          progressWidth1: {}
+          progressWidth2: {}
+          progressWidth3: {}
+          progressWidthTotal:
+            type: number
+          progressX1:
+            type: number
+          progressX2:
+            type: number
+          progressX3:
+            type: number
+          biteColumn:
+            type: number
+          scratchColumn: {}
+          bulletColumn: {}
+          drawJoypadFocus:
+            type: boolean
+          chr: {}
+          playerNum:
+            type: integer
+          title: {}
+          clothing: {}
+          sex:
+            type: string
+          progressWidth:
+            type: number
+          progressHeight:
+            type: number
+          noRepairWidth: {}
+          bodyPartColumn: {}
+          addedHeight:
+            type: number
+        methods:
+          - name: update
+          - name: initialise
+          - name: calculateHeight
+            parameters:
+              - name: doListHeight
+                type: boolean
+          - name: onBodyPartListRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doPatch
+            parameters:
+              - name: fabric
+              - name: thread
+              - name: needle
+              - name: part
+              - name: context
+                type: ISContextMenu
+              - name: submenu
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: getPaddablePartsNumber
+            parameters:
+              - name: clothing
+              - name: parts
+            return:
+              - type: number
+          - name: doContextMenu
+            parameters:
+              - name: part
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: drawBar
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: percent
+              - name: highGood
+          - name: setBodyPartAction
+            parameters:
+              - name: bodyPart
+              - name: args
+          - name: setBodyPartForAction
+            parameters:
+              - name: action
+              - name: bodyPart
+          - name: close
+          - name: addTextures
+            parameters:
+              - name: type
+                type: string
+              - name: textureName
+                type: string
+              - name: overlayName
+                type: string
+          - name: create
+          - name: calcProgressWidths
+          - name: calcProgressPositions
+          - name: calcColumnWidths
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: setBodyPartActionForPlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bodyPart
+              - name: action
+                type: ISRemovePatch | ISRepairClothing
+                nullable: true
+              - name: jobType
+                type: string
+                nullable: true
+              - name: args
+                type: table
+                nullable: true
+          - name: setOtherActionForPlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bodyPart
+              - name: action
+          - name: setBodyPartForLastAction
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bodyPart

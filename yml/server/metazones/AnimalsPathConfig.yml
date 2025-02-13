@@ -1,0 +1,8 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      animals_path_config:
+        staticFields:
+          "[1]": {}
+          "[2]": {}

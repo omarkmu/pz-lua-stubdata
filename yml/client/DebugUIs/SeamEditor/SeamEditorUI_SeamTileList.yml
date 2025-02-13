@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SeamEditorUI_SeamTileList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: SeamEditorUI
+              - name: seamTile
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_SeamTileList"'
+        fields:
+          editor:
+            type: SeamEditorUI
+          selection:
+            nullable: true
+          seamTile:
+            type: string
+        methods:
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRemoveTile
+            parameters:
+              - name: tiles
+              - name: index
+          - name: renderMouseOverTile
+          - name: getRowAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: getTileNameList
+            return:
+              - type: unknown
+                nullable: true

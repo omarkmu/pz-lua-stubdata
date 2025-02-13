@@ -1,0 +1,190 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHotbar:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISHotbar"'
+        fields:
+          attachedItems:
+            type: table
+          needsRefresh:
+            type: boolean
+          wornItems:
+            type: table
+          replacements:
+            type: table
+          availableSlot:
+            type: table
+          slotWidth:
+            type: number
+          slotHeight:
+            type: number
+          slotPad:
+            type: number
+          margins:
+            type: number
+          character: {}
+          chr: {}
+          playerNum:
+            type: integer
+          textColor:
+            type: table
+          font: {}
+          equippedItemIcon: {}
+        methods:
+          - name: render
+          - name: getSlotDef
+            parameters:
+              - name: slot
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSlotDefReplacement
+            parameters:
+              - name: slot
+            return:
+              - type: unknown
+          - name: doMenu
+            parameters:
+              - name: slotIndex
+          - name: isInHotbar
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: setSizeAndPosition
+          - name: update
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: canBeAttached
+            parameters:
+              - name: slot
+              - name: item
+            return:
+              - type: boolean
+          - name: setAttachAnim
+            parameters:
+              - name: item
+              - name: slot
+          - name: removeItem
+            parameters:
+              - name: item
+              - name: doAnim
+                type: boolean
+          - name: isItemAttached
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: attachItem
+            parameters:
+              - name: item
+              - name: slot
+              - name: slotIndex
+                type: number
+                nullable: true
+              - name: slotDef
+              - name: doAnim
+                type: boolean
+          - name: reloadIcons
+          - name: haveThisSlot
+            parameters:
+              - name: slotType
+              - name: list
+                type: table
+            return:
+              - type: boolean
+          - name: getThisSlotIndex
+            parameters:
+              - name: slotType
+              - name: list
+            return:
+              - type: unknown
+                nullable: true
+          - name: compareWornItems
+            return:
+              - type: boolean
+          - name: refresh
+          - name: activateSlot
+            parameters:
+              - name: slotIndex
+                type: number
+          - name: equipItem
+            parameters:
+              - name: item
+          - name: getSlotIndexAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: loadPosition
+          - name: savePosition
+          - name: getSlotForKey
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: number
+          - name: getKeyForIndex
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+          - name: isAllowedToActivateSlot
+            return:
+              - type: boolean
+          - name: onRadialAttach
+            parameters:
+              - name: item
+              - name: slotIndex
+              - name: v
+          - name: onRadialRemove
+            parameters:
+              - name: item
+        staticMethods:
+          - name: doMenuFromInventory
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: item
+                nullable: true
+              - name: context
+                type: ISContextMenu
+          - name: onKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyKeepPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onClothingUpdated
+            parameters:
+              - name: player
+          - name: onStopGrapple
+            parameters:
+              - name: player

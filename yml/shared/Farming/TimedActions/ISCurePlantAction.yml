@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCurePlantAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+                nullable: true
+              - name: uses
+                type: number
+              - name: plant
+              - name: maxTime
+                type: number
+              - name: cure
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISCurePlantAction"'
+        fields:
+          sound: {}
+          item:
+            nullable: true
+          uses:
+            type: number
+          cure:
+            type: string
+          plant: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

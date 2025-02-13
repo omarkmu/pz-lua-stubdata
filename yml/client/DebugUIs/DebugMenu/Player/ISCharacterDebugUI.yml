@@ -1,0 +1,77 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCharacterDebugUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterDebugUI"'
+          instance:
+            type: ISCharacterDebugUI
+            nullable: true
+        fields:
+          tickBoxPlayer:
+            type: ISTickBox
+          tickBoxZombie:
+            type: ISTickBox
+          tickBoxAnimal:
+            type: ISTickBox
+          tickBoxDeadBody:
+            type: ISTickBox
+          btnSave:
+            type: ISButton
+          btnClose:
+            type: ISButton
+          setFunctionPlayer:
+            type: table
+          setFunctionZombie:
+            type: table
+          setFunctionAnimal:
+            type: table
+          setFunctionDeadBody:
+            type: table
+          player: {}
+          tcks:
+            type: number
+        methods:
+          - name: initialise
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: addOption
+            parameters:
+              - name: tickBox
+              - name: text
+                type: string
+              - name: selected
+              - name: setFunction
+                type: function
+              - name: tickSetFunction
+          - name: addTickOptions
+            parameters:
+              - name: tickBox
+              - name: tickSetFunction
+          - name: onTicked
+            parameters:
+              - name: index
+              - name: selected
+          - name: render
+          - name: prerender
+          - name: apply
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ISCharacterDebugUI
+                nullable: true

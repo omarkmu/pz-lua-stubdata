@@ -1,0 +1,169 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISClothingInsPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: player
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISClothingInsPanel"'
+          viewSimpleID:
+            defaultValue: '"viewSimple"'
+          viewAdvancedID:
+            defaultValue: '"viewAdvanced"'
+        fields:
+          coreRectangleX:
+            type: number
+          coreRectangleW:
+            type: number
+          bpPanelX:
+            type: number
+          bpPanelY:
+            type: number
+          bpAnchorX: {}
+          bpAnchorY:
+            type: number
+          bodyPartPanel:
+            type: ISBodyPartPanel
+          mainGroup:
+            type: table
+          nodeGroup:
+            type: table
+          labelCoreTemp:
+            type: ISLabel
+          labelCoreTempMid:
+            type: ISLabel
+          labelCoreTempMin:
+            type: ISLabel
+          labelCoreTempMax:
+            type: ISLabel
+          coreTemperatureBar:
+            type: ISGradientBar
+          labelCoreHeat:
+            type: ISLabel
+          labelCoreHeatMid:
+            type: ISLabel
+          labelCoreHeatMin:
+            type: ISLabel
+          labelCoreHeatMax:
+            type: ISLabel
+          coreHeatBar:
+            type: ISGradientBar
+          currentViewID:
+            type: string
+          viewButtons:
+            type: table
+          nodeDetails:
+            type: table
+          mainGroupViews:
+            type: table
+          nodeGroupViews:
+            type: table
+          maxViewsY:
+            type: number
+          coreRectangleH:
+            type: number
+          labelCurrentView:
+            type: ISLabel
+          labelCurrentViewMid:
+            type: ISLabel
+          labelCurrentViewMin:
+            type: ISLabel
+          labelCurrentViewMax:
+            type: ISLabel
+          legendBar:
+            type: ISGradientBar
+          toggleAdvBtn: {}
+          selectedViewIndex:
+            type: number
+          views:
+            type: table
+          viewsSimple:
+            type: table
+          viewsAdvanced:
+            type: table
+          colorScheme:
+            type: table
+          selectedBodyPart:
+            type: boolean
+          player: {}
+          playerNum:
+            type: integer
+          refreshNeeded:
+            type: boolean
+          bFemale: {}
+          titleColor:
+            type: table
+          defTextColor:
+            type: table
+          btnTextColor:
+            type: table
+          sex:
+            type: string
+          bodyOutline: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addView
+            parameters:
+              - name: _viewID
+              - name: _viewTable
+              - name: _y
+          - name: addMainGroup
+            parameters:
+              - name: _widget
+              - name: _ignoreAddChild
+              - name: _view
+          - name: addNodeGroup
+            parameters:
+              - name: _widget
+              - name: _view
+          - name: create
+          - name: onResetButton
+            parameters:
+              - name: _btn
+          - name: onClickViewButton
+            parameters:
+              - name: _btn
+          - name: onToggleViewStyle
+            parameters:
+              - name: _btn
+          - name: setViewStyle
+            parameters:
+              - name: _viewStyle
+              - name: _force
+          - name: setViewIndex
+            parameters:
+              - name: _index
+          - name: setSelection
+            parameters:
+              - name: _node
+          - name: prerender
+          - name: render
+          - name: update
+          - name: setJoypadButtons
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData

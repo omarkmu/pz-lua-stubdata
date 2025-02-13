@@ -1,0 +1,237 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISXuiTableLayoutColumn:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _columnIndex
+              - name: _width
+                type: number
+              - name: _isPercent
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISXuiTableLayoutColumn"'
+        fields:
+          columnIndex: {}
+          configWidth:
+            type: number
+          isPercent:
+            type: boolean
+          width:
+            type: number
+          minimumWidth:
+            type: number
+          x:
+            type: number
+          temp:
+            type: number
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+      ISXuiTableLayoutRow:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _rowIndex
+              - name: _height
+                type: number
+              - name: _isPercent
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISXuiTableLayoutRow"'
+        fields:
+          rowIndex: {}
+          configHeight:
+            type: number
+          isPercent:
+            type: boolean
+          height:
+            type: number
+          minimumHeight:
+            type: number
+          y:
+            type: number
+          temp:
+            type: number
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+      ISXuiTableLayoutCell:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _columnIndex
+              - name: _rowIndex
+              - name: _parent
+                type: ISXuiTableLayout
+        staticFields:
+          Type:
+            defaultValue: '"ISXuiTableLayoutCell"'
+        fields:
+          parent:
+            type: ISXuiTableLayout
+          columnIndex: {}
+          rowIndex: {}
+          x:
+            type: number
+          y:
+            type: number
+            nullable: true
+          width:
+            type: number
+            nullable: true
+          height:
+            type: number
+            nullable: true
+          drawBackground:
+            type: boolean
+          backgroundColor:
+            type: table
+          drawBorder:
+            type: boolean
+          borderColor:
+            type: table
+          children:
+            type: table
+        methods:
+          - name: getAbsoluteX
+            return:
+              - type: number
+          - name: getAbsoluteY
+            return:
+              - type: number
+          - name: getX
+            return:
+              - type: number
+          - name: getY
+            return:
+              - type: number
+                nullable: true
+          - name: getWidth
+            return:
+              - type: number
+                nullable: true
+          - name: getHeight
+            return:
+              - type: number
+                nullable: true
+          - name: addChild
+            parameters:
+              - name: _child
+                nullable: true
+          - name: setRectangle
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+      ISXuiTableLayout:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: columns
+              - name: rows
+        staticFields:
+          Type:
+            defaultValue: '"ISXuiTableLayout"'
+        fields:
+          dirtyLayout:
+            type: boolean
+          drawBackground:
+            type: boolean
+          drawBorder:
+            type: boolean
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          drawGrid:
+            type: boolean
+          gridColor:
+            type: table
+          columns:
+            type: table
+          rows:
+            type: table
+          cells:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: row
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+          - name: rowCount
+            return:
+              - type: number
+          - name: column
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+          - name: columnCount
+            return:
+              - type: number
+          - name: cell
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: unknown
+          - name: cellGetFirst
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: unknown
+                nullable: true
+          - name: cellCount
+            return:
+              - type: number
+          - name: isValidPos
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: boolean
+          - name: ensureCell
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: ISXuiTableLayoutCell
+                nullable: true
+          - name: addElement
+            parameters:
+              - name: _column
+              - name: _row
+              - name: _element
+          - name: calculateLayout
+          - name: prerender
+          - name: render

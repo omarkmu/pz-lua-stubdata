@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      LuaNet:
+        methods:
+          - name: getInstance
+            return:
+              - type: LuaNet
+    classes:
+      LuaNet:
+        local: true
+        staticMethods:
+          - name: setDebug
+            parameters:
+              - name: _debug
+          - name: getDebug
+            return:
+              - type: boolean
+          - name: isRunning
+            return:
+              - type: boolean
+          - name: getName
+            return:
+              - type: string
+          - name: getModule
+            parameters:
+              - name: _name
+                type: string
+              - name: _debug
+            return:
+              - type: unknown
+          - name: onInitAdd
+            parameters:
+              - name: _func
+          - name: Init
+          - name: destroy

@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInfoContainer:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISInfoContainer"'
+          instance:
+            type: ISInfoContainer
+            nullable: true
+        fields:
+          panel:
+            type: ISPanel
+          title:
+            type: string
+        methods:
+          - name: initialise
+          - name: prerender
+        staticMethods:
+          - name: doInfo
+            parameters:
+              - name: title
+                type: string
+              - name: infopanel
+                type: CharacterInfoPage
+          - name: get
+            parameters:
+              - name: title
+                type: string
+            return:
+              - type: ISInfoContainer
+                nullable: true

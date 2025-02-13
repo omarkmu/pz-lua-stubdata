@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBBQMenu:
+        staticMethods:
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onDisplayInfo
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+          - name: FindPropaneTank
+            parameters:
+              - name: player
+              - name: bbq
+            return:
+              - type: unknown
+                nullable: true
+          - name: onAddFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bbq
+              - name: fuelType
+          - name: onAddMultipleFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bbq
+              - name: fuelType
+          - name: onAddAllFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bbq
+          - name: onLightFromLiterature
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: itemType
+              - name: lighter
+              - name: bbq
+          - name: onLightFromPetrol
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: lighter
+              - name: petrol
+              - name: bbq
+          - name: onLightFromKindle
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: percedWood
+              - name: stickOrBranch
+              - name: bbq
+          - name: onExtinguish
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+          - name: onInsertPropaneTank
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+              - name: tank
+          - name: onRemovePropaneTank
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+              - name: tank
+          - name: onToggle
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+              - name: tank

@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAlarmClockDialog:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: alarm
+        staticFields:
+          Type:
+            defaultValue: '"ISAlarmClockDialog"'
+        fields:
+          button1p:
+            type: ISButton
+          hours:
+            type: ISTextEntryBox
+          button1m:
+            type: ISButton
+          button2p:
+            type: ISButton
+          mins:
+            type: ISTextEntryBox
+          button2m:
+            type: ISButton
+          setAlarm:
+            type: ISTickBox
+          ok:
+            type: ISButton
+          joypadButtons: {}
+          character:
+            nullable: true
+          name:
+            nullable: true
+          player: {}
+          playerX: {}
+          playerY: {}
+          alarm: {}
+        methods:
+          - name: initialise
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: incrementHour
+            parameters:
+              - name: number
+                type: number
+          - name: decrementHour
+            parameters:
+              - name: number
+                type: number
+          - name: incrementMin
+            parameters:
+              - name: number
+                type: number
+          - name: decrementMin
+            parameters:
+              - name: number
+                type: number
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getCode
+            return:
+              - type: number

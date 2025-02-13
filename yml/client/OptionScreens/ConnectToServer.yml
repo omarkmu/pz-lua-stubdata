@@ -1,0 +1,110 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ConnectToServer:
+        extends: ISPanelJoypad
+        staticFields:
+          Type:
+            defaultValue: '"ConnectToServer"'
+          instance:
+            type: ConnectToServer
+            nullable: true
+        fields:
+          title:
+            type: ISLabel
+          serverName1:
+            type: ISLabel
+          userName1:
+            type: ISLabel
+          serverName:
+            type: ISLabel
+          userName:
+            type: ISLabel
+          connectLabel:
+            type: ISLabel
+          googleAuthPopup:
+            type: ISPanel
+          googleAuthEntry:
+            type: ISTextEntryBox
+          googleAuthLabel:
+            type: ISLabel
+          googleAuthButton:
+            type: ISButton
+          richText:
+            type: ISRichTextPanel
+          backBtn:
+            type: ISButton
+          arrowBG: {}
+          arrowFG: {}
+          timerMultiplierAnim:
+            type: number
+          animOffset:
+            type: number
+          connecting:
+            type: boolean
+          loadingBackground:
+            nullable: true
+          previousScreen:
+            type: table
+          failMessage:
+            type: string
+            nullable: true
+          isCoop:
+            type: boolean
+        methods:
+          - name: create
+          - name: prerender
+          - name: render
+          - name: onResize
+            parameters:
+              - name: width
+                type: number
+              - name: height
+                type: number
+          - name: onSendButton
+          - name: onBackButton
+          - name: connect
+            parameters:
+              - name: previousScreen
+                type: table
+              - name: serverName
+                type: string
+              - name: userName
+                type: string
+              - name: password
+                type: string
+              - name: IP
+              - name: localIP
+                type: string
+              - name: port
+              - name: serverPassword
+              - name: useSteamRelay
+              - name: doHash
+                type: boolean
+                nullable: true
+              - name: authType
+                type: number
+                nullable: true
+          - name: connectCoop
+            parameters:
+              - name: previousScreen
+                type: BootstrapConnectPopup
+              - name: serverSteamID
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: OnConnected
+          - name: OnGoogleAuthRequest
+          - name: OnConnectFailed
+            parameters:
+              - name: message
+                type: string
+              - name: detail
+                type: string
+          - name: OnConnectionStateChanged
+            parameters:
+              - name: state
+              - name: message
+              - name: arg

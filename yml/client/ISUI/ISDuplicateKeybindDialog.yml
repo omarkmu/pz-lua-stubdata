@@ -1,0 +1,46 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDuplicateKeybindDialog:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: key
+                type: integer
+              - name: keybindName
+                type: string
+              - name: keybind2Name
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISDuplicateKeybindDialog"'
+        fields:
+          label:
+            type: ISLabel
+          cancel:
+            type: ISButton
+          keep:
+            type: ISButton
+          clear:
+            type: ISButton
+          keybind2Name:
+            type: string
+            nullable: true
+          key:
+            type: integer
+          keybindName:
+            type: string
+        methods:
+          - name: createChildren
+          - name: destroy
+          - name: onCancel
+          - name: onKeep
+          - name: onClear
+          - name: assignKey
+            parameters:
+              - name: keyText
+              - name: keybind
+              - name: key
+                type: integer
+          - name: nextDuplicate

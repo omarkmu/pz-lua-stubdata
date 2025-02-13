@@ -1,0 +1,57 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWhitelistModifyRow:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: view
+                type: table
+        staticFields:
+          Type:
+            defaultValue: '"ISWhitelistModifyRow"'
+        fields:
+          schema:
+            type: table
+          listHeaderColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          tableName: {}
+          columns: {}
+          columnSize: {}
+          data: {}
+          buttonDatas:
+            type: table
+          view:
+            type: table
+          entriesPerPages: {}
+          close:
+            type: ISButton
+          Update:
+            type: ISButton
+          combo:
+            type: ISComboBox
+          entry:
+            type: ISTextEntryBox
+        methods:
+          - name: initialise
+          - name: render
+          - name: createChildren
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number

@@ -1,0 +1,134 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEmptyGraves:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: sprite2
+                type: string
+              - name: northSprite
+                type: string
+              - name: northSprite2
+                type: string
+              - name: equipBothHandItem
+        staticFields:
+          Type:
+            defaultValue: '"ISEmptyGraves"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          sprite2:
+            type: string
+          northSprite2:
+            type: string
+          noNeedHammer:
+            type: boolean
+          ignoreNorth:
+            type: boolean
+          equipBothHandItem: {}
+          maxTime:
+            type: number
+          actionAnim:
+            nullable: true
+          craftingBank:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+                type: boolean
+              - name: sprite
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: setInfo
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+              - name: sprite
+              - name: cell
+              - name: spriteType
+          - name: getHealth
+            return:
+              - type: number
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getSquare2Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquare2
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: unknown
+        staticMethods:
+          - name: shovelledFloorCanDig
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+                nullable: true
+          - name: canDigHere
+            parameters:
+              - name: worldObjects
+                type: IsoObject[]
+            return:
+              - type: boolean
+          - name: getMaxCorpses
+            parameters:
+              - name: grave
+            return:
+              - type: number
+          - name: isGraveFullOfCorpses
+            parameters:
+              - name: grave
+            return:
+              - type: boolean
+          - name: isGraveFilledIn
+            parameters:
+              - name: grave
+            return:
+              - type: boolean

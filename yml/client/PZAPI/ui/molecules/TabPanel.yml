@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.TabPanel:
+        extends: UI.Node
+        local: true
+        staticFields:
+          anchorLeft:
+            defaultValue: "1"
+          anchorRight:
+            defaultValue: "-1"
+          anchorTop:
+            defaultValue: "1"
+          anchorDown:
+            defaultValue: "-1"
+          selected:
+            nullable: true
+        fields:
+          super:
+            type: UI.Node
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.TabPanel
+        methods:
+          - name: init
+          - name: onResize
+          - name: select
+            parameters:
+              - name: id
+      PZAPI:
+        staticFields:
+          UI.TabPanel:
+            type: UI.TabPanel

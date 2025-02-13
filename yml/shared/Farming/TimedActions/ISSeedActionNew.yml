@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSeedActionNew:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: seed
+                type: table
+              - name: typeOfSeed
+              - name: plant
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISSeedActionNew"'
+        fields:
+          sound: {}
+          character:
+            nullable: true
+          seed:
+            type: table
+          typeOfSeed: {}
+          plant:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

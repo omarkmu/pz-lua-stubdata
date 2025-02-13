@@ -1,0 +1,55 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      YouHaveOneDay:
+        staticFields:
+          hordeSpawned:
+            defaultValue: "false"
+          id:
+            defaultValue: '"YouHaveOneDay"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/YouHaveOneDay.png"'
+          world:
+            defaultValue: '"challengemaps/KnoxCounty"'
+          gameMode:
+            defaultValue: '"You Have One Day"'
+          x:
+            defaultValue: "41"
+          y:
+            defaultValue: "22"
+          z:
+            defaultValue: "1"
+          hordePark: {}
+          hordeFlat: {}
+          hordeWood: {}
+          hordeDiner: {}
+          hordeTownArea: {}
+          hordeOffice: {}
+          hordeWoodCamp: {}
+          hordeGasStation: {}
+          hordes: {}
+        staticMethods:
+          - name: Add
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: OnGameStart
+          - name: OnPlayerUpdate
+            parameters:
+              - name: zombie
+          - name: OnZombieUpdate
+            parameters:
+              - name: zombie
+          - name: EveryHours
+          - name: EveryDays
+          - name: OnInitWorld
+          - name: Render

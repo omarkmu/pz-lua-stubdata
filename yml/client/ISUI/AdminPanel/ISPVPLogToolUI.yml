@@ -1,0 +1,55 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPVPLogToolUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPVPLogToolUI"'
+          instance:
+            type: ISPVPLogToolUI
+            nullable: true
+        fields:
+          tickBox:
+            type: ISTickBox
+          close:
+            type: ISButton
+          clear:
+            type: ISButton
+          teleport:
+            type: ISButton
+          pvpEvents:
+            type: ISScrollingListBox
+        methods:
+          - name: initialise
+          - name: onSelect
+            parameters:
+              - name: _item
+          - name: drawEvents
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onTicked
+            parameters:
+              - name: index
+              - name: selected
+          - name: closeModal

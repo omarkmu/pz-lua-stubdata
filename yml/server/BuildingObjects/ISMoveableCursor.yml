@@ -1,0 +1,239 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMoveableCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: _character
+        staticFields:
+          Type:
+            defaultValue: '"ISMoveableCursor"'
+          modes: {}
+          cursors: {}
+          mode: {}
+          cacheMode: {}
+          normalColor: {}
+          validColor: {}
+          invalidColor: {}
+        fields:
+          objectIndex:
+            type: number
+          objectListCache:
+            type: table | boolean
+            nullable: true
+          cacheObject:
+            nullable: true
+          tryInitialInvItem:
+            type: boolean
+            nullable: true
+          cursorFacing:
+            type: number
+            nullable: true
+          joypadFacing:
+            type: number
+            nullable: true
+          cacheSquare: {}
+          renderX:
+            type: number
+          renderY:
+            type: number
+          renderZ:
+            type: number
+          currentMoveProps:
+            type: ISMoveableSpriteProps
+            nullable: true
+          origMoveProps:
+            type: ISMoveableSpriteProps
+            nullable: true
+          canCreate:
+            type: boolean
+            nullable: true
+          objectSprite:
+            type: string
+            nullable: true
+          origSpriteName:
+            nullable: true
+          colorMod:
+            type: table
+          yOffset:
+            type: number
+          currentSquare: {}
+          canSeeCurrentSquare: {}
+          cacheInvObjectSprite:
+            type: string
+            nullable: true
+          xJoypad: {}
+          yJoypad: {}
+          isMoveableCursor:
+            type: boolean
+          moveableMode:
+            type: string
+          character: {}
+          player: {}
+          skipBuildAction:
+            type: boolean
+          isYButtonResetCursor:
+            type: boolean
+          noNeedHammer:
+            type: boolean
+          skipWalk:
+            type: boolean
+          renderFloorHelper:
+            type: boolean
+          subObjectIndex:
+            type: number
+          cacheInvObjectIndex:
+            type: number
+        methods:
+          - name: deactivate
+          - name: exitCursor
+          - name: onObjectLeftMouseButtonDown
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: clearCache
+          - name: getMoveableMode
+            return:
+              - type: unknown
+          - name: tryInitialItem
+            parameters:
+              - name: _item
+                type: boolean
+          - name: setMoveableMode
+            parameters:
+              - name: _mode
+                type: string
+                nullable: true
+          - name: create
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _north
+              - name: _sprite
+          - name: getInfoPanel
+            return:
+              - type: unknown
+          - name: setInfoPanel
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+                nullable: true
+              - name: _moveProps
+                type: ISMoveableSpriteProps
+                nullable: true
+              - name: _customTexture
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: render
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _square
+                type: IsoGridSquare
+          - name: isValid
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer
+              - name: _joypadTriggered
+                type: boolean
+          - name: rotateWhilePlacing
+          - name: getDirectionFromItem
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+          - name: rotateMouse
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setCursorFacing
+            parameters:
+              - name: facing
+          - name: setJoypadFocus
+            parameters:
+              - name: _window
+          - name: getRotateableObject
+            return:
+              - type: boolean | table
+          - name: getInventoryObjectList
+            return:
+              - type: table
+          - name: shouldAddObject
+            parameters:
+              - name: _obj
+                type: IsoObject
+              - name: moveProps
+                type: ISMoveableSpriteProps
+            return:
+              - type: boolean
+          - name: getObjectList
+            return:
+              - type: table
+          - name: getScrapObjectList
+            return:
+              - type: table
+          - name: getRepairObjectList
+            return:
+              - type: table
+          - name: onJoypadPressButton
+            parameters:
+              - name: joypadIndex
+              - name: joypadData
+                type: JoypadData
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true
+        staticMethods:
+          - name: exitCursorKey
+            parameters:
+              - name: _key
+                type: integer
+          - name: changeModeKey
+            parameters:
+              - name: _key
+                type: integer
+              - name: _playerNum
+                type: integer
+              - name: _joyPadTriggered
+                type: boolean
+          - name: clearCacheForAllPlayers

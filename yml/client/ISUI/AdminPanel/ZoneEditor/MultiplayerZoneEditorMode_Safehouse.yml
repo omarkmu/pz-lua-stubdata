@@ -1,0 +1,477 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MultiplayerZoneEditorMode_Safehouse:
+        extends: MultiplayerZoneEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"MultiplayerZoneEditorMode_Safehouse"'
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          addButton:
+            type: ISButton
+          detailsPanel:
+            type: MultiplayerZoneEditorMode_Safehouse_Details
+          selectedZone:
+            nullable: true
+          delaySelectTitle:
+            nullable: true
+          modalUI:
+            type: MultiplayerZoneEditorMode_Safehouse_Confirm
+            nullable: true
+          mode:
+            type: string
+            nullable: true
+          resizeMode:
+            type: string
+            nullable: true
+          snapMode:
+            type: string
+          resizer:
+            type: WorldMapEditorResizer
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: renderResizer
+          - name: renderRect
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: fillList
+          - name: getSelectedZone
+            return:
+              - type: unknown
+                nullable: true
+          - name: undisplay
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: selectedZoneChanged
+          - name: cancelResize
+            return:
+              - type: boolean
+          - name: getPlayer
+            return:
+              - type: unknown
+          - name: isNewZoneValid
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+            return:
+              - type: boolean
+          - name: createNewZone
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+          - name: onNewZoneNameEntered
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setZoneBounds
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+          - name: onAddZone
+      MultiplayerZoneEditorMode_Safehouse_Confirm:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+              - name: onclick
+              - name: player
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"SafehouseConfirm"'
+        fields:
+          entryTitle:
+            type: ISTextEntryBox
+          entryOwner:
+            type: ISTextEntryBox
+          yes:
+            type: ISButton
+          no:
+            type: ISButton
+          ISButtonA:
+            nullable: true
+          ISButtonB:
+            nullable: true
+          name:
+            nullable: true
+          target:
+            type: unknown
+          onclick: {}
+          player:
+            nullable: true
+          titlebarbkg:
+            type: Texture
+        methods:
+          - name: createChildren
+          - name: createLabelPlusEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: height
+                type: number
+              - name: labelText
+            return:
+              - type: ISLabel
+              - type: ISTextEntryBox
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: titleBarHeight
+            return:
+              - type: number
+          - name: prerender
+          - name: updateButtons
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: close
+      MultiplayerZoneEditorMode_Safehouse_Details:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"MultiplayerZoneEditorMode_Safehouse_Details"'
+        fields:
+          title:
+            type: ISLabel
+          changeTitle:
+            type: ISButton
+          owner:
+            type: ISLabel
+          releaseSafehouse:
+            type: ISButton
+          changeOwnership:
+            type: ISButton
+          refreshPlayerList:
+            type: ISButton
+          playerList:
+            type: ISScrollingListBox
+          removePlayer:
+            type: ISButton
+          quitSafehouse:
+            type: ISButton
+          addPlayer:
+            type: ISButton
+          respawn:
+            type: ISTickBox
+          safehouse:
+            nullable: true
+          selectedPlayer:
+            nullable: true
+          updateTick:
+            type: number
+          modalUI:
+            type: table
+            nullable: true
+          addPlayerUI: {}
+          player: {}
+          updateTickMax:
+            type: number
+          buttonBorderColor:
+            type: table
+        methods:
+          - name: createChildren
+          - name: setSafehouse
+            parameters:
+              - name: safehouse
+                nullable: true
+          - name: onClickRespawn
+            parameters:
+              - name: clickedOption
+              - name: enabled
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: updatePlayerList
+          - name: updateButtons
+          - name: hideModalUI
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onChangeTitle
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onQuitSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRemovePlayerFromSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: onReleaseSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: isOwner
+            return:
+              - type: boolean
+                nullable: true
+          - name: hasPrivilegedAccessLevel
+            return:
+              - type: unknown
+          - name: isMember
+            return:
+              - type: boolean
+                nullable: true
+          - name: onSafehousesChanged
+        staticMethods:
+          - name: OnSafehousesChanged
+      DetailsPanel:
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        fields:
+          title:
+            type: ISLabel
+          changeTitle:
+            type: ISButton
+          owner:
+            type: ISLabel
+          releaseSafehouse:
+            type: ISButton
+          changeOwnership:
+            type: ISButton
+          refreshPlayerList:
+            type: ISButton
+          playerList:
+            type: ISScrollingListBox
+          removePlayer:
+            type: ISButton
+          quitSafehouse:
+            type: ISButton
+          addPlayer:
+            type: ISButton
+          respawn:
+            type: ISTickBox
+          safehouse:
+            nullable: true
+          selectedPlayer:
+            nullable: true
+          updateTick:
+            type: number
+          modalUI:
+            type: table
+            nullable: true
+          addPlayerUI: {}
+          borderColor:
+            type: table
+          backgroundColor:
+            type: table
+          width:
+            type: number
+          height:
+            type: number
+          player: {}
+          updateTickMax:
+            type: number
+          buttonBorderColor:
+            type: table
+        methods:
+          - name: createChildren
+          - name: setSafehouse
+            parameters:
+              - name: safehouse
+                nullable: true
+          - name: onClickRespawn
+            parameters:
+              - name: clickedOption
+              - name: enabled
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: updatePlayerList
+          - name: updateButtons
+          - name: hideModalUI
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onChangeTitle
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onQuitSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRemovePlayerFromSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: onReleaseSafehouse
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: isOwner
+            return:
+              - type: boolean
+                nullable: true
+          - name: hasPrivilegedAccessLevel
+            return:
+              - type: unknown
+          - name: isMember
+            return:
+              - type: boolean
+                nullable: true
+          - name: onSafehousesChanged
+        staticMethods:
+          - name: OnSafehousesChanged

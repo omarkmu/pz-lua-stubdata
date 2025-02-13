@@ -1,0 +1,346 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseIcon:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: _manager
+                type: ISSearchManager
+              - name: _icon
+                type: table
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseIcon"'
+        fields:
+          managedMarkers:
+            type: table
+          updateEvents:
+            type: table
+          textureColor:
+            type: table
+          isBeingRemoved:
+            type: boolean
+          isSeen:
+            type: boolean
+          isSeenThisUpdate:
+            type: boolean
+          isNoticed:
+            type: boolean
+          visionData:
+            type: table
+          isDarknessCapped:
+            type: boolean
+          identifyDistance:
+            type: number
+          alphaTarget:
+            type: number
+          zoom: {}
+          pinAlpha:
+            type: number
+          itemObj: {}
+          itemTexture: {}
+          itemCount:
+            type: number
+          itemList:
+            nullable: true
+          isKnownPoison:
+            type: boolean
+          currentTimestamp:
+            type: number
+          lastTimestamp:
+            type: number
+          timeDelta:
+            type: number
+          spotTimerMax:
+            type: number
+          spotTimer:
+            type: number
+          canRollForSearchFocus:
+            type: boolean
+          expandView:
+            type: number
+          stareVal: {}
+          viewDistance:
+            type: number
+          distanceToPlayer:
+            type: number
+          isoMarker:
+            nullable: true
+          worldMarker:
+            nullable: true
+          perkLevel:
+            type: number
+          lastSeenHours:
+            type: number
+          updateTick:
+            type: number
+          pinOffset:
+            type: number
+          textureCenter:
+            type: number
+          bounce:
+            type: boolean
+          bounceStep:
+            type: number
+          bounceMax:
+            type: number
+          bounceHeight:
+            type: number
+          bounceSpeed:
+            type: number
+          square:
+            type: IsoGridSquare
+            nullable: true
+          adjacentSquares:
+            type: table
+          altWorldTexture:
+            type: table
+          baseWidth:
+            type: number
+          baseHeight:
+            type: number
+          iconClass:
+            type: string
+          manager:
+            type: ISSearchManager
+          character: {}
+          player: {}
+          icon:
+            type: table
+          iconID: {}
+          xCoord:
+            type: number
+          yCoord:
+            type: number
+          zCoord:
+            type: number
+          zSize:
+            type: number
+          texture: {}
+          onSquareDistance:
+            type: number
+          darkVisionRadius:
+            type: number
+          minRadius:
+            type: number
+          maxRadius:
+            type: number
+          maxRadiusCap:
+            type: number
+          identified:
+            type: boolean
+          renderItemTexture:
+            type: boolean
+          isBonusIcon:
+            type: boolean
+          isForageable:
+            type: boolean
+          canMoveVertical:
+            type: boolean
+          posChanges:
+            type: number
+          maxPosChanges:
+            type: number
+          itemRotation: {}
+          onMouseDoubleClick:
+            type: function
+          modifiers:
+            type: table
+          viewAngle:
+            type: number
+          expandViewStep:
+            type: number
+          itemType: {}
+          itemSize:
+            type: number
+          isMover:
+            type: boolean
+          moveState:
+            type: string
+          moveTargetX:
+            type: number
+          moveTargetY:
+            type: number
+          updateTickMax:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            return:
+              - type: boolean
+          - name: doPickup
+            return:
+              - type: boolean
+          - name: getAlpha
+            return:
+              - type: number
+          - name: getColor
+            return:
+              - type: table
+          - name: setAlpha
+            parameters:
+              - name: _a
+                type: number
+          - name: setColor
+            parameters:
+              - name: _rgba
+          - name: prerender
+          - name: renderWorldIcon
+          - name: getGridSquare
+            return:
+              - type: boolean
+          - name: doSearchFocusCheck
+          - name: setIsBeingRemoved
+            parameters:
+              - name: _isBeingRemoved
+                type: boolean
+          - name: getGameSpeed
+            return:
+              - type: number
+          - name: doContextMenu
+            parameters:
+              - name: _context
+                type: ISContextMenu
+            return:
+              - type: boolean
+                nullable: true
+          - name: render3DItem
+          - name: renderAltWorldTexture
+          - name: renderWorldItemTexture
+          - name: renderPinIcon
+          - name: render
+          - name: getAngleOffset2D
+            parameters:
+              - name: _angle1
+              - name: _angle2
+            return:
+              - type: number
+          - name: getAngle2D
+            parameters:
+              - name: _x1
+              - name: _y1
+              - name: _x2
+              - name: _y2
+            return:
+              - type: unknown
+          - name: isCenterView
+            parameters:
+              - name: _bonusAngle
+                type: number
+            return:
+              - type: boolean
+          - name: getDistance3D
+            parameters:
+              - name: _x1
+              - name: _y1
+              - name: _z1
+              - name: _x2
+              - name: _y2
+              - name: _z2
+            return:
+              - type: number
+          - name: isInRangeOfPlayer
+            parameters:
+              - name: _range
+            return:
+              - type: boolean
+          - name: isInRangeForUpdate
+            return:
+              - type: boolean
+          - name: getIsSeen
+            return:
+              - type: boolean
+          - name: setIsSeen
+            parameters:
+              - name: _isSeen
+                type: boolean
+          - name: getIsSeenThisUpdate
+            return:
+              - type: boolean
+          - name: setIsSeenThisUpdate
+            parameters:
+              - name: _isSeen
+                type: boolean
+          - name: getIsNoticed
+            return:
+              - type: boolean
+          - name: setIsNoticed
+            parameters:
+              - name: _isNoticed
+                type: boolean
+          - name: getCanSeeThisUpdate
+            return:
+              - type: boolean
+          - name: updateModifiers
+          - name: doVisionCheck
+            return:
+              - type: unknown
+          - name: remove
+          - name: reset
+          - name: getScreenDelta
+            return:
+              - type: number
+              - type: number
+          - name: updateZoom
+          - name: updateAlpha
+          - name: updatePinIconPosition
+          - name: updatePinIconSize
+          - name: initItem
+          - name: initItemCount
+          - name: getItemList
+          - name: updateTimestamp
+          - name: checkIsSpotted
+          - name: updateSpotTimerMax
+          - name: spotIcon
+          - name: updateSpotTimer
+          - name: getIsSearchModeActive
+            return:
+              - type: boolean
+          - name: updateViewDistance
+          - name: updateDistanceToPlayer
+          - name: removeIsoMarker
+          - name: addIsoMarker
+          - name: addWorldMarker
+          - name: setWorldMarkerPosition
+          - name: removeWorldMarker
+          - name: updateWorldMarker
+          - name: getSpotTimer
+            return:
+              - type: number
+          - name: setSpotTimer
+            parameters:
+              - name: _time
+                type: number
+          - name: isNearby
+            return:
+              - type: boolean
+          - name: checkIsForageable
+            return:
+              - type: boolean
+          - name: updateManagerMarkers
+          - name: updatePerkLevel
+          - name: checkIsPlayerRunning
+            return:
+              - type: unknown
+          - name: updateLastSeen
+          - name: doUpdateEvents
+            parameters:
+              - name: _force
+          - name: update
+          - name: findPinOffset
+          - name: findTextureCenter
+          - name: resetBounce
+          - name: updateBounce
+          - name: initGridSquare
+            return:
+              - type: boolean
+                nullable: true
+          - name: initAltTexture
+          - name: initialise

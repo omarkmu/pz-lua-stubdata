@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISMenuContextWorld:
+        staticMethods:
+          - name: new
+            return:
+              - type: ISMenuContextWorld
+    classes:
+      ISMenuContextWorld:
+        extends: ISMenuElement
+        local: true
+        fields:
+          debug:
+            type: boolean
+          contextData:
+            type: table
+        staticMethods:
+          - name: reset
+            parameters:
+              - name: _playerNum
+                type: integer
+                nullable: true
+          - name: init
+          - name: getContextData
+            parameters:
+              - name: _playerNum
+                type: integer
+            return:
+              - type: unknown
+          - name: createMenu
+            parameters:
+              - name: _playerNum
+                type: integer
+              - name: _object
+              - name: _objects
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _test
+            return:
+              - type: boolean
+                nullable: true
+          - name: getAllObjects
+            parameters:
+              - name: _data
+            return:
+              - type: unknown
+                nullable: true
+          - name: getObjectsSquare
+            parameters:
+              - name: _data
+              - name: _sq
+                type: IsoGridSquare
+          - name: tableContains
+            parameters:
+              - name: _table
+              - name: _item
+            return:
+              - type: boolean
+          - name: printDebug
+            parameters:
+              - name: _data

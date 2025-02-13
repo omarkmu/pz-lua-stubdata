@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldMenuElements:
+        staticMethods:
+          - name: ContextTelevision
+            return:
+              - type: ISContextTelevision
+      ISContextTelevision:
+        extends: ISMenuElement
+        local: true
+        staticMethods:
+          - name: init
+          - name: createMenu
+            parameters:
+              - name: _data
+            return:
+              - type: boolean
+                nullable: true
+          - name: openPanel
+            parameters:
+              - name: _data
+              - name: _object

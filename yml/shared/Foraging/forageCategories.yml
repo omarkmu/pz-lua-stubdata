@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      forageCategories:
+        staticFields:
+          Tracks: {}
+          Animals: {}
+          DeadAnimals: {}
+          Berries: {}
+          Fruits: {}
+          Vegetables: {}
+          Crops: {}
+          Mushrooms: {}
+          FishBait: {}
+          ForestGoods: {}
+          ForestRarities: {}
+          Insects: {}
+          MedicinalPlants: {}
+          WildPlants: {}
+          WildHerbs: {}
+          Firewood: {}
+          Stones: {}
+          Junk: {}
+          JunkFood: {}
+          Clothing: {}
+          JunkWeapons: {}
+          Ammunition: {}
+          Medical: {}
+          Trash: {}

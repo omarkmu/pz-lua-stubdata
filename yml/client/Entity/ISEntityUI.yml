@@ -1,0 +1,185 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntityUI:
+        staticFields:
+          drawDebugLines:
+            defaultValue: "false"
+          players: {}
+          isoPanelWalkToDist:
+            defaultValue: "3"
+        staticMethods:
+          - name: WalkToEntity
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _dist
+            return:
+              - type: boolean
+                nullable: true
+          - name: ItemSlotRemoveSingleItem
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _itemSlot
+              - name: _item
+          - name: ItemSlotRemoveItems
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _itemSlot
+          - name: ItemSlotAddItems
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _itemSlot
+              - name: _itemList
+          - name: GenericCraftStart
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _component
+              - name: _funcCanStart
+                type: function
+              - name: _funcStart
+                type: function
+            return:
+              - type: boolean
+                nullable: true
+          - name: HandcraftStart
+            parameters:
+              - name: _player
+              - name: _handcraftLogic
+              - name: force
+                type: boolean
+              - name: addToQueue
+                type: boolean
+            return:
+              - type: unknown
+                nullable: true
+          - name: HandcraftStartMultiple
+            parameters:
+              - name: _player
+              - name: _handcraftLogic
+              - name: force
+              - name: qty
+              - name: addToQueue
+            return:
+              - type: table
+                nullable: true
+          - name: GetEntityUiConfig
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetEntityUiStyle
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetEntityUiSkin
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetComponentPanelClass
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _componentType
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: GetComponentPanels
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _dontInstantiate
+            return:
+              - type: boolean | table
+          - name: HasComponentPanels
+            parameters:
+              - name: _player
+              - name: _entity
+            return:
+              - type: boolean | table
+          - name: GetWindowClass
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetWindowStyleName
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetCustomCanOpenWindowFunc
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: GetCustomOpenWindowFunc
+            parameters:
+              - name: _entity
+            return:
+              - type: unknown
+                nullable: true
+          - name: CanOpenWindowFor
+            parameters:
+              - name: _player
+              - name: _entity
+            return:
+              - type: boolean
+          - name: OpenWindow
+            parameters:
+              - name: _player
+              - name: _entity
+          - name: OnCloseWindow
+            parameters:
+              - name: _window
+                type: ISBaseEntityWindow
+          - name: CanPlayerUseEntity
+            parameters:
+              - name: _player
+              - name: _entity
+            return:
+              - type: boolean
+          - name: GetReloadTable
+            return:
+              - type: table
+          - name: CloseWindows
+          - name: OpenBuildWindow
+            parameters:
+              - name: _player
+              - name: _isoObject
+                nullable: true
+              - name: _queryOverride
+                type: string
+              - name: _ignoreFindSurface
+          - name: OpenHandcraftWindow
+            parameters:
+              - name: _player
+              - name: _isoObject
+                nullable: true
+              - name: _queryOverride
+                type: string
+                nullable: true
+              - name: _ignoreFindSurface
+          - name: FindCraftSurface
+            parameters:
+              - name: _player
+              - name: _radius
+            return:
+              - type: unknown
+                nullable: true

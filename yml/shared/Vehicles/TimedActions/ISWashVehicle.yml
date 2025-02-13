@@ -1,0 +1,82 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWashVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicle
+              - name: id
+              - name: area
+        staticFields:
+          Type:
+            defaultValue: '"ISWashVehicle"'
+          BLOOD_PER_WATER:
+            defaultValue: "5"
+        fields:
+          accumulator:
+            type: number
+          waterAccumulator:
+            type: number
+          amountSent: {}
+          sound: {}
+          vehicle: {}
+          id: {}
+          area: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: updateWashing
+          - name: removeBlood
+            parameters:
+              - name: bloodRemoved
+                type: number
+              - name: waterUsed
+          - name: useWater
+            parameters:
+              - name: units
+          - name: start
+          - name: stop
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+        staticMethods:
+          - name: getWaterAmountForPlayer
+            parameters:
+              - name: character
+            return:
+              - type: number
+          - name: getWaterAmountForArea
+            parameters:
+              - name: vehicle
+              - name: id
+            return:
+              - type: number
+          - name: chooseArea
+            parameters:
+              - name: character
+              - name: vehicle
+            return:
+              - type: unknown
+                nullable: true
+          - name: hasBlood
+            parameters:
+              - name: vehicle
+            return:
+              - type: boolean

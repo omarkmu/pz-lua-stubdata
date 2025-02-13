@@ -1,0 +1,63 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSpeakerButton:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: onclick
+              - name: onclickTarget
+                type: ISGameSounds | RWMVolume
+        staticFields:
+          Type:
+            defaultValue: '"ISSpeakerButton"'
+        fields:
+          hover:
+            type: boolean
+          enableControls:
+            type: boolean
+          isMute:
+            type: boolean
+          onclick: {}
+          onclickTarget:
+            type: ISGameSounds | RWMVolume
+          speakerTexture: {}
+          muteTexture: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onMouseMove
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerender
+          - name: render
+          - name: setEnableControls
+            parameters:
+              - name: _b
+          - name: getEnableControls
+            return:
+              - type: boolean

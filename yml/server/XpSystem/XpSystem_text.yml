@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      xpSystemText:
+        staticFields:
+          xp:
+            defaultValue: getText("IGUI_XP_xp")
+          locked:
+            defaultValue: getText("IGUI_XP_Locked")
+          unlocked:
+            defaultValue: getText("IGUI_XP_UnLocked")
+          lvl:
+            defaultValue: getText("IGUI_XP_level")
+          skills:
+            defaultValue: getText("IGUI_XP_Skills")
+          health:
+            defaultValue: getText("IGUI_XP_Health")
+          protection:
+            defaultValue: getText("IGUI_XP_Protection")
+          clothingIns:
+            defaultValue: getText("IGUI_XP_ClothingIns")
+          info:
+            defaultValue: getText("IGUI_XP_Info")

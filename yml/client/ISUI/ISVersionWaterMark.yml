@@ -1,0 +1,28 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVersionWaterMark:
+        staticMethods:
+          - name: doMsg
+      WaterMarkUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"WaterMarkUI"'
+        fields:
+          refreshNeeded:
+            type: boolean
+        methods:
+          - name: render
+          - name: initialise

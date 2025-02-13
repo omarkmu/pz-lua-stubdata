@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWashClothing:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: sink
+              - name: soaps
+              - name: item
+              - name: bloodAmount
+                type: number
+              - name: dirtAmount
+                type: number
+              - name: noSoap
+        staticFields:
+          Type:
+            defaultValue: '"ISWashClothing"'
+        fields:
+          sound: {}
+          sink: {}
+          item: {}
+          bloodAmount:
+            type: number
+          dirtAmount:
+            type: number
+          soaps: {}
+          noSoap: {}
+          forceProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stopSound
+          - name: stop
+          - name: useSoap
+            parameters:
+              - name: item
+              - name: part
+                nullable: true
+            return:
+              - type: boolean
+          - name: complete
+            return:
+              - type: boolean
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number
+        staticMethods:
+          - name: GetSoapRemaining
+            parameters:
+              - name: soaps
+                type: table
+            return:
+              - type: number
+          - name: GetRequiredSoap
+            parameters:
+              - name: item
+            return:
+              - type: number
+          - name: GetRequiredWater
+            parameters:
+              - name: item
+            return:
+              - type: unknown

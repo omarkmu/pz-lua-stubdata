@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISButcherAnimal:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: body
+        staticFields:
+          Type:
+            defaultValue: '"ISButcherAnimal"'
+        fields:
+          body: {}
+          perkLevel: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

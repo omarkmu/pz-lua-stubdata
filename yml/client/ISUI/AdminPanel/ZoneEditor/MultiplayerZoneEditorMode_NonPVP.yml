@@ -1,0 +1,154 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MultiplayerZoneEditorMode_NonPVP:
+        extends: MultiplayerZoneEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"MultiplayerZoneEditorMode_NonPVP"'
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          renameButton:
+            type: ISButton
+          removeButton:
+            type: ISButton
+          selectedZone:
+            nullable: true
+          delaySelectTitle:
+            nullable: true
+          modalUI:
+            type: ISTextBox | ISModalDialog
+            nullable: true
+          mode:
+            type: string
+            nullable: true
+          resizeMode:
+            type: string
+            nullable: true
+          snapMode:
+            type: string
+          resizer:
+            type: WorldMapEditorResizer
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: renderResizer
+          - name: renderRect
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: fillList
+          - name: getSelectedZone
+            return:
+              - type: unknown
+                nullable: true
+          - name: undisplay
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: selectedZoneChanged
+          - name: cancelResize
+            return:
+              - type: boolean
+          - name: isNewZoneValid
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+            return:
+              - type: boolean
+          - name: isZoneSizeValid
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+            return:
+              - type: boolean
+          - name: createNewZone
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+          - name: onNewZoneNameEntered
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setZoneBounds
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+          - name: onAddZone
+          - name: onRenameZone
+          - name: onExistingZoneNameEntered
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRemoveZone
+          - name: onConfirmRemoveZone
+            parameters:
+              - name: button
+                type: ISButton

@@ -1,0 +1,342 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PublicServerList:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"PublicServerList"'
+          pingedList: {}
+          refreshTime:
+            defaultValue: "0"
+          refreshInterval:
+            defaultValue: getSteamModeActive() and 5 or 60
+          instance:
+            type: PublicServerList
+            nullable: true
+        fields:
+          tabs:
+            type: ISTabPanel
+          listbox:
+            type: ISScrollingListBox
+          filteredCount:
+            type: number
+          recountFilteredPending:
+            type: boolean
+          recountFiltered:
+            type: boolean
+          listTabs:
+            type: ISTabPanelPaginated
+          skipCount:
+            type: number
+          listCount:
+            type: number
+          pageChanged:
+            type: boolean
+          scrollPanel:
+            type: ISPanelJoypad
+          serverNameLabel:
+            type: ISLabel
+          serverNameEntry:
+            type: ISTextEntryBox
+          serverLabel:
+            type: ISLabel
+          serverEntry:
+            type: ISTextEntryBox
+          portLabel:
+            type: ISLabel
+          portEntry:
+            type: ISTextEntryBox
+          serverPasswordEntry:
+            type: ISTextEntryBox
+          passwordWasFocused:
+            type: boolean
+          firstAddServer:
+            type: boolean
+          passwordText:
+            type: string
+          filtersPopup:
+            type: ISPanel
+          filtersPopupLabel:
+            type: ISLabel
+          closeFiltersPopupButton:
+            type: ISButton
+          googleAuthPopup:
+            type: ISPanel
+          googleAuthLabel:
+            type: ISLabel
+          googleAuthConnectLabel:
+            type: ISRichTextPanel
+          googleAuthButton:
+            type: ISButton
+          closeAuthPopupButton:
+            type: ISButton
+          googleKey:
+            type: string
+          descLabel:
+            type: ISLabel
+          descEntry:
+            type: ISTextEntryBox
+          usernameLabel:
+            type: ISLabel
+          usernameEntry:
+            type: ISTextEntryBox
+          authTypeLabel:
+            type: ISLabel
+          authType:
+            type: ISComboBox
+          passwordLabel:
+            type: ISLabel
+          passwordEntry:
+            type: ISTextEntryBox
+          rememberPasswordTickBox:
+            type: ISTickBox
+          connectTypeLabel:
+            type: ISLabel
+          connectTypeEntry:
+            type: ISTickBox
+          eraseBtn:
+            type: ISButton
+          addBtn:
+            type: ISButton
+          steamIPwarningLabel:
+            type: ISRichTextPanel
+          lastUseSteamRelay:
+            type: boolean
+          backButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          registerBtn:
+            type: ISButton
+          refreshBtn:
+            type: ISButton
+          filterUI:
+            type: table
+          filterX:
+            type: number
+          filterPadX:
+            type: number
+          filterBottomPad:
+            type: number
+          filtersButton:
+            type: ISButton
+          versionCheckBox:
+            type: ISTickBox
+          emptyServer:
+            type: ISTickBox
+          whitelistServer:
+            type: ISTickBox
+          pwdProtected:
+            type: ISTickBox
+          largeServer:
+            type: ISTickBox
+          vanillaServer:
+            type: ISTickBox
+          moddedServer:
+            type: ISTickBox
+          filterLabel:
+            type: ISLabel
+          filterEntry:
+            type: ISTextEntryBox
+          sortingLabel:
+            type: ISLabel
+          sortingType:
+            type: ISComboBox
+          firstDrawPending:
+            type: boolean
+          firstDraw:
+            type: boolean
+          ISButtonA:
+            nullable: true
+          ISButtonB:
+            nullable: true
+          hasVisibleItem:
+            type: boolean
+          showCountdownForJoin:
+            type: boolean
+          connecting:
+            type: boolean
+          failMessage:
+            nullable: true
+          stopPrerender:
+            type: boolean
+          itemheightoverride:
+            type: table
+          NoLabel:
+            type: boolean
+        methods:
+          - name: onSortingChanged
+          - name: onCheckLargeServerOption
+          - name: create
+          - name: onFilterChanged
+          - name: onMouseDown_ListTabs
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown_Tabs
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerender
+          - name: setServerDescription
+            parameters:
+              - name: item
+                type: table
+          - name: countMods
+            parameters:
+              - name: modString
+            return:
+              - type: number
+          - name: setServerMods
+            parameters:
+              - name: item
+                type: table
+          - name: addServerToList
+            parameters:
+              - name: server
+          - name: refreshList
+          - name: sortList
+          - name: onSendButton
+          - name: onCloseQRButton
+          - name: onCloseFiltersButton
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: addServer
+          - name: checkFields
+            return:
+              - type: boolean
+          - name: canConnect
+            return:
+              - type: boolean
+              - type: string
+                nullable: true
+          - name: clickNext
+          - name: emptyServerFile
+            parameters:
+              - name: server
+              - name: append
+          - name: writeServerOnFile
+            parameters:
+              - name: server
+              - name: append
+          - name: erase
+          - name: onClickServer
+            parameters:
+              - name: item
+          - name: fillFields
+            parameters:
+              - name: item
+          - name: trimFields
+            parameters:
+              - name: item
+          - name: drawMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_ListBox
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight_ListBox
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus_RightPanel
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus_RightPanel
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_RightPanel
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft_RightPanel
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: initialise
+          - name: instantiate
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: OnConnectFailed
+            parameters:
+              - name: message
+              - name: detail
+          - name: OnConnected
+          - name: OnQRReceived
+            parameters:
+              - name: message
+        staticMethods:
+          - name: OnSteamServerResponded
+            parameters:
+              - name: serverIndex
+          - name: OnSteamRefreshInternetServers
+          - name: OnSteamRulesRefreshComplete
+            parameters:
+              - name: host
+              - name: port
+              - name: rules
+    functions:
+      - name: OnConnectFailed
+        parameters:
+          - name: message
+          - name: detail
+      - name: OnConnected

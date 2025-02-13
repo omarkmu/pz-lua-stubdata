@@ -1,0 +1,76 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetRecipeTools:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: logic
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetRecipeTools"'
+        fields:
+          toolsLabel:
+            nullable: true
+          colDisabled:
+            type: table
+          colEnabled:
+            type: table
+          colTextEnabled:
+            type: table
+          colBad:
+            type: table
+          left:
+            type: table
+          right:
+            type: table
+          player: {}
+          logic: {}
+          editMode:
+            type: boolean
+          iconSize:
+            type: number
+          doToolBorder:
+            type: boolean
+          textureKeep: {}
+          textureDrain: {}
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createToolSide
+            parameters:
+              - name: _recipe
+              - name: _doLeft
+            return:
+              - type: table
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: updateToolValues
+            parameters:
+              - name: _table
+          - name: render
+          - name: update

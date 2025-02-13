@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PrintMediaDefinitions:
+        staticFields:
+          Brochures: {}
+          Fliers: {}
+          MiscDetails: {}
+          Newspapers: {}
+          NewspaperDetails: {}
+          OldNewspapers: {}
+          RegionalPapers: {}

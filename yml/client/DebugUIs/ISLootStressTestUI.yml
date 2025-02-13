@@ -1,0 +1,88 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLootStreetTestUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISLootStreetTestUI"'
+        fields:
+          town:
+            type: ISComboBox
+          houseType:
+            type: ISComboBox
+          houseNbr:
+            type: ISTextEntryBox
+          onlyjunk:
+            type: ISTickBox
+          lootType:
+            type: ISTickBox
+          richtext:
+            type: ISRichTextPanel
+          start:
+            type: ISButton
+          close:
+            type: ISButton
+          kitchenProclist:
+            type: table
+          kitchenContainer: {}
+          bathroomContainer: {}
+          bedroomContainer: {}
+          shedContainer: {}
+          totalList:
+            type: table
+          playerNum:
+            type: integer
+          title:
+            type: string
+          character: {}
+          chr: {}
+        methods:
+          - name: createChildren
+          - name: close
+          - name: startGenerate
+          - name: generateBuilding
+          - name: concatList
+            parameters:
+              - name: list
+            return:
+              - type: table
+              - type: table
+              - type: number
+          - name: itemValidForList
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: getRandomKitchenCounter
+            return:
+              - type: string
+                nullable: true
+          - name: doRichTextList
+            parameters:
+              - name: container
+              - name: roomName
+                type: string
+          - name: doRoom
+            parameters:
+              - name: container
+              - name: roomName
+                type: string
+              - name: contName
+                type: string
+              - name: procName
+                type: string
+          - name: getLootDensity
+            return:
+              - type: number
+                nullable: true
+          - name: update
+          - name: render

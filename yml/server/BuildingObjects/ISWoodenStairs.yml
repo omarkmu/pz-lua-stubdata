@@ -1,0 +1,108 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWoodenStairs:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: sprite2
+                type: string
+              - name: sprite3
+                type: string
+              - name: northSprite
+                type: string
+              - name: northSprite2
+                type: string
+              - name: northSprite3
+                type: string
+              - name: pillar
+                type: string
+              - name: pillarNorth
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISWoodenStairs"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          sprite2:
+            type: string
+          sprite3:
+            type: string
+          northSprite2:
+            type: string
+          northSprite3:
+            type: string
+          pillar:
+            type: string
+          pillarNorth:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+                type: string
+          - name: setInfo
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: level
+              - name: north
+              - name: sprite
+              - name: luaobject
+          - name: getHealth
+            return:
+              - type: number
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getSquare2Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquare3Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquareTopPos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: number

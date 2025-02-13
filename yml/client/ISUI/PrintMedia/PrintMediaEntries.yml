@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PrintMediaEntries:
+        staticFields:
+          useJoypad:
+            defaultValue: "false"
+          list:
+            defaultValue: LuaList:new()
+        staticMethods:
+          - name: addPrintMediaEntry
+            parameters:
+              - name: index
+                type: string
+              - name: type
+                type: string
+          - name: getEntry
+            parameters:
+              - name: num
+                type: number
+            return:
+              - type: unknown
+          - name: getEntryCount
+            return:
+              - type: number

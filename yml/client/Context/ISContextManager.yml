@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISContextManager:
+        staticMethods:
+          - name: getInstance
+            return:
+              - type: ISContextManager
+    classes:
+      ISContextManager:
+        local: true
+        staticMethods:
+          - name: getWorldMenu
+            return:
+              - type: ISMenuContextWorld
+          - name: getBuildMenu
+            return:
+              - type: ISMenuContextBuild
+          - name: getInventoryMenu
+            return:
+              - type: ISMenuContextInventory
+          - name: createWorldMenu
+            parameters:
+              - name: _playerNum
+                type: integer
+              - name: _object
+                nullable: true
+              - name: _objects
+                type: table
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _test
+                type: boolean
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: createInventoryMenu
+            parameters:
+              - name: _player
+                type: IsoPlayer
+              - name: _context
+                type: ISContextMenu
+              - name: _items
+              - name: _item
+            return:
+              - type: unknown
+                nullable: true
+          - name: init

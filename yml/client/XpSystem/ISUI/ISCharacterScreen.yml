@@ -1,0 +1,165 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCharacterScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerNum
+                type: integer
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterScreen"'
+        fields:
+          bFemale: {}
+          sexText:
+            type: string
+          profImage:
+            type: ISImage
+          avatarX:
+            type: number
+          avatarY:
+            type: number
+          avatarWidth:
+            type: number
+          avatarHeight:
+            type: number
+          avatarPanel:
+            type: ISCharacterScreenAvatar
+          avatarBackgroundTexture: {}
+          xOffset:
+            type: number
+          hairButton:
+            type: ISButton
+          beardButton:
+            type: ISButton
+          literatureButton:
+            type: ISButton
+          literatureUI:
+            type: ISLiteratureUI
+          refreshNeeded:
+            type: boolean
+          joypadButtons: {}
+          playerNum:
+            type: integer
+          char: {}
+          weightIncTexture: {}
+          weightIncLotTexture: {}
+          weightDecTexture: {}
+          traits:
+            type: table
+          displayedTraits:
+            type: table
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+              - name: joypadData
+                type: JoypadData
+          - name: prerender
+          - name: render
+          - name: maxTextWidth
+            parameters:
+              - name: font
+              - name: text
+                type: string
+              - name: maxWidth
+                type: number
+            return:
+              - type: unknown
+          - name: create
+          - name: hairMenu
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onShowLiterature
+          - name: addTooltip
+            parameters:
+              - name: option
+              - name: text
+                type: string
+          - name: beardMenu
+            parameters:
+              - name: button
+                type: ISButton
+          - name: updateAvatar
+          - name: initJoypadButtons
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: onTrimBeard
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: beardStyle
+          - name: onCutHair
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: hairStyle
+              - name: time
+          - name: setDisplayedTraits
+            parameters:
+              - name: self
+          - name: traitsChanged
+            parameters:
+              - name: self
+            return:
+              - type: boolean
+          - name: loadTraits
+            parameters:
+              - name: self
+          - name: loadBeardAndHairStyle
+            parameters:
+              - name: self
+          - name: loadProfession
+            parameters:
+              - name: self
+          - name: loadFavouriteWeapon
+            parameters:
+              - name: self
+      ISCharacterScreenAvatar:
+        extends: ISUI3DModel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterScreenAvatar"'
+        methods:
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number

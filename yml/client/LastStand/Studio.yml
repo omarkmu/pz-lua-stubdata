@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Studio:
+        staticFields:
+          id:
+            defaultValue: '"Studio"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/Studio.png"'
+          world:
+            defaultValue: '"challengemaps/Studio"'
+          gameMode:
+            defaultValue: '"Studio"'
+          x:
+            defaultValue: (1 * 300) + 183
+          y:
+            defaultValue: (1 * 300) + 118
+          z:
+            defaultValue: "0"
+          zombiesMinPerChunk:
+            defaultValue: (0.06 * 0.64) * 0.66
+          zombiesMaxPerChunk:
+            defaultValue: (12 * 0.64) * 0.66
+        staticMethods:
+          - name: Add
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: OnGameStart
+          - name: OnInitWorld
+          - name: Render
+          - name: OnNewGame

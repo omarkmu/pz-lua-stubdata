@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes.oak_forest: {}
+          biomes.oak_forest_boulder_none: {}
+          biomes.oak_forest_boulder_very_low: {}
+          biomes.oak_forest_boulder_low: {}
+          biomes.oak_forest_boulder_medium: {}
+          biomes.oak_forest_boulder_high: {}
+          biomes.oak_forest_boulder_very_high: {}

@@ -1,0 +1,22 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Painting:
+        staticFields:
+          doorframe: {}
+          pillar: {}
+          wall: {}
+          windowsframe: {}
+      OtherPainting:
+        staticFields:
+          chair: {}
+          crates: {}
+          door: {}
+          table: {}
+      WallPaper:
+        staticFields:
+          doorframe: {}
+          pillar: {}
+          wall: {}
+          windowsframe: {}

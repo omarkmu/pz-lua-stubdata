@@ -1,0 +1,56 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCheatPanelUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISCheatPanelUI"'
+          instance:
+            type: ISCheatPanelUI
+            nullable: true
+          cheatTooltips: {}
+        fields:
+          ok:
+            type: ISButton
+          tickBox:
+            type: ISTickBox
+          setFunction:
+            type: table
+          player: {}
+        methods:
+          - name: initialise
+          - name: addAdminPowerOptions
+          - name: addOption
+            parameters:
+              - name: text
+              - name: selected
+              - name: setFunction
+          - name: onTicked
+            parameters:
+              - name: index
+              - name: selected
+          - name: render
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ISCheatPanelUI
+                nullable: true
+          - name: EnableCheats

@@ -1,0 +1,110 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AdjacentFreeTileFinder:
+        staticMethods:
+          - name: privTrySquareForWalls
+            parameters:
+              - name: src
+              - name: test
+            return:
+              - type: boolean
+          - name: privTrySquareForWalls2
+            parameters:
+              - name: src
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+          - name: privTrySquare
+            parameters:
+              - name: src
+              - name: test
+              - name: excludeList
+                type: table
+                nullable: true
+            return:
+              - type: boolean
+          - name: isTileOrAdjacent8
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: isTileOrAdjacent
+            parameters:
+              - name: a
+                nullable: true
+              - name: b
+            return:
+              - type: boolean
+          - name: Find
+            parameters:
+              - name: gridSquare
+              - name: playerObj
+                type: IsoPlayer
+              - name: excludeList
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: FindClosest
+            parameters:
+              - name: gridSquare
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+                nullable: true
+          - name: FindWindowOrDoor
+            parameters:
+              - name: gridSquare
+              - name: window
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+                nullable: true
+          - name: FindWall
+            parameters:
+              - name: gridSquare
+              - name: north
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+                nullable: true
+          - name: FindEdge
+            parameters:
+              - name: gridSquare
+              - name: dir
+                nullable: true
+              - name: playerObj
+                type: IsoPlayer
+              - name: preferSameSquare
+                type: boolean
+            return:
+              - type: unknown
+                nullable: true
+          - name: privTrySquareWindow
+            parameters:
+              - name: src
+              - name: test
+            return:
+              - type: boolean
+          - name: privCanStand
+            parameters:
+              - name: test
+            return:
+              - type: boolean
+          - name: privGetNorth
+            parameters:
+              - name: gridSquare
+              - name: object
+            return:
+              - type: boolean

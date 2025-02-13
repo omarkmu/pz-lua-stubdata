@@ -1,0 +1,173 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTiledIconListBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: dataList
+        staticFields:
+          Type:
+            defaultValue: '"ISTiledIconListBox"'
+        fields:
+          mouseOverTile:
+            type: number
+            nullable: true
+          columns: {}
+          rows: {}
+          columnWidth:
+            type: number
+          rowHeight:
+            type: number
+          tileCount:
+            type: number
+          pages:
+            type: number
+          currentPage:
+            type: number
+          selectedTileData:
+            type: boolean
+            nullable: true
+          lastMouseOverTile:
+            type: number
+            nullable: true
+          dataArrayList: {}
+          callbackTarget:
+            type: boolean
+          onRenderTile:
+            type: boolean
+          onHoverTile:
+            type: boolean
+          onClickTile:
+            type: boolean
+          iconWidth:
+            type: number
+          iconHeight:
+            type: number
+          tilePadX:
+            type: number
+          tilePadY:
+            type: number
+          tileWidth:
+            type: number
+          tileHeight:
+            type: number
+          tileMarginX:
+            type: number
+          tileMarginY:
+            type: number
+          minimumColumns:
+            type: number
+          minimumRows:
+            type: number
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: getTileForCoordinate
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getTileIndexForCoordinate
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: number
+                nullable: true
+          - name: getDataElement
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+                nullable: true
+          - name: calculateTiles
+          - name: renderTile
+            parameters:
+              - name: _tileData
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _mouseover
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: _del
+                type: number
+            return:
+              - type: boolean
+          - name: onPageScrolled
+            parameters:
+              - name: _newPage
+          - name: setCurrentPage
+            parameters:
+              - name: _page
+          - name: getCurrentPage
+            return:
+              - type: number
+          - name: pageChanged
+          - name: getPages
+            return:
+              - type: number
+          - name: focusPageOnSelectedTile

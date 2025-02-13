@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCleanBandage:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: waterObject
+              - name: recipe
+        staticFields:
+          Type:
+            defaultValue: '"ISCleanBandage"'
+        fields:
+          sound: {}
+          item: {}
+          result: {}
+          waterObject: {}
+          recipe: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

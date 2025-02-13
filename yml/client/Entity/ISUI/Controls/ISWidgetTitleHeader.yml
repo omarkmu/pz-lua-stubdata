@@ -1,0 +1,107 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetTitleHeader:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: recipe
+              - name: player
+              - name: logic
+              - name: isFavourite
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetTitleHeader"'
+        fields:
+          iconSize:
+            type: number
+          icon:
+            nullable: true
+          titleLabel:
+            nullable: true
+          favouritesIcon:
+            nullable: true
+          isCanWalkIcon:
+            nullable: true
+          canBeDoneInDarkIcon:
+            nullable: true
+          needToBeLearnIcon:
+            nullable: true
+          requiresSurfaceIcon:
+            nullable: true
+          timeIcon:
+            nullable: true
+          tooltipLabel:
+            nullable: true
+          errorLabel:
+            nullable: true
+          isFavourite:
+            type: boolean
+          title:
+            type: string
+          iconTex: {}
+          isCanWalk:
+            type: boolean
+          canBeDoneInDark:
+            type: boolean
+          needToBeLearn:
+            type: boolean
+          requiresSurface:
+            type: boolean
+          showPropertyIcons:
+            type: boolean
+          propertyIconSize:
+            type: number
+          player: {}
+          recipe: {}
+          logic: {}
+          paddingTop:
+            type: number
+          paddingBottom:
+            type: number
+          paddingLeft:
+            type: number
+          paddingRight:
+            type: number
+          marginTop:
+            type: number
+          marginBottom:
+            type: number
+          marginLeft:
+            type: number
+          marginRight:
+            type: number
+          requiredSkillList:
+            type: table
+          colWhite:
+            type: table
+          colGood:
+            type: table
+          colBad:
+            type: table
+          enableIcon:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: updateLabels
+          - name: updatePropertyIcons
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onFavouritesClick

@@ -1,0 +1,75 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSectionedPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSectionedPanel"'
+        fields:
+          sections:
+            type: table
+          maintainHeight:
+            type: boolean
+        methods:
+          - name: addSection
+            parameters:
+              - name: panel
+                type: ISScrollingListBox | DebugChunkStateUI_ObjPropsPanel
+              - name: title
+                type: string
+          - name: clear
+          - name: prerender
+          - name: render
+          - name: onMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+      ISSectionedPanel_Section:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: panel
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISSectionedPanel_Section"'
+        fields:
+          headerButton:
+            type: ISButton
+          expanded:
+            type: boolean
+          enabled:
+            type: boolean
+          panelHeight: {}
+          panel: {}
+          title:
+            type: string
+        methods:
+          - name: createChildren
+          - name: onHeaderClick
+          - name: calculateHeights
+          - name: clear
+          - name: prerender
+          - name: render

@@ -1,0 +1,18 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseState:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseState"'
+        methods:
+          - name: enter
+          - name: during
+          - name: exit
+          - name: isFinished
+            return:
+              - type: boolean

@@ -1,0 +1,107 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetRecipesPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: craftBench
+              - name: isoObject
+              - name: logic
+              - name: callbackTarget
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetRecipesPanel"'
+        fields:
+          recipeTable:
+            nullable: true
+          starUnsetTexture: {}
+          starSetTexture: {}
+          recipeFilterPanel:
+            nullable: true
+          recipeFilterPanelRow: {}
+          recipeListPanelRow: {}
+          recipeListPanel:
+            nullable: true
+          recipeIconPanel:
+            nullable: true
+          tooltipRecipe:
+            nullable: true
+          tooltipCounter:
+            type: number
+          recipeIconPanelRow: {}
+          recipeListMode: {}
+          activeTooltip:
+            nullable: true
+          tooltipLogic: {}
+          player: {}
+          logic: {}
+          callbackTarget: {}
+          tooltipCounterTime:
+            type: number
+          expandToFitTooltip:
+            type: boolean
+          wrapTooltipText:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: OnFilterAll
+            parameters:
+              - name: filter
+          - name: createRecipeFilterPanel
+            parameters:
+              - name: _parentTable
+          - name: createRecipeListPanel
+            parameters:
+              - name: _parentTable
+          - name: createRecipeIconPanel
+            parameters:
+              - name: _parentTable
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: getActivePanel
+            return:
+              - type: unknown
+                nullable: true
+          - name: setRecipeListMode
+            parameters:
+              - name: _useListMode
+          - name: onRecipeChanged
+            parameters:
+              - name: _recipe
+          - name: filterRecipeList
+          - name: onUpdateRecipeList
+            parameters:
+              - name: _recipeList
+          - name: onRecipeItemMouseHover
+            parameters:
+              - name: _item
+          - name: onRecipeListPanelScrolled
+          - name: updateTooltip
+          - name: updateContainers
+            parameters:
+              - name: _containers
+          - name: deactivateTooltip
+          - name: getPlayer
+            return:
+              - type: unknown
+          - name: getLogic
+            return:
+              - type: unknown

@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTermsOfServiceUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTermsOfServiceUI"'
+          instance:
+            type: ISTermsOfServiceUI
+            nullable: true
+        fields:
+          textureY:
+            type: number
+          richText:
+            type: ISRichTextPanel
+          button1:
+            type: ISButton
+          button2:
+            type: ISButton
+          buttonAccept:
+            type: ISButton
+          buttonQuit:
+            type: ISButton
+          name:
+            nullable: true
+          ok:
+            nullable: true
+          destroyOnClick:
+            type: boolean
+          texture: {}
+          javaStateObj: {}
+          prevFocus: {}
+        methods:
+          - name: createChildren
+          - name: destroy
+          - name: onButton1
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onButton2
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onButtonAccept
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onButtonQuit
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: update
+        staticMethods:
+          - name: OnGameStateEnter
+            parameters:
+              - name: javaStateObj

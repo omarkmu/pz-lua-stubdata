@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CraftRecipeCode:
+        staticFields:
+          removeFlesh: {}
+          removeFur: {}
+          tanLeatherCrude: {}
+          tanLeatherFur: {}
+          dryLeatherCrude: {}
+          dryLeatherFur: {}
+        staticMethods:
+          - name: replaceOutputLeather
+            parameters:
+              - name: _craftProcessor
+              - name: name
+                type: string
+              - name: tag
+          - name: replaceOutputLeather2
+            parameters:
+              - name: _craftProcessor
+          - name: getInputLeather
+            parameters:
+              - name: _craftProcessor
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLeatherName
+            parameters:
+              - name: _craftProcessor
+              - name: tag
+            return:
+              - type: string
+                nullable: true

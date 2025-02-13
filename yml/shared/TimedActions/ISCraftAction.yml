@@ -1,0 +1,78 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: recipe
+              - name: container
+              - name: containersIn
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftAction"'
+        fields:
+          item:
+            nullable: true
+          craftSound: {}
+          onCompleteFunc:
+            type: function
+          onCompleteArgs:
+            type: table
+          recipe: {}
+          container: {}
+          containersIn:
+            nullable: true
+          containers:
+            nullable: true
+          stopOnWalk: {}
+          stopOnRun: {}
+          jobType: {}
+          forceProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getPropItemOrModel
+            parameters:
+              - name: propStr
+                type: string
+            return:
+              - type: string
+                nullable: true
+          - name: setOnComplete
+            parameters:
+              - name: func
+                type: function
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+                nullable: true
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,106 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerData: {}
+    functions:
+      - name: getPlayerData
+        parameters:
+          - name: id
+            type: number
+        return:
+          - type: unknown
+      - name: removeInventoryUI
+        parameters:
+          - name: id
+      - name: getButtonPrompts
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerInventory
+        parameters:
+          - name: id
+            type: number
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerLoot
+        parameters:
+          - name: id
+            type: number
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerContextMenu
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerHotbar
+        parameters:
+          - name: id
+            type: number
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerInfoPanel
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerBackButtonWheel
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerCraftingUI
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+      - name: getPlayerZoneUI
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+      - name: getPlayerMechanicsUI
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+      - name: getPlayerMiniMap
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+            nullable: true
+      - name: getPlayerVehicleDashboard
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+      - name: getPlayerRadialMenu
+        parameters:
+          - name: id
+            type: number
+        return:
+          - type: unknown
+      - name: getPlayerSleepingUI
+        parameters:
+          - name: id
+        return:
+          - type: unknown
+      - name: createPlayerData
+        parameters:
+          - name: id
+            type: number
+      - name: destroyPlayerData
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+      - name: destroyAllPlayerData

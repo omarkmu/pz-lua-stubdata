@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMusicIntensityEventsPanel:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ISMusicIntensityEventsPanel"'
+        fields:
+          eventList:
+            type: ISScrollingListBox
+          buttonClear:
+            type: ISButton
+          buttonReload:
+            type: ISButton
+        methods:
+          - name: createChildren
+          - name: render
+          - name: populateEventList
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onButtonClear
+          - name: onButtonReload

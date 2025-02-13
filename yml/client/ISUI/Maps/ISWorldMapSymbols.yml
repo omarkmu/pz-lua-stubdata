@@ -1,0 +1,661 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldMapSymbols:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: mapUI
+                type: ISMap | ISWorldMap
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbols"'
+        fields:
+          colorButtonInfo:
+            type: table
+          colorButtons:
+            type: table
+          panel:
+            type: ISWorldMapSymbolsTabPanel
+          blackColor: {}
+          currentColor: {}
+          addNoteBtn:
+            type: ISButton
+          editNoteBtn:
+            type: ISButton
+          moveBtn:
+            type: ISButton
+          removeBtn:
+            type: ISButton
+          sharingBtn:
+            type: ISButton
+          tools:
+            type: table
+          currentTool:
+            type: ISWorldMapSymbolTool_AddSymbol
+            nullable: true
+          wasCanWrite:
+            type: boolean
+          wasCanErase:
+            type: boolean
+          noteX: {}
+          noteY: {}
+          ignoreRightMouseUp:
+            type: boolean
+          selectedSymbol:
+            nullable: true
+          keyPressConsumed:
+            type: boolean
+          mouseOverNote:
+            nullable: true
+          mouseOverSymbol:
+            nullable: true
+          joypadButtons: {}
+          symbolList:
+            type: table
+          mapUI:
+            type: ISMap | ISWorldMap
+          mapAPI: {}
+          symbolsAPI: {}
+          buttonList:
+            type: table
+          character:
+            nullable: true
+          playerNum:
+            type: integer
+          textCursor: {}
+          symbolTexList:
+            type: table
+          showTranslationOption:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: checkInventory
+          - name: canWrite
+            return:
+              - type: boolean
+          - name: canErase
+            return:
+              - type: boolean
+          - name: initTools
+          - name: setCurrentTool
+            parameters:
+              - name: tool
+                type: ISWorldMapSymbolTool_AddSymbol
+                nullable: true
+          - name: toggleTool
+            parameters:
+              - name: tool
+                type: table
+          - name: populateSymbolList
+          - name: prerenderMap
+          - name: prerender
+          - name: render
+          - name: renderSymbol
+            parameters:
+              - name: symbol
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: renderNoteBeingAddedOrEdited
+            parameters:
+              - name: modal
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onButtonClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean | ISWorldMapSymbolTool_AddSymbol
+                nullable: true
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: undisplay
+          - name: updateSymbolColors
+          - name: checkAnnotationForMoveMouse
+          - name: checkAnnotationForMoveJoypad
+          - name: checkAnnotationForRemoveMouse
+          - name: checkAnnotationForRemoveJoypad
+          - name: checkTextForEditMouse
+          - name: checkTextForEditJoypad
+          - name: checkAnnotationForSharingMouse
+          - name: checkAnnotationForSharingJoypad
+          - name: hitTestAnnotations
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: mode
+              - name: filter
+          - name: renderSymbolOutline
+            parameters:
+              - name: symbol
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+                nullable: true
+        staticMethods:
+          - name: RequiredWidth
+            return:
+              - type: number
+      ISWorldMapSymbolTool:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: symbolsUI
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool"'
+        fields:
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          dragStartX:
+            type: number
+          dragStartY:
+            type: number
+          symbolsUI: {}
+          mapUI: {}
+          mapAPI: {}
+          symbolsAPI: {}
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: render
+          - name: getMouseX
+            return:
+              - type: unknown
+          - name: getMouseY
+            return:
+              - type: unknown
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+      ISWorldMapSymbolTool_AddSymbol:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_AddSymbol"'
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+          - name: render
+          - name: addSymbol
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      ISWorldMapSymbolTool_AddNote:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_AddNote"'
+        fields:
+          modal:
+            type: ISTextBoxMap
+            nullable: true
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: addNote
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: render
+          - name: onAddNote
+            parameters:
+              - name: button
+                type: ISButton
+              - name: playerNum
+                type: integer
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+      ISWorldMapSymbolTool_EditNote:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_EditNote"'
+        fields:
+          modal:
+            type: ISTextBoxMap
+            nullable: true
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: editNote
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: render
+          - name: onEditNote
+            parameters:
+              - name: button
+                type: ISButton
+              - name: symbol
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+                nullable: true
+      ISWorldMapSymbolTool_MoveAnnotation:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_MoveAnnotation"'
+        fields:
+          dragging:
+            nullable: true
+          originalX: {}
+          originalY: {}
+          deltaX:
+            type: number
+          deltaY:
+            type: number
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: cancelDrag
+            return:
+              - type: boolean
+          - name: render
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+                nullable: true
+      ISWorldMapSymbolTool_RemoveAnnotation:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_RemoveAnnotation"'
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: render
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeAnnotation
+            return:
+              - type: boolean
+      ISWorldMapSymbolTool_Sharing:
+        extends: ISWorldMapSymbolTool
+        constructors:
+          - parameters:
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolTool_Sharing"'
+        fields:
+          propertiesUI:
+            type: ISWorldMapSharing
+        methods:
+          - name: activate
+          - name: deactivate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: render
+          - name: showPropertiesUI
+            return:
+              - type: boolean
+          - name: onJoypadDownInMap
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getJoypadAButtonText
+            return:
+              - type: unknown
+                nullable: true
+      ISWorldMapSymbolsTabPanel:
+        extends: ISTabPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: symbolsUI
+                type: ISWorldMapSymbols
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSymbolsTabPanel"'
+        fields:
+          joypadFocused: {}
+          symbolsUI:
+            type: ISWorldMapSymbols
+        methods:
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: setJoypadFocused
+            parameters:
+              - name: focused

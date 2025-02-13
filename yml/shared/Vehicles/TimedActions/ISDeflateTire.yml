@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDeflateTire:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: psiTarget
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISDeflateTire"'
+        fields:
+          psiSent: {}
+          vehicle: {}
+          part: {}
+          psiStart: {}
+          psiTarget:
+            type: number
+          jobType:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: serverStop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

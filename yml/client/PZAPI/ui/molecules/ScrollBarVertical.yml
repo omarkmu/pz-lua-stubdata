@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.ScrollBarVertical:
+        extends: UI.Panel
+        local: true
+        staticFields:
+          width:
+            defaultValue: "11"
+          r:
+            defaultValue: "0"
+          g:
+            defaultValue: "0"
+          b:
+            defaultValue: "0"
+          a:
+            defaultValue: "0.7"
+          anchorTop:
+            defaultValue: "1"
+          anchorDown:
+            defaultValue: "-1"
+          anchorRight:
+            defaultValue: "0"
+        fields:
+          super:
+            type: UI.Panel
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.ScrollBarVertical
+        methods:
+          - name: setBarSize
+            parameters:
+              - name: sizeCoeff
+          - name: updateBar
+            parameters:
+              - name: percent
+      PZAPI:
+        staticFields:
+          UI.ScrollBarVertical:
+            type: UI.ScrollBarVertical

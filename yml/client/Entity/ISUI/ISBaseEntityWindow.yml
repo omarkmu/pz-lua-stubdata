@@ -1,0 +1,90 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseEntityWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: entityUiStyle
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseEntityWindow"'
+        fields:
+          maximumHeight:
+            type: number
+          entityHeader:
+            nullable: true
+          xuiPreferredResizeWidth:
+            type: number
+          xuiPreferredResizeHeight:
+            type: number
+          xuiResizeAnchorRight:
+            type: boolean
+          dirtyLayout:
+            type: boolean
+          hasClosedWindowInstance:
+            type: boolean
+          maximumWidth:
+            type: number
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            nullable: true
+          panelCloseDistance:
+            type: number
+          entity: {}
+          entityUiStyle: {}
+          enableHeader:
+            type: boolean
+          maximumHeightPercent:
+            type: number
+          overrideBPrompt:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createEntityHeader
+            parameters:
+              - name: _xuiSkin
+              - name: _styleName
+                type: string
+              - name: _force
+              - name: _styleIcon
+              - name: _styleLabel
+              - name: _styleButton
+          - name: xuiRecalculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+              - name: _force
+              - name: _anchorRight
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: update
+            return:
+              - type: boolean
+          - name: close
+          - name: validateSizeBounds
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer

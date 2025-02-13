@@ -1,0 +1,48 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDrinkFromBottle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: uses
+        staticFields:
+          Type:
+            defaultValue: '"ISDrinkFromBottle"'
+        fields:
+          eatAudio:
+            type: number
+          item: {}
+          uses:
+            type: number
+          eatSound:
+            type: string
+          tick:
+            type: number
+          ignoreHandsWounds:
+            type: boolean
+          isEating:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: drink
+            parameters:
+              - name: food
+              - name: percentage
+                type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,104 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Fishing:
+        staticFields:
+          actionProperties: {}
+          lure: {}
+          FishConfig:
+            type: Fishing.FishConfig
+          isSizeLimit:
+            defaultValue: "false"
+          fishes: {}
+          trashItems: {}
+          line: {}
+          hook: {}
+          rods: {}
+          breakRodReplacement: {}
+          fishNet: {}
+          fishNetWithBait: {}
+        staticMethods:
+          - name: IndexAllLures
+          - name: IsLure
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: IsArtificalLure
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: onCreateFish
+            parameters:
+              - name: item
+          - name: onCreateFishingRod
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+                nullable: true
+          - name: onCreateChum
+            parameters:
+              - name: item
+      Fishing.FishConfig:
+        local: true
+        constructors:
+          - parameters:
+              - name: itemType
+                type: string
+        fields:
+          itemType:
+            type: string
+          lure:
+            type: table
+          minLength:
+            type: number
+          isHaveDifferentSizes:
+            type: boolean
+          isRiver:
+            type: boolean
+          isLake:
+            type: boolean
+          maxLength: {}
+          maxWeight:
+            type: number
+          fishesSizeData:
+            type: table
+        methods:
+          - name: setLocation
+            parameters:
+              - name: isRiver
+                type: boolean
+              - name: isLake
+                type: boolean
+          - name: setMaxLength
+            parameters:
+              - name: length
+                type: number
+          - name: setMaxWeight
+            parameters:
+              - name: weight
+                type: number
+          - name: addLures
+            parameters:
+              - name: itemTable
+                type: table
+              - name: chanceCoeff
+                type: number
+          - name: clearLures
+          - name: getLureChance
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+          - name: initFishSizeData
+          - name: getFishSizeData
+            parameters:
+              - name: smallChance
+              - name: mediumChance
+              - name: bigChance
+            return:
+              - type: unknown
+                nullable: true

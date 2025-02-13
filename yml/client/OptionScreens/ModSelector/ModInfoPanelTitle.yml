@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModInfoPanel.Title:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ModInfoPanelTitle"'
+        fields:
+          title:
+            type: ISLabel
+        methods:
+          - name: createChildren
+          - name: setModInfo
+            parameters:
+              - name: modInfo
+      ModInfoPanel:
+        staticFields:
+          Title:
+            type: ModInfoPanel.Title

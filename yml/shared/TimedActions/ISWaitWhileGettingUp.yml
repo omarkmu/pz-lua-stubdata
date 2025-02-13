@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWaitWhileGettingUp:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISWaitWhileGettingUp"'
+        fields:
+          onCompleteFunc:
+            type: function
+          onCompleteArgs:
+            type: table
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: setOnComplete
+            parameters:
+              - name: func
+                type: function
+              - name: p1
+              - name: p2
+                nullable: true
+              - name: p3
+                nullable: true
+              - name: p4
+                nullable: true
+              - name: p5
+                nullable: true
+              - name: p6
+                nullable: true
+              - name: p7
+                nullable: true
+              - name: p8
+                nullable: true
+              - name: p9
+                nullable: true
+              - name: p10
+                nullable: true
+              - name: ...
+          - name: getDuration
+            return:
+              - type: number

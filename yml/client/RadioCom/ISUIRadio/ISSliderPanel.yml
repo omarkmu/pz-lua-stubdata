@@ -1,0 +1,178 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSliderPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onValueChange
+                type: function
+                nullable: true
+              - name: customPaginate
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISSliderPanel"'
+        fields:
+          sliderBarDim:
+            type: table
+          btnLeftDim:
+            type: table
+          btnRightDim:
+            type: table
+          sliderDim:
+            type: table
+          leftPressed:
+            type: boolean
+          rightPressed:
+            type: boolean
+          dragInside:
+            type: boolean
+          dragClickX:
+            type: number
+          minValue:
+            type: number
+          maxValue:
+            type: number
+          stepValue:
+            type: number
+          shiftValue:
+            type: number
+            nullable: true
+          doButtons:
+            type: boolean
+          currentValue:
+            type: number
+          toolTip:
+            type: ISToolTip
+            nullable: true
+          joypadFocused: {}
+          sliderBarColor:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          onValueChange:
+            type: function
+            nullable: true
+          customPaginate:
+            nullable: true
+          texBtnLeft: {}
+          texBtnRight: {}
+          buttonColor:
+            type: table
+          buttonMouseOverColor:
+            type: table
+          sliderColor:
+            type: table
+          sliderMouseOverColor:
+            type: table
+          sliderBorderColor:
+            type: table
+          sliderBarBorderColor:
+            type: table
+          doToolTip:
+            type: boolean
+          toolTipText:
+            type: string
+          isSliderPanel:
+            type: boolean
+          disabled:
+            type: boolean
+          isSlider:
+            type: boolean
+        methods:
+          - name: round
+            parameters:
+              - name: num
+                type: number
+              - name: idp
+                type: number
+            return:
+              - type: number
+          - name: initialise
+          - name: createChildren
+          - name: paginate
+          - name: onMouseDown
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: update
+          - name: prerender
+          - name: render
+          - name: doOnValueChange
+            parameters:
+              - name: _newvalue
+                type: number
+          - name: setValues
+            parameters:
+              - name: _min
+                type: number
+              - name: _max
+                type: number
+              - name: _step
+                type: number
+              - name: _shift
+                type: number
+                nullable: true
+              - name: _ignoreCurVal
+                type: boolean
+                nullable: true
+          - name: setDoButtons
+            parameters:
+              - name: _b
+          - name: setCurrentValue
+            parameters:
+              - name: _v
+                type: number
+              - name: _ignoreOnChange
+                type: boolean
+                nullable: true
+          - name: getCurrentValue
+            return:
+              - type: number
+          - name: activateToolTip
+          - name: deactivateToolTip
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+          - name: onJoypadDirRight
+          - name: onJoypadDirLeft

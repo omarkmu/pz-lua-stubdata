@@ -1,0 +1,92 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleHSV:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: playerObj
+                type: IsoPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleHSV"'
+        fields:
+          scriptName:
+            type: ISLabel
+          colorHue:
+            type: ISSliderPanel
+          colorSaturation:
+            type: ISSliderPanel
+          colorValue:
+            type: ISSliderPanel
+          nextSkinButton:
+            type: ISButton
+          vehicle:
+            nullable: true
+          script:
+            nullable: true
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: addLabel
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+              - name: _bLeft
+                type: boolean
+            return:
+              - type: number
+              - type: ISLabel
+          - name: addSlider
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _func
+                type: function
+            return:
+              - type: number
+              - type: ISSliderPanel
+          - name: callbackAngleX
+            parameters:
+              - name: value
+              - name: slider
+          - name: callbackAngleY
+            parameters:
+              - name: value
+              - name: slider
+          - name: callbackAngleZ
+            parameters:
+              - name: value
+              - name: slider
+          - name: createChildren
+          - name: onButtonRed
+          - name: onButtonBlue
+          - name: onButtonWhite
+          - name: onButtonBlack
+          - name: onButtonOther
+          - name: onButtonNextSkin
+          - name: clearVehicle
+          - name: prerender
+          - name: close
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+    functions:
+      - name: debugVehicleColor
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+          - name: vehicle

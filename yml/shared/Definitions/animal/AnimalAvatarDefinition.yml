@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AnimalAvatarDefinition:
+        staticFields:
+          cow: {}
+          bull: {}
+          ewe: {}
+          ram: {}
+          turkeyhen: {}
+          gobblers: {}
+          hen: {}
+          cockerel: {}
+          chick: {}
+          sow: {}
+          boar: {}
+          cowcalf: {}
+          lamb: {}
+          turkeypoult: {}
+          piglet: {}
+          buck: {}
+          doe: {}
+          fawn: {}
+          rabdoe: {}
+          rabbuck: {}
+          rabkitten: {}
+          rat: {}
+          ratfemale: {}
+          ratbaby: {}
+          mouse: {}
+          mousefemale: {}
+          mousepups: {}

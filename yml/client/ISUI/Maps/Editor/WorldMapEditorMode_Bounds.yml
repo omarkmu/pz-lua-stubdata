@@ -1,0 +1,102 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorMode_Bounds:
+        extends: WorldMapEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorMode_Bounds"'
+        fields:
+          labelBounds:
+            type: ISLabel
+          snapButtons:
+            type: table
+          mode:
+            type: string
+            nullable: true
+          resizeMode:
+            type: string
+            nullable: true
+          snapMode:
+            type: string
+          resizer:
+            type: WorldMapEditorResizer
+        methods:
+          - name: createChildren
+          - name: render
+          - name: display
+          - name: undisplay
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: loadSettingsFromMap
+          - name: cancelResize
+            return:
+              - type: boolean
+          - name: setBounds
+            parameters:
+              - name: x1
+              - name: y1
+              - name: x2
+              - name: y2
+          - name: onChangeSnapMode
+            parameters:
+              - name: button
+                type: ISButton
+          - name: snap
+            parameters:
+              - name: xy
+            return:
+              - type: number
+          - name: onDrawBounds
+          - name: onReset
+          - name: generateLuaScript
+            return:
+              - type: string

@@ -1,0 +1,124 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISStatisticsUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISStatisticsUI"'
+          instance:
+            type: ISStatisticsUI
+            nullable: true
+        fields:
+          showCPU:
+            type: boolean
+          showMemory:
+            type: boolean
+          showFPS:
+            type: boolean
+          showNetwork:
+            type: boolean
+          showVOIP:
+            type: boolean
+          showPing:
+            type: boolean
+          showTime:
+            type: boolean
+          showVersion:
+            type: boolean
+          showPlayers:
+            type: boolean
+          showAnimals:
+            type: boolean
+          showZombies:
+            type: boolean
+          showChunks:
+            type: boolean
+          tickBoxLeft:
+            type: ISTickBox
+          tickBoxCenter:
+            type: ISTickBox
+          tickBoxRight:
+            type: ISTickBox
+          panel:
+            type: ISStatisticsPanel
+          title:
+            type: string
+          playerNum:
+            type: integer
+          player: {}
+        methods:
+          - name: onTickedLeft
+            parameters:
+              - name: index
+              - name: selected
+          - name: onTickedCenter
+            parameters:
+              - name: index
+              - name: selected
+          - name: onTickedRight
+            parameters:
+              - name: index
+              - name: selected
+          - name: createChildren
+          - name: close
+          - name: prerender
+          - name: initialise
+          - name: render
+      ISStatisticsPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISStatisticsPanel"'
+        fields:
+          playerNum:
+            type: integer
+          player: {}
+        methods:
+          - name: prerender
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: render
+          - name: renderStatistics
+          - name: drawRow
+            parameters:
+              - name: l
+              - name: lC
+              - name: c
+              - name: cC
+              - name: s
+              - name: sC
+              - name: y
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+              - name: background
+            return:
+              - type: number

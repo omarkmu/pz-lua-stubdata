@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StashUtil:
+        fields:
+          annotations:
+            type: table
+          containers:
+            type: table
+        methods:
+          - name: addStamp
+            parameters:
+              - name: symbol
+                type: string
+                nullable: true
+              - name: text
+                type: string
+                nullable: true
+              - name: mapX
+                type: number
+              - name: mapY
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: addContainer
+            parameters:
+              - name: containerType
+                type: string
+                nullable: true
+              - name: containerSprite
+                type: string
+                nullable: true
+              - name: containerItem
+                type: string
+                nullable: true
+              - name: room
+                type: string
+                nullable: true
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+              - name: z
+                type: number
+                nullable: true
+        staticMethods:
+          - name: newStash
+            parameters:
+              - name: name
+                type: string
+              - name: type
+                type: string
+              - name: item
+                type: string
+              - name: customName
+                type: string
+            return:
+              - type: table

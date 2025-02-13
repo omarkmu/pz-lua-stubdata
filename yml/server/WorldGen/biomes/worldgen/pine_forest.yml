@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes.pine_forest: {}
+          biomes.pine_forest_boulder_none: {}
+          biomes.pine_forest_boulder_very_low: {}
+          biomes.pine_forest_boulder_low: {}
+          biomes.pine_forest_boulder_medium: {}
+          biomes.pine_forest_boulder_high: {}
+          biomes.pine_forest_boulder_very_high: {}

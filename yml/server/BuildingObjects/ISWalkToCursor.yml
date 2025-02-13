@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWalkToCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: northSprite
+                type: string
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISWalkToCursor"'
+        fields:
+          character: {}
+          player: {}
+          noNeedHammer:
+            type: boolean
+          skipBuildAction:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

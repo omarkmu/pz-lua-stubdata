@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHutchMenu:
+        staticMethods:
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onPutAnimalInsideHutch
+            parameters:
+              - name: hutch
+              - name: player
+          - name: setDirt
+            parameters:
+              - name: hutch
+              - name: player
+              - name: perc
+          - name: setNestDirt
+            parameters:
+              - name: hutch
+              - name: player
+              - name: perc
+          - name: onInfo
+            parameters:
+              - name: hutch
+              - name: chr
+          - name: onToggleDoor
+            parameters:
+              - name: hutch
+              - name: player
+          - name: onToggleEggHatchDoor
+            parameters:
+              - name: hutch
+              - name: player

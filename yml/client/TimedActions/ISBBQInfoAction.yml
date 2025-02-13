@@ -1,0 +1,25 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBBQInfoAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: bbq
+        staticFields:
+          Type:
+            defaultValue: '"ISBBQInfoAction"'
+        fields:
+          playerNum:
+            type: integer
+          bbq: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: perform

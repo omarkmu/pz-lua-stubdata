@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISApplyBandage:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: otherPlayer
+                nullable: true
+              - name: item
+              - name: bodyPart
+              - name: doIt
+                type: number | boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISApplyBandage"'
+        fields:
+          item: {}
+          sound: {}
+          sound2: {}
+          character:
+            nullable: true
+          otherPlayer:
+            nullable: true
+          doctorLevel:
+            type: number
+          doIt:
+            type: number | boolean
+          bodyPart: {}
+          bandagedPlayerX: {}
+          bandagedPlayerY: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

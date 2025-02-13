@@ -1,0 +1,7 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          prefabs.normal_road_WE_00: {}

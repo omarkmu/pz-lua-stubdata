@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalPickMateCursor:
+        extends: ISPickCharacterCursor
+        constructors:
+          - parameters:
+              - name: character
+              - name: femaleAnimal
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalPickMateCursor"'
+        fields:
+          femaleAnimal: {}
+        methods:
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: isValidCharacter
+            parameters:
+              - name: chr
+            return:
+              - type: boolean
+                nullable: true
+          - name: onPickCharacter
+            parameters:
+              - name: chr

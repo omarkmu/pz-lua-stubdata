@@ -1,0 +1,162 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SGlobalObjectSystem:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: name
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"SGlobalObjectSystem"'
+        fields:
+          system: {}
+          systemName:
+            type: string
+          wantNoise: {}
+        methods:
+          - name: noise
+            parameters:
+              - name: message
+                type: string
+          - name: initSystem
+          - name: getInitialStateForClient
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLuaObjectCount
+            return:
+              - type: unknown
+          - name: getLuaObjectByIndex
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+          - name: initLuaObjects
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+          - name: getIsoObjectOnSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+                nullable: true
+          - name: getIsoObjectAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+          - name: newLuaObjectAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: newLuaObjectOnSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeLuaObject
+            parameters:
+              - name: luaObject
+                nullable: true
+          - name: removeLuaObjectAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+          - name: removeLuaObjectOnSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: newLuaObjectOnClient
+            parameters:
+              - name: luaObject
+                nullable: true
+          - name: removeLuaObjectOnClient
+            parameters:
+              - name: luaObject
+          - name: updateLuaObjectOnClient
+            parameters:
+              - name: luaObject
+          - name: getLuaObjectAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLuaObjectOnSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+                nullable: true
+          - name: loadIsoObject
+            parameters:
+              - name: isoObject
+          - name: sendCommand
+            parameters:
+              - name: command
+              - name: args
+          - name: OnClientCommand
+            parameters:
+              - name: command
+              - name: playerObj
+                type: IsoPlayer
+              - name: args
+          - name: OnDestroyIsoThumpable
+            parameters:
+              - name: isoObject
+              - name: playerObj
+                type: IsoPlayer
+          - name: OnObjectAdded
+            parameters:
+              - name: isoObject
+          - name: OnObjectAboutToBeRemoved
+            parameters:
+              - name: isoObject
+          - name: OnModDataChangeItself
+            parameters:
+              - name: isoObject
+          - name: OnIsoObjectChangedItself
+            parameters:
+              - name: isoObject
+          - name: OnChunkLoaded
+            parameters:
+              - name: wx
+              - name: wy
+        staticMethods:
+          - name: RegisterSystemClass
+            parameters:
+              - name: luaClass
+                type: table

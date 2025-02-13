@@ -1,0 +1,627 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      forageSystem:
+        staticFields:
+          isInitialised:
+            defaultValue: "false"
+          itemDefs: {}
+          catDefs: {}
+          zoneDefs: {}
+          skillDefs: {}
+          lootTables: {}
+          lootTableMonth:
+            type: number
+            nullable: true
+          currentMonth:
+            defaultValue: "0"
+          currentTime:
+            defaultValue: '"isDay"'
+          currentWeather:
+            defaultValue: '"isNormal"'
+          maxIconsPerZone:
+            defaultValue: "2000"
+          zoneDensityMulti:
+            defaultValue: "20"
+          abundanceSettings: {}
+          monthBonus:
+            defaultValue: "50"
+          monthMalus:
+            defaultValue: "-50"
+          levelBonus:
+            defaultValue: "0.5"
+          aimMultiplier:
+            defaultValue: "1.33"
+          sneakMultiplier:
+            defaultValue: "1.10"
+          darkVisionRadius:
+            defaultValue: "1.5"
+          minVisionRadius:
+            defaultValue: "3.0"
+          maxVisionRadius:
+            defaultValue: "10.0"
+          visionRadiusCap:
+            defaultValue: "15.0"
+          minimumSizeBonus:
+            defaultValue: "0.50"
+          endurancePenalty:
+            defaultValue: "0.015"
+          fatiguePenalty:
+            defaultValue: "-0.001"
+          lightPenaltyMax:
+            defaultValue: "95"
+          weatherPenaltyMax:
+            defaultValue: "75"
+          exhaustionPenaltyMax:
+            defaultValue: "75"
+          panicPenaltyMax:
+            defaultValue: "95"
+          bodyPenaltyMax:
+            defaultValue: "75"
+          clothingPenaltyMax:
+            defaultValue: "95"
+          hungerBonusMax:
+            defaultValue: "50"
+          effectReductionMax:
+            defaultValue: "75"
+          lightPenaltyCutoff:
+            defaultValue: "50"
+          clothingPenalties: {}
+          isForageableFuncs: {}
+          spriteAffinities: {}
+          globalXPModifier:
+            defaultValue: "800"
+          levelXPModifier:
+            defaultValue: "5"
+          worldSprites: {}
+          itemBlacklist:
+            nullable: true
+        staticMethods:
+          - name: integrityCheck
+          - name: doItemDefCheck
+          - name: init
+          - name: setOptionValues
+          - name: createZoneData
+            parameters:
+              - name: _forageZone
+              - name: _zoneDef
+            return:
+              - type: table
+          - name: checkMetaZone
+            parameters:
+              - name: _zoneData
+            return:
+              - type: boolean
+          - name: zoneContains
+            parameters:
+              - name: _zoneData
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+            return:
+              - type: boolean
+          - name: zoneIntersects
+            parameters:
+              - name: _zoneData
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+            return:
+              - type: boolean
+          - name: fillZone
+            parameters:
+              - name: _zoneData
+          - name: checkRefillZone
+            parameters:
+              - name: _zoneData
+          - name: updateZone
+            parameters:
+              - name: _zoneData
+          - name: takeItem
+            parameters:
+              - name: _zoneData
+              - name: _number
+                type: number
+            return:
+              - type: unknown
+          - name: getWorldAge
+            return:
+              - type: unknown
+          - name: createForageIcons
+            parameters:
+              - name: _zoneData
+              - name: _recreate
+              - name: _count
+            return:
+              - type: table
+          - name: updateTimeValues
+          - name: checkIfRecreateIcons
+            return:
+              - type: boolean
+          - name: recreateIcons
+          - name: getZoneData
+            parameters:
+              - name: _forageZone
+              - name: _zoneDef
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: table
+                nullable: true
+          - name: pickRandomItemType
+            parameters:
+              - name: _lootTable
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: lootTableUpdate
+          - name: generateLootTable
+          - name: addItemDef
+            parameters:
+              - name: _itemDef
+            return:
+              - type: unknown
+                nullable: true
+              - type: boolean
+                nullable: true
+          - name: removeItemDef
+            parameters:
+              - name: _itemDef
+          - name: modifyItemDef
+            parameters:
+              - name: _itemDef
+          - name: populateScavengeDefs
+          - name: populateItemDefs
+            parameters:
+              - name: _itemDefs
+              - name: _clearAllExisting
+          - name: createForageZone
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _defZone
+            return:
+              - type: boolean | table
+          - name: getForageZoneAt
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: table | boolean
+                nullable: true
+          - name: getRandomCoord
+            parameters:
+              - name: _x1
+              - name: _x2
+              - name: _y1
+              - name: _y2
+            return:
+              - type: number
+              - type: number
+          - name: getZoneRandomCoord
+            parameters:
+              - name: _zoneData
+            return:
+              - type: number
+              - type: number
+          - name: getZoneRandomCoordNearPoint
+            parameters:
+              - name: _zoneData
+              - name: _minDist
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: getDefinedZoneAt
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: boolean
+              - type: boolean
+          - name: getRefillBonus
+            parameters:
+              - name: _zoneData
+            return:
+              - type: number
+          - name: importDef
+            parameters:
+              - name: _def
+              - name: _defaultDef
+                type: table
+            return:
+              - type: unknown
+          - name: getZoneDefByType
+            parameters:
+              - name: _zoneName
+                type: string
+            return:
+              - type: unknown
+          - name: getZoneDef
+            parameters:
+              - name: _definedZone
+            return:
+              - type: unknown
+          - name: addZoneDef
+            parameters:
+              - name: _zoneDef
+              - name: _overwrite
+          - name: populateZoneDefs
+            parameters:
+              - name: _zoneDefs
+          - name: addCatDef
+            parameters:
+              - name: _catDef
+              - name: _overwrite
+          - name: populateCatDefs
+            parameters:
+              - name: _catDefs
+          - name: addSkillDef
+            parameters:
+              - name: _skillDef
+              - name: _overwrite
+          - name: populateSkillDefs
+            parameters:
+              - name: _skillDefs
+          - name: getItemDefSize
+            parameters:
+              - name: _itemDef
+            return:
+              - type: number
+          - name: addOrDropItems
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _items
+              - name: _discardItems
+            return:
+              - type: unknown
+          - name: isValidFloor
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _itemDef
+              - name: _catDef
+            return:
+              - type: boolean
+          - name: isValidSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _itemDef
+              - name: _catDef
+            return:
+              - type: boolean
+          - name: getCategoryBonus
+            parameters:
+              - name: _character
+              - name: _catDef
+            return:
+              - type: number
+          - name: getLevelVisionBonus
+            parameters:
+              - name: _perkLevel
+            return:
+              - type: number
+          - name: getAimVisionBonus
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getSneakVisionBonus
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getMovementVisionPenalty
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getHungerBonus
+            parameters:
+              - name: _character
+              - name: _itemDef
+            return:
+              - type: number
+          - name: getItemSizePenalty
+            parameters:
+              - name: _itemSize
+            return:
+              - type: number
+          - name: getDifficultyPenalty
+            parameters:
+              - name: _perkLevel
+            return:
+              - type: number
+          - name: getBodyPenalty
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+          - name: getClothingPenalty
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+          - name: getPanicPenalty
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+          - name: getExhaustionPenalty
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+          - name: getWeatherEffectReduction
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getWeatherPenalty
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: number
+          - name: getDarknessEffectReduction
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getLightLevelPenalty
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _doReduction
+            return:
+              - type: number
+          - name: getProfessionVisionBonus
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getTraitVisionBonus
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: isValidSkillDefEffect
+            parameters:
+              - name: _character
+              - name: _skillDef
+              - name: _bonusEffect
+            return:
+              - type: boolean
+          - name: getMonthBonus
+            parameters:
+              - name: _itemDef
+              - name: _month
+            return:
+              - type: number
+          - name: getTimeOfDay
+            return:
+              - type: string
+          - name: getTimeOfDayBonus
+            parameters:
+              - name: _def
+              - name: _isDay
+                type: boolean
+                nullable: true
+            return:
+              - type: number
+          - name: getWeatherType
+            return:
+              - type: string
+          - name: getWeatherBonus
+            parameters:
+              - name: _def
+              - name: _isRaining
+                type: boolean
+                nullable: true
+              - name: _isSnowing
+                type: boolean
+                nullable: true
+              - name: _hasRained
+            return:
+              - type: number
+          - name: hasRequiredItems
+            parameters:
+              - name: _character
+              - name: _itemDef
+            return:
+              - type: boolean
+          - name: hasNeededTraits
+            parameters:
+              - name: _character
+              - name: _itemDef
+            return:
+              - type: boolean
+          - name: hasNeededRecipes
+            parameters:
+              - name: _character
+              - name: _itemDef
+            return:
+              - type: boolean
+          - name: getPerkLevel
+            parameters:
+              - name: _character
+              - name: _itemDef
+            return:
+              - type: number
+          - name: isItemTypeExist
+            parameters:
+              - name: _itemType
+            return:
+              - type: boolean
+          - name: hasNeededPerks
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _zoneDef
+            return:
+              - type: boolean
+          - name: isItemExist
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _zoneDef
+            return:
+              - type: boolean
+          - name: isItemScriptValid
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _zoneDef
+            return:
+              - type: boolean
+          - name: isItemInZone
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _zoneDef
+            return:
+              - type: boolean
+          - name: isValidMonth
+            parameters:
+              - name: _
+              - name: _itemDef
+              - name: _zoneDef
+              - name: _month
+            return:
+              - type: boolean
+          - name: isForageable
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _zoneDef
+            return:
+              - type: boolean
+          - name: itemFound
+            parameters:
+              - name: _character
+              - name: _itemType
+              - name: _amount
+          - name: giveItemXP
+            parameters:
+              - name: _character
+              - name: _itemDef
+              - name: _amount
+          - name: doEndurancePenalty
+            parameters:
+              - name: _character
+              - name: _amount
+            return:
+              - type: number
+          - name: doFatiguePenalty
+            parameters:
+              - name: _character
+              - name: _amount
+            return:
+              - type: number
+          - name: doGlassesCheck
+            parameters:
+              - name: _character
+              - name: _skillDef
+              - name: _bonusEffect
+            return:
+              - type: boolean
+          - name: doPoisonItemSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doRandomAgeSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doWorldAgeSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doWildFoodSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doWildCropSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doJunkWeaponSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doGenericItemSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doClothingItemSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown
+          - name: doDeadTrapAnimalSpawn
+            parameters:
+              - name: _character
+              - name: _inventory
+              - name: _itemDef
+              - name: _items
+            return:
+              - type: unknown

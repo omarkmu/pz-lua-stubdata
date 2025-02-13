@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryMenuElements:
+        staticMethods:
+          - name: ContextMedia
+            return:
+              - type: InvContextMedia
+      InvContextMedia:
+        extends: ISMenuElement
+        local: true
+        fields:
+          invMenu: {}
+        staticMethods:
+          - name: init
+          - name: createMenu
+            parameters:
+              - name: _item
+          - name: openMediaInfo
+            parameters:
+              - name: _p
+              - name: _item
+              - name: _text
+          - name: changeRecording
+            parameters:
+              - name: _p
+              - name: _item
+              - name: _other

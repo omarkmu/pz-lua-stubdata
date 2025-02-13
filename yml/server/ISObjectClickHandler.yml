@@ -1,0 +1,141 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISObjectClickHandler:
+        staticFields:
+          isDoubleClick:
+            type: boolean
+            nullable: true
+          lastClickTime:
+            nullable: true
+          clickTime:
+            type: number
+            nullable: true
+          downx:
+            type: number
+            nullable: true
+          downy:
+            type: number
+            nullable: true
+          downObject:
+            nullable: true
+          lastRClickTime:
+            nullable: true
+          rclickTime:
+            type: number
+            nullable: true
+          rdownObject:
+            nullable: true
+        staticMethods:
+          - name: doRDoubleClick
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doRClick
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doDoubleClick
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doClickCurtain
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClickDoor
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClickLightSwitch
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClickThumpable
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClickWindow
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClickSpecificObject
+            parameters:
+              - name: object
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: doClick
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onObjectLeftMouseButtonDown
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onObjectLeftMouseButtonUp
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onObjectRightMouseButtonDown
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onObjectRightMouseButtonUp
+            parameters:
+              - name: object
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onTick

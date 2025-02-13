@@ -1,0 +1,115 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSearchWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: _manager
+        staticFields:
+          Type:
+            defaultValue: '"ISSearchWindow"'
+          players: {}
+          showDebug:
+            defaultValue: "false"
+        fields:
+          tooltipForced:
+            type: string
+            nullable: true
+          drawJoypadFocus:
+            type: boolean
+          searchFocusCategory:
+            type: string
+          zoneDisplay:
+            type: ISZoneDisplay
+          searchFocus:
+            type: ISComboBox
+          toggleSearchMode:
+            type: ISButton
+          joypadMoveSpeed:
+            type: number
+          overrideBPrompt:
+            type: boolean
+          showBackground:
+            type: boolean
+          showBorder:
+            type: boolean
+          manager: {}
+          character: {}
+          player: {}
+          gameTime: {}
+          climateManager: {}
+          title:
+            type: string
+          visibleTarget:
+            type: ISSearchWindow
+          visibleFunction:
+            type: function
+        methods:
+          - name: update
+          - name: toggleForceVisionTooltip
+          - name: toggleForceAreaTooltip
+          - name: onToggleVisible
+          - name: close
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+          - name: onLoseJoypadFocus
+          - name: onGainJoypadFocus
+          - name: onJoypadDown
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+          - name: getBPrompt
+            return:
+              - type: unknown
+          - name: getXPrompt
+            return:
+              - type: unknown
+          - name: getYPrompt
+            return:
+              - type: unknown
+          - name: getLBPrompt
+            return:
+              - type: unknown
+          - name: getRBPrompt
+            return:
+              - type: unknown
+          - name: isValidPrompt
+            return:
+              - type: unknown
+          - name: checkShowFirstTimeSearchTutorial
+          - name: onChangeSearchFocusCategory
+            parameters:
+              - name: _option
+          - name: nextSearchFocus
+          - name: updateSearchFocusCategories
+          - name: initialise
+        staticMethods:
+          - name: toggleWindow
+            parameters:
+              - name: _character
+          - name: showWindow
+            parameters:
+              - name: _character
+          - name: createUI
+            parameters:
+              - name: _player
+          - name: destroyUI
+            parameters:
+              - name: _character
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: _player
+              - name: _context
+                type: ISContextMenu
+          - name: onEnableSearchMode
+            parameters:
+              - name: _character
+              - name: _isSearchMode
+                type: boolean

@@ -1,0 +1,69 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ClimateColorsDebug:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ClimateColorsDebug"'
+        fields:
+          clim: {}
+          colorInfo:
+            type: table
+          colors:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addColorInfo
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _col
+              - name: _name
+                type: string
+              - name: _daySegment
+              - name: _temp
+              - name: _season
+            return:
+              - type: number
+          - name: addColorOption
+            parameters:
+              - name: _info
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: prerender
+          - name: onApplyColorChange
+            parameters:
+              - name: _colorInfo
+          - name: onButtonWriteConfig
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: update

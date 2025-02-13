@@ -1,0 +1,86 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      GlobalModDataDebug:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"GlobalModDataDebug"'
+          instance:
+            type: GlobalModDataDebug
+            nullable: true
+        fields:
+          firstTableName:
+            type: boolean
+          tableNamesList:
+            type: ISScrollingListBox
+          infoList:
+            type: ISScrollingListBox
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onClickClose
+          - name: onClickRefresh
+          - name: OnTableNamesListMouseDown
+            parameters:
+              - name: item
+          - name: populateList
+          - name: drawTableNameList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: formatVal
+            parameters:
+              - name: _value
+              - name: _func
+              - name: _func2
+            return:
+              - type: unknown
+          - name: parseTable
+            parameters:
+              - name: _t
+              - name: _ident
+                type: string
+          - name: populateInfoList
+            parameters:
+              - name: _name
+                type: string
+          - name: drawInfoList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: update
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: GlobalModDataDebug
+                nullable: true

@@ -1,0 +1,552 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MainOptions:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"MainOptions"'
+          keys:
+            type: table
+          keyText:
+            type: table
+          setKeybindDialog:
+            type: ISSetKeybindDialog
+            nullable: true
+          keyBindingLength:
+            defaultValue: "0"
+          translatorPane:
+            type: ISRichTextPanel
+            nullable: true
+          KEYS_VERSION1:
+            defaultValue: "1"
+          KEYS_VERSION:
+            defaultValue: MainOptions.KEYS_VERSION1
+          instance:
+            type: MainOptions
+            nullable: true
+        fields:
+          addY:
+            type: number
+          mainPanel:
+            type: ISPanelJoypad
+          tabs:
+            type: ISTabPanel
+          backButton:
+            type: ISButton
+          acceptButton:
+            type: ISButton
+          saveButton:
+            type: ISButton
+          objHighColor: {}
+          colorPicker2:
+            type: ISColorPicker
+          targetColor: {}
+          colorPicker5:
+            type: ISColorPicker
+          noTargetColor: {}
+          colorPicker6:
+            type: ISColorPicker
+          keyButtonWidth:
+            type: number
+          keyTickBoxes:
+            type: table
+          sprintBtn:
+            type: ISButton
+          goodHighColor: {}
+          colorPicker3:
+            type: ISColorPicker
+          badHighColor: {}
+          colorPicker4:
+            type: ISColorPicker
+          stuffBelowControllerTickbox:
+            type: ISPanel
+          btnJoypadSensitivityM:
+            type: ISButton
+          labelJoypadSensitivity:
+            type: ISLabel
+          btnJoypadSensitivityP:
+            type: ISButton
+          controllerTestPanel:
+            type: ISControllerTestPanel
+          mpColor: {}
+          colorPicker:
+            type: ISColorPicker
+          gameSounds:
+            type: ISGameSounds
+          modal:
+            type: ISModalDialog | ISConfirmMonitorSettingsDialog
+            nullable: true
+          cover:
+            type: ISPanel
+          monitorSettings:
+            type: table
+          resetLua:
+            type: boolean
+          restartRequired:
+            type: boolean
+          joypadButtons: {}
+          gameOptions:
+            type: table
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: setResolutionAndFullScreen
+          - name: ControllerReload
+            parameters:
+              - name: button
+                type: ISButton
+          - name: joypadSensitivityM
+            parameters:
+              - name: button
+                type: ISButton
+          - name: joypadSensitivityP
+            parameters:
+              - name: button
+                type: ISButton
+          - name: addTextPane
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+          - name: addCombo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: options
+                type: table
+              - name: selected
+                type: number
+                nullable: true
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISComboBox
+          - name: addTitle
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: name
+                type: string
+          - name: addDescription
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: text
+          - name: addTextEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: name
+                type: string
+              - name: _text
+            return:
+              - type: ISTextEntryBox
+          - name: addVolumeControl
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: volume
+                type: number
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISVolumeControl
+          - name: addTickBox
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+            return:
+              - type: ISTickBox
+          - name: addYesNo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+            return:
+              - type: ISTickBox
+          - name: addColorButton
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: name
+                type: string
+              - name: color
+                type: table
+              - name: onClick
+            return:
+              - type: ISButton
+          - name: addButton
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: name
+                type: string
+            return:
+              - type: ISButton
+          - name: addSlider
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: name
+                type: string
+              - name: min
+                type: number
+              - name: max
+                type: number
+              - name: step
+                type: number
+              - name: value
+                type: number
+            return:
+              - type: ISSliderPanel
+          - name: addMegaVolumeControl
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: volume
+                type: number
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISMegaVolumeControl
+          - name: addVolumeIndicator
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: volume
+                type: number
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISVolumeIndicator
+          - name: addPage
+            parameters:
+              - name: name
+                type: string
+          - name: subPanelPreRender
+          - name: subPanelRender
+          - name: addHorizontalLine
+            parameters:
+              - name: y
+                type: number
+              - name: text
+                type: string
+          - name: addHorizontalLineSmall
+            parameters:
+              - name: y
+                type: number
+          - name: create
+          - name: addDisplayPanel
+          - name: addUIPanel
+          - name: addSoundPanel
+          - name: addKeybindingPanel
+          - name: addAccessibilityPanel
+          - name: addControllerPanel
+          - name: addMultiplayerPanel
+          - name: addModOptionsPanel
+          - name: onObjHighlightColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onModColorPick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onMPColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onGoodHighlightColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onBadHighlightColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onTargetColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onNoTargetColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: pickedObjHighlightColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedModColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedMPTextColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedGoodHighlightColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedBadHighlightColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedTargetColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: pickedNoTargetColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: onReloadGameSounds
+          - name: onGameSounds
+          - name: toUI
+          - name: onKeyboardLayoutChanged
+          - name: showConfirmDialog
+            return:
+              - type: boolean
+          - name: onConfirmModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: showConfirmMonitorSettingsDialog
+            parameters:
+              - name: closeAfter
+            return:
+              - type: boolean
+          - name: onConfirmMonitorSettingsClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: closeAfter
+          - name: showRestartRequiredDialog
+            parameters:
+              - name: closeAfter
+          - name: onRestartRequiredClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: closeAfter
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseWheelCurrentTab
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: onKeyBindingBtnPress
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: apply
+            parameters:
+              - name: closeAfter
+            return:
+              - type: boolean
+                nullable: true
+          - name: close
+          - name: onKeybindChanged
+            parameters:
+              - name: name
+                type: string
+              - name: key
+                type: integer
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: centerKeybindings
+          - name: centerTabChildrenX
+            parameters:
+              - name: tabTitle
+                type: string
+          - name: centerChildrenX
+            parameters:
+              - name: panel
+          - name: tableContains
+            parameters:
+              - name: tbl
+              - name: x
+            return:
+              - type: boolean
+          - name: onTabsActivateView
+            parameters:
+              - name: tabs
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocusCurrentTab
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocusCurrentTab
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivateCurrentTab
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDownCurrentTab
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: sortModes
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: upgradeKeysIni
+            parameters:
+              - name: name
+                type: string
+              - name: key
+                type: integer
+                nullable: true
+              - name: defaultKey
+              - name: version
+                type: number
+            return:
+              - type: number
+                nullable: true
+          - name: loadKeys
+            return:
+              - type: boolean
+                nullable: true
+          - name: saveKeys
+          - name: keyPressHandler
+            parameters:
+              - name: key
+                type: integer
+          - name: doLanguageToolTip
+            parameters:
+              - name: languages
+            return:
+              - type: table
+          - name: getGeneralTranslators
+            parameters:
+              - name: _language
+            return:
+              - type: table
+          - name: getAvailableLanguage
+            return:
+              - type: table
+              - type: number
+          - name: OnGamepadConnect
+            parameters:
+              - name: index
+          - name: OnGamepadDisconnect
+            parameters:
+              - name: index

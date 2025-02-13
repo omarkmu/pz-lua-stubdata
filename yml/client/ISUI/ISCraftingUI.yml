@@ -1,0 +1,326 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftingUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftingUI"'
+          instance:
+            nullable: true
+          largeFontHeight:
+            defaultValue: getTextManager():getFontHeight(UIFont.Large)
+          mediumFontHeight:
+            defaultValue: getTextManager():getFontHeight(UIFont.Medium)
+          smallFontHeight:
+            defaultValue: getTextManager():getFontHeight(UIFont.Small)
+          bottomInfoHeight:
+            defaultValue: getTextManager():getFontHeight(UIFont.Small) + 6
+          qwertyConfiguration:
+            defaultValue: "true"
+          bottomTextSpace:
+            defaultValue: '"     "'
+          leftCategory:
+            defaultValue: Keyboard.KEY_LEFT
+          rightCategory:
+            defaultValue: Keyboard.KEY_RIGHT
+          upArrow:
+            defaultValue: Keyboard.KEY_UP
+          downArrow:
+            defaultValue: Keyboard.KEY_DOWN
+        fields:
+          selectedIndex:
+            type: table
+          craftInProgress:
+            type: boolean
+          knownRecipes: {}
+          totalRecipes: {}
+          containerList: {}
+          recipeListHasFocus:
+            type: boolean
+          refreshTypesAvailableMS: {}
+          catListButtons:
+            type: table
+          catList:
+            type: table
+          drawJoypadFocus:
+            type: boolean
+          keysText:
+            type: string
+          selectedRecipeItem:
+            nullable: true
+          needRefreshIngredientPanel:
+            type: boolean
+          LabelDash:
+            type: string
+          LabelDashWidth: {}
+          LabelCraftOne:
+            type: string
+          LabelCraftAll:
+            type: string
+          LabelAddIngredient:
+            type: string
+          LabelFavorite:
+            type: string
+          LabelClose:
+            type: string
+          bottomInfoText1:
+            type: string
+          bottomInfoText2:
+            type: string
+          minimumWidth: {}
+          title:
+            type: string
+          character: {}
+          playerNum:
+            type: integer
+          lineH:
+            type: number
+          fgBar:
+            type: table
+          TreeExpanded: {}
+          PoisonTexture: {}
+          panel:
+            type: ISTabPanel
+          categories:
+            type: table
+          craftOneButton:
+            type: ISButton
+          craftAllButton:
+            type: ISButton
+          debugGiveIngredientsButton:
+            type: ISButton
+          taskLabel:
+            type: ISLabel
+          addIngredientButton:
+            type: ISButton
+          ingredientPanel:
+            type: ISScrollingListBox
+          ingredientListbox:
+            type: ISScrollingListBox
+          ingredientIconPanel:
+            type: ISCraftingIngredientIconPanel
+          noteRichText:
+            type: ISRichTextLayout
+          keysRichText:
+            type: ISRichTextLayout
+          allRecipesList:
+            type: table
+          recipesList:
+            type: table
+          recipesListH:
+            type: table
+        methods:
+          - name: getRecipeListBox
+            return:
+              - type: ISScrollingListBox
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+          - name: refresh
+          - name: isFluidSource
+            parameters:
+              - name: item
+              - name: fluid
+                nullable: true
+              - name: amount
+            return:
+              - type: boolean
+          - name: isWaterSource
+            parameters:
+              - name: item
+              - name: count
+            return:
+              - type: boolean
+          - name: transferItems
+            return:
+              - type: table
+          - name: getAvailableItemsType
+            return:
+              - type: table
+          - name: initialise
+          - name: close
+          - name: getContainers
+          - name: refreshTickBox
+          - name: drawNonEvolvedIngredient
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: isExtraClothingItemOf
+            parameters:
+              - name: item1
+              - name: item2
+            return:
+              - type: boolean
+          - name: removeExtraClothingItemsFromList
+            parameters:
+              - name: index
+                type: number
+              - name: item
+              - name: itemList
+                type: table
+          - name: refreshIngredientPanel
+          - name: drawEvolvedIngredient
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onDblClickIngredientListbox
+            parameters:
+              - name: data
+          - name: onAddRandomIngredient
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onAddIngredient
+          - name: refreshIngredientList
+          - name: prerender
+          - name: render
+          - name: renderSelectedItem
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: selectedItem
+              - name: _isWorkStation
+                type: boolean
+          - name: onActivateView
+          - name: createChildren
+          - name: populateRecipesList
+          - name: sortList
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: getFavoriteModDataString
+            parameters:
+              - name: recipe
+            return:
+              - type: string
+          - name: getFavoriteModDataLocalString
+            parameters:
+              - name: recipe
+            return:
+              - type: string
+          - name: update
+          - name: onResize
+          - name: addItemInEvolvedRecipe
+            parameters:
+              - name: button
+                type: ISButton
+          - name: craftAll
+            parameters:
+              - name: _isWorkStation
+                type: boolean
+                nullable: true
+          - name: craft
+            parameters:
+              - name: button
+                type: ISButton
+                nullable: true
+              - name: all
+                nullable: true
+              - name: _isWorkStation
+                type: boolean
+                nullable: true
+          - name: onCraftComplete
+            parameters:
+              - name: completedAction
+              - name: recipe
+              - name: container
+              - name: containers
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+          - name: debugGiveIngredients
+        staticMethods:
+          - name: sortByName
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: unknown
+          - name: addIngredientTooltip
+            parameters:
+              - name: option
+              - name: items
+          - name: toggleCraftingUI
+          - name: onPressKey
+            parameters:
+              - name: key
+                type: integer
+          - name: ReturnItemsToOriginalContainer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: items
+                type: table
+      ISCraftingIngredientIconPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: craftingUI
+                type: ISCraftingUI
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftingIngredientIconPanel"'
+        fields:
+          mouseOverIndex:
+            type: number
+          tooltipUI:
+            type: ISToolTip
+          craftingUI:
+            type: ISCraftingUI
+        methods:
+          - name: render
+          - name: shouldBeVisible
+            return:
+              - type: boolean
+          - name: getExtraItemIndex
+            parameters:
+              - name: mouseX
+              - name: mouseY
+            return:
+              - type: number
+          - name: getExtraItem
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: updateTooltip

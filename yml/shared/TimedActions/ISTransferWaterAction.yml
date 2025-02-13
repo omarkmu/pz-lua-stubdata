@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTransferWaterAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: itemFrom
+              - name: itemTo
+              - name: itemFromEndingDelta
+                type: number
+              - name: itemToEndingDelta
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTransferWaterAction"'
+        fields:
+          itemTo: {}
+          itemFromEndingDelta:
+            type: number
+          itemFrom: {}
+          itemFromBeginDelta: {}
+          itemToBeginDelta:
+            type: number
+          itemToEndingDelta:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: serverStart
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: serverStop
+          - name: getDuration
+            return:
+              - type: number

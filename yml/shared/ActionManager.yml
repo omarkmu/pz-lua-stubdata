@@ -1,0 +1,14 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Actions:
+        staticMethods:
+          - name: addOrDropItem
+            parameters:
+              - name: character
+              - name: item
+          - name: build
+            parameters:
+              - name: character
+              - name: args

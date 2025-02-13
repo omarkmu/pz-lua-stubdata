@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOpenCloseVehicleWindow:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: open
+        staticFields:
+          Type:
+            defaultValue: '"ISOpenCloseVehicleWindow"'
+        fields:
+          vehicle: {}
+          part: {}
+          window: {}
+          open: {}
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number

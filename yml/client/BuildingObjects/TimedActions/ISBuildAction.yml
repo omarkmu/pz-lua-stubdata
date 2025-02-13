@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: spriteName
+                type: string
+              - name: time
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildAction"'
+          soundDelay:
+            defaultValue: "6"
+          worldSoundTime:
+            nullable: true
+        fields:
+          onCompleteFunc: {}
+          onCompleteTarget:
+            type: ISBuildingObject
+          onCancelFunc: {}
+          onCancelTarget:
+            type: ISBuildingObject
+          soundTime:
+            type: number
+          hammerSound:
+            type: number
+          doSaw:
+            type: boolean
+          sawSound:
+            type: number
+          craftingSound:
+            type: number
+          maxTime:
+            type: number
+          hammer: {}
+          transactionId:
+            type: number
+          started:
+            type: boolean
+          item: {}
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
+          north: {}
+          spriteName:
+            type: string
+          square:
+            type: IsoGridSquare
+        methods:
+          - name: isReachableThroughWindowOrDoor
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: setOnComplete
+            parameters:
+              - name: _func
+              - name: _target
+                type: unknown
+          - name: setOnCancel
+            parameters:
+              - name: _func
+              - name: _target
+                type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: forceComplete
+          - name: forceStop
+          - name: forceCancel
+          - name: perform
+          - name: faceLocation

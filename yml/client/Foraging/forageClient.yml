@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      forageClient:
+        staticMethods:
+          - name: init
+          - name: getZones
+            return:
+              - type: forageData
+          - name: updateData
+          - name: clearData
+          - name: syncForageData
+          - name: addZone
+            parameters:
+              - name: _zoneData
+                type: table
+          - name: removeZone
+            parameters:
+              - name: _zoneData
+          - name: updateZone
+            parameters:
+              - name: _zoneData
+                type: table
+          - name: updateIcon
+            parameters:
+              - name: _zoneData
+              - name: _iconID
+              - name: _icon
+                nullable: true
+      forageData: {}

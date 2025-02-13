@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidPanelAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: _container
+                type: ISFluidContainer
+              - name: _panelClass
+                type: ISFluidTransferUI | ISFluidInfoUI
+              - name: isSource
+                type: boolean
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidPanelAction"'
+        fields:
+          container:
+            type: ISFluidContainer
+          panelClass:
+            type: ISFluidTransferUI | ISFluidInfoUI
+          source:
+            type: boolean
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

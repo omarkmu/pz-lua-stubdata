@@ -1,0 +1,102 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ButcheringUtil:
+        staticMethods:
+          - name: butcherAnimalFromGround
+            parameters:
+              - name: carcass
+              - name: player
+              - name: keepCorpse
+                type: boolean
+                nullable: true
+            return:
+              - type: string
+                nullable: true
+          - name: getLeather
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+          - name: getHead
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+          - name: addAnimalPart
+            parameters:
+              - name: part
+              - name: player
+              - name: carcass
+              - name: fromGround
+                type: boolean
+            return:
+              - type: string
+          - name: getCarcassName
+            parameters:
+              - name: carcass
+            return:
+              - type: string
+          - name: giveMeatModified
+            parameters:
+              - name: meatDef
+              - name: nb
+              - name: player
+              - name: meatRatio
+              - name: carcass
+              - name: fromGround
+            return:
+              - type: string
+          - name: getPartChance
+            parameters:
+              - name: baseChance
+              - name: size
+              - name: meatRatio
+              - name: player
+            return:
+              - type: number
+          - name: modifyMeat
+            parameters:
+              - name: item
+              - name: size
+              - name: meatRatio
+              - name: hungerBoost
+            return:
+              - type: string
+          - name: getAnimalBones
+            parameters:
+              - name: carcass
+              - name: player
+          - name: getAllBonesDef
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+          - name: getAllPartsDef
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+          - name: getAnimalDef
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+    functions:
+      - name: setAnimalBodyData
+        parameters:
+          - name: died
+          - name: modData
+      - name: roundButcher
+        parameters:
+          - name: x
+            type: number
+        return:
+          - type: unknown

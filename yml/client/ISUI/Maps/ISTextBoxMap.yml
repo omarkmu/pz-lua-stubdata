@@ -1,0 +1,148 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTextBoxMap:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+                type: string
+              - name: defaultEntryText
+                type: string
+              - name: target
+                type: unknown
+              - name: onclick
+              - name: player
+                nullable: true
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISTextBoxMap"'
+        fields:
+          colorButtonInfo:
+            type: table
+          colorButtons:
+            type: table
+          blackColor: {}
+          currentColor: {}
+          fontHgt: {}
+          entry:
+            type: ISTextEntryBox
+          tickBox:
+            type: ISTickBox
+          yes:
+            type: ISButton
+          no:
+            type: ISButton
+          validateTarget: {}
+          validateFunc: {}
+          validateArgs:
+            type: table
+          validateTooltipText: {}
+          ISButtonA:
+            nullable: true
+          ISButtonB:
+            nullable: true
+          character:
+            nullable: true
+          name:
+            nullable: true
+          text:
+            type: string
+          target:
+            type: unknown
+          mapUI: {}
+          symbolsUI: {}
+          onclick: {}
+          player:
+            nullable: true
+          param1:
+            type: unknown
+          param2:
+            type: unknown
+          param3:
+            type: unknown
+          param4:
+            type: unknown
+          defaultEntryText:
+            type: string
+        methods:
+          - name: createChildren
+          - name: setOnlyNumbers
+            parameters:
+              - name: onlyNumbers
+          - name: setValidateFunction
+            parameters:
+              - name: target
+                type: unknown
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+          - name: setValidateTooltipText
+            parameters:
+              - name: text
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: updateButtons
+          - name: onCommandEntered
+          - name: onOtherKey
+            parameters:
+              - name: key
+                type: integer
+          - name: selectColor
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: showTranslationTickBox
+            parameters:
+              - name: isTranslation
+                type: boolean
+          - name: isTranslation
+            return:
+              - type: boolean
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: close

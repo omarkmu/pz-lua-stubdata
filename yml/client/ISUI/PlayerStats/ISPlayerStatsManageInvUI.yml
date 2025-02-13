@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsManageInvUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerID
+                type: number
+              - name: playerUsername
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsManageInvUI"'
+          messages: {}
+          instance:
+            type: ISPlayerStatsManageInvUI
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          removeBtn:
+            type: ISButton
+          getItemBtn:
+            type: ISButton
+          addItemBtn:
+            type: ISButton
+          refreshBtn:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          listHeaderColor:
+            type: table
+          playerID:
+            type: number
+          playerUsername:
+            type: string
+          selectedItem:
+            nullable: true
+          equippedIcon: {}
+          capacityWeight:
+            type: number
+          maxWeight:
+            type: number
+        methods:
+          - name: initialise
+          - name: requestDatas
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: removeSelectedItem
+          - name: onAddItem
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ISPlayerStatsManageInvUI
+                nullable: true
+          - name: Close
+          - name: ReceiveItems
+            parameters:
+              - name: itemtable

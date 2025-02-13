@@ -1,0 +1,127 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISColorPicker:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: HSBFactor
+                type: table
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISColorPicker"'
+        fields:
+          mouseDown:
+            type: boolean
+          index:
+            type: number
+          pickedFunc: {}
+          pickedArgs:
+            type: table
+          colors:
+            type: table
+          columns:
+            type: number
+          rows:
+            type: number
+          borderSize:
+            type: number
+          buttonSize:
+            type: number
+        methods:
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: picked2
+            parameters:
+              - name: hide
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: removeSelf
+          - name: picked
+            parameters:
+              - name: hide
+          - name: setInitialColor
+            parameters:
+              - name: initial
+          - name: setPickedFunc
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: setColors
+            parameters:
+              - name: colors
+                type: table
+              - name: columns
+                type: number
+              - name: rows
+                type: number

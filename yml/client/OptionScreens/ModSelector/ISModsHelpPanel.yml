@@ -1,0 +1,48 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISModsHelpPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISModsHelpPanel"'
+        fields:
+          richText:
+            type: ISRichTextPanel
+          ok:
+            type: ISButton
+          texture: {}
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: doRightJoystickScrolling
+          - name: onOK
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number

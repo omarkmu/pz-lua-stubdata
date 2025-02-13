@@ -1,0 +1,28 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlantInfoAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: plant
+        staticFields:
+          Type:
+            defaultValue: '"ISPlantInfoAction"'
+        fields:
+          playerNum:
+            type: integer
+          plant: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

@@ -1,0 +1,131 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISItemEditPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: admin
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISItemEditPanel"'
+        fields:
+          usedElems:
+            type: table
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          admin: {}
+          item: {}
+          isWeapon: {}
+          isFood: {}
+          isDrainable: {}
+          elems:
+            type: table
+        methods:
+          - name: initElements
+          - name: initAttributes
+          - name: registerAttributeBool
+            parameters:
+              - name: _attributeType
+              - name: _attribute
+            return:
+              - type: table
+          - name: registerBoolean
+            parameters:
+              - name: _text
+              - name: _funcGet
+              - name: _funcSet
+              - name: _canEdit
+            return:
+              - type: table
+          - name: registerAttributeNumber
+            parameters:
+              - name: _attributeType
+              - name: _attribute
+          - name: registerNumber
+            parameters:
+              - name: _text
+              - name: _funcGet
+              - name: _funcSet
+              - name: _min
+              - name: _max
+              - name: _round
+            return:
+              - type: table
+          - name: registerAttributeString
+            parameters:
+              - name: _attributeType
+              - name: _attribute
+          - name: registerString
+            parameters:
+              - name: _text
+              - name: _funcGet
+              - name: _funcSet
+              - name: _canEdit
+            return:
+              - type: table
+          - name: registerColor
+            parameters:
+              - name: _text
+              - name: _funcGet
+              - name: _funcSet
+            return:
+              - type: table
+          - name: onSaveHunger
+          - name: onSaveWeight
+          - name: onSaveCondition
+          - name: onSaveColor
+          - name: validateColor
+            return:
+              - type: unknown
+          - name: validateMinRangeRanged
+            return:
+              - type: unknown
+          - name: validateMinRange
+            return:
+              - type: boolean
+          - name: validateWeapon
+            return:
+              - type: unknown
+          - name: validateFood
+            return:
+              - type: unknown
+          - name: validateDrainable
+            return:
+              - type: unknown
+          - name: initialise
+          - name: getTextWidth
+            parameters:
+              - name: _s
+              - name: _f
+            return:
+              - type: unknown
+          - name: getTextHeight
+            parameters:
+              - name: _s
+              - name: _f
+            return:
+              - type: unknown
+          - name: createChildren
+          - name: render
+          - name: prerender
+          - name: create
+          - name: saveAll
+          - name: onColor
+            parameters:
+              - name: button
+                type: ISButton

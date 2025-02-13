@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SFarmingSystemCommands:
+        staticMethods:
+          - name: cureFlies
+            parameters:
+              - name: player
+              - name: args
+          - name: cureMildew
+            parameters:
+              - name: player
+              - name: args
+          - name: cureAphids
+            parameters:
+              - name: player
+              - name: args
+          - name: cureSlugs
+            parameters:
+              - name: player
+              - name: args
+          - name: fertilize
+            parameters:
+              - name: player
+              - name: args
+          - name: harvest
+            parameters:
+              - name: player
+              - name: args
+          - name: plow
+            parameters:
+              - name: player
+              - name: args
+          - name: removePlant
+            parameters:
+              - name: player
+              - name: args
+          - name: seed
+            parameters:
+              - name: player
+              - name: args
+          - name: water
+            parameters:
+              - name: player
+              - name: args
+          - name: kill
+            parameters:
+              - name: player
+              - name: args
+          - name: destroy
+            parameters:
+              - name: player
+                nullable: true
+              - name: args
+                type: table
+          - name: cheat
+            parameters:
+              - name: player
+              - name: args

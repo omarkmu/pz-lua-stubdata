@@ -1,0 +1,109 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PopupColorEdit:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"PopupColorEdit"'
+          instance:
+            type: PopupColorEdit
+            nullable: true
+        fields:
+          floats:
+            type: table
+          optionControls:
+            type: table
+          firstRun:
+            type: boolean
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addFloatOption
+            parameters:
+              - name: _id
+              - name: _float
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: addColorOption
+            parameters:
+              - name: _id
+              - name: _color
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: addSlider
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _title
+                type: string
+            return:
+              - type: number
+              - type: ISLabel
+              - type: ISSliderPanel
+          - name: onClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onFloatSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: prerender
+          - name: update
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _colorInfo
+              - name: _parent
+                type: ClimateColorsDebug
+              - name: _ambient
+                type: number
+              - name: _desat
+                type: number
+            return:
+              - type: PopupColorEdit
+                nullable: true

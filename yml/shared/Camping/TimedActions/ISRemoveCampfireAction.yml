@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveCampfireAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: campfire
+              - name: maxTime
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveCampfireAction"'
+        fields:
+          character:
+            nullable: true
+          campfire: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

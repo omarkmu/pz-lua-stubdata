@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveGrass:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: square
+                type: IsoGridSquare
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveGrass"'
+        fields:
+          square:
+            type: IsoGridSquare
+          spriteFrame:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

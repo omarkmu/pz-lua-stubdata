@@ -1,0 +1,152 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      InterpolationPeriodDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"InterpolationPeriodDebug"'
+          instance:
+            type: InterpolationPeriodDebug
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          eventsAdded:
+            defaultValue: "false"
+        fields:
+          labels:
+            type: table
+          historyM1:
+            type: ValuePlotter
+          varInfo:
+            type: table
+          colTable:
+            type: table
+          currentStage:
+            nullable: true
+          clearOnNextRun:
+            type: boolean
+          zombieInfo:
+            type: table
+          zombie:
+            nullable: true
+          currentTile:
+            nullable: true
+          player: {}
+          playerNum:
+            type: integer
+          greyCol:
+            type: table
+          title:
+            type: string
+          richtext:
+            nullable: true
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+          hourStamp:
+            type: number
+          dayStamp:
+            type: number
+          monthStamp:
+            type: number
+          year:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addLabel
+            parameters:
+              - name: _curX
+              - name: _curY
+              - name: _labelID
+              - name: _title
+                type: string
+            return:
+              - type: number
+          - name: addLabelValue
+            parameters:
+              - name: _curX
+              - name: _curY
+              - name: _width
+              - name: _type
+              - name: _labelID
+              - name: _title
+                type: string
+              - name: _defaultVal
+            return:
+              - type: number
+          - name: getTitleLabel
+            parameters:
+              - name: _labelID
+            return:
+              - type: unknown
+                nullable: true
+          - name: getValueLabel
+            parameters:
+              - name: _labelID
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: initVariables
+          - name: addColor
+            parameters:
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+          - name: addVarInfo
+            parameters:
+              - name: _name
+                type: string
+              - name: _desc
+              - name: _min
+              - name: _max
+              - name: _func
+          - name: updateValues
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onButtonToggle
+            parameters:
+              - name: _btn
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: setZombie
+            parameters:
+              - name: zombie
+          - name: close
+          - name: clear
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: zombie
+            return:
+              - type: InterpolationPeriodDebug
+                nullable: true

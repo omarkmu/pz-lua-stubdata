@@ -1,0 +1,128 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTimedActionQueue:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISTimedActionQueue"'
+          IDMax:
+            defaultValue: "1"
+          queues: {}
+          shouldResetGameSpeed:
+            type: boolean
+            nullable: true
+        fields:
+          current:
+            nullable: true
+          character: {}
+          queue:
+            type: table
+        methods:
+          - name: addToQueue
+            parameters:
+              - name: action
+          - name: indexOf
+            parameters:
+              - name: action
+            return:
+              - type: number
+          - name: indexOfType
+            parameters:
+              - name: type
+            return:
+              - type: number
+          - name: removeFromQueue
+            parameters:
+              - name: action
+          - name: clearQueue
+          - name: onCompleted
+            parameters:
+              - name: action
+          - name: resetQueue
+          - name: cancelQueue
+          - name: tick
+          - name: isCurrentActionAddingOtherActions
+            return:
+              - type: boolean
+        staticMethods:
+          - name: getTimedActionQueue
+            parameters:
+              - name: character
+            return:
+              - type: ISTimedActionQueue
+          - name: add
+            parameters:
+              - name: action
+                type: table
+            return:
+              - type: ISTimedActionQueue
+                nullable: true
+          - name: addAfter
+            parameters:
+              - name: previousAction
+              - name: action
+            return:
+              - type: ISTimedActionQueue
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: queueActions
+            parameters:
+              - name: character
+              - name: addActionsFunction
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+              - name: arg9
+                type: unknown
+              - name: arg10
+                type: unknown
+            return:
+              - type: ISTimedActionQueue
+                nullable: true
+          - name: addGetUpAndThen
+            parameters:
+              - name: character
+              - name: action
+                type: table
+          - name: clear
+            parameters:
+              - name: character
+            return:
+              - type: ISTimedActionQueue
+          - name: hasAction
+            parameters:
+              - name: action
+            return:
+              - type: boolean
+          - name: hasActionType
+            parameters:
+              - name: character
+              - name: type
+            return:
+              - type: boolean
+          - name: isPlayerDoingAction
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: onTick

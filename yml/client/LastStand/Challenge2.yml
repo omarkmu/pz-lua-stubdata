@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Challenge2:
+        staticFields:
+          zombiesSpawned:
+            defaultValue: "0"
+          startedWaveCalendar:
+            nullable: true
+          prepareTimeCalendar:
+            nullable: true
+          timeNeeded:
+            nullable: true
+          timeNeededTick:
+            defaultValue: "0"
+          sdf:
+            defaultValue: SimpleDateFormat.new("mm:ss")
+          deadZombie:
+            defaultValue: "0"
+          prepareTime:
+            defaultValue: (2 * 60) * 1000
+          playersMoney: {}
+          timeNeededAlpha:
+            defaultValue: "1"
+          wave:
+            defaultValue: "0"
+          upgradeScreen: {}
+          radarPanel: {}
+          moneyGained:
+            type: number
+            nullable: true
+          xpGained:
+            type: number
+            nullable: true
+          id:
+            defaultValue: '"Challenge2"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/Challenge2.png"'
+          video:
+            defaultValue: '"HouseInTheWoods.bik"'
+          world:
+            defaultValue: '"challengemaps/Challenge1"'
+          x:
+            defaultValue: "153"
+          y:
+            defaultValue: "158"
+          z:
+            defaultValue: "0"
+          gameMode:
+            defaultValue: '"LastStand"'
+          spawnCount: {}
+          hourOfDay:
+            defaultValue: "3"
+          alphaTxt:
+            defaultValue: "0"
+          waveTime:
+            defaultValue: "0"
+          lastWaveTime:
+            defaultValue: "0"
+          zombieSpawnsRect: {}
+        staticMethods:
+          - name: Add
+          - name: OnInitWorld
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: SpawnZombies
+            parameters:
+              - name: count
+                type: number
+          - name: Render
+          - name: endWave
+          - name: Tick
+          - name: onZombieDead
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onCreatePlayer
+            parameters:
+              - name: playerId
+          - name: onBackButtonWheel
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: dir

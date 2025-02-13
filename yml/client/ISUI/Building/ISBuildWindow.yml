@@ -1,0 +1,90 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: isoObject
+              - name: queryOverride
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildWindow"'
+        fields:
+          maximumHeight:
+            type: number
+          windowHeader:
+            nullable: true
+          BuildPanel:
+            nullable: true
+          xuiPreferredResizeWidth:
+            type: number
+          xuiPreferredResizeHeight:
+            type: number
+          xuiResizeAnchorRight:
+            type: boolean
+          dirtyLayout:
+            type: boolean
+          hasClosedWindowInstance:
+            type: boolean
+          maximumWidth:
+            type: number
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            nullable: true
+          panelCloseDistance:
+            type: number
+          isoObject: {}
+          queryOverride: {}
+          enableHeader:
+            type: boolean
+          maximumHeightPercent:
+            type: number
+          overrideBPrompt:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: createChildren
+          - name: xuiRecalculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+              - name: _force
+              - name: _anchorRight
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+                type: number
+              - name: _preferredHeight
+                type: number
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: update
+            return:
+              - type: boolean
+                nullable: true
+          - name: close
+          - name: validateSizeBounds

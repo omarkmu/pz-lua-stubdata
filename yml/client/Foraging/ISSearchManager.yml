@@ -1,0 +1,426 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSearchManager:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: _character
+        staticFields:
+          Type:
+            defaultValue: '"ISSearchManager"'
+          players: {}
+          iconItems: {}
+          showDebug:
+            defaultValue: "false"
+          showDebugLocations:
+            defaultValue: "false"
+          showDebugExtended:
+            defaultValue: "false"
+          showDebugVision:
+            defaultValue: "false"
+          showDebugVisionRadius:
+            defaultValue: "false"
+        fields:
+          updateEvents:
+            type: table
+          stashTypes:
+            type: table
+          ignoredItemTypes:
+            type: table
+          textureColor:
+            type: table
+          zoom:
+            type: number
+          currentTimestamp: {}
+          lastTimestamp:
+            type: number
+          timeDelta:
+            type: number
+          timeSinceFind:
+            type: number
+          triggerHalo:
+            type: boolean
+          iconQueue:
+            type: number
+          currentZone:
+            nullable: true
+          lastFoundX:
+            type: number
+          lastFoundY:
+            type: number
+          lastUpdateX: {}
+          lastUpdateY: {}
+          distanceSinceFind:
+            type: number
+          distanceMoveExtra:
+            type: number
+          timeToMoveIconExtra:
+            type: number
+          timeToMoveIcon:
+            type: number
+          currentZoneName:
+            nullable: true
+          updateTick:
+            type: number
+          perkLevel: {}
+          square:
+            type: IsoGridSquare
+          modifiers:
+            type: table
+          radius:
+            type: number
+          aimMulti:
+            type: number
+          aimBonusTick:
+            type: number
+          sneakMulti:
+            type: number
+          sneakBonusTick:
+            type: number
+          disableTick:
+            type: number
+          isSpotting:
+            type: boolean
+          baseWidth: {}
+          baseHeight: {}
+          textureWidth: {}
+          textureHeight: {}
+          texture: {}
+          alphaStep:
+            type: number
+          minAlpha:
+            type: number
+          activeAlpha:
+            type: number
+          spotAlpha:
+            type: number
+          character: {}
+          player: {}
+          cell: {}
+          isSearchMode:
+            type: boolean
+          isEffectOverlay:
+            type: boolean
+          haloNotes:
+            type: table
+          iconCategories:
+            type: table
+          forageIcons:
+            type: table
+          activeIcons:
+            type: table
+          closeIcons:
+            type: table
+          worldObjectIcons:
+            type: table
+          stashIcons:
+            type: table
+          seenIcons:
+            type: table
+          xpIcons:
+            type: table
+          iconStack:
+            type: table
+          worldIconStack:
+            type: table
+          iconLoadRate:
+            type: number
+          activeIconRadius:
+            type: number
+          cellIconRadius:
+            type: number
+          activeZones:
+            type: table
+          activeZoneRadius:
+            type: number
+          updateTickMax:
+            type: number
+          disableTickMax:
+            type: number
+          timeToMoveIconMax:
+            type: number
+          reducedTimePerLevel:
+            type: number
+          distanceMoveThreshold:
+            type: number
+          movedIcons:
+            type: table
+          movedIconsSquares:
+            type: table
+          checkedSquares:
+            type: table
+          spriteCheckedSquares:
+            type: table
+          squareStack:
+            type: table
+          squareCheckRate:
+            type: number
+          spriteAffinities:
+            type: table
+          searchModeOverlay: {}
+          searchMode: {}
+          minRadius:
+            type: number
+          maxRadius:
+            type: number
+          maxRadiusCap:
+            type: number
+          overlayValues:
+            type: table
+          effectOverlayValues:
+            type: table
+          ignoredItemCategories:
+            type: table
+          isoMarkers:
+            type: table
+          worldMarkers:
+            type: table
+          debugMarkers:
+            type: table
+          debugArrows:
+            type: table
+          aimBonusTickMax:
+            type: number
+          sneakBonusTickMax:
+            type: number
+          visibleTarget:
+            type: ISSearchManager
+          visibleFunction:
+            type: function
+          isOverride:
+            type: boolean
+        methods:
+          - name: onMouseDown
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            return:
+              - type: boolean
+          - name: getAlpha
+            return:
+              - type: number
+          - name: getColor
+            return:
+              - type: table
+          - name: setAlpha
+            parameters:
+              - name: _a
+                type: number
+          - name: setColor
+            parameters:
+              - name: _rgba
+          - name: flashEye
+            parameters:
+              - name: _amount
+          - name: onToggleVisible
+          - name: getScreenDelta
+            return:
+              - type: number
+              - type: number
+          - name: updateZoom
+          - name: updatePosition
+          - name: updateTimestamp
+          - name: prerender
+          - name: renderEye
+          - name: render
+          - name: renderDebugInfo
+          - name: isIconOnSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _iconList
+            return:
+              - type: boolean
+                nullable: true
+          - name: addHaloNote
+            parameters:
+              - name: _text
+          - name: displayHaloNotes
+          - name: clearSpriteCheckedSquares
+          - name: clearMovedIconsSquares
+          - name: clearCheckedSquares
+          - name: clearQueue
+          - name: clearHaloNotes
+          - name: reset
+          - name: clearZoneData
+          - name: removeZoneAndIcons
+            parameters:
+              - name: _zoneData
+          - name: removeItem
+            parameters:
+              - name: _icon
+          - name: addIcon
+            parameters:
+              - name: _id
+              - name: _iconClass
+              - name: _itemType
+              - name: _itemObj
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: clearIcons
+          - name: removeIcon
+            parameters:
+              - name: _icon
+          - name: checkForSpriteAffinity
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _zoneData
+            return:
+              - type: boolean
+          - name: createBonusIcon
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _catDef
+              - name: _zoneData
+          - name: findSpriteAffinityIcon
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _catDef
+              - name: _zoneData
+          - name: worldItemTest
+            parameters:
+              - name: _itemObj
+            return:
+              - type: boolean
+          - name: createIconsForWorldItems
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+          - name: createIconsForContainers
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+          - name: checkSquares
+          - name: createIconsForCell
+          - name: checkShouldForceIcon
+          - name: getIsSeen
+            parameters:
+              - name: _icon
+            return:
+              - type: unknown
+          - name: spotIcon
+            parameters:
+              - name: _icon
+          - name: updateForceFindSystem
+          - name: resetForceFindSystem
+          - name: doMoveIconNearPlayer
+          - name: doMoveIcon
+            parameters:
+              - name: _icon
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+          - name: doChangePosition
+            parameters:
+              - name: _icon
+          - name: checkActiveZones
+          - name: checkCloseIcons
+          - name: checkWorldIcons
+          - name: checkIcons
+          - name: createIconsForZone
+            parameters:
+              - name: _zoneData
+              - name: _recreate
+          - name: doChangeZone
+            parameters:
+              - name: _zoneData
+                nullable: true
+          - name: getAndActivateZoneAtXY
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: table | boolean
+                nullable: true
+          - name: updateCurrentZone
+          - name: isFinishedLoadingIcons
+            return:
+              - type: boolean
+          - name: loadIcons
+          - name: updateModifiers
+          - name: getOverlayRadius
+            return:
+              - type: unknown
+          - name: updateOverlay
+          - name: checkShouldDisable
+            return:
+              - type: boolean
+          - name: getGameSpeed
+            return:
+              - type: number
+          - name: checkMarkers
+          - name: resetVisionBonuses
+          - name: updateVisionBonuses
+          - name: updateAlpha
+          - name: doDisableCheck
+          - name: doUpdateEvents
+            parameters:
+              - name: _force
+                type: boolean
+          - name: update
+          - name: initialise
+          - name: toggleSearchMode
+            parameters:
+              - name: _isSearchMode
+                type: boolean
+        staticMethods:
+          - name: getManager
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+          - name: setManager
+            parameters:
+              - name: _character
+              - name: _manager
+                type: ISSearchManager
+          - name: createUI
+            parameters:
+              - name: _player
+          - name: destroyUI
+            parameters:
+              - name: _character
+          - name: handleOverride
+            parameters:
+              - name: _state
+              - name: _playerNum
+                type: integer
+          - name: handleKeyPressed
+            parameters:
+              - name: _keyPressed
+          - name: initBinds
+          - name: OnGameStart
+          - name: onUpdateIcon
+            parameters:
+              - name: _zoneData
+              - name: _iconID
+              - name: _icon
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: _player
+              - name: _context
+                type: ISContextMenu
+              - name: _worldObjects
+                type: IsoObject[]

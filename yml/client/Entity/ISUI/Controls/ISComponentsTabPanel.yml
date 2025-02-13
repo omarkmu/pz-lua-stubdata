@@ -1,0 +1,80 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISComponentsTabPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: entityConfig
+        staticFields:
+          Type:
+            defaultValue: '"ISComponentsTabPanel"'
+        fields:
+          panels:
+            type: boolean | table
+          multiPanels:
+            type: boolean
+          tableLayout:
+            nullable: true
+          menuLayout:
+            nullable: true
+          panelColumn: {}
+          originalColor:
+            type: table
+          entityDebug:
+            nullable: true
+          selectedIndex: {}
+          player: {}
+          entity: {}
+          entityConfig: {}
+          maximumWidth:
+            type: number
+          maximumHeight:
+            type: number
+          minimumPanelWidth:
+            type: number
+          padding:
+            type: number
+          margin:
+            type: number
+          layoutParent:
+            type: boolean
+          disableHeaders:
+            type: boolean
+          doIcons:
+            type: boolean
+          doText:
+            type: boolean
+          selectedColor:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: selectPanel
+            parameters:
+              - name: _index
+              - name: _recalc
+                type: boolean
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

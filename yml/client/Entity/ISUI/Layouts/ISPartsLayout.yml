@@ -1,0 +1,75 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPartsLayout:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: _parentPanel
+              - name: _blueprintLogic
+        staticFields:
+          Type:
+            defaultValue: '"ISPartsLayout"'
+          defaultJoypadMoveInterval:
+            defaultValue: "20"
+        fields:
+          colorSemiBroken:
+            type: table
+          textSemiBroken:
+            type: string
+          colorOperational:
+            type: table
+          textOperational:
+            type: string
+          colorBroken:
+            type: table
+          textBroken:
+            type: string
+          effBar:
+            type: ISProgressBar
+          title:
+            type: ISLabel
+          itemSlots:
+            type: table
+          buttonRepair:
+            type: ISButton
+          buttonDbgDecay:
+            type: ISButton
+          borderOuterColor:
+            type: table
+          detailInnerColor:
+            type: table
+          textColor:
+            type: table
+          tagColor:
+            type: table
+          invalidColor:
+            type: table
+          horzTexture: {}
+          vertTexture: {}
+          parentPanel: {}
+          blueprintLogic: {}
+          parts: {}
+          player: {}
+          playerNum:
+            type: integer
+          joypadMoveInterval:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: update
+          - name: setEfficiency
+            parameters:
+              - name: _efficiency
+          - name: prerender
+          - name: render

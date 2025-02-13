@@ -1,0 +1,232 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMultiplayerZoneEditor:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISMultiplayerZoneEditor"'
+        fields:
+          mapAPI: {}
+          modeCombo:
+            type: ISComboBox
+          mode:
+            type: table
+          buttonPanel:
+            type: ISMultiplayerZoneEditor_ButtonPanel
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          dragStartX:
+            type: number
+          dragStartY:
+            type: number
+          dragStartCX: {}
+          dragStartCY: {}
+          dragStartZoomF: {}
+          dragStartWorldX: {}
+          dragStartWorldY: {}
+          hideUnvisitedAreas:
+            type: boolean
+          isometric:
+            type: boolean
+          showCellGrid:
+            type: boolean
+          showTileGrid:
+            type: boolean
+          showPlayers:
+            type: boolean
+          showRemotePlayers:
+            type: boolean
+          showPlayerNames:
+            type: boolean
+          currentMode:
+            type: string
+          character:
+            nullable: true
+          playerNum:
+            type: integer
+          cross: {}
+          texViewIsometric: {}
+          texViewOrthographic: {}
+          texViewPyramid: {}
+          getJoypadFocus:
+            type: boolean
+        methods:
+          - name: instantiate
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onChangePerspective
+          - name: onCenterOnPlayer
+          - name: onTogglePyramid
+          - name: onZoomInButton
+          - name: onZoomOutButton
+          - name: onChangeOptions
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setHideUnvisitedAreas
+            parameters:
+              - name: hide
+                type: boolean
+          - name: setIsometric
+            parameters:
+              - name: iso
+                type: boolean
+          - name: setShowCellGrid
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowTileGrid
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowPlayers
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowRemotePlayers
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowPlayerNames
+            parameters:
+              - name: show
+                type: boolean
+          - name: close
+          - name: onComboChangeMode
+          - name: onSwitchMode
+            parameters:
+              - name: mode
+                type: string
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: initDirectoryMapData
+            parameters:
+              - name: directory
+                type: string
+          - name: initDefaultStyle
+          - name: initDefaultMapData
+          - name: initDataAndStyle
+        staticMethods:
+          - name: ShowEditor
+          - name: ToggleEditor
+          - name: OnRolesReceived
+      ISMultiplayerZoneEditor_ButtonPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: ISMultiplayerZoneEditor
+        staticFields:
+          Type:
+            defaultValue: '"ISMultiplayerZoneEditor_ButtonPanel"'
+        fields:
+          zoomInButton:
+            type: ISButton
+          zoomOutButton:
+            type: ISButton
+          pyramidBtn:
+            type: ISButton
+          closeBtn:
+            type: ISButton
+          editor:
+            type: ISMultiplayerZoneEditor
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData

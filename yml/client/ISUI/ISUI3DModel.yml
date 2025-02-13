@@ -1,0 +1,140 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUI3DModel:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISUI3DModel"'
+        fields:
+          mouseDown:
+            type: boolean
+          dragX:
+            type: number
+          animateWhilePaused:
+            type: boolean
+        methods:
+          - name: instantiate
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: setAnimateWhilePaused
+            parameters:
+              - name: animate
+          - name: setDirection
+            parameters:
+              - name: dir
+          - name: getDirection
+            return:
+              - type: unknown
+          - name: setOutfitName
+            parameters:
+              - name: name
+                type: string
+              - name: female
+                type: boolean
+              - name: zombie
+                type: boolean
+          - name: setCharacter
+            parameters:
+              - name: character
+          - name: getCharacter
+            return:
+              - type: unknown
+          - name: setSurvivorDesc
+            parameters:
+              - name: survivorDesc
+          - name: setAnimSetName
+            parameters:
+              - name: animSet
+          - name: setState
+            parameters:
+              - name: state
+                type: string
+          - name: getState
+          - name: setVariable
+            parameters:
+              - name: key
+                type: integer
+              - name: value
+          - name: getVariable
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: unknown
+          - name: clearVariable
+            parameters:
+              - name: key
+                type: integer
+          - name: clearVariables
+          - name: reportEvent
+            parameters:
+              - name: event
+          - name: setIsometric
+            parameters:
+              - name: iso
+                type: boolean
+          - name: setDoRandomExtAnimations
+            parameters:
+              - name: doExt
+                type: boolean
+          - name: setZoom
+            parameters:
+              - name: zoom
+                type: number
+          - name: setYOffset
+            parameters:
+              - name: yoffset
+                type: number
+          - name: setXOffset
+            parameters:
+              - name: xoffset
+                type: number

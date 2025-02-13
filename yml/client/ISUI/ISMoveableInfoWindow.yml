@@ -1,0 +1,162 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMoveableInfoWindow:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+              - name: drag
+        staticFields:
+          Type:
+            defaultValue: '"ISToolTip"'
+          infoPanels: {}
+          displayPosition:
+            defaultValue: '"cursor"'
+        fields:
+          mouseOverUI:
+            type: boolean
+          bodyText:
+            type: table
+          customBodyAlign:
+            nullable: true
+          moveableTexture:
+            type: table
+            nullable: true
+          allowCurrent:
+            type: boolean
+          texYOffset:
+            type: number
+          textureList:
+            type: table
+          square:
+            type: IsoGridSquare
+          drawJoypadFocus:
+            type: boolean
+          drag: {}
+          character: {}
+          playerNum:
+            type: integer
+          name:
+            nullable: true
+          description:
+            type: string
+          header: {}
+          infoBody: {}
+          footer: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: isMouseOverUI
+            return:
+              - type: boolean
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: drawTexture
+            parameters:
+              - name: texture
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: a
+                type: number
+              - name: r
+                type: number
+                nullable: true
+              - name: g
+                type: number
+                nullable: true
+              - name: b
+                type: number
+                nullable: true
+          - name: render
+          - name: calculateDimensions
+          - name: setHeaderText
+            parameters:
+              - name: _header
+              - name: _font
+          - name: setBodyText
+            parameters:
+              - name: _bodyTextTable
+                nullable: true
+              - name: _font
+                nullable: true
+              - name: _align
+                nullable: true
+          - name: setBodyTextOLD
+            parameters:
+              - name: _body
+              - name: _font
+              - name: _align
+          - name: setFooterText
+            parameters:
+              - name: _footer
+              - name: _font
+          - name: setTexture
+            parameters:
+              - name: _textureName
+                type: string
+              - name: _allow
+              - name: _square
+                type: IsoGridSquare
+              - name: _yoffset
+          - name: setSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: close
+          - name: setDrag
+            parameters:
+              - name: _drag
+        staticMethods:
+          - name: setDisplayPosition
+            parameters:
+              - name: _position
+          - name: moveablePanelModeKey
+            parameters:
+              - name: _key
+                type: integer

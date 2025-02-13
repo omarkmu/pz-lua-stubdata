@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISShovelAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: item
+              - name: plant
+              - name: maxTime
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISShovelAction"'
+        fields:
+          sound: {}
+          character:
+            nullable: true
+          item: {}
+          plant: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

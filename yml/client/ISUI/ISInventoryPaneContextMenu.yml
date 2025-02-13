@@ -1,0 +1,995 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryPaneContextMenu:
+        staticFields:
+          tooltipPool: {}
+          tooltipsUsed: {}
+          ghs:
+            defaultValue: '"<GHC>"'
+          bhs:
+            defaultValue: '"<BHC>"'
+          toolRender:
+            type: ISToolTipInv
+            nullable: true
+          ItemInstances:
+            type: table
+            nullable: true
+          placeItemCursor:
+            type: ISPlace3DItemCursor
+            nullable: true
+        methods:
+          - name: onSetBombTimerClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+              - name: item
+          - name: onWriteSomethingClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRenameFoodClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+              - name: item
+          - name: onRenameBagClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+              - name: item
+        staticMethods:
+          - name: createMenu
+            parameters:
+              - name: player
+              - name: isInPlayerInventory
+                type: boolean
+              - name: items
+                type: table
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: origin
+            return:
+              - type: unknown
+                nullable: true
+          - name: createMenuNoItems
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: isLoot
+                type: boolean
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: doStoveMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerNum
+                type: integer
+          - name: doTrashCanMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerNum
+                type: integer
+          - name: doLiteratureMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: items
+              - name: player
+          - name: doBandageMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: items
+              - name: player
+          - name: canRipItem
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+            return:
+              - type: boolean
+          - name: addFishRodOptions
+            parameters:
+              - name: fishingRod
+              - name: haveLure
+              - name: context
+                type: ISContextMenu
+              - name: player
+          - name: removeLure
+            parameters:
+              - name: player
+              - name: fishingRod
+          - name: addLure
+            parameters:
+              - name: player
+              - name: fishingRod
+              - name: lure
+          - name: changeHook
+            parameters:
+              - name: player
+              - name: fishingRod
+              - name: hook
+          - name: changeLine
+            parameters:
+              - name: player
+              - name: fishingRod
+              - name: line
+          - name: onInspectClothing
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: clothing
+          - name: onInspectClothingUI
+            parameters:
+              - name: player
+              - name: clothing
+          - name: doClothingPatchMenu
+            parameters:
+              - name: player
+              - name: clothing
+              - name: context
+                type: ISContextMenu
+          - name: removePatch
+            parameters:
+              - name: player
+              - name: clothing
+              - name: part
+              - name: needle
+          - name: removeAllPatches
+            parameters:
+              - name: player
+              - name: clothing
+              - name: parts
+              - name: needle
+          - name: repairClothing
+            parameters:
+              - name: player
+              - name: clothing
+              - name: part
+              - name: fabric
+              - name: thread
+              - name: needle
+          - name: repairAllClothing
+            parameters:
+              - name: player
+              - name: clothing
+              - name: parts
+              - name: fabric
+              - name: thread
+              - name: needle
+              - name: onlyHoles
+          - name: doWearClothingTooltip
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: newItem
+              - name: currentItem
+              - name: option
+            return:
+              - type: table
+                nullable: true
+          - name: doWearClothingMenu
+            parameters:
+              - name: player
+              - name: clothing
+              - name: items
+              - name: context
+                type: ISContextMenu
+          - name: doChangeFireModeMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+              - name: context
+                type: ISContextMenu
+          - name: onChangefiremode
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+              - name: newfiremode
+          - name: doReloadMenuForBullets
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bullet
+              - name: context
+                type: ISContextMenu
+          - name: doReloadMenuForMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: magazine
+              - name: context
+                type: ISContextMenu
+          - name: doBulletMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+              - name: context
+                type: ISContextMenu
+          - name: doReloadMenuForWeapon
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+              - name: context
+                type: ISContextMenu
+          - name: transferIfNeeded
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: boolean
+                nullable: true
+          - name: onEjectMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+          - name: transferBullets
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: ammoType
+              - name: currentAmmo
+              - name: maxAmmo
+            return:
+              - type: number
+          - name: onInsertMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+              - name: magazine
+          - name: onRackGun
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+          - name: onLoadBulletsIntoFirearm
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+          - name: onUnloadBulletsFromFirearm
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon
+          - name: doMagazineMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: magazine
+              - name: context
+                type: ISContextMenu
+          - name: onLoadBulletsInMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: magazine
+              - name: ammoCount
+          - name: onUnloadBulletsFromMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: magazine
+          - name: getEvoItemCategories
+            parameters:
+              - name: items
+              - name: evorecipe
+            return:
+              - type: table
+          - name: onPlaceCarBatteryCharger
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: carBatteryCharger
+          - name: addItemInEvoRecipe
+            parameters:
+              - name: subMenuRecipe
+              - name: baseItem
+              - name: evoItem
+                nullable: true
+              - name: extraInfo
+                type: string
+              - name: evorecipe2
+              - name: player
+          - name: addEatTooltip
+            parameters:
+              - name: option
+              - name: items
+              - name: percent
+          - name: doEatOption
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: cmd
+              - name: items
+              - name: player
+              - name: playerObj
+                type: IsoPlayer
+              - name: foodItems
+          - name: checkConsolidate
+            parameters:
+              - name: drainable
+              - name: playerObj
+                type: IsoPlayer
+              - name: context
+                type: ISContextMenu
+              - name: previousPourInto
+          - name: onConsolidate
+            parameters:
+              - name: drainable
+              - name: intoItem
+              - name: playerObj
+                type: IsoPlayer
+          - name: onConsolidateAll
+            parameters:
+              - name: drainable
+              - name: consolidateList
+              - name: playerObj
+                type: IsoPlayer
+          - name: OnTriggerRemoteController
+            parameters:
+              - name: remoteController
+              - name: player
+          - name: OnLinkRemoteController
+            parameters:
+              - name: itemToLink
+              - name: remoteController
+              - name: player
+          - name: isAllFav
+            parameters:
+              - name: items
+            return:
+              - type: boolean
+          - name: isAnyAllowed
+            parameters:
+              - name: container
+              - name: items
+            return:
+              - type: boolean
+          - name: isAllNoDropMoveable
+            parameters:
+              - name: items
+            return:
+              - type: boolean
+          - name: OnResetRemoteControlID
+            parameters:
+              - name: item
+              - name: player
+          - name: onDrinkFluid
+            parameters:
+              - name: item
+              - name: percent
+              - name: playerObj
+                type: IsoPlayer
+          - name: doDrinkFluidMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: fluidContainer
+              - name: context
+                type: ISContextMenu
+          - name: doDrinkForThirstMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerObj
+                type: IsoPlayer
+              - name: waterContainer
+          - name: onDrinkForThirst
+            parameters:
+              - name: waterContainer
+              - name: playerObj
+                type: IsoPlayer
+              - name: units
+          - name: onAddItemInEvoRecipe
+            parameters:
+              - name: recipe
+              - name: baseItem
+              - name: usedItem
+              - name: player
+          - name: buildFixingMenu
+            parameters:
+              - name: brokenObject
+              - name: player
+              - name: fixing
+              - name: fixingNum
+                type: number
+              - name: fixOption
+              - name: subMenuFix
+              - name: vehiclePart
+          - name: getContainers
+            parameters:
+              - name: character
+            return:
+              - type: unknown
+                nullable: true
+          - name: addFixerSubOption
+            parameters:
+              - name: brokenObject
+              - name: player
+              - name: fixing
+              - name: fixingNum
+                type: number
+              - name: fixer
+              - name: fixerNum
+                type: number
+              - name: subMenuFix
+              - name: vehiclePart
+            return:
+              - type: unknown
+          - name: onFix
+            parameters:
+              - name: brokenObject
+              - name: player
+              - name: fixingNum
+                type: number
+              - name: fixerNum
+                type: number
+              - name: vehiclePart
+          - name: onDyeHair
+            parameters:
+              - name: hairDye
+              - name: playerObj
+                type: IsoPlayer
+              - name: beard
+          - name: onDryMyself
+            parameters:
+              - name: towels
+              - name: player
+          - name: onWringClothing
+            parameters:
+              - name: items
+              - name: player
+          - name: onSetBombTimer
+            parameters:
+              - name: trap
+              - name: player
+          - name: onStopAlarm
+            parameters:
+              - name: alarm
+              - name: player
+          - name: onSetAlarm
+            parameters:
+              - name: alarm
+              - name: player
+          - name: onRenameMap
+            parameters:
+              - name: map
+              - name: player
+          - name: onRenameBag
+            parameters:
+              - name: bag
+              - name: player
+          - name: onRenameFood
+            parameters:
+              - name: food
+              - name: player
+          - name: onCheckMap
+            parameters:
+              - name: map
+              - name: player
+          - name: onWriteSomething
+            parameters:
+              - name: notebook
+              - name: editable
+              - name: player
+          - name: dryMyself
+            parameters:
+              - name: item
+              - name: player
+          - name: onApplyBandage
+            parameters:
+              - name: bandages
+              - name: bodyPart
+              - name: player
+          - name: applyBandage
+            parameters:
+              - name: item
+              - name: bodyPart
+              - name: player
+          - name: haveDamagePart
+            parameters:
+              - name: playerId
+            return:
+              - type: table
+          - name: onLiteratureItems
+            parameters:
+              - name: items
+              - name: player
+          - name: readItem
+            parameters:
+              - name: item
+              - name: player
+          - name: onUnEquip
+            parameters:
+              - name: items
+              - name: player
+          - name: unequipItem
+            parameters:
+              - name: item
+              - name: player
+          - name: onWearItems
+            parameters:
+              - name: items
+              - name: player
+          - name: onActivateItem
+            parameters:
+              - name: light
+              - name: player
+          - name: wearItem
+            parameters:
+              - name: item
+              - name: player
+          - name: onPutItems
+            parameters:
+              - name: items
+              - name: player
+          - name: canMoveTo
+            parameters:
+              - name: items
+              - name: dest
+              - name: player
+            return:
+              - type: unknown
+                nullable: true
+          - name: hasRoomForAny
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: container
+              - name: items
+            return:
+              - type: boolean
+          - name: canUnpack
+            parameters:
+              - name: items
+              - name: player
+            return:
+              - type: boolean
+          - name: onFavorite
+            parameters:
+              - name: items
+              - name: item2
+              - name: fav
+          - name: onMoveItemsTo
+            parameters:
+              - name: items
+              - name: dest
+              - name: player
+            return:
+              - type: unknown
+                nullable: true
+          - name: canAddManyItems
+            parameters:
+              - name: recipe
+              - name: selectedItem
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: addDynamicalContextMenu
+            parameters:
+              - name: selectedItem
+              - name: context
+                type: ISContextMenu
+              - name: recipeList
+              - name: player
+              - name: containerList
+          - name: addNewCraftingDynamicalContextMenu
+            parameters:
+              - name: selectedItem
+              - name: context
+                type: ISContextMenu
+              - name: recipeList
+              - name: player
+              - name: containerList
+          - name: addToolTip
+            return:
+              - type: unknown
+          - name: OnNewCraft
+            parameters:
+              - name: selectedItem
+              - name: recipe
+              - name: player
+              - name: all
+          - name: OnNewCraftComplete
+            parameters:
+              - name: logic
+          - name: OnCraft
+            parameters:
+              - name: selectedItem
+              - name: recipe
+                nullable: true
+              - name: player
+              - name: all
+                type: boolean
+          - name: OnCraftComplete
+            parameters:
+              - name: completedAction
+              - name: recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: container
+              - name: containers
+              - name: selectedItemType
+              - name: selectedItemContainer
+          - name: eatItem
+            parameters:
+              - name: item
+              - name: percentage
+              - name: player
+          - name: OnPrimaryWeapon
+            parameters:
+              - name: items
+              - name: player
+          - name: onPillsItems
+            parameters:
+              - name: items
+              - name: player
+          - name: takePill
+            parameters:
+              - name: item
+              - name: player
+          - name: onInspectTrack
+            parameters:
+              - name: player
+              - name: track
+          - name: OnTwoHandsEquip
+            parameters:
+              - name: items
+              - name: player
+          - name: OnSecondWeapon
+            parameters:
+              - name: items
+              - name: player
+          - name: equipWeapon
+            parameters:
+              - name: weapon
+              - name: primary
+                type: boolean
+              - name: twoHands
+                type: boolean
+              - name: player
+          - name: onInformationItems
+            parameters:
+              - name: items
+          - name: information
+            parameters:
+              - name: item
+          - name: removeToolTip
+          - name: onEatItems
+            parameters:
+              - name: items
+              - name: percentage
+              - name: player
+          - name: onPlaceTrap
+            parameters:
+              - name: weapon
+              - name: player
+          - name: onRemoveUpgradeWeapon
+            parameters:
+              - name: weapon
+              - name: part
+              - name: playerObj
+                type: IsoPlayer
+          - name: onUpgradeWeapon
+            parameters:
+              - name: weapon
+              - name: part
+              - name: player
+          - name: onDropItems
+            parameters:
+              - name: items
+              - name: player
+          - name: litCandleExtinguish
+            parameters:
+              - name: item
+              - name: player
+          - name: hurricaneLanternExtinguish
+            parameters:
+              - name: item
+              - name: player
+          - name: dropItem
+            parameters:
+              - name: item
+              - name: player
+          - name: onGrabItems
+            parameters:
+              - name: items
+              - name: player
+          - name: transferItems
+            parameters:
+              - name: items
+              - name: playerInv
+              - name: player
+              - name: dontWalk
+          - name: onGrabHalfItems
+            parameters:
+              - name: items
+              - name: player
+          - name: onEditItem
+            parameters:
+              - name: items
+              - name: player
+              - name: item
+          - name: onGrabOneItems
+            parameters:
+              - name: items
+              - name: player
+          - name: onTransferWater
+            parameters:
+              - name: items
+              - name: itemFrom
+              - name: itemTo
+              - name: player
+          - name: onEmptyWaterContainer
+            parameters:
+              - name: items
+              - name: waterSource
+              - name: player
+          - name: canReplaceStoreWater
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: canReplaceStoreWater2
+            parameters:
+              - name: itemType
+            return:
+              - type: boolean
+          - name: onDumpContents
+            parameters:
+              - name: items
+              - name: item
+              - name: player
+          - name: startWith
+            parameters:
+              - name: String
+              - name: Start
+            return:
+              - type: boolean
+          - name: getRealEvolvedItemUse
+            parameters:
+              - name: evoItem
+                nullable: true
+              - name: evorecipe2
+              - name: cookingLvl
+            return:
+              - type: unknown
+                nullable: true
+          - name: doEquipOption
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerObj
+                type: IsoPlayer
+              - name: isWeapon
+                type: boolean
+              - name: items
+              - name: player
+          - name: onTurnIntoSkeleton
+            parameters:
+              - name: animal
+          - name: equipHeavyItem
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+          - name: onMakeUp
+            parameters:
+              - name: makeup
+              - name: playerObj
+                type: IsoPlayer
+          - name: doGrabMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: items
+              - name: player
+          - name: doEvorecipeMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: items
+              - name: player
+              - name: evorecipe
+              - name: baseItem
+              - name: containerList
+          - name: doMakeUpMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: makeup
+              - name: playerObj
+                type: IsoPlayer
+          - name: getItemInstance
+            parameters:
+              - name: type
+            return:
+              - type: unknown
+          - name: doClothingItemExtraMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: clothingItemExtra
+              - name: playerObj
+                type: IsoPlayer
+          - name: onClothingItemExtra
+            parameters:
+              - name: item
+              - name: extra
+              - name: playerObj
+                type: IsoPlayer
+          - name: doPlace3DItemOption
+            parameters:
+              - name: items
+              - name: player
+              - name: context
+                type: ISContextMenu
+          - name: onPlaceItemOnGround
+            parameters:
+              - name: items
+              - name: playerObj
+                type: IsoPlayer
+          - name: AutoDrinkOn
+            parameters:
+              - name: waterContainer
+          - name: AutoDrinkOff
+            parameters:
+              - name: waterContainer
+          - name: hasOpenFlame
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+          - name: getEatingMask
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: removeMask
+            return:
+              - type: boolean
+          - name: onTeleportToKeyOrigin
+            parameters:
+              - name: item
+              - name: player
+          - name: onResearchRecipe
+            parameters:
+              - name: item
+              - name: playerObj
+                type: IsoPlayer
+      ISRecipeTooltip:
+        extends: ISToolTip
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"CraftTooltip"'
+          tooltipPool: {}
+          tooltipsUsed: {}
+        fields:
+          playerNum:
+            type: integer
+          containerList: {}
+          typesAvailable:
+            type: table
+          contents:
+            type: table
+            nullable: true
+          contentsX:
+            type: number
+          contentsY:
+            type: number
+          contentsWidth:
+            type: number
+          contentsHeight:
+            type: number
+        methods:
+          - name: addText
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: text
+                type: string
+              - name: r
+                type: number
+                nullable: true
+              - name: g
+                type: number
+                nullable: true
+              - name: b
+                type: number
+                nullable: true
+          - name: addImage
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: textureName
+                type: string
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: addImageDirect
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: texture
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: getSingleSourceText
+            parameters:
+              - name: source
+            return:
+              - type: string
+          - name: isExtraClothingItemOf
+            parameters:
+              - name: item1
+              - name: item2
+            return:
+              - type: boolean
+          - name: isFluidSource
+            parameters:
+              - name: item
+              - name: fluid
+                nullable: true
+              - name: amount
+            return:
+              - type: boolean
+          - name: isWaterSource
+            parameters:
+              - name: item
+              - name: count
+            return:
+              - type: boolean
+          - name: getContainers
+          - name: getAvailableItemsType
+          - name: layoutContents
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: renderContents
+          - name: reset
+        staticMethods:
+          - name: addToolTip
+            return:
+              - type: unknown
+          - name: releaseAll

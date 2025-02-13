@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StatisticChartPackets:
+        extends: StatisticChart
+        staticFields:
+          Type:
+            defaultValue: '"StatisticChartPackets"'
+          instance:
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          eventsAdded:
+            defaultValue: "false"
+        methods:
+          - name: createChildren
+          - name: initVariables
+          - name: updateValues
+        staticMethods:
+          - name: doInstance
+            return:
+              - type: unknown
+                nullable: true
+          - name: OnOpenPanel
+            return:
+              - type: unknown
+                nullable: true
+          - name: OnServerStatisticReceived

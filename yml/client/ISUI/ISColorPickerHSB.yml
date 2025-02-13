@@ -1,0 +1,152 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISColorPickerHSB:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: initial
+        staticFields:
+          Type:
+            defaultValue: '"ISColorPickerHSB"'
+        fields:
+          colorBlockX:
+            type: number
+          colorBlockY:
+            type: number
+          hueSlider:
+            type: ISSliderPanel
+          satSlider:
+            type: ISSliderPanel
+          valSlider:
+            type: ISSliderPanel
+          b:
+            type: number
+          s:
+            type: number
+          h:
+            type: number
+          currentColor: {}
+          mouseDownInColorBox:
+            type: boolean
+          mouseDown:
+            type: boolean
+          initialColor: {}
+          pickedFunc: {}
+          pickedArgs:
+            type: table
+          pickedRGB:
+            type: table
+          borderSize:
+            type: number
+          buttonSize:
+            type: number
+          HueImage: {}
+          SatImage: {}
+        methods:
+          - name: createChildren
+          - name: toHSB
+            parameters:
+              - name: Color
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: render
+          - name: onSliderChange
+            parameters:
+              - name: value
+              - name: slider
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onSave
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseDownColorBox
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: picked2
+            parameters:
+              - name: hide
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: removeSelf
+          - name: picked
+            parameters:
+              - name: hide
+          - name: setInitialColor
+            parameters:
+              - name: initial
+          - name: setCurrentColor
+            parameters:
+              - name: h
+              - name: s
+              - name: b
+          - name: setPickedFunc
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown

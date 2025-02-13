@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTriggerThunderUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISTriggerThunderUI"'
+        fields:
+          users:
+            type: ISComboBox
+          onlineUsers: {}
+          tickBox:
+            type: ISTickBox
+          triggerThunder:
+            type: ISButton
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: createChildren
+          - name: onClick
+            parameters:
+              - name: button
+          - name: close

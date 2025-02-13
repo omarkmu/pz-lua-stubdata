@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCreateFactionTagUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: faction
+        staticFields:
+          Type:
+            defaultValue: '"ISCreateFactionTagUI"'
+          messages: {}
+          instance:
+            type: ISCreateFactionTagUI
+            nullable: true
+        fields:
+          entry:
+            type: ISTextEntryBox
+          no:
+            type: ISButton
+          ok:
+            type: ISButton
+          player: {}
+          faction: {}
+          buttonBorderColor:
+            type: table
+        methods:
+          - name: initialise
+          - name: render
+          - name: prerender
+          - name: updateButtons
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton

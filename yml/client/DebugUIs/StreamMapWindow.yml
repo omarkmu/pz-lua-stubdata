@@ -1,0 +1,86 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StreamMapWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"StreamMapWindow"'
+        fields:
+          title:
+            type: string
+          panning:
+            type: boolean
+          renderPanel:
+            type: ISPanel
+          objectView:
+            type: ISScrollingListBox
+          xpos: {}
+          ypos: {}
+          zoom:
+            type: number
+          level:
+            type: number
+        methods:
+          - name: onMouseDoubleClickOpenObject
+            parameters:
+              - name: item
+          - name: fillInfo
+          - name: initialise
+          - name: onMapMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMapMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMapRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMapRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRenderMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: renderTex

@@ -1,0 +1,10 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CHutch_Interact:
+        staticMethods:
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer

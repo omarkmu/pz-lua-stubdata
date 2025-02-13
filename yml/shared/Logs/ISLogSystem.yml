@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLogSystem:
+        staticFields:
+          steamID:
+            nullable: true
+        staticMethods:
+          - name: getGenericLogText
+            parameters:
+              - name: _character
+              - name: _actionType
+            return:
+              - type: string
+          - name: getObjectPosition
+            parameters:
+              - name: _object
+            return:
+              - type: string
+                nullable: true
+          - name: logAction
+            parameters:
+              - name: _action
+                type: ISBaseTimedAction | table
+          - name: writeLog
+            parameters:
+              - name: _character
+              - name: _packet
+          - name: sendLog
+            parameters:
+              - name: _character
+              - name: _loggerName
+                type: string
+              - name: _logText
+                type: string
+          - name: OnClientCommand
+            parameters:
+              - name: _module
+              - name: _command
+              - name: _plObj
+              - name: _packet
+          - name: init

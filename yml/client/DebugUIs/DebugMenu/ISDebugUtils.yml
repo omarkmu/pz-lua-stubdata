@@ -1,0 +1,178 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDebugUtils:
+        staticFields:
+          FONT_HGT_MED:
+            defaultValue: getTextManager():getFontHeight(UIFont.Medium)
+          FONT_HGT_SMALL:
+            defaultValue: getTextManager():getFontHeight(UIFont.Small)
+        staticMethods:
+          - name: roundNum
+            parameters:
+              - name: num
+                type: number
+              - name: numDecimalPlaces
+                type: number
+            return:
+              - type: number
+          - name: clamp01
+            parameters:
+              - name: _n
+            return:
+              - type: number
+          - name: printval
+            parameters:
+              - name: _v
+                type: number
+              - name: _d
+                type: number
+            return:
+              - type: string
+          - name: onMouseWheel
+            parameters:
+              - name: self
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: addButton
+            parameters:
+              - name: _self
+                type: table
+              - name: _data
+                type: table | string
+                nullable: true
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _title
+                type: string
+              - name: _func
+            return:
+              - type: number
+              - type: ISButton
+          - name: addComboBox
+            parameters:
+              - name: _self
+                type: table
+              - name: _data
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _font
+              - name: _func
+                nullable: true
+            return:
+              - type: number
+              - type: ISComboBox
+          - name: addTextEntryBox
+            parameters:
+              - name: _self
+                type: ISAnimDebugMonitor | WorldFlaresDebug
+              - name: _data
+                type: string | table
+              - name: _title
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+            return:
+              - type: number
+              - type: ISTextEntryBox
+          - name: addLabel
+            parameters:
+              - name: _self
+                type: table
+              - name: _data
+                type: table | string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+                nullable: true
+              - name: _bLeft
+                type: boolean
+                nullable: true
+            return:
+              - type: number
+              - type: ISLabel
+          - name: addTickBox
+            parameters:
+              - name: _self
+                type: table
+              - name: _data
+                type: string | table
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _title
+                type: string
+              - name: options
+                type: table
+              - name: _func
+                nullable: true
+            return:
+              - type: number
+              - type: ISTickBox
+          - name: addSlider
+            parameters:
+              - name: _self
+                type: table
+              - name: _data
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _func
+            return:
+              - type: number
+              - type: ISSliderPanel
+          - name: initHorzBars
+            parameters:
+              - name: _self
+                type: table
+              - name: _x
+                type: number
+              - name: _width
+                type: number
+          - name: addHorzBar
+            parameters:
+              - name: _self
+                type: table
+              - name: _y
+                type: number
+            return:
+              - type: number
+          - name: renderHorzBars
+            parameters:
+              - name: _self
+                type: ISDebugSubPanelBase | ISAnimDebugMonitor

@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAttachAnimalToTree:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: animal
+              - name: tree
+              - name: remove
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISAttachAnimalToTree"'
+        fields:
+          sound: {}
+          animal: {}
+          remove:
+            type: boolean
+          tree: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

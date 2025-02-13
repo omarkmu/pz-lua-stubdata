@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CDDA:
+        staticFields:
+          x:
+            defaultValue: (36 * 300) + 21
+          y:
+            defaultValue: (31 * 300) + 111
+          z:
+            defaultValue: "0"
+          id:
+            defaultValue: '"AReallyCDDAy"'
+          completionText:
+            defaultValue: '"Survive a night to unlock next challenge."'
+          image:
+            defaultValue: '"media/lua/client/LastStand/AReallyCDDAy.png"'
+          video:
+            defaultValue: '"CDDA.bik"'
+          gameMode:
+            defaultValue: '"A Really CD DA"'
+          world:
+            defaultValue: '"Muldraugh, KY"'
+          spawns: {}
+          hourOfDay:
+            defaultValue: "7"
+        staticMethods:
+          - name: Add
+          - name: OnGameStart
+          - name: OnInitWorld
+          - name: RemovePlayer
+            parameters:
+              - name: p
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: Render

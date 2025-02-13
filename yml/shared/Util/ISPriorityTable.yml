@@ -1,0 +1,51 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISPriorityTable:
+        staticMethods:
+          - name: new
+            return:
+              - type: ISPriorityTable
+    classes:
+      ISPriorityTable:
+        local: true
+        staticMethods:
+          - name: setDefaultZvalue
+            parameters:
+              - name: _z
+          - name: add
+            parameters:
+              - name: _k
+              - name: _v
+              - name: _z
+          - name: get
+            parameters:
+              - name: _k
+            return:
+              - type: unknown
+                nullable: true
+          - name: getIndex
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+                nullable: true
+          - name: remove
+            parameters:
+              - name: _k
+          - name: removeIndex
+            parameters:
+              - name: _index
+          - name: size
+            return:
+              - type: number
+          - name: toString
+            return:
+              - type: string
+          - name: indexIterator
+            return:
+              - type: function
+          - name: keyIterator
+            return:
+              - type: function

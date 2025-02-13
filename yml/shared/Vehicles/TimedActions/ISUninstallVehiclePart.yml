@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUninstallVehiclePart:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: workTime
+                type: number
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISUninstallVehiclePart"'
+        fields:
+          vehicle: {}
+          part: {}
+          workTime:
+            type: number
+            nullable: true
+          jobType:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

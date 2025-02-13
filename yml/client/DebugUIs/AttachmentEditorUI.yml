@@ -1,0 +1,434 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AttachmentEditorUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI"'
+        fields:
+          scene:
+            type: AttachmentEditorUI_Scene
+          bottomPanel:
+            type: ISPanel
+          views:
+            type: table
+          editUI:
+            type: table
+          wroteScriptLabel:
+            type: ISLabel
+          buttonScale1:
+            type: ISButton
+          buttonScale2:
+            type: ISButton
+          buttonScale3:
+            type: ISButton
+          worldAttachmentPanel:
+            type: AttachmentEditorUI_WorldAttachmentPanel
+          wroteScriptTime: {}
+        methods:
+          - name: createChildren
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: update
+          - name: prerender
+          - name: setEditUI
+            parameters:
+              - name: ui
+          - name: onSetModelWeaponRotationHackChanged
+            parameters:
+              - name: isChecked
+                type: boolean
+          - name: onSave
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onExit
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGridMult1
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGridMult2
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGridMult3
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: showUI
+          - name: wroteScript
+            parameters:
+              - name: fileName
+                type: string
+      AttachmentEditorUI_Scene:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_Scene"'
+        fields:
+          zeroVector: {}
+          gizmoAxis:
+            type: string
+          gizmoStartScenePos: {}
+        methods:
+          - name: prerenderEditor
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      AttachmentEditorUI_SwitchView:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: editor
+                type: AttachmentEditorUI
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_SwitchView"'
+        fields:
+          editor:
+            type: AttachmentEditorUI
+        methods:
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+      AttachmentEditorUI_WorldAttachmentPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: AttachmentEditorUI
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_WorldAttachmentPanel"'
+        fields:
+          scene:
+            type: ISUI3DScene
+          weaponRotationHack:
+            type: boolean
+          editor:
+            type: AttachmentEditorUI
+        methods:
+          - name: createChildren
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: setModelScriptName
+            parameters:
+              - name: scriptName
+                type: string
+      AttachmentEditorUI_ListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_ListBox"'
+        fields:
+          selectionMode:
+            type: string
+        methods:
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: clearSelection
+          - name: setSelectedRow
+            parameters:
+              - name: row
+          - name: setSelectedRows
+            parameters:
+              - name: rows
+          - name: getSelectedItems
+            return:
+              - type: table
+          - name: getSelectedCount
+            return:
+              - type: number
+          - name: iteratorSelected
+            return:
+              - type: unknown
+          - name: indexOf
+            parameters:
+              - name: text
+            return:
+              - type: number
+      AttachmentEditorUI_EditPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_EditPanel"'
+        fields:
+          editor: {}
+        methods:
+          - name: updateEditor
+          - name: prerenderEditor
+          - name: toUI
+          - name: onSceneMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+          - name: createList
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+            return:
+              - type: AttachmentEditorUI_ListBox
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+            return:
+              - type: unknown
+          - name: java9
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+            return:
+              - type: unknown
+    functions:
+      - name: AttachmentEditorState_InitUI

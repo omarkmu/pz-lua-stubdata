@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveGlass:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: otherPlayer
+              - name: bodyPart
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveGlass"'
+        fields:
+          sound: {}
+          otherPlayer: {}
+          doctorLevel:
+            type: number
+          bodyPart: {}
+          bandagedPlayerX: {}
+          bandagedPlayerY: {}
+          doctor: {}
+          handPain:
+            type: boolean
+          maxTime:
+            type: number
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true
+          - name: stopSound

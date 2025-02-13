@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUnequipAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+                type: boolean
+                nullable: true
+              - name: maxTime
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISUnequipAction"'
+        fields:
+          sound: {}
+          item:
+            type: boolean
+            nullable: true
+          ignoreHandsWounds:
+            type: boolean
+          clothingAction:
+            type: boolean
+          hotbar:
+            nullable: true
+          fromHotbar:
+            type: boolean
+          useProgressBar:
+            type: boolean
+          animSpeed:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true

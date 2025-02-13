@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddWaterFromItemAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: itemFrom
+              - name: objectTo
+        staticFields:
+          Type:
+            defaultValue: '"ISAddWaterFromItemAction"'
+        fields:
+          sound: {}
+          addUnits:
+            type: number
+          itemFromEndingAmount:
+            type: number
+          itemFrom: {}
+          objectTo: {}
+          itemFromTainted:
+            type: boolean
+          itemFromStartAmount: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: serverStop
+          - name: complete
+            return:
+              - type: boolean
+          - name: setItemFromWaterAmount
+            parameters:
+              - name: _amount
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

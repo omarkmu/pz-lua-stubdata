@@ -1,0 +1,105 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSpawnHordeUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+              - name: square
+                type: IsoGridSquare
+        staticFields:
+          Type:
+            defaultValue: '"ISSpawnHordeUI"'
+        fields:
+          pickedSquareLabel:
+            type: ISLabel
+          pickNewSq:
+            type: ISButton
+          zombiesNbrLabel:
+            type: ISLabel
+          zombiesNbr:
+            type: ISTextEntryBox
+          radiusLbl:
+            type: ISLabel
+          radius:
+            type: ISTextEntryBox
+          outfitLbl:
+            type: ISLabel
+          outfit:
+            type: ISComboBox
+          maleOutfits: {}
+          femaleOutfits: {}
+          boolOptions:
+            type: ISTickBox
+          healthSliderTitle:
+            type: ISLabel
+          healthSliderLabel:
+            type: ISLabel
+          healthSlider:
+            type: ISSliderPanel
+          add:
+            type: ISButton
+          closeButton2:
+            type: ISButton
+          removezombies:
+            type: ISButton
+          clearbodies:
+            type: ISButton
+          cursor:
+            type: ISSelectCursor
+            nullable: true
+          selectX: {}
+          selectY: {}
+          selectZ: {}
+          marker:
+            nullable: true
+          arrow:
+            nullable: true
+          playerNum:
+            type: integer
+          title: {}
+          chr: {}
+        methods:
+          - name: createChildren
+          - name: onBoolOptionsChange
+            parameters:
+              - name: index
+              - name: selected
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: getRadius
+            return:
+              - type: number
+          - name: onSpawn
+          - name: getZombiesNumber
+            return:
+              - type: number
+                nullable: true
+          - name: getOutfit
+            return:
+              - type: unknown
+          - name: onRemoveZombies
+          - name: onRemoveBodies
+          - name: onSelectNewSquare
+          - name: onSquareSelected
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: prerender
+          - name: render
+          - name: addMarker
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: radius
+                type: number
+          - name: removeMarker
+          - name: close

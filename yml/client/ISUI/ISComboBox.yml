@@ -1,0 +1,315 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISComboBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onChange
+                type: function
+                nullable: true
+              - name: onChangeArg1
+                nullable: true
+              - name: onChangeArg2
+        staticFields:
+          Type:
+            defaultValue: '"ISComboBox"'
+          SharedPopup:
+            type: ISComboBoxPopup
+            nullable: true
+        fields:
+          popup:
+            type: ISComboBoxPopup
+          filterText:
+            nullable: true
+          joypadFocused:
+            type: boolean
+          expanded:
+            type: boolean
+          selected:
+            type: number
+          tooltipUI:
+            type: ISToolTip
+          sawMouseDown:
+            type: boolean
+          editor:
+            type: ISComboBoxEditor
+          tooltip:
+            type: table
+            nullable: true
+          options:
+            type: table
+          disabled:
+            type: boolean
+          editable:
+            type: boolean
+          backgroundColorMouseOver:
+            type: table
+          font: {}
+          textColor:
+            type: table
+          baseHeight:
+            type: number
+          target:
+            type: unknown
+            nullable: true
+          onChange:
+            type: function
+            nullable: true
+          onChangeArgs:
+            type: table
+          isCombobox:
+            type: boolean
+          image: {}
+          fade: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: showPopup
+          - name: hidePopup
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: pointOnItem
+            parameters:
+              - name: index
+          - name: forceClick
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: select
+            parameters:
+              - name: option
+                type: string
+          - name: selectData
+            parameters:
+              - name: data
+                type: string
+          - name: find
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: number
+          - name: addOption
+            parameters:
+              - name: option
+                type: string
+          - name: addOptionWithData
+            parameters:
+              - name: option
+                type: string
+              - name: data
+                type: table | string
+                nullable: true
+          - name: getOptionCount
+            return:
+              - type: number
+          - name: isEmpty
+            return:
+              - type: boolean
+          - name: contains
+            parameters:
+              - name: text
+            return:
+              - type: boolean
+          - name: getOptionText
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getOptionData
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getOptionTooltip
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: setToolTipMap
+            parameters:
+              - name: tooltipmap
+          - name: getSelectedText
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelected
+            return:
+              - type: number
+          - name: setSelected
+            parameters:
+              - name: value
+                type: number
+          - name: setWidthToOptions
+            parameters:
+              - name: minWidth
+                type: number
+                nullable: true
+          - name: clear
+          - name: setEnabled
+            parameters:
+              - name: enabled
+                type: boolean
+          - name: isEnabled
+            return:
+              - type: boolean
+          - name: setEditable
+            parameters:
+              - name: editable
+                type: boolean
+          - name: isEditable
+            return:
+              - type: boolean
+          - name: setFilterText
+            parameters:
+              - name: text
+          - name: getFilterText
+            return:
+              - type: unknown
+                nullable: true
+          - name: hasFilterText
+            return:
+              - type: boolean
+      ISComboBoxEditor:
+        extends: ISTextEntryBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: comboBox
+                type: ISComboBox
+        staticFields:
+          Type:
+            defaultValue: '"ISComboBoxEditor"'
+        fields:
+          parentCombo:
+            type: ISComboBox
+        methods:
+          - name: onTextChange
+          - name: onOtherKey
+            parameters:
+              - name: key
+                type: integer
+      ISComboBoxPopup:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISComboBoxPopup"'
+        fields:
+          parentCombo:
+            type: ISComboBox
+            nullable: true
+          tooWide:
+            nullable: true
+          tooWideY:
+            type: number
+          selected:
+            type: number
+        methods:
+          - name: prerender
+          - name: render
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setComboBox
+            parameters:
+              - name: comboBox
+                type: ISComboBox
+    functions:
+      - name: testcomboBox

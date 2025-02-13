@@ -1,0 +1,94 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftingCategoryUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: craftingUI
+                type: ISCraftingUI
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftingCategoryUI"'
+          instance:
+            type: ISCraftingCategoryUI
+            nullable: true
+          SMALL_FONT_HGT:
+            defaultValue: getTextManager():getFontFromEnum(UIFont.Small):getLineHeight()
+          MEDIUM_FONT_HGT:
+            defaultValue: getTextManager():getFontFromEnum(UIFont.Medium):getLineHeight()
+        fields:
+          filteringAll:
+            type: boolean
+          lastText: {}
+          selected: {}
+          recipes:
+            type: ISScrollingListBox
+          filterLabel:
+            type: ISLabel
+          filterEntry:
+            type: ISTextEntryBox
+          filterAll:
+            type: ISTickBox
+          craftingUI:
+            type: ISCraftingUI
+          character: {}
+          favoriteStar: {}
+          favCheckedTex: {}
+          favNotCheckedTex: {}
+          favPadX:
+            type: number
+          favWidth:
+            type: number
+        methods:
+          - name: initialise
+          - name: update
+          - name: prerender
+          - name: filter
+          - name: syncAllFilters
+          - name: drawRecipesMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+              - name: _drawBasic
+            return:
+              - type: number
+          - name: getFavoriteX
+            return:
+              - type: number
+          - name: isMouseOverFavorite
+            parameters:
+              - name: x
+            return:
+              - type: boolean
+          - name: onMouseDown_Recipes
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: create
+          - name: onFilterAll
+            parameters:
+              - name: index
+              - name: selected
+          - name: addToFavorite
+            parameters:
+              - name: fromKeyboard
+                type: boolean
+          - name: onMouseDoubleClick_Recipes
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number

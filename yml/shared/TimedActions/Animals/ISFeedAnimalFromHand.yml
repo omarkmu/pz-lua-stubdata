@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFeedAnimalFromHand:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: animal
+              - name: food
+        staticFields:
+          Type:
+            defaultValue: '"ISFeedAnimalFromHand"'
+        fields:
+          sound: {}
+          animal: {}
+          food: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: forceStop
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

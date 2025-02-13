@@ -1,0 +1,582 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TutorialTests:
+        staticFields:
+          klight_x:
+            defaultValue: "160"
+          klight_y:
+            defaultValue: "156"
+          llight_x:
+            defaultValue: "151"
+          llight_y:
+            defaultValue: "151"
+          homing2:
+            nullable: true
+          homing1:
+            nullable: true
+          marker1:
+            nullable: true
+          currentZoom:
+            nullable: true
+        staticMethods:
+          - name: addHoming
+            parameters:
+              - name: sq
+                type: IsoGridSquare
+              - name: yoffset
+                type: number
+                nullable: true
+              - name: xoffset
+                type: number
+                nullable: true
+              - name: color
+                type: table
+                nullable: true
+          - name: addMarker
+            parameters:
+              - name: sq
+                type: IsoGridSquare
+              - name: size
+                type: number
+          - name: stopHighlight
+            parameters:
+              - name: obj
+                type: IsoObject
+                nullable: true
+          - name: highlight
+            parameters:
+              - name: obj
+                type: IsoObject
+                nullable: true
+              - name: thickness
+                type: number
+          - name: RemoveMarkers
+          - name: ZoomedIn
+            return:
+              - type: boolean
+          - name: ZoomedOut
+            return:
+              - type: boolean
+          - name: PlayerInfoOpen
+            return:
+              - type: boolean
+          - name: HealthOpen
+            return:
+              - type: boolean
+          - name: SkillsPage
+            return:
+              - type: boolean
+          - name: NotSkillsPage
+            return:
+              - type: boolean
+          - name: LookedAround
+            return:
+              - type: boolean
+      WelcomeStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"WelcomeStep"'
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+      WalkToAdjacent:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"WalkToAdjacent"'
+          otherRoomInLocX:
+            defaultValue: "152"
+          otherRoomInLocY:
+            defaultValue: "153"
+          otherRoomY1:
+            defaultValue: "156"
+          otherRoomX1:
+            defaultValue: "153"
+          otherRoomX2:
+            defaultValue: "155"
+          otherRoomY2:
+            defaultValue: "158"
+          highlightFloor:
+            nullable: true
+          lastPlayerX:
+            defaultValue: "-1"
+          lastPlayerY:
+            defaultValue: "-1"
+          runned:
+            defaultValue: "false"
+          x2:
+            defaultValue: "157"
+          y2:
+            defaultValue: "153"
+          sneaked:
+            defaultValue: "false"
+          appleContainer:
+            nullable: true
+          z:
+            defaultValue: "0"
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: inLoc
+            return:
+              - type: boolean
+          - name: strafed
+            return:
+              - type: boolean
+          - name: inLoc2
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+      InventoryLootingStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"InventoryLootingStep"'
+          itemToEat:
+            defaultValue: '"DeadMouse"'
+          container:
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: openInventoryJoypad
+            return:
+              - type: boolean
+          - name: focusCorrectPanel
+            return:
+              - type: boolean
+          - name: focusLootingPanel
+            return:
+              - type: boolean
+          - name: haveItem
+            return:
+              - type: boolean
+          - name: haveWater
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+      InventoryUseStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"InventoryUseStep"'
+          sinkX:
+            defaultValue: "156"
+          sinkY:
+            defaultValue: "154"
+          sink:
+            nullable: true
+          lastInventory:
+            nullable: true
+          clickedOnInventory:
+            defaultValue: "false"
+          panContainer:
+            nullable: true
+          dontTurn:
+            type: boolean
+            nullable: true
+          bloodMouse1:
+            type: boolean
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: InLocJoypad
+            return:
+              - type: boolean
+          - name: selectInventory
+            return:
+              - type: boolean
+          - name: focusLootingPanel
+            return:
+              - type: boolean
+          - name: eat
+            return:
+              - type: boolean
+          - name: fillBottle
+            return:
+              - type: boolean
+          - name: seeWeapon
+            return:
+              - type: boolean
+          - name: lootWeapon
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+        staticMethods:
+          - name: spawnPan
+            return:
+              - type: unknown
+      FightStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"FightStep"'
+          windowX:
+            defaultValue: "162"
+          windowY:
+            defaultValue: "154"
+          window:
+            nullable: true
+          climbThrough:
+            defaultValue: "false"
+          zombieMomSpawnX:
+            defaultValue: "165"
+          zombieMomSpawnY:
+            defaultValue: "154"
+          momzombie:
+            nullable: true
+          zombieSawYou:
+            defaultValue: "false"
+          highlightFloor:
+            nullable: true
+          floor:
+            nullable: true
+          wasOpen:
+            defaultValue: "true"
+          playerX:
+            nullable: true
+          playerY:
+            nullable: true
+          momDead:
+            type: boolean
+            nullable: true
+          stopHighlight:
+            type: boolean
+            nullable: true
+          pinInv:
+            type: boolean
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+          floor1SQ:
+            nullable: true
+          floor2SQ:
+            nullable: true
+          markerDone:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: WalkToWindow
+            return:
+              - type: boolean
+          - name: spawnMom
+          - name: OpenWindow
+            return:
+              - type: boolean
+          - name: ClimbThroughWindow
+            return:
+              - type: boolean
+          - name: IsAiming
+            return:
+              - type: unknown
+          - name: OnMomDead
+            parameters:
+              - name: zed
+          - name: HitZombie
+            return:
+              - type: boolean
+          - name: KillZombie
+            return:
+              - type: boolean
+          - name: LootKnife
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+      SneakStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SneakStep"'
+          zombieDadSpawnX:
+            defaultValue: "166"
+          zombieDadSpawnY:
+            defaultValue: "147"
+          dadzombie:
+            nullable: true
+          isDadDead:
+            type: boolean
+            nullable: true
+          sqGate:
+            nullable: true
+          wasSneaking:
+            type: boolean
+            nullable: true
+          pinInv:
+            type: boolean
+            nullable: true
+          bag:
+            nullable: true
+          shotgun:
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: spawnDad
+          - name: OnDadDead
+          - name: GoThroughDoor
+            return:
+              - type: boolean
+          - name: SneakingGate
+            return:
+              - type: boolean
+          - name: OpenGate
+            return:
+              - type: unknown
+          - name: DadDead
+            return:
+              - type: boolean
+          - name: EquippedBag
+            return:
+              - type: boolean
+                nullable: true
+          - name: CheckBag
+            return:
+              - type: boolean
+          - name: EquipShotgun
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+        staticMethods:
+          - name: setZoom
+            parameters:
+              - name: depth
+                type: number
+          - name: Sneak
+            return:
+              - type: boolean
+          - name: OnSwingAtDad
+            parameters:
+              - name: owner
+              - name: weapon
+              - name: zed
+              - name: dmg
+          - name: spawnShotgun
+            return:
+              - type: unknown
+      BandageStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"BandageStep"'
+          brotherX:
+            defaultValue: "182"
+          brotherY:
+            defaultValue: "147"
+          window:
+            nullable: true
+          fences:
+            type: table
+            nullable: true
+          runned:
+            type: boolean
+            nullable: true
+          vaulted:
+            type: boolean
+            nullable: true
+          vaultedWrong:
+            type: boolean
+            nullable: true
+          vaultedWrongZoom:
+            type: boolean
+            nullable: true
+          vaultedWindow:
+            type: boolean
+            nullable: true
+          extTimer:
+            type: number
+            nullable: true
+          oneDead:
+            type: boolean
+            nullable: true
+          isBrothersDead:
+            type: boolean
+            nullable: true
+          brother1:
+            nullable: true
+          brother2:
+            nullable: true
+          sqDoor:
+            nullable: true
+          sqWindow:
+            nullable: true
+          containers:
+            type: table
+            nullable: true
+          spawnedItems:
+            type: boolean
+            nullable: true
+          blink:
+            type: boolean
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: OnBrothersDead
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+        staticMethods:
+          - name: Vault
+            return:
+              - type: boolean
+          - name: ThroughWindow
+            return:
+              - type: boolean
+          - name: CheckWindow
+            return:
+              - type: boolean
+          - name: OpenCurtain
+            return:
+              - type: unknown
+          - name: HealthOpen
+            return:
+              - type: boolean
+          - name: spawnBrothers
+          - name: BandageYourself
+            return:
+              - type: boolean
+          - name: ThroughDoor
+            return:
+              - type: boolean
+      ShotgunStep:
+        extends: TutorialStep
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ShotgunStep"'
+          tickBeforeHordeSpawn:
+            defaultValue: "0"
+          hassprintedTimer:
+            defaultValue: "0"
+          soundTimer:
+            defaultValue: "0"
+          lockedX:
+            nullable: true
+          lockedY:
+            nullable: true
+          squares:
+            type: table
+            nullable: true
+          outhouseSQ:
+            type: table
+            nullable: true
+          timeOfDeath:
+            nullable: true
+          soundDone:
+            type: boolean
+            nullable: true
+          vaulted:
+            type: boolean
+            nullable: true
+          forcedShoutBinding:
+            type: boolean
+            nullable: true
+          sneaked:
+            type: boolean
+            nullable: true
+          brotherWakeupTimer:
+            type: number
+            nullable: true
+          finished:
+            type: boolean
+            nullable: true
+          forceSpawnHorde:
+            type: boolean
+            nullable: true
+          spawnedHorde:
+            type: boolean
+            nullable: true
+        methods:
+          - name: begin
+          - name: Aiming
+            return:
+              - type: unknown
+          - name: Shout
+            return:
+              - type: boolean
+          - name: isComplete
+            return:
+              - type: boolean
+          - name: finish
+          - name: isPlayedDead
+            return:
+              - type: boolean
+          - name: isPlayedDeadJoypad
+            return:
+              - type: boolean
+        staticMethods:
+          - name: TheEnd
+          - name: Outhouse
+            return:
+              - type: boolean
+          - name: BackOverFence
+            return:
+              - type: boolean
+          - name: ClimbedFence
+            return:
+              - type: boolean
+          - name: Sprinted
+            return:
+              - type: boolean
+          - name: OnSquare
+            return:
+              - type: boolean
+          - name: BrothersDead
+            return:
+              - type: boolean
+          - name: SurvivalGuideOpen
+            return:
+              - type: boolean

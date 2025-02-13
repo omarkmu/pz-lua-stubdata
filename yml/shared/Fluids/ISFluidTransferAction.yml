@@ -1,0 +1,51 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidTransferAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: sourceContainer
+                type: ISFluidContainer
+                nullable: true
+              - name: sourceFluidObject
+                nullable: true
+              - name: targetContainer
+                type: ISFluidContainer
+                nullable: true
+              - name: targetFluidObject
+                nullable: true
+              - name: amount
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidTransferAction"'
+        fields:
+          sound: {}
+          sourceFluidObject:
+            nullable: true
+          targetFluidObject:
+            nullable: true
+          source:
+            type: ISFluidContainer
+            nullable: true
+          target:
+            type: unknown
+            nullable: true
+          sourceOwner:
+            nullable: true
+          targetOwner:
+            nullable: true
+          amount: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: complete
+            return:
+              - type: boolean
+          - name: perform

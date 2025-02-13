@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      farming_vegetableconf:
+        staticFields:
+          props.Barley: {}
+          props.BellPepper: {}
+          props.Broccoli: {}
+          props.Cabbages: {}
+          props.Carrots: {}
+          props.Cauliflower: {}
+          props.Corn: {}
+          props.Cucumber: {}
+          props.Flax: {}
+          props.Garlic: {}
+          props.Greenpeas: {}
+          props.Hemp: {}
+          props.Hops: {}
+          props.Kale: {}
+          props.Lettuce: {}
+          props.Onion: {}
+          props.Potatoes: {}
+          props.Pumpkin: {}
+          props.Radishes: {}
+          props.Rye: {}
+          props.Soybeans: {}
+          props.Spinach: {}
+          props.Strawberryplant: {}
+          props.SugarBeets: {}
+          props.Sunflower: {}
+          props.SweetPotato: {}
+          props.Tobacco: {}
+          props.Tomato: {}
+          props.Turnip: {}
+          props.Watermelon: {}
+          props.Wheat: {}
+          props.Zucchini: {}

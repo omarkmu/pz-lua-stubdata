@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMilkAnimal:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: animal
+              - name: bucket
+              - name: right
+                type: boolean
+              - name: all
+        staticFields:
+          Type:
+            defaultValue: '"ISMilkAnimal"'
+        fields:
+          bucket: {}
+          timer:
+            type: number
+          lastTimer:
+            type: number
+          sound: {}
+          animal: {}
+          all: {}
+          timePerLiter:
+            type: number
+          milkAnim:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: stress
+            return:
+              - type: boolean
+          - name: milk
+          - name: update
+          - name: start
+          - name: forceStop
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

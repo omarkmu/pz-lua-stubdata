@@ -1,0 +1,108 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISScoreboard:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISScoreboard"'
+          buttonsList: {}
+          isAdmin:
+            nullable: true
+          instance:
+            type: ISScoreboard
+            nullable: true
+        fields:
+          maxNameWid:
+            type: number
+          listboxYScroll: {}
+          itemheight: {}
+          listbox:
+            type: ISScrollingListBox
+          closeButton:
+            type: ISButton
+          refreshButton:
+            type: ISButton
+          kickButton:
+            type: ISButton
+          banButton:
+            type: ISButton
+          banIpButton:
+            type: ISButton
+          godmodButton:
+            type: ISButton
+          invisibleButton:
+            type: ISButton
+          teleportButton:
+            type: ISButton
+          teleportToYouButton:
+            type: ISButton
+          muteButton:
+            type: ISButton
+          voipmuteButton:
+            type: ISButton
+          buttonPos:
+            type: table
+          playersConnected:
+            type: number
+          selectedPlayer:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: fillList
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: doAdminButtons
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onContext
+            parameters:
+              - name: button
+                type: ISButton
+          - name: drawMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: create
+        staticMethods:
+          - name: onScoreboardUpdate
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs
+          - name: recreate

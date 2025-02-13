@@ -1,0 +1,74 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleBloodUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: playerObj
+                type: IsoPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleBloodUI"'
+        fields:
+          scriptName:
+            type: ISLabel
+          sliderBlood:
+            type: table
+          tickBoxAll:
+            type: ISTickBox
+          vehicle:
+            nullable: true
+          script:
+            nullable: true
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: addLabel
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+              - name: _bLeft
+                type: boolean
+            return:
+              - type: number
+              - type: ISLabel
+          - name: addSlider
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _func
+                type: function
+            return:
+              - type: number
+              - type: ISSliderPanel
+          - name: callbackBlood
+            parameters:
+              - name: value
+              - name: slider
+          - name: createChildren
+          - name: clearVehicle
+          - name: prerender
+          - name: close
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+    functions:
+      - name: debugVehicleBloodUI
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+          - name: vehicle

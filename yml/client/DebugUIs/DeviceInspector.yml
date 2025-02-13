@@ -1,0 +1,77 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DeviceInspector:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"DeviceInspector"'
+          instance:
+            type: DeviceInspector
+            nullable: true
+        fields:
+          richtext:
+            type: ISRichTextPanel
+            nullable: true
+          currentTile:
+            nullable: true
+          tmpTxt:
+            type: string
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: close
+          - name: createChildren
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: clear
+          - name: readObject
+            parameters:
+              - name: _object
+          - name: addTitle
+            parameters:
+              - name: _title
+                type: string
+          - name: addLine
+            parameters:
+              - name: _prefix
+              - name: _line
+          - name: addLineEnd
+        staticMethods:
+          - name: onMouseButtonUp
+            parameters:
+              - name: _object
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: DeviceInspector
+                nullable: true

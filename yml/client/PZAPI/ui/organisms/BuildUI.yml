@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.BuildUI:
+        extends: UI.Node
+        local: true
+        staticFields:
+          x:
+            defaultValue: "100"
+          y:
+            defaultValue: "100"
+          width:
+            defaultValue: "464"
+          height:
+            defaultValue: "482"
+        fields:
+          super:
+            type: UI.Node
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.BuildUI
+        methods:
+          - name: init
+          - name: getRecipes
+            return:
+              - type: unknown
+      PZAPI:
+        staticFields:
+          UI.BuildUI:
+            type: UI.BuildUI

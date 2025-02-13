@@ -1,0 +1,91 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugChunkStateUI_Tool:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: ui
+        staticFields:
+          Type:
+            defaultValue: '"DebugChunkStateUI_Tool"'
+        fields:
+          ui: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+      DebugChunkStateUI_DragCameraTool:
+        extends: DebugChunkStateUI_Tool
+        constructors:
+          - parameters:
+              - name: ui
+                type: DebugChunkStateUI
+        staticFields:
+          Type:
+            defaultValue: '"DebugChunkStateUI_DragCameraTool"'
+        fields:
+          mouseDown:
+            type: boolean
+          startDragX: {}
+          startDragY: {}
+          startScreenX:
+            type: number
+          startScreenY:
+            type: number
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number

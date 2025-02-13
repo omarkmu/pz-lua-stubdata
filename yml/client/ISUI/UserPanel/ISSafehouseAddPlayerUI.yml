@@ -1,0 +1,59 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSafehouseAddPlayerUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: safehouse
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISSafehouseAddPlayerUI"'
+          messages: {}
+          instance:
+            type: ISSafehouseAddPlayerUI
+            nullable: true
+        fields:
+          playerList:
+            type: ISScrollingListBox
+          no:
+            type: ISButton
+          addPlayer:
+            type: ISButton
+          player: {}
+          safehouse: {}
+          scoreboard:
+            nullable: true
+          isOwner: {}
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: OnScoreboardUpdate
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs
+          - name: OnMiniScoreboardUpdate

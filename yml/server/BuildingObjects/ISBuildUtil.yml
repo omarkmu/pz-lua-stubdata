@@ -1,0 +1,142 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      buildUtil:
+        staticFields:
+          cheat:
+            defaultValue: false or getDebug()
+        staticMethods:
+          - name: canBePlace
+            parameters:
+              - name: ISItem
+                type: ISWoodenDoorFrame
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getWoodHealth
+            parameters:
+              - name: ISItem
+                type: table
+            return:
+              - type: number
+          - name: checkCorner
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: thumpable
+                type: IsoThumpable
+              - name: item
+          - name: addCorner
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: thumpable
+                type: IsoThumpable
+              - name: item
+          - name: addWoodXp
+            parameters:
+              - name: ISItem
+                type: RainCollectorBarrel
+          - name: predicateMaterial
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: useDrainable
+            parameters:
+              - name: item
+              - name: uses
+                type: number
+                nullable: true
+            return:
+              - type: unknown
+          - name: consumeMaterial
+            parameters:
+              - name: ISItem
+                type: table
+            return:
+              - type: table
+          - name: openNailsBox
+            parameters:
+              - name: ISItem
+                type: table
+            return:
+              - type: table
+                nullable: true
+          - name: removeFromGround
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: getMaterialOnGround
+            parameters:
+              - name: squareToCheck
+            return:
+              - type: table
+          - name: getMaterialOnGroundCounts
+            parameters:
+              - name: itemMap
+                type: table
+            return:
+              - type: table
+          - name: getMaterialOnGroundUses
+            parameters:
+              - name: itemMap
+            return:
+              - type: table
+          - name: checkMaterialOnGround
+            parameters:
+              - name: squareToCheck
+            return:
+              - type: table
+          - name: setInfo
+            parameters:
+              - name: javaObject
+              - name: ISItem
+                type: table
+          - name: stairIsBlockingPlacement
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _doAdjacent
+                type: boolean
+              - name: _north
+            return:
+              - type: boolean
+          - name: getStairObjects
+            parameters:
+              - name: object
+              - name: skipFloor
+            return:
+              - type: table
+          - name: getDoubleDoorObjects
+            parameters:
+              - name: object
+            return:
+              - type: table
+          - name: getGarageDoorObjects
+            parameters:
+              - name: object
+            return:
+              - type: table
+          - name: getGraveObjects
+            parameters:
+              - name: object
+            return:
+              - type: table
+          - name: setHaveConstruction
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _hasConstruction
+                type: boolean

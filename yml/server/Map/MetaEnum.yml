@@ -1,0 +1,18 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MetaObjectEnum:
+        staticFields:
+          DoorW:
+            defaultValue: "1"
+          DoorE:
+            defaultValue: "2"
+          DoorN:
+            defaultValue: "3"
+          DoorS:
+            defaultValue: "4"
+          Chair:
+            defaultValue: "5"
+          Bed:
+            defaultValue: "6"

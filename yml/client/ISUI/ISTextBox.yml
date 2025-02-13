@@ -1,0 +1,209 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTextBox:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+                type: string
+              - name: defaultEntryText
+                type: string
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+                type: function
+              - name: player
+                nullable: true
+              - name: param1
+                type: unknown
+                nullable: true
+              - name: param2
+                type: unknown
+                nullable: true
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISTextBox"'
+        fields:
+          fontHgt: {}
+          entry:
+            type: ISTextEntryBox
+          colorBtn:
+            type: ISButton
+          colorPicker:
+            type: ISColorPicker
+          currentColor: {}
+          yes:
+            type: ISButton
+          no:
+            type: ISButton
+          multipleLine:
+            type: boolean
+          numLines:
+            type: number
+          maxLines:
+            type: number
+          validateTarget:
+            type: ModListPresets | SandboxOptionsScreen
+          validateFunc: {}
+          validateArgs:
+            type: table
+          validateTooltipText: {}
+          showError: {}
+          errorMsg: {}
+          ISButtonA:
+            nullable: true
+          ISButtonB:
+            nullable: true
+          name:
+            nullable: true
+          text:
+            type: string
+          target:
+            type: unknown
+            nullable: true
+          onclick:
+            type: function
+          player:
+            nullable: true
+          param1:
+            type: unknown
+            nullable: true
+          param2:
+            type: unknown
+            nullable: true
+          param3:
+            type: unknown
+          param4:
+            type: unknown
+          defaultEntryText:
+            type: string
+          titlebarbkg:
+            type: Texture
+        methods:
+          - name: initialise
+          - name: onColorPicker
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onPickedColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: enableColorPicker
+          - name: setOnlyNumbers
+            parameters:
+              - name: onlyNumbers
+                type: boolean
+          - name: setMultipleLine
+            parameters:
+              - name: multiple
+                type: boolean
+          - name: setNumberOfLines
+            parameters:
+              - name: numLines
+                type: number
+          - name: setMaxLines
+            parameters:
+              - name: max
+                type: number
+          - name: getMaxLines
+            return:
+              - type: number
+          - name: setValidateFunction
+            parameters:
+              - name: target
+                type: unknown
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+          - name: setValidateTooltipText
+            parameters:
+              - name: text
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: titleBarHeight
+            return:
+              - type: number
+          - name: prerender
+          - name: showErrorMessage
+            parameters:
+              - name: show
+              - name: errorMsg
+          - name: updateButtons
+          - name: render
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: close
+      ISTextEntryBox:
+        fields:
+          font: {}
+        methods:
+          - name: isMultipleLine
+            return:
+              - type: unknown

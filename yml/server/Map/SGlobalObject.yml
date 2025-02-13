@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SGlobalObject:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"SGlobalObject"'
+        fields:
+          luaSystem: {}
+          globalObject: {}
+          x: {}
+          y: {}
+          z: {}
+        methods:
+          - name: noise
+            parameters:
+              - name: message
+          - name: initNew
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: getIsoObject
+            return:
+              - type: unknown
+          - name: getSquare
+            return:
+              - type: unknown
+          - name: updateOnClient
+          - name: removeIsoObject
+          - name: aboutToRemoveFromSystem
+          - name: OnIsoObjectChangedItself
+            parameters:
+              - name: isoObject
+          - name: OnModDataChangeItself
+            parameters:
+              - name: isoObject

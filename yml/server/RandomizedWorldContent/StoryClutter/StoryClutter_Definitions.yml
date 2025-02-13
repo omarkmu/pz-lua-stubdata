@@ -1,0 +1,55 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StoryClutter:
+        staticFields:
+          BarnClutter: {}
+          BathroomSinkClutter: {}
+          BBQClutter: {}
+          BeachPartyClutter: {}
+          BedClutter: {}
+          CafeClutter: {}
+          CarpentryToolClutter: {}
+          DeadEndClutter: {}
+          DormClutter: {}
+          FarmStorageClutter: {}
+          FootballNightDrinks: {}
+          FootballNightSnacks: {}
+          GarageStorageClutter: {}
+          GigamartClutter: {}
+          GroceryClutter: {}
+          HairSalonClutter: {}
+          HallClutter: {}
+          HenDoDrinks: {}
+          HenDoSnacks: {}
+          HoedownClutter: {}
+          HousePartyClutter: {}
+          JudgeClutter: {}
+          KidClutter: {}
+          KitchenCounterClutter: {}
+          KitchenSinkClutter: {}
+          KitchenStoveClutter: {}
+          LaundryRoomClutter: {}
+          LivingroomClutter: {}
+          MedicalClutter: {}
+          MurderSceneClutter: {}
+          NastyMattressClutter: {}
+          OldShelterClutter: {}
+          OfficeCarDealerClutter: {}
+          OfficePaperworkClutter: {}
+          OfficePenClutter: {}
+          OfficeOtherClutter: {}
+          OfficeTreatClutter: {}
+          OvenFoodClutter: {}
+          PillowClutter: {}
+          PokerNightClutter: {}
+          RichJerkClutter: {}
+          SadCampsiteClutter: {}
+          SidetableClutter: {}
+          SurvivalistCampsiteClutter: {}
+          TwiggyClutter: {}
+          UtilityToolClutter: {}
+          VanCampClutter: {}
+          WatchClutter: {}
+          WoodcraftClutter: {}

@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugErrorsWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"DebugErrorsWindow"'
+        fields:
+          textBox:
+            type: ISTextEntryBox
+          errorCount:
+            type: number
+          title:
+            type: string
+        methods:
+          - name: createChildren
+          - name: refresh
+          - name: prerender

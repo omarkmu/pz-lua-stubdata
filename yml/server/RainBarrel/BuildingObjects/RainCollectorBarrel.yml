@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RainCollectorBarrel:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: player
+                type: number
+              - name: sprite
+                type: string
+              - name: waterMax
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RainCollectorBarrel"'
+          waterScale:
+            defaultValue: "4"
+          smallWaterMax:
+            defaultValue: 40 * RainCollectorBarrel.waterScale
+          largeWaterMax:
+            defaultValue: 100 * RainCollectorBarrel.waterScale
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          name:
+            type: string
+          waterMax:
+            type: number
+          player:
+            type: number
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+                type: boolean
+              - name: sprite
+                type: string
+          - name: getHealth
+            return:
+              - type: number
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

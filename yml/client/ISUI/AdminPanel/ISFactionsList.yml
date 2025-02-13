@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFactionsList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISFactionsList"'
+          messages: {}
+          instance:
+            type: ISFactionsList
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          viewBtn:
+            type: ISButton
+          player: {}
+          selectedFaction:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton

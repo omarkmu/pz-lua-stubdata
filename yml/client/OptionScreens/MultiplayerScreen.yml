@@ -1,0 +1,150 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MultiplayerScreen:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"MultiplayerScreen"'
+        fields:
+          selectedServer:
+            nullable: true
+          authPanel:
+            type: ISPanel
+          serverLabel:
+            type: ISLabel
+          serverPanel:
+            type: ISButton
+          serverName:
+            type: ISLabel
+          serverStatus:
+            type: ISLabel
+          usernameLabel:
+            type: ISLabel
+          usernameEntry:
+            type: ISTextEntryBox
+          authType:
+            type: ISComboBox
+          passwordLabel:
+            type: ISLabel
+          passwordEntry:
+            type: ISTextEntryBox
+          rememberPasswordTickBox:
+            type: ISTickBox
+          playButton:
+            type: ISButton
+          registerButton:
+            type: ISButton
+          backButton:
+            type: ISButton
+          choiceBackgroundNext:
+            type: ISButton
+          choiceBackgroundPrevious:
+            type: ISButton
+          listbox:
+            type: ISScrollingListBox
+          registerNewPlayer:
+            type: boolean
+          passwordWasFocused:
+            type: boolean
+          loginBackground: {}
+          serverIconTexture:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: create
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: checkFields
+            return:
+              - type: boolean
+                nullable: true
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getServer
+            return:
+              - type: unknown
+          - name: saveServer
+            parameters:
+              - name: server
+          - name: refreshList
+          - name: requestServerList
+          - name: analyzeServerData
+            parameters:
+              - name: server
+          - name: selectServerData
+            parameters:
+              - name: server
+          - name: onComboAuthType
+          - name: addServerToList
+            parameters:
+              - name: server
+          - name: fillFields
+            parameters:
+              - name: item
+          - name: formRefresh
+            parameters:
+              - name: authType
+          - name: setServerDescription
+            parameters:
+              - name: item
+          - name: setServerMods
+            parameters:
+              - name: item
+          - name: drawMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus_RightPanel
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus_RightPanel
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onClickServer
+            parameters:
+              - name: item
+        staticMethods:
+          - name: serverIconRender
+            parameters:
+              - name: self
+          - name: OnSteamServerResponded
+            parameters:
+              - name: serverIndex
+          - name: OnServerCustomizationDataReceived

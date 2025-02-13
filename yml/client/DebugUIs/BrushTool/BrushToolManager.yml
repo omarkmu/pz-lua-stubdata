@@ -1,0 +1,46 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      BrushToolManager:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"BrushToolManager"'
+          cheat:
+            defaultValue: "false"
+          instance:
+            type: BrushToolManager
+            nullable: true
+        fields:
+          chooseTile:
+            type: ISButton
+          controlFire:
+            type: ISButton
+          help:
+            type: ISButton
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: createChildren
+          - name: onClick
+            parameters:
+              - name: button
+          - name: close
+        staticMethods:
+          - name: openPanel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer

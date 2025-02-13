@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildRecipePanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: logic
+              - name: recipeData
+              - name: craftBench
+              - name: isoObject
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildRecipePanel"'
+        fields:
+          rootTable:
+            nullable: true
+          overlayPanel:
+            type: ISPanel
+          titleWidget:
+            nullable: true
+          inputs:
+            nullable: true
+          outputs:
+            nullable: true
+          craftControl:
+            nullable: true
+          player: {}
+          logic: {}
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createDynamicChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: setOverlayVisible
+            parameters:
+              - name: _b
+          - name: onRecipeChanged
+          - name: getRecipe
+            return:
+              - type: unknown
+          - name: onRebuildItemNodes
+            parameters:
+              - name: _inputItems

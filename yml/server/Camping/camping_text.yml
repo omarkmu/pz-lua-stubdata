@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      campingText:
+        staticFields:
+          placeCampfire:
+            defaultValue: getText("ContextMenu_Build_a_fire")
+          addPetrol:
+            defaultValue: getText("ContextMenu_Add_petrol")
+          lightCampfire:
+            defaultValue: getText("ContextMenu_Light_fire")
+          addTent:
+            defaultValue: getText("ContextMenu_Put_up_tent")
+          removeTent:
+            defaultValue: getText("ContextMenu_Take_down_tent")
+          removeCampfire:
+            defaultValue: getText("ContextMenu_Remove_fire")
+          putOutCampfire:
+            defaultValue: getText("ContextMenu_Put_out_fire")
+          sleepInTent:
+            defaultValue: getText("ContextMenu_Sleep_in_tent")
+          lightFromKindle:
+            defaultValue: getText("ContextMenu_Light_fire_with_kindling")
+          addFuel:
+            defaultValue: getText("ContextMenu_DestroyForFuel")

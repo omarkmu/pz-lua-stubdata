@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.Window:
+        extends: UI.Node
+        local: true
+        fields:
+          super:
+            type: UI.Node
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.Window
+        methods:
+          - name: init
+          - name: renderUpdate
+          - name: onMouseButtonDownOutside
+      PZAPI:
+        staticFields:
+          UI.Window:
+            type: UI.Window

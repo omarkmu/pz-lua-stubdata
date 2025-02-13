@@ -1,0 +1,125 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRichTextLayout:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISRichTextLayout"'
+          drawMargins:
+            defaultValue: "false"
+        fields:
+          font: {}
+          rgbCurrent: {}
+          imageCount:
+            type: number
+          indent:
+            type: number
+            nullable: true
+          textDirty:
+            type: boolean
+          fonts:
+            type: table
+          images:
+            type: table
+          imageX:
+            type: table
+          imageY:
+            type: table
+          rgb:
+            type: table
+          orient:
+            type: table
+          imageW:
+            type: table
+          imageH:
+            type: table
+          lineY:
+            type: table
+          lineX:
+            type: table
+          lines:
+            type: table
+          currentLine:
+            type: number
+          height:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          text:
+            type: string
+          marginLeft:
+            type: number
+          marginTop:
+            type: number
+          marginRight:
+            type: number
+          marginBottom:
+            type: number
+          width:
+            type: number
+          clip:
+            type: boolean
+          maxLines:
+            type: number
+          defaultFont: {}
+        methods:
+          - name: initialise
+          - name: processCommand
+            parameters:
+              - name: command
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+              - name: lineImageHeight
+                type: number
+              - name: lineHeight
+                type: number
+            return:
+              - type: number
+                nullable: true
+              - type: number
+              - type: number
+          - name: paginate
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: ui
+                type: ISAdminPowerUI | ISVehicleSeatUI
+          - name: setText
+            parameters:
+              - name: text
+                type: string
+          - name: setMargins
+            parameters:
+              - name: left
+                type: number
+              - name: top
+                type: number
+              - name: right
+                type: number
+              - name: bottom
+                type: number
+          - name: getWidth
+            return:
+              - type: number
+          - name: setWidth
+            parameters:
+              - name: width
+          - name: getHeight
+            return:
+              - type: number

@@ -1,0 +1,57 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLightSource:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+              - name: northSprite
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISLightSource"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          character: {}
+          name:
+            type: string
+          fuel:
+            type: string
+          baseItem:
+            type: string
+          radius:
+            type: number
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: getHealth
+            return:
+              - type: number
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

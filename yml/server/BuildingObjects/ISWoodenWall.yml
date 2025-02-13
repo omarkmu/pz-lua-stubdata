@@ -1,0 +1,78 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWoodenWall:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+              - name: northSprite
+              - name: corner
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISWoodenWall"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          corner:
+            nullable: true
+          name:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: checkCorner
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+          - name: addCorner
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+          - name: onTimedActionStart
+            parameters:
+              - name: action
+          - name: getHealth
+            return:
+              - type: number
+                nullable: true
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: getObjectIndex
+            return:
+              - type: number

@@ -1,0 +1,67 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftRecipeInfoBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: recipe
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftRecipeInfoBox"'
+        fields:
+          infoPairs:
+            type: table
+          recipe: {}
+          player: {}
+          displayTags:
+            type: boolean
+          margin:
+            type: number
+          doToolTip:
+            type: boolean
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createDynamicChildren
+          - name: addInfoPair
+            parameters:
+              - name: _key
+                type: integer
+              - name: _value
+              - name: _valueColor
+              - name: fullColor
+          - name: addInfo
+            parameters:
+              - name: _key
+                type: integer
+              - name: fullColor
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: setRecipe
+            parameters:
+              - name: _recipe

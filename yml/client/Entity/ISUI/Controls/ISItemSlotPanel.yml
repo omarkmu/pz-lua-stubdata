@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISItemSlotPanel:
+        extends: ISGroupBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: _styleLabel
+              - name: _styleCell
+        staticFields:
+          Type:
+            defaultValue: '"ISItemSlotPanel"'
+        fields:
+          tableLayout:
+            nullable: true
+          player: {}
+          entity: {}
+          styleCell: {}
+          drawProgress:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addResources
+            parameters:
+              - name: _resources
+              - name: _styleItemSlot
+          - name: addResource
+            parameters:
+              - name: _resourceItem
+              - name: _styleItemSlot
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onItemSlotRemoveSingleItem
+            parameters:
+              - name: _itemSlot
+              - name: _item
+          - name: onItemSlotRemoveItems
+            parameters:
+              - name: _itemSlot
+              - name: _isRightClick
+                type: boolean
+              - name: _isShift
+                type: boolean
+          - name: onItemSlotAddItems
+            parameters:
+              - name: _itemSlot
+              - name: _itemList

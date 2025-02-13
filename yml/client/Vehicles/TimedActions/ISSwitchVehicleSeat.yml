@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSwitchVehicleSeat:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: seatTo
+                type: number
+                nullable: true
+              - name: seatFrom
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISSwitchVehicleSeat"'
+        fields:
+          seatTo:
+            type: number
+            nullable: true
+          seatFrom:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

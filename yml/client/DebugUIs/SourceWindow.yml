@@ -1,0 +1,54 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SourceWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: filename
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"SourceWindow"'
+          map: {}
+        fields:
+          title: {}
+          sourceView:
+            type: ISScrollingListBox
+          reloadBtn:
+            type: ISButton
+          filename:
+            type: string
+          keepOnScreen:
+            type: boolean
+        methods:
+          - name: onMouseDoubleClickBreakpointToggle
+            parameters:
+              - name: item
+          - name: initialise
+          - name: onSourceMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+          - name: reloadFile
+            return:
+              - type: boolean
+          - name: fill
+          - name: createChildren
+          - name: renderSrc
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+            return:
+              - type: number

@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWashYourself:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: sink
+              - name: soaps
+        staticFields:
+          Type:
+            defaultValue: '"ISWashYourself"'
+        fields:
+          sound: {}
+          sink: {}
+          soaps: {}
+          useSoap:
+            type: boolean
+          maxTime:
+            type: number
+            nullable: true
+          forceProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stopSound
+          - name: stop
+          - name: washPart
+            parameters:
+              - name: visual
+              - name: part
+            return:
+              - type: boolean
+          - name: removeAllMakeup
+          - name: removeMakeup
+            parameters:
+              - name: item
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true
+        staticMethods:
+          - name: GetRequiredSoap
+            parameters:
+              - name: character
+            return:
+              - type: number
+          - name: GetRequiredWater
+            parameters:
+              - name: character
+            return:
+              - type: number

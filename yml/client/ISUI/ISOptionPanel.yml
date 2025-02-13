@@ -1,0 +1,56 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOptionPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISOptionPanel"'
+        fields:
+          addY:
+            type: number
+          options:
+            type: table
+          selected:
+            type: number
+          hover:
+            type: number
+          expanded:
+            type: boolean
+          marginLeft:
+            type: number
+          marginRight:
+            type: number
+          marginTop:
+            type: number
+          marginBottom:
+            type: number
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: addCombo
+            parameters:
+              - name: name
+                type: string
+              - name: options
+              - name: selected
+              - name: target
+                type: unknown
+              - name: onchange
+    functions:
+      - name: testResolutionChange
+        parameters:
+          - name: target
+            type: unknown
+          - name: box

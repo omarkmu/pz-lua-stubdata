@@ -1,0 +1,99 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMChannelTV:
+        extends: RWMPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWMChannelTV"'
+        fields:
+          comboBox:
+            type: ISComboBox
+          tuneInButton:
+            type: ISButton
+          selectedPreset: {}
+          presets:
+            nullable: true
+          lastModeExpanded:
+            type: boolean
+          parent:
+            nullable: true
+          focusElement:
+            type: ISComboBox
+            nullable: true
+          fontheight:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: isValidPresets
+            return:
+              - type: boolean
+                nullable: true
+          - name: comboChange
+          - name: doTuneInButton
+          - name: addComboOption
+            parameters:
+              - name: _freq
+              - name: _name
+                type: string
+          - name: readPresets
+            parameters:
+              - name: _selected
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: boolean
+          - name: prerender
+          - name: update
+          - name: render
+          - name: setParent
+            parameters:
+              - name: _parent
+          - name: getParent
+            return:
+              - type: unknown
+                nullable: true
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+            return:
+              - type: boolean
+              - type: boolean
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true

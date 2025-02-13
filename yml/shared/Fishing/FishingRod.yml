@@ -1,0 +1,105 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Fishing:
+        staticFields:
+          FishingRod:
+            type: FishingRod
+      FishingRod:
+        local: true
+        constructors:
+          - parameters:
+              - name: player
+        fields:
+          player: {}
+          skillLevel: {}
+          strengthSkill: {}
+          isFirstFishing:
+            type: boolean
+          rodItem:
+            nullable: true
+          rodItemType: {}
+          rodItemTypeBend:
+            type: string
+          bobber:
+            type: Bobber
+            nullable: true
+          spawnBobberDelayTimer:
+            type: number
+          lineLen:
+            type: number
+            nullable: true
+          rodCoeff:
+            type: number
+          highTensionTimer:
+            type: number
+          lowTensionTimer:
+            type: number
+          tensionLimit:
+            type: number
+          currentLineStatus:
+            type: string
+            nullable: true
+          lineMoveCoeff:
+            type: number
+          mpAimX:
+            type: number
+          mpAimY:
+            type: number
+          spawnBobberX:
+            type: number
+          spawnBobberY:
+            type: number
+        methods:
+          - name: cast
+          - name: getSpawnBobberCoords
+            return:
+              - type: number
+              - type: number
+          - name: update
+            return:
+              - type: boolean
+          - name: updateLine
+            return:
+              - type: boolean
+          - name: updateLineMoveCoeff
+          - name: isPickupBobber
+            return:
+              - type: boolean
+          - name: getTension
+            return:
+              - type: number
+                nullable: true
+          - name: isReel
+            return:
+              - type: boolean
+          - name: reel
+          - name: isReleaseLine
+            return:
+              - type: unknown
+          - name: releaseLine
+          - name: isRodMove
+            return:
+              - type: boolean
+          - name: getRodDxDy
+            return:
+              - type: number
+              - type: number
+          - name: getRodEndXY
+            return:
+              - type: number
+              - type: number
+          - name: getLineTypeCoeff
+            return:
+              - type: number
+                nullable: true
+          - name: damageLine
+          - name: brokeLine
+          - name: missFish
+          - name: consumeLure
+            parameters:
+              - name: isTrash
+                type: boolean
+          - name: resetItemModel
+          - name: destroy

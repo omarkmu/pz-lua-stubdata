@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISXuiSkinFunctions:
+        staticMethods:
+          - name: xuiRecalculateLayout
+            parameters:
+              - name: _self
+              - name: _preferredWidth
+              - name: _preferredHeight
+              - name: _force
+              - name: _anchorRight
+          - name: xuiRootElement
+            parameters:
+              - name: _self
+            return:
+              - type: unknown
+                nullable: true
+      ISXuiSkin:
+        staticFields:
+          constructors: {}
+        staticMethods:
+          - name: build
+            parameters:
+              - name: _skin
+                nullable: true
+              - name: _styleName
+                type: string
+                nullable: true
+              - name: _luaClass
+                type: table
+                nullable: true
+              - name: ...
+                type: number | string | ISTableLayout
+            return:
+              - type: unknown
+                nullable: true
+          - name: RegisterXuiSkinFunctions
+            parameters:
+              - name: _o
+                type: ISPanel
+              - name: _force
+                type: boolean
+          - name: autoApplyTableKeys
+            parameters:
+              - name: _xuiScript
+              - name: _o
+                type: table
+              - name: _autoApplyOverride

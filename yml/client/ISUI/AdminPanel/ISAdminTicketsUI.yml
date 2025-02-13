@@ -1,0 +1,74 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAdminTicketsUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISAdminTicketsUI"'
+          messages: {}
+          instance:
+            type: ISAdminTicketsUI
+            nullable: true
+        fields:
+          datas:
+            type: ISScrollingListBox
+          no:
+            type: ISButton
+          answerTicketBtn:
+            type: ISButton
+          removeBtn:
+            type: ISButton
+          refreshBtn:
+            type: ISButton
+          selectedTicket:
+            nullable: true
+          listHeaderColor:
+            type: table
+          player: {}
+          selectedFaction:
+            nullable: true
+          tickets:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: getTickets
+          - name: populateList
+          - name: update
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRemoveTicket
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onAnswerTicket
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: gotTickets
+            parameters:
+              - name: tickets

@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFixVehiclePartAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehiclePart
+              - name: fixingNum
+                type: number
+              - name: fixerNum
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISFixVehiclePartAction"'
+        fields:
+          vehiclePart: {}
+          item: {}
+          fixingNum:
+            type: number
+          fixerNum:
+            type: number
+          fixing: {}
+          fixer: {}
+          jobType:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

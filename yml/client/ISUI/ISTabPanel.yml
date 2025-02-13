@@ -1,0 +1,208 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTabPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTabPanel"'
+          tabSelected:
+            nullable: true
+          tabUnSelected:
+            nullable: true
+          xMouse:
+            defaultValue: "-1"
+          yMouse:
+            defaultValue: "-1"
+          mouseOut:
+            defaultValue: "false"
+          viewDragging:
+            nullable: true
+          viewDraggin:
+            type: table
+            nullable: true
+          fromOutside:
+            type: boolean
+            nullable: true
+        fields:
+          scrollX:
+            type: number
+            nullable: true
+          smoothScrollTargetX:
+            type: number
+            nullable: true
+          smoothScrollX:
+            type: number
+            nullable: true
+          tabTransparency:
+            type: number
+          textTransparency:
+            type: number
+          isDragging:
+            type: boolean
+          blinkTabAlpha:
+            type: number
+          blinkTabAlphaIncrease:
+            type: boolean
+          draggingTab:
+            type: number
+            nullable: true
+          viewList:
+            type: table
+          activeView:
+            type: table
+            nullable: true
+          maxLength:
+            type: number
+          equalTabWidth:
+            type: boolean
+          centerTabs:
+            type: boolean
+          tabTornOffTarget:
+            type: ISCharacterInfoWindow
+            nullable: true
+          tabTornOff:
+            nullable: true
+          blinkTabs:
+            type: table
+          tabHeight:
+            type: number
+          tabPadX:
+            type: number
+          allowDraggingTabs:
+            type: boolean
+          allowTornOffTabs:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: updateSmoothScrolling
+          - name: ensureVisible
+            parameters:
+              - name: index
+          - name: setTabsTransparency
+            parameters:
+              - name: alpha
+                type: number
+          - name: setTextTransparency
+            parameters:
+              - name: alpha
+                type: number
+          - name: prerender
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: getView
+            parameters:
+              - name: viewName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: activateView
+            parameters:
+              - name: viewName
+                type: string
+            return:
+              - type: boolean
+          - name: getActiveView
+            return:
+              - type: table
+                nullable: true
+          - name: getActiveViewIndex
+            return:
+              - type: unknown
+                nullable: true
+          - name: addView
+            parameters:
+              - name: name
+                type: string
+              - name: view
+                type: table
+          - name: removeView
+            parameters:
+              - name: view
+                type: table
+          - name: setEqualTabWidth
+            parameters:
+              - name: equal
+                type: boolean
+          - name: setCenterTabs
+            parameters:
+              - name: center
+                type: boolean
+          - name: getWidthOfAllTabs
+            return:
+              - type: number
+          - name: getTabX
+            parameters:
+              - name: tabIndex
+              - name: scrollX
+            return:
+              - type: number
+          - name: getTabIndexAtX
+            parameters:
+              - name: x
+              - name: scrollX
+            return:
+              - type: number
+          - name: getScrollButtonAtX
+            parameters:
+              - name: x
+            return:
+              - type: string
+                nullable: true
+          - name: setOnTabTornOff
+            parameters:
+              - name: target
+                type: unknown
+              - name: method
+        staticMethods:
+          - name: redoTab
+            parameters:
+              - name: self
+                type: ISTabPanel

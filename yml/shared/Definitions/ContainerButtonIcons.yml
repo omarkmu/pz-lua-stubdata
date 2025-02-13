@@ -1,0 +1,132 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ContainerButtonIcons:
+        staticFields:
+          barbecue:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          barbecuepropane:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          bin:
+            defaultValue: getTexture("media/ui/Container_Garbage.png")
+          campfire:
+            defaultValue: getTexture("media/ui/Container_Campfire.png")
+          cardboardbox:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          clothingdryer:
+            defaultValue: getTexture("media/ui/Container_ClothingDryer.png")
+          clothingwasher:
+            defaultValue: getTexture("media/ui/Container_ClothingWasher.png")
+          coffin:
+            defaultValue: getTexture("media/textures/Item_Coffin_Plain.png")
+          corn:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          composter:
+            defaultValue: getTexture("media/ui/Container_Composter.png")
+          counter:
+            defaultValue: getTexture("media/ui/Container_Counter.png")
+          crate:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          desk:
+            defaultValue: getTexture("media/ui/Container_Drawer.png")
+          dresser:
+            defaultValue: getTexture("media/ui/Container_Drawer.png")
+          dumpster:
+            defaultValue: getTexture("media/ui/Container_Garbage.png")
+          filingcabinet:
+            defaultValue: getTexture("media/ui/Container_Drawer.png")
+          fireplace:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          floor:
+            defaultValue: getTexture("media/ui/Container_Floor.png")
+          freezer:
+            defaultValue: getTexture("media/ui/Container_Freezer.png")
+          fridge:
+            defaultValue: getTexture("media/ui/Container_Fridge.png")
+          fruitbusha:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          fruitbushb:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          fruitbushc:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          fruitbushd:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          fruitbushe:
+            defaultValue: getTexture("media/ui/Container_Plant.png")
+          garage_storage:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          icecream:
+            defaultValue: getTexture("media/ui/Container_Freezer.png")
+          inventoryfemale:
+            defaultValue: getTexture("media/ui/Container_DeadPerson_FemaleZombie.png")
+          inventorymale:
+            defaultValue: getTexture("media/ui/Container_DeadPerson_MaleZombie.png")
+          logs:
+            defaultValue: getTexture("media/ui/Item_Logs.png")
+          mannequin:
+            defaultValue: getTexture("media/ui/Container_Mannequin.png")
+          medicine:
+            defaultValue: getTexture("media/ui/Container_Medicine.png")
+          metal_shelves:
+            defaultValue: getTexture("media/ui/Container_Shelf.png")
+          microwave:
+            defaultValue: getTexture("media/ui/Container_Microwave.png")
+          militarycrate:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          officedrawers:
+            defaultValue: getTexture("media/ui/Container_Drawer.png")
+          postbox:
+            defaultValue: getTexture("media/ui/Container_MailBox.png")
+          scarecrow:
+            defaultValue: getTexture("media/textures/Item_Scarecrow.png")
+          shelves:
+            defaultValue: getTexture("media/ui/Container_Shelf.png")
+          shelter:
+            defaultValue: getTexture("media/textures/Item_Tent2_Open.png")
+          sidetable:
+            defaultValue: getTexture("media/ui/Container_Drawer.png")
+          smallbox:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          smallcrate:
+            defaultValue: getTexture("media/ui/Container_Crate.png")
+          tent:
+            defaultValue: getTexture("media/textures/Item_Tent2_Open.png")
+          toolcabinet:
+            defaultValue: getTexture("media/ui/Container_ToolCabinet.png")
+          stove:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          vendingGt:
+            defaultValue: getTexture("media/ui/Container_Vendingt.png")
+          vendingpop:
+            defaultValue: getTexture("media/ui/Container_Vendingt.png")
+          vendingsnack:
+            defaultValue: getTexture("media/ui/Container_Vendingt.png")
+          wardrobe:
+            defaultValue: getTexture("media/ui/Container_Cabinet.png")
+          woodstove:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          coffeemaker:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          toaster:
+            defaultValue: getTexture("media/ui/Container_Oven.png")
+          GloveBox:
+            defaultValue: getTexture("media/ui/Container_GloveCompartment.png")
+          SeatFrontLeft:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          SeatFrontRight:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          SeatMiddleLeft:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          SeatMiddleRight:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          SeatRearLeft:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          SeatRearRight:
+            defaultValue: getTexture("media/ui/Container_Carseat.png")
+          TrailerTrunk:
+            defaultValue: getTexture("media/ui/Container_TruckBed.png")
+          TruckBed:
+            defaultValue: getTexture("media/ui/Container_TruckBed.png")
+          TruckBedOpen:
+            defaultValue: getTexture("media/ui/Container_TruckBed.png")

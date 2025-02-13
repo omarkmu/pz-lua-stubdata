@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPerkLog:
+        staticMethods:
+          - name: logPerkLevelChange
+            parameters:
+              - name: _character
+              - name: _perk
+              - name: _perkLevel
+          - name: logAllPerks
+            parameters:
+              - name: _character
+          - name: logCreatePlayer
+            parameters:
+              - name: _player
+          - name: logLogin
+            parameters:
+              - name: _character
+          - name: logDeath
+            parameters:
+              - name: _character
+          - name: init

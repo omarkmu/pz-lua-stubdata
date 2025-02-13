@@ -1,0 +1,105 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISKnob:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: tex
+              - name: valuesBg
+              - name: title
+                type: string
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISKnob"'
+          messages: {}
+        fields:
+          selected:
+            type: number
+          amplitude:
+            type: number
+          joypadFocused:
+            type: boolean
+          lastValue:
+            type: number
+          draggingX: {}
+          originalX: {}
+          dragging:
+            type: boolean
+          player: {}
+          values:
+            type: table
+          valuesBg: {}
+          title:
+            type: string
+          isKnob:
+            type: boolean
+          tex: {}
+          switchSound:
+            type: string
+        methods:
+          - name: initialise
+          - name: render
+          - name: prerender
+          - name: addValue
+            parameters:
+              - name: angle
+                type: number
+              - name: value
+                type: number
+          - name: forceClick
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: getValue
+            return:
+              - type: unknown
+          - name: setKnobPosition
+            parameters:
+              - name: value
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: playSwitchSound

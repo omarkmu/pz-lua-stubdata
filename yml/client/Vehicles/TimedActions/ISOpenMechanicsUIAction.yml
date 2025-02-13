@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOpenMechanicsUIAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicle
+              - name: usedHood
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISOpenMechanicsUIAction"'
+        fields:
+          vehicle: {}
+          usedHood:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

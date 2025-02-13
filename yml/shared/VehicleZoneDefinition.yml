@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      VehicleZoneDistribution:
+        staticFields:
+          parkingstall: {}
+          trailerpark: {}
+          bad: {}
+          medium: {}
+          good: {}
+          luxuryDealership: {}
+          sport: {}
+          junkyard: {}
+          trafficjamw: {}
+          trafficjame: {}
+          trafficjamn: {}
+          trafficjams: {}
+          police: {}
+          prison: {}
+          fire: {}
+          ranger: {}
+          mccoy: {}
+          carpenter: {}
+          postal: {}
+          spiffo: {}
+          ambulance: {}
+          radio: {}
+          fossoil: {}
+          scarlet: {}
+          massgenfac: {}
+          transit: {}
+          network3: {}
+          kyheralds: {}
+          lectromax: {}
+          knoxdisti: {}
+          advertising: {}
+          airportshuttle: {}
+          airportservice: {}
+          farm: {}
+          business: {}
+          business2:
+            defaultValue: VehicleZoneDistribution.business
+          business3:
+            defaultValue: VehicleZoneDistribution.business
+          business4:
+            defaultValue: VehicleZoneDistribution.business
+          business5:
+            defaultValue: VehicleZoneDistribution.business
+          business6:
+            defaultValue: VehicleZoneDistribution.business
+          business7:
+            defaultValue: VehicleZoneDistribution.business
+          business8:
+            defaultValue: VehicleZoneDistribution.business
+          business9:
+            defaultValue: VehicleZoneDistribution.business
+          business10:
+            defaultValue: VehicleZoneDistribution.business
+          business11:
+            defaultValue: VehicleZoneDistribution.business
+          business12:
+            defaultValue: VehicleZoneDistribution.business
+          normalburnt: {}
+          specialburnt: {}
+          trades: {}
+          delivery: {}
+          professional: {}
+          middleClass: {}
+          struggling: {}
+          evacuee: {}

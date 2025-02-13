@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSpinBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: targetFunc
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISSpinBox"'
+        fields:
+          selected:
+            type: number
+          leftButton:
+            type: ISButton
+          rightButton:
+            type: ISButton
+          tooltipUI:
+            type: ISToolTip
+          options:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          targetFunc:
+            nullable: true
+          fade: {}
+        methods:
+          - name: addOption
+            parameters:
+              - name: option
+                type: string
+          - name: createChildren
+          - name: onButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: render

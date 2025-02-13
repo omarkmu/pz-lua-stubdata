@@ -1,0 +1,75 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFirearmRadialMenu:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISFirearmRadialMenu"'
+        fields:
+          character: {}
+          playerNum:
+            type: integer
+        methods:
+          - name: center
+          - name: getWeapon
+            return:
+              - type: unknown
+                nullable: true
+          - name: fillMenu
+          - name: display
+        staticMethods:
+          - name: checkWeapon
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: getBestLBButtonAction
+            parameters:
+              - name: buttonPrompt
+                type: ISButtonPrompt
+            return:
+              - type: boolean
+          - name: getBestRBButtonAction
+            parameters:
+              - name: buttonPrompt
+                type: ISButtonPrompt
+            return:
+              - type: boolean
+                nullable: true
+          - name: onRepeatRBumper
+            parameters:
+              - name: buttonPrompt
+                type: ISButtonPrompt
+            return:
+              - type: boolean
+                nullable: true
+          - name: onJoypadButtonReleased
+            parameters:
+              - name: buttonPrompt
+                type: ISButtonPrompt
+              - name: button
+                type: ISButton
+          - name: checkKey
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRepeat
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyReleased
+            parameters:
+              - name: key
+                type: integer

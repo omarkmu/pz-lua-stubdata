@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPickUpGroundCoverItem:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: square
+                type: IsoGridSquare
+              - name: object
+        staticFields:
+          Type:
+            defaultValue: '"ISPickUpGroundCoverItem"'
+        fields:
+          spriteFrame:
+            type: number
+          square:
+            type: IsoGridSquare
+          object: {}
+          objectType:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+        staticMethods:
+          - name: grabItemTime2
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: trashItemWeight
+            return:
+              - type: number
+      GroundCoverItems:
+        staticFields:
+          '["4Stones"]':
+            defaultValue: '"Stone2"'
+          LargeStoneTwigs:
+            defaultValue: '"LargeStone"'
+          StoneTwigs:
+            defaultValue: '"Stone2"'

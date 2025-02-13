@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Professions:
+        staticFields:
+          PoliceOfficer: {}
+          ParkRanger: {}
+          ConstructionWorker: {}
+          MilitarySoldier: {}
+          MilitaryOfficer: {}
+          SecurityGuard: {}
+          FireOfficer: {}
+          Salesperson: {}
+          ITWorker: {}
+          OfficeWorker: {}
+          Unemployed: {}
+          TruckDriver: {}
+          Farmer: {}
+          Cashier: {}
+          ShopClerk: {}
+          FastFoodCook: {}
+          Cook: {}
+          Chef: {}
+          Burglar: {}
+          Drugdealer: {}
+          Nurse: {}
+          Doctor: {}
+          Waiter: {}
+          CustomerService: {}
+          Janitor: {}
+          Secretary: {}
+          Bookkeeper: {}
+          Accountant: {}
+          Teacher: {}

@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPutOutFire:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: squares
+              - name: item
+                nullable: true
+              - name: usesPerSquare
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPutOutFire"'
+        fields:
+          item:
+            nullable: true
+          squares: {}
+          usesPerSquare:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: useItem
+            return:
+              - type: boolean
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

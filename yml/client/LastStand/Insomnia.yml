@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      InsomniaChallenge:
+        staticFields:
+          zombiesSpawned:
+            defaultValue: "0"
+          deadZombie:
+            defaultValue: "0"
+          wave:
+            type: number
+            nullable: true
+          waveTime:
+            type: number
+            nullable: true
+          name:
+            defaultValue: '"Insomnia"'
+          description:
+            defaultValue: '"Zombies are blind during the day. Bloodhounds after the sun goes
+              down. Its going to be a long night."'
+          completionText:
+            defaultValue: '"Survive the night to unlock the next challenge."'
+          image:
+            defaultValue: '"media/lua/client/LastStand/InsomniaChallenge.png"'
+          gameMode:
+            defaultValue: '"Insomnia"'
+          world:
+            defaultValue: '"Muldraugh, KY"'
+          x:
+            defaultValue: (35 * 300) + 277
+          y:
+            defaultValue: (33 * 300) + 271
+          z:
+            defaultValue: "0"
+          hourOfDay:
+            defaultValue: "7"
+        staticMethods:
+          - name: Add
+          - name: PreloadInit
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: Render
+          - name: Tick
+          - name: onBackButtonWheel
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: dir
+    functions:
+      - name: removeInsomnia
+      - name: injectInsomnia

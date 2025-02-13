@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildMenu:
+        staticFields:
+          cheat:
+            defaultValue: false or getDebug()
+          woodWorkXp:
+            defaultValue: "0"
+          ghs:
+            defaultValue: '"<GHC>"'
+          bhs:
+            defaultValue: '"<BHC>"'
+        staticMethods:
+          - name: doBuildMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onDismantle
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+                type: IsoPlayer
+          - name: buildRampsMenu
+            parameters:
+              - name: subMenu
+              - name: option
+              - name: playerNum
+                type: integer
+          - name: onCreateRamp
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: which

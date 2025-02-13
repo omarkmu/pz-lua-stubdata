@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntityTabWindow:
+        extends: ISBaseEntityWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: entityConfig
+        staticFields:
+          Type:
+            defaultValue: '"ISEntityTabWindow"'
+        fields:
+          componentsPanel:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: onCraftButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: update
+          - name: render
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: refresh
+          - name: close
+        staticMethods:
+          - name: CanOpenWindowFor
+            parameters:
+              - name: _player
+              - name: _entity
+            return:
+              - type: boolean | table
+                nullable: true

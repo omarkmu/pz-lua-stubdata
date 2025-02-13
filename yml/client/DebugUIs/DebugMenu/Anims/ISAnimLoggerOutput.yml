@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimLoggerOutput:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimLoggerOutput"'
+        fields:
+          richtext:
+            type: ISRichTextPanel
+          clearText:
+            type: string
+          init:
+            type: boolean
+          monitor: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: update
+          - name: clear
+          - name: setMonitor
+            parameters:
+              - name: _mon
+          - name: scrollToBottom

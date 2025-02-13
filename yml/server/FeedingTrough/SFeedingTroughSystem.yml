@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SFeedingTroughSystem:
+        extends: SGlobalObjectSystem
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SFeedingTroughSystem"'
+        methods:
+          - name: initSystem
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+            return:
+              - type: SFeedingTroughGlobalObject
+          - name: addTrough
+            parameters:
+              - name: grid
+              - name: def
+              - name: north
+              - name: slave
+            return:
+              - type: unknown
+                nullable: true
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+            return:
+              - type: unknown
+          - name: OnClientCommand
+            parameters:
+              - name: command
+              - name: playerObj
+                type: IsoPlayer
+              - name: args

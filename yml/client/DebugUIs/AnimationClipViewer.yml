@@ -1,0 +1,475 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AnimationClipViewer:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer"'
+        fields:
+          scene:
+            type: AnimationClipViewer_Scene
+          currentObjectName:
+            type: string
+          comboAnimal:
+            type: ISComboBox
+          filter:
+            type: ISTextEntryBox
+          listBox:
+            type: AnimationClipViewer_ListBox
+          soundPanel:
+            type: AnimationClipViewer_SoundPanel
+          bottomPanel:
+            type: ISPanel
+          soundBar:
+            type: AnimationClipViewer_SoundBar
+          timeline:
+            type: AnimationClipViewer_Timeline
+          speedScale:
+            type: ISSliderPanel
+          toolBar:
+            type: ISPanel
+          buttonOptions:
+            type: ISButton
+          optionsPanel:
+            type: AnimationClipViewer_OptionsPanel
+          animalScriptByName:
+            type: table
+          animalScriptByModelScript:
+            type: table
+          currentAnimalScript: {}
+          filterText: {}
+          animate:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: createToolbar
+          - name: onSpeedScaleChanged
+            parameters:
+              - name: speed
+              - name: slider
+          - name: resetView
+          - name: setClipList
+          - name: initAnimalModelScripts
+          - name: fillAnimalCombo
+          - name: onComboAnimalModel
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: getFPS
+            return:
+              - type: number
+          - name: getDuration
+            return:
+              - type: number
+          - name: getCurrentTime
+            return:
+              - type: number
+          - name: getCurrentFrame
+            return:
+              - type: number
+          - name: getLastFrame
+            return:
+              - type: number
+          - name: onOptions
+          - name: onExit
+            parameters:
+              - name: button
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: showUI
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+              - name: arg2
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+              - name: arg2
+              - name: arg3
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+              - name: arg2
+              - name: arg3
+              - name: arg4
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+              - name: arg2
+              - name: arg3
+              - name: arg4
+              - name: arg5
+            return:
+              - type: unknown
+          - name: java9
+            parameters:
+              - name: func
+              - name: arg0
+              - name: arg1
+              - name: arg2
+              - name: arg3
+              - name: arg4
+              - name: arg5
+              - name: arg6
+              - name: arg7
+              - name: arg8
+            return:
+              - type: unknown
+      AnimationClipViewer_ListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_ListBox"'
+        fields:
+          selectedClipName: {}
+        methods:
+          - name: prerender
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: indexOf
+            parameters:
+              - name: text
+            return:
+              - type: number
+      AnimationClipViewer_SoundBar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_SoundBar"'
+        fields:
+          mouseDown:
+            type: boolean
+          dragIndex:
+            type: number
+          prevFraction:
+            type: number
+          soundList:
+            type: table
+        methods:
+          - name: render
+          - name: renderSound
+            parameters:
+              - name: index
+              - name: sound
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getSoundBounds
+            parameters:
+              - name: sound
+            return:
+              - type: number
+              - type: number
+              - type: number
+          - name: hitTest
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: playSounds
+          - name: playSound
+            parameters:
+              - name: index
+              - name: soundName
+                type: string
+          - name: stopSound
+            parameters:
+              - name: index
+      AnimationClipViewer_SoundPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_SoundPanel"'
+        fields:
+          comboHgt:
+            type: number
+          soundTickBoxes:
+            type: table
+          soundCombos:
+            type: table
+        methods:
+          - name: createChildren
+          - name: createSoundCombo
+            parameters:
+              - name: index
+              - name: y
+            return:
+              - type: ISComboBox
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+              - name: soundIndex
+          - name: fillSoundCombo
+            parameters:
+              - name: combo
+          - name: onSoundComboSelected
+            parameters:
+              - name: combo
+      AnimationClipViewer_OptionsPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_OptionsPanel"'
+        fields:
+          tickBox:
+            type: ISTickBox
+        methods:
+          - name: createChildren
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      AnimationClipViewer_Scene:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_Scene"'
+        fields:
+          zeroVector: {}
+          rotate:
+            type: boolean
+        methods:
+          - name: prerenderEditor
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      AnimationClipViewer_Timeline:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"AnimationClipViewer_Timeline"'
+        fields:
+          selectedClipName: {}
+          keyframeTimes: {}
+          dragging:
+            type: boolean
+        methods:
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+    functions:
+      - name: AnimationViewerState_InitUI

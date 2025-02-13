@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModInfoPanel.Desc:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ModInfoPanelDesc"'
+        fields:
+          richText:
+            type: ISRichTextPanel
+          tex: {}
+        methods:
+          - name: render
+          - name: createChildren
+          - name: setModInfo
+            parameters:
+              - name: modInfo
+      ModInfoPanel:
+        staticFields:
+          Desc:
+            type: ModInfoPanel.Desc

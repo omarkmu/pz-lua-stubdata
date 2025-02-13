@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEmoteRadialMenu:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISEmoteRadialMenu"'
+          defaultMenu:
+            type: table
+            nullable: true
+          variants:
+            type: table
+            nullable: true
+          icons:
+            type: table
+            nullable: true
+          menu:
+            type: table
+            nullable: true
+        fields:
+          character: {}
+          playerNum:
+            type: integer
+        methods:
+          - name: init
+          - name: display
+          - name: center
+          - name: fillMenu
+            parameters:
+              - name: submenu
+          - name: emote
+            parameters:
+              - name: emote
+          - name: configEmote
+        staticMethods:
+          - name: checkKey
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRepeat
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyReleased
+            parameters:
+              - name: key
+                type: integer

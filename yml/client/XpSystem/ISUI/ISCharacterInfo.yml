@@ -1,0 +1,119 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCharacterInfo:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerNum
+                type: integer
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterInfo"'
+          timerMultiplierAnim:
+            defaultValue: "0"
+          animOffset:
+            type: number
+            nullable: true
+          instance:
+            type: ISCharacterInfo
+            nullable: true
+        fields:
+          sorted:
+            type: table
+          nameToPerk:
+            type: table
+          buttonList:
+            type: table
+          collapse:
+            type: table
+          lastLevelUpTime:
+            type: number
+          progressBarLoaded:
+            type: boolean
+          reloadSkillBar:
+            type: boolean
+          progressBars:
+            type: table
+          playerNum:
+            type: integer
+          char: {}
+          txtLen:
+            type: number
+          perks:
+            type: table
+          lastLeveledUpPerk:
+            nullable: true
+          arrow: {}
+          arrowLeft: {}
+          yButton: {}
+          disabledArrow: {}
+          SkillPtsProgressBarEmpty: {}
+          SkillPtsProgressBarStart: {}
+          SkillPtsProgressBar: {}
+          SkillBarSeparator: {}
+          ProgressSkilMultiplier: {}
+          showingPassive:
+            type: boolean
+          barWithTooltip:
+            nullable: true
+          joypadIndex:
+            type: number
+            nullable: true
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setVisible
+            parameters:
+              - name: visible
+          - name: prerender
+          - name: render
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: collapseSection
+            parameters:
+              - name: button
+                type: ISButton
+          - name: ensureVisible
+          - name: updateTooltipForJoypad
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+        staticMethods:
+          - name: loadPerk
+            parameters:
+              - name: self
+            return:
+              - type: table
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh

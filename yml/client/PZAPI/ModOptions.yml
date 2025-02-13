@@ -1,0 +1,128 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PZAPI:
+        staticFields:
+          ModOptions: {}
+      Options:
+        local: true
+        constructors:
+          - parameters:
+              - name: modOptionsID
+              - name: name
+                type: string
+        fields:
+          data:
+            type: table
+          dict:
+            type: table
+          modOptionsID: {}
+          name:
+            type: string
+        methods:
+          - name: apply
+          - name: getOption
+            parameters:
+              - name: id
+            return:
+              - type: unknown
+          - name: addTitle
+            parameters:
+              - name: name
+                type: string
+          - name: addDescription
+            parameters:
+              - name: text
+          - name: addSeparator
+          - name: addTextEntry
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: value
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addTickBox
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: value
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addMultipleTickBox
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addComboBox
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addColorPicker
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addKeyBind
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: key
+                type: integer
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addSlider
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: min
+              - name: max
+              - name: step
+              - name: value
+              - name: _tooltip
+            return:
+              - type: table
+          - name: addButton
+            parameters:
+              - name: id
+              - name: name
+                type: string
+              - name: tooltip
+              - name: onclickfunc
+              - name: target
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: table

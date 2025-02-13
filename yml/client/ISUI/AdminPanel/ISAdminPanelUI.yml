@@ -1,0 +1,91 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAdminPanelUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISAdminPanelUI"'
+          instance:
+            type: ISAdminPanelUI
+            nullable: true
+        fields:
+          dbBtn:
+            type: ISButton
+          checkStatsBtn:
+            type: ISButton
+          adminPowerBtn:
+            type: ISButton
+          itemListBtn:
+            type: ISButton
+          seeOptionsBtn:
+            type: ISButton
+          nonpvpzoneBtn:
+            type: ISButton
+          seeFactionBtn:
+            type: ISButton
+          seeRolesBtn:
+            type: ISButton
+          seeUsersBtn:
+            type: ISButton
+          seeSafehousesBtn:
+            type: ISButton
+          safezoneBtn:
+            type: ISButton
+          seeTicketsBtn:
+            type: ISButton
+          miniScoreboardBtn:
+            type: ISButton
+          packetCountsBtn:
+            type: ISButton
+          sandboxOptionsBtn:
+            type: ISButton
+          climateOptionsBtn:
+            type: ISButton
+          showStatisticsBtn:
+            type: ISButton
+          pvpLogTool:
+            type: ISButton
+          zoneEditor:
+            type: ISButton
+          cancel:
+            type: ISButton
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: render
+          - name: create
+          - name: updateButtons
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: close
+        staticMethods:
+          - name: OnSafehousesChanged
+          - name: OnRolesReceived
+          - name: OnNetworkUsersReceived

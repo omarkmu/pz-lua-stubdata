@@ -1,0 +1,225 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Recipe:
+        staticFields:
+          GetItemTypes: {}
+          OnCanPerform: {}
+          OnCreate: {}
+          OnGiveXP: {}
+          OnTest: {}
+          WeaponParts: {}
+          MysteryCans: {}
+          ScratchTicketWinnings: {}
+          LowerBodyClothing: {}
+          JewelTable: {}
+    functions:
+      - name: BSItem_OnCreate
+        parameters:
+          - name: items
+          - name: result
+          - name: player
+      - name: LightCandle_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: ExtinguishCandle_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CannedFood_OnCooked
+        parameters:
+          - name: cannedFood
+      - name: OnEat_Cigarettes
+        parameters:
+          - name: food
+          - name: character
+          - name: percent
+      - name: OnEat_Cigarillo
+        parameters:
+          - name: food
+          - name: character
+          - name: percent
+      - name: OnEat_Cigar
+        parameters:
+          - name: food
+          - name: character
+          - name: percent
+      - name: OnEat_ChewingTobacco
+        parameters:
+          - name: food
+          - name: character
+      - name: OnEat_CorrectionFluid
+        parameters:
+          - name: food
+          - name: character
+      - name: OnEat_RatPoison
+        parameters:
+          - name: food
+          - name: character
+      - name: OnEat_WildFoodGeneric
+        parameters:
+          - name: food
+          - name: character
+          - name: percent
+      - name: DefaultRecipe_OnGiveXP
+        parameters:
+          - name: recipe
+          - name: ingredients
+          - name: result
+          - name: player
+      - name: CannedFood_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CheckTaintedWater_OnTest
+        parameters:
+          - name: item
+        return:
+          - type: boolean
+      - name: CloseUmbrella
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CreateSpear_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CutAnimal_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CutFillet_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CutFillet_TestIsValid
+        parameters:
+          - name: sourceItem
+          - name: result
+        return:
+          - type: boolean
+      - name: CutFish_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: CutFish_TestIsValid
+        parameters:
+          - name: sourceItem
+          - name: result
+        return:
+          - type: boolean
+      - name: Dismantle2_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: DismantleRadio_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: DismantleRadio_OnGiveXP
+        parameters:
+          - name: recipe
+          - name: ingredients
+          - name: result
+          - name: player
+      - name: DismantleElectronics_OnGiveXP
+        parameters:
+          - name: recipe
+          - name: ingredients
+          - name: result
+          - name: player
+      - name: DismantleRadioSpecial_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: DismantleRadioTV_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: DismantleRadioTwoWay_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: DismantleSpear_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: GiveSawLogsXP
+        parameters:
+          - name: recipe
+          - name: ingredients
+          - name: result
+          - name: player
+      - name: OpenCannedFood_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: OpenEggCarton_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: RadioCraft_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: RadioCraft_OnGiveXP
+        parameters:
+          - name: recipe
+          - name: ingredients
+          - name: result
+          - name: player
+      - name: RefillBlowTorch_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: RipClothing_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: SliceBreadDough_TestIsValid
+        parameters:
+          - name: sourceItem
+          - name: result
+        return:
+          - type: boolean
+      - name: SliceHam_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: SliceWatermelon_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: SpikedBat_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: TorchBatteryInsert_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: TorchBatteryRemoval_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: TorchDismantle_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: UpgradeSpear_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: WashClothing_OnCreate
+        parameters:
+          - name: craftRecipeData
+          - name: character
+      - name: WashClothing_TestIsValid
+        parameters:
+          - name: sourceItem
+          - name: result
+        return:
+          - type: boolean
+            nullable: true

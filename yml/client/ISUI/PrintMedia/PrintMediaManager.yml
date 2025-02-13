@@ -1,0 +1,21 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PrintMediaManager:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"PrintMediaManager"'
+          instance:
+            type: PrintMediaManager
+            nullable: true
+        fields:
+          panel:
+            type: ISPrintMediaPanel
+        methods:
+          - name: update
+    functions:
+      - name: doPrintMediaDebug

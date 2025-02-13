@@ -1,0 +1,54 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CharacterCreationAvatar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"CharacterCreationAvatar"'
+        fields:
+          avatarBackgroundTexture: {}
+          avatarPanel:
+            type: ISUI3DModel
+          turnLeftButton:
+            type: ISButton
+          turnRightButton:
+            type: ISButton
+          animCombo:
+            type: ISComboBox
+          direction: {}
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: onTurnChar
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onAnimSelected
+            parameters:
+              - name: combo
+          - name: setCharacter
+            parameters:
+              - name: character
+          - name: setSurvivorDesc
+            parameters:
+              - name: survivorDesc
+          - name: setFacePreview
+            parameters:
+              - name: val
+          - name: rescaleAvatarViewer

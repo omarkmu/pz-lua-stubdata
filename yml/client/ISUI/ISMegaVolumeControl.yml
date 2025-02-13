@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMegaVolumeControl:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+              - name: targetFunc
+        staticFields:
+          Type:
+            defaultValue: '"ISMegaVolumeControl"'
+        fields:
+          dragging:
+            type: boolean
+          tooltipUI:
+            type: ISToolTip
+          volume:
+            type: number
+          joypadFocused: {}
+          targetFunc: {}
+          fade: {}
+          isSlider:
+            type: boolean
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: getVolumeAtX
+            parameters:
+              - name: x
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: getVolume
+            return:
+              - type: number
+          - name: setVolume
+            parameters:
+              - name: volume
+                type: number
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData

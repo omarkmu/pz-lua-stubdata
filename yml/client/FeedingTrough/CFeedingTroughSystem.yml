@@ -1,0 +1,25 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CFeedingTroughSystem:
+        extends: CGlobalObjectSystem
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"CFeedingTroughSystem"'
+        methods:
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+            return:
+              - type: unknown
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+            return:
+              - type: CFeedingTroughGlobalObject
+          - name: OnLuaObjectUpdated
+            parameters:
+              - name: luaObject

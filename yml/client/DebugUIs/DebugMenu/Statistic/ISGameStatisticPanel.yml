@@ -1,0 +1,159 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGameStatisticPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISGameStatisticPanel"'
+          instance:
+            type: ISGameStatisticPanel
+            nullable: true
+        fields:
+          flareCount:
+            type: boolean
+          colExt:
+            type: table
+          colInt:
+            type: table
+          flareID:
+            type: number
+          buttonToggleMonitor: {}
+          periodValue:
+            type: ISLabel
+          lastReport:
+            type: ISLabel
+          minUpdatePeriod:
+            type: ISLabel
+          maxUpdatePeriod:
+            type: ISLabel
+          avgUpdatePeriod:
+            type: ISLabel
+          buttonChartUpdatePeriod: {}
+          loadCellFromDisk:
+            type: ISLabel
+          saveCellToDisk:
+            type: ISLabel
+          buttonChartDiskOperations: {}
+          usedMemory:
+            type: ISLabel
+          freeMemory:
+            type: ISLabel
+          buttonChartMemory: {}
+          connections: {}
+          connection_ip:
+            type: ISLabel
+          connection_access:
+            type: ISLabel
+          connection_username:
+            type: ISLabel
+          connection_ping:
+            type: ISLabel
+          connection_ping_avg:
+            type: ISLabel
+          connection_players_count:
+            type: ISLabel
+          connection_players_desync_avg:
+            type: ISLabel
+          connection_players_desync_max:
+            type: ISLabel
+          connection_players_desync_teleport:
+            type: ISLabel
+          connection_zombies_count:
+            type: ISLabel
+          connection_zombies_desync_avg:
+            type: ISLabel
+          connection_zombies_desync_max:
+            type: ISLabel
+          connection_zombies_desync_teleport:
+            type: ISLabel
+          connection_fps:
+            type: ISLabel
+          connection_fpsAvg:
+            type: ISLabel
+          histogramm_y:
+            type: number
+          histogramm_w:
+            type: number
+          histogramm_h:
+            type: number
+          connection_players:
+            type: ISScrollingListBox
+          incomePackets:
+            type: ISScrollingListBox
+          outcomePackets:
+            type: ISScrollingListBox
+          buttonChartPackets: {}
+          init:
+            type: boolean
+          data: {}
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onCombo
+            parameters:
+              - name: _combo
+          - name: onClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onClickClose
+          - name: OnFlaresListMouseDown
+            parameters:
+              - name: item
+          - name: populateConnectionsList
+          - name: populateUsersList
+            parameters:
+              - name: connect
+          - name: populatePacketsList
+          - name: drawUsersList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: drawOutcomePacketsList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: drawIncomePacketsList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: updateValues
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ISGameStatisticPanel
+                nullable: true
+          - name: OnServerStatisticReceived

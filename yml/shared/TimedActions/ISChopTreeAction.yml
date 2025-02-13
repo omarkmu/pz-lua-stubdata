@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISChopTreeAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: tree
+        staticFields:
+          Type:
+            defaultValue: '"ISChopTreeAction"'
+        fields:
+          axe: {}
+          tree: {}
+          spriteFrame:
+            type: number
+          forceProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: useEndurance
+          - name: serverStart

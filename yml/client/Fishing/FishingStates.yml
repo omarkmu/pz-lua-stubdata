@@ -1,0 +1,93 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Fishing:
+        staticFields:
+          States: {}
+      Fishing.States.None:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          manager: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.Idle:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          manager: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.Cast:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          manager: {}
+          sound: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.Wait:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          reelSoundStarted:
+            type: boolean
+          manager: {}
+          sound: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.ReelIn:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          isHighTensionSound:
+            type: boolean
+          manager: {}
+          sound: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.ReelOut:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          manager: {}
+        methods:
+          - name: start
+          - name: update
+          - name: stop
+      Fishing.States.PickupFish:
+        local: true
+        constructors:
+          - parameters:
+              - name: manager
+        fields:
+          manager: {}
+          action:
+            type: ISPickupFishAction
+        methods:
+          - name: start
+          - name: update
+          - name: stop

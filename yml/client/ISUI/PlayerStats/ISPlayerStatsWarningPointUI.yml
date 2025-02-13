@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsWarningPointUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+              - name: onclick
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsWarningPointUI"'
+        fields:
+          reason:
+            type: ISTextEntryBox
+          amount:
+            type: ISTextEntryBox
+          ok:
+            type: ISButton
+          cancel:
+            type: ISButton
+          variableColor:
+            type: table
+          onclick: {}
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: render
+          - name: create
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number

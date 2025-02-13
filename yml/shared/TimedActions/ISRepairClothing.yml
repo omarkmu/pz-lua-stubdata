@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRepairClothing:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: clothing
+              - name: part
+              - name: fabric
+              - name: thread
+              - name: needle
+        staticFields:
+          Type:
+            defaultValue: '"ISRepairClothing"'
+        fields:
+          clothing: {}
+          fabric: {}
+          needle: {}
+          thread: {}
+          started:
+            type: boolean
+          sound: {}
+          part: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

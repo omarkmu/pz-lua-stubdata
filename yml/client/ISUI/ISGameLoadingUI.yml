@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGameLoadingUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: status
+        staticFields:
+          Type:
+            defaultValue: '"ISGameLoadingUI"'
+          instance:
+            type: ISGameLoadingUI
+            nullable: true
+        fields:
+          buttonQuit:
+            type: ISButton
+          status: {}
+        methods:
+          - name: createChildren
+          - name: configButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onExitToDesktop
+          - name: onExit
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: OnJoypadActivateUI
+            parameters:
+              - name: id
+    functions:
+      - name: ISGameLoadingUI_OnGameLoadingUI
+        parameters:
+          - name: status

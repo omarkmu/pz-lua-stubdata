@@ -1,0 +1,157 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLiteratureUI:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+              - name: owner
+                type: ISCharacterScreen
+        staticFields:
+          Type:
+            defaultValue: '"ISLiteratureUI"'
+        fields:
+          tabs:
+            type: ISTabPanel
+          listbox1:
+            type: ISLiteratureList
+          listbox2:
+            type: ISLiteratureList
+          listbox3:
+            type: ISLiteratureList
+          listboxMedia:
+            type: table
+          listbox5:
+            type: ISLiteratureGrowingList
+          drawJoypadFocus:
+            type: boolean
+          character: {}
+          playerNum:
+            type: integer
+          owner:
+            type: ISCharacterScreen
+        methods:
+          - name: createChildren
+          - name: close
+          - name: setLists
+          - name: setMediaLists
+            parameters:
+              - name: scriptItems
+          - name: prerender
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirUp
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirDown
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: SetItemHidden
+            parameters:
+              - name: fullType
+                type: string
+              - name: hidden
+                type: boolean
+      ISLiteratureList:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISListeratureList"'
+        fields:
+          character: {}
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+      ISLiteratureMediaList:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISListeratureMediaList"'
+        fields:
+          character: {}
+          scriptItem:
+            nullable: true
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+      ISLiteratureGrowingList:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISListeratureGrowingList"'
+        fields:
+          character: {}
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number

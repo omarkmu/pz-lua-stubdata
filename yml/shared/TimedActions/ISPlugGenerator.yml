@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlugGenerator:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: generator
+              - name: plug
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISPlugGenerator"'
+        fields:
+          sound: {}
+          plug:
+            type: boolean
+          generator: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

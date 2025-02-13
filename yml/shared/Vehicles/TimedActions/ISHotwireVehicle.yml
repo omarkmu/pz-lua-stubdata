@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHotwireVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISHotwireVehicle"'
+        fields:
+          sound: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: stopSound
+          - name: getDuration
+            return:
+              - type: number

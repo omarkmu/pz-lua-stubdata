@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntityBuildMenu:
+        staticFields:
+          buildables:
+            type: boolean | table
+          items:
+            type: table
+        staticMethods:
+          - name: init
+            parameters:
+              - name: _player
+            return:
+              - type: boolean
+          - name: hasSomethingToBuild
+            return:
+              - type: boolean | table
+                nullable: true
+          - name: createMenu
+            parameters:
+              - name: _player
+              - name: _context
+                type: ISContextMenu
+              - name: _subMenu
+              - name: _worldObjects
+                type: IsoObject[]
+          - name: buildCategoryMenu
+            parameters:
+              - name: _subMenu
+              - name: _player
+              - name: _list
+          - name: onBuildEntity
+            parameters:
+              - name: _player
+              - name: _info
+          - name: createToolTip
+            parameters:
+              - name: _option
+              - name: _player
+              - name: info
+            return:
+              - type: unknown
+          - name: addToolTip
+            return:
+              - type: unknown

@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBBQLightFromLiterature:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: item
+              - name: lighter
+              - name: bbq
+        staticFields:
+          Type:
+            defaultValue: '"ISBBQLightFromLiterature"'
+        fields:
+          item: {}
+          lighter: {}
+          sound: {}
+          bbq: {}
+          fuelAmt:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CTrapGlobalObject:
+        extends: CGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: CTrapSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"CTrapGlobalObject"'
+        fields:
+          bait:
+            nullable: true
+          animal:
+            type: table
+        methods:
+          - name: fromModData
+            parameters:
+              - name: modData
+          - name: checkForWallExploit
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean

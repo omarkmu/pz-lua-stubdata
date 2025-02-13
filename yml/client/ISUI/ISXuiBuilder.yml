@@ -1,0 +1,189 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISXuiBuilder:
+        staticFields:
+          constructors: {}
+        staticMethods:
+          - name: RegisterXuiFunctions
+            parameters:
+              - name: _o
+                nullable: true
+              - name: _force
+                type: boolean
+          - name: initialiseObject
+            parameters:
+              - name: _xuiScript
+              - name: _o
+                type: ISXuiTableLayout
+              - name: _parent
+          - name: build
+            parameters:
+              - name: _xuiScript
+              - name: _parent
+                type: table
+              - name: _buildInfo
+                type: table
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: buildSingle
+            parameters:
+              - name: _xuiScript
+              - name: _parent
+              - name: _buildInfo
+              - name: ...
+            return:
+              - type: unknown
+                nullable: true
+          - name: applySpacing
+            parameters:
+              - name: _spacing
+              - name: _origX
+              - name: _origY
+              - name: _origW
+              - name: _origH
+            return:
+              - type: number
+          - name: applyXuiTable
+            parameters:
+              - name: _xuiScript
+              - name: _o
+                type: ISXuiTableLayoutCell
+                nullable: true
+              - name: _parent
+                nullable: true
+              - name: _noChildTable
+                type: boolean
+          - name: ensureXuiTable
+            parameters:
+              - name: _o
+          - name: applySizing
+            parameters:
+              - name: _xuiScript
+              - name: _o
+              - name: _parent
+          - name: setDrawRectangle
+            parameters:
+              - name: _o
+                type: XuiDebugLayoutWindow | XuiTestWindow
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: setCellRectangle
+            parameters:
+              - name: _o
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: autoApplyTableKeys
+            parameters:
+              - name: _xuiScript
+              - name: _o
+                type: ISXuiTableLayoutCell
+                nullable: true
+              - name: _parent
+                nullable: true
+              - name: _ignoreKeys
+                nullable: true
+              - name: _autoApplyOverride
+          - name: colorTable
+            parameters:
+              - name: _xuiColor
+            return:
+              - type: table
+          - name: colorTableFromColor
+            parameters:
+              - name: _color
+            return:
+              - type: table
+          - name: texture
+            parameters:
+              - name: _texName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+      ISXuiFunctions:
+        staticMethods:
+          - name: xuiGet
+            parameters:
+              - name: _self
+              - name: _xuiKey
+            return:
+              - type: unknown
+                nullable: true
+          - name: xuiFind
+            parameters:
+              - name: _self
+              - name: _xuiKey
+            return:
+              - type: unknown
+                nullable: true
+          - name: xuiGetAll
+            parameters:
+              - name: _self
+              - name: _xuiKey
+              - name: _list
+            return:
+              - type: table
+          - name: xuiFindAll
+            parameters:
+              - name: _self
+              - name: _xuiKey
+              - name: _list
+            return:
+              - type: table
+          - name: xuiGetClass
+            parameters:
+              - name: _self
+              - name: _luaClass
+            return:
+              - type: unknown
+                nullable: true
+          - name: xuiFindClass
+            parameters:
+              - name: _self
+              - name: _luaClass
+            return:
+              - type: unknown
+                nullable: true
+          - name: xuiGetClassAll
+            parameters:
+              - name: _self
+              - name: _luaClass
+              - name: _list
+            return:
+              - type: table
+          - name: xuiFindClassAll
+            parameters:
+              - name: _self
+              - name: _luaClass
+              - name: _list
+            return:
+              - type: table
+          - name: xuiGetUUID
+            parameters:
+              - name: _self
+            return:
+              - type: unknown
+                nullable: true
+          - name: xuiFindAllUUID
+            parameters:
+              - name: _self
+              - name: _uuid
+              - name: _list
+            return:
+              - type: table

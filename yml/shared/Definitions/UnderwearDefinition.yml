@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UnderwearDefinition:
+        staticFields:
+          baseChance:
+            defaultValue: "70"
+          FrillyBlack: {}
+          Female_FrillyRed: {}
+          Female_FrillyPink: {}
+          Female_AnimalPrint: {}
+          Female_Black: {}
+          Female_RedSpots: {}
+          Female_BasicTint: {}
+          Male_BoxersTint: {}
+          Male_BoxersRedStripes: {}
+          Male_BoxersHearts: {}
+          Male_BriefsTint: {}
+          Male_BriefsSmallTrunks_Black: {}
+          Male_BriefsSmallTrunks_Blue: {}
+          Male_BriefsSmallTrunks_Red: {}
+          Male_BriefsSmallTrunks_White: {}
+          Male_Silk_Black: {}
+          Male_Silk_Red: {}
+          Male_Briefs_AnimalPrints: {}

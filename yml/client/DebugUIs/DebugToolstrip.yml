@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugToolstrip:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"DebugToolstrip"'
+        fields:
+          mapWindow:
+            type: StreamMapWindow
+          settingsWindow:
+            type: DebugOptionsWindow
+          debugLogWindow:
+            type: DebugLogSettings
+          errorsWindow:
+            type: DebugErrorsWindow
+          mapView:
+            type: ISButton
+          debugOptions:
+            type: ISButton
+          debugLog:
+            type: ISButton
+          errors:
+            type: ISButton
+          showDebuggerOnError:
+            type: ISTickBox
+          buttonStepInto:
+            type: ISButton
+          buttonStepOver:
+            type: ISButton
+          buttonResume:
+            type: ISButton
+        methods:
+          - name: onMapClick
+          - name: onOptionsClick
+          - name: onDebugLog
+          - name: onToggleBreak
+            parameters:
+              - name: index
+              - name: selected
+          - name: onShowErrors
+          - name: onButtonStepInto
+          - name: onButtonStepOver
+          - name: onButtonResume
+          - name: prerender
+          - name: createChildren

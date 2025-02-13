@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlowAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: gridSquare
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISPlowAction"'
+        fields:
+          item: {}
+          sound: {}
+          gridSquare: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+    functions:
+      - name: wormCheck
+        parameters:
+          - name: character
+          - name: item
+          - name: square
+            type: IsoGridSquare

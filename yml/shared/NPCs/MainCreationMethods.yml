@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      BaseGameCharacterDetails:
+        staticMethods:
+          - name: CreateCharacterInstance
+            parameters:
+              - name: s
+          - name: CreateCharacterStats
+            parameters:
+              - name: desc
+          - name: DoTraits
+          - name: SetTraitDescription
+            parameters:
+              - name: trait
+          - name: DoObservations
+          - name: DoProfessions
+          - name: SetProfessionDescription
+            parameters:
+              - name: prof
+          - name: DoSurname
+          - name: DoFemaleForename
+          - name: DoMaleForename
+          - name: DoSpawnPoint
+          - name: DoTrouserColor
+          - name: DoHairColor
+    functions:
+      - name: doMetalWorkerRecipes
+        parameters:
+          - name: metalworker

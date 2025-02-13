@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntityViewWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISEntityViewWindow"'
+          instance:
+            type: ISEntityViewWindow
+            nullable: true
+          coords:
+            type: boolean | table
+        fields:
+          entityPanelY:
+            type: number
+          entityPanel:
+            type: ISEntityViewPanel
+          title:
+            type: string
+          player: {}
+          playerNum:
+            type: integer
+          greyCol:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setTitle
+            parameters:
+              - name: _title
+                type: string
+          - name: setEntity
+            parameters:
+              - name: _entity
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: render
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _entity
+            return:
+              - type: ISEntityViewWindow
+                nullable: true

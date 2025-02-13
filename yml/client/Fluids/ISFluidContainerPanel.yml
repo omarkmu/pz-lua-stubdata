@@ -1,0 +1,194 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidContainerPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: _player
+              - name: _container
+                nullable: true
+              - name: _doTitle
+                type: boolean
+              - name: _isLeft
+                type: boolean
+              - name: _isoHeight
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidContainerPanel"'
+        fields:
+          pad:
+            type: number
+          innerHeight:
+            type: number
+          innerY:
+            type: number
+          fluidBar:
+            type: ISFluidBar
+          containerBox:
+            type: table
+          itemDropBox:
+            type: ISItemDropBox
+          container:
+            type: ISFluidContainer
+            nullable: true
+          containerCopy:
+            nullable: true
+          isLeft:
+            type: boolean
+          title:
+            type: string
+          isInvalid:
+            type: boolean
+          customTitle:
+            type: string | boolean
+          containerName:
+            type: string | boolean
+          textureList:
+            type: table
+          ownerTexture: {}
+          borderOuterColor:
+            type: table
+          detailInnerColor:
+            type: table
+          textColor:
+            type: table
+          tagColor:
+            type: table
+          invalidColor:
+            type: table
+          player: {}
+          isItem:
+            type: boolean
+          owner: {}
+          isIso: {}
+          isoHeight: {}
+          doTitle:
+            type: boolean
+          funcTarget:
+            type: boolean
+          onContainerAdd:
+            type: boolean
+          overrideAddFull:
+            type: boolean
+          onContainerRemove:
+            type: boolean
+          overrideRemoveFull:
+            type: boolean
+          onContainerVerify:
+            type: boolean
+          doOwnerOutlines:
+            type: boolean
+          outlineColor:
+            type: table
+          info:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: clickedDropBox
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: drawTextureIso
+            parameters:
+              - name: texture
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: a
+                type: number
+                nullable: true
+              - name: r
+                type: number
+                nullable: true
+              - name: g
+                type: number
+                nullable: true
+              - name: b
+                type: number
+                nullable: true
+          - name: drawTextureOutlines
+            parameters:
+              - name: texture
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerender
+          - name: render
+          - name: renderText
+            parameters:
+              - name: _s
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+              - name: _a
+                type: number
+              - name: _font
+              - name: _func
+          - name: addItem
+            parameters:
+              - name: _items
+          - name: addItemAux
+            parameters:
+              - name: _item
+          - name: removeItem
+          - name: verifyItem
+            parameters:
+              - name: _item
+            return:
+              - type: boolean
+                nullable: true
+          - name: setIsLeft
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setInvalid
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setTitle
+            parameters:
+              - name: _title
+                type: string
+          - name: setContainerName
+            parameters:
+              - name: _name
+                type: string
+          - name: getContainer
+            return:
+              - type: unknown
+                nullable: true
+          - name: getContainerOwner
+            return:
+              - type: unknown
+                nullable: true
+          - name: getIsoObjectTextures
+            return:
+              - type: table
+                nullable: true
+          - name: hasValidContainer
+            return:
+              - type: boolean
+                nullable: true
+          - name: setPanelLocked
+            parameters:
+              - name: _b
+                type: boolean
+          - name: onClose

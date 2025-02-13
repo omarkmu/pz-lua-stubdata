@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugChunkState_VehicleStoryPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: debugChunkState
+                type: DebugChunkStateUI
+        staticFields:
+          Type:
+            defaultValue: '"DebugChunkState_VehicleStoryPanel"'
+        fields:
+          combo:
+            type: ISComboBox
+          debugChunkState:
+            type: DebugChunkStateUI
+        methods:
+          - name: createChildren
+          - name: update
+          - name: render
+          - name: onChangeStory

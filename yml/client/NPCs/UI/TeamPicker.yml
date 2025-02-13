@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TeamPicker:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: headerText
+              - name: except
+              - name: scriptOnOk
+              - name: leaderInstance
+        staticFields:
+          Type:
+            defaultValue: '"TeamPicker"'
+        fields:
+          a: {}
+          b: {}
+          c: {}
+          group: {}
+          teamMembers:
+            type: ISTickBox
+          playButton:
+            type: ISButton
+          headerText: {}
+          except: {}
+          leader: {}
+          scriptOnOk: {}
+        methods:
+          - name: initialise
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: createChildren
+          - name: changeOption
+            parameters:
+              - name: option
+          - name: create
+          - name: prerender

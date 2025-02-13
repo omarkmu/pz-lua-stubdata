@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISStartCraftProcessorAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: entity
+              - name: component
+              - name: craftProcessor
+        staticFields:
+          Type:
+            defaultValue: '"ISStartCraftProcessorAction"'
+        fields:
+          entity: {}
+          component: {}
+          craftProcessor: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWM:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWM"'
+        fields:
+          player: {}
+          device: {}
+          fontheight:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+          - name: prerender
+          - name: render

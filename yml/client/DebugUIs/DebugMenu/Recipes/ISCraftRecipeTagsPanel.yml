@@ -1,0 +1,91 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftRecipeTagsPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftRecipeTagsPanel"'
+        fields:
+          listLabel:
+            type: ISLabel
+          entryBox:
+            type: ISTextEntryBox
+          list:
+            type: ISScrollingListBox
+          recipeList:
+            type: ISScrollingListBox
+          selectedTag: {}
+          tooltipRecipe:
+            nullable: true
+          activeTooltip:
+            nullable: true
+          player: {}
+          playerNum:
+            type: integer
+          searchText:
+            type: string
+          tooltipCounter:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: incY
+            parameters:
+              - name: _y
+              - name: _obj
+                type: IsoObject
+              - name: _margin
+            return:
+              - type: number
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: populate
+          - name: drawTagListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onTagSelected
+            parameters:
+              - name: _item
+          - name: populateRecipes
+          - name: drawRecipeListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: update
+          - name: close
+          - name: updateTooltip
+          - name: deactivateTooltip
+        staticMethods:
+          - name: onTextChange
+            parameters:
+              - name: box

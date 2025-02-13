@@ -1,0 +1,15 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TraitClothingSelectionDefinitions:
+        staticFields:
+          Gardener: {}
+          Fishing: {}
+          Hiker: {}
+          Hunter: {}
+          WildernessKnowledge:
+            defaultValue: TraitClothingSelectionDefinitions.Hunter
+          Mechanics: {}
+          Outdoorsman: {}
+          ShortSighted: {}

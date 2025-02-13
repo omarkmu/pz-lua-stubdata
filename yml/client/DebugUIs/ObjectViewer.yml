@@ -1,0 +1,68 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ObjectViewer:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: obj
+                type: IsoObject
+        staticFields:
+          Type:
+            defaultValue: '"ObjectViewer"'
+          map: {}
+        fields:
+          selected:
+            type: number
+          obj:
+            type: IsoObject
+          title: {}
+          sc: {}
+          objectView:
+            type: ISScrollingListBox
+        methods:
+          - name: onRightMouseDownObject
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDoubleClickOpenObject
+            parameters:
+              - name: item
+          - name: storePos
+          - name: restorePos
+          - name: initialise
+          - name: onSourceMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+          - name: fill
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+        staticMethods:
+          - name: onWatch
+            parameters:
+              - name: item
+          - name: onDataWrite
+            parameters:
+              - name: data
+          - name: onDataRead
+            parameters:
+              - name: data

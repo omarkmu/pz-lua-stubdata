@@ -1,0 +1,73 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModSelector.ModListBox:
+        extends: ISScrollingListBox
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: model
+        staticFields:
+          Type:
+            defaultValue: '"ModListBox"'
+        fields:
+          boxSize:
+            type: number
+          tickTexture: {}
+          cantTexture: {}
+          starUnsetTexture: {}
+          starSetTexture: {}
+          joypadStarButtonTex: {}
+          model: {}
+          mouseOverTickBox:
+            nullable: true
+          mouseOverFavoriteButton:
+            nullable: true
+          selectedBeforeReset:
+            nullable: true
+          joypadFocused: {}
+        methods:
+          - name: sort
+          - name: enableTickMod
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getSelectedModData
+            return:
+              - type: unknown
+                nullable: true
+          - name: prerender
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ModSelector:
+        staticFields:
+          ModListBox:
+            type: ModSelector.ModListBox

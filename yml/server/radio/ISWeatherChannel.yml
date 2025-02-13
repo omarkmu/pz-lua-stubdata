@@ -1,0 +1,99 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WeatherChannel:
+        staticFields:
+          channelUUID:
+            defaultValue: '"EMRG-711984"'
+          debugTestAll:
+            defaultValue: "false"
+        staticMethods:
+          - name: Init
+          - name: OnLoadRadioScripts
+          - name: OnEveryHour
+            parameters:
+              - name: _channel
+              - name: _gametime
+              - name: _radio
+          - name: CreateBroadcast
+            parameters:
+              - name: _gametime
+            return:
+              - type: unknown
+          - name: FillBroadcast
+            parameters:
+              - name: _gametime
+              - name: _bc
+          - name: AddFuzz
+            parameters:
+              - name: _c
+                type: table
+              - name: _bc
+              - name: _chance
+                type: number
+          - name: AddPowerNotice
+            parameters:
+              - name: _c
+                type: table
+              - name: _bc
+              - name: _force
+                type: boolean
+          - name: AddForecasting
+            parameters:
+              - name: _c
+              - name: _bc
+              - name: _hour
+          - name: AddForecast
+            parameters:
+              - name: _c
+                type: table
+              - name: _bc
+              - name: _forecast
+              - name: _prefix
+              - name: _doFog
+                type: boolean
+          - name: GetForecastString
+            parameters:
+              - name: _type
+              - name: _forecast
+            return:
+              - type: string
+          - name: GetDaySegmentForHour
+            parameters:
+              - name: _hour
+            return:
+              - type: unknown
+                nullable: true
+          - name: AddExtremesForecasting
+            parameters:
+              - name: _c
+                type: table
+              - name: _bc
+              - name: offset
+                type: number
+              - name: _len
+                type: number
+          - name: GetRandomString
+            parameters:
+              - name: _c
+                type: table
+              - name: _bc
+              - name: _doItThreshold
+                type: number
+              - name: _forceRand
+                type: number
+          - name: TestAll
+            parameters:
+              - name: _gametime
+              - name: _bc
+      ISDebugUtils:
+        staticMethods:
+          - name: roundNum
+            parameters:
+              - name: num
+                type: number
+              - name: numDecimalPlaces
+                type: number
+            return:
+              - type: number

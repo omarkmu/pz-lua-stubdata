@@ -1,0 +1,301 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOnScreenKeyboard:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISOnScreenKeyboard"'
+        fields:
+          toggleButtonBG:
+            type: table
+          entry:
+            type: OnScreenKeyboardEntry
+          buttonPadY:
+            type: number
+          keyPanel:
+            type: OnScreenKeyboardPanel
+          capsLock:
+            type: boolean
+          transition:
+            type: number
+          shiftDown:
+            type: boolean
+          isRTPressed:
+            type: boolean
+          playerNum:
+            type: integer
+          textEntryBox: {}
+          bSelectDefaultKey:
+            type: boolean
+          setBlockMovement:
+            type: boolean
+          keepOnScreen:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: KeyFunction_Char
+            parameters:
+              - name: chLower
+              - name: chUpper
+          - name: KeyFunction_KeyCode
+            parameters:
+              - name: keyCode
+          - name: KeyFunction_CapsLock
+          - name: KeyFunction_Enter
+          - name: KeyFunction_Hide
+          - name: KeyFunction_TogglePassword
+          - name: accept
+          - name: hide
+          - name: shrinkWrap
+            parameters:
+              - name: panel
+          - name: prerender
+          - name: update
+          - name: setButtonNames
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: checkRightTrigger
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: show
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: textEntryBox
+              - name: joypadData
+                type: JoypadData
+          - name: setMultipleLine
+            parameters:
+              - name: multipleLine
+          - name: getCurrentText
+            return:
+              - type: unknown
+          - name: focusOnEntry
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      OnScreenKeyboardEntry:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"OnScreenKeyboardEntry"'
+        methods:
+          - name: instantiate
+          - name: render
+          - name: update
+          - name: focus
+            return:
+              - type: unknown
+          - name: unfocus
+            return:
+              - type: unknown
+          - name: isFocused
+            return:
+              - type: unknown
+          - name: getText
+            return:
+              - type: unknown
+          - name: getInternalText
+            return:
+              - type: unknown
+          - name: setText
+            parameters:
+              - name: str
+                type: string
+          - name: getCursorLine
+            return:
+              - type: unknown
+          - name: setCursorLine
+            parameters:
+              - name: line
+          - name: isMasked
+            return:
+              - type: unknown
+          - name: setMasked
+            parameters:
+              - name: masked
+                type: boolean
+          - name: setMultipleLine
+            parameters:
+              - name: multipleLine
+          - name: isMultipleLine
+            return:
+              - type: unknown
+          - name: setMaxLines
+            parameters:
+              - name: max
+                type: number
+          - name: setCursorPos
+            parameters:
+              - name: charIndex
+          - name: getCursorPos
+            return:
+              - type: unknown
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      OnScreenKeyboardPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: parent
+                type: ISOnScreenKeyboard
+        staticFields:
+          Type:
+            defaultValue: '"OnScreenKeyboardPanel"'
+        fields:
+          buttonX:
+            type: number
+          buttonY:
+            type: number
+          buttonW:
+            type: number
+          buttonH:
+            type: number
+          buttonPadX:
+            type: number
+          buttonPadY:
+            type: number
+          rowOfButtons:
+            type: table
+          defaultButton: {}
+          backgroundColorPressed:
+            type: table
+          parent:
+            type: ISOnScreenKeyboard
+        methods:
+          - name: createChildren
+          - name: createButton_Char
+            parameters:
+              - name: chLower
+              - name: chUpper
+            return:
+              - type: unknown
+          - name: createButton
+            parameters:
+              - name: textLower
+              - name: textUpper
+              - name: keyFunction
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: createButton2
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: text
+              - name: keyFunction
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: ISButton
+          - name: renderButton
+          - name: onButtonPressed
+            parameters:
+              - name: button
+                type: ISButton
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      OnScreenKeyboard:
+        staticFields:
+          instance:
+            type: ISOnScreenKeyboard
+            nullable: true
+        staticMethods:
+          - name: IsVisible
+            return:
+              - type: boolean
+          - name: Hide
+          - name: Show
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: textEntryBox
+                type: ISTextEntryBox
+              - name: joypadData
+                type: JoypadData
+            return:
+              - type: ISOnScreenKeyboard
+          - name: GetCurrentText
+            return:
+              - type: string

@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlasterAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: thumpable
+                type: IsoThumpable
+              - name: plasterBucket
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISPlasterAction"'
+        fields:
+          sound: {}
+          thumpable:
+            type: IsoThumpable
+          plasterBucket:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

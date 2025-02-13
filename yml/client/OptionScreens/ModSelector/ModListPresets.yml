@@ -1,0 +1,91 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModListPresets:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: model
+        staticFields:
+          Type:
+            defaultValue: '"ModListPresets"'
+        fields:
+          model: {}
+          childrenLine:
+            type: table
+          childrenIndex:
+            type: number
+          presetCombo:
+            type: ISComboBox
+          savePresetButton:
+            type: ISButton
+          delPresetButton:
+            type: ISButton
+          sharePresetButton:
+            type: ISButton
+          addPresetButton:
+            type: ISButton
+          missedModsPanel:
+            type: ModSelector.MissedModsWindow
+          joypadIndex: {}
+        methods:
+          - name: createChildren
+          - name: addChild
+            parameters:
+              - name: child
+          - name: updateView
+          - name: onPresetButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: addSharedPreset
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onValidateSavePreset
+            parameters:
+              - name: text
+            return:
+              - type: unknown
+          - name: onSavePreset
+            parameters:
+              - name: button
+                type: ISButton
+          - name: choosePreset
+            parameters:
+              - name: combo
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData

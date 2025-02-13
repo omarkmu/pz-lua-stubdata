@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDebugSubPanelBase:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISDebugSubPanelBase"'
+        fields:
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          doStencilRender:
+            nullable: true
+        methods:
+          - name: initHorzBars
+            parameters:
+              - name: _x
+                type: number
+              - name: _width
+                type: number
+          - name: prerender
+          - name: render
+          - name: close

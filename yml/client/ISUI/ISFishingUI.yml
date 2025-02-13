@@ -1,0 +1,157 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFishingUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: clickedSquare
+        staticFields:
+          Type:
+            defaultValue: '"ISFishingUI"'
+          instance: {}
+          messages: {}
+        fields:
+          ok:
+            type: ISButton
+          cancel:
+            type: ISButton
+          close:
+            type: ISButton
+          rods:
+            type: ISRadioButtons
+          lures:
+            type: ISRadioButtons
+          containersLbl:
+            type: ISLabel
+          containerSelector:
+            type: ISComboBox
+          barPadY:
+            type: number
+          btnHgt: {}
+          padBottom:
+            type: number
+          barY:
+            type: number
+          usingSpear:
+            type: boolean
+          selectedRod:
+            nullable: true
+          luresEnabled:
+            type: boolean
+            nullable: true
+          ISButtonA:
+            nullable: true
+          checkStuffTime: {}
+          joypadButtons: {}
+          containers: {}
+          zoneProgress:
+            type: number
+          selectedLure:
+            nullable: true
+          checkPlayerX: {}
+          checkPlayerY: {}
+          canFishDistance:
+            type: boolean
+          squareWithSameZone:
+            type: table
+          squareWithOtherZone:
+            type: table
+          squareWithoutZone:
+            type: table
+          clickedSquare: {}
+          clickedSquareX: {}
+          clickedSquareY: {}
+          clickedSquareZ: {}
+          titleY:
+            type: number
+          barHgt: {}
+          player: {}
+          buttonBorderColor:
+            type: table
+          fishes:
+            type: table
+          maxFish:
+            type: number
+          rod: {}
+          items_array: {}
+        methods:
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+          - name: initialise
+          - name: updateSize
+          - name: clickedRod
+            parameters:
+              - name: buttons
+              - name: index
+          - name: updateRods
+          - name: updateSelectedRod
+            return:
+              - type: unknown
+                nullable: true
+          - name: updateLures
+          - name: render
+          - name: prerender
+          - name: checkInventory
+          - name: checkInventoryRods
+            return:
+              - type: boolean
+          - name: checkInventoryLures
+            return:
+              - type: boolean
+          - name: checkInventoryBags
+            return:
+              - type: boolean
+          - name: getSelectedBag
+            return:
+              - type: unknown
+          - name: updateButtons
+            parameters:
+              - name: currentAction
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeReactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setFish
+            parameters:
+              - name: item
+          - name: doBagOptions
+          - name: updateZoneProgress
+            parameters:
+              - name: zoneClicked
+          - name: equipItems
+          - name: checkPlayerPosition
+          - name: pickBestSquare
+            parameters:
+              - name: squares
+            return:
+              - type: unknown
+                nullable: true

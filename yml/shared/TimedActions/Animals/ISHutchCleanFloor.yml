@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHutchCleanFloor:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: hutch
+              - name: water
+              - name: mop
+              - name: bleach
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchCleanFloor"'
+        fields:
+          water: {}
+          bleach: {}
+          timer:
+            type: number
+          lastTimer:
+            type: number
+          sound: {}
+          hutch: {}
+          playerInv: {}
+          mop: {}
+          timePerDirt:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: clean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number

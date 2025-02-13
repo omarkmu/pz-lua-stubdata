@@ -1,0 +1,160 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleAnimalUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: vehicle
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleAnimalUI"'
+          ui:
+            type: ISVehicleAnimalUI
+            nullable: true
+        fields:
+          progressBar:
+            type: ISProgressBar
+          addBtn:
+            type: ISButton
+          scrollPanel:
+            type: ISPanelJoypad
+          animalCount: {}
+          character: {}
+          playerNum:
+            type: integer
+          vehicle: {}
+          btnBorder:
+            type: table
+          avatarBackgroundTexture: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: checkCanAddAnimal
+          - name: onAddAnimal
+          - name: onRightMouseUpScrollPanel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerenderScrollPanel
+          - name: update
+          - name: prerender
+          - name: render
+          - name: create
+            parameters:
+              - name: reset
+          - name: onAnimalInfo
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRemoveAnimal
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGrabAnimal
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: reset
+            parameters:
+              - name: panel
+                type: ISPanelJoypad
+          - name: close
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+        staticMethods:
+          - name: onKillAnimalDebug
+            parameters:
+              - name: animal
+              - name: player
+      ISVehicleAnimal3DModel:
+        extends: ISUI3DModel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleAnimal3DModel"'
+        methods:
+          - name: instantiate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean

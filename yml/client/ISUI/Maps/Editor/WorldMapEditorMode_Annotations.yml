@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorMode_Annotations:
+        extends: WorldMapEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorMode_Annotations"'
+        fields:
+          symbolsUI:
+            type: ISWorldMapSymbols
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          dragStartX:
+            type: number
+          dragStartY:
+            type: number
+        methods:
+          - name: createChildren
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: undisplay
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: generateLuaScript
+            return:
+              - type: string

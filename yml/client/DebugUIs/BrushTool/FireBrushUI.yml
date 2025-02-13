@@ -1,0 +1,128 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      FireBrushUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"FireBrushUI"'
+          instance:
+            type: FireBrushUI
+            nullable: true
+        fields:
+          brushType:
+            type: ISRadioButtons
+          addByClick:
+            type: ISButton
+          removeByClick:
+            type: ISButton
+          addByArea:
+            type: ISButton
+          removeByArea:
+            type: ISButton
+          close:
+            type: ISButton
+          selectByClick:
+            type: boolean
+          isAdd:
+            type: boolean
+          selectStart:
+            type: boolean
+          selectEnd:
+            type: boolean
+          startPos:
+            type: table
+            nullable: true
+          endPos:
+            type: table
+            nullable: true
+          zPos:
+            type: number
+          player: {}
+          titlebarbkg: {}
+        methods:
+          - name: initialise
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+          - name: prerender
+          - name: render
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: applyOnArea
+          - name: addFire
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: removeFire
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: addSmoke
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: removeSmoke
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: addExplosion
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+        staticMethods:
+          - name: openPanel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: playerObj
+                type: IsoPlayer

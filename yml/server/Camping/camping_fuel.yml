@@ -1,0 +1,268 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      campingFuelType:
+        staticFields:
+          Charcoal:
+            defaultValue: "0.5"
+          CharcoalCrafted:
+            defaultValue: "0.5"
+          Log:
+            defaultValue: "6.0"
+          PercedWood:
+            defaultValue: "2.0"
+          Plank:
+            defaultValue: "2.0"
+          RippedSheets:
+            defaultValue: 5 / 60.0
+          RippedSheetsDirty:
+            defaultValue: 5 / 60.0
+          Sheet:
+            defaultValue: 15 / 60.0
+          SheetPaper2:
+            defaultValue: 5 / 60.0
+          WoodenStick:
+            defaultValue: "0.25"
+          WoodenStick2:
+            defaultValue: "0.25"
+          TreeBranch:
+            defaultValue: "1.0"
+          TreeBranch2:
+            defaultValue: "1.0"
+          UnusableWood:
+            defaultValue: "1.4"
+          Twigs:
+            defaultValue: "0.25"
+          ToiletPaper:
+            defaultValue: "0.2"
+          Pinecone:
+            defaultValue: "0.5"
+          GroceryBag1:
+            defaultValue: 1 / 60.0
+          GroceryBag2:
+            defaultValue: 1 / 60.0
+          GroceryBag3:
+            defaultValue: 1 / 60.0
+          GroceryBag4:
+            defaultValue: 1 / 60.0
+          Plasticbag:
+            defaultValue: 1 / 60.0
+          Money:
+            defaultValue: 5 / 60.0
+          CardDeck:
+            defaultValue: 5 / 60.0
+          Paperbag_Spiffos:
+            defaultValue: 5 / 60.0
+          PaperBag:
+            defaultValue: 5 / 60.0
+          Paperbag_Jays:
+            defaultValue: 5 / 60.0
+          Tissue:
+            defaultValue: 2 / 60.0
+          PaperNapkins:
+            defaultValue: 5 / 60.0
+          PaperNapkins2:
+            defaultValue: 5 / 60.0
+          Wallpaper_BeigeStripe:
+            defaultValue: "0.25"
+          Wallpaper_BlackFloral:
+            defaultValue: "0.25"
+          Wallpaper_BlueStripe:
+            defaultValue: "0.25"
+          Wallpaper_GreenDiamond:
+            defaultValue: "0.25"
+          Wallpaper_GreenFloral:
+            defaultValue: "0.25"
+          Wallpaper_PinkChevron:
+            defaultValue: "0.25"
+          Wallpaper_PinkFloral:
+            defaultValue: "0.25"
+          StockCertificate:
+            defaultValue: 5 / 60.0
+          Paperwork:
+            defaultValue: 5 / 60.0
+          IDcard:
+            defaultValue: 5 / 120.0
+          IDcard_Female:
+            defaultValue: 5 / 120.0
+          IDcard_Male:
+            defaultValue: 5 / 120.0
+          Photo_Old:
+            defaultValue: 5 / 120.0
+          TongueDepressor:
+            defaultValue: 5 / 60.0
+          DryFirestarterBlock:
+            defaultValue: 30 / 60.0
+          BBQStarterFluid:
+            defaultValue: 15 / 60.0
+          GraphPaper:
+            defaultValue: 5 / 60.0
+          Card_Birthday:
+            defaultValue: 5 / 60.0
+          Card_Christmas:
+            defaultValue: 5 / 60.0
+          Card_Christmas2:
+            defaultValue: 5 / 60.0
+          Card_Easter:
+            defaultValue: 5 / 60.0
+          Card_Halloween:
+            defaultValue: 5 / 60.0
+          Card_Hanukkah:
+            defaultValue: 5 / 60.0
+          Card_LunarYear:
+            defaultValue: 5 / 60.0
+          Card_StPatrick:
+            defaultValue: 5 / 60.0
+          Card_Sympathy:
+            defaultValue: 5 / 60.0
+          Card_Valentine:
+            defaultValue: 5 / 60.0
+          LetterHandwritten:
+            defaultValue: 5 / 60.0
+          Note:
+            defaultValue: 5 / 60.0
+          Chopsticks:
+            defaultValue: 5 / 60.0
+          LighterFluid:
+            defaultValue: 5 / 60.0
+          IndexCard:
+            defaultValue: 5 / 60.0
+          Phonebook:
+            defaultValue: 30 / 60.0
+          Paperback:
+            defaultValue: 10 / 60.0
+          RecipeClipping:
+            defaultValue: 5 / 60.0
+          MenuCard:
+            defaultValue: 5 / 60.0
+          GuitarAcoustic:
+            defaultValue: "1.0"
+      campingFuelCategory:
+        staticFields:
+          Clothing:
+            defaultValue: 15 / 60.0
+          Literature:
+            defaultValue: 15 / 60.0
+          Map:
+            defaultValue: 5 / 20.0
+      campingLightFireType:
+        staticFields:
+          RippedSheets:
+            defaultValue: 5 / 60.0
+          RippedSheetsDirty:
+            defaultValue: 5 / 60.0
+          Sheet:
+            defaultValue: 15 / 60.0
+          SheetPaper2:
+            defaultValue: 5 / 60.0
+          Twigs:
+            defaultValue: 15 / 60.0
+          ToiletPaper:
+            defaultValue: 5 / 60.0
+          Money:
+            defaultValue: 5 / 60.0
+          CardDeck:
+            defaultValue: 5 / 60.0
+          Paperbag_Spiffos:
+            defaultValue: 5 / 60.0
+          PaperBag:
+            defaultValue: 5 / 60.0
+          Paperbag_Jays:
+            defaultValue: 5 / 60.0
+          Plasticbag:
+            defaultValue: 1 / 60.0
+          GroceryBag1:
+            defaultValue: 1 / 60.0
+          GroceryBag2:
+            defaultValue: 1 / 60.0
+          GroceryBag3:
+            defaultValue: 1 / 60.0
+          GroceryBag4:
+            defaultValue: 1 / 60.0
+          Tissue:
+            defaultValue: 2 / 60.0
+          PaperNapkins:
+            defaultValue: 5 / 60.0
+          PaperNapkins2:
+            defaultValue: 5 / 60.0
+          StockCertificate:
+            defaultValue: 5 / 60.0
+          Paperwork:
+            defaultValue: 5 / 60.0
+          IDcard:
+            defaultValue: 5 / 120.0
+          IDcard_Female:
+            defaultValue: 5 / 120.0
+          IDcard_Male:
+            defaultValue: 5 / 120.0
+          Photo_Old:
+            defaultValue: 5 / 120.0
+          Photo_Secret:
+            defaultValue: 5 / 120.0
+          TongueDepressor:
+            defaultValue: 5 / 60.0
+          Wallpaper_BeigeStripe:
+            defaultValue: 15 / 60.0
+          Wallpaper_BlackFloral:
+            defaultValue: 15 / 60.0
+          Wallpaper_BlueStripe:
+            defaultValue: 15 / 60.0
+          Wallpaper_GreenDiamond:
+            defaultValue: 15 / 60.0
+          Wallpaper_GreenFloral:
+            defaultValue: 15 / 60.0
+          Wallpaper_PinkChevron:
+            defaultValue: 15 / 60.0
+          Wallpaper_PinkFloral:
+            defaultValue: 15 / 60.0
+          GraphPaper:
+            defaultValue: 5 / 60.0
+          Card_Birthday:
+            defaultValue: 5 / 60.0
+          Card_Christmas:
+            defaultValue: 5 / 60.0
+          Card_Christmas2:
+            defaultValue: 5 / 60.0
+          Card_Easter:
+            defaultValue: 5 / 60.0
+          Card_Halloween:
+            defaultValue: 5 / 60.0
+          Card_Hanukkah:
+            defaultValue: 5 / 60.0
+          Card_LunarYear:
+            defaultValue: 5 / 60.0
+          Card_StPatrick:
+            defaultValue: 5 / 60.0
+          Card_Sympathy:
+            defaultValue: 5 / 60.0
+          Card_Valentine:
+            defaultValue: 5 / 60.0
+          LetterHandwritten:
+            defaultValue: 5 / 60.0
+          Note:
+            defaultValue: 5 / 60.0
+          Chopsticks:
+            defaultValue: 5 / 60.0
+          IndexCard:
+            defaultValue: 5 / 60.0
+          Phonebook:
+            defaultValue: 30 / 60.0
+          Paperback:
+            defaultValue: 10 / 60.0
+          RecipeClipping:
+            defaultValue: 5 / 60.0
+          MenuCard:
+            defaultValue: 5 / 60.0
+      campingLightFireCategory:
+        staticFields:
+          Clothing:
+            defaultValue: 15 / 60.0
+          Literature:
+            defaultValue: 15 / 60.0
+          Map:
+            defaultValue: 5 / 20.0
+    functions:
+      - name: getCampingFuelMax
+        return:
+          - type: number

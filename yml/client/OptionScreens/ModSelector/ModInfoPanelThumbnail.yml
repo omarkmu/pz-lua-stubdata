@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModInfoPanel.Thumbnail:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ModInfoPanelThumbnail"'
+        fields:
+          modInfo: {}
+          posterCount:
+            type: number
+          padX:
+            type: number
+          padY:
+            type: number
+          thumbnailWidth:
+            type: number
+          thumbnailHeight:
+            type: number
+          index:
+            type: number
+        methods:
+          - name: render
+          - name: getIndexAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: setModInfo
+            parameters:
+              - name: modInfo
+      ModInfoPanel:
+        staticFields:
+          Thumbnail:
+            type: ModInfoPanel.Thumbnail

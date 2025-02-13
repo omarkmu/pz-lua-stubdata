@@ -1,0 +1,79 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidItemsViewPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidItemsViewPanel"'
+        fields:
+          listLabel:
+            type: ISLabel
+          entryBox:
+            type: ISTextEntryBox
+          list:
+            type: ISScrollingListBox
+          createItemButton:
+            type: ISButton
+          itemScriptPanel:
+            type: ISScriptViewPanel
+          selectedItem: {}
+          player: {}
+          playerNum:
+            type: integer
+          searchText:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: incY
+            parameters:
+              - name: _y
+              - name: _obj
+                type: IsoObject
+              - name: _margin
+            return:
+              - type: number
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: addItem
+            parameters:
+              - name: item
+          - name: populate
+          - name: drawListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onListSelected
+            parameters:
+              - name: _item
+          - name: prerender
+          - name: render
+          - name: close
+        staticMethods:
+          - name: onTextChange
+            parameters:
+              - name: box

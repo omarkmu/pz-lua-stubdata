@@ -1,0 +1,74 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISServerSandboxOptionsUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISServerSandboxOptionsUI"'
+          instance:
+            type: ISServerSandboxOptionsUI
+            nullable: true
+        fields:
+          searchEntry:
+            type: ISTextEntryBox
+          listbox: {}
+          controls:
+            type: table
+          groupBox:
+            type: table
+          customui:
+            type: table
+          closeButton:
+            type: ISButton
+          applyButton:
+            type: ISButton
+          currentPanel:
+            nullable: true
+          options: {}
+        methods:
+          - name: doSearch
+          - name: createChildren
+          - name: createPanel
+            parameters:
+              - name: page
+            return:
+              - type: unknown
+          - name: onTickBoxSelected
+            parameters:
+              - name: _
+              - name: value
+              - name: optionName
+                type: string
+          - name: onComboBoxSelected
+            parameters:
+              - name: combo
+              - name: optionName
+                type: string
+          - name: settingsToUI
+            parameters:
+              - name: options
+          - name: settingsFromUI
+            parameters:
+              - name: options
+          - name: onMouseDownListbox
+            parameters:
+              - name: item
+          - name: destroy
+          - name: onButtonApply
+          - name: onButtonClose
+        staticMethods:
+          - name: searchPrerender
+            parameters:
+              - name: self

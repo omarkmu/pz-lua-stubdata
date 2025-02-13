@@ -1,0 +1,96 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetOutput:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: logic
+              - name: outputScript
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetOutput"'
+        fields:
+          amountWidth: {}
+          amountWidth2: {}
+          textColor:
+            type: table
+          colPartial:
+            type: table
+          colBad:
+            type: table
+          primary:
+            type: table
+          iconCreate:
+            nullable: true
+          secondary:
+            type: table
+          arrow:
+            nullable: true
+          editedLabels:
+            type: boolean
+          player: {}
+          logic: {}
+          outputScript: {}
+          createScript: {}
+          iconSize:
+            type: number
+          iconMargin:
+            type: number
+          labelIconSize:
+            type: number
+          normalBorderColor:
+            type: table
+          iconBorderSizeX:
+            type: number
+          iconBorderSizeY:
+            type: number
+          interactiveMode:
+            type: boolean
+          textureReturned: {}
+          textureConsumed: {}
+          textureTool: {}
+          textureCreate: {}
+          margin:
+            type: number
+          doToolTip:
+            type: boolean
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: createScriptValues
+            parameters:
+              - name: _script
+            return:
+              - type: table
+          - name: updateScriptValues
+            parameters:
+              - name: _table
+                type: table
+          - name: updateValues

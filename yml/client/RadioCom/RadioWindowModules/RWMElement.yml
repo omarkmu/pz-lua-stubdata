@@ -1,0 +1,124 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMElement:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: subpanel
+              - name: title
+                type: string
+              - name: radioParent
+                type: ISRadioWindow
+        staticFields:
+          Type:
+            defaultValue: '"RWMElement"'
+        fields:
+          headerButton:
+            type: ISButton
+          isExpanded:
+            type: boolean
+          drawJoypadFocus:
+            type: boolean
+          playerNum:
+            type: integer
+          radioParent:
+            type: ISRadioWindow
+          fontheight: {}
+          fontheightMed: {}
+          buttonTexture: {}
+          subpanel: {}
+          titleText:
+            type: string
+          overrideBPrompt:
+            type: boolean
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onHeaderClick
+          - name: setExpanded
+            parameters:
+              - name: _bool
+                type: boolean
+          - name: calculateHeights
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: unknown
+                nullable: true
+          - name: prerender
+          - name: render
+          - name: setFocus
+            parameters:
+              - name: _playerNum
+                type: integer
+              - name: _radioParent
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+          - name: getRBPrompt
+            return:
+              - type: unknown
+          - name: isValidPrompt
+            return:
+              - type: boolean

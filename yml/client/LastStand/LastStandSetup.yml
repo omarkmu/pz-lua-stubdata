@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LastStandData:
+        staticFields:
+          chosenChallenge:
+            nullable: true
+        staticMethods:
+          - name: getSpawnRegion
+            return:
+              - type: table
+                nullable: true
+    functions:
+      - name: preLoadLastStandInit
+      - name: doLastStandDraw
+      - name: doLastStandInit
+      - name: saveLastStandPlayerInFile
+        parameters:
+          - name: player
+      - name: doLastStandCreatePlayer
+        parameters:
+          - name: playerNum
+            type: integer
+          - name: playerObj
+            type: IsoPlayer
+      - name: doLastStandPlayerDeath
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+      - name: doLastStandBackButtonWheel
+        parameters:
+          - name: playerNum
+            type: integer
+          - name: dir
+            type: string

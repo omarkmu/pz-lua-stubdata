@@ -1,0 +1,56 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SCampfireSystem:
+        extends: SGlobalObjectSystem
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SCampfireSystem"'
+        methods:
+          - name: initSystem
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+            return:
+              - type: SCampfireGlobalObject
+          - name: isValidModData
+            parameters:
+              - name: modData
+            return:
+              - type: boolean
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+            return:
+              - type: boolean
+          - name: convertOldModData
+          - name: addCampfire
+            parameters:
+              - name: grid
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeCampfire
+            parameters:
+              - name: luaObject
+          - name: putOut
+            parameters:
+              - name: luaObject
+          - name: lowerFirelvl
+          - name: lowerFuelAmount
+          - name: lowerFuelAmountSpecific
+            parameters:
+              - name: luaObject
+              - name: amt
+          - name: nearCamp
+            parameters:
+              - name: delay
+          - name: OnClientCommand
+            parameters:
+              - name: command
+              - name: playerObj
+                type: IsoPlayer
+              - name: args

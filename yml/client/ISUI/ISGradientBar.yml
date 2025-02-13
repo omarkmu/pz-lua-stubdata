@@ -1,0 +1,72 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGradientBar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISGradientBar"'
+        fields:
+          gradientTex: {}
+          value:
+            type: number
+          highlightTex: {}
+          highlightTex_L: {}
+          highlightTex_R: {}
+          settings:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: setGradientTexture
+            parameters:
+              - name: _tex
+          - name: setHighlightRadius
+            parameters:
+              - name: _rad
+                type: number
+          - name: setDarkAlpha
+            parameters:
+              - name: _alpha
+                type: number
+          - name: setBorderColor
+            parameters:
+              - name: _a
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+          - name: setBorderInnerColor
+            parameters:
+              - name: _a
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+          - name: setDoKnob
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setValue
+            parameters:
+              - name: _v
+                type: number

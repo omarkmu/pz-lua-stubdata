@@ -1,0 +1,132 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SFarmingSystem:
+        extends: SGlobalObjectSystem
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SFarmingSystem"'
+        fields:
+          hoursElapsed:
+            type: number
+          hourElapsedForWater:
+            type: number
+          previousHourHealth:
+            type: number
+          previousHour: {}
+        methods:
+          - name: initSystem
+          - name: getInitialStateForClient
+            return:
+              - type: table
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+            return:
+              - type: SPlantGlobalObject
+          - name: isValidModData
+            parameters:
+              - name: modData
+            return:
+              - type: unknown
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+            return:
+              - type: unknown
+          - name: convertOldModData
+          - name: OnClientCommand
+            parameters:
+              - name: command
+              - name: playerObj
+                type: IsoPlayer
+              - name: args
+          - name: EveryTenMinutes
+          - name: lowerWaterLvlAndUpDisease
+          - name: changeHealth
+          - name: checkPlant
+          - name: plowFadeCheck
+            parameters:
+              - name: luaObject
+          - name: checkPlant2
+            parameters:
+              - name: luaObject
+          - name: checkPlantSquare
+            parameters:
+              - name: luaObject
+          - name: checkWater
+            parameters:
+              - name: luaObject
+          - name: growPlant
+            parameters:
+              - name: luaObject
+              - name: nextGrowing
+                nullable: true
+              - name: updateNbOfGrow
+                type: boolean
+          - name: harvest
+            parameters:
+              - name: luaObject
+              - name: player
+          - name: diseaseThis
+            parameters:
+              - name: luaObject
+          - name: diseaseClosePlant
+            parameters:
+              - name: luaObject
+              - name: aphidsBane
+              - name: fliesBane
+              - name: slugsBane
+          - name: destroyOnWalk
+            parameters:
+              - name: luaObject
+              - name: square
+                type: IsoGridSquare
+          - name: getHealth
+            return:
+              - type: unknown
+                nullable: true
+          - name: changePlayer
+            parameters:
+              - name: player
+          - name: plow
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: gainXp
+            parameters:
+              - name: player
+              - name: luaObject
+          - name: removePlant
+            parameters:
+              - name: luaObject
+          - name: removeTallGrass
+            parameters:
+              - name: sq
+                type: IsoGridSquare
+          - name: receiveCommand
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: command
+              - name: args
+          - name: hasWeeds
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: hasWeeds2
+            parameters:
+              - name: v
+            return:
+              - type: boolean
+                nullable: true
+        staticMethods:
+          - name: destroyPlant
+            parameters:
+              - name: square
+                type: IsoGridSquare

@@ -1,0 +1,18 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DynamicRadio:
+        staticFields:
+          valid:
+            defaultValue: "true"
+          scripts: {}
+          channels: {}
+          cache: {}
+        staticMethods:
+          - name: OnLoadRadioScripts
+            parameters:
+              - name: _scriptManager
+              - name: _isNewGame
+                type: boolean
+          - name: OnEveryHour

@@ -1,0 +1,16 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TutorialHelperFunctions:
+        staticMethods:
+          - name: replaceInContainer
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: type
+              - name: items

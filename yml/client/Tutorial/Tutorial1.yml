@@ -1,0 +1,150 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Tutorial1:
+        staticFields:
+          steps:
+            type: LuaList
+            nullable: true
+          moveKeys:
+            type: string
+            nullable: true
+          marker:
+            nullable: true
+          joypad:
+            type: boolean
+            nullable: true
+          cratePositions: {}
+          DeadMouseContainer:
+            nullable: true
+          DeadMouse:
+            nullable: true
+          name:
+            defaultValue: '"Tutorial1"'
+          image:
+            defaultValue: '"media/lua/LastStand/Challenge1.png"'
+          world:
+            defaultValue: '"challengemaps/Tutorial"'
+          x:
+            defaultValue: "157"
+          y:
+            defaultValue: "157"
+          hourOfDay:
+            defaultValue: "20"
+        staticMethods:
+          - name: Add
+          - name: PreloadInit
+          - name: AddPlayer
+            parameters:
+              - name: p
+          - name: closeBothInv
+          - name: closeLoot
+          - name: closeInv
+          - name: createInventoryContextMenu
+            parameters:
+              - name: player
+              - name: isInPlayerInventory
+                type: boolean
+              - name: items
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: createWorldContextMenuFromContext
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+            return:
+              - type: unknown
+          - name: createWorldContextMenu
+            parameters:
+              - name: player
+              - name: worldobjects
+                type: IsoObject[]
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: doubleClickInventory
+            parameters:
+              - name: inventoryPane
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: mouseOverOption
+            return:
+              - type: boolean
+          - name: Init
+          - name: openDoor
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+          - name: collapseInv
+            parameters:
+              - name: inv
+          - name: lockDoor
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: unlockDoor
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: addBarricade
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+          - name: addMetalBarricade
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: FillContainers
+          - name: SpawnZombies
+            parameters:
+              - name: count
+          - name: Render
+          - name: Tick
+          - name: removeFences
+          - name: replaceFence
+            parameters:
+              - name: sq
+                type: IsoGridSquare
+              - name: north

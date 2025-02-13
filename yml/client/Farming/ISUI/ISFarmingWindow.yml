@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFarmingWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+              - name: plant
+        staticFields:
+          Type:
+            defaultValue: '"ISFarmingWindow"'
+        fields:
+          farmingPanel:
+            type: ISFarmingInfo | table
+          title:
+            type: string
+          character: {}
+          plant: {}
+        methods:
+          - name: initialise
+          - name: visible
+            parameters:
+              - name: visible
+          - name: createChildren

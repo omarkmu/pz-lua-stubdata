@@ -1,0 +1,23 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUIHandler:
+        staticFields:
+          allUIVisible:
+            defaultValue: "true"
+          visibleUI: {}
+        staticMethods:
+          - name: setVisibleAllUI
+            parameters:
+              - name: visible
+                type: boolean
+          - name: toggleUI
+          - name: onKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer

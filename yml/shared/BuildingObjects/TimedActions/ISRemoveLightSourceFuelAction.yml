@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveLightSourceFuelAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: lightSource
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveLightSourceFuelAction"'
+        fields:
+          lightSource: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleRegulator:
+        staticFields:
+          xPressed: {}
+          changedSpeed: {}
+        staticMethods:
+          - name: onJoypadPressUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+            return:
+              - type: boolean
+          - name: onJoypadPressDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+            return:
+              - type: boolean
+          - name: onJoypadPressX
+            parameters:
+              - name: buttonPrompt
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadReleaseX
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true

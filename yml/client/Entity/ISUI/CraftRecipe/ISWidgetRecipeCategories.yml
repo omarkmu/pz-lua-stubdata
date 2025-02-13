@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetRecipeCategories:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetRecipeCategories"'
+        fields:
+          recipeCategoryPanel:
+            type: ISScrollingListBox
+          isInitialised:
+            type: boolean
+          selectedCategory: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: setInternalHeight
+            parameters:
+              - name: _height
+          - name: populateCategoryList
+          - name: onCategoryChanged
+            parameters:
+              - name: _item

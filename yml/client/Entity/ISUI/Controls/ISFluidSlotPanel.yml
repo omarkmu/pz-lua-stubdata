@@ -1,0 +1,48 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidSlotPanel:
+        extends: ISGroupBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: _styleLabel
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidSlotPanel"'
+        fields:
+          tableLayout:
+            nullable: true
+          player: {}
+          entity: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addResources
+            parameters:
+              - name: _resources
+              - name: _styleFluidSlot
+              - name: _styleBtnTransfer
+              - name: _styleBtnClear
+              - name: _styleBar
+          - name: addResource
+            parameters:
+              - name: _resourceFluid
+              - name: _styleFluidSlot
+              - name: _styleBtnTransfer
+              - name: _styleBtnClear
+              - name: _styleBar
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

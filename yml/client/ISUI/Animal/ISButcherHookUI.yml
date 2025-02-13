@@ -1,0 +1,186 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISButcherHookUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hook
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISButcherHookUI"'
+          ui:
+            type: ISButcherHookUI
+            nullable: true
+        fields:
+          knife: {}
+          biggestWidth:
+            type: number
+          biggestLabelWidth:
+            type: number
+          doingAction:
+            type: boolean
+          actionText:
+            type: string
+            nullable: true
+          progress:
+            type: number
+          leather:
+            nullable: true
+          blood:
+            type: number
+            nullable: true
+          head:
+            nullable: true
+          meat:
+            nullable: true
+          animalSize: {}
+          avatarX:
+            type: number
+          avatarY:
+            type: number
+          avatarWidth:
+            type: number
+          avatarHeight:
+            type: number
+          animal3D:
+            nullable: true
+          noAnimalPanel:
+            type: ISPanel
+          addCorpseBtn:
+            type: ISButton
+          animalPanel:
+            type: ISPanel
+          originalAnimalPanelHeight: {}
+          removeCorpseBtn:
+            type: ISButton
+          leatherLabel:
+            type: ISLabel
+          leatherInfoLabel:
+            type: ISLabel
+          removeLeatherBtn:
+            type: ISButton
+          bloodLabel:
+            type: ISLabel
+          bloodInfoLabel:
+            type: ISLabel
+          removeBloodBtn:
+            type: ISButton
+          headLabel:
+            type: ISLabel
+          headInfoLabel:
+            type: ISLabel
+          removeHeadBtn:
+            type: ISButton
+          meatLabel:
+            type: ISLabel
+          meatInfoLabel:
+            type: ISLabel
+          removeMeatBtn:
+            type: ISButton
+          progressBar:
+            type: ISProgressBar
+          avatarPanel:
+            type: ISCharacterScreenAvatar
+            nullable: true
+          hook: {}
+          chr: {}
+          corpse:
+            nullable: true
+          playerNum:
+            type: integer
+        methods:
+          - name: render
+          - name: checkDistance
+          - name: updateLabelAndButtons
+          - name: renderDebugStuff
+            parameters:
+              - name: yoffset
+            return:
+              - type: number
+          - name: updatePositions
+            parameters:
+              - name: test
+              - name: button
+                type: ISButton
+              - name: label
+              - name: infoLabel
+              - name: yoffset
+            return:
+              - type: number
+          - name: updateCorpseDatas
+          - name: create
+          - name: updateProgressBar
+            parameters:
+              - name: progress
+          - name: setAnimalAvatar
+            parameters:
+              - name: newModData
+                nullable: true
+              - name: newCorpse
+                nullable: true
+          - name: onClickAddCorpse
+          - name: onAddedCorpse
+            parameters:
+              - name: corpse
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: onClickRemoveCorpse
+            return:
+              - type: unknown
+                nullable: true
+          - name: resetCorpse
+          - name: createCorpse
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+          - name: isCorpseValid
+            parameters:
+              - name: corpse
+            return:
+              - type: boolean
+          - name: lookForCorpse
+            return:
+              - type: table
+          - name: onRemoveLeather
+          - name: onRemoveHead
+          - name: onRemoveMeat
+          - name: addCorpseAction
+            parameters:
+              - name: corpse
+          - name: removeCorpseAction
+          - name: getBuckets
+            return:
+              - type: unknown
+          - name: onCutCorpse
+          - name: onRemoveBlood
+          - name: onBleedAnimal
+          - name: onSelectBucketForBlood
+            parameters:
+              - name: bucket
+          - name: initialise
+          - name: close
+          - name: setVisible
+            parameters:
+              - name: vis
+        staticMethods:
+          - name: onStopBleedingAnimal
+            parameters:
+              - name: self
+          - name: onReattachAnimal
+            parameters:
+              - name: hook
+              - name: animal

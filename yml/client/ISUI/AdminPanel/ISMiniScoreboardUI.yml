@@ -1,0 +1,73 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMiniScoreboardUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: admin
+        staticFields:
+          Type:
+            defaultValue: '"ISMiniScoreboardUI"'
+          messages: {}
+          instance:
+            type: ISMiniScoreboardUI
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          playerList:
+            type: ISScrollingListBox
+          selected: {}
+          admin: {}
+          scoreboard:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: onRightMousePlayerList
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doPlayerListContextMenu
+            parameters:
+              - name: player
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onCommand
+            parameters:
+              - name: player
+              - name: command
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: close
+        staticMethods:
+          - name: onScoreboardUpdate
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs
+          - name: OnMiniScoreboardUpdate

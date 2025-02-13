@@ -1,0 +1,222 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      luautils:
+        staticMethods:
+          - name: stringStarts
+            parameters:
+              - name: String
+              - name: Start
+                type: string
+            return:
+              - type: boolean
+          - name: stringEnds
+            parameters:
+              - name: String
+              - name: End
+            return:
+              - type: boolean
+          - name: trim
+            parameters:
+              - name: s
+                type: string
+            return:
+              - type: unknown
+          - name: split
+            parameters:
+              - name: pString
+              - name: pPattern
+            return:
+              - type: table
+          - name: indexOf
+            parameters:
+              - name: table1
+              - name: value
+            return:
+              - type: number
+          - name: tableContains
+            parameters:
+              - name: table2
+              - name: value
+            return:
+              - type: boolean
+          - name: getNextTiles
+            parameters:
+              - name: cell
+              - name: startingGrid
+              - name: range
+            return:
+              - type: table
+          - name: walk
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: keepActions
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkAdj
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: keepActions
+                type: boolean
+                nullable: true
+              - name: excludeList
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkAdjTest
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkAdjAltTest
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: altSquare
+              - name: keepActions
+            return:
+              - type: boolean
+                nullable: true
+          - name: getCorrectSquareForWall
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+          - name: walkAdjWall
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: north
+              - name: keepActions
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkAdjWindowOrDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: item
+              - name: keepActions
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkAdjFence
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+              - name: object
+              - name: keepActions
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkToContainer
+            parameters:
+              - name: container
+              - name: playerNum
+                type: integer
+            return:
+              - type: boolean
+          - name: haveToBeTransfered
+            parameters:
+              - name: player
+              - name: item
+              - name: dontWalk
+            return:
+              - type: boolean
+                nullable: true
+          - name: round
+            parameters:
+              - name: num
+                type: number
+              - name: idp
+            return:
+              - type: unknown
+          - name: updatePerksXp
+            parameters:
+              - name: perks
+              - name: player
+          - name: equipItems
+            parameters:
+              - name: _player
+              - name: _primItemToEquip
+              - name: _scndItemToEquip
+            return:
+              - type: unknown
+              - type: unknown
+          - name: okModal
+            parameters:
+              - name: _text
+              - name: _centered
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _posX
+              - name: _posY
+          - name: walkToObject
+            parameters:
+              - name: _player
+              - name: _object
+              - name: _cancelTA
+            return:
+              - type: boolean
+          - name: weaponLowerCondition
+            parameters:
+              - name: _weapon
+              - name: _character
+              - name: _replace
+              - name: _chance
+          - name: isEquipped
+            parameters:
+              - name: _item
+              - name: _player
+            return:
+              - type: number
+          - name: getConditionRGB
+            parameters:
+              - name: condition
+            return:
+              - type: table
+          - name: isSquareAdjacentToSquare
+            parameters:
+              - name: _square1
+              - name: _square2
+            return:
+              - type: boolean
+          - name: countItemsRecursive
+            parameters:
+              - name: _containerList
+                type: table
+              - name: _itemsNum
+                type: number
+            return:
+              - type: number
+                nullable: true
+          - name: findRootInventory
+            parameters:
+              - name: _inventory
+            return:
+              - type: unknown

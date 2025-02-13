@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMoverStateMachine:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: mover
+                type: ISBaseMover
+        staticFields:
+          Type:
+            defaultValue: '"ISMoverStateMachine"'
+          IDMax:
+            defaultValue: "1"
+        fields:
+          state:
+            nullable: true
+          mover:
+            type: ISBaseMover
+          moverInst: {}
+        methods:
+          - name: init
+          - name: getCurrent
+            return:
+              - type: unknown
+                nullable: true
+          - name: changeState
+            parameters:
+              - name: new
+          - name: update

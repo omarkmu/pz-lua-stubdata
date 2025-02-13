@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVendorSpiral:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: texture
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISVendorSpiral"'
+        fields:
+          rotation:
+            type: number
+          texture:
+            nullable: true
+          renderTarget:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: render
+          - name: renderToTarget
+            parameters:
+              - name: _target
+                type: unknown
+          - name: setRotation
+            parameters:
+              - name: _rot

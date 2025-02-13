@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBBQToggle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: bbq
+        staticFields:
+          Type:
+            defaultValue: '"ISBBQToggle"'
+        fields:
+          bbq: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

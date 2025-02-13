@@ -1,0 +1,147 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryTransferAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: srcContainer
+              - name: destContainer
+              - name: time
+                type: number
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISInventoryTransferAction"'
+          putSoundDelay:
+            defaultValue: "2"
+          putSoundTime:
+            defaultValue: "0"
+          putSound:
+            nullable: true
+          putSoundContainer:
+            nullable: true
+        fields:
+          dontAdd:
+            type: boolean
+          maxTime:
+            type: number
+            nullable: true
+          selectedContainer:
+            nullable: true
+          jobType:
+            type: string
+          transactionId:
+            type: number
+          started:
+            type: boolean
+          sourceContainerOpened: {}
+          sourceContainerOpenSound: {}
+          destContainerOpened: {}
+          destContainerOpenSound: {}
+          item: {}
+          queueList:
+            type: table
+          onCompleteFunc: {}
+          onCompleteArgs:
+            type: table
+          allowMissingItems:
+            type: boolean
+          srcContainer: {}
+          destContainer: {}
+          transactions:
+            type: table
+          loopedAction:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: doActionAnim
+            parameters:
+              - name: cont
+          - name: startActionAnim
+          - name: start
+          - name: playSourceContainerOpenSound
+          - name: playSourceContainerCloseSound
+          - name: playDestContainerOpenSound
+          - name: playDestContainerCloseSound
+          - name: getSoundName
+            return:
+              - type: string
+          - name: stop
+          - name: forceComplete
+          - name: perform
+          - name: isAlreadyTransferred
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+          - name: floorHasRoomFor
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: item
+            return:
+              - type: boolean
+          - name: canDropOnFloor
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getNotFullFloorSquare
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+                nullable: true
+          - name: transferItem
+            parameters:
+              - name: item
+          - name: setOnComplete
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+          - name: getTimeDelta
+            return:
+              - type: number
+          - name: canMergeAction
+            parameters:
+              - name: action
+            return:
+              - type: boolean
+          - name: checkQueueList
+          - name: setAllowMissingItems
+            parameters:
+              - name: allow
+                type: boolean
+          - name: getExtraLogData
+            return:
+              - type: table
+    functions:
+      - name: javaTransferItems
+        parameters:
+          - name: character
+          - name: item
+          - name: srcContainer
+          - name: destContainer

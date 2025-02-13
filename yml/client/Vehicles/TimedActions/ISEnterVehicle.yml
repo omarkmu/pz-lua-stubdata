@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEnterVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicle
+              - name: seat
+        staticFields:
+          Type:
+            defaultValue: '"ISEnterVehicle"'
+        fields:
+          started:
+            type: boolean
+          vehicle: {}
+          seat: {}
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getExtraLogData
+            return:
+              - type: table
+                nullable: true

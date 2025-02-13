@@ -1,0 +1,298 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEquippedItem:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: chr
+        staticFields:
+          Type:
+            defaultValue: '"ISEquippedItem"'
+          text:
+            type: string
+            nullable: true
+          instance:
+            type: ISEquippedItem
+            nullable: true
+        fields:
+          healthIconOscillatorLevel:
+            type: number
+          previousHealth:
+            type: number
+          healthIconOscillatorStep:
+            type: number
+          healthIconOscillator:
+            type: number
+          toolTip:
+            type: ISToolTip
+          inventory:
+            nullable: true
+          loot:
+            nullable: true
+          infopanel:
+            nullable: true
+          chr: {}
+          safety: {}
+          handMainTexture: {}
+          HandSecondaryTexture: {}
+          inventoryTexture: {}
+          inventoryTextureOn: {}
+          zoneIcon: {}
+          zoneIconOn: {}
+          craftingIcon: {}
+          craftingIconOn: {}
+          heartIcon: {}
+          heartIconOn: {}
+          movableIcon: {}
+          movableIconPickup: {}
+          movableIconPlace: {}
+          movableIconRotate: {}
+          moveableIconBuild: {}
+          moveableIconBuildOn: {}
+          movableIconScrap: {}
+          moveableIconRepair: {}
+          mapIconOff: {}
+          mapIconOn: {}
+          debugIcon: {}
+          debugIconOn: {}
+          clientIcon: {}
+          clientIconOn: {}
+          adminIcon: {}
+          adminIconOn: {}
+          warActive: {}
+          warInactive: {}
+          warSoon: {}
+          lockTexture: {}
+          searchIconOn: {}
+          searchIconOff: {}
+          offTexture: {}
+          onTexture: {}
+          disableTexture: {}
+          healthIconOscillatorDecelerator:
+            type: number
+          healthIconOscillatorRate:
+            type: number
+          healthIconOscillatorScalar:
+            type: number
+          healthIconOscillatorStartLevel:
+            type: number
+          mouseOverList:
+            type: table
+          mainHand:
+            type: ISImage
+          offHand:
+            type: ISImage
+          invBtn:
+            type: ISButton
+          healthBtn:
+            type: ISButton
+          craftingBtn:
+            type: ISButton
+          buildBtn:
+            type: ISButton
+          movableBtn:
+            type: ISButton
+          movableTooltip:
+            type: ISMoveablesIconToolTip
+          movablePopup:
+            type: ISMoveablesIconPopup
+          searchBtn:
+            type: ISButton
+          zoneBtn:
+            type: ISButton
+          mapBtn:
+            type: ISButton
+          mapPopup:
+            type: ISMapPopup
+          debugBtn:
+            type: ISButton
+          safetyBtn:
+            type: ISButton
+          radialIcon:
+            type: ISRadialProgressBar
+          clientBtn:
+            type: ISButton
+          adminBtn:
+            type: ISButton
+          warManagerBtnX:
+            type: number
+          warManagerBtnY:
+            type: number
+          warManagerBtn:
+            type: ISButton
+        methods:
+          - name: prerender
+          - name: getDraggedEquippableItem
+            return:
+              - type: unknown
+                nullable: true
+          - name: getDraggedEquippableItems
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: render
+          - name: renderFPS
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: checkToolTip
+          - name: doToolTip
+            parameters:
+              - name: _state
+              - name: _text
+          - name: checkBounds
+            parameters:
+              - name: _boundsItem
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: boolean
+          - name: addMouseOverToolTipItem
+            parameters:
+              - name: _object
+                type: table
+              - name: _displayString
+                type: string
+          - name: initialise
+          - name: shrinkWrap
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpPrimary
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMouseUpSecondary
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: rightClickPrimary
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: rightClickSecondary
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: removeFromUIManager
+          - name: toggleSafety
+        staticMethods:
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+      ISMoveablesIconPopup:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISMoveablesIconPopup"'
+        methods:
+          - name: prerender
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+      ISMapPopup:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISMapPopup"'
+        fields:
+          texMap: {}
+          texMiniMap: {}
+        methods:
+          - name: prerender
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+    functions:
+      - name: launchEquippedItem
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+        return:
+          - type: ISEquippedItem

@@ -1,0 +1,77 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRadioOption:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: name
+                type: string
+              - name: changeOptionTarget
+              - name: changeOptionMethod
+        staticFields:
+          Type:
+            defaultValue: '"ISRadioOption"'
+        fields:
+          selected:
+            type: number
+          mouseOverOption:
+            type: number
+          optionCount:
+            type: number
+          tickTexture: {}
+          choicesColor:
+            type: table
+          name:
+            type: string
+          options:
+            type: table
+          leftMargin:
+            type: number
+          changeOptionMethod: {}
+          changeOptionTarget: {}
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: render
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: addOption
+            parameters:
+              - name: name
+                type: string

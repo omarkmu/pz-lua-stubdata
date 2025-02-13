@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAttachedItemsUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISAttachedItemsUI"'
+        fields:
+          datas:
+            type: ISScrollingListBox
+          itemTypeLabel:
+            type: ISLabel
+          itemType:
+            type: ISTextEntryBox
+          locationLabel:
+            type: ISLabel
+          location:
+            type: ISComboBox
+          onzombie:
+            type: ISButton
+          removeZombie:
+            type: ISButton
+          add:
+            type: ISButton
+          remove:
+            type: ISButton
+          playerNum:
+            type: integer
+          title: {}
+          character: {}
+          chr: {}
+        methods:
+          - name: createChildren
+          - name: onAddOnChar
+          - name: onAdd
+            parameters:
+              - name: char
+          - name: onAddZombie
+          - name: onRemoveZombie
+          - name: onRemove
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: update
+          - name: render
+          - name: close

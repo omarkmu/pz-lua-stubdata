@@ -1,0 +1,201 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ServerSettingsScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ServerSettingsScreen"'
+          instance:
+            type: ServerSettingsScreen
+            nullable: true
+        fields:
+          pageStart:
+            type: table
+          pageNew:
+            type: table
+          pageEdit:
+            type: table
+          pageDuplicate:
+            type: table
+          pageRename:
+            type: table
+          pageDelete:
+            type: table
+          pageSpawnPoints: {}
+          prevScreen:
+            type: CoopOptionsScreen
+          initialSelectedSettings: {}
+        methods:
+          - name: create
+          - name: aboutToShow
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: getCurrentFocusForController
+            return:
+              - type: table | Page3.ChooseModsWindow
+                nullable: true
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onResetLua
+            parameters:
+              - name: reason
+        staticMethods:
+          - name: getSandboxSettingsTable
+            return:
+              - type: unknown
+      BaseServerSettingsPanel:
+        extends: ISPanelJoypad
+        staticFields:
+          Type:
+            defaultValue: '"BaseServerSettingsPanel"'
+        methods:
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      SpawnRegionsNameFilePanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"SpawnRegionsNameFilePanel"'
+        fields:
+          entryName:
+            type: ISTextEntryBox
+          entryFile:
+            type: ISTextEntryBox
+          joypadButtons: {}
+          selectedItem: {}
+          joypadFocused: {}
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onNameEntered
+          - name: onFileEntered
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDownInParent
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+            return:
+              - type: boolean
+      DefaultServerSettings:
+        methods:
+          - name: insertUnique
+            parameters:
+              - name: _table
+                type: table
+              - name: value
+          - name: setServerOptionValue
+            parameters:
+              - name: settings
+              - name: option
+                type: string
+              - name: _table
+                type: table
+          - name: setDefaultsFromSingleplayer
+            parameters:
+              - name: settings
+      Page3.ChooseModsWindow:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"Page3.ChooseModsWindow"'
+        fields:
+          listbox: {}
+          buttonCancel:
+            type: ISButton
+          buttonMods:
+            type: ISButton
+          buttonAccept:
+            type: ISButton
+          modInfoByID:
+            type: table
+        methods:
+          - name: create
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onButtonCancel
+          - name: onButtonMods
+          - name: onButtonNext
+          - name: aboutToShow
+          - name: addModToList
+            parameters:
+              - name: modID
+          - name: render

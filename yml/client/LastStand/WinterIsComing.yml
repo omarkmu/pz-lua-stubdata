@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WinterIsComing:
+        staticFields:
+          id:
+            defaultValue: '"WinterIsComing"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/WinterIsComing.png"'
+          video:
+            defaultValue: '"WinterIsComing.bik"'
+          gameMode:
+            defaultValue: '"Winter is Coming"'
+          world:
+            defaultValue: '"Muldraugh, KY"'
+          x:
+            defaultValue: (36 * 300) + 21
+          y:
+            defaultValue: (31 * 300) + 111
+          z:
+            defaultValue: "0"
+          spawns: {}
+          hourOfDay:
+            defaultValue: "7"
+        staticMethods:
+          - name: Add
+          - name: OnGameStart
+          - name: OnInitSeasons
+            parameters:
+              - name: _season
+          - name: OnInitWorld
+          - name: EveryHours
+          - name: RemovePlayer
+            parameters:
+              - name: p
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: Render

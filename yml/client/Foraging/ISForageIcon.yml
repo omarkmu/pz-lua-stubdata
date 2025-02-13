@@ -1,0 +1,59 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISForageIcon:
+        extends: ISBaseIcon
+        constructors:
+          - parameters:
+              - name: _manager
+                type: ISSearchManager
+              - name: _forageIcon
+                type: table
+              - name: _zoneData
+        staticFields:
+          Type:
+            defaultValue: '"ISForageIcon"'
+        fields:
+          itemDef: {}
+          catDef: {}
+          altWorldTexture: {}
+          render3DTexture: {}
+          renderWorldIcon: {}
+          zoneData: {}
+          zoneDef: {}
+          onClickContext:
+            type: function
+        methods:
+          - name: onRightMouseUp
+            return:
+              - type: unknown
+          - name: onRightMouseDown
+            return:
+              - type: boolean
+          - name: onClickDiscard
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _contextOption
+          - name: doForage
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _contextOption
+              - name: _targetContainer
+          - name: getNewCategoryItem
+            parameters:
+              - name: _catDef
+              - name: _zoneData
+          - name: doSearchFocusCheck
+          - name: updatePinIconPosition
+          - name: checkIsForageable
+            return:
+              - type: boolean
+          - name: checkIsIdentified
+          - name: initialise

@@ -1,0 +1,209 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ImageScale:
+        staticFields:
+          '["4door_"]':
+            defaultValue: "1.0"
+          offroad_:
+            defaultValue: "1.0"
+          smallcar_:
+            defaultValue: "1.1"
+          sportscar_:
+            defaultValue: "1.15"
+          stationwagon_:
+            defaultValue: "1.15"
+          suv_:
+            defaultValue: "1.0"
+          truck_:
+            defaultValue: "1.1"
+          van_:
+            defaultValue: "1.1"
+      SeatOffsetX:
+        staticFields:
+          '["Base.PickUpTruck"]':
+            defaultValue: "0"
+          '["Base.PickUpVan"]':
+            defaultValue: SeatOffsetX["Base.PickUpTruck"]
+          '["Base.PickUpVanLights"]':
+            defaultValue: SeatOffsetX["Base.PickUpTruck"]
+          '["Base.PickUpVanLightsFire"]':
+            defaultValue: SeatOffsetX["Base.PickUpTruck"]
+          '["Base.PickUpTruckLightsFire"]':
+            defaultValue: SeatOffsetX["Base.PickUpTruck"]
+          '["Base.PickUpTruckLights"]':
+            defaultValue: SeatOffsetX["Base.PickUpTruck"]
+          '["Base.SmallCar"]':
+            defaultValue: "0"
+          '["Base.SmallCar02"]':
+            defaultValue: SeatOffsetX["Base.SmallCar"]
+          '["Base.CarStationWagon"]':
+            defaultValue: "0"
+          '["Base.CarNormal"]':
+            defaultValue: "0"
+          '["Base.CarTaxi"]':
+            defaultValue: SeatOffsetX["Base.CarNormal"]
+          '["Base.CarTaxi2"]':
+            defaultValue: SeatOffsetX["Base.CarNormal"]
+          '["Base.StepVan"]':
+            defaultValue: "0"
+          '["Base.Van"]':
+            defaultValue: "0"
+          '["Base.VanSeats"]':
+            defaultValue: SeatOffsetX["Base.StepVan"]
+          '["Base.VanAmbulance"]':
+            defaultValue: SeatOffsetX["Base.Van"]
+          '["Base.CarLuxury"]':
+            defaultValue: "0"
+          '["Base.SportsCar"]':
+            defaultValue: "0"
+          '["Base.ModernCar"]':
+            defaultValue: "0"
+          '["Base.ModernCar02"]':
+            defaultValue: SeatOffsetX["Base.ModernCar"]
+          '["Base.SUV"]':
+            defaultValue: "0"
+          '["Base.OffRoad"]':
+            defaultValue: "2"
+      SeatOffsetY:
+        staticFields:
+          '["Base.CarNormal"]':
+            defaultValue: "4"
+          '["Base.CarTaxi"]':
+            defaultValue: SeatOffsetY["Base.CarNormal"]
+          '["Base.CarTaxi2"]':
+            defaultValue: SeatOffsetY["Base.CarNormal"]
+          '["Base.PickUpTruck"]':
+            defaultValue: "3"
+          '["Base.PickUpVan"]':
+            defaultValue: SeatOffsetY["Base.PickUpTruck"]
+          '["Base.PickUpVanLights"]':
+            defaultValue: SeatOffsetY["Base.PickUpTruck"]
+          '["Base.PickUpVanLightsFire"]':
+            defaultValue: SeatOffsetY["Base.PickUpTruck"]
+          '["Base.PickUpTruckLightsFire"]':
+            defaultValue: SeatOffsetY["Base.PickUpTruck"]
+          '["Base.PickUpTruckLights"]':
+            defaultValue: SeatOffsetY["Base.PickUpTruck"]
+          '["Base.SmallCar"]':
+            defaultValue: "15"
+          '["Base.SmallCar02"]':
+            defaultValue: "0"
+          '["Base.CarStationWagon"]':
+            defaultValue: "-9"
+          '["Base.CarLuxury"]':
+            defaultValue: "0"
+          '["Base.SportsCar"]':
+            defaultValue: "-6"
+          '["Base.StepVan"]':
+            defaultValue: "-3"
+          '["Base.Van"]':
+            defaultValue: "3"
+          '["Base.VanAmbulance"]':
+            defaultValue: SeatOffsetY["Base.Van"]
+          '["Base.VanSeats"]':
+            defaultValue: SeatOffsetY["Base.StepVan"]
+          '["Base.ModernCar"]':
+            defaultValue: "7"
+          '["Base.ModernCar02"]':
+            defaultValue: "15"
+          '["Base.SUV"]':
+            defaultValue: "-2"
+          '["Base.OffRoad"]':
+            defaultValue: "30"
+      ISVehicleSeatUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleSeatUI"'
+        fields:
+          richText:
+            type: ISRichTextLayout
+          close:
+            type: ISButton
+          seatText:
+            type: string
+            nullable: true
+          mouseOverSeat:
+            type: number
+            nullable: true
+          mouseOverExit:
+            type: number
+            nullable: true
+          joypadSeat:
+            type: number
+          vehicle: {}
+          characterSeat:
+            nullable: true
+          character: {}
+          playerNum:
+            type: integer
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: isSeatInstalled
+            parameters:
+              - name: seat
+            return:
+              - type: boolean
+          - name: useSeat
+            parameters:
+              - name: seat
+                type: number
+          - name: exitSeat
+            parameters:
+              - name: seat
+                type: number
+          - name: closeSelf
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: centerOnScreen

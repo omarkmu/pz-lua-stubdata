@@ -1,0 +1,215 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISMoveableDefinitions:
+        staticFields:
+          cheat:
+            defaultValue: "false"
+        methods:
+          - name: getInstance
+            return:
+              - type: ISMoveableDefinitions
+        staticMethods:
+          - name: load
+    classes:
+      ISMoveableDefinitions:
+        local: true
+        fields:
+          floorReplaceSprites:
+            type: table
+          toolDefinitions:
+            type: table
+          matsDefinitions:
+            type: table
+          scrapDefinitions:
+            type: table
+          healthDefinitions:
+            type: table
+          repairDefinitions:
+            type: table
+        staticMethods:
+          - name: parseItemTypes
+            parameters:
+              - name: _types
+                type: table
+            return:
+              - type: table
+          - name: addToolDefinition
+            parameters:
+              - name: _name
+                type: string
+              - name: _items
+                type: table
+              - name: _perk
+                nullable: true
+              - name: _baseActionTime
+                type: number
+              - name: _sound
+                type: string
+              - name: _isWav
+                type: boolean
+          - name: getToolDefinition
+            parameters:
+              - name: _name
+                type: string | boolean
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeToolDefinition
+            parameters:
+              - name: _name
+                type: string
+          - name: addMaterialDefinition
+            parameters:
+              - name: _material
+                type: string
+              - name: _returnItem
+                type: string
+              - name: _maxAmount
+                type: number
+              - name: _chancePerRoll
+                type: number
+          - name: getMaterialDefinition
+            parameters:
+              - name: _material
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeMaterialDefinition
+            parameters:
+              - name: _material
+          - name: addFloorReplaceSprite
+            parameters:
+              - name: _spriteName
+                type: string
+          - name: isFloorReplaceSprite
+            parameters:
+              - name: _spriteName
+                type: string
+            return:
+              - type: boolean
+          - name: addHealthDefinition
+            parameters:
+              - name: _material
+                type: string
+              - name: _modifier
+                type: number
+          - name: getHealthDefinition
+            parameters:
+              - name: _material
+            return:
+              - type: number
+          - name: removeHealthDefinition
+            parameters:
+              - name: _material
+          - name: addScrapDefinition
+            parameters:
+              - name: _material
+                type: string
+              - name: _tools
+                type: table
+              - name: _tools2
+                type: table
+              - name: _perk
+              - name: _baseActionTime
+                type: number
+              - name: _sound
+                type: string
+              - name: _isWav
+                type: boolean
+              - name: _baseChance
+                type: number
+                nullable: true
+              - name: _unusableItem
+                type: string
+                nullable: true
+          - name: getScrapDefinition
+            parameters:
+              - name: _material
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeScrapDefinition
+            parameters:
+              - name: _material
+          - name: isScrapDefinitionValid
+            parameters:
+              - name: _material
+            return:
+              - type: boolean
+          - name: addScrapItem
+            parameters:
+              - name: _material
+                type: string
+              - name: _returnItem
+                type: string
+              - name: _maxAmount
+                type: number
+              - name: _chancePerRoll
+                type: number
+              - name: _isStaticSize
+                type: boolean
+                nullable: true
+          - name: getScrapItems
+            parameters:
+              - name: _material
+            return:
+              - type: unknown
+                nullable: true
+          - name: addRepairDefinition
+            parameters:
+              - name: _material
+                type: string
+              - name: _tools
+                type: table
+              - name: _tools2
+                type: table
+              - name: _perk
+              - name: _baseActionTime
+                type: number
+              - name: _sound
+                type: string
+              - name: _isWav
+                type: boolean
+              - name: _baseChance
+                type: number
+                nullable: true
+          - name: addRepairItem
+            parameters:
+              - name: _material
+                type: string
+              - name: _partItem
+                type: string
+              - name: _amountNeeded
+                type: number
+              - name: _required
+                type: boolean
+              - name: _damageAmount
+                type: number
+                nullable: true
+          - name: getRepairDefinition
+            parameters:
+              - name: _material
+                type: boolean
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeRepairDefinition
+            parameters:
+              - name: _material
+          - name: isRepairDefinitionValid
+            parameters:
+              - name: _material
+                type: boolean
+                nullable: true
+            return:
+              - type: boolean
+          - name: reset
+          - name: resetTools
+          - name: resetMaterials
+          - name: resetScrap
+          - name: resetHealth
+          - name: resetRepair
+          - name: resetFloorReplaceSprites

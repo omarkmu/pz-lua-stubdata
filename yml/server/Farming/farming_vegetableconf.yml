@@ -1,0 +1,99 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      farming_vegetableconf:
+        staticFields:
+          props: {}
+          sprite: {}
+          unhealthySprite: {}
+          dyingSprite: {}
+          deadSprite: {}
+          trampledSprite: {}
+        staticMethods:
+          - name: calcWater
+            parameters:
+              - name: waterMin
+              - name: waterLvl
+            return:
+              - type: number
+                nullable: true
+          - name: calcDisease
+            parameters:
+              - name: diseaseLvl
+            return:
+              - type: number
+          - name: getObjectPhase
+            parameters:
+              - name: plant
+            return:
+              - type: boolean
+          - name: getObjectName
+            parameters:
+              - name: plant
+                type: SPlantGlobalObject
+            return:
+              - type: string
+          - name: getSpriteName
+            parameters:
+              - name: plant
+                type: SPlantGlobalObject
+            return:
+              - type: string
+                nullable: true
+          - name: grow
+            parameters:
+              - name: planting
+              - name: nextGrowing
+              - name: updateNbOfGrow
+            return:
+              - type: unknown
+    functions:
+      - name: getNbOfSeed
+        parameters:
+          - name: nbOfSeed
+          - name: typeOfPlant
+          - name: container
+        return:
+          - type: number
+      - name: getVegetablesNumber
+        parameters:
+          - name: min
+          - name: max
+          - name: minAutorized
+          - name: maxAutorized
+          - name: plant
+          - name: skill
+        return:
+          - type: number
+      - name: randomGrowthOffset
+        return:
+          - type: number
+      - name: calcNextGrowing
+        parameters:
+          - name: nextGrowing
+          - name: nextTime
+            type: number
+        return:
+          - type: number
+      - name: calcNextTimeFactor
+        return:
+          - type: number
+      - name: growNext
+        parameters:
+          - name: planting
+          - name: nameOfTile
+            type: string
+          - name: nextGrowing
+          - name: howManyTime
+            type: number
+        return:
+          - type: unknown
+      - name: badPlant
+        parameters:
+          - name: water
+          - name: waterMax
+          - name: diseaseLvl
+          - name: plant
+          - name: nextGrowing
+          - name: updateNbOfGrow

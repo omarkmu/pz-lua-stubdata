@@ -1,0 +1,27 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.ImageButton:
+        extends: UI.Texture
+        local: true
+        staticFields:
+          sounds: {}
+        fields:
+          super:
+            type: UI.Texture
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.ImageButton
+        methods:
+          - name: onHover
+            parameters:
+              - name: state
+          - name: onLeftClick
+      PZAPI:
+        staticFields:
+          UI.ImageButton:
+            type: UI.ImageButton

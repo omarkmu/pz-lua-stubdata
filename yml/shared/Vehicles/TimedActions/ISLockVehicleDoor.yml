@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLockVehicleDoor:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+        staticFields:
+          Type:
+            defaultValue: '"ISLockVehicleDoor"'
+        fields:
+          vehicle: {}
+          part: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number

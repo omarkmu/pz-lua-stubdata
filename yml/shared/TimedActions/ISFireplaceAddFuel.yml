@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFireplaceAddFuel:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: fireplace
+              - name: item
+                nullable: true
+              - name: fuelAmt
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISFireplaceAddFuel"'
+        fields:
+          item:
+            nullable: true
+          sound: {}
+          fireplace: {}
+          fuelAmt:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

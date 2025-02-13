@@ -1,0 +1,56 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCharacterProtection:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerNum
+                type: integer
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterProtection"'
+        fields:
+          cacheColor: {}
+          colorScheme:
+            type: table
+          bpPanelX:
+            type: number
+          bpPanelY:
+            type: number
+          bodyPartPanel:
+            type: ISBodyPartPanel
+          maxLabelWidth:
+            type: number
+          bparts:
+            type: table
+          playerNum:
+            type: integer
+          char: {}
+          bFemale: {}
+          sex:
+            type: string
+          bodyOutline: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setVisible
+            parameters:
+              - name: visible
+          - name: prerender
+          - name: render
+          - name: create
+          - name: initTextures
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton

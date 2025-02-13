@@ -1,0 +1,63 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalGenomeUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: animal
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalGenomeUI"'
+        fields:
+          mainPanel:
+            type: ISPanel
+          allGenes:
+            type: table
+          title:
+            type: string
+          animal: {}
+          chr: {}
+          playerNum:
+            type: integer
+          animalName:
+            type: string
+          genomeList: {}
+        methods:
+          - name: prerender
+          - name: render
+          - name: initialise
+          - name: close
+          - name: subPanelPreRender
+          - name: subPanelRender
+          - name: create
+          - name: changeValue
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onAddGb
+            parameters:
+              - name: button
+                type: ISButton
+              - name: gd
+              - name: allele
+          - name: onChangeDominant
+            parameters:
+              - name: modal
+              - name: allele
+          - name: reinit
+          - name: onChangeValue
+            parameters:
+              - name: button
+                type: ISButton
+              - name: allele

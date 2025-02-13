@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModInfoPanel.Param:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: type
+        staticFields:
+          Type:
+            defaultValue: '"ModInfoPanelParam"'
+        fields:
+          pressed:
+            type: boolean
+          modInfo: {}
+          zomboidVersion:
+            type: string
+          workshopID:
+            type: string
+          modLink:
+            type: string
+          urlLen: {}
+          modLinkLen: {}
+          type: {}
+          name:
+            type: string
+          labelWidth: {}
+          tickTexture: {}
+          borderX:
+            type: number
+        methods:
+          - name: render
+          - name: openUrl
+            parameters:
+              - name: button
+                type: ISButton
+              - name: url
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setModInfo
+            parameters:
+              - name: modInfo
+      ModInfoPanel:
+        staticFields:
+          Param:
+            type: ModInfoPanel.Param

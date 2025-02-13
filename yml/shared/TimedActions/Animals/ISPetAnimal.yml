@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPetAnimal:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: animal
+        staticFields:
+          Type:
+            defaultValue: '"ISPetAnimal"'
+        fields:
+          animal: {}
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: forceStop
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: serverStart
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter

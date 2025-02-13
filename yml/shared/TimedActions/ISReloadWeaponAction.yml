@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISReloadWeaponAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: gun
+        staticFields:
+          Type:
+            defaultValue: '"ISReloadWeaponAction"'
+        fields:
+          ammoCountStart: {}
+          bullets: {}
+          ammoCount: {}
+          playedInsertAmmoStartSound:
+            type: boolean
+          gun: {}
+          reloading:
+            type: boolean
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: initVars
+          - name: stop
+          - name: perform
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: loadAmmo
+          - name: ejectSpentRounds
+        staticMethods:
+          - name: canRack
+            parameters:
+              - name: weapon
+            return:
+              - type: boolean
+          - name: setReloadSpeed
+            parameters:
+              - name: character
+              - name: rack
+                type: boolean
+          - name: ReloadBestMagazine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: gun
+          - name: BeginAutomaticReload
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: gun
+          - name: OnPressReloadButton
+            parameters:
+              - name: player
+              - name: gun
+          - name: OnPressRackButton
+            parameters:
+              - name: player
+              - name: gun
+              - name: shift
+          - name: canShoot
+            parameters:
+              - name: weapon
+            return:
+              - type: boolean
+          - name: attackHook
+            parameters:
+              - name: character
+              - name: chargeDelta
+              - name: weapon
+          - name: onShoot
+            parameters:
+              - name: player
+              - name: weapon
+          - name: OnPlayerAttackFinished
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: weapon

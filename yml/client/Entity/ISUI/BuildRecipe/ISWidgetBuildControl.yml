@@ -1,0 +1,81 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetBuildControl:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: logic
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetBuildControl"'
+        fields:
+          colProgress:
+            type: table
+          entryBox:
+            nullable: true
+          slider:
+            nullable: true
+          buttonCraft:
+            nullable: true
+          origButtonHeight: {}
+          buttonForceCraft:
+            nullable: true
+          boxHeight:
+            type: number
+          player: {}
+          logic: {}
+          interactiveMode:
+            type: boolean
+          allowBatchCraft:
+            type: boolean
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onAutoToggled
+            parameters:
+              - name: _newState
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: startBuild
+            parameters:
+              - name: force
+          - name: onHandcraftActionComplete
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+        staticMethods:
+          - name: onTextChange
+            parameters:
+              - name: box

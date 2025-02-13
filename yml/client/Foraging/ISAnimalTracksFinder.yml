@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalTracksFinder:
+        staticFields:
+          tracks:
+            type: table
+          tick:
+            defaultValue: "0"
+        methods:
+          - name: update
+            parameters:
+              - name: chr
+          - name: canFindTrack
+            parameters:
+              - name: track
+              - name: chr
+            return:
+              - type: unknown
+          - name: updateTracks
+            parameters:
+              - name: chr
+          - name: clearTracks
+            parameters:
+              - name: chr
+          - name: addItemIcon
+            parameters:
+              - name: track
+              - name: chr
+        staticMethods:
+          - name: getAnimalTracks
+            parameters:
+              - name: chr
+              - name: tracks
+          - name: isTrack
+            parameters:
+              - name: worldObject
+            return:
+              - type: boolean

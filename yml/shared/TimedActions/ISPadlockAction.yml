@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPadlockAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: thump
+              - name: padlock
+                nullable: true
+              - name: lock
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISPadlockAction"'
+        fields:
+          thump: {}
+          padlock:
+            nullable: true
+          lock:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

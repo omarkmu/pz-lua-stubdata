@@ -1,0 +1,458 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryPane:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: inventory
+              - name: zoom
+        staticFields:
+          Type:
+            defaultValue: '"ISInventoryPane"'
+          MAX_ITEMS_IN_STACK_TO_RENDER:
+            defaultValue: "50"
+          ghc:
+            defaultValue: getCore():getGoodHighlitedColor()
+          highlightItem:
+            nullable: true
+        fields:
+          headerHgt:
+            type: number
+          column2:
+            type: number
+          column3:
+            type: number
+          expandAll:
+            type: ISButton
+          collapseAll:
+            type: ISButton
+          filterMenu:
+            type: ISButton
+          nameHeader:
+            type: ISResizableButton
+          typeHeader:
+            type: ISResizableButton
+          contextButton1:
+            type: ISButton
+          contextButton2:
+            type: ISButton
+          contextButton3:
+            type: ISButton
+          column4:
+            type: number
+          itemSortFunc:
+            type: function
+          smoothScrollY:
+            type: number
+            nullable: true
+          smoothScrollTargetY:
+            type: number
+            nullable: true
+          buttonOption:
+            type: number
+          mouseOverOption:
+            type: number
+          selected:
+            type: table
+          dragStarted:
+            type: boolean
+          removeAllDialog:
+            type: ISModalDialog
+            nullable: true
+          joyselection:
+            type: number
+          toolRender:
+            type: ISToolTipInv
+          dragging:
+            type: number
+            nullable: true
+          clickedScrollBar:
+            type: boolean
+          previousMouseUp:
+            type: number
+            nullable: true
+          draggingMarquis:
+            type: boolean
+          firstSelect:
+            type: number
+            nullable: true
+          draggingX:
+            type: number
+          draggingY:
+            type: number
+          draggingMarquisX:
+            type: number
+          draggingMarquisY:
+            type: number
+          itemslist:
+            type: table
+          itemindex:
+            type: table
+          collapsed:
+            type: table
+          hotbar:
+            nullable: true
+          blinkAlpha:
+            type: number
+          blinkAlphaIncrease:
+            type: boolean
+          mode:
+            type: string
+          font: {}
+          fontHgt: {}
+          itemHgt: {}
+          texScale:
+            type: number
+          inventory: {}
+          zoom: {}
+          items:
+            type: table
+          highlightItems:
+            type: table
+          draggedItems:
+            type: ISInventoryPaneDraggedItems
+          expandicon: {}
+          filtericon: {}
+          collapseicon: {}
+          treeexpicon: {}
+          treecolicon: {}
+          equippedItemIcon: {}
+          equippedInHotbar: {}
+          brokenItemIcon: {}
+          frozenItemIcon: {}
+          poisonIcon: {}
+          favoriteStar: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: expandAll
+            parameters:
+              - name: button
+                type: ISButton
+          - name: collapseAll
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onResizeColumn
+            parameters:
+              - name: button
+                type: ISResizableButton
+          - name: onResize
+          - name: onContext
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onFilterMenu
+            parameters:
+              - name: button
+                type: ISButton
+          - name: sortByWeight
+            parameters:
+              - name: _isAscending
+                type: boolean
+          - name: sortByName
+            parameters:
+              - name: button
+                type: ISButton
+          - name: sortByType
+            parameters:
+              - name: button
+                type: ISButton
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: RestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: rowAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: topOfItem
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: selectIndex
+            parameters:
+              - name: index
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: hideButtons
+          - name: doButtons
+            parameters:
+              - name: y
+                type: number
+          - name: toggleStove
+            return:
+              - type: unknown
+          - name: sortItemsByType
+            parameters:
+              - name: items
+          - name: sortItemsByWeight
+            parameters:
+              - name: items
+          - name: sortItemsByTypeAndWeight
+            parameters:
+              - name: items
+          - name: transferItemsByWeight
+            parameters:
+              - name: items
+                type: table
+              - name: container
+          - name: removeAll
+            parameters:
+              - name: player
+          - name: onConfirmDelete
+            parameters:
+              - name: button
+                type: ISButton
+          - name: lootAll
+          - name: transferAll
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: updateTooltip
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doContextualDblClick
+            parameters:
+              - name: item
+          - name: onMouseDoubleClick
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: canPutIn
+            return:
+              - type: boolean
+          - name: doJoypadExpandCollapse
+          - name: doGrabOnJoypadSelected
+          - name: doContextOnJoypadSelected
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: getScrollAreaHeight
+            return:
+              - type: number
+          - name: updateSmoothScrolling
+          - name: isMouseOverScrollBar
+            return:
+              - type: unknown
+          - name: prerender
+          - name: rendericons
+          - name: update
+          - name: saveSelection
+            parameters:
+              - name: selected
+                type: table
+            return:
+              - type: table
+          - name: restoreSelection
+            parameters:
+              - name: selected
+          - name: refreshContainer
+          - name: renderdetails
+            parameters:
+              - name: doDragged
+                type: boolean
+          - name: drawProgressBar
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: f
+                type: number
+              - name: fg
+                type: table
+          - name: drawTextAndProgressBar
+            parameters:
+              - name: text
+                type: string
+              - name: fraction
+                type: number
+              - name: xoff
+              - name: top
+                type: number
+              - name: fgText
+                type: table
+              - name: fgBar
+                type: table
+          - name: drawItemDetails
+            parameters:
+              - name: item
+              - name: y
+              - name: xoff
+              - name: yoff
+              - name: red
+          - name: doWorldObjectHighlight
+            parameters:
+              - name: _item
+            return:
+              - type: boolean
+          - name: clearWorldObjectHighlights
+          - name: findItemForWorldObjectHighlight
+            parameters:
+              - name: _itemTest
+          - name: updateWorldObjectHighlight
+          - name: render
+          - name: setMode
+            parameters:
+              - name: mode
+                type: string
+          - name: onInventoryFontChanged
+        staticMethods:
+          - name: itemSortByWeightAsc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: itemSortByWeightDesc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: itemSortByNameInc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: itemSortByNameDesc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: itemSortByCatInc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: itemSortByCatDesc
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: getActualItems
+            parameters:
+              - name: items
+                type: table
+            return:
+              - type: table
+      ISInventoryPaneDraggedItems:
+        constructors:
+          - parameters:
+              - name: inventoryPane
+                type: ISInventoryPane
+        fields:
+          playerNum:
+            type: integer
+          items:
+            type: table
+            nullable: true
+          mouseOverContainer:
+            nullable: true
+          mouseOverWhat:
+            type: string
+            nullable: true
+          mouseOverItemCount:
+            type: number
+          inventoryPane:
+            type: ISInventoryPane
+          itemNotOK:
+            type: table
+        methods:
+          - name: getDropContainer
+            return:
+              - type: unknown
+                nullable: true
+              - type: string
+                nullable: true
+          - name: update
+          - name: cannotDropItem
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: reset

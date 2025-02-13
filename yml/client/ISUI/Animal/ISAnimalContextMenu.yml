@@ -1,0 +1,374 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AnimalContextMenu:
+        staticFields:
+          cheat:
+            defaultValue: getDebug()
+        methods:
+          - name: onSetStressClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetWoolQtyClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetMilkQtyClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetFertilizedTimeClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetPregnancyPeriodClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetAnimalAgeClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onKillAnimalConfirm
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: doInventoryMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: animalInv
+                nullable: true
+              - name: test
+          - name: doFeedFromHandMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+              - name: context
+                type: ISContextMenu
+          - name: onFeedAnimalFood
+            parameters:
+              - name: player
+              - name: animal
+              - name: food
+          - name: doMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: animal
+              - name: test
+          - name: onGenerateWorldSound
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSetFire
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onForceEatMom
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onForceWanderNow
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onDebugForcePoop
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onDebugForceHutch
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAddBucketMilk
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: doWaterAnimalMenu
+            parameters:
+              - name: animalSubMenu
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onGiveWater
+            parameters:
+              - name: player
+              - name: animal
+              - name: item
+          - name: onAnimalBehavior
+            parameters:
+              - name: animal
+              - name: player
+          - name: onRandomIdleAnim
+            parameters:
+              - name: animal
+          - name: onRandomHappyAnim
+            parameters:
+              - name: animal
+          - name: onKill
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onForceSit
+            parameters:
+              - name: animal
+          - name: onToggleInvincible
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onDebugForceEgg
+            parameters:
+              - name: animal
+          - name: onLure
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+          - name: onDebugSetStress
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onDebugSetAcceptance
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+              - name: acceptance
+          - name: onForceAnimalGrowAway
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: doAnimalBodyMenuFromInv
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerObj
+                type: IsoPlayer
+              - name: animalbody
+                nullable: true
+          - name: doAnimalBodyMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: player
+              - name: animalbody
+          - name: onButcherAnimalDebug
+            parameters:
+              - name: body
+              - name: chr
+          - name: onGetAnimalBones
+            parameters:
+              - name: body
+              - name: chr
+              - name: knife
+          - name: onButcherAnimal
+            parameters:
+              - name: body
+              - name: chr
+              - name: knife
+          - name: onGetAnimalBonesFromInv
+            parameters:
+              - name: body
+              - name: chr
+              - name: knife
+          - name: onButcherAnimalFromInv
+            parameters:
+              - name: body
+              - name: chr
+              - name: knife
+          - name: onSetHungry
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAnimalGenome
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onPetAnimal
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onPickupAnimal
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onAddEgg
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onShearAnimal
+            parameters:
+              - name: animal
+              - name: chr
+              - name: shear
+          - name: onSetWoolQty
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onSetMilkQty
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onMilkAnimal
+            parameters:
+              - name: animal
+              - name: chr
+              - name: bucket
+              - name: all
+          - name: Impregnate
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+              - name: doIt
+          - name: SetFertilized
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+              - name: doIt
+              - name: male
+          - name: PickMate
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: SetFertilizedTime
+            parameters:
+              - name: animal
+              - name: player
+          - name: onAddAnimalBaby
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: SetPregnancyPeriod
+            parameters:
+              - name: animal
+              - name: player
+          - name: onSetAnimalAge
+            parameters:
+              - name: animal
+              - name: player
+          - name: onRemoveAnimal
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAnimalInfo
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onDetachAnimalTree
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onAttachAnimal
+            parameters:
+              - name: animal
+              - name: chr
+          - name: onDetachAnimal
+            parameters:
+              - name: animal
+              - name: chr
+          - name: clickedAnimals
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: animals
+              - name: test
+          - name: onSanta
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onBowtieGold
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onBowtieGreen
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: onBowtieRed
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: doDesignationZoneMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: zone
+              - name: playerObj
+                type: IsoPlayer
+          - name: onCheckZone
+            parameters:
+              - name: zone
+              - name: playerObj
+                type: IsoPlayer
+          - name: onKillAnimal
+            parameters:
+              - name: animal
+              - name: playerObj
+                type: IsoPlayer
+          - name: attachAnimalToObject
+            parameters:
+              - name: attachAnimalTo
+              - name: playerObj
+                type: IsoPlayer
+              - name: worldobjects
+                type: IsoObject[]
+              - name: context
+                type: ISContextMenu
+          - name: getAnimalToInteractWith
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+          - name: showRadialMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer

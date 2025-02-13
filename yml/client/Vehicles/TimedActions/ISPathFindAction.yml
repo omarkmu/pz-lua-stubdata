@@ -1,0 +1,100 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPathFindAction:
+        extends: ISBaseTimedAction
+        staticFields:
+          Type:
+            defaultValue: '"ISPathFindAction"'
+        fields:
+          goalFurnitureObject: {}
+          onCompleteFunc: {}
+          onCompleteArgs:
+            type: table
+          onFailFunc: {}
+          onFailArgs:
+            type: table
+          runActionsAfterFailing: {}
+          goal:
+            type: table
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: setOnComplete
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: setOnFail
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: setRunActionsAfterFailing
+            parameters:
+              - name: b
+          - name: pathToLocationF
+            parameters:
+              - name: character
+              - name: targetX
+              - name: targetY
+              - name: targetZ
+            return:
+              - type: ISPathFindAction
+          - name: pathToNearest
+            parameters:
+              - name: character
+              - name: locations
+            return:
+              - type: ISPathFindAction
+          - name: pathToSitOnFurniture
+            parameters:
+              - name: character
+              - name: bed
+              - name: bAnySpriteGridObject
+            return:
+              - type: ISPathFindAction
+          - name: pathToVehicleAdjacent
+            parameters:
+              - name: character
+              - name: vehicle
+            return:
+              - type: ISPathFindAction
+          - name: pathToVehicleArea
+            parameters:
+              - name: character
+              - name: vehicle
+              - name: areaId
+            return:
+              - type: ISPathFindAction
+          - name: pathToVehicleSeat
+            parameters:
+              - name: character
+              - name: vehicle
+              - name: seat
+            return:
+              - type: ISPathFindAction
+    functions:
+      - name: ISPathFindAction_pathToLocationF
+        parameters:
+          - name: targetX
+          - name: targetY
+          - name: targetZ

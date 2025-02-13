@@ -1,0 +1,68 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWhitelistViewer:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWhitelistViewer"'
+          bottomInfoHeight:
+            defaultValue: "40"
+          instance:
+            type: ISWhitelistViewer
+            nullable: true
+        fields:
+          activeView:
+            type: table
+          panel:
+            type: ISTabPanel
+          close:
+            type: ISButton
+          refreshBtn:
+            type: ISButton
+          modify:
+            type: ISButton
+          delete:
+            type: ISButton
+          schema:
+            type: table
+          buttonBorderColor:
+            type: table
+          canModify:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: render
+          - name: onActivateView
+          - name: refreshButtons
+          - name: createChildren
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRemove
+            parameters:
+              - name: button
+                type: ISButton
+              - name: view
+          - name: refresh
+          - name: closeSelf
+        staticMethods:
+          - name: receiveDBSchema
+            parameters:
+              - name: schema

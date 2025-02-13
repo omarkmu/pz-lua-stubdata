@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWMPanel"'
+        fields:
+          player:
+            nullable: true
+          device:
+            nullable: true
+          deviceData:
+            nullable: true
+          deviceType:
+            nullable: true
+          focusElement:
+            nullable: true
+          playerNum:
+            type: integer
+          radioParent: {}
+          wrapParent: {}
+          overrideBPrompt:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: boolean
+          - name: update
+          - name: prerender
+          - name: render
+          - name: doWalkTo
+            return:
+              - type: boolean
+                nullable: true
+          - name: setFocus
+            parameters:
+              - name: _playerNum
+                type: integer
+              - name: _radioParent
+              - name: _parent
+          - name: clearJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: isValidPrompt
+            return:
+              - type: unknown
+                nullable: true

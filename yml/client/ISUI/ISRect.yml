@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRect:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: a
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISRect"'
+        fields:
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          a:
+            type: number
+        methods:
+          - name: initialise
+          - name: prerender

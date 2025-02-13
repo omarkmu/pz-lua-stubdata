@@ -1,0 +1,17 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TutorialData:
+        staticFields:
+          choosenChallenge: {}
+    functions:
+      - name: preLoadTutorialInit
+      - name: doTutorialDraw
+      - name: doTutorialInit
+      - name: savePlayerInFile
+        parameters:
+          - name: player
+      - name: doTutorialCreatePlayer
+        parameters:
+          - name: id

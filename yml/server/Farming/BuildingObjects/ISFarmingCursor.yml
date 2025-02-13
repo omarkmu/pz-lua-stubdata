@@ -1,0 +1,83 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFarmingCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISFarmingCursor"'
+        fields:
+          renderX:
+            type: number
+          renderY:
+            type: number
+          renderZ:
+            type: number
+          character: {}
+          player: {}
+          skipBuildAction:
+            type: boolean
+          noNeedHammer:
+            type: boolean
+          skipWalk:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: onJoypadPressButton
+            parameters:
+              - name: joypadIndex
+              - name: joypadData
+                type: JoypadData
+              - name: button
+                type: ISButton
+            return:
+              - type: unknown
+                nullable: true
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getObjectList
+            return:
+              - type: table

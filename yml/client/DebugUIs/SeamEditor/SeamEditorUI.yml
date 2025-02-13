@@ -1,0 +1,379 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SeamEditorUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI"'
+        fields:
+          scene:
+            type: SeamEditorUI_Scene
+          seamTileList:
+            type: table
+          tilePicker:
+            type: SeamEditorUI_TilePicker
+          tilePicker2:
+            type: SeamEditorUI_TilePicker2
+          bottomPanel:
+            type: ISPanel
+          toolBar:
+            type: ISPanel
+          comboModID:
+            type: ISComboBox
+          buttonOptions:
+            type: ISButton
+          optionsPanel:
+            type: SeamEditorUI_OptionsPanel
+          modID:
+            type: string
+            nullable: true
+          currentSeamTile:
+            type: string
+            nullable: true
+          animate:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: createToolbar
+          - name: indexOf
+            parameters:
+              - name: tbl
+              - name: element
+            return:
+              - type: number
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onSelectModID
+          - name: onOptions
+          - name: assignEastTile
+            parameters:
+              - name: tileName
+                type: string
+          - name: assignSouthTile
+            parameters:
+              - name: tileName
+                type: string
+          - name: assignBelowEastTile
+            parameters:
+              - name: tileName
+                type: string
+          - name: assignBelowSouthTile
+            parameters:
+              - name: tileName
+                type: string
+          - name: onExit
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSave
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: showUI
+      SeamEditorUI_OptionsPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_OptionsPanel"'
+        fields:
+          tickBox:
+            type: ISTickBox
+        methods:
+          - name: createChildren
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      SeamEditorUI_Scene:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: SeamEditorUI
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_Scene"'
+        fields:
+          selectedTileName:
+            nullable: true
+          editor:
+            type: SeamEditorUI
+          shiftX:
+            type: number
+          shiftY:
+            type: number
+        methods:
+          - name: prerenderEditor
+          - name: prerender
+          - name: render
+          - name: renderTileAt
+            parameters:
+              - name: texture
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+          - name: renderSelectedTile
+            parameters:
+              - name: tileName
+                type: string
+              - name: texture
+          - name: renderTileName
+          - name: renderDraggedTile
+          - name: renderTileEast
+          - name: renderTileSouth
+          - name: renderTileBelowEast
+          - name: renderTileBelowSouth
+          - name: renderFloorBounds
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: uiToWorld
+            parameters:
+              - name: screenX
+                type: number
+              - name: screenY
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getTileBoundsEtc
+            return:
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+          - name: uiToPixel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: snapToTilePixel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: getSelectedTileName
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedTile
+            return:
+              - type: string
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: renderPixelGrid
+            parameters:
+              - name: tileName
+                type: string
+          - name: renderTextureOutline
+            parameters:
+              - name: sx
+              - name: sy
+              - name: sx2
+              - name: sy2
+              - name: pixelSize
+              - name: texture
+      SeamEditorUI_TilePicker:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: SeamEditorUI
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_TilePicker"'
+        fields:
+          comboTileset:
+            type: ISComboBox
+          listBox:
+            type: SeamEditorUI_TileList
+          editor:
+            type: SeamEditorUI
+        methods:
+          - name: createChildren
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onSelectTileset
+          - name: selectTileByName
+            parameters:
+              - name: tileName
+                type: string
+          - name: parseTileName
+            parameters:
+              - name: tileName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+              - type: number
+                nullable: true
+      SeamEditorUI_TilePicker2:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: SeamEditorUI
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_TilePicker2"'
+        fields:
+          comboTileset:
+            type: ISComboBox
+          listBox:
+            type: SeamEditorUI_TileList2
+          editor:
+            type: SeamEditorUI
+        methods:
+          - name: createChildren
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onSelectTileset
+          - name: selectTileByName
+            parameters:
+              - name: tileName
+                type: string
+          - name: parseTileName
+            parameters:
+              - name: tileName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+              - type: number
+                nullable: true
+    functions:
+      - name: SeamEditorUI_InitUI

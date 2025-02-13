@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleAngles:
+        extends: ISCollapsableWindow
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleAngles"'
+        fields:
+          scriptName:
+            type: ISLabel
+          angleX:
+            type: ISSliderPanel
+          angleY:
+            type: ISSliderPanel
+          angleZ:
+            type: ISSliderPanel
+          sliderZ:
+            type: ISSliderPanel
+          vehicle:
+            nullable: true
+          script:
+            nullable: true
+          title:
+            type: string
+        methods:
+          - name: addLabel
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+              - name: _bLeft
+                type: boolean
+            return:
+              - type: number
+              - type: ISLabel
+          - name: addSlider
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _func
+                type: function
+            return:
+              - type: number
+              - type: ISSliderPanel
+          - name: callbackHeight
+            parameters:
+              - name: value
+              - name: slider
+          - name: callbackAngleX
+            parameters:
+              - name: value
+              - name: slider
+          - name: callbackAngleY
+            parameters:
+              - name: value
+              - name: slider
+          - name: callbackAngleZ
+            parameters:
+              - name: value
+              - name: slider
+          - name: createChildren
+          - name: onButtonLevel
+          - name: onButtonLeft
+          - name: onButtonBottom
+          - name: onButtonDrop
+          - name: clearVehicle
+          - name: prerender
+          - name: close
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+    functions:
+      - name: debugVehicleAngles
+        parameters:
+          - name: vehicle

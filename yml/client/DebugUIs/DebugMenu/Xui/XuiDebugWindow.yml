@@ -1,0 +1,182 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      XuiDebugWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"XuiDebugWindow"'
+          instance:
+            type: boolean | XuiDebugWindow
+            nullable: true
+          customTestWindow: {}
+          testWindow: {}
+          viewScriptWindow: {}
+        fields:
+          th: {}
+          rh:
+            type: number
+          heightMod:
+            type: number
+          list:
+            type: ISScrollingListBox
+          leftWidth:
+            type: number
+          colors:
+            type: ISScrollingListBox
+          rightWidth:
+            type: number
+          scriptLabel:
+            type: ISLabel
+          subLabel:
+            type: ISLabel
+          viewScriptButton:
+            type: ISButton
+          testWindowButton:
+            type: ISButton
+          testCustomButton:
+            type: ISButton
+          reloadButton:
+            type: ISButton
+          elementsLabel:
+            type: ISLabel
+          elements:
+            type: ISScrollingListBox
+          varsLabel:
+            type: ISLabel
+          vars:
+            type: ISScrollingListBox
+          selectedScriptItem:
+            type: boolean
+          selectedElementItem:
+            type: boolean
+          styleColor:
+            type: table
+          defStyleColor:
+            type: table
+          scriptColor:
+            type: table
+          disableColor:
+            type: table
+          nullColor:
+            type: table
+          headerColor:
+            type: table
+          referenceColor:
+            type: table
+          tableColor:
+            type: table
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: initColors
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: prerender
+          - name: render
+          - name: drawVarItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onVarSelected
+            parameters:
+              - name: _item
+          - name: createVarItem
+            parameters:
+              - name: _name
+                type: string
+              - name: _value
+                type: string
+              - name: _order
+                type: number
+              - name: _var
+                nullable: true
+            return:
+              - type: table
+          - name: populateVars
+          - name: drawElementItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onElementSelected
+            parameters:
+              - name: _item
+          - name: addScriptElements
+            parameters:
+              - name: _script
+              - name: _depth
+                type: number
+              - name: _color
+                type: table
+                nullable: true
+          - name: populateElements
+          - name: drawConfigItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onConfigSelected
+            parameters:
+              - name: _item
+          - name: drawColorItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onColorSelected
+            parameters:
+              - name: _item
+          - name: populate
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: positionSubWindow
+            parameters:
+              - name: _window
+          - name: onCloseSubWindow
+            parameters:
+              - name: _window
+                type: boolean | XuiDebugLayoutWindow | ISScriptViewWindow
+                nullable: true
+              - name: _closeIt
+                type: boolean
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _player
+            return:
+              - type: boolean | XuiDebugWindow
+                nullable: true

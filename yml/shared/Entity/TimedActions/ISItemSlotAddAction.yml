@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISItemSlotAddAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: entity
+              - name: item
+              - name: resource
+        staticFields:
+          Type:
+            defaultValue: '"ISItemSlotAddAction"'
+        fields:
+          entity: {}
+          item: {}
+          resource: {}
+          itemSlot:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

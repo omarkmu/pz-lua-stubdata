@@ -1,0 +1,87 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTilesPickerDebugUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+              - name: square
+                type: IsoGridSquare
+        staticFields:
+          Type:
+            defaultValue: '"ISTilesPickerDebugUI"'
+        fields:
+          filesList:
+            type: ISScrollingListBox
+          tilesList:
+            type: ISTilesPickerTilesList
+          cursor:
+            type: ISSelectCursor
+            nullable: true
+          selectX: {}
+          selectY: {}
+          selectZ: {}
+          marker:
+            nullable: true
+          arrow:
+            nullable: true
+          playerNum:
+            type: integer
+          height: {}
+          chr: {}
+          title: {}
+        methods:
+          - name: createChildren
+          - name: populateList
+          - name: drawTilesetList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onSelectNewSquare
+          - name: onSquareSelected
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: prerender
+          - name: render
+          - name: addMarker
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: radius
+          - name: removeMarker
+          - name: close
+      ISTilesPickerTilesList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTilesPickerTilesList"'
+        fields:
+          tileset:
+            nullable: true
+        methods:
+          - name: render
+          - name: onMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean

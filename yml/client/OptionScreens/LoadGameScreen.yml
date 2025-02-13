@@ -1,0 +1,173 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LoadGameScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"LoadGameScreen"'
+          instance:
+            type: LoadGameScreen
+            nullable: true
+        fields:
+          listCache:
+            type: table
+          searchLabel:
+            type: ISLabel
+          searchEntry:
+            type: ISTextEntryBox
+          listbox:
+            type: ISScrollingListBox
+          configPanel: {}
+          infoPanel: {}
+          backButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          configButton:
+            type: ISButton
+          deleteButton:
+            type: ISButton
+          richText:
+            type: ISRichTextPanel
+          title:
+            type: string
+          modal:
+            type: ISModalDialog
+            nullable: true
+          joypadFocused:
+            type: boolean
+          itemheightoverride:
+            type: table
+          selected:
+            type: number
+          startY:
+            type: number
+          deadTexture: {}
+          mapGroups: {}
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: setSaveGamesList
+          - name: hasChoices
+            return:
+              - type: boolean
+          - name: create
+          - name: onSearchTextChange
+          - name: searchSetText
+            parameters:
+              - name: str
+                type: string
+          - name: drawMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: showConfigPanel
+          - name: hideConfigPanel
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDblClickWorld
+          - name: clickPlay
+          - name: onDeleteModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onErrorLoadingClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_listbox
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDownSearchEntry
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getChallenge
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+                nullable: true
+          - name: checkChallenge
+            parameters:
+              - name: item
+          - name: checkMapsAvailable
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+          - name: disableBtn
+          - name: onSavefileModsChanged
+            parameters:
+              - name: folder
+                nullable: true
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+        staticMethods:
+          - name: onClickWorld
+          - name: OnKeyPressed
+            parameters:
+              - name: key
+                type: integer
+    functions:
+      - name: LoadGameScreen_onModsModified

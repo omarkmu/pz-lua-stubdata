@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTabPanelPaginated:
+        extends: ISTabPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: pagesCount
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTabPanelPaginated"'
+          shownViewsCount:
+            defaultValue: "5"
+          forwardIndex:
+            defaultValue: "-2"
+          backwardIndex:
+            defaultValue: "-1"
+          tabSelected:
+            defaultValue: getTexture("media/ui/XpSystemUI/tab_selected.png")
+          tabUnSelected:
+            defaultValue: getTexture("media/ui/XpSystemUI/tab_unselected.png")
+        fields:
+          tooMuchViews:
+            type: boolean
+          shownViews:
+            type: table
+          forwardView:
+            type: table
+          backwardView:
+            type: table
+          isDragging: {}
+          pagesCount:
+            type: number
+          mouseDownHook:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: addForwardBackwardViews
+          - name: getWidthOfAllTabs
+            return:
+              - type: number
+          - name: renderView
+            parameters:
+              - name: viewObject
+                type: table
+                nullable: true
+              - name: tabDragSelected
+                type: number
+              - name: _x
+                type: number
+              - name: tabWidth
+              - name: gap
+                type: number
+            return:
+              - type: number
+          - name: getTabIndexAtX
+            parameters:
+              - name: x
+              - name: scrollX
+            return:
+              - type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: render
+          - name: getViewByIndex
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+                nullable: true
+          - name: setPagesCount
+            parameters:
+              - name: pagesCount
+                type: number
+          - name: getPagesCount
+            return:
+              - type: number
+        staticMethods:
+          - name: redoTab
+            parameters:
+              - name: self

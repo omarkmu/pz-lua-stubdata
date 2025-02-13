@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPostDeathUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: playerIndex
+        staticFields:
+          Type:
+            defaultValue: '"ISPostDeathUI"'
+          instance: {}
+        fields:
+          buttonRespawn:
+            type: ISButton
+          buttonExit:
+            type: ISButton
+          buttonQuit:
+            type: ISButton
+          screenX: {}
+          screenY: {}
+          screenWidth: {}
+          screenHeight: {}
+          waitOver:
+            type: boolean
+          textY:
+            type: number
+          quitToDesktopDialog:
+            type: ISModalDialog
+            nullable: true
+          playerIndex: {}
+          timeOfDeath: {}
+          lines:
+            type: table
+        methods:
+          - name: createChildren
+          - name: configButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: render
+          - name: onQuitToDesktop
+          - name: onConfirmQuitToDesktop
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onExit
+          - name: onRespawn
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadReactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: OnPlayerDeath
+            parameters:
+              - name: playerObj
+                type: IsoPlayer

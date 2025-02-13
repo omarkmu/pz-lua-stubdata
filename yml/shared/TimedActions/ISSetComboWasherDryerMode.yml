@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSetComboWasherDryerMode:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: object
+              - name: mode
+        staticFields:
+          Type:
+            defaultValue: '"ISSetComboWasherDryerMode"'
+        fields:
+          object: {}
+          mode: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TrapBO:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: player
+                nullable: true
+              - name: trap
+        staticFields:
+          Type:
+            defaultValue: '"TrapBO"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          trapDef: {}
+          name:
+            type: string
+          character:
+            nullable: true
+          player: {}
+          trap: {}
+          noNeedHammer:
+            type: boolean
+          actionAnim:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+                type: boolean
+              - name: sprite
+          - name: onTimedActionStart
+            parameters:
+              - name: action
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: boolean
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

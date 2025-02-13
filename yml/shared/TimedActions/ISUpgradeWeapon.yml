@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUpgradeWeapon:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: weapon
+              - name: part
+        staticFields:
+          Type:
+            defaultValue: '"ISUpgradeWeapon"'
+        fields:
+          part: {}
+          weapon: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

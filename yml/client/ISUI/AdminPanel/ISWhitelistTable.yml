@@ -1,0 +1,108 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWhitelistTable:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: tableName
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"ISWhitelistTable"'
+          instance:
+            type: ISWhitelistTable
+            nullable: true
+        fields:
+          schema:
+            type: table
+          pages:
+            type: table
+          fullPages:
+            type: table
+          listHeaderColor:
+            type: table
+          columnSize:
+            type: table
+          currentPage:
+            type: number
+          buttonBorderColor:
+            type: table
+          filters:
+            type: table
+          filtered:
+            type: boolean
+          totalResult:
+            type: number
+          entriesPerPages:
+            type: number
+          datas:
+            type: ISScrollingListBox
+          pagePanel:
+            type: ISPanel
+          nbrPerPageLbl:
+            type: ISLabel
+          nbrPerPages:
+            type: ISTextEntryBox
+          pagesLbl:
+            type: ISLabel
+          prePage:
+            type: ISButton
+          pageLbl:
+            type: ISLabel
+          nextPage:
+            type: ISButton
+          entry:
+            type: ISTextEntryBox
+          combo:
+            type: ISComboBox
+          loading:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: render
+          - name: createChildren
+          - name: clearFilters
+          - name: clear
+          - name: doPagesButtons
+          - name: onOptionPage
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: computeResult
+            parameters:
+              - name: datas
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+        staticMethods:
+          - name: onNbrPerPageChange
+            parameters:
+              - name: entry
+          - name: onFilterChange
+            parameters:
+              - name: entry
+              - name: combo
+          - name: getTableResult
+            parameters:
+              - name: datas
+              - name: rowId
+              - name: tableName
+                type: string

@@ -1,0 +1,73 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHandcraftWindowHeader:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: _styleIcon
+              - name: _styleLabel
+              - name: _styleButton
+        staticFields:
+          Type:
+            defaultValue: '"ISHandcraftWindowHeader"'
+        fields:
+          iconSize:
+            type: number
+          icon:
+            nullable: true
+          title:
+            nullable: true
+          buttonInfo:
+            nullable: true
+          player: {}
+          titleStr:
+            type: boolean
+          styleIcon: {}
+          styleLabel: {}
+          styleButton: {}
+          paddingTop:
+            type: number
+          paddingBottom:
+            type: number
+          paddingLeft:
+            type: number
+          paddingRight:
+            type: number
+          marginTop:
+            type: number
+          marginBottom:
+            type: number
+          marginLeft:
+            type: number
+          marginRight:
+            type: number
+          enableIcon:
+            type: boolean
+          enableInfoButton:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

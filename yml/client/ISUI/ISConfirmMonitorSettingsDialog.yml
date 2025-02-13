@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISConfirmMonitorSettingsDialog:
+        extends: ISModalDialog
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: callback
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISConfirmMonitorSettings"'
+        fields:
+          startTime: {}
+        methods:
+          - name: initialise
+          - name: update
+          - name: render

@@ -1,0 +1,68 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUI3DScene:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISUI3DScene"'
+        fields:
+          mouseDown:
+            type: boolean
+          background:
+            type: boolean
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+        methods:
+          - name: instantiate
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: setView
+            parameters:
+              - name: name
+                type: string
+          - name: getView
+            return:
+              - type: unknown

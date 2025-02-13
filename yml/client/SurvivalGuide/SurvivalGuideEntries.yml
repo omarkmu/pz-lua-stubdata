@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SurvivalGuideEntries:
+        staticFields:
+          useJoypad:
+            defaultValue: "false"
+          list:
+            defaultValue: LuaList:new()
+          joypad:
+            defaultValue: LuaList:new()
+        staticMethods:
+          - name: addSurvivalGuideEntry
+            parameters:
+              - name: index
+          - name: getEntry
+            parameters:
+              - name: num
+                type: number
+            return:
+              - type: unknown
+          - name: getEntryCount
+            return:
+              - type: number
+          - name: addEntry11

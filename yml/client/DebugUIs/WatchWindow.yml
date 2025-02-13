@@ -1,0 +1,69 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WatchWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"WatchWindow"'
+        fields:
+          selected:
+            type: number
+          sc: {}
+          title:
+            type: string
+          objectView:
+            type: ISScrollingListBox
+          obj:
+            type: LuaList | table
+          objlist:
+            type: LuaList | table
+        methods:
+          - name: onRightMouseDownObject
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDoubleClickOpenObject
+            parameters:
+              - name: item
+          - name: storePos
+          - name: restorePos
+          - name: initialise
+          - name: onSourceMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+          - name: fill
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: addWatch
+            parameters:
+              - name: obj
+                type: IsoObject
+        staticMethods:
+          - name: onDataWrite
+            parameters:
+              - name: data
+          - name: onDataRead
+            parameters:
+              - name: data

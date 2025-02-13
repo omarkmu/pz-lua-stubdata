@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      FloatArrayPlotter:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: maxPlotPoints
+        staticFields:
+          Type:
+            defaultValue: '"FloatArrayPlotter"'
+        fields:
+          plotColor:
+            type: table
+          data:
+            type: boolean
+            nullable: true
+          gridColor:
+            type: table
+          greyCol:
+            type: table
+          doGridLines:
+            type: boolean
+          gridHorzSpacing:
+            type: number
+          gridVertSpacing:
+            type: number
+          maxPlotPoints:
+            type: number
+          indexPointer:
+            type: number
+          vertBars:
+            type: table
+          horzBars:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: render
+          - name: setData
+            parameters:
+              - name: _data
+                type: boolean
+                nullable: true
+          - name: setHorzLine
+            parameters:
+              - name: value
+                type: number
+              - name: col
+                type: table

@@ -1,0 +1,63 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSpawnPointsEditor:
+        extends: ISCollapsableWindow
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISSpawnPointsEditor"'
+        fields:
+          mapList:
+            type: ISScrollingListBox
+          professionList:
+            type: ISScrollingListBox
+          pointList:
+            type: ISScrollingListBox
+          title: {}
+        methods:
+          - name: createChildren
+          - name: fillMapList
+          - name: doDrawPointListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+                nullable: true
+          - name: onMapSelected
+            parameters:
+              - name: directory
+          - name: onProfessionSelected
+          - name: onPointSelected
+          - name: onPointDoubleClick
+            parameters:
+              - name: item
+          - name: PointList_onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: normalizePoint
+            parameters:
+              - name: point
+            return:
+              - type: unknown
+          - name: isSamePoint
+            parameters:
+              - name: point1
+              - name: point2
+            return:
+              - type: boolean
+          - name: onSetPointToPlayerPosition
+            parameters:
+              - name: allProfessions
+          - name: onRemovePoint
+            parameters:
+              - name: allProfessions
+          - name: onCopyToClipboard
+          - name: close

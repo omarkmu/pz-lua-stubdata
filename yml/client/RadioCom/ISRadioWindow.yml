@@ -1,0 +1,139 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRadioWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISRadioWindow"'
+          instances: {}
+          instancesIso: {}
+        fields:
+          drawJoypadFocus:
+            type: boolean
+          subFocus:
+            nullable: true
+          player:
+            nullable: true
+          device:
+            nullable: true
+          deviceData:
+            nullable: true
+          deviceType:
+            type: string
+            nullable: true
+          hotKeyPanels:
+            type: table
+          title:
+            type: string
+          playerNum:
+            type: integer
+          modules:
+            type: table
+          overrideBPrompt:
+            type: boolean
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: close
+          - name: addModule
+            parameters:
+              - name: _modulePanel
+                type: table
+              - name: _moduleName
+                type: string
+              - name: _enable
+                type: boolean
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+          - name: getXPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+          - name: getRBPrompt
+            return:
+              - type: unknown
+          - name: unfocusSelf
+          - name: focusSelf
+          - name: isValidPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: focusNext
+            parameters:
+              - name: _up
+          - name: setSubFocus
+            parameters:
+              - name: _newFocus
+        staticMethods:
+          - name: activate
+            parameters:
+              - name: _player
+              - name: _deviceObject
+            return:
+              - type: ISRadioWindow
+          - name: isActive
+            parameters:
+              - name: _player
+              - name: _deviceObject
+            return:
+              - type: boolean
+          - name: closeIfActive
+            parameters:
+              - name: _player
+              - name: _deviceObject
+          - name: onEquip
+            parameters:
+              - name: _player
+              - name: _item

@@ -1,0 +1,92 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSkillProgressBar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerNum
+                type: integer
+              - name: perk
+              - name: parent
+                type: ISCharacterInfo
+        staticFields:
+          Type:
+            defaultValue: '"ISSkillProgressBar"'
+          alpha:
+            defaultValue: "0.0"
+          upAlpha:
+            defaultValue: "true"
+        fields:
+          tooltip:
+            type: ISToolTip
+            nullable: true
+          level: {}
+          xpForLvl: {}
+          message:
+            type: string
+            nullable: true
+          xp:
+            type: number
+          playerNum:
+            type: integer
+          char: {}
+          perk: {}
+          parent:
+            type: ISCharacterInfo
+          SkillUnitFilled: {}
+          SkillUnitBorder: {}
+        methods:
+          - name: initialise
+          - name: render
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: updateTooltip
+            parameters:
+              - name: lvlSelected
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: activate
+          - name: renderPerkRect
+        staticMethods:
+          - name: updateAlpha
+          - name: getXpForLvl
+            parameters:
+              - name: perk
+              - name: level
+            return:
+              - type: unknown
+          - name: getPreviousXpLvl
+            parameters:
+              - name: perk
+              - name: level
+            return:
+              - type: number
+          - name: getPerkXp
+            parameters:
+              - name: self
+            return:
+              - type: number

@@ -1,0 +1,200 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBodyPartPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: player
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onPartSelected
+                type: function
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISBodyPartPanel"'
+        fields:
+          cacheColor: {}
+          bps:
+            type: table
+          selectedBp:
+            type: boolean
+          lockedSelection:
+            type: boolean
+          defaultAlpha:
+            type: number
+          nodeAlpha:
+            type: number
+          selectedAlpha:
+            type: number
+          deselectedAlpha:
+            type: number
+          backgroundAlpha:
+            type: number
+          colorScheme:
+            type: table
+          player: {}
+          playerNum:
+            type: integer
+          bFemale: {}
+          baseTexture: {}
+          outlineTex: {}
+          minValue:
+            type: number
+          maxValue:
+            type: number
+          canSelect:
+            type: boolean
+          selectlines:
+            type: table
+          drawSelectedHitbox:
+            type: boolean
+          nodes:
+            type: table
+          onPartSelected:
+            type: function
+            nullable: true
+          drawDebugLines:
+            type: boolean
+          functionTarget:
+            type: ISClothingInsPanel | ISCharacterProtection
+            nullable: true
+          doToolTip:
+            type: boolean
+          toolTipText:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: drawLineLeft
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getPartForCoordinate
+            parameters:
+              - name: mx
+              - name: my
+            return:
+              - type: boolean
+          - name: setSelected
+            parameters:
+              - name: mx
+                type: number
+              - name: my
+                type: number
+              - name: bLock
+                type: boolean
+          - name: deselect
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setToolTip
+            parameters:
+              - name: _b
+              - name: _text
+          - name: activateToolTip
+          - name: deactivateToolTip
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setEnableSelectLines
+            parameters:
+              - name: _b
+                type: boolean
+              - name: _defaultAnchorX
+              - name: _defaultAnchorY
+                type: number
+          - name: setSelectLinesAnchor
+            parameters:
+              - name: _anchorX
+              - name: _anchorY
+          - name: enableNodes
+            parameters:
+              - name: _nodeTex
+                type: string
+              - name: _nodeOutlineTex
+                type: string
+          - name: overrideNodeTexture
+            parameters:
+              - name: _bodyPartType
+              - name: _nodeTex
+                type: string
+              - name: _nodeOutlineTex
+                type: string
+          - name: setAlphas
+            parameters:
+              - name: _defaultAlpha
+              - name: _nodeAlpha
+              - name: _selectedAlpha
+              - name: _deselectedAlpha
+              - name: _backgroundAlpha
+          - name: getBodyPartColor
+            parameters:
+              - name: _bodyPartType
+            return:
+              - type: unknown
+                nullable: true
+          - name: setValue
+            parameters:
+              - name: _bodyPartType
+              - name: _value
+                type: number
+              - name: _force
+                type: boolean
+                nullable: true
+          - name: setColorForValue
+            parameters:
+              - name: _val
+              - name: _color
+            return:
+              - type: unknown
+          - name: getRgbForValue
+            parameters:
+              - name: _val
+            return:
+              - type: unknown
+              - type: unknown
+              - type: unknown
+          - name: setColorScheme
+            parameters:
+              - name: _colorScheme
+                type: table

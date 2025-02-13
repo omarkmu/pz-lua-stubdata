@@ -1,0 +1,188 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTextEntryBox:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: title
+                type: string | ISTextEntryBox
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTextEntryBox"'
+        fields:
+          title:
+            type: string | ISTextEntryBox
+          tooltipUI:
+            type: ISToolTip
+          tooltip:
+            nullable: true
+          joypadFocused:
+            type: boolean
+          keeplog:
+            type: boolean
+          logIndex:
+            type: number
+          fade: {}
+          font: {}
+          currentText:
+            type: string | ISTextEntryBox
+        methods:
+          - name: initialise
+          - name: onCommandEntered
+          - name: onTextChange
+          - name: onLostFocus
+          - name: ignoreFirstInput
+          - name: setOnlyNumbers
+            parameters:
+              - name: onlyNumbers
+                type: boolean
+          - name: setOnlyText
+            parameters:
+              - name: onlyText
+                type: boolean
+          - name: instantiate
+          - name: getText
+            return:
+              - type: unknown
+          - name: setEditable
+            parameters:
+              - name: editable
+                type: boolean
+          - name: isEditable
+            return:
+              - type: unknown
+          - name: setSelectable
+            parameters:
+              - name: enable
+          - name: isSelectable
+            return:
+              - type: unknown
+          - name: setMultipleLine
+            parameters:
+              - name: multiple
+                type: boolean
+          - name: isMultipleLine
+            return:
+              - type: unknown
+          - name: setMaxLines
+            parameters:
+              - name: max
+                type: number
+          - name: getMaxLines
+            return:
+              - type: unknown
+          - name: setClearButton
+            parameters:
+              - name: hasButton
+                type: boolean
+          - name: setText
+            parameters:
+              - name: str
+                type: string
+          - name: setTextRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: onPressDown
+          - name: onPressUp
+          - name: focus
+            return:
+              - type: unknown
+          - name: unfocus
+            return:
+              - type: unknown
+          - name: isFocused
+            return:
+              - type: unknown
+          - name: getInternalText
+            return:
+              - type: unknown
+          - name: setMasked
+            parameters:
+              - name: b
+                type: boolean
+            return:
+              - type: unknown
+          - name: setMaxTextLength
+            parameters:
+              - name: length
+                type: number
+          - name: setForceUpperCase
+            parameters:
+              - name: forceUpperCase
+          - name: getCursorPos
+            return:
+              - type: unknown
+          - name: setCursorPos
+            parameters:
+              - name: charIndex
+          - name: prerender
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: clear
+          - name: setHasFrame
+            parameters:
+              - name: hasFrame
+                type: boolean
+          - name: setFrameAlpha
+            parameters:
+              - name: alpha
+                type: number
+          - name: getFrameAlpha
+            return:
+              - type: unknown
+          - name: setValid
+            parameters:
+              - name: valid
+                type: boolean
+          - name: setTooltip
+            parameters:
+              - name: text
+                type: string
+                nullable: true
+          - name: selectAll
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData

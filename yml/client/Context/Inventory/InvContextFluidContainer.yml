@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryMenuElements:
+        staticMethods:
+          - name: ContextFluidContainer
+            return:
+              - type: InvContextFluidContainer
+      InvContextFluidContainer:
+        extends: ISMenuElement
+        local: true
+        fields:
+          invMenu: {}
+        staticMethods:
+          - name: init
+          - name: createMenu
+            parameters:
+              - name: _item
+          - name: addDebugFluid
+            parameters:
+              - name: _p
+              - name: cont
+              - name: fluid
+          - name: transferFluids
+            parameters:
+              - name: _p
+              - name: _container
+          - name: showInfo
+            parameters:
+              - name: _p
+              - name: _container
+          - name: emptyFluidContainer
+            parameters:
+              - name: _p
+              - name: _container

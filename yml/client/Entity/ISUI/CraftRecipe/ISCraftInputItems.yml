@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftInputItems:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _player
+              - name: _recipeData
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftInputItems"'
+        fields:
+          containers:
+            nullable: true
+          allItems: {}
+          recipe: {}
+          oldNodes:
+            type: table
+          nodes:
+            type: table
+          player: {}
+          recipeData: {}
+        methods:
+          - name: updateContainers
+          - name: onRecipeChanged
+          - name: rebuildItemNodes
+          - name: getAllItems
+            return:
+              - type: unknown
+      ISCraftInputItemNode:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _recipe
+              - name: _scriptItem
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftInputItemNode"'
+        fields:
+          recipe: {}
+          scriptItem: {}
+          name: {}
+          textCol: {}
+          width:
+            type: number
+          expanded:
+            type: boolean
+          items:
+            type: table
+        methods:
+          - name: reset

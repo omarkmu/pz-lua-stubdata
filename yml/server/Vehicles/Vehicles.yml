@@ -1,0 +1,210 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Vehicles:
+        staticFields:
+          CheckEngine: {}
+          CheckOperate: {}
+          ContainerAccess: {}
+          Create: {}
+          Init: {}
+          InstallComplete: {}
+          InstallTest: {}
+          UninstallComplete: {}
+          UninstallTest: {}
+          Update: {}
+          Use: {}
+          elaspedMinutesForHeater: {}
+          elaspedMinutesForEngine: {}
+          JerryCanLitres:
+            defaultValue: "10"
+          newSystemConditionLowerMult:
+            defaultValue: "4"
+        staticMethods:
+          - name: LowerCondition
+            parameters:
+              - name: vehicle
+              - name: part
+              - name: elapsedMinutes
+            return:
+              - type: number
+      VehicleUtils:
+        staticMethods:
+          - name: getContainers
+            parameters:
+              - name: playerNum
+                type: integer
+            return:
+              - type: table
+          - name: getItems
+            parameters:
+              - name: playerNum
+                type: integer
+            return:
+              - type: table
+              - type: table
+          - name: split
+            parameters:
+              - name: string
+              - name: pattern
+                type: string
+            return:
+              - type: unknown
+              - type: unknown
+              - type: unknown
+              - type: unknown
+          - name: testProfession
+            parameters:
+              - name: chr
+              - name: professions
+            return:
+              - type: boolean
+          - name: testPerks
+            parameters:
+              - name: chr
+              - name: perks
+            return:
+              - type: boolean
+          - name: testTraits
+            parameters:
+              - name: chr
+              - name: traits
+            return:
+              - type: boolean
+          - name: testRecipes
+            parameters:
+              - name: chr
+              - name: recipes
+            return:
+              - type: boolean
+          - name: testItems
+            parameters:
+              - name: chr
+              - name: items
+              - name: typeToItem
+              - name: tagToItem
+            return:
+              - type: boolean
+          - name: getItemScripts
+            parameters:
+              - name: items
+            return:
+              - type: table
+          - name: createPartInventoryItem
+            parameters:
+              - name: part
+            return:
+              - type: unknown
+                nullable: true
+          - name: createPartInventoryItem_Radio
+            parameters:
+              - name: part
+            return:
+              - type: unknown
+                nullable: true
+          - name: createPartInventoryItem_HAMRadio
+            parameters:
+              - name: part
+            return:
+              - type: unknown
+                nullable: true
+          - name: getInsideTemperature
+            parameters:
+              - name: player
+            return:
+              - type: number
+          - name: compareFloats
+            parameters:
+              - name: a
+              - name: b
+              - name: precision
+                type: number
+            return:
+              - type: boolean
+          - name: lowerUninstalledItemCondition
+            parameters:
+              - name: part
+              - name: item
+              - name: mechanicSkill
+              - name: chr
+          - name: chargeBattery
+            parameters:
+              - name: vehicle
+              - name: delta
+                type: number
+          - name: getChildWindow
+            parameters:
+              - name: part
+            return:
+              - type: unknown
+                nullable: true
+          - name: callLua
+            parameters:
+              - name: functionName
+                type: string
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+                nullable: true
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: OnUseVehicle
+            parameters:
+              - name: character
+              - name: vehicle
+              - name: pressedNotTapped
+          - name: RemoveTire
+            parameters:
+              - name: part
+              - name: explosion
+          - name: OnVehicleHorn
+            parameters:
+              - name: character
+              - name: vehicle
+              - name: pressed
+          - name: CheckForUnlockedDoorsWindows
+            parameters:
+              - name: vehicle
+            return:
+              - type: boolean
+          - name: RequiredKeyNotFound
+            parameters:
+              - name: part
+              - name: chr
+            return:
+              - type: boolean
+          - name: anyWorkingHeadlights
+            parameters:
+              - name: vehicle
+            return:
+              - type: boolean
+          - name: UninstallPart
+            parameters:
+              - name: part
+              - name: chr
+          - name: InstallPart
+            parameters:
+              - name: part
+              - name: item
+              - name: chr
+          - name: calculateInstallationSuccess
+            parameters:
+              - name: perks
+              - name: chr
+              - name: chrPerks
+            return:
+              - type: number
+              - type: number
+          - name: getPerksTableForChr
+            parameters:
+              - name: perks
+              - name: chr
+            return:
+              - type: table

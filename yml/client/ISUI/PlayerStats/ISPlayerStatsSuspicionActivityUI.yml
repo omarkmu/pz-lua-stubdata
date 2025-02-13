@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsSuspicionActivityUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+              - name: username
+                type: string
+              - name: suspicionActivity
+                type: table
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsSuspicionActivityUI"'
+          instance:
+            type: ISPlayerStatsSuspicionActivityUI
+            nullable: true
+        fields:
+          points:
+            type: ISScrollingListBox
+          ok:
+            type: ISButton
+          variableColor:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          onclick: {}
+          username:
+            type: string
+          suspicionActivity:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          listHeaderColor:
+            type: table
+          windows:
+            type: table
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: render
+          - name: create
+          - name: drawLog
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+        staticMethods:
+          - name: populate
+            parameters:
+              - name: self
+          - name: receiveSuspicionActivity
+            parameters:
+              - name: username
+                type: string
+              - name: userLog
+              - name: suspiciousActivity

@@ -1,0 +1,103 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: animal
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalUI"'
+          maxDist:
+            defaultValue: "5"
+          btnOffset:
+            defaultValue: "210"
+        fields:
+          avatarX:
+            type: number
+          avatarY:
+            type: number
+          avatarWidth:
+            type: number
+          avatarHeight:
+            type: number
+          avatarPanel:
+            type: ISCharacterScreenAvatar
+          avatarBackgroundTexture: {}
+          xOffset:
+            type: number
+          renameBtn:
+            type: ISButton
+          feedBtn:
+            type: ISButton
+          milkAnimalBtn:
+            type: ISButton
+          ageBtn:
+            type: ISButton
+          genderBtn:
+            type: ISButton
+          animalName:
+            type: string
+          refreshNeeded:
+            type: boolean
+          animal: {}
+          chr: {}
+          playerNum:
+            type: integer
+          avatarDefinition: {}
+          skillLvl: {}
+        methods:
+          - name: prerender
+          - name: render
+          - name: initialise
+          - name: close
+          - name: create
+          - name: attachAnimal
+          - name: onChangeGender
+          - name: onSetAge
+          - name: renameAnimal
+          - name: onRenameAnimalClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: animal
+          - name: maxTextWidth
+            parameters:
+              - name: font
+              - name: text
+              - name: maxWidth
+            return:
+              - type: unknown
+          - name: updateAvatar
+          - name: getWoolText
+            return:
+              - type: string
+                nullable: true
+          - name: getUdderText
+            return:
+              - type: string
+          - name: getPregnantText
+            return:
+              - type: string
+                nullable: true
+          - name: getClutchSizeText
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMilkAnimal
+      ISAnimalAvatar:
+        extends: ISUI3DModel
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalAvatar"'

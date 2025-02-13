@@ -1,0 +1,64 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPrintMediaInfo:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: title
+                type: string
+              - name: text
+              - name: moreTextInfo
+              - name: nextcondition
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaInfo"'
+        fields:
+          data:
+            type: table
+          title:
+            type: string
+          text: {}
+          nextcondition: {}
+          moreTextInfo: {}
+        methods:
+          - name: initialise
+      ISPrintMediaSetInfo:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaSetInfo"'
+        fields:
+          pageCount:
+            type: number
+          currentPage:
+            type: number
+          pages:
+            type: table
+        methods:
+          - name: initialise
+          - name: addPage
+            parameters:
+              - name: pagetitle
+                type: string
+              - name: pagetext
+              - name: moreTextInfo
+              - name: pagenextcondition
+          - name: getCurrent
+            return:
+              - type: unknown
+          - name: applyPageToRichTextPanel
+            parameters:
+              - name: tutorialPanel
+          - name: hasNext
+            return:
+              - type: boolean
+          - name: hasPrevious
+            return:
+              - type: boolean
+          - name: update
+            parameters:
+              - name: tutorialPanel

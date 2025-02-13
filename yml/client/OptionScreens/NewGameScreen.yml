@@ -1,0 +1,157 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      NewGameScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"NewGameScreen"'
+          instance:
+            type: NewGameScreen
+            nullable: true
+        fields:
+          mainPanel: {}
+          survival:
+            type: ISLabel
+          buttonMods:
+            type: ISButton
+          mainPanelReqWidth:
+            type: number
+          backButton:
+            type: ISButton
+          nextButton:
+            type: ISButton
+          richText: {}
+          selectedItem:
+            type: ISLabel
+          fadeOut:
+            nullable: true
+          fadeIn: {}
+          ISButtonA:
+            nullable: true
+          ISButtonB:
+            nullable: true
+          overBottomPanelButton:
+            nullable: true
+          MouseEnterMainMenuItem:
+            nullable: true
+          modal:
+            nullable: true
+          joypadButtons: {}
+          joypadFocused: {}
+          itemheightoverride:
+            type: table
+          selected:
+            type: number
+          startY:
+            type: number
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: create
+          - name: needDifficulty
+            return:
+              - type: boolean
+          - name: prerenderBottomPanelLabel
+          - name: update
+          - name: disableBtn
+          - name: updateBottomPanelButtons
+          - name: render
+          - name: prerender
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: clickPlay
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: Label_setJoypadFocused
+            parameters:
+              - name: focused
+              - name: joypadData
+                type: JoypadData
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: onResetLua
+            parameters:
+              - name: reason
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: onChooseDifficulty
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dblClickTutorial
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dblClickPlaystyle
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dblClickChallenge
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dblClickDifficulty
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dblClickSurvival
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMenuItemMouseDown
+            parameters:
+              - name: item
+                type: ISLabel
+              - name: x
+                type: number
+              - name: y
+                type: number

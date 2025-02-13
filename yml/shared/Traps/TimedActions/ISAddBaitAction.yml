@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddBaitAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: bait
+              - name: trap
+        staticFields:
+          Type:
+            defaultValue: '"ISAddBaitAction"'
+        fields:
+          trap: {}
+          bait: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

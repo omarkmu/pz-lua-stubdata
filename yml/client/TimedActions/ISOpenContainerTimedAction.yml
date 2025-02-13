@@ -1,0 +1,33 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOpenContainerTimedAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: container
+              - name: time
+              - name: x
+                type: number
+              - name: y
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISOpenContainerTimedAction"'
+        fields:
+          container: {}
+          maxTime: {}
+          x:
+            type: number
+          y:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMultiStageBuild:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: stage
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISMultiStageBuild"'
+        fields:
+          sound:
+            nullable: true
+          stage: {}
+          item: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: consumeMaterial
+          - name: getDuration
+            return:
+              - type: number

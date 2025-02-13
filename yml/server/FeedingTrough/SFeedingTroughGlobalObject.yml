@@ -1,0 +1,77 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SFeedingTroughGlobalObject:
+        extends: SGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: SFeedingTroughSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"SFeedingTroughGlobalObject"'
+        fields:
+          feedAmount:
+            type: table
+          linkedX:
+            type: number
+          linkedY:
+            type: number
+          maxFeed:
+            type: number
+          maxWater:
+            type: number
+          water:
+            type: number
+        methods:
+          - name: initNew
+          - name: OnIsoObjectChangedItself
+            parameters:
+              - name: isoObject
+          - name: getObject
+            return:
+              - type: unknown
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: addWater
+            parameters:
+              - name: amount
+          - name: emptyWater
+          - name: addObject
+            parameters:
+              - name: def
+              - name: north
+              - name: slave
+          - name: getSquare2Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquare2PosReverse
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: addFeed
+            parameters:
+              - name: type
+              - name: feedAmount
+      SGlobalObject:
+        methods:
+          - name: OnModDataChangeItself
+            parameters:
+              - name: isoObject

@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      BuildingHelper:
+        staticMethods:
+          - name: getFreeTilesFromRandomRoomInBuilding
+            parameters:
+              - name: building
+              - name: count
+            return:
+              - type: table
+          - name: getFreeTileFromBuilding
+            parameters:
+              - name: building
+            return:
+              - type: unknown
+                nullable: true
+          - name: getShovelAnim
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+                nullable: true

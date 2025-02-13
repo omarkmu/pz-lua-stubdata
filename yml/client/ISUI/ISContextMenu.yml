@@ -1,0 +1,555 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISContextMenu:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: zoom
+                type: number
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISContextMenu"'
+          globalPlayerContext:
+            type: number
+            nullable: true
+          wantNoise:
+            defaultValue: "false"
+        fields:
+          mouseOut:
+            type: boolean
+          subMenu:
+            nullable: true
+          mouseOver:
+            type: number
+            nullable: true
+          visibleCheck:
+            type: boolean
+          forceVisible:
+            type: boolean
+          toolTip:
+            nullable: true
+          currentOptionRect:
+            type: table
+          blinkAlpha:
+            type: number
+          blinkAlphaIncrease:
+            type: boolean
+          scrollAreaHeight:
+            type: number
+          addedDefaultOptions:
+            type: boolean
+          slideGoalTime: {}
+          slideGoalY:
+            nullable: true
+          slideGoalX:
+            nullable: true
+          slideGoalDY:
+            type: number
+          numOptions:
+            type: number
+          options:
+            type: table
+          font: {}
+          fontHgt: {}
+          itemHgt:
+            type: number
+          zoom:
+            type: number
+            nullable: true
+          padY:
+            type: number
+          padTopBottom:
+            type: number
+          backgroundColorMouseOver:
+            type: table
+          parent:
+            type: table
+          keepOnScreen:
+            type: boolean
+          optionPool:
+            type: table
+          subOptionNums:
+            type: number
+          player:
+            type: number
+          scrollIndicatorHgt:
+            type: number
+          arrowUp: {}
+          arrowDown: {}
+          tickTexture: {}
+        methods:
+          - name: initialise
+          - name: isMouseOut
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: hideSelfAndChildren2
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: ensureVisible
+          - name: onFocus
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onJoypadDirLeft
+          - name: onJoypadDirRight
+          - name: hideSelf
+          - name: hideAndChildren
+          - name: showTooltip
+            parameters:
+              - name: option
+          - name: hideToolTip
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: closeAll
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerender
+          - name: render
+          - name: calcHeight
+          - name: calcWidth
+            return:
+              - type: unknown
+          - name: isOptionSingleMenu
+            return:
+              - type: unknown
+          - name: isAnyVisible
+            return:
+              - type: boolean
+          - name: getIndexForSubMenu
+            parameters:
+              - name: subMenu
+            return:
+              - type: number
+          - name: addDefaultOptions
+          - name: getDefaultOptionCount
+            return:
+              - type: number
+          - name: setSlideGoalX
+            parameters:
+              - name: startX
+              - name: finalX
+          - name: setSlideGoalY
+            parameters:
+              - name: startY
+              - name: finalY
+          - name: updateSlideGoalX
+          - name: updateSlideGoalY
+          - name: displayAncestor
+            parameters:
+              - name: ancestor
+          - name: displaySubMenu
+            parameters:
+              - name: subMenu
+              - name: option
+          - name: getRootY
+            return:
+              - type: unknown
+          - name: getItemY
+            parameters:
+              - name: index
+            return:
+              - type: number
+          - name: getIndexAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: topmostMenuWithMouse
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: ISContextMenu
+                nullable: true
+          - name: allocOption
+            parameters:
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+          - name: addOption
+            parameters:
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: getOptionFromName
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: addColorBoxOption
+            parameters:
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: addDebugOption
+            parameters:
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: addOptionOnTop
+            parameters:
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+          - name: insertOptionAfter
+            parameters:
+              - name: prevOptionName
+                type: string
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: insertOptionBefore
+            parameters:
+              - name: nextOptionName
+                type: string
+              - name: name
+                type: string
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+              - name: param5
+                type: unknown
+              - name: param6
+                type: unknown
+              - name: param7
+                type: unknown
+              - name: param8
+                type: unknown
+              - name: param9
+                type: unknown
+              - name: param10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeLastOption
+          - name: removeOptionByName
+            parameters:
+              - name: optName
+                type: string
+          - name: addGetUpOption
+            parameters:
+              - name: text
+              - name: target
+                type: unknown
+              - name: onSelect
+              - name: p2
+              - name: p3
+              - name: p4
+              - name: p5
+              - name: p6
+              - name: p7
+              - name: p8
+              - name: p9
+              - name: p10
+              - name: ...
+            return:
+              - type: unknown
+                nullable: true
+          - name: onGetUpAndThen
+            parameters:
+              - name: onSelect
+              - name: p1
+              - name: p2
+              - name: p3
+              - name: p4
+              - name: p5
+              - name: p6
+              - name: p7
+              - name: p8
+              - name: p9
+              - name: p10
+              - name: ...
+          - name: getMenuOptionNames
+            return:
+              - type: table
+          - name: addSubMenu
+            parameters:
+              - name: option
+              - name: menu
+          - name: addActionsOption
+            parameters:
+              - name: text
+              - name: getActionsFunction
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+              - name: arg9
+                type: unknown
+              - name: arg10
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+          - name: setOptionChecked
+            parameters:
+              - name: option
+              - name: checked
+          - name: clear
+          - name: isEmpty
+            return:
+              - type: boolean
+          - name: getScrollAreaHeight
+            return:
+              - type: number
+          - name: setFont
+            parameters:
+              - name: font
+          - name: setFontFromOption
+          - name: getNew
+            parameters:
+              - name: parentContext
+            return:
+              - type: unknown
+          - name: getSubMenu
+            parameters:
+              - name: num
+                type: number
+            return:
+              - type: unknown
+          - name: getSubInstance
+            parameters:
+              - name: num
+                type: number
+            return:
+              - type: unknown
+        staticMethods:
+          - name: get
+            parameters:
+              - name: player
+                type: number
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: noise
+            parameters:
+              - name: msg

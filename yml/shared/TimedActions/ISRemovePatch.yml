@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemovePatch:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: clothing
+              - name: part
+              - name: needle
+        staticFields:
+          Type:
+            defaultValue: '"ISRemovePatch"'
+        fields:
+          clothing: {}
+          needle: {}
+          sound: {}
+          fabricType:
+            nullable: true
+          part: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: complete
+            return:
+              - type: boolean
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number
+        staticMethods:
+          - name: chanceToGetPatchBack
+            parameters:
+              - name: character
+            return:
+              - type: number

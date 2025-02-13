@@ -1,0 +1,382 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MainScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: inGame
+        staticFields:
+          Type:
+            defaultValue: '"MainScreen"'
+          latestSaveWorld:
+            nullable: true
+          latestSaveGameMode:
+            nullable: true
+          instance:
+            type: MainScreen
+            nullable: true
+          StaticHeight:
+            type: number
+            nullable: true
+          StaticWidth:
+            type: number
+            nullable: true
+        fields:
+          bottomPanel:
+            type: ISPanel
+          serverList:
+            type: ServerList
+          bootstrapConnectPopup: {}
+          connectToServer: {}
+          serverConnectPopup:
+            type: ServerConnectPopup
+          multiplayer:
+            type: MultiplayerScreen
+          joinPublicServer:
+            type: PublicServerList
+          soloScreen:
+            type: NewGameScreen
+          loadScreen:
+            type: LoadGameScreen
+          onlineCoopScreen:
+            type: CoopOptionsScreen
+          workshopSubmit:
+            type: WorkshopSubmitScreen
+          serverWorkshopItem:
+            type: ServerWorkshopItemScreen
+          mainOptions:
+            type: MainOptions
+          sandOptions:
+            type: SandboxOptionsScreen
+          worldSelect:
+            type: WorldSelect
+          mapSpawnSelect:
+            type: MapSpawnSelect
+          modSelect:
+            type: ModSelector
+          charCreationMain:
+            type: CharacterCreationMain
+          charCreationProfession:
+            type: CharacterCreationProfession
+          lastStandPlayerSelect:
+            type: LastStandPlayerSelect
+          serverSettingsScreen:
+            type: ServerSettingsScreen
+          scoreboard:
+            type: ISScoreboard
+          inviteFriends:
+            type: InviteFriends
+          returnOption:
+            type: ISLabel
+          scoreOption:
+            type: ISLabel
+          inviteOption:
+            type: ISLabel
+          optionsOption:
+            type: ISLabel
+          defaultJoypadOption:
+            type: ISLabel
+          controllerLabel:
+            type: ISLabel
+          abutton:
+            type: ISImage
+          controllerLabel2:
+            type: ISLabel
+          debOption:
+            type: ISLabel
+          resetLua:
+            type: ISButton
+          latestSaveOption:
+            type: ISLabel
+          loadOption:
+            type: ISLabel
+          tutorialOption:
+            type: ISLabel
+          survivalOption:
+            type: ISLabel
+          modsOption:
+            type: ISLabel
+          workshopOption:
+            type: ISLabel
+          exitOption:
+            type: ISLabel
+          quitToDesktop:
+            type: ISLabel
+          maxMenuItemWidth:
+            type: number
+          versionDetail:
+            type: ISButton
+          reportBug:
+            type: ISButton
+          modListDetail:
+            type: ISButton
+          termsOfService:
+            type: ISButton
+          versionLabel:
+            type: ISLabel
+          desc: {}
+          animPopup:
+            type: ISModalRichText
+          threeD:
+            type: ISUI3DModel
+          firstFrame:
+            type: boolean
+          delay:
+            type: number
+          time:
+            type: number
+          creditTime:
+            type: number
+          creditsIndex:
+            type: number
+          warningFade:
+            type: number
+          demoMessagePanel:
+            type: ISRichTextPanel
+          overBottomPanelButton:
+            nullable: true
+          MouseEnterMainMenuItem:
+            nullable: true
+          tutorialButton:
+            nullable: true
+          checkSavefileModal:
+            type: ISModalRichText
+            nullable: true
+          createWorld:
+            type: boolean
+          termsOfServiceDialog:
+            type: ISTermsOfServiceUI
+            nullable: true
+          quitToDesktopDialog:
+            type: ISModalDialog
+            nullable: true
+          infoRichText:
+            type: ISNewsUpdate
+          infoModList:
+            type: ISPauseModListUI
+            nullable: true
+          warningFadeMax:
+            type: number
+          credits:
+            type: LuaList
+          creditTimeMax:
+            type: number
+          inGame: {}
+          logoTexture: {}
+          joypadIndexY: {}
+          joypadButtons: {}
+        methods:
+          - name: initialise
+          - name: getLatestSave
+          - name: setBottomPanelVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: instantiate
+          - name: OnClickNews
+          - name: render
+          - name: calcLogoHeight
+            return:
+              - type: number
+          - name: prerender
+          - name: prerenderBottomPanelLabel
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: updateBottomPanelButtons
+          - name: setDefaultSandboxVars
+          - name: onTutorialModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onTutorialControllerWarn2
+            parameters:
+              - name: button
+                type: ISButton
+          - name: quitToDesktopFunc
+          - name: onConfirmQuitToDesktop
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onClickVersionDetail
+          - name: onClickTermsOfService
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onClickReportBug
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onTermsOfServiceOK
+          - name: onClickModList
+          - name: presentServerConnectPopup
+          - name: update
+          - name: setSandboxPreset
+            parameters:
+              - name: preset
+                type: table
+          - name: setBeginnerPreset
+          - name: setEasyPreset
+          - name: setNormalPreset
+          - name: setHardPreset
+          - name: setHardcorePreset
+          - name: onEnterFromGame
+          - name: onReturnToGame
+          - name: addCredit
+            parameters:
+              - name: credit
+                type: string
+              - name: number
+                type: number
+          - name: doArtCredits
+          - name: doCodeCredits
+          - name: doWritingCredits
+          - name: doScriptingCredits
+          - name: doCredits
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: showInviteFailDialog
+            parameters:
+              - name: message
+                type: string
+          - name: onInviteFailDialogButton
+            parameters:
+              - name: button
+                type: ISButton
+              - name: focus
+          - name: getAllUIs
+            return:
+              - type: table
+          - name: getCurrentFocusForController
+            return:
+              - type: ISModalRichText | MainScreen
+                nullable: true
+        staticMethods:
+          - name: checkTutorial
+            parameters:
+              - name: button
+                type: ISButton
+            return:
+              - type: boolean
+          - name: onTutorialControllerWarn
+          - name: startTutorial
+          - name: checkMapsAvailable
+            parameters:
+              - name: mapName
+                type: string
+              - name: activeMods
+              - name: mapAvailable
+                type: table
+            return:
+              - type: boolean
+          - name: getMissingMods
+            parameters:
+              - name: activeMods
+            return:
+              - type: table
+          - name: checkSaveFile
+            return:
+              - type: boolean
+                nullable: true
+          - name: displayCheckSavefileModal
+            parameters:
+              - name: text
+              - name: fatal
+          - name: resetLuaIfNeeded
+          - name: onCheckSavefileModalClick
+            parameters:
+              - name: model
+              - name: button
+                type: ISButton
+          - name: continueLatestSaveAux
+            parameters:
+              - name: fromResetLua
+                type: boolean
+          - name: continueLatestSave
+            parameters:
+              - name: gameMode
+              - name: saveName
+                type: string
+          - name: onMenuItemMouseDownMainMenu
+            parameters:
+              - name: item
+                type: ISLabel
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: OnTick
+            parameters:
+              - name: totalTicks
+          - name: onResetLua
+            parameters:
+              - name: reason
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: onAcceptInvite
+            parameters:
+              - name: connectionString
+          - name: OnJoypadBeforeDeactivate
+            parameters:
+              - name: index
+    functions:
+      - name: LoadMainScreenPanel
+      - name: isPlayerDoingActionThatCanBeCancelled
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+        return:
+          - type: boolean
+      - name: stopDoingActionThatCanBeCancelled
+        parameters:
+          - name: playerObj
+            type: IsoPlayer
+      - name: CancelAction
+        parameters:
+          - name: playerNum
+            type: integer
+      - name: ToggleEscapeMenu
+        parameters:
+          - name: key
+            type: integer
+      - name: LoadMainScreenPanelIngame
+      - name: LoadMainScreenPanelInt
+        parameters:
+          - name: ingame
+      - name: MainScreenPanelJoinSteam
+      - name: MainScreenPanelJoinSteam_onConfirmLeaveGame
+        parameters:
+          - name: this
+          - name: button
+            type: ISButton
+          - name: player
+          - name: bed

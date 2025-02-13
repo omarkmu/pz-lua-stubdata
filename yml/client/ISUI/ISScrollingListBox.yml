@@ -1,0 +1,258 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISScrollingListBox:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISScrollingListBox"'
+          joypadListIndex:
+            defaultValue: "1"
+          nextVisibleIndex:
+            defaultValue: ISScrollingListBox.nextVisibleItem
+        fields:
+          stopPrerender:
+            type: boolean
+          selected:
+            type: number
+            nullable: true
+          selectedBeforeReset:
+            type: number
+            nullable: true
+          joypadFocused:
+            type: boolean
+          mouseoverselected:
+            type: number
+          count:
+            type: number
+          onmousedown: {}
+          target:
+            type: unknown
+          onmousedblclick:
+            type: function
+          items:
+            type: table
+          itemheightoverride:
+            type: table
+          smoothScrollY:
+            type: number
+            nullable: true
+          smoothScrollTargetY:
+            type: number
+            nullable: true
+          tooltipUI:
+            type: ISToolTip
+          listHeight:
+            type: number
+          font:
+            type: string
+          fontHgt: {}
+          itemPadY:
+            type: number
+          itemheight:
+            type: number
+          altBgColor:
+            type: table
+            nullable: true
+          listHeaderColor:
+            type: table
+          drawBorder:
+            type: boolean
+          columns:
+            type: table
+        methods:
+          - name: initialise
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: instantiate
+          - name: rowAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+          - name: topOfItem
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: number
+          - name: prevVisibleIndex
+            parameters:
+              - name: index
+                type: number
+                nullable: true
+            return:
+              - type: number
+          - name: nextVisibleItem
+            parameters:
+              - name: index
+                type: number
+                nullable: true
+            return:
+              - type: number
+          - name: isMouseOverScrollBar
+            return:
+              - type: unknown
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: addItem
+            parameters:
+              - name: name
+                type: string
+              - name: item
+                type: table
+            return:
+              - type: table
+          - name: insertItem
+            parameters:
+              - name: index
+              - name: name
+                type: string
+              - name: item
+            return:
+              - type: table
+          - name: removeItem
+            parameters:
+              - name: itemText
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeItemByIndex
+            parameters:
+              - name: itemIndex
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeFirst
+          - name: size
+            return:
+              - type: number
+          - name: setOnMouseDownFunction
+            parameters:
+              - name: target
+                type: unknown
+              - name: onmousedown
+          - name: setOnMouseDoubleClick
+            parameters:
+              - name: target
+                type: unknown
+              - name: onmousedblclick
+                type: function
+          - name: doDrawItem
+            parameters:
+              - name: y
+                type: number
+              - name: item
+              - name: alt
+                type: boolean
+            return:
+              - type: number
+          - name: clear
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: scrollToSelected
+          - name: sort
+          - name: updateTooltip
+          - name: updateSmoothScrolling
+          - name: prerender
+          - name: onMouseDoubleClick
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: ensureVisible
+            parameters:
+              - name: index
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: setFont
+            parameters:
+              - name: font
+                type: string
+              - name: padY
+                type: number
+          - name: addColumn
+            parameters:
+              - name: columnName
+                type: string
+              - name: size
+        staticMethods:
+          - name: sortByName
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean

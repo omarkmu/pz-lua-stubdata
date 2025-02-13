@@ -1,0 +1,119 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ZombiePopulationWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ZombiePopulationWindow"'
+          instance:
+            type: ZombiePopulationWindow
+            nullable: true
+        fields:
+          title:
+            type: string
+          renderPanel:
+            type: ISPanel
+          settingPath:
+            type: boolean
+          mouseMoved:
+            type: boolean
+          mouseDownX:
+            type: number
+          mouseDownY:
+            type: number
+          panning:
+            type: boolean
+          xpos: {}
+          ypos: {}
+          zoom:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: close
+          - name: onMapMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMapMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMapMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMapMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMapRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onAddWorldSound
+            parameters:
+              - name: worldX
+              - name: worldY
+          - name: onTeleport
+            parameters:
+              - name: worldX
+              - name: worldY
+          - name: onChangeOption
+            parameters:
+              - name: option
+          - name: onMapRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMapRightMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRenderMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: renderTex
+        staticMethods:
+          - name: OnOpenPanel
+    functions:
+      - name: newZombiePopulationWindow

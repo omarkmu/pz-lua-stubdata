@@ -1,0 +1,98 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftLogicPanel:
+        extends: ISBaseComponentPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: component
+              - name: componentUiStyle
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftLogicPanel"'
+        fields:
+          tableLayout:
+            nullable: true
+          energyInputs:
+            nullable: true
+          fluidInputs:
+            nullable: true
+          itemInputs:
+            nullable: true
+          craftProgress:
+            nullable: true
+          craftControl:
+            nullable: true
+          craftControlDebug:
+            nullable: true
+          itemOutputs:
+            nullable: true
+          fluidOutputs:
+            nullable: true
+          energyOutputs:
+            nullable: true
+          recipeIconPanel:
+            nullable: true
+          tooltipRecipe: {}
+          tooltipCounter:
+            type: number
+          recipePanel:
+            nullable: true
+          inputsGroupName: {}
+          outputsGroupName: {}
+          resourcesComponent: {}
+          craftLogicComponent: {}
+          recipes: {}
+          logic: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createItemSlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: createFluidSlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: createEnergySlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: createRecipeIconPanel
+          - name: createRecipePanel
+        staticMethods:
+          - name: CanCreatePanelFor
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _component
+              - name: _componentUiScript
+            return:
+              - type: boolean
+                nullable: true

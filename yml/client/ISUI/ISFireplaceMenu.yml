@@ -1,0 +1,76 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFireplaceMenu:
+        staticMethods:
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onDisplayInfo
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: bbq
+          - name: toPlayerInventory
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                nullable: true
+          - name: onAddFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: fireplace
+              - name: fuelType
+          - name: onAddMultipleFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: fireplace
+              - name: fuelType
+          - name: onAddAllFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: fireplace
+          - name: onLightFromLiterature
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: itemType
+              - name: lighter
+              - name: fireplace
+              - name: fuelAmt
+          - name: onLightFromPetrol
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: lighter
+              - name: petrol
+              - name: fireplace
+          - name: onLightFromKindle
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: percedWood
+              - name: stickOrBranch
+              - name: fireplace
+          - name: onExtinguish
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: fireplace

@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTakeFuel:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: fuelStation
+              - name: petrolCan
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISTakeFuel"'
+        fields:
+          sound: {}
+          fuelStation: {}
+          square:
+            type: IsoGridSquare
+          petrolCan:
+            nullable: true
+          amount: {}
+          itemStart: {}
+          itemTarget:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: init

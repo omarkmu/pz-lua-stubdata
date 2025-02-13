@@ -1,0 +1,96 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMVolume:
+        extends: RWMPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWMVolume"'
+        fields:
+          speakerButton:
+            type: ISSpeakerButton
+          volumeBar:
+            type: ISVolumeBar
+          itemDropBox:
+            type: ISItemDropBox
+          hasEnabledHeadphones:
+            type: boolean
+          volume:
+            type: number
+          isMute:
+            type: boolean
+          headphonesTex: {}
+          earbudsTex: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: toggleHeaphoneSupport
+            parameters:
+              - name: enable
+                type: boolean
+          - name: addHeadphone
+            parameters:
+              - name: _items
+                type: table
+          - name: removeHeadphone
+          - name: verifyItem
+            parameters:
+              - name: _item
+            return:
+              - type: boolean
+                nullable: true
+          - name: round
+            parameters:
+              - name: num
+                type: number
+              - name: idp
+            return:
+              - type: number
+          - name: onVolumeChange
+            parameters:
+              - name: _newVol
+          - name: onSpeakerButton
+            parameters:
+              - name: _ismute
+                type: boolean
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: boolean
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+          - name: getBPrompt
+            return:
+              - type: unknown
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true

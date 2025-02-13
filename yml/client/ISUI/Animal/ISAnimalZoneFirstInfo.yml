@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalZoneFirstInfo:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalZoneFirstInfo"'
+        fields:
+          rich:
+            type: ISRichTextPanel
+          okBtn:
+            type: ISButton
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: render
+          - name: onClickOk
+        staticMethods:
+          - name: showUI
+            parameters:
+              - name: force
+                type: boolean
+                nullable: true

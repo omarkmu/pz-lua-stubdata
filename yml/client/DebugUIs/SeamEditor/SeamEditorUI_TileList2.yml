@@ -1,0 +1,181 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SeamEditorUI_TileList2:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: picker
+                type: SeamEditorUI_TilePicker2
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_TileList2"'
+        fields:
+          mouseDown:
+            type: boolean
+          mouseDownParams:
+            type: table
+            nullable: true
+          tileset:
+            type: string
+            nullable: true
+          picker:
+            type: SeamEditorUI_TilePicker2
+          editor:
+            type: SeamEditorUI
+          selection:
+            type: table
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getDraggedTileName
+            return:
+              - type: unknown
+                nullable: true
+          - name: renderDraggedTile
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSwapTilesets
+            parameters:
+              - name: tileName
+                type: string
+          - name: onSelectInOtherList
+            parameters:
+              - name: tileName
+                type: string
+          - name: getColRowAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: isValidColRow
+            parameters:
+              - name: col
+                type: number
+              - name: row
+                type: number
+            return:
+              - type: boolean
+          - name: selectionAdd
+            parameters:
+              - name: col
+                type: number
+              - name: row
+                type: number
+          - name: selectionRemove
+            parameters:
+              - name: col
+              - name: row
+          - name: selectionToggle
+            parameters:
+              - name: col
+              - name: row
+          - name: selectionIndexOf
+            parameters:
+              - name: col
+              - name: row
+            return:
+              - type: number
+          - name: selectionClear
+          - name: isSelectionEmpty
+            return:
+              - type: boolean
+          - name: getSelection
+            return:
+              - type: table
+          - name: getSingleSelectedTile
+            return:
+              - type: unknown
+                nullable: true
+          - name: getTextureNameAt
+            parameters:
+              - name: col
+              - name: row
+            return:
+              - type: unknown
+          - name: getTextureAt
+            parameters:
+              - name: col
+              - name: row
+            return:
+              - type: unknown
+          - name: calculateSelectionBounds
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+          - name: render
+          - name: renderGrid
+            parameters:
+              - name: xIndent
+              - name: yIndent
+              - name: texW
+              - name: texH
+          - name: renderTilesToAssign
+            parameters:
+              - name: xIndent
+              - name: yIndent
+              - name: texW
+              - name: texH
+              - name: col
+              - name: row
+          - name: assignMasterSprites
+            parameters:
+              - name: col
+              - name: row
+          - name: setTileset
+            parameters:
+              - name: tilesetName
+                type: string
+                nullable: true

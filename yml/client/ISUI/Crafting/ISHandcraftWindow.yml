@@ -1,0 +1,92 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHandcraftWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: isoObject
+              - name: queryOverride
+        staticFields:
+          Type:
+            defaultValue: '"ISHandcraftWindow"'
+        fields:
+          maximumHeight:
+            type: number
+          windowHeader:
+            nullable: true
+          handCraftPanel:
+            nullable: true
+          xuiPreferredResizeWidth:
+            type: number
+          xuiPreferredResizeHeight:
+            type: number
+          xuiResizeAnchorRight:
+            type: boolean
+          dirtyLayout:
+            type: boolean
+          isoObjectInProximity:
+            type: boolean
+          hasClosedWindowInstance:
+            type: boolean
+          maximumWidth:
+            type: number
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            nullable: true
+          panelCloseDistance:
+            type: number
+          isoObject: {}
+          queryOverride: {}
+          enableHeader:
+            type: boolean
+          maximumHeightPercent:
+            type: number
+          overrideBPrompt:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: xuiRecalculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+              - name: _force
+              - name: _anchorRight
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+                type: number
+              - name: _preferredHeight
+                type: number
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: update
+            return:
+              - type: boolean
+                nullable: true
+          - name: close
+          - name: validateSizeBounds
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer

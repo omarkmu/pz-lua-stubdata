@@ -1,0 +1,102 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldMapSharing:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: mapUI
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSharing"'
+        fields:
+          panelMain:
+            type: table
+          panelPlayers:
+            type: ISWorldMapSharing_PanelPlayers
+          currentPanel:
+            type: table
+          currentSymbol: {}
+          mapUI: {}
+        methods:
+          - name: createChildren
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: render
+          - name: setCurrentSymbol
+            parameters:
+              - name: symbol
+          - name: setCurrentPanel
+            parameters:
+              - name: panel
+                type: table
+          - name: applyChanges
+          - name: close
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      ISWorldMapSharing_PanelPlayers:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapSharing_PanelPlayers"'
+        fields:
+          listbox:
+            type: table
+          buttonAll:
+            type: ISButton
+          buttonNone:
+            type: ISButton
+          buttonBack:
+            type: ISButton
+          ISButtonB:
+            nullable: true
+        methods:
+          - name: createChildren
+          - name: becomeCurrent
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: prerender
+          - name: onButtonAll
+          - name: onButtonNone
+          - name: onButtonBack
+          - name: setCurrentSymbol
+            parameters:
+              - name: symbol
+          - name: populateList
+            parameters:
+              - name: symbol
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: onMiniScoreboardUpdate
+          - name: onScoreboardUpdate
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs

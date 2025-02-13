@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFillGrave:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: graves
+              - name: shovel
+        staticFields:
+          Type:
+            defaultValue: '"ISFillGrave"'
+        fields:
+          item: {}
+          sound: {}
+          character:
+            nullable: true
+          graves: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: changeSprite
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: getDuration
+            return:
+              - type: number

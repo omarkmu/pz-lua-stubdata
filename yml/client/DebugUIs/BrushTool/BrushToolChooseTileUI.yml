@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      BrushToolTilePickerList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"BrushToolTilePickerList"'
+        fields:
+          imageName:
+            nullable: true
+          character: {}
+          posToTileNameTable:
+            type: table
+        methods:
+          - name: render
+          - name: onMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      BrushToolChooseTileUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"BrushToolChooseTileUI"'
+          instance:
+            type: BrushToolChooseTileUI
+            nullable: true
+        fields:
+          searchEntryBox:
+            type: ISTextEntryBox
+          imageList:
+            type: ISScrollingListBox
+          tilesList:
+            type: BrushToolTilePickerList
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: createChildren
+          - name: onTextChange
+          - name: doDrawImageListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: populateList
+          - name: close
+        staticMethods:
+          - name: openPanel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSelectImage
+            parameters:
+              - name: _
+              - name: item
+          - name: OnKeyPressed
+            parameters:
+              - name: key
+                type: integer

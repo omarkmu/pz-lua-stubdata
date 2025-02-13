@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddFuelAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: campfire
+              - name: item
+                nullable: true
+              - name: fuelAmt
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISAddFuelAction"'
+        fields:
+          item:
+            nullable: true
+          sound: {}
+          campfire: {}
+          fuelAmt:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

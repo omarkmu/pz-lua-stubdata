@@ -1,0 +1,24 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SurvivorSwap:
+        staticFields:
+          Survivors: {}
+          Loadouts: {}
+          Vehicles: {}
+        staticMethods:
+          - name: applyCharacter
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: data
+          - name: applyLoadout
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: data
+          - name: applyVehicle
+            parameters:
+              - name: vehicle
+              - name: data

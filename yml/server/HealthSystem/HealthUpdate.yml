@@ -1,0 +1,21 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      healthUpdate:
+        staticFields:
+          lastGrid:
+            nullable: true
+          bodyDmg:
+            nullable: true
+        staticMethods:
+          - name: update
+          - name: scratchFromWindow
+            parameters:
+              - name: feeler
+          - name: getBrokenWindow
+            parameters:
+              - name: feeler
+            return:
+              - type: unknown
+                nullable: true

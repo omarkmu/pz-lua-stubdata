@@ -1,0 +1,118 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ThunderDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ThunderDebug"'
+          instance:
+            type: ThunderDebug
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          eventsAdded:
+            defaultValue: "false"
+        fields:
+          labels:
+            type: table
+          thunderStorm: {}
+          currentTile:
+            nullable: true
+          player: {}
+          playerNum:
+            type: integer
+          greyCol:
+            type: table
+          title:
+            type: string
+          richtext:
+            nullable: true
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+          hourStamp:
+            type: number
+          dayStamp:
+            type: number
+          monthStamp:
+            type: number
+          year:
+            type: number
+          poi:
+            type: table
+          strikes:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addPoi
+            parameters:
+              - name: _name
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+          - name: convertCoords
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: updateValues
+            parameters:
+              - name: _mgr
+          - name: addThunderEvent
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: strike
+              - name: light
+              - name: rumble
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: close
+          - name: clear
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ThunderDebug
+                nullable: true
+          - name: OnClimateTickDebug
+            parameters:
+              - name: mgr
+          - name: OnThunderEvent
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: strike
+              - name: light
+              - name: rumble

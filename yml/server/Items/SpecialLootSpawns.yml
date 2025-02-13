@@ -1,0 +1,482 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SpecialLootSpawns:
+        staticMethods:
+          - name: OnCreateStockCertificate
+            parameters:
+              - name: item
+          - name: OnCreatePaperwork
+            parameters:
+              - name: item
+          - name: OnCreateMonogram
+            parameters:
+              - name: item
+          - name: OnCreateIDcard
+            parameters:
+              - name: item
+          - name: OnCreateIDcard_Female
+            parameters:
+              - name: item
+          - name: OnCreateIDcard_Male
+            parameters:
+              - name: item
+          - name: OnCreateDogTag
+            parameters:
+              - name: item
+          - name: OnCreateDogTag_Female
+            parameters:
+              - name: item
+          - name: OnCreateDogTag_Male
+            parameters:
+              - name: item
+          - name: OnCreatePhoto
+            parameters:
+              - name: item
+          - name: OnCreatePhoto_Secret
+            parameters:
+              - name: item
+          - name: OnCreatePhoto_Racy
+            parameters:
+              - name: item
+          - name: OnCreatePhoto_VeryOld
+            parameters:
+              - name: item
+          - name: OnCreateSubjectBook
+            parameters:
+              - name: item
+              - name: subject
+                type: string
+          - name: OnCreateSpecialBook
+            parameters:
+              - name: item
+              - name: subject
+                type: string
+          - name: GetCoverFromList
+            parameters:
+              - name: item
+              - name: hardcover
+              - name: oldBookList
+          - name: OnCreateAdventureNonFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateArtBook
+            parameters:
+              - name: item
+          - name: OnCreateBaseballBook
+            parameters:
+              - name: item
+          - name: OnCreateBibleBook
+            parameters:
+              - name: item
+          - name: OnCreateBiographyBook
+            parameters:
+              - name: item
+          - name: OnCreateBusinessBook
+            parameters:
+              - name: item
+          - name: OnCreateChildsBook
+            parameters:
+              - name: item
+          - name: OnCreateComputerBook
+            parameters:
+              - name: item
+          - name: OnCreateConspiracyBook
+            parameters:
+              - name: item
+          - name: OnCreateCrimeFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateCinemaBook
+            parameters:
+              - name: item
+          - name: OnCreateClassicBook
+            parameters:
+              - name: item
+          - name: OnCreateClassicFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateClassicNonfictionBook
+            parameters:
+              - name: item
+          - name: OnCreateDietBook
+            parameters:
+              - name: item
+          - name: OnCreateFantasyBook
+            parameters:
+              - name: item
+          - name: OnCreateFarmingBook
+            parameters:
+              - name: item
+          - name: OnCreateFashionBook
+            parameters:
+              - name: item
+          - name: OnCreateFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateGeneralNonFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateGeneralReferenceBook
+            parameters:
+              - name: item
+          - name: OnCreateGolfBook
+            parameters:
+              - name: item
+          - name: OnCreateHassBook
+            parameters:
+              - name: item
+          - name: OnCreateHistoryBook
+            parameters:
+              - name: item
+          - name: OnCreateHorrorBook
+            parameters:
+              - name: item
+          - name: OnCreateLegalBook
+            parameters:
+              - name: item
+          - name: OnCreateLiteraryFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateMedicalBook
+            parameters:
+              - name: item
+          - name: OnCreateMilitaryBook
+            parameters:
+              - name: item
+          - name: OnCreateMilitaryHistoryBook
+            parameters:
+              - name: item
+          - name: OnCreateMusicBook
+            parameters:
+              - name: item
+          - name: OnCreateNatureBook
+            parameters:
+              - name: item
+          - name: OnCreateNewAgeBook
+            parameters:
+              - name: item
+          - name: OnCreateOccultBook
+            parameters:
+              - name: item
+          - name: OnCreatePhilosophyBook
+            parameters:
+              - name: item
+          - name: OnCreatePlayBook
+            parameters:
+              - name: item
+          - name: OnCreatePolicingBook
+            parameters:
+              - name: item
+          - name: OnCreatePoliticsBook
+            parameters:
+              - name: item
+          - name: OnCreatePoorBook
+            parameters:
+              - name: item
+          - name: OnCreateQuackeryBook
+            parameters:
+              - name: item
+          - name: OnCreateQuigleyBook
+            parameters:
+              - name: item
+          - name: OnCreateRelationshipBook
+            parameters:
+              - name: item
+          - name: OnCreateReligionBook
+            parameters:
+              - name: item
+          - name: OnCreateRichBook
+            parameters:
+              - name: item
+          - name: OnCreateRomanceBook
+            parameters:
+              - name: item
+          - name: OnCreateSadNonFictionBook
+            parameters:
+              - name: item
+          - name: OnCreateScaryBook
+            parameters:
+              - name: item
+          - name: OnCreateSchoolTextbookBook
+            parameters:
+              - name: item
+          - name: OnCreateScienceBook
+            parameters:
+              - name: item
+          - name: OnCreateSciFiBook
+            parameters:
+              - name: item
+          - name: OnCreateSelfHelpBook
+            parameters:
+              - name: item
+          - name: OnCreateSexyBook
+            parameters:
+              - name: item
+          - name: OnCreateSportsBook
+            parameters:
+              - name: item
+          - name: OnCreateTeensBook
+            parameters:
+              - name: item
+          - name: OnCreateThrillerBook
+            parameters:
+              - name: item
+          - name: OnCreateTravelBook
+            parameters:
+              - name: item
+          - name: OnCreateTrueCrimeBook
+            parameters:
+              - name: item
+          - name: OnCreateWesternBook
+            parameters:
+              - name: item
+          - name: OnCreateBook
+            parameters:
+              - name: item
+          - name: OnCreateComicBook
+            parameters:
+              - name: item
+          - name: OnCreateComicBookRetail
+            parameters:
+              - name: item
+          - name: FirstAidKit_New
+            parameters:
+              - name: item
+          - name: FirstAidKit_NewPro
+            parameters:
+              - name: item
+          - name: OnCreateMagazine
+            parameters:
+              - name: item
+          - name: OnCreateMagazine2
+            parameters:
+              - name: item
+          - name: OnCreateSubjectMagazine
+            parameters:
+              - name: item
+              - name: subject
+                type: string
+          - name: OnCreateMagazine3
+            parameters:
+              - name: item
+              - name: subject
+              - name: bookList
+          - name: OnCreateArtMagazine
+            parameters:
+              - name: item
+          - name: OnCreateBusinessMagazine
+            parameters:
+              - name: item
+          - name: OnCreateCarMagazine
+            parameters:
+              - name: item
+          - name: OnCreateChildsMagazine
+            parameters:
+              - name: item
+          - name: OnCreateCinemaMagazine
+            parameters:
+              - name: item
+          - name: OnCreateCrimeMagazine
+            parameters:
+              - name: item
+          - name: OnCreateFashionMagazine
+            parameters:
+              - name: item
+          - name: OnCreateFirearmMagazine
+            parameters:
+              - name: item
+          - name: OnCreateGamingMagazine
+            parameters:
+              - name: item
+          - name: OnCreateGolfMagazine
+            parameters:
+              - name: item
+          - name: OnCreateHealthMagazine
+            parameters:
+              - name: item
+          - name: OnCreateHobbyMagazine
+            parameters:
+              - name: item
+          - name: OnCreateHorrorMagazine
+            parameters:
+              - name: item
+          - name: OnCreateHumorMagazine
+            parameters:
+              - name: item
+          - name: OnCreateMilitaryMagazine
+            parameters:
+              - name: item
+          - name: OnCreateMusicMagazine
+            parameters:
+              - name: item
+          - name: OnCreateOutdoorsMagazine
+            parameters:
+              - name: item
+          - name: OnCreatePoliceMagazine
+            parameters:
+              - name: item
+          - name: OnCreatePopularMagazine
+            parameters:
+              - name: item
+          - name: OnCreateRichMagazine
+            parameters:
+              - name: item
+          - name: OnCreateScienceMagazine
+            parameters:
+              - name: item
+          - name: OnCreateSportsMagazine
+            parameters:
+              - name: item
+          - name: OnCreateTechMagazine
+            parameters:
+              - name: item
+          - name: OnCreateTeensMagazine
+            parameters:
+              - name: item
+          - name: OnCreateHottieZ
+            parameters:
+              - name: item
+          - name: OnCreateHunkZ
+            parameters:
+              - name: item
+          - name: OnCreateScratchTicketWinner
+            parameters:
+              - name: result
+          - name: OnCreateSealedParcel
+            parameters:
+              - name: item
+          - name: OnCreateOldNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateRecentNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateNewNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateDispatchNewNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateHeraldNewNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateKnewsNewNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateTimesNewNewspaper
+            parameters:
+              - name: item
+          - name: OnCreateTVMagazine
+            parameters:
+              - name: item
+          - name: OnCreateBrochure
+            parameters:
+              - name: item
+          - name: OnCreateFlier
+            parameters:
+              - name: item
+          - name: OnCreateFlier_Nolans
+            parameters:
+              - name: item
+          - name: OnCreateBusinessCard
+            parameters:
+              - name: item
+          - name: OnCreateBusinessCard_Nolans
+            parameters:
+              - name: item
+          - name: OnCreateCatalogue
+            parameters:
+              - name: item
+          - name: OnCreateRPGmanual
+            parameters:
+              - name: item
+          - name: OnCreateGenericMail
+            parameters:
+              - name: item
+          - name: OnCreateLetterHandwritten
+            parameters:
+              - name: item
+          - name: OnCreateScarecrow
+            parameters:
+              - name: item
+          - name: OnCreateSkeletonDisplay
+            parameters:
+              - name: item
+          - name: OnCreateLocket
+            parameters:
+              - name: item
+          - name: OnCreateDoodle
+            parameters:
+              - name: item
+          - name: OnCreateDoodleKids
+            parameters:
+              - name: item
+          - name: OnCreateGasMask
+            parameters:
+              - name: item
+          - name: OnCreateRespirator
+            parameters:
+              - name: item
+          - name: OnCreateSCBA
+            parameters:
+              - name: item
+          - name: OnCreateHairDyeBottle
+            parameters:
+              - name: item
+          - name: OnCreatePopBottle
+            parameters:
+              - name: item
+          - name: OnCreatePopCan
+            parameters:
+              - name: item
+          - name: OnCreateColorFromDefinition
+            parameters:
+              - name: item
+          - name: OnCreateRandomColor
+            parameters:
+              - name: item
+          - name: OnCreateSodaCan
+            parameters:
+              - name: item
+          - name: OnCreateWaterBottle
+            parameters:
+              - name: item
+          - name: OnCreateDogTag_Pet
+            parameters:
+              - name: item
+          - name: OnCreatePostcard
+            parameters:
+              - name: item
+          - name: OnCreateRecipeClipping
+            parameters:
+              - name: item
+          - name: CreateSchematic
+            parameters:
+              - name: item
+              - name: list
+                type: table
+              - name: multipleChance
+                type: number
+          - name: OnCreateExplosivesSchematic
+            parameters:
+              - name: item
+          - name: OnCreateMeleeWeaponSchematic
+            parameters:
+              - name: item
+          - name: OnCreateBSToolsSchematic
+            parameters:
+              - name: item
+          - name: OnCreateArmorSchematic
+            parameters:
+              - name: item
+          - name: OnCreateCookwareSchematic
+            parameters:
+              - name: item
+          - name: OnCreatePhotoBook
+            parameters:
+              - name: item
+          - name: OnCreateChildsPictureBook
+            parameters:
+              - name: item

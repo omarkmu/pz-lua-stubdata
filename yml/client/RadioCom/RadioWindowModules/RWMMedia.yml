@@ -1,0 +1,101 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMMedia:
+        extends: RWMPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWMMedia"'
+        fields:
+          lcd:
+            type: ISLcdBar
+          itemDropBox:
+            type: ISItemDropBox
+          toggleOnOffButton:
+            type: ISButton
+          mediaIndex:
+            type: number
+          mediaText:
+            type: string
+          fontheight:
+            type: number
+          cdTex: {}
+          tapeTex: {}
+          idleText:
+            type: string
+          lcdBlue:
+            type: table
+          lcdGreen:
+            type: table
+          textPlay:
+            type: string
+          textStop:
+            type: string
+          textNoCD:
+            type: string
+          textNoTape:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: togglePlayMedia
+          - name: removeMedia
+          - name: addMedia
+            parameters:
+              - name: _items
+                type: table
+          - name: addMediaAux
+            parameters:
+              - name: item
+          - name: verifyItem
+            parameters:
+              - name: _item
+            return:
+              - type: boolean
+                nullable: true
+          - name: clear
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: boolean
+          - name: getMediaText
+            return:
+              - type: string
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true

@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveBullet:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: otherPlayer
+              - name: bodyPart
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveBullet"'
+        fields:
+          sound: {}
+          doctor: {}
+          otherPlayer: {}
+          doctorLevel:
+            type: number
+          bodyPart: {}
+          bandagedPlayerX: {}
+          bandagedPlayerY: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

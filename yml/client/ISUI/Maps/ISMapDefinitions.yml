@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MapUtils:
+        staticMethods:
+          - name: initDirectoryMapData
+            parameters:
+              - name: mapUI
+                type: MapSpawnSelectImage | ISWorldMap
+              - name: directory
+                type: string
+          - name: initDefaultMapData
+            parameters:
+              - name: mapUI
+                type: ISWorldMap
+          - name: initDefaultStyleV1
+            parameters:
+              - name: mapUI
+                type: table
+          - name: overlayPaper
+            parameters:
+              - name: mapUI
+                type: table
+          - name: revealKnownArea
+            parameters:
+              - name: mapUI
+                type: ISMap
+      LootMaps:
+        staticFields:
+          Init: {}
+          DEFAULT_MAP_DIRECTORY:
+            defaultValue: "'media/maps/Muldraugh, KY'"
+        staticMethods:
+          - name: callLua
+            parameters:
+              - name: functionName
+                type: string
+              - name: mapUI
+                type: ISMap
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true
+      PrintMediaMaps:
+        staticFields:
+          Init: {}
+        staticMethods:
+          - name: callLua
+            parameters:
+              - name: functionName
+                type: string
+              - name: mapUI
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+                nullable: true

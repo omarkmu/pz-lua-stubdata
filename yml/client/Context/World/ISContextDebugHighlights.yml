@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldMenuElements:
+        staticMethods:
+          - name: ContextDebugHighlights
+            return:
+              - type: ISContextDebugHighlights
+      ISContextDebugHighlights:
+        extends: ISMenuElement
+        local: true
+        fields:
+          colors:
+            type: table
+          colorindex:
+            type: number
+          enableMe:
+            type: boolean
+        staticMethods:
+          - name: init
+          - name: createMenu
+            parameters:
+              - name: _data
+            return:
+              - type: boolean
+                nullable: true
+          - name: openPanel01
+            parameters:
+              - name: _data
+              - name: _square
+                type: IsoGridSquare
+          - name: openPanel00
+            parameters:
+              - name: _data
+              - name: _square
+                type: IsoGridSquare
+          - name: openPanel0
+            parameters:
+              - name: _data
+              - name: _square
+                type: IsoGridSquare
+              - name: _texture
+              - name: _size
+              - name: _doAlpha
+              - name: _c
+          - name: openPanel
+            parameters:
+              - name: _data
+              - name: _square
+                type: IsoGridSquare
+              - name: _texture
+              - name: _size
+              - name: _doAlpha
+              - name: _c
+          - name: openPanel2
+            parameters:
+              - name: _data
+              - name: _square
+                type: IsoGridSquare
+          - name: openPanel3
+            parameters:
+              - name: _data
+              - name: _obj
+                type: IsoObject

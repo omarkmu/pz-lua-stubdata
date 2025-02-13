@@ -1,0 +1,46 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISItemsListViewer:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISItemsListViewer"'
+          messages: {}
+          instance:
+            type: ISItemsListViewer
+            nullable: true
+        fields:
+          playerSelect:
+            type: ISComboBox
+          ok:
+            type: ISButton
+          panel:
+            type: ISTabPanel
+          items: {}
+          module:
+            type: table
+        methods:
+          - name: initialise
+          - name: initList
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onSelectPlayer
+          - name: setKeyboardFocus
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel

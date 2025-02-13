@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLootLog:
+        extends: ISPanelJoypad
+        staticFields:
+          Type:
+            defaultValue: '"ISLootLog"'
+          instance:
+            nullable: true
+          cheat:
+            defaultValue: "false"

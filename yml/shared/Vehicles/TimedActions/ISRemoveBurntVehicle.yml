@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveBurntVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicle
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveBurntVehicle"'
+        fields:
+          sound: {}
+          item: {}
+          vehicle: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: serverStart
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: checkAddItem
+            parameters:
+              - name: item
+              - name: baseChance
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

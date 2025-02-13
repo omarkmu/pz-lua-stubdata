@@ -1,0 +1,104 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LastStandPlayerSelect:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"LastStandPlayerSelect"'
+          playerSelected:
+            nullable: true
+          instance:
+            type: LastStandPlayerSelect | table | ISPanelJoypad
+            nullable: true
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          backButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          newButton:
+            type: ISButton
+          deleteButton:
+            type: ISButton
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: getAllSavedPlayers
+            return:
+              - type: table
+          - name: createSurvivorDescFromData
+            parameters:
+              - name: newPlayer
+                nullable: true
+            return:
+              - type: unknown
+          - name: createPlayerList
+          - name: getColor
+            parameters:
+              - name: line
+            return:
+              - type: table
+          - name: create
+          - name: render
+          - name: drawMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDeleteModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onDblClickPlayer
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onGainJoypadFocus_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: initWorld
+          - name: newGame
+            parameters:
+              - name: player
+              - name: square
+                type: IsoGridSquare
+          - name: clickPlay

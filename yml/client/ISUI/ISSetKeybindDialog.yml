@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSetKeybindDialog:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: keybindName
+                type: string
+              - name: isModBind
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISSetKeybindDialog"'
+        fields:
+          cancel:
+            type: ISButton
+          default:
+            type: ISButton
+          clear:
+            type: ISButton
+          keybindName:
+            type: string
+          isModBind:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: destroy
+          - name: onCancel
+          - name: onDefault
+          - name: onClear
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onMouseButtonDown
+            parameters:
+              - name: btn
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer

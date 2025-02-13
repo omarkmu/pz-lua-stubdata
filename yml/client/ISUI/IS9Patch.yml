@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      IS9Patch:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _images
+        staticFields:
+          Type:
+            defaultValue: '"IS9Patch"'
+        fields:
+          background:
+            type: boolean
+          backgroundColor:
+            type: table
+          border:
+            type: boolean
+          borderColor:
+            type: table
+          img:
+            type: table
+          colWidthLeft: {}
+          colWidthRight: {}
+          rowHeightTop: {}
+          rowHeightBot: {}
+          drawOnPrerender:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: render
+          - name: renderInternal

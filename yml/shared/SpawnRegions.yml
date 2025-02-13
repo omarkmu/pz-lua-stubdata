@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SpawnRegionMgr:
+        staticMethods:
+          - name: loadSpawnPointsFile
+            parameters:
+              - name: filename
+                type: string
+              - name: server
+                type: boolean
+            return:
+              - type: unknown
+                nullable: true
+          - name: loadSpawnRegionsFile
+            parameters:
+              - name: filename
+                type: string
+              - name: server
+                type: boolean
+                nullable: true
+            return:
+              - type: table
+                nullable: true
+          - name: loadSpawnRegions
+            parameters:
+              - name: regions
+            return:
+              - type: table
+          - name: getSpawnRegionsAux
+            return:
+              - type: table
+                nullable: true
+          - name: getSpawnRegions
+            return:
+              - type: table
+                nullable: true

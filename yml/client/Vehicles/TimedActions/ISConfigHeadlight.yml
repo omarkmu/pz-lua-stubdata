@@ -1,0 +1,28 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISConfigHeadlight:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: dir
+              - name: time
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISConfigHeadlight"'
+        fields:
+          vehicle: {}
+          part: {}
+          dir: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

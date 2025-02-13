@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISOvenUITimedAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: stove
+                nullable: true
+              - name: mcwave
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISOvenUITimedAction"'
+        fields:
+          stove:
+            nullable: true
+          mcwave:
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

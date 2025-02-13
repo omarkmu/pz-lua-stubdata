@@ -1,0 +1,96 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUsersList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISUsersList"'
+          instance:
+            type: ISUsersList
+            nullable: true
+        fields:
+          add:
+            type: ISButton
+          delete:
+            type: ISButton
+          close:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          player: {}
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onSelectUser
+            parameters:
+              - name: _item
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onClickOption
+            parameters:
+              - name: item
+              - name: action
+          - name: onSetRoleClickOption
+            parameters:
+              - name: item
+              - name: role
+          - name: onDeleteModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onSetPasswordClick
+            parameters:
+              - name: button
+                type: ISButton
+              - name: username
+                type: string
+          - name: onAddUserClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRightMouse
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doContextMenu
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: closeModal
+        staticMethods:
+          - name: onAddWarningPoint
+            parameters:
+              - name: username
+                type: string
+              - name: button
+                type: ISButton
+              - name: reason
+              - name: amount

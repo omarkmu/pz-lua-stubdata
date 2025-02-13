@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.Texture:
+        extends: UI.Node
+        local: true
+        staticFields:
+          _ATOM_UI_CLASS:
+            defaultValue: AtomUITexture
+          texture:
+            nullable: true
+          sliceLeft:
+            defaultValue: "0"
+          sliceRight:
+            defaultValue: "0"
+          sliceTop:
+            defaultValue: "0"
+          sliceDown:
+            defaultValue: "0"
+          animDelay:
+            defaultValue: "0"
+          animFrameNum:
+            defaultValue: "0"
+          animFrameRows:
+            defaultValue: "0"
+          animFrameColumns:
+            defaultValue: "0"
+        fields:
+          super:
+            type: UI.Node
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.Texture
+        methods:
+          - name: setTexture
+            parameters:
+              - name: texture
+          - name: setSlice9
+            parameters:
+              - name: sliceLeft
+              - name: sliceRight
+              - name: sliceTop
+              - name: sliceDown
+          - name: setAnimValues
+            parameters:
+              - name: animDelay
+              - name: animFrameNum
+                type: number
+              - name: animFrameRows
+              - name: animFrameColumns
+      PZAPI:
+        staticFields:
+          UI.Texture:
+            type: UI.Texture

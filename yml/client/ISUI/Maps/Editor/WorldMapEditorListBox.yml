@@ -1,0 +1,101 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorListBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: callback
+              - name: target
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorListBox"'
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          buttonAdd:
+            type: ISButton
+          buttonRemove:
+            type: ISButton
+          buttonMoveUp:
+            type: ISButton
+          buttonMoveDown:
+            type: ISButton
+          selectedItem:
+            type: number
+          callback: {}
+          target:
+            type: unknown
+          arg1:
+            type: unknown
+          arg2:
+            type: unknown
+          arg3:
+            type: unknown
+          arg4:
+            type: unknown
+        methods:
+          - name: createChildren
+          - name: clear
+          - name: addItem
+            parameters:
+              - name: text
+              - name: data
+          - name: insertItem
+            parameters:
+              - name: index
+                type: number
+              - name: text
+              - name: data
+                nullable: true
+          - name: removeItemByIndex
+            parameters:
+              - name: index
+                type: number
+                nullable: true
+          - name: size
+            return:
+              - type: number
+          - name: getItemByIndex
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+          - name: setSelectedIndex
+            parameters:
+              - name: index
+                type: number
+                nullable: true
+          - name: getSelectedIndex
+            return:
+              - type: number
+                nullable: true
+          - name: getSelectedItem
+            return:
+              - type: unknown
+          - name: onAddItem
+          - name: onRemoveItem
+          - name: onMoveUp
+          - name: onMoveDown
+          - name: getListBox
+            return:
+              - type: ISScrollingListBox
+          - name: prerender

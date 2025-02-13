@@ -1,0 +1,85 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TutorialMessage:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: clickToSkip
+              - name: message
+        staticFields:
+          Type:
+            defaultValue: '"TutorialMessage"'
+          instance:
+            type: TutorialMessage
+            nullable: true
+          spiffo:
+            nullable: true
+        fields:
+          richtext:
+            type: ISRichTextPanel
+          test:
+            nullable: true
+          message:
+            type: string
+            nullable: true
+          clickToSkip: {}
+          timer:
+            type: number
+          clicktoSkip:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: updateSize
+          - name: setInfo
+            parameters:
+              - name: item
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: update
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: getInstance
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: message
+              - name: clickToSkip
+              - name: target
+                type: unknown
+              - name: test
+            return:
+              - type: TutorialMessage
+                nullable: true

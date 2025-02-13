@@ -1,0 +1,126 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldSelect:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"WorldSelect"'
+          instance:
+            type: WorldSelect
+            nullable: true
+        fields:
+          previousScreen:
+            type: string
+            nullable: true
+          listbox:
+            type: ISScrollingListBox
+          mapListbox:
+            type: ISScrollingListBox
+          backButton:
+            type: ISButton
+          nextButton:
+            type: ISButton
+          advancedButton:
+            type: ISButton
+          advancedPanel:
+            type: ISPanel
+          seedLabel:
+            type: ISLabel
+          XLabel:
+            type: ISLabel
+          YLabel:
+            type: ISLabel
+          seedTextBox:
+            type: ISTextEntryBox
+          randomButton:
+            type: ISButton
+          minXSlider:
+            type: ISSliderPanel
+          minXValueLabel:
+            type: ISLabel
+          maxXValueLabel:
+            type: ISLabel
+          maxXSlider:
+            type: ISSliderPanel
+          minYSlider:
+            type: ISSliderPanel
+          minYValueLabel:
+            type: ISLabel
+          maxYValueLabel:
+            type: ISLabel
+          maxYSlider:
+            type: ISSliderPanel
+          mapGroups: {}
+        methods:
+          - name: initialise
+          - name: hasChoices
+            return:
+              - type: boolean
+          - name: fillList
+          - name: onSelectWorld
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDblClick
+          - name: clickBack
+          - name: clickNext
+          - name: clickAdvanced
+          - name: checkSeed
+          - name: generateNewSeed
+          - name: saveGenParams
+          - name: onMinXSliderChange
+            parameters:
+              - name: value
+          - name: onMinYSliderChange
+            parameters:
+              - name: value
+          - name: onMaxXSliderChange
+            parameters:
+              - name: value
+          - name: onMaxYSliderChange
+            parameters:
+              - name: value
+          - name: render
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_listbox
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: create

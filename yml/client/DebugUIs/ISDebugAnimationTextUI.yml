@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDebugAnimationTextUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: chr
+        staticFields:
+          Type:
+            defaultValue: '"ISDebugAnimationTextUI"'
+        fields:
+          textBox:
+            type: ISTextEntryBox
+          title:
+            type: string
+          character: {}
+        methods:
+          - name: createChildren
+          - name: setText
+          - name: prerender

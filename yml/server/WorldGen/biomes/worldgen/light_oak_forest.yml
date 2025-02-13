@@ -1,0 +1,25 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes.light_oak_forest: {}
+          biomes.light_oak_forest_boulder_none: {}
+          biomes.light_oak_forest_boulder_very_low: {}
+          biomes.light_oak_forest_boulder_low: {}
+          biomes.light_oak_forest_boulder_medium: {}
+          biomes.light_oak_forest_boulder_high: {}
+          biomes.light_oak_forest_boulder_very_high: {}
+          biomes.light_oak_forest_limestone_none: {}
+          biomes.light_oak_forest_limestone_very_low: {}
+          biomes.light_oak_forest_limestone_low: {}
+          biomes.light_oak_forest_limestone_medium: {}
+          biomes.light_oak_forest_limestone_high: {}
+          biomes.light_oak_forest_limestone_very_high: {}
+          biomes.light_oak_forest_flint_none: {}
+          biomes.light_oak_forest_flint_very_low: {}
+          biomes.light_oak_forest_flint_low: {}
+          biomes.light_oak_forest_flint_medium: {}
+          biomes.light_oak_forest_flint_high: {}
+          biomes.light_oak_forest_flint_very_high: {}

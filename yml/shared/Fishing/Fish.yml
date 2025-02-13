@@ -1,0 +1,63 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Fishing:
+        staticFields:
+          Fish:
+            type: Fish
+      Fish:
+        local: true
+        constructors:
+          - parameters:
+              - name: character
+              - name: lure
+              - name: x
+                type: number
+              - name: y
+                type: number
+        fields:
+          character: {}
+          x:
+            type: number
+          y:
+            type: number
+          isRiver:
+            type: boolean
+          lure: {}
+          fishingLvl: {}
+          splashTimer:
+            type: number
+          timer:
+            type: number
+          dx:
+            type: number
+          dy:
+            type: number
+          fishSize:
+            type: number
+          fishSizeLen:
+            type: number
+          isTrash:
+            type: boolean
+          fishItem: {}
+        methods:
+          - name: update
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getFishByLure
+            return:
+              - type: unknown
+                nullable: true
+              - type: boolean
+                nullable: true
+          - name: createFish
+            parameters:
+              - name: fishConfig
+                nullable: true
+            return:
+              - type: unknown
+          - name: getFish

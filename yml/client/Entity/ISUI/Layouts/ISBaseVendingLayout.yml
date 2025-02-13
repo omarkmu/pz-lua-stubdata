@@ -1,0 +1,115 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseVendingLayout:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: _parentPanel
+              - name: _blueprintLogic
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseVendingLayout"'
+          defaultJoypadMoveInterval:
+            defaultValue: "20"
+        fields:
+          frontPanel:
+            type: ISImage
+          trayPanel:
+            type: IS9Patch
+          resourceOutput: {}
+          itemSlotOutput:
+            type: ISItemSlot
+          moneyLcd:
+            type: ISLcdBar
+          resourceMoney: {}
+          itemSlotMoney:
+            type: ISItemSlot
+          vendingOptions:
+            type: table
+          optionArea:
+            type: table
+          mouseOverButtons:
+            type: boolean
+          frontImageOn:
+            type: boolean
+          frontImageOff:
+            type: boolean
+          buttonBorderColor:
+            type: table
+          buttonBorderColorDisabled:
+            type: table
+          buttonImg:
+            type: table
+          arrayList: {}
+          ledInvalidCol:
+            type: table
+          ledValidCol:
+            type: table
+          trayImgs:
+            type: table
+          parentPanel: {}
+          blueprintLogic: {}
+          resources: {}
+          parts: {}
+          player: {}
+          playerNum:
+            type: integer
+          joypadMoveInterval:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addVendingOption
+            parameters:
+              - name: _index
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _resource
+            return:
+              - type: number
+          - name: getVendingOption
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: getCredits
+            return:
+              - type: unknown
+          - name: getProductPrice
+            parameters:
+              - name: _productId
+            return:
+              - type: unknown
+          - name: isTurnedOn
+            return:
+              - type: unknown
+          - name: isRunning
+            return:
+              - type: unknown
+          - name: update
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: prerender
+          - name: render

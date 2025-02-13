@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDumpWaterAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISDumpWaterAction"'
+        fields:
+          item: {}
+          startUsedDelta: {}
+          sound: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: start
+          - name: updateDumpingWater
+          - name: update
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: stop
+          - name: perform
+          - name: stopSound
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

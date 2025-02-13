@@ -1,0 +1,6 @@
+version: "1.1"
+languages:
+  lua:
+    functions:
+      - name: doMapZones
+      - name: doSpawnOrigins

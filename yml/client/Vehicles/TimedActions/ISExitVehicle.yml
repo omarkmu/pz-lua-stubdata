@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISExitVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISExitVehicle"'
+        fields:
+          vehicle: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getExtraLogData
+            return:
+              - type: table
+                nullable: true

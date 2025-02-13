@@ -1,0 +1,83 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISNaturalFloor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: northSprite
+                type: string
+              - name: item
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISNaturalFloor"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          item: {}
+          itemType: {}
+          character: {}
+          player: {}
+          noNeedHammer:
+            type: boolean
+          actionAnim: {}
+          floorType:
+            type: string
+            nullable: true
+          craftingBank:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+          - name: getFloorType
+            parameters:
+              - name: item
+            return:
+              - type: string
+                nullable: true
+        staticMethods:
+          - name: getFloorSpriteNames
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: table

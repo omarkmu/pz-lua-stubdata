@@ -1,0 +1,101 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModSelector:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ModSelector"'
+          instance:
+            type: ModSelector
+            nullable: true
+        fields:
+          model:
+            type: ModSelector.Model
+          modListPanel:
+            type: ModSelector.ModListPanel
+          modInfoPanel:
+            type: ModInfoPanel
+          backButton:
+            type: ISButton
+          presetPanel:
+            type: ModListPresets
+          acceptButton:
+            type: ISButton
+          modOrderbtn:
+            type: ISButton
+          mapOrderbtn:
+            type: ISButton
+          helpButton:
+            type: ISButton
+          joypadIndex: {}
+        methods:
+          - name: create
+          - name: prerender
+          - name: onResolutionChange
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: acceptChanges
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onAccept
+          - name: updateView
+          - name: setExistingSavefile
+            parameters:
+              - name: folder
+          - name: setServerSettingsMods
+            parameters:
+              - name: data
+                type: table
+              - name: finishFunc
+                type: function
+          - name: reloadMods
+          - name: setNewGame
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: showNagPanel
+    functions:
+      - name: ModSelector_onModsModified

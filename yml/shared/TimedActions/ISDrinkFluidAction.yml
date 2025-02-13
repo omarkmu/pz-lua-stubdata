@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDrinkFluidAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: percentage
+        staticFields:
+          Type:
+            defaultValue: '"ISDrinkFluidAction"'
+        fields:
+          eatAudio:
+            type: number
+          item: {}
+          eatSound:
+            type: string
+          percentage:
+            type: number
+          useUtensil:
+            type: boolean
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValidStart
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: serverStop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: eat
+            parameters:
+              - name: food
+              - name: percentage
+          - name: getDuration
+            return:
+              - type: number

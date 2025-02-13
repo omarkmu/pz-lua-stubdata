@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAlert:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISAlert"'
+          instance:
+            type: ISAlert
+            nullable: true
+          alert:
+            type: ISAlert
+            nullable: true
+        fields:
+          servermsg:
+            type: string
+            nullable: true
+          servermsgTimer:
+            type: number
+        methods:
+          - name: prerender
+          - name: initialise
+        staticMethods:
+          - name: getAlert
+            parameters:
+              - name: message
+              - name: tabID
+          - name: setupAlerts

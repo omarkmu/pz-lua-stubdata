@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPacketCounts:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPacketCounts"'
+          instance:
+            type: table
+            nullable: true
+        fields:
+          category:
+            type: ISComboBox
+          listbox:
+            type: ISPacketCountsList
+          close:
+            type: ISButton
+          update:
+            type: ISButton
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onSelectCategory
+          - name: onUpdate
+          - name: onClose
+          - name: closeSelf
+      ISPacketCountsList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPacketCountsPanel"'
+        methods:
+          - name: prerender
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean

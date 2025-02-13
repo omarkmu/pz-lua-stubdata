@@ -1,0 +1,113 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDoubleDoor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: spriteOriginal
+              - name: spriteIndex
+        staticFields:
+          Type:
+            defaultValue: '"ISDoubleDoor"'
+        fields:
+          sq:
+            type: IsoGridSquare
+          javaObject: {}
+          spriteOriginal: {}
+          spriteIndex: {}
+          sprite2:
+            type: string
+          sprite3:
+            type: string
+          sprite4:
+            type: string
+          northSprite:
+            type: string
+          northSprite2:
+            type: string
+          northSprite3:
+            type: string
+          northSprite4:
+            type: string
+          name:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: addDoorPart
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+              - name: index
+          - name: overrideModData
+            parameters:
+              - name: spriteIndex
+          - name: getHealth
+            return:
+              - type: number
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: getSquare2Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquare3Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: getSquare4Pos
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: number
+              - type: number
+              - type: unknown
+          - name: partExists
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: index
+            return:
+              - type: boolean

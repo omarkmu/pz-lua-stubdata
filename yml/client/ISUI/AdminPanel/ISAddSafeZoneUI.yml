@@ -1,0 +1,75 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddSafeZoneUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISAddSafeZoneUI"'
+          instance:
+            type: ISAddSafeZoneUI
+            nullable: true
+        fields:
+          notIntersecting:
+            type: boolean
+          zonewidth: {}
+          zoneheight: {}
+          size: {}
+          X1: {}
+          Y1: {}
+          X2: {}
+          Y2: {}
+          cancel:
+            type: ISButton
+          ok:
+            type: ISButton
+          startingPoint:
+            type: ISButton
+          titleEntry:
+            type: ISTextEntryBox
+          ownerEntry:
+            type: ISTextEntryBox
+          claimOptions:
+            type: ISTickBox
+          startingX: {}
+          startingY: {}
+          fullHighlight:
+            type: boolean
+          creatingZone:
+            type: boolean
+          character: {}
+          buttonBorderColor:
+            type: table
+        methods:
+          - name: highlightZone
+            parameters:
+              - name: _x1
+              - name: _x2
+              - name: _y1
+              - name: _y2
+              - name: _fullHighlight
+          - name: checkIfIntersectingAnotherZone
+          - name: updateButtons
+          - name: prerender
+          - name: initialise
+          - name: redefineStartingPoint
+          - name: onClickClaimOptions
+            parameters:
+              - name: _clickedOption
+              - name: _ticked
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton

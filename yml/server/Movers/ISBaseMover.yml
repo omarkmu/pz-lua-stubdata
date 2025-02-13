@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseMover:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseMover"'
+          IDMax:
+            defaultValue: "1"
+        fields:
+          javaObject: {}
+          sprite: {}
+          states:
+            type: ISMoverStateMachine
+        methods:
+          - name: init
+          - name: getSprite
+            return:
+              - type: unknown
+          - name: playAnim
+            parameters:
+              - name: name
+                type: string
+              - name: seconds
+              - name: looped
+              - name: animate
+          - name: changeState
+            parameters:
+              - name: state
+          - name: update
+          - name: postrender
+            parameters:
+              - name: col
+              - name: bDoAttached
+          - name: placeInWorld
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+          - name: removeFromWorld

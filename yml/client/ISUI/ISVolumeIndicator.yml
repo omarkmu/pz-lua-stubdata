@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVolumeIndicator:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+              - name: targetFunc
+        staticFields:
+          Type:
+            defaultValue: '"ISVolumeIndicator"'
+        fields:
+          volume:
+            type: number
+          iserror:
+            type: boolean
+          serverVOIPEnable: {}
+          targetFunc: {}
+          fade: {}
+          isSlider:
+            type: boolean
+        methods:
+          - name: prerender
+          - name: render

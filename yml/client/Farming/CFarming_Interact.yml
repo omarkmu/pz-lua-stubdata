@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CFarming_Interact:
+        staticFields:
+          SawOnContextKeyEvent:
+            defaultValue: "false"
+        staticMethods:
+          - name: onKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onContextKey
+            parameters:
+              - name: player
+              - name: timePressedContext
+          - name: FastDropItem
+            parameters:
+              - name: key
+                type: integer
+          - name: ChangeClimbDirection
+            parameters:
+              - name: key
+                type: integer
+          - name: getObjectClutterType
+            parameters:
+              - name: v
+            return:
+              - type: unknown
+                nullable: true

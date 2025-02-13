@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      EDebug:
+        staticMethods:
+          - name: ChunkReader
+            parameters:
+              - name: _chunkTileW
+            return:
+              - type: ChunkReader
+      ChunkReader:
+        local: true
+        staticMethods:
+          - name: SetNextRing
+            parameters:
+              - name: _ringNum
+                type: number
+          - name: ResetChunkReader
+            parameters:
+              - name: _start_point
+              - name: _move_dir
+          - name: GetNextChunk
+            parameters:
+              - name: _curTick
+            return:
+              - type: boolean
+                nullable: true
+              - type: Point2D
+                nullable: true
+              - type: unknown
+                nullable: true

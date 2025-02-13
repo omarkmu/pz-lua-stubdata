@@ -1,0 +1,244 @@
+version: "1.1"
+languages:
+  lua:
+    functions:
+      - name: debugTest
+        parameters:
+          - name: param
+        return:
+          - type: unknown
+      - name: woodenWallLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenWallLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenWallLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenBarElementLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenBarElementLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenBarElementLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenBookcaseLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenChairLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenChairLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenChairLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenCrateLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenCrateLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenShelvesLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenShelvesLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableDrawerLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableDrawerLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenTableDrawerLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalCounterLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalCounterLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalCrateLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalCrateLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalLockedBigLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalLockedBigLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalLockedSmallLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalLockedSmallLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: ignoreFromBuildMenu
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorFrameLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorFrameLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorFrameLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFenceLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFenceLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFenceLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFloorLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFloorLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenFloorLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: woodenDoorLvl3Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: brickWallLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: brickWallLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: composterLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: composterLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalWallLvl1Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean
+      - name: metalWallLvl2Test
+        parameters:
+          - name: param
+        return:
+          - type: boolean

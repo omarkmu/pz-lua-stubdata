@@ -1,0 +1,116 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDebugAvatarUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISDebugAvatarUI"'
+        fields:
+          avatarPanel:
+            type: ISCharacterScreenAvatar
+          animalList:
+            type: ISComboBox
+          breedList:
+            type: ISComboBox
+          avatarBackgroundTexture: {}
+          dirLeft:
+            type: ISButton
+          dirRight:
+            type: ISButton
+          zoomMinus:
+            type: ISButton
+          zoomPlus:
+            type: ISButton
+          xOffsetMinus:
+            type: ISButton
+          xOffsetPlus:
+            type: ISButton
+          yOffsetMinus:
+            type: ISButton
+          yOffsetPlus:
+            type: ISButton
+          avatarWidthBtn:
+            type: ISButton
+          avatarHeightBtn:
+            type: ISButton
+          avatarHeight:
+            type: number
+            nullable: true
+          avatarWidth:
+            type: number
+            nullable: true
+          direction: {}
+          yoffset:
+            type: number
+            nullable: true
+          xoffset:
+            type: number
+            nullable: true
+          zoom:
+            type: number
+          currentDef:
+            nullable: true
+          breed:
+            type: string
+            nullable: true
+          animal:
+            type: string
+          animalObj: {}
+          chr: {}
+          playerNum:
+            type: integer
+          avatarX:
+            type: number
+          avatarY:
+            type: number
+          title:
+            type: string
+        methods:
+          - name: prerender
+          - name: render
+          - name: initialise
+          - name: close
+          - name: create
+          - name: onChangeAvatarHeight
+          - name: changeHeight
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onChangeAvatarWidth
+          - name: changeWidth
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onChangeDir
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onChangeStuff
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: populateAnimalComboBox
+          - name: populateBreedComboBox
+          - name: onSelectBreed
+            parameters:
+              - name: combo
+          - name: onSelectAnimal
+            parameters:
+              - name: combo
+          - name: doNewAnimal
+            parameters:
+              - name: animal
+              - name: breed

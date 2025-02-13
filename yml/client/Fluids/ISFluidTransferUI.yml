@@ -1,0 +1,148 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidTransferUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _player
+              - name: _container
+              - name: source
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidTransferUI"'
+          players: {}
+          cheatSkill:
+            defaultValue: "false"
+          cheatTransfer:
+            defaultValue: "false"
+        fields:
+          titleText:
+            type: string
+          titleLabel:
+            type: ISLabel
+          errorText:
+            type: string
+          errorLabel:
+            type: ISLabel
+          panelLeftText:
+            type: string
+          panelLeft:
+            type: ISFluidContainerPanel
+          panelLeftX: {}
+          panelMiddle:
+            type: ISPanel
+          btnSwap:
+            type: ISButton
+          maxTransferText:
+            type: string
+          maxTransferLabel:
+            type: ISLabel
+          slider:
+            type: ISSliderPanel
+          transferringText:
+            type: string
+          transferringLabel:
+            type: ISLabel
+          btnTransfer:
+            type: ISButton
+          btnClose:
+            type: ISButton
+          panelRightText:
+            type: string
+          panelRight:
+            type: ISFluidContainerPanel
+          panelRightX: {}
+          disableTransfer:
+            type: boolean
+          disableSwap:
+            type: boolean
+          action:
+            type: boolean | ISFluidTransferAction
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          transferColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          player: {}
+          container: {}
+          source: {}
+          isIsoPanel:
+            type: boolean
+          info:
+            type: table
+          errorDefault:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setMaxTransfer
+            parameters:
+              - name: _value
+                type: number
+          - name: setTransferring
+            parameters:
+              - name: _value
+                type: number
+          - name: onContainerAdd
+            parameters:
+              - name: _item
+              - name: _panel
+          - name: onContainerRemove
+            parameters:
+              - name: _removedItem
+              - name: _panel
+          - name: onContainerVerify
+            parameters:
+              - name: _item
+              - name: _panel
+            return:
+              - type: boolean
+          - name: onSlider
+            parameters:
+              - name: _value
+              - name: _slider
+          - name: validatePanel
+            parameters:
+              - name: _forceUpdate
+          - name: prerender
+          - name: render
+          - name: update
+          - name: arrangePanels
+          - name: close
+          - name: onButton
+            parameters:
+              - name: _btn
+          - name: toggleCheatSkill
+            parameters:
+              - name: _b
+          - name: toggleCheatTransfer
+            parameters:
+              - name: _b
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+        staticMethods:
+          - name: OpenPanel
+            parameters:
+              - name: _player
+              - name: _container
+                type: ISFluidContainer
+              - name: _source

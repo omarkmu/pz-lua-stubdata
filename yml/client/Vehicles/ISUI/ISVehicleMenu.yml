@@ -1,0 +1,386 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleMenu:
+        staticFields:
+          acui:
+            type: table
+            nullable: true
+          seatUI:
+            type: table
+            nullable: true
+        staticMethods:
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: unknown
+                nullable: true
+          - name: showRadialMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: getVehicleToInteractWith
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: unknown
+          - name: showRadialMenuOutside
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: doTowingMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: menu
+          - name: FillMenuOutsideVehicle
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: vehicle
+              - name: test
+          - name: doAnimalSubMenu
+            parameters:
+              - name: subMenu
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+            return:
+              - type: boolean
+          - name: onCheckAnimalInside
+            parameters:
+              - name: vehicle
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAddAnimalFromHandsInTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+              - name: vehicle
+          - name: onAddAnimalInTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+              - name: vehicle
+          - name: onRemoveAnimalFromTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+              - name: vehicle
+          - name: getVehicleDisplayName
+            parameters:
+              - name: vehicle
+            return:
+              - type: unknown
+          - name: onRemoveBurntVehicle
+            parameters:
+              - name: player
+              - name: vehicle
+          - name: onRoadtrip
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onDebugAngles
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDebugColor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDebugBlood
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDebugEditor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDisableAlarm
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onEnableAlarm
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: addSetScriptMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDebugSetScript
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: scriptName
+                type: string
+          - name: onMechanic
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: getNextTire
+            parameters:
+              - name: currentTire
+            return:
+              - type: string
+                nullable: true
+          - name: FillPartMenu
+            parameters:
+              - name: playerIndex
+              - name: context
+                type: ISContextMenu
+              - name: slice
+              - name: vehicle
+          - name: onSwitchSeat
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: seatTo
+          - name: onToggleHeadlights
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onToggleTrunkLocked
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onToggleHeater
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSignalDevice
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onStartEngine
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onHotwire
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onShutOff
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onInfo
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onSleep
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onConfirmSleep
+            parameters:
+              - name: this
+              - name: button
+                type: ISButton
+              - name: player
+              - name: bed
+          - name: onOpenDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onCloseDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onLockDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onUnlockDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onWash
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: getBestSwitchSeatEnter
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBestSwitchSeatExit
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+            return:
+              - type: unknown
+                nullable: true
+          - name: moveItemsOnSeat
+            parameters:
+              - name: seat
+              - name: newSeat
+              - name: playerObj
+                type: IsoPlayer
+              - name: moveThem
+              - name: itemListIndex
+            return:
+              - type: number
+          - name: tryMoveItemsFromSeat
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+              - name: moveThem
+              - name: doEnter
+              - name: seatTo
+                type: string
+              - name: itemListIndex
+                type: number
+            return:
+              - type: number
+          - name: moveItemsFromSeat
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+              - name: moveThem
+                type: boolean
+              - name: doEnter
+                type: boolean
+            return:
+              - type: boolean
+          - name: onEnter
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: processShiftEnter
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: processEnter
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: onEnterAux
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+                nullable: true
+          - name: onEnter2
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: processEnter2
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: onEnterAux2
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: seat
+          - name: onExit
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: seatFrom
+          - name: onExitAux
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: seat
+          - name: onShowSeatUI
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onWalkPath
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onHorn
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onHornStart
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onHornStop
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onLightbar
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAttachTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: attachmentA
+              - name: attachmentB
+          - name: onDetachTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: attachmentA

@@ -1,0 +1,133 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PlayerClimateDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"PlayerClimateDebug"'
+          instance:
+            type: PlayerClimateDebug
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          eventsAdded:
+            defaultValue: "false"
+          fx:
+            nullable: true
+          cm:
+            nullable: true
+        fields:
+          panel:
+            type: ISPanel
+          labels:
+            type: table
+          tempColor:
+            type: table
+          colWhite:
+            type: table
+          clrRed:
+            type: table
+          clrOrangeRed:
+            type: table
+          clrGold:
+            type: table
+          clrGreenYellow:
+            type: table
+          clrGreen:
+            type: table
+          vars:
+            type: table
+          currentTile:
+            nullable: true
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+          richtext:
+            nullable: true
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: initVariables
+          - name: registerVariable
+            parameters:
+              - name: _variable
+              - name: _title
+                type: string
+              - name: _isValue
+                type: boolean
+              - name: _javaInstance
+              - name: _defaultVal
+              - name: _color
+              - name: _postfix
+          - name: addLabel
+            parameters:
+              - name: _curY
+              - name: _labelID
+              - name: _title
+                type: string
+            return:
+              - type: number
+          - name: addLabelValue
+            parameters:
+              - name: _curY
+              - name: _type
+              - name: _labelID
+              - name: _title
+                type: string
+              - name: _defaultVal
+              - name: _col
+              - name: _extension
+            return:
+              - type: number
+              - type: table
+                nullable: true
+          - name: getTitleLabel
+            parameters:
+              - name: _labelID
+            return:
+              - type: unknown
+                nullable: true
+          - name: getValueLabel
+            parameters:
+              - name: _labelID
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: onResize
+          - name: update
+          - name: updateOLD
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: close
+          - name: clear
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: PlayerClimateDebug
+                nullable: true
+          - name: onClimateTickDebug

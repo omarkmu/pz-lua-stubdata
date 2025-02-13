@@ -1,0 +1,138 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleDashboard:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: playerNum
+                type: integer
+              - name: chr
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleDashboard"'
+          lastVehicleDamage:
+            type: table
+            nullable: true
+          lastVehicleDamageTimer:
+            defaultValue: "0"
+        fields:
+          backgroundTex:
+            type: ISImage
+          btn_partSpeed:
+            type: ISLabel
+          doorTex:
+            type: ISImage
+          engineTex:
+            type: ISImage
+          lightsTex:
+            type: ISImage
+          radioTex:
+            type: ISImage
+          heaterTex:
+            type: ISImage
+          ignitionTex:
+            type: ISImage
+          batteryTex:
+            type: ISImage
+          trunkTex:
+            type: ISImage
+          speedregulatorTex:
+            type: ISImage
+          fuelGauge:
+            type: ISVehicleGauge
+          leftSideFuel:
+            type: ISImage
+          rightSideFuel:
+            type: ISImage
+          engineGauge:
+            type: ISVehicleGauge
+          speedGauge:
+            type: ISVehicleGauge
+          flickingTimer:
+            type: number
+          flickAlpha:
+            type: number
+          flickAlphaUp:
+            type: boolean
+          vehicle: {}
+          gauges:
+            type: table
+          gasTank:
+            nullable: true
+          fuelValue:
+            type: number
+          wasKeyInIgnition:
+            type: boolean
+          playerNum:
+            type: integer
+          character: {}
+          texEngine: {}
+          iconEngine: {}
+          iconAirCondition: {}
+          iconDoor: {}
+          iconLights: {}
+          iconHeater: {}
+          iconIgnition: {}
+          iconIgnitionKey: {}
+          iconIgnitionStarted: {}
+          iconIgnitionHotwired: {}
+          iconBattery: {}
+          iconTrunk: {}
+          iconSpeedRegulator: {}
+          dashboardBG: {}
+          gaugeFull: {}
+          gaugeLow: {}
+          gaugeEmpty: {}
+          engineGaugeTex: {}
+          speedGaugeTex: {}
+          leftSideFuelTex: {}
+          rightSideFuelTex: {}
+          iconRadio: {}
+        methods:
+          - name: createChildren
+          - name: getAlphaFlick
+            parameters:
+              - name: default
+                type: number
+            return:
+              - type: number
+                nullable: true
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+          - name: prerender
+          - name: checkEngineFull
+            return:
+              - type: boolean
+          - name: render
+          - name: onResolutionChange
+          - name: onClickEngine
+          - name: onClickHeadlights
+          - name: onClickDoors
+          - name: onClickTrunk
+          - name: onClickHeater
+          - name: onClickRadio
+          - name: onClickKeys
+        staticMethods:
+          - name: damageFlick
+            parameters:
+              - name: character
+          - name: onEnterVehicle
+            parameters:
+              - name: character
+          - name: onExitVehicle
+            parameters:
+              - name: character
+          - name: onSwitchVehicleSeat
+            parameters:
+              - name: character
+          - name: OnGameStart
+          - name: getVehicleCondition
+            parameters:
+              - name: vehicle
+            return:
+              - type: table
+          - name: damageChecker
+          - name: onGameStart

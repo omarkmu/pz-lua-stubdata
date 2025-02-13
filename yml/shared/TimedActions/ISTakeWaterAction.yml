@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTakeWaterAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+                nullable: true
+              - name: waterObject
+              - name: waterTaintedCL
+        staticFields:
+          Type:
+            defaultValue: '"ISTakeWaterAction"'
+        fields:
+          sound: {}
+          item:
+            nullable: true
+          waterObject: {}
+          waterTaintedCL: {}
+          waterUnit: {}
+          startUsedAmount:
+            type: number
+          endUsedAmount: {}
+          maxTime:
+            type: number
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stopSound
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: serverStop
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true

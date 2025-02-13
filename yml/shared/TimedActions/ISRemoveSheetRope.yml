@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRemoveSheetRope:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: window
+        staticFields:
+          Type:
+            defaultValue: '"ISRemoveSheetRope"'
+        fields:
+          window: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

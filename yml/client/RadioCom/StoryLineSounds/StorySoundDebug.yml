@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISStorySoundsDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISStorySoundsDebug"'
+          instance:
+            type: ISStorySoundsDebug
+            nullable: true
+        fields:
+          tabpanel:
+            type: ISTabPanel
+          managerTab:
+            type: ISSLManager
+          eventTab:
+            type: ISSLEvent | ISSLSounds
+          title:
+            type: string
+          panels:
+            type: table
+        methods:
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onResize

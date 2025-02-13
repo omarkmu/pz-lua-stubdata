@@ -1,0 +1,98 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISModalRichText:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+                type: string
+              - name: yesno
+                type: boolean
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+                nullable: true
+              - name: player
+                type: number
+                nullable: true
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISModalRichText"'
+        fields:
+          ok:
+            type: ISButton
+            nullable: true
+          yes:
+            type: ISButton
+            nullable: true
+          no:
+            type: ISButton
+            nullable: true
+          chatText:
+            type: ISRichTextPanel
+          name:
+            nullable: true
+          text:
+            type: string
+          yesno:
+            type: boolean
+          target:
+            type: unknown
+            nullable: true
+          onclick:
+            nullable: true
+          player:
+            type: number
+            nullable: true
+          param1:
+            type: unknown
+          param2:
+            type: unknown
+          destroyOnClick:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: updateButtons
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: update
+          - name: setHeightToContents

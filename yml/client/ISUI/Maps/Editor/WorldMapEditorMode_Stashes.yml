@@ -1,0 +1,102 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorMode_Stashes:
+        extends: WorldMapEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorMode_Stashes"'
+        fields:
+          listbox:
+            type: ISScrollingListBox
+          buildingXEntry:
+            type: ISTextEntryBox
+          buildingYEntry:
+            type: ISTextEntryBox
+          mode:
+            type: string
+            nullable: true
+          loadedStash:
+            type: table
+            nullable: true
+          locationControl:
+            type: WorldMapEditorLocationControl
+        methods:
+          - name: createChildren
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: display
+          - name: undisplay
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onBuildingXEntered
+          - name: onBuildingYEntered
+          - name: onBuildingSet
+          - name: onBuildingClear
+          - name: cancelMode
+            return:
+              - type: boolean
+          - name: onLoadStash
+          - name: generateLuaScript
+            return:
+              - type: unknown

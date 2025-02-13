@@ -1,0 +1,389 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapOptions:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: map
+                type: ISWorldMap
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapOptions"'
+        fields:
+          doubleBoxes:
+            type: table
+          tickBoxes:
+            type: table
+          showAllOptions:
+            type: boolean
+          screenHeight: {}
+          map:
+            type: ISWorldMap
+        methods:
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+              - name: option
+          - name: onCommandEntered
+            parameters:
+              - name: entry
+              - name: option
+          - name: createChildren
+          - name: getVisibleOptions
+            return:
+              - type: table
+          - name: isMultiplayerOption
+            parameters:
+              - name: optionName
+                type: string
+            return:
+              - type: boolean
+          - name: synchUI
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ISWorldMapButtonPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapButtonPanel"'
+        methods:
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ISWorldMap:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMap"'
+        fields:
+          mapAPI: {}
+          symbolsUI:
+            type: ISWorldMapSymbols
+          keyUI:
+            type: ISWorldMapKey
+          buttonPanel:
+            type: ISWorldMapButtonPanel
+          optionBtn:
+            type: ISButton
+          zoomInButton:
+            type: ISButton
+          zoomOutButton:
+            type: ISButton
+          pyramidBtn:
+            type: ISButton
+          perspectiveBtn:
+            type: ISButton
+          centerBtn:
+            type: ISButton
+          symbolsBtn:
+            type: ISButton
+          forgetBtn:
+            type: ISButton
+          closeBtn:
+            type: ISButton
+          isometric:
+            type: boolean
+          joypadPromptHgt: {}
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          dragStartX:
+            type: number
+          dragStartY:
+            type: number
+          dragStartCX: {}
+          dragStartCY: {}
+          dragStartZoomF: {}
+          dragStartWorldX: {}
+          dragStartWorldY: {}
+          hideUnvisitedAreas:
+            type: boolean
+          forgetUI:
+            type: ISModalRichText
+            nullable: true
+          optionsUI:
+            type: WorldMapOptions
+          showCellGrid:
+            type: boolean
+          showTileGrid:
+            type: boolean
+          showPlayers:
+            type: boolean
+          showRemotePlayers:
+            type: boolean
+          showPlayerNames:
+            type: boolean
+          getJoypadFocus:
+            type: boolean
+          updateMS: {}
+          LBumperZoom:
+            type: number
+            nullable: true
+          RBumperZoom:
+            type: number
+            nullable: true
+          povXms:
+            nullable: true
+          povYms:
+            nullable: true
+          character:
+            nullable: true
+          playerNum:
+            type: integer
+          cross: {}
+          texViewIsometric: {}
+          texViewOrthographic: {}
+          texViewPyramid: {}
+        methods:
+          - name: instantiate
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: renderJoypadPrompt
+            parameters:
+              - name: texture
+              - name: text
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onForget
+          - name: onConfirmForget
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onToggleSymbols
+          - name: onToggleLegend
+          - name: onChangePerspective
+          - name: onCenterOnPlayer
+          - name: onTogglePyramid
+          - name: onZoomInButton
+          - name: onZoomOutButton
+          - name: onChangeOptions
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onTeleport
+            parameters:
+              - name: worldX
+              - name: worldY
+          - name: setHideUnvisitedAreas
+            parameters:
+              - name: hide
+                type: boolean
+          - name: setIsometric
+            parameters:
+              - name: iso
+                type: boolean
+          - name: setShowCellGrid
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowTileGrid
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowPlayers
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowRemotePlayers
+            parameters:
+              - name: show
+                type: boolean
+          - name: setShowPlayerNames
+            parameters:
+              - name: show
+                type: boolean
+          - name: close
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: updateJoypad
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: saveSettings
+          - name: restoreSettings
+          - name: initDataAndStyle
+        staticMethods:
+          - name: IsAllowed
+            return:
+              - type: boolean
+          - name: NeedsLight
+            return:
+              - type: boolean
+          - name: ShowWorldMap
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: centerX
+              - name: centerY
+              - name: zoom
+          - name: HideWorldMap
+            parameters:
+              - name: playerNum
+                type: integer
+          - name: ToggleWorldMap
+            parameters:
+              - name: playerNum
+                type: integer
+          - name: checkKey
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyKeepPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyReleased
+            parameters:
+              - name: key
+                type: integer
+          - name: OnPlayerDeath
+            parameters:
+              - name: playerObj
+                type: IsoPlayer

@@ -1,0 +1,72 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLightbarUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerObj
+                type: IsoPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISLightbarUI"'
+        fields:
+          close:
+            type: ISButton
+          btn_sndStandby:
+            type: ISButton
+          btn_sndYelp:
+            type: ISButton
+          btn_sndWall:
+            type: ISButton
+          btn_sndAlarm:
+            type: ISButton
+          lightsKnob:
+            type: ISKnob
+          vehicle: {}
+          joypadButtons: {}
+          playerNum:
+            type: integer
+          playerObj:
+            type: IsoPlayer
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: ChangeKnob
+          - name: setVehicle
+            parameters:
+              - name: vehicle
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setLightbarSirenMode
+            parameters:
+              - name: mode
+          - name: setLightbarLightsMode
+            parameters:
+              - name: mode
+          - name: addKnobValues

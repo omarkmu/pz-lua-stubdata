@@ -1,0 +1,67 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      season:
+        staticFields:
+          previousHour:
+            defaultValue: "-1"
+          previousMonth:
+            defaultValue: "-1"
+          previousDay:
+            defaultValue: "-1"
+          loaded:
+            defaultValue: "false"
+          min:
+            defaultValue: "-1"
+          max:
+            defaultValue: "-1"
+          currentTemp:
+            defaultValue: "-1"
+          moonDay:
+            defaultValue: "0"
+          previousWeatherHour:
+            defaultValue: "0"
+          currentTempModifier:
+            defaultValue: "0"
+          weatherIcon:
+            nullable: true
+          moon:
+            defaultValue: '"false"'
+          weather:
+            defaultValue: '"normal"'
+          moonCycle:
+            defaultValue: "10"
+          moonPhase:
+            defaultValue: '"2"'
+          ambientMaxGoal:
+            defaultValue: "0.6"
+          ambientMinGoal:
+            defaultValue: "0.0"
+          gameTime: {}
+          moonAmbient:
+            defaultValue: "0.0"
+          rainToday:
+            defaultValue: "0"
+          wantNoise:
+            defaultValue: getDebug()
+        staticMethods:
+          - name: EveryTenMinutes
+          - name: updateBodyTemperature
+          - name: updateAmbient
+          - name: updateRain
+          - name: updateWeather
+            parameters:
+              - name: month
+              - name: currentHour
+          - name: startRain
+          - name: updateMoonState
+            parameters:
+              - name: currentHour
+              - name: month
+          - name: updateMoonPhase
+          - name: updateWeatherIcon
+          - name: load
+          - name: save
+          - name: OnGameTimeLoaded
+          - name: OnGameStart

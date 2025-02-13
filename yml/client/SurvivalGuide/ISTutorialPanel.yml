@@ -1,0 +1,226 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTutorialPanel:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTutorialPanel"'
+        fields:
+          content:
+            type: ISPanel
+          chapterList:
+            type: ISSurvivalGuideListBox
+          centerText:
+            type: ISSurvivalGuideRichText
+          rightPanel:
+            type: ISSurvivalGuideRightPanel
+          rightPanelText:
+            type: ISRichTextPanel
+          tutorialSetInfo:
+            type: ISTutorialSetInfo
+          moreInfo: {}
+          title:
+            type: string
+          visibleTarget:
+            type: ISTutorialPanel
+          visibleFunction:
+            type: function
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setUseJoypad
+            parameters:
+              - name: useJoypad
+                type: boolean
+          - name: reload
+          - name: setPage
+            parameters:
+              - name: pageNum
+                type: number
+          - name: fillChapterList
+          - name: prerender
+          - name: render
+          - name: update
+          - name: close
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onToggleVisible
+      ISSurvivalGuideListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSurvivalGuideListBox"'
+        fields:
+          selected:
+            type: number
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      ISSurvivalGuideRichText:
+        extends: ISRichTextPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSurvivalGuideRichText"'
+          doRightJoystickScrolling:
+            defaultValue: ISPanelJoypad.doRightJoystickScrolling
+        fields:
+          yScrollDelta:
+            type: number
+          smoothScrollY:
+            type: number
+            nullable: true
+          smoothScrollTargetY:
+            type: number
+            nullable: true
+          text: {}
+        methods:
+          - name: prerender
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: updateSmoothScrolling
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      ISSurvivalGuideRightPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSurvivalGuideRightPanel"'
+        fields:
+          richText:
+            type: ISRichTextPanel
+          tickBox:
+            type: ISTickBox
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData

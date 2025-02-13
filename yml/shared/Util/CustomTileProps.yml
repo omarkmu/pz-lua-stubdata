@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CustomTileProps_SetPair:
+        staticFields:
+          crafted_04_39: {}
+          crafted_02_51: {}
+          crafted_02_50: {}
+          crafted_02_49: {}
+          crafted_02_48: {}
+          crafted_04_70: {}
+          crafted_04_60: {}
+          crafted_01_67: {}
+          crafted_05_72: {}
+          crafted_04_34: {}
+          crafted_01_73: {}
+          crafted_01_123: {}
+          vegetation_drying_01_8: {}
+          vegetation_drying_01_9wddddwaw: {}
+          crafted_05_75: {}
+          crafted_05_111: {}
+          crafted_05_85: {}
+          crafted_05_81: {}
+          crafted_05_73: {}
+          crafted_02_40: {}

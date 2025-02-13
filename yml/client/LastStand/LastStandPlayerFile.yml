@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LastStandPlayerFile:
+        constructors:
+          - {}
+        fields:
+          file:
+            nullable: true
+          error:
+            type: string
+            nullable: true
+          newPlayer:
+            type: table
+            nullable: true
+          version:
+            type: number
+            nullable: true
+        methods:
+          - name: load
+            parameters:
+              - name: fileName
+                type: string
+            return:
+              - type: table
+                nullable: true
+          - name: readLine
+            parameters:
+              - name: line
+            return:
+              - type: boolean
+          - name: readBlockStart
+            return:
+              - type: boolean
+          - name: readPlayer
+            return:
+              - type: boolean
+          - name: readClothing
+            return:
+              - type: boolean
+          - name: readTraits
+            return:
+              - type: boolean
+          - name: readSkills
+            return:
+              - type: boolean
+          - name: readBonus
+            return:
+              - type: boolean

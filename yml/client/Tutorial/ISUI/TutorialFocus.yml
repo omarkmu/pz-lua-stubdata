@@ -1,0 +1,94 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TutorialFocus:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: focusx
+                type: number
+              - name: focusy
+                type: number
+              - name: focuswidth
+                type: number
+              - name: focusheight
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TutorialFocus"'
+          instance:
+            type: TutorialFocus
+            nullable: true
+        fields:
+          focusx:
+            type: number
+          focusy:
+            type: number
+          focuswidth:
+            type: number
+          focusheight:
+            type: number
+          focusx2:
+            type: number
+          focusy2:
+            type: number
+          width: {}
+          height: {}
+          mouseover:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: isInside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+        staticMethods:
+          - name: set
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+          - name: unset

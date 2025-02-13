@@ -1,0 +1,10 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RandomTint:
+        staticFields:
+          FabricRoll_Cotton: {}
+          Lipstick: {}
+          SprayPaint: {}
+          Yarn: {}

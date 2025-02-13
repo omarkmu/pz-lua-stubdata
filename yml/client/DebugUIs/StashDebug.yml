@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StashDebug:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"StashDebug"'
+          instance:
+            type: StashDebug
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          viewBtn:
+            type: ISButton
+          reinitBtn:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          selectedStash:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+        staticMethods:
+          - name: OnOpenPanel

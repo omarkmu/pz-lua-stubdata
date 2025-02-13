@@ -1,0 +1,78 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLightSourceRadialMenu:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISLightSourceRadialMenu"'
+        fields:
+          character: {}
+          playerNum:
+            type: integer
+        methods:
+          - name: center
+          - name: getInsertBatteryRecipe
+            parameters:
+              - name: item
+              - name: containerList
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRemoveBatteryRecipe
+            parameters:
+              - name: item
+              - name: containerList
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: fillMenuForItem
+            parameters:
+              - name: menu
+              - name: item
+          - name: fillMenu
+          - name: display
+          - name: onEquipLight
+            parameters:
+              - name: item
+              - name: primary
+          - name: onInsertBattery
+            parameters:
+              - name: item
+          - name: onRemoveBattery
+            parameters:
+              - name: item
+          - name: onToggle
+            parameters:
+              - name: item
+          - name: onLightCandle
+            parameters:
+              - name: item
+          - name: onExtinguishCandle
+            parameters:
+              - name: item
+        staticMethods:
+          - name: checkKey
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRepeat
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyReleased
+            parameters:
+              - name: key
+                type: integer

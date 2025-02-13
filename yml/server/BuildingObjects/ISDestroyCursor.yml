@@ -1,0 +1,156 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDestroyCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+              - name: dismantle
+                type: boolean
+              - name: sledgehammer
+        staticFields:
+          Type:
+            defaultValue: '"ISDestroyCursor"'
+        fields:
+          cornerCounter:
+            type: number
+          objectIndex:
+            type: number
+          renderX:
+            type: number
+          renderY:
+            type: number
+          renderZ:
+            type: number
+          currentObject:
+            nullable: true
+          currentSquare: {}
+          character: {}
+          player: {}
+          skipBuildAction:
+            type: boolean
+          noNeedHammer:
+            type: boolean
+          skipWalk:
+            type: boolean
+          renderFloorHelper:
+            type: boolean
+          dismantle:
+            type: boolean
+          sledgehammer: {}
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: _isWall
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: _isDoorFrame
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: _isDoorN
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: _isDoorW
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: _isDoorWallN
+            parameters:
+              - name: object
+            return:
+              - type: unknown
+          - name: _isDoorWallW
+            parameters:
+              - name: object
+            return:
+              - type: unknown
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: onJoypadPressButton
+            parameters:
+              - name: joypadIndex
+              - name: joypadData
+                type: JoypadData
+              - name: button
+                type: ISButton
+            return:
+              - type: unknown
+                nullable: true
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: couldSeeOpposite
+            parameters:
+              - name: object
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: canDestroy
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: isFloorAtTopOfStairs
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: getObjectList
+            return:
+              - type: table

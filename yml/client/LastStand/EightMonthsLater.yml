@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      EightMonthsLater:
+        staticFields:
+          wave:
+            type: number
+            nullable: true
+          waveTime:
+            type: number
+            nullable: true
+          name:
+            defaultValue: '"One Year Later"'
+          description:
+            defaultValue: '"Nature has begun to reclaim the Earth. Can you survive in this
+              dead world?"'
+          completionText:
+            defaultValue: '"Survive a week to unlock the next challenge."'
+          image:
+            defaultValue: '"media/lua/client/LastStand/EightMonthsLater.png"'
+          gameMode:
+            defaultValue: '"One Year Later"'
+          world:
+            defaultValue: '"Muldraugh, KY"'
+          x:
+            defaultValue: (36 * 300) + 21
+          y:
+            defaultValue: (31 * 300) + 111
+          z:
+            defaultValue: "0"
+          hourOfDay:
+            defaultValue: "7"
+        staticMethods:
+          - name: PreloadInit
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: Render
+          - name: Tick
+          - name: onBackButtonWheel
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: dir

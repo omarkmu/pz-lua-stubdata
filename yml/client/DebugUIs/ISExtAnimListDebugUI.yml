@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISExtAnimListDebugUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISExtAnimListDebugUI"'
+        fields:
+          combo:
+            type: ISComboBox
+          start:
+            type: ISButton
+          closeBtn:
+            type: ISButton
+          playerNum:
+            type: integer
+          character: {}
+          chr: {}
+          title: {}
+          extList:
+            type: table
+        methods:
+          - name: createChildren
+          - name: playAnim
+          - name: closeUI
+          - name: update
+          - name: render
+          - name: createList

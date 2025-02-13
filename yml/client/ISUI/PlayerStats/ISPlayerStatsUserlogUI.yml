@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsUserlogUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+              - name: username
+                type: string
+              - name: userlogs
+                type: table
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsUserlogUI"'
+          instance:
+            type: ISPlayerStatsUserlogUI
+            nullable: true
+        fields:
+          userlogList:
+            type: ISScrollingListBox
+          ok:
+            type: ISButton
+          addLog:
+            type: ISButton
+          removeLog:
+            type: ISButton
+          variableColor:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          onclick: {}
+          username:
+            type: string
+          userlogs:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          listHeaderColor:
+            type: table
+          windows:
+            type: table
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: render
+          - name: create
+          - name: drawLog
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRemoveLog
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: onAddLog
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+        staticMethods:
+          - name: populateLogList
+            parameters:
+              - name: self
+          - name: receiveUserLog
+            parameters:
+              - name: username
+                type: string
+              - name: logs

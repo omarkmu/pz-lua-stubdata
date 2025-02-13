@@ -1,0 +1,12 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TrapSystem:
+        staticMethods:
+          - name: initObjectModData
+            parameters:
+              - name: isoObject
+              - name: trapDef
+              - name: north
+              - name: player

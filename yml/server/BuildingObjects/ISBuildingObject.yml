@@ -1,0 +1,265 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildingObject:
+        extends: ISBaseObject
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildingObject"'
+          floorCursorSprite:
+            nullable: true
+        fields:
+          canPassThrough:
+            type: boolean
+          northSprite:
+            nullable: true
+          eastSprite:
+            nullable: true
+          southSprite:
+            nullable: true
+          sprite:
+            nullable: true
+          chosenSprite:
+            nullable: true
+          dragNilAfterPlace:
+            type: boolean
+          blockBuild:
+            type: boolean
+          isLeftDown:
+            type: boolean
+          clickedUI:
+            type: boolean
+          canBeBuild:
+            type: boolean
+          build:
+            type: boolean
+          square:
+            type: IsoGridSquare
+            nullable: true
+          nSprite:
+            type: number
+          north:
+            type: boolean
+          south:
+            type: boolean
+          east:
+            type: boolean
+          west:
+            type: boolean
+          xJoypad:
+            type: number
+          yJoypad:
+            type: number
+          zJoypad:
+            type: number
+          isWallLike:
+            type: boolean
+          isCorner:
+            type: boolean
+          completionSound:
+            nullable: true
+          canBeAlwaysPlaced:
+            type: boolean
+          isContainer:
+            type: boolean
+          canBarricade:
+            type: boolean
+          thumpDmg:
+            type: number
+          isDoor:
+            type: boolean
+          isDoorFrame:
+            type: boolean
+          crossSpeed:
+            type: number
+          blockAllTheSquare:
+            type: boolean
+          dismantable:
+            type: boolean
+          canBePlastered:
+            type: boolean
+          hoppable:
+            type: boolean
+          isThumpable:
+            type: boolean
+          modData:
+            type: table
+          RENDER_SPRITE_FLOOR: {}
+          RENDER_SPRITE: {}
+          RENDER_SPRITE_NAME:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: setCanPassThrough
+            parameters:
+              - name: passThrough
+          - name: setNorthSprite
+            parameters:
+              - name: sprite
+          - name: setEastSprite
+            parameters:
+              - name: sprite
+          - name: setSouthSprite
+            parameters:
+              - name: sprite
+          - name: setSprite
+            parameters:
+              - name: sprite
+          - name: setDragNilAfterPlace
+            parameters:
+              - name: nilAfter
+          - name: tryBuild
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+          - name: onActionComplete
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onTimedActionStart
+            parameters:
+              - name: action
+          - name: onTimedActionStop
+            parameters:
+              - name: action
+          - name: haveMaterial
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: reinit
+          - name: reset
+          - name: init
+          - name: getSprite
+            return:
+              - type: unknown
+                nullable: true
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer
+          - name: rotateMouse
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: deactivate
+          - name: onJoypadPressButton
+            parameters:
+              - name: joypadIndex
+              - name: joypadData
+                type: JoypadData
+              - name: button
+                type: ISButton
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+          - name: getRBPrompt
+            return:
+              - type: unknown
+          - name: getFloorCursorSprite
+            return:
+              - type: unknown
+          - name: update
+          - name: renderOpaqueObjectsInWorld
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+        staticMethods:
+          - name: onDestroy
+            parameters:
+              - name: thump
+              - name: player
+          - name: removeFromGround
+            parameters:
+              - name: square
+                type: IsoGridSquare
+    functions:
+      - name: DoTileBuilding
+        parameters:
+          - name: draggingItem
+          - name: isRender
+            type: boolean
+          - name: x
+            type: number
+          - name: y
+            type: number
+          - name: z
+            type: number
+          - name: square
+            type: IsoGridSquare
+      - name: DoTileBuildingJoyPad
+        parameters:
+          - name: draggingItem
+          - name: isRender
+            type: boolean
+          - name: x
+            type: number
+          - name: y
+            type: number
+          - name: z
+            type: number

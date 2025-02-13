@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      farmingPlot:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: handItem
+              - name: character
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"farmingPlot"'
+        fields:
+          handItem: {}
+          skipBuildAction:
+            type: boolean
+          character:
+            nullable: true
+          noNeedHammer:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

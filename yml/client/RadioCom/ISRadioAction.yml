@@ -1,0 +1,89 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRadioAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: mode
+                type: string
+              - name: character
+              - name: device
+              - name: secondaryItem
+                type: boolean | number
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISRadioAction"'
+        fields:
+          mode:
+            type: string
+          device: {}
+          deviceData: {}
+          secondaryItem:
+            type: boolean | number
+            nullable: true
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: start
+          - name: update
+          - name: perform
+          - name: isValidToggleOnOff
+            return:
+              - type: boolean
+          - name: performToggleOnOff
+          - name: isValidRemoveBattery
+            return:
+              - type: unknown
+          - name: performRemoveBattery
+          - name: isValidAddBattery
+            return:
+              - type: boolean
+          - name: performAddBattery
+          - name: isValidSetChannel
+            return:
+              - type: boolean
+          - name: startSetChannel
+          - name: performSetChannel
+          - name: isValidMuteVolume
+            return:
+              - type: boolean
+          - name: performMuteVolume
+          - name: isValidUnMuteVolume
+            return:
+              - type: boolean
+          - name: performUnMuteVolume
+          - name: isValidSetVolume
+            return:
+              - type: boolean
+          - name: performSetVolume
+          - name: isValidMuteMicrophone
+            return:
+              - type: boolean
+          - name: performMuteMicrophone
+          - name: isValidRemoveHeadphones
+            return:
+              - type: boolean
+          - name: performRemoveHeadphones
+          - name: isValidAddHeadphones
+            return:
+              - type: boolean
+          - name: performAddHeadphones
+          - name: isValidTogglePlayMedia
+            return:
+              - type: unknown
+          - name: performTogglePlayMedia
+          - name: isValidAddMedia
+            return:
+              - type: boolean
+          - name: performAddMedia
+          - name: isValidRemoveMedia
+            return:
+              - type: unknown
+          - name: performRemoveMedia

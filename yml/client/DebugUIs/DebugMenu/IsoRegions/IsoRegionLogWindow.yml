@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      IsoRegionLogWindow:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"IsoRegionLogWindow"'
+          instance:
+            type: IsoRegionLogWindow
+            nullable: true
+        fields:
+          firstTableName:
+            type: boolean
+          tableNamesList:
+            type: ISScrollingListBox
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onClickClose
+          - name: OnTableNamesListMouseDown
+            parameters:
+              - name: item
+          - name: populateList
+          - name: drawTableNameList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: update
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: IsoRegionLogWindow
+                nullable: true

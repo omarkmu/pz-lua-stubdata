@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Fishing:
+        staticFields:
+          Bobber:
+            type: Bobber
+          ServerBobberManager: {}
+      Bobber:
+        local: true
+        constructors:
+          - parameters:
+              - name: player
+              - name: fishingRod
+                type: FishingRod
+              - name: x
+                type: number
+              - name: y
+                type: number
+        fields:
+          player: {}
+          fishingRod:
+            type: FishingRod
+          sq:
+            type: IsoGridSquare
+          dx:
+            type: number
+          dy:
+            type: number
+          z:
+            type: number
+          id: {}
+          item: {}
+          attractTimer:
+            type: number
+            nullable: true
+          nibbleTimer:
+            type: number
+          lure: {}
+          fishingLvl: {}
+          fish:
+            type: Fish
+            nullable: true
+        methods:
+          - name: getX
+            return:
+              - type: number
+          - name: getY
+            return:
+              - type: number
+          - name: getZ
+            return:
+              - type: number
+          - name: getNibbleTime
+            return:
+              - type: number
+                nullable: true
+          - name: update
+          - name: getFreeWaterDirection
+            return:
+              - type: number
+              - type: number
+          - name: move
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: attractFish
+            return:
+              - type: boolean
+          - name: grabFish
+            return:
+              - type: unknown
+                nullable: true
+          - name: isOnGround
+            return:
+              - type: boolean
+          - name: destroy
+        staticMethods:
+          - name: onFishingActionMPUpdate
+            parameters:
+              - name: data

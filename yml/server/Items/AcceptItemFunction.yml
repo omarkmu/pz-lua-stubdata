@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AcceptItemFunction:
+        staticMethods:
+          - name: FirstAidKit
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: boolean
+          - name: AmmoStrap_Bullets
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: boolean
+          - name: AmmoStrap_Shells
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: unknown
+          - name: KeyRing
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: boolean
+          - name: HolsterShoulder
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: boolean
+          - name: Wallet
+            parameters:
+              - name: container
+              - name: item
+            return:
+              - type: unknown

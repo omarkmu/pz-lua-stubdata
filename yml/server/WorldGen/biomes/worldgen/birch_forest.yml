@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes.birch_forest: {}
+          biomes.birch_forest_boulder_none: {}
+          biomes.birch_forest_boulder_very_low: {}
+          biomes.birch_forest_boulder_low: {}
+          biomes.birch_forest_boulder_medium: {}
+          biomes.birch_forest_boulder_high: {}
+          biomes.birch_forest_boulder_very_high: {}

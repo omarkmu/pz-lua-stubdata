@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PZAPI:
+        staticFields:
+          UI.instances: {}
+          UI._copyValue:
+            defaultValue: function(obj, seen) end
+          UI._mergeTables:
+            defaultValue: function(...) end
+          UI._setParentChildRelationship:
+            defaultValue: function(ui) end
+          UI._initElement:
+            defaultValue: function(ui) end
+          UI._createAtomObjs:
+            defaultValue: function(ui) end
+          UI._internalInit:
+            defaultValue: function(ui) end
+          UI._initResize:
+            defaultValue: function(ui) end
+          UI._applyHooks:
+            defaultValue: function(ui) end
+          UI._addChild:
+            defaultValue: function(parent, child) end
+          UI._mt: {}

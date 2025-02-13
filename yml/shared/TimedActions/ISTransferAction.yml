@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTransferAction:
+        extends: ISBaseObject
+        staticFields:
+          Type:
+            defaultValue: '"ISTransferAction"'
+        methods:
+          - name: floorHasRoomFor
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: character
+              - name: item
+              - name: destContainer
+            return:
+              - type: boolean
+          - name: canDropOnFloor
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: character
+            return:
+              - type: boolean
+          - name: getNotFullFloorSquare
+            parameters:
+              - name: character
+              - name: item
+              - name: destContainer
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeItemOnCharacter
+            parameters:
+              - name: character
+              - name: item
+            return:
+              - type: boolean
+          - name: transferItem
+            parameters:
+              - name: character
+              - name: item
+              - name: srcContainer
+              - name: destContainer
+              - name: dropSquare
+                nullable: true
+            return:
+              - type: unknown
+        staticMethods:
+          - name: GetDropItemOffset
+            parameters:
+              - name: character
+              - name: square
+                type: IsoGridSquare
+              - name: item
+            return:
+              - type: number
+              - type: number
+              - type: number

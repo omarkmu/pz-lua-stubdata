@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      StringReplacer:
+        staticMethods:
+          - name: DoCharacter
+            parameters:
+              - name: str
+                type: string
+              - name: desc
+            return:
+              - type: string

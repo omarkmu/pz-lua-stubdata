@@ -1,0 +1,63 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      camping:
+        staticFields:
+          tentSprites: {}
+        staticMethods:
+          - name: findTentSprites
+            parameters:
+              - name: sprite
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: addTent
+            parameters:
+              - name: grid
+              - name: sprite
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeTent
+            parameters:
+              - name: tent
+                nullable: true
+          - name: destroyTent
+            parameters:
+              - name: tent
+          - name: getTentObjects
+            parameters:
+              - name: tent
+            return:
+              - type: table
+          - name: isTentObject
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: findTentObject
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+                nullable: true
+          - name: tentAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: getCurrentTent
+            parameters:
+              - name: grid
+            return:
+              - type: unknown
+                nullable: true

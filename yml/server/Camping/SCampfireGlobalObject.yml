@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SCampfireGlobalObject:
+        extends: SGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: SCampfireSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"SCampfireGlobalObject"'
+        fields:
+          exterior:
+            type: boolean
+          isLit:
+            type: boolean
+          fuelAmt:
+            type: number
+          radius:
+            type: number
+          spriteName:
+            type: string
+          transmitObject:
+            type: boolean
+          transmitSprite:
+            type: boolean
+          transmitContainer:
+            type: boolean
+          transmitContainerTemp:
+            type: boolean
+          transmitFire:
+            type: boolean
+        methods:
+          - name: initNew
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: getObject
+            return:
+              - type: unknown
+          - name: getContainer
+            return:
+              - type: unknown
+                nullable: true
+          - name: processContainerItems
+          - name: getFireObject
+            return:
+              - type: unknown
+                nullable: true
+          - name: addObject
+          - name: removeObject
+          - name: setSpriteName
+            parameters:
+              - name: spriteName
+                type: string
+          - name: addContainer
+          - name: addFireObject
+          - name: removeFireObject
+          - name: transferItemsToGround
+          - name: fromModData
+            parameters:
+              - name: modData
+          - name: toModData
+            parameters:
+              - name: modData
+          - name: fromObject
+            parameters:
+              - name: isoObject
+          - name: syncIsoObject
+          - name: syncSprite
+          - name: syncModData
+          - name: syncContainer
+          - name: syncIsoFire
+          - name: changeFireLvl
+          - name: fireRatio
+            return:
+              - type: number
+          - name: fireRadius
+            return:
+              - type: number
+          - name: saveData
+          - name: lightFire
+          - name: putOut
+          - name: addFuel
+            parameters:
+              - name: fuelAmt
+          - name: setFuel
+            parameters:
+              - name: fuelAmt

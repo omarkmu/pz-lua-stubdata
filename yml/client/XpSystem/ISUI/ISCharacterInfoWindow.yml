@@ -1,0 +1,81 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCharacterInfoWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerNum
+                type: integer
+        staticFields:
+          Type:
+            defaultValue: '"ISCharacterInfoWindow"'
+          view: {}
+          instance:
+            type: ISCharacterInfoWindow
+            nullable: true
+        fields:
+          panel:
+            type: ISTabPanel
+          charScreen:
+            type: ISCharacterScreen
+          characterView:
+            type: ISCharacterInfo
+          healthView:
+            type: ISHealthPanel
+          protectionView:
+            type: ISCharacterProtection
+          clothingView:
+            type: ISClothingInsPanel
+          visibleOnStartup:
+            type: boolean
+          playerNum:
+            type: integer
+        methods:
+          - name: initialise
+          - name: isActive
+            parameters:
+              - name: viewName
+                type: string
+            return:
+              - type: boolean
+          - name: toggleView
+            parameters:
+              - name: viewName
+                type: string
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: createChildren
+          - name: render
+          - name: close
+          - name: onTabTornOff
+            parameters:
+              - name: view
+                type: table
+              - name: window
+                type: ISCollapsableWindow
+          - name: RestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+        staticMethods:
+          - name: OnClothingUpdated
+            parameters:
+              - name: chr

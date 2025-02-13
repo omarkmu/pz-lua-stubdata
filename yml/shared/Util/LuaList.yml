@@ -1,0 +1,78 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LuaList:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"LuaList"'
+        fields:
+          count:
+            type: number
+          items:
+            type: table
+        methods:
+          - name: initialise
+          - name: add
+            parameters:
+              - name: item
+                type: table
+          - name: size
+            return:
+              - type: number
+          - name: isEmpty
+            return:
+              - type: boolean
+          - name: clear
+          - name: get
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: unknown
+          - name: sort
+            parameters:
+              - name: f
+          - name: foreach
+            parameters:
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: remove
+            parameters:
+              - name: item
+            return:
+              - type: unknown
+                nullable: true
+          - name: pop
+            return:
+              - type: unknown
+                nullable: true
+          - name: contains
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: addAll
+            parameters:
+              - name: list
+          - name: removeRandom
+            return:
+              - type: unknown
+                nullable: true
+          - name: removeAt
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: unknown
+                nullable: true

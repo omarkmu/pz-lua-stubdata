@@ -1,0 +1,26 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRainPanel:
+        extends: ISPanel
+        staticFields:
+          Type:
+            defaultValue: '"ISRainPanel"'
+        fields:
+          intensity:
+            type: ISSpinBox
+          speed:
+            type: ISSpinBox
+          alpha:
+            type: ISTextEntryBox
+          reloadButton:
+            type: ISButton
+        methods:
+          - name: createChildren
+          - name: changeIntensity
+          - name: changeSpeed
+          - name: onChangeAlpha
+          - name: reloadTextures
+    functions:
+      - name: addRainPanel

@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFireplaceLightFromLiterature:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: item
+                nullable: true
+              - name: lighter
+              - name: fireplace
+        staticFields:
+          Type:
+            defaultValue: '"ISFireplaceLightFromLiterature"'
+        fields:
+          item:
+            nullable: true
+          lighter: {}
+          sound: {}
+          fireplace: {}
+          fuelAmt:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

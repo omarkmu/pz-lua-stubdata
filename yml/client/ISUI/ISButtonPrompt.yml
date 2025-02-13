@@ -1,0 +1,288 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISButtonPrompt:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISButtonPrompt"'
+          test:
+            type: table
+            nullable: true
+        fields:
+          lmargin:
+            type: number
+          rmargin:
+            type: number
+          x1:
+            type: number
+          y1:
+            type: number
+          w1:
+            type: number
+          h1:
+            type: number
+          x2:
+            type: number
+          y2:
+            type: number
+          w2:
+            type: number
+          h2:
+            type: number
+          isLoot:
+            type: boolean
+          list:
+            type: LuaList
+          aPrompt:
+            type: string
+          aFunc: {}
+          aParams:
+            type: table
+          bPrompt:
+            type: string
+          bFunc: {}
+          bParams:
+            type: table
+          xPrompt:
+            type: string
+          xFunc: {}
+          xParams:
+            type: table
+          yPrompt:
+            type: string
+          yFunc: {}
+          yParams:
+            type: table
+          lbPrompt:
+            type: string
+          lbFunc: {}
+          lbParams:
+            type: table
+          rbPrompt:
+            type: string
+          rbFunc: {}
+          rbParams:
+            type: table
+          background:
+            type: boolean
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          player: {}
+          buttonA: {}
+          buttonB: {}
+          buttonX: {}
+          buttonY: {}
+          buttonLB: {}
+          buttonRB: {}
+          movableIconPickup: {}
+          movableIconPlace: {}
+          movableIconRotate: {}
+          movableIconScrap: {}
+          moveableIconRepair: {}
+          moveableIconBuild: {}
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: getTopOf
+            return:
+              - type: number
+          - name: update
+          - name: isLootIcon
+            return:
+              - type: boolean
+          - name: interact
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+          - name: climbFence
+          - name: climbOverWall
+            parameters:
+              - name: dir
+          - name: climbInWindow
+            parameters:
+              - name: window
+          - name: openWindow
+            parameters:
+              - name: window
+          - name: closeWindow
+            parameters:
+              - name: window
+          - name: openDoor
+            parameters:
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: closeDoor
+            parameters:
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: smashWindow
+            parameters:
+              - name: window
+          - name: sleep
+          - name: cmdShowInventory
+          - name: cmdShowLoot
+          - name: cmdToggleLight
+            parameters:
+              - name: light
+          - name: cmdToggleStove
+            parameters:
+              - name: stove
+          - name: openDeviceOptions
+            parameters:
+              - name: device
+          - name: cmdUseVehicle
+            parameters:
+              - name: vehicle
+              - name: part
+          - name: cmdEnterVehicle
+            parameters:
+              - name: vehicle
+              - name: seat
+          - name: cmdCloseVehicleDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: cmdOpenVehicleDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: cmdExitVehicle
+          - name: stopAction
+          - name: dropCorpse
+          - name: getBestAButtonAction
+            parameters:
+              - name: dir
+          - name: testAButtonAction
+            parameters:
+              - name: dir
+          - name: doAButtonDoorOrWindowOrWindowFrame
+            parameters:
+              - name: dir
+              - name: obj
+                type: IsoObject
+          - name: getBestBButtonAction
+            parameters:
+              - name: dir
+          - name: testBButtonAction
+            parameters:
+              - name: dir
+          - name: doBButtonDoorOrWindowOrWindowFrame
+            parameters:
+              - name: dir
+              - name: obj
+                type: IsoObject
+          - name: getBestYButtonAction
+            parameters:
+              - name: dir
+          - name: getBestXButtonAction
+            parameters:
+              - name: dir
+          - name: getXButtonObjects
+            parameters:
+              - name: dir
+            return:
+              - type: LuaList
+                nullable: true
+          - name: getBestLBButtonAction
+            parameters:
+              - name: dir
+          - name: getBestRBButtonAction
+            parameters:
+              - name: dir
+          - name: onAPress
+          - name: onBPress
+          - name: onXPress
+          - name: onYPress
+          - name: onLBPress
+          - name: onRBPress
+          - name: setAPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: setBPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: setXPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: setYPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: setLBPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: setRBPrompt
+            parameters:
+              - name: str
+                type: string
+              - name: func
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+          - name: onJoypadButtonReleased
+            parameters:
+              - name: button
+                type: ISButton

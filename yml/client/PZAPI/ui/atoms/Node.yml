@@ -1,0 +1,126 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.Node:
+        local: true
+        staticFields:
+          _ATOM_UI_CLASS:
+            defaultValue: AtomUI
+          x:
+            defaultValue: "0"
+          y:
+            defaultValue: "0"
+          width:
+            defaultValue: "256"
+          height:
+            defaultValue: "256"
+          pivotX:
+            defaultValue: "0"
+          pivotY:
+            defaultValue: "0"
+          angle:
+            defaultValue: "0"
+          scaleX:
+            defaultValue: "1"
+          scaleY:
+            defaultValue: "1"
+          r:
+            defaultValue: "1"
+          g:
+            defaultValue: "1"
+          b:
+            defaultValue: "1"
+          a:
+            defaultValue: "1"
+          anchorLeft:
+            defaultValue: "false"
+          anchorRight:
+            defaultValue: "false"
+          anchorTop:
+            defaultValue: "false"
+          anchorDown:
+            defaultValue: "false"
+          visible:
+            defaultValue: "true"
+          enabled:
+            defaultValue: "true"
+          alwaysBack:
+            defaultValue: "false"
+          alwaysOnTop:
+            defaultValue: "false"
+          isStencil:
+            defaultValue: "false"
+        fields:
+          javaObj: {}
+          children:
+            type: table<string, UI.Node>
+            nullable: true
+          super:
+            type: table
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.Node
+        methods:
+          - name: setX
+            parameters:
+              - name: value
+          - name: setY
+            parameters:
+              - name: value
+          - name: setWidth
+            parameters:
+              - name: value
+          - name: setHeight
+            parameters:
+              - name: value
+          - name: setWidthSilent
+            parameters:
+              - name: value
+          - name: setHeightSilent
+            parameters:
+              - name: value
+          - name: setPivotX
+            parameters:
+              - name: value
+          - name: setPivotY
+            parameters:
+              - name: value
+          - name: setAngle
+            parameters:
+              - name: value
+          - name: setScaleX
+            parameters:
+              - name: value
+          - name: setScaleY
+            parameters:
+              - name: value
+          - name: setColor
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: setVisible
+            parameters:
+              - name: value
+          - name: setEnabled
+            parameters:
+              - name: value
+          - name: setAlwaysOnTop
+            parameters:
+              - name: value
+          - name: setAlwaysBack
+            parameters:
+              - name: value
+      PZAPI:
+        staticFields:
+          UI.Node:
+            type: UI.Node

@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidInfoUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _player
+              - name: _container
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidInfoUI"'
+          players: {}
+          cheatSkill:
+            defaultValue: "false"
+          cheatTransfer:
+            defaultValue: "false"
+        fields:
+          panelText:
+            type: string
+          panel:
+            type: ISFluidContainerPanel
+          panelX: {}
+          btnClose:
+            type: ISButton
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          transferColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          player: {}
+          container: {}
+          owner: {}
+          isIsoPanel: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: update
+          - name: close
+          - name: onButton
+            parameters:
+              - name: _btn
+        staticMethods:
+          - name: OpenPanel
+            parameters:
+              - name: _player
+              - name: _container
+                type: ISFluidContainer

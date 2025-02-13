@@ -1,0 +1,124 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SeamEditorUI_TileList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: picker
+                type: SeamEditorUI_TilePicker
+        staticFields:
+          Type:
+            defaultValue: '"SeamEditorUI_TileList"'
+        fields:
+          tileset:
+            type: string
+            nullable: true
+          picker:
+            type: SeamEditorUI_TilePicker
+          editor:
+            type: SeamEditorUI
+          selection:
+            type: table
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSwapTilesets
+            parameters:
+              - name: tileName
+                type: string
+          - name: onSelectMaster
+            parameters:
+              - name: tileName
+                type: string
+          - name: onClearMaster
+          - name: onSelectInOtherList
+            parameters:
+              - name: tileName
+                type: string
+          - name: getColRowAt
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: isValidColRow
+            parameters:
+              - name: col
+              - name: row
+            return:
+              - type: boolean
+          - name: selectionAdd
+            parameters:
+              - name: col
+                type: number
+              - name: row
+                type: number
+          - name: selectionRemove
+            parameters:
+              - name: col
+              - name: row
+          - name: selectionToggle
+            parameters:
+              - name: col
+              - name: row
+          - name: selectionIndexOf
+            parameters:
+              - name: col
+              - name: row
+            return:
+              - type: number
+          - name: selectionClear
+          - name: isSelectionEmpty
+            return:
+              - type: boolean
+          - name: getSelection
+            return:
+              - type: table
+          - name: getSingleSelectedTile
+            return:
+              - type: unknown
+                nullable: true
+          - name: getFirstSelectedTile
+            return:
+              - type: unknown
+                nullable: true
+          - name: calculateSelectionBounds
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+          - name: render
+          - name: renderGrid
+            parameters:
+              - name: xIndent
+              - name: yIndent
+              - name: texW
+              - name: texH
+          - name: setTileset
+            parameters:
+              - name: tilesetName
+                type: string
+                nullable: true

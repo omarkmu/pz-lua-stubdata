@@ -1,0 +1,177 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRichTextPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISRichTextPanel"'
+          drawMargins:
+            defaultValue: "false"
+        fields:
+          text:
+            type: string
+            nullable: true
+          font: {}
+          rgbCurrent:
+            type: table
+          imageCount:
+            type: number
+          videoCount:
+            type: number
+          indent:
+            type: number
+            nullable: true
+          textDirty:
+            type: boolean
+          fonts:
+            type: table
+          images:
+            type: table
+          imageX:
+            type: table
+          imageY:
+            type: table
+          rgb:
+            type: table
+          rgbStack:
+            type: table
+          orient:
+            type: table
+          imageW:
+            type: table
+          imageH:
+            type: table
+          lineY:
+            type: table
+          lineX:
+            type: table
+          lines:
+            type: table
+          keybinds:
+            type: table
+          videos:
+            type: table
+          videoX:
+            type: table
+          videoY:
+            type: table
+          videoW:
+            type: table
+          videoH:
+            type: table
+          currentLine:
+            type: number
+          contentTransparency:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          marginLeft:
+            type: number
+          marginTop:
+            type: number
+          marginRight:
+            type: number
+          marginBottom:
+            type: number
+          autosetheight:
+            type: boolean
+          textR:
+            type: number
+          textG:
+            type: number
+          textB:
+            type: number
+          clip:
+            type: boolean
+          maxLines:
+            type: number
+          defaultFont: {}
+        methods:
+          - name: initialise
+          - name: setText
+            parameters:
+              - name: text
+                type: string
+                nullable: true
+          - name: processCommand
+            parameters:
+              - name: command
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+              - name: lineImageHeight
+                type: number
+              - name: lineHeight
+                type: number
+            return:
+              - type: number
+                nullable: true
+              - type: number
+              - type: number
+          - name: replaceKeyName
+            parameters:
+              - name: text
+                type: string
+              - name: offset
+                type: number
+                nullable: true
+            return:
+              - type: string
+              - type: number
+                nullable: true
+          - name: replaceKeyNames
+            parameters:
+              - name: text
+                type: string
+            return:
+              - type: string
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: paginate
+          - name: setContentTransparency
+            parameters:
+              - name: alpha
+          - name: render
+          - name: onResize
+          - name: setMargins
+            parameters:
+              - name: left
+                type: number
+              - name: top
+                type: number
+              - name: right
+                type: number
+              - name: bottom
+                type: number
+          - name: doRightJoystickScrolling
+            parameters:
+              - name: joypadData
+                type: JoypadData
+              - name: dx
+                type: number
+                nullable: true
+              - name: dy
+                type: number
+                nullable: true

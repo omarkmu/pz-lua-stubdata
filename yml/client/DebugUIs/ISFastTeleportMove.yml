@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFastTeleportMove:
+        staticFields:
+          cheat:
+            defaultValue: "false"
+          currentZ:
+            defaultValue: "0"
+          isAdded:
+            defaultValue: "false"
+        staticMethods:
+          - name: moveXY
+            parameters:
+              - name: player
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: moveZ
+            parameters:
+              - name: player
+              - name: dz
+                type: number
+          - name: OnKeyKeepPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: OnKeyStartPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: OnTick

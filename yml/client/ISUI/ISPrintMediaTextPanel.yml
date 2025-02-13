@@ -1,0 +1,175 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPrintMediaTextPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaTextPanel"'
+          drawMargins:
+            defaultValue: "false"
+        fields:
+          text:
+            type: string
+          font: {}
+          rgbCurrent:
+            type: table
+          imageCount:
+            type: number
+          indent:
+            type: number
+            nullable: true
+          textDirty:
+            type: boolean
+          fonts:
+            type: table
+          images:
+            type: table
+          imageX:
+            type: table
+          imageY:
+            type: table
+          maps:
+            type: table
+          rgb:
+            type: table
+          rgbStack:
+            type: table
+          orient:
+            type: table
+          imageW:
+            type: table
+          imageH:
+            type: table
+          lineY:
+            type: table
+          lineX:
+            type: table
+          lines:
+            type: table
+          keybinds:
+            type: table
+          currentLine:
+            type: number
+          contentTransparency:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          mapUI:
+            type: table
+          marginLeft:
+            type: number
+          marginTop:
+            type: number
+          marginRight:
+            type: number
+          marginBottom:
+            type: number
+          autosetheight:
+            type: boolean
+          textR:
+            type: number
+          textG:
+            type: number
+          textB:
+            type: number
+          clip:
+            type: boolean
+          maxLines:
+            type: number
+          defaultFont: {}
+        methods:
+          - name: initialise
+          - name: setText
+            parameters:
+              - name: text
+          - name: processCommand
+            parameters:
+              - name: command
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+              - name: lineImageHeight
+                type: number
+              - name: lineHeight
+                type: number
+            return:
+              - type: number
+                nullable: true
+              - type: number
+              - type: number
+          - name: replaceKeyName
+            parameters:
+              - name: text
+                type: string
+              - name: offset
+                type: number
+                nullable: true
+            return:
+              - type: string
+              - type: number
+                nullable: true
+          - name: replaceKeyNames
+            parameters:
+              - name: text
+                type: string
+            return:
+              - type: string
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: paginate
+          - name: setContentTransparency
+            parameters:
+              - name: alpha
+          - name: render
+          - name: renderMap
+            parameters:
+              - name: index
+              - name: map
+          - name: onResize
+          - name: setMargins
+            parameters:
+              - name: left
+              - name: top
+              - name: right
+              - name: bottom
+      ISPrintMediaMap:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaMap"'
+        fields:
+          mapAPI: {}
+        methods:
+          - name: instantiate

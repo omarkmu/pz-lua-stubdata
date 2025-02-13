@@ -1,0 +1,179 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildIsoEntity:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+              - name: objectInfo
+                type: boolean
+              - name: buildPanelLogic
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildIsoEntity"'
+        fields:
+          tileCheck: {}
+          isWallLike: {}
+          previousStageObject:
+            nullable: true
+          sq:
+            type: IsoGridSquare
+          blockAllTheSquare: {}
+          hoppable: {}
+          isStairs:
+            type: boolean
+          face: {}
+          nSpriteCache:
+            type: number
+          buildPanelLogic:
+            nullable: true
+          character: {}
+          name: {}
+          objectInfo:
+            type: boolean
+          craftRecipe:
+            type: boolean
+          dontNeedFrame:
+            type: boolean
+          needWindowFrame:
+            type: boolean
+          needToBeAgainstWall:
+            type: boolean
+          previousStages: {}
+          bonusHealth: {}
+          buildLow:
+            type: boolean
+          spriteCache:
+            type: table
+          tileSprite: {}
+          blockAfterPlace:
+            type: boolean
+          corner:
+            nullable: true
+          noNeedHammer:
+            type: boolean
+          maxTime: {}
+          craftingBank: {}
+          completionSound: {}
+        methods:
+          - name: walkTo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: removeFromGround
+            parameters:
+              - name: square
+                type: IsoGridSquare
+          - name: getHealth
+            return:
+              - type: number
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: isValidPerSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: tileInfo
+              - name: _requiresFloor
+                type: boolean
+              - name: _extendsN
+                type: boolean
+              - name: _extendsW
+                type: boolean
+            return:
+              - type: boolean
+                nullable: true
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: getOccupiedTiles
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: table
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+            return:
+              - type: boolean
+                nullable: true
+          - name: setInfo
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+              - name: sprite
+              - name: openSprite
+          - name: rotateKey
+            parameters:
+              - name: key
+                type: integer
+          - name: getFace
+            return:
+              - type: unknown
+          - name: getOpenFace
+            parameters:
+              - name: _north
+            return:
+              - type: unknown
+          - name: cacheSprites
+            parameters:
+              - name: _face
+          - name: onTimedActionStart
+            parameters:
+              - name: action
+        staticMethods:
+          - name: GetAllBuildableEntities
+            return:
+              - type: table
+          - name: GetBuildableEntities
+            parameters:
+              - name: _player
+            return:
+              - type: table
+              - type: table
+          - name: ConsumeBuildEntityItems
+            parameters:
+              - name: _info
+              - name: _player
+            return:
+              - type: boolean
+          - name: predicateMaterial
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+          - name: GetAllGroundItemsForPlayer
+            parameters:
+              - name: _player
+            return:
+              - type: table

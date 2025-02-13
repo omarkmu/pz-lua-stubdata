@@ -1,0 +1,38 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEjectMagazine:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: gun
+        staticFields:
+          Type:
+            defaultValue: '"ISEjectMagazine"'
+        fields:
+          gun: {}
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: start
+          - name: update
+          - name: initVars
+          - name: unloadAmmo
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: stop
+          - name: perform

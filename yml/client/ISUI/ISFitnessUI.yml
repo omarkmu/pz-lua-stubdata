@@ -1,0 +1,113 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFitnessUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: clickedSquare
+        staticFields:
+          Type:
+            defaultValue: '"ISFitnessUI"'
+          instance: {}
+          enduranceLevelTreshold:
+            defaultValue: "2"
+        fields:
+          ok:
+            type: ISButton
+          cancel:
+            type: ISButton
+          close:
+            type: ISButton
+          exercises:
+            type: ISRadioButtons
+          barHgt:
+            type: number
+          barY:
+            type: number
+          timeLbl:
+            type: ISLabel
+          exeTime:
+            type: ISTextEntryBox
+          plusBtn:
+            type: ISButton
+          minusBtn:
+            type: ISButton
+          tooltipLbl:
+            type: ISRichTextPanel
+          selectedExe:
+            type: string
+          exeData: {}
+          ISButtonA:
+            nullable: true
+          joypadButtons: {}
+          titleY:
+            type: number
+          player: {}
+          fgBar:
+            type: table
+          fgBarOrange:
+            type: table
+          fgBarRed:
+            type: table
+          clickedSquare: {}
+          buttonBorderColor:
+            type: table
+          zoneProgress:
+            type: number
+          fitness: {}
+          regularityProgressBarWidth:
+            type: number
+        methods:
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+          - name: initialise
+          - name: onClickTime
+            parameters:
+              - name: button
+                type: ISButton
+          - name: clickedExe
+            parameters:
+              - name: buttons
+              - name: index
+          - name: updateExercises
+          - name: selectedNewExercise
+          - name: addExerciseToList
+            parameters:
+              - name: type
+              - name: data
+          - name: render
+          - name: getCurrentRegularity
+            return:
+              - type: number
+          - name: prerender
+          - name: updateButtons
+            parameters:
+              - name: currentAction
+          - name: equipItems
+            return:
+              - type: boolean
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton

@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      Point2D:
+        staticFields:
+          meta: {}
+        methods:
+          - name: new
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+            return:
+              - type: Point2D
+    classes:
+      Point2D:
+        local: true
+        fields:
+          Point2D:
+            type: table
+          IsPoint2D:
+            type: boolean
+          x:
+            type: number
+          y:
+            type: number
+        staticMethods:
+          - name: copy
+            return:
+              - type: Point2D
+          - name: set
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setPoint
+            parameters:
+              - name: targ
+                type: Point2D | number

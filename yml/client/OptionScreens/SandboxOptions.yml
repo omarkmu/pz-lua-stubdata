@@ -1,0 +1,199 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SandboxOptionsScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"SandboxOptionsScreen"'
+          instance:
+            type: SandboxOptionsScreen
+            nullable: true
+        fields:
+          selectedYear: {}
+          selectedMonth: {}
+          backButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          presetPanel: {}
+          presetList:
+            type: ISComboBox
+          savePresetButton:
+            type: ISButton
+          deletePresetButton:
+            type: ISButton
+          advancedCheckBox:
+            type: ISTickBox
+          devPresetButton:
+            type: ISButton
+          searchEntry:
+            type: ISTextEntryBox
+          listbox: {}
+          controls:
+            type: table
+          currentPanel:
+            nullable: true
+          presets:
+            type: table
+          hadJoypadFocus:
+            type: boolean
+          ISButtonY:
+            nullable: true
+          nonDefaultOptions: {}
+        methods:
+          - name: syncStartDay
+          - name: create
+          - name: changeAdvancedMode
+            parameters:
+              - name: _
+              - name: bool
+          - name: doSearch
+          - name: createPanel
+            parameters:
+              - name: page
+            return:
+              - type: unknown
+          - name: onTickBoxSelected
+            parameters:
+              - name: _
+              - name: value
+              - name: optionName
+                type: string
+          - name: onComboBoxSelected
+            parameters:
+              - name: combo
+              - name: optionName
+                type: string
+          - name: settingsToUI
+            parameters:
+              - name: options
+          - name: settingsFromUI
+            parameters:
+              - name: options
+          - name: onMouseDownListbox
+            parameters:
+              - name: item
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: onPanelChange
+          - name: onPresetChange
+          - name: addPresetToList
+            parameters:
+              - name: fileName
+                type: string
+              - name: text
+                type: string
+              - name: userDefined
+                type: boolean
+          - name: loadPresets
+          - name: getNormalPreset
+            return:
+              - type: table
+          - name: getSurvivalPreset
+            return:
+              - type: table
+          - name: getHardPreset
+            return:
+              - type: table
+          - name: getBeginnerPreset
+            return:
+              - type: table
+          - name: getApocalypsePreset
+            return:
+              - type: table
+          - name: getSurvivorPreset
+            return:
+              - type: table
+          - name: getBuilderPreset
+            return:
+              - type: table
+          - name: prerender
+          - name: render
+          - name: setSandboxVars
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSavePreset
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: deletePresetStep1
+            parameters:
+              - name: preset
+          - name: deletePresetStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onValidateSavePreset
+            parameters:
+              - name: text
+            return:
+              - type: unknown
+          - name: onSaveDeveloperPreset
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: searchPrerender
+            parameters:
+              - name: self

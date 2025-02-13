@@ -1,0 +1,83 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSineWaveDisplay:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSineWaveDisplay"'
+        fields:
+          waveCntr:
+            type: number
+          wave:
+            type: table
+          waveUpdInt:
+            type: number
+          offsetUpdInt:
+            type: number
+          hasChanged:
+            type: boolean
+          offsetCntr:
+            type: number
+          offset:
+            type: number
+          isOn:
+            type: boolean
+          gridColor:
+            type: table
+          greyCol:
+            type: table
+          doGridLines:
+            type: boolean
+          gridHorzSpacing:
+            type: number
+          gridVertSpacing:
+            type: number
+          waveParams:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: toggleOn
+            parameters:
+              - name: _b
+                type: boolean
+          - name: render
+          - name: setWaveParameters
+            parameters:
+              - name: _minLen
+                type: number
+              - name: _maxLen
+                type: number
+              - name: _minHeight
+                type: number
+              - name: _maxHeight
+                type: number
+              - name: _minUpdFreq
+                type: number
+              - name: _maxUpdFreq
+                type: number
+              - name: _minScrollSpeed
+                type: number
+              - name: _maxScrollSpeed
+                type: number
+          - name: getWaveData
+            parameters:
+              - name: _len
+              - name: _minH
+              - name: _maxH
+            return:
+              - type: table

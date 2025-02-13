@@ -1,0 +1,164 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehiclePartMenu:
+        staticMethods:
+          - name: getNearbyFuelPump
+            parameters:
+              - name: vehicle
+            return:
+              - type: unknown
+                nullable: true
+          - name: getGasCanNotEmpty
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: typeToItem
+            return:
+              - type: unknown
+                nullable: true
+          - name: getGasCanNotFull
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: typeToItem
+                type: table
+            return:
+              - type: unknown
+                nullable: true
+          - name: toPlayerInventory
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                nullable: true
+          - name: toPlayerInventoryTag
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: tag
+          - name: transferRequiredItems
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: tbl
+          - name: equipRequiredItems
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: tbl
+          - name: onInstallPart
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: item
+          - name: onUninstallPart
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onPumpGasoline
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onPumpGasolinePathFail
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAddGasoline
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onTakeGasoline
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onDebugFill
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onInflateTire
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onDeflateTire
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onDeviceOptions
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onLockDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onUnlockDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+          - name: onOpenCloseWindow
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: open
+          - name: onLockDoors
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: lock
+                type: boolean
+          - name: onSmashWindow
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: open
+          - name: doSiphonFuelMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: context
+                type: ISContextMenu
+            return:
+              - type: boolean
+                nullable: true
+          - name: onTakeFuelNew
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: part
+              - name: fuelContainerList
+              - name: fuelContainer
+              - name: player
+          - name: doAddFuelMenu
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: part
+              - name: context
+                type: ISContextMenu
+          - name: onAddFuelNew
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: part
+              - name: fuelContainerList
+              - name: fuelContainer
+              - name: player

@@ -1,0 +1,247 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFarmingInfo:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: character
+              - name: plant
+        staticFields:
+          Type:
+            defaultValue: '"ISFarmingInfo"'
+        fields:
+          plant: {}
+          vegetable: {}
+          isEnabled: {}
+          character: {}
+        methods:
+          - name: initialise
+          - name: setPlant
+            parameters:
+              - name: plant
+          - name: setEnabled
+            parameters:
+              - name: val
+          - name: prerender
+          - name: render
+          - name: update
+          - name: isPlantValid
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: getBlueBar
+            parameters:
+              - name: list
+          - name: getOrangeBar
+            parameters:
+              - name: list
+          - name: getRedBar
+            parameters:
+              - name: list
+          - name: getDiseaseColor
+            parameters:
+              - name: diseaseLvl
+              - name: index
+                type: string
+              - name: info
+          - name: getGreen
+            parameters:
+              - name: list
+              - name: index
+          - name: getRed
+            parameters:
+              - name: list
+              - name: index
+          - name: getOrange
+            parameters:
+              - name: list
+              - name: index
+          - name: getWhite
+            parameters:
+              - name: list
+              - name: index
+        staticMethods:
+          - name: hasDisease
+            parameters:
+              - name: plant
+            return:
+              - type: boolean
+          - name: getDiseaseString
+            parameters:
+              - name: diseaseLvl
+                type: ISFarmingInfo
+              - name: farmingLevel
+            return:
+              - type: string
+          - name: getHealth
+            parameters:
+              - name: info
+              - name: farmingLevel
+            return:
+              - type: string
+                nullable: true
+          - name: getWaterLvl
+            parameters:
+              - name: plant
+              - name: farmingLevel
+            return:
+              - type: string
+                nullable: true
+          - name: getTitleColor
+            parameters:
+              - name: plant
+            return:
+              - type: table
+          - name: getWaterBarWidth
+            parameters:
+              - name: info
+            return:
+              - type: number
+          - name: getWaterLvlBarColor
+            parameters:
+              - name: info
+              - name: farmingLevel
+          - name: getNoWateredSinceColor
+            parameters:
+              - name: plant
+              - name: lastWatedHour
+              - name: farmingLevel
+            return:
+              - type: nowateredsince_rgb
+          - name: RequiredWidth
+            return:
+              - type: number
+          - name: getWaterLvlColor
+            parameters:
+              - name: plant
+              - name: farmingLevel
+            return:
+              - type: water_rgb
+          - name: getHealthColor
+            parameters:
+              - name: info
+              - name: farmingLevel
+          - name: getCurrentGrowingPhase
+            parameters:
+              - name: info
+              - name: farmingLevel
+            return:
+              - type: boolean | string
+          - name: getNextGrowingPhase
+            parameters:
+              - name: info
+                type: table
+            return:
+              - type: string
+          - name: getDisease
+            parameters:
+              - name: diseaseLvl
+              - name: farmingLevel
+              - name: disease
+                type: table
+              - name: info
+              - name: index
+                type: number
+              - name: string
+                type: string
+          - name: getDiseaseName
+            parameters:
+              - name: info
+            return:
+              - type: table
+          - name: getLastWatedHour
+            parameters:
+              - name: plant
+            return:
+              - type: number
+          - name: getFertilizerColor
+            parameters:
+              - name: info
+      water_rgb:
+        staticFields:
+          r:
+            defaultValue: "255.0"
+          g:
+            defaultValue: "255.0"
+          b:
+            defaultValue: "255.0"
+      waterbar_rgb:
+        staticFields:
+          r:
+            defaultValue: "0.15"
+          g:
+            defaultValue: "0.3"
+          b:
+            defaultValue: "0.63"
+      fertilizer_rgb:
+        staticFields:
+          r:
+            defaultValue: "0.0"
+          g:
+            defaultValue: "0.0"
+          b:
+            defaultValue: "0.0"
+      compost_rgb:
+        staticFields:
+          r:
+            defaultValue: "0.0"
+          g:
+            defaultValue: "0.0"
+          b:
+            defaultValue: "0.0"
+      health_rgb:
+        staticFields:
+          r:
+            defaultValue: "0.0"
+          g:
+            defaultValue: "0.0"
+          b:
+            defaultValue: "0.0"
+      nowateredsince_rgb:
+        staticFields:
+          r:
+            defaultValue: "255.0"
+          g:
+            defaultValue: "255.0"
+          b:
+            defaultValue: "255.0"
+      disease_rgb:
+        staticFields:
+          '["0r"]':
+            defaultValue: "255.0"
+          '["0g"]':
+            defaultValue: "255.0"
+          '["0b"]':
+            defaultValue: "255.0"
+      disease: {}
+      title_rgb:
+        staticFields:
+          r:
+            defaultValue: "1.0"
+          g:
+            defaultValue: "1.0"
+          b:
+            defaultValue: "1.0"

@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    tables:
+      ISMenuContextInventory:
+        staticMethods:
+          - name: new
+            return:
+              - type: ISMenuContextInventory
+    classes:
+      ISMenuContextInventory:
+        extends: ISMenuElement
+        local: true
+        fields:
+          playerNum:
+            type: integer
+            nullable: true
+          player:
+            nullable: true
+          context:
+            type: ISContextMenu
+            nullable: true
+          items:
+            nullable: true
+          inventory:
+            nullable: true
+          test:
+            type: boolean
+            nullable: true
+        staticMethods:
+          - name: init
+          - name: createMenu
+            parameters:
+              - name: _player
+              - name: _context
+                type: ISContextMenu
+              - name: _items
+              - name: _item
+          - name: checkInvItem
+            parameters:
+              - name: _item

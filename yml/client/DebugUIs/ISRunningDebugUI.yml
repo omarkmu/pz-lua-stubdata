@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRunningDebugUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISRunningDebugUI"'
+        fields:
+          start:
+            type: ISButton
+          restoreEnd:
+            type: ISButton
+          totalEndurance:
+            type: number
+          startedTrip:
+            type: boolean
+          stopTimer:
+            nullable: true
+          startTimer: {}
+          startingEndurance: {}
+          totalDistance:
+            type: number
+          totalDist:
+            type: number
+          previousSq: {}
+          playerNum:
+            type: integer
+          title: {}
+          character: {}
+          chr: {}
+        methods:
+          - name: createChildren
+          - name: restoreEndurance
+          - name: update
+          - name: startTrip
+          - name: render

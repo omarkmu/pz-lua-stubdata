@@ -1,0 +1,134 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISStringListView:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISStringListView"'
+        fields:
+          listLabel:
+            type: ISLabel
+          labelWidth:
+            type: number
+          entryBox:
+            type: ISTextEntryBox
+          infoList:
+            type: ISScrollingListBox
+          greyCol:
+            type: table
+          searchText:
+            type: string
+          iconExpand: {}
+          iconCollapse: {}
+          rootNode:
+            type: ISStringListViewNode
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+          - name: parseSearchText
+          - name: clear
+          - name: buildNodes
+            parameters:
+              - name: _lines
+          - name: buildList
+          - name: populate
+            parameters:
+              - name: _lines
+                nullable: true
+          - name: drawInfoList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onInfoListSelected
+            parameters:
+              - name: _item
+          - name: update
+          - name: prerender
+          - name: render
+          - name: setExpandedAll
+        staticMethods:
+          - name: onTextChange
+            parameters:
+              - name: box
+      ISStringListViewNode:
+        constructors:
+          - parameters:
+              - name: _parent
+              - name: _text
+              - name: _isRoot
+                type: boolean
+        fields:
+          parent: {}
+          text: {}
+          isRoot:
+            type: boolean
+          key:
+            type: string
+          keyCol: {}
+          keyX:
+            type: number
+          keyW:
+            type: number
+          val:
+            nullable: true
+          valCol: {}
+          valX:
+            type: number
+          valW:
+            type: number
+          width:
+            type: number
+          highlight:
+            type: boolean
+          isNeedle:
+            type: boolean
+          expanded:
+            type: boolean
+          container:
+            type: boolean
+          children:
+            type: table
+        methods:
+          - name: reset
+          - name: resetHighlights
+          - name: setHighlight
+            parameters:
+              - name: _col
+          - name: search
+            parameters:
+              - name: _text
+              - name: _col
+          - name: isDrawIcon
+            return:
+              - type: boolean
+          - name: isContainer
+            return:
+              - type: boolean
+          - name: toggleExpand
+          - name: setExpanded
+            parameters:
+              - name: _b
+                type: boolean
+              - name: _noChildren
+                type: boolean
+          - name: setExpandedAll
+          - name: preBuild
+          - name: build
+            parameters:
+              - name: _list

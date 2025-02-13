@@ -1,0 +1,100 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBombTimerDialog:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: prompt
+                type: string
+              - name: time
+              - name: player
+              - name: target
+                type: unknown
+                nullable: true
+              - name: targetFunc
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISBombTimerDialog"'
+        fields:
+          button10m:
+            type: ISButton
+          button5m:
+            type: ISButton
+          button1m:
+            type: ISButton
+          textBox:
+            type: ISTextEntryBox
+          button1p:
+            type: ISButton
+          button5p:
+            type: ISButton
+          button10p:
+            type: ISButton
+          yes:
+            type: ISButton
+          no:
+            type: ISButton
+          player: {}
+          playerNum:
+            type: integer
+          playerX: {}
+          playerY: {}
+          name:
+            nullable: true
+          prompt:
+            type: string
+          time: {}
+          target:
+            type: unknown
+            nullable: true
+          targetFunc: {}
+          param1:
+            type: unknown
+          param2:
+            type: unknown
+          param3:
+            type: unknown
+          param4:
+            type: unknown
+        methods:
+          - name: initialise
+          - name: destroy
+          - name: onButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: render
+          - name: addTime
+            parameters:
+              - name: seconds
+          - name: getTime
+            return:
+              - type: number
+                nullable: true

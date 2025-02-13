@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISStashIcon:
+        extends: ISBaseIcon
+        constructors:
+          - parameters:
+              - name: _manager
+                type: ISSearchManager
+              - name: _icon
+                type: table
+        staticFields:
+          Type:
+            defaultValue: '"ISStashIcon"'
+        fields:
+          isForageable: {}
+          isValidSquare:
+            type: boolean
+          itemObjTable: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: findPinOffset
+          - name: setWorldMarkerPosition
+          - name: checkIsForageable
+            return:
+              - type: unknown

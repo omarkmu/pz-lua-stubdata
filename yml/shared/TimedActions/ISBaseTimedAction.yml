@@ -1,0 +1,110 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseTimedAction:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISBaseTimedAction"'
+          IDMax:
+            defaultValue: "1"
+        fields:
+          maxTime:
+            type: number
+          action: {}
+          _isAddingActions:
+            type: boolean
+            nullable: true
+          _numAddedActions:
+            type: number
+            nullable: true
+          character: {}
+          stopOnWalk:
+            type: boolean
+          stopOnRun:
+            type: boolean
+          stopOnAim:
+            type: boolean
+          caloriesModifier:
+            type: number
+        methods:
+          - name: isValidStart
+            return:
+              - type: boolean
+          - name: isValid
+          - name: isUsingTimeout
+            return:
+              - type: boolean
+          - name: update
+          - name: forceComplete
+          - name: forceStop
+          - name: forceCancel
+          - name: getJobDelta
+            return:
+              - type: unknown
+          - name: resetJobDelta
+            return:
+              - type: unknown
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: start
+          - name: isStarted
+            return:
+              - type: unknown
+          - name: stop
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number
+          - name: create
+          - name: begin
+          - name: setCurrentTime
+            parameters:
+              - name: time
+          - name: setTime
+            parameters:
+              - name: time
+          - name: adjustMaxTime
+            parameters:
+              - name: maxTime
+            return:
+              - type: number
+          - name: setActionAnim
+            parameters:
+              - name: _action
+              - name: _displayItemModels
+          - name: setOverrideHandModels
+            parameters:
+              - name: _primaryHand
+              - name: _secondaryHand
+              - name: _resetModel
+          - name: setOverrideHandModelsString
+            parameters:
+              - name: _primaryHand
+              - name: _secondaryHand
+              - name: _resetModel
+          - name: overrideWeaponType
+          - name: restoreWeaponType
+          - name: setAnimVariable
+            parameters:
+              - name: _key
+                type: integer
+              - name: _val
+          - name: addAfter
+            parameters:
+              - name: action
+            return:
+              - type: unknown
+                nullable: true
+          - name: beginAddingActions
+          - name: endAddingActions
+            return:
+              - type: boolean
+          - name: getDeltaModifiers
+            parameters:
+              - name: deltas

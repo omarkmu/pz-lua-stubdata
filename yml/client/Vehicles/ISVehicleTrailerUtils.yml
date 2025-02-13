@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleTrailerUtils:
+        staticMethods:
+          - name: getTowableVehicleNear
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: ignoreVehicle
+              - name: attachmentA
+                type: string
+              - name: attachmentB
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: onTrailerPathFail
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: walkToTrailer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+              - name: attachment
+              - name: nextAction
+                type: ISAttachTrailerToVehicle | ISDetachTrailerFromVehicle
+            return:
+              - type: boolean

@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      farming_vegetableconf:
+        staticFields:
+          props.Basil: {}
+          props.BlackSage: {}
+          props.BroadleafPlantain: {}
+          props.Chamomile: {}
+          props.Chives: {}
+          props.Cilantro: {}
+          props.Comfrey: {}
+          props.CommonMallow: {}
+          props.Habanero: {}
+          props.Jalapeno: {}
+          props.Lavender: {}
+          props.Leek: {}
+          props.LemonGrass: {}
+          props.Marigold: {}
+          props.Mint: {}
+          props.Oregano: {}
+          props.Parsley: {}
+          props.Poppies: {}
+          props.Rosemary: {}
+          props.Roses: {}
+          props.Sage: {}
+          props.Thyme: {}
+          props.WildGarlic: {}

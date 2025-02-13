@@ -1,0 +1,78 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPaintMenu:
+        staticFields:
+          player:
+            nullable: true
+        staticMethods:
+          - name: doPaintMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: getWallType
+            parameters:
+              - name: obj
+                type: IsoObject
+            return:
+              - type: string
+                nullable: true
+          - name: addSignOption
+            parameters:
+              - name: subMenuPaint
+              - name: name
+                type: string
+              - name: wall
+              - name: painting
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: onPaintSign
+            parameters:
+              - name: wall
+              - name: player
+              - name: painting
+              - name: sign
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: onPaint
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: thumpable
+                type: IsoThumpable
+              - name: painting
+          - name: onPaper
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: thumpable
+                type: IsoThumpable
+              - name: papering
+              - name: wallType
+          - name: onPlaster
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: thumpable
+                type: IsoThumpable
+              - name: square
+                type: IsoGridSquare

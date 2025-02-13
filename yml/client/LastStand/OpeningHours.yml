@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      OpeningHours:
+        staticFields:
+          openTime:
+            defaultValue: "false"
+          dayCount:
+            defaultValue: "0"
+          id:
+            defaultValue: '"OpeningHours"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/OpeningHours.png"'
+          gameMode:
+            defaultValue: '"Opening Hours"'
+          world:
+            defaultValue: '"Muldraugh, KY"'
+          x:
+            defaultValue: (46 * 300) + 115
+          y:
+            defaultValue: (19 * 300) + 48
+          z:
+            defaultValue: "0"
+          southSpawn: {}
+          southSpawnX:
+            defaultValue: "13942"
+          southSpawnY:
+            defaultValue: "5935"
+          southSpawnZ:
+            defaultValue: "0"
+          westSpawn: {}
+          westSpawnX:
+            defaultValue: "13855"
+          westSpawnY:
+            defaultValue: "5826"
+          westSpawnZ:
+            defaultValue: "0"
+          northSpawn1: {}
+          northSpawn1X:
+            defaultValue: "13901"
+          northSpawn1Y:
+            defaultValue: "5730"
+          northSpawn1Z:
+            defaultValue: "0"
+          northSpawn2: {}
+          northSpawn2X:
+            defaultValue: "13922"
+          northSpawn2Y:
+            defaultValue: "5730"
+          northSpawn2Z:
+            defaultValue: "0"
+          northUpstairsSpawn1: {}
+          northUpstairsSpawn1X:
+            defaultValue: "13893"
+          northUpstairsSpawn1Y:
+            defaultValue: "5817"
+          northUpstairsSpawn1Z:
+            defaultValue: "2"
+          doors: {}
+          metalGates: {}
+          hourOfDay:
+            defaultValue: "21"
+          dayToRespawn:
+            defaultValue: "3"
+        staticMethods:
+          - name: Add
+          - name: OnGameStart
+          - name: OnInitWorld
+          - name: ResetMetalGates
+            parameters:
+              - name: area
+                type: string
+          - name: OnPlayerUpdate
+          - name: CheckMetalGates
+            parameters:
+              - name: area
+          - name: CheckHordeSpawn
+            parameters:
+              - name: regionName
+                type: string
+              - name: regionSpawn
+              - name: regionSpawnX
+              - name: regionSpawnY
+              - name: regionSpawnZ
+          - name: EveryDays
+          - name: EveryTenMinutes
+          - name: RemovePlayer
+            parameters:
+              - name: p
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: Render

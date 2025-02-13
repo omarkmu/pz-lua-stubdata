@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISClimbOverFence:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: direction
+        staticFields:
+          Type:
+            defaultValue: '"ISClimbOverFence"'
+        fields:
+          item: {}
+          direction: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: getDeltaModifiers
+            parameters:
+              - name: deltas
+          - name: getFacingDirection
+            return:
+              - type: unknown

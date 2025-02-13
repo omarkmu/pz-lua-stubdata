@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLightActions:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: mode
+                type: string
+              - name: character
+              - name: lightswitch
+              - name: item
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISLightActions"'
+          perkLevel:
+            defaultValue: "5"
+        fields:
+          mode:
+            type: string
+          lightswitch: {}
+          item:
+            nullable: true
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: isValidAddLightBulb
+            return:
+              - type: boolean
+                nullable: true
+          - name: completeAddLightBulb
+          - name: isValidRemoveLightBulb
+            return:
+              - type: unknown
+          - name: completeRemoveLightBulb
+          - name: isValidModifyLamp
+            return:
+              - type: boolean
+                nullable: true
+          - name: completeModifyLamp
+          - name: isValidAddBattery
+            return:
+              - type: boolean
+                nullable: true
+          - name: completeAddBattery
+          - name: isValidRemoveBattery
+            return:
+              - type: unknown
+          - name: completeRemoveBattery

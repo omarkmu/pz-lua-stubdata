@@ -1,0 +1,51 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPickupFishAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: rod
+              - name: fish
+        staticFields:
+          Type:
+            defaultValue: '"ISPickupFishAction"'
+        fields:
+          fishInArm:
+            type: boolean
+          fishInInv:
+            type: boolean
+          rod: {}
+          item: {}
+          isFish:
+            type: boolean
+          startShowModel:
+            type: number
+          finishShowModel:
+            type: number
+          maxTime:
+            type: number
+            nullable: true
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: PickupFishUpdate
+          - name: update
+          - name: serverStart
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true

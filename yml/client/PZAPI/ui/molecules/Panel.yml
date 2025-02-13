@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.Panel:
+        extends: UI.Texture
+        local: true
+        staticFields:
+          r:
+            defaultValue: "0"
+          g:
+            defaultValue: "0"
+          b:
+            defaultValue: "0"
+          a:
+            defaultValue: "0.7"
+        fields:
+          super:
+            type: UI.Texture
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.Panel
+        methods:
+          - name: setBorderColor
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: init
+      PZAPI:
+        staticFields:
+          UI.Panel:
+            type: UI.Panel

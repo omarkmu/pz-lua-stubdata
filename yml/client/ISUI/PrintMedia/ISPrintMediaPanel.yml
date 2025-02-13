@@ -1,0 +1,110 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPrintMediaPanel:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaPanel"'
+        fields:
+          content:
+            type: ISPanel
+          chapterList:
+            type: ISPrintMediaListBox
+          tutorialSetInfo:
+            type: ISPrintMediaSetInfo
+          panel:
+            type: ISPrintMediaPage
+          title:
+            type: string
+          visibleTarget:
+            type: ISPrintMediaPanel
+          visibleFunction:
+            type: function
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setUseJoypad
+            parameters:
+              - name: useJoypad
+                type: boolean
+          - name: reload
+          - name: setPage
+            parameters:
+              - name: pageNum
+                type: number
+          - name: fillChapterList
+          - name: prerender
+          - name: render
+          - name: update
+          - name: close
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onToggleVisible
+      ISPrintMediaListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaListBox"'
+        fields:
+          selected:
+            type: number
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData

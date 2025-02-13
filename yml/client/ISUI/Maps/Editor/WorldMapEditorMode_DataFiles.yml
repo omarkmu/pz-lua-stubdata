@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorMode_DataFiles:
+        extends: WorldMapEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorMode_DataFiles"'
+        fields:
+          listbox:
+            type: WorldMapEditorListBox
+          fileNameEntry:
+            type: ISTextEntryBox
+          selectedItem: {}
+        methods:
+          - name: createChildren
+          - name: undisplay
+          - name: loadSettingsFromMap
+          - name: onListboxButton
+            parameters:
+              - name: action
+              - name: arg1
+                type: unknown
+          - name: onAddFile
+          - name: onRemoveFile
+          - name: onMoveUp
+          - name: onMoveDown
+          - name: onFileNameEntered
+          - name: update
+          - name: updateData
+          - name: generateLuaScript
+            return:
+              - type: string

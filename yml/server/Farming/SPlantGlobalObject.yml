@@ -1,0 +1,196 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SPlantGlobalObject:
+        extends: SGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: SFarmingSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"SPlantGlobalObject"'
+        fields:
+          objectName:
+            type: string
+          spriteName:
+            type: string
+            nullable: true
+          exterior:
+            type: boolean
+          aphidLvl:
+            type: number
+          fliesLvl:
+            type: number
+          mildewLvl:
+            type: number
+          slugsLvl:
+            type: number
+          nextGrowing:
+            type: number
+          lastWaterHour: {}
+          waterLvl:
+            type: number
+          fertilizer:
+            type: number
+          cursed:
+            type: boolean
+          health:
+            type: number
+          compost:
+            type: boolean
+          bonusYield:
+            type: boolean
+          state:
+            type: string
+          nbOfGrow:
+            type: number
+          typeOfSeed: {}
+          waterNeeded:
+            type: number
+          hasWeeds:
+            type: boolean
+          naturalLight:
+            type: number
+          hasSeeds:
+            type: boolean
+          hasVegetable:
+            type: boolean
+          waterNeededMax: {}
+          hasSeed:
+            type: boolean
+          badCare:
+            type: boolean
+          owner: {}
+        methods:
+          - name: initNew
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: getObject
+            return:
+              - type: unknown
+          - name: setObjectName
+            parameters:
+              - name: objectName
+                type: string
+          - name: setSpriteName
+            parameters:
+              - name: spriteName
+                type: string
+                nullable: true
+          - name: isAlive
+            return:
+              - type: boolean
+          - name: hasVisibleFlies
+            return:
+              - type: boolean
+          - name: isBadMonth
+            return:
+              - type: boolean
+                nullable: true
+          - name: isBadMonthHardy
+            return:
+              - type: boolean
+                nullable: true
+          - name: isColdHardy
+            return:
+              - type: unknown
+                nullable: true
+          - name: isSowMonth
+            return:
+              - type: boolean
+                nullable: true
+          - name: isBestMonth
+            return:
+              - type: boolean
+                nullable: true
+          - name: isRiskMonth
+            return:
+              - type: boolean
+                nullable: true
+          - name: canHarvest
+            return:
+              - type: boolean
+          - name: addObject
+          - name: removeObject
+          - name: mildew
+          - name: aphid
+          - name: flies
+          - name: slugs
+          - name: defaultDiseaseCheck
+            return:
+              - type: boolean
+          - name: upDisease
+          - name: lowerWaterLvl
+            parameters:
+              - name: plant
+          - name: cureMildew
+            parameters:
+              - name: mildewCureSource
+              - name: uses
+              - name: skill
+          - name: cureFlies
+            parameters:
+              - name: fliesCureSource
+              - name: uses
+              - name: skill
+          - name: cureAphids
+            parameters:
+              - name: aphidsCureSource
+              - name: uses
+              - name: skill
+          - name: cureSlugs
+            parameters:
+              - name: slugsCureSource
+              - name: uses
+              - name: skill
+          - name: water
+            parameters:
+              - name: waterSource
+              - name: uses
+          - name: fertilize
+            parameters:
+              - name: args
+          - name: compostPlant
+            parameters:
+              - name: skill
+          - name: fertilize2
+            parameters:
+              - name: skill
+          - name: checkStat
+          - name: killThis
+          - name: dryThis
+          - name: rottenThis
+          - name: destroyThis
+          - name: harvestThis
+          - name: seed
+            parameters:
+              - name: typeOfSeed
+              - name: skill
+          - name: initHealth
+            parameters:
+              - name: skill
+          - name: deadPlant
+          - name: addIcon
+          - name: saveData
+          - name: fromModData
+            parameters:
+              - name: modData
+          - name: toModData
+            parameters:
+              - name: modData
+          - name: fromObject
+            parameters:
+              - name: object
+          - name: loadGridSquare
+        staticMethods:
+          - name: initModData
+            parameters:
+              - name: modData
+                type: SPlantGlobalObject

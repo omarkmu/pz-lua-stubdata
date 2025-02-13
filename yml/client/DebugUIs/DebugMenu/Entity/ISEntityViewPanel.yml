@@ -1,0 +1,85 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntityViewPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: entity
+        staticFields:
+          Type:
+            defaultValue: '"ISEntityViewPanel"'
+        fields:
+          reloadButton:
+            type: ISButton
+          reloadScriptButton:
+            type: ISButton
+          list:
+            type: ISScrollingListBox
+          scriptLabel:
+            type: ISLabel
+          subLabel:
+            type: ISLabel
+          objectRuntimeButton:
+            type: ISButton
+          entityScriptButton:
+            type: ISButton
+          scriptRuntimeButton:
+            type: ISButton
+          listView:
+            type: ISStringListView
+          viewMode:
+            type: number
+          entity:
+            nullable: true
+          selectedEntityItem: {}
+          greyCol:
+            type: table
+          searchText:
+            type: string
+          viewButtons:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+          - name: incY
+            parameters:
+              - name: _y
+              - name: _obj
+                type: IsoObject
+              - name: _margin
+            return:
+              - type: number
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: populateListView
+          - name: setEntity
+            parameters:
+              - name: _entity
+                nullable: true
+          - name: populate
+          - name: drawEntityListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onEntityListSelected
+            parameters:
+              - name: _item
+          - name: update
+          - name: prerender
+          - name: render

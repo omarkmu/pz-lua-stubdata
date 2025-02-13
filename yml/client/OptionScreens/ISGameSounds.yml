@@ -1,0 +1,105 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGameSounds:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISGameSounds"'
+        fields:
+          addY:
+            type: number
+          mainPanel:
+            type: table
+          tabs:
+            type: ISTabPanel
+          maxLabelWidth:
+            type: number
+          buttonClose:
+            type: ISButton
+          buttonReload:
+            type: ISButton
+          volumesChanged:
+            type: boolean
+          previewControl:
+            nullable: true
+        methods:
+          - name: addCombo
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: options
+              - name: selected
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISComboBox
+          - name: addVolumeControl
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: name
+                type: string
+              - name: volume
+              - name: target
+                type: unknown
+              - name: onchange
+            return:
+              - type: ISGameSoundVolumeControl
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: addPage
+            parameters:
+              - name: name
+                type: string
+          - name: createChildren
+          - name: onVolumeChanged
+            parameters:
+              - name: control
+              - name: volume
+          - name: onStopSound
+          - name: onClose
+          - name: onReload
+          - name: onReturnToGame
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: onPlaySound
+            parameters:
+              - name: args

@@ -1,0 +1,199 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISItemSlot:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: resource
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onItemDropped
+                nullable: true
+              - name: onItemRemove
+                nullable: true
+              - name: onVerifyItem
+                nullable: true
+              - name: onBoxClicked
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISItemSlot"'
+        fields:
+          mouseOverState:
+            type: number
+          storedItem:
+            nullable: true
+          boxOccupied:
+            type: boolean
+          storedItemTex:
+            nullable: true
+          backDropTex:
+            nullable: true
+          backDropTexCol:
+            type: table
+          doBackDropTex:
+            type: boolean
+          doToolTip:
+            type: boolean
+          toolTipText:
+            type: boolean
+          toolTip:
+            type: ISToolTip | ISToolTipInv
+            nullable: true
+          character:
+            nullable: true
+          resource: {}
+          locked:
+            type: boolean
+          backgroundEmpty:
+            type: table
+          backgroundHover:
+            type: table
+          borderValid:
+            type: table
+          borderInvalid:
+            type: table
+          actionAddColor:
+            type: table
+          actionRemoveColor:
+            type: table
+          progressColor:
+            type: table
+          renderItemCount:
+            type: boolean
+          countColor:
+            type: table
+          drawBorderLocked:
+            type: boolean
+          borderLockedColor:
+            type: table
+          drawInnerBorder:
+            type: boolean
+          functionTarget:
+            nullable: true
+          onItemDropped:
+            nullable: true
+          onBoxClicked:
+            nullable: true
+          onVerifyItem:
+            nullable: true
+          onItemRemove:
+            nullable: true
+          storeItem:
+            type: boolean
+          hideItem:
+            type: boolean
+          mouseEnabled:
+            type: boolean
+          toolTipTextItem:
+            type: boolean
+          toolTipTextLocked:
+            type: boolean
+          bBlinkBorder:
+            type: boolean
+          borderColorOrig:
+            type: table
+          drawProgress:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: update
+          - name: defaultVerifyItem
+            parameters:
+              - name: _itemSlot
+                type: ISItemSlot
+              - name: _item
+            return:
+              - type: boolean
+          - name: hasValidItemInDrag
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: itemDropped
+            parameters:
+              - name: _items
+          - name: boxClicked
+            parameters:
+              - name: _isRightClick
+                type: boolean
+              - name: _isShift
+                type: boolean
+          - name: setStoredItem
+            parameters:
+              - name: _item
+          - name: setBackDropTex
+            parameters:
+              - name: _tex
+              - name: _a
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+          - name: setDoBackDropTex
+            parameters:
+              - name: _b
+          - name: setToolTip
+            parameters:
+              - name: _b
+              - name: _text
+          - name: activateToolTip
+          - name: deactivateToolTip
+          - name: setCharacter
+            parameters:
+              - name: _character
+          - name: setResource
+            parameters:
+              - name: _resource
+          - name: isLocked
+            return:
+              - type: boolean
+          - name: setLocked
+            parameters:
+              - name: _b

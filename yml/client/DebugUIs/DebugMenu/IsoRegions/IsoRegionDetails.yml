@@ -1,0 +1,90 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      IsoRegionDetails:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"IsoRegionDetails"'
+          instance:
+            type: IsoRegionDetails
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          lastX:
+            defaultValue: "false"
+          lastY:
+            defaultValue: "false"
+        fields:
+          canvasY:
+            type: number
+          richtext:
+            type: ISRichTextPanel
+            nullable: true
+          tmpTxt:
+            type: string
+          player: {}
+          playerNum:
+            type: integer
+          greyCol:
+            type: table
+          title:
+            type: string
+          currentTile:
+            nullable: true
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: readRegion
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+              - name: _o
+          - name: addTitle
+            parameters:
+              - name: _title
+                type: string
+          - name: addLine
+            parameters:
+              - name: _prefix
+              - name: _line
+          - name: addLineEnd
+          - name: onButton
+            parameters:
+              - name: _btn
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: close
+          - name: clear
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: IsoRegionDetails
+                nullable: true

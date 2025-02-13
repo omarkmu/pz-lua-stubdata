@@ -1,0 +1,43 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDPadWheels:
+        staticMethods:
+          - name: onDisplayLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: showSurvGuide
+            parameters:
+              - name: playerIndex
+          - name: onDisplayRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onDisplayUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onDisplayDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onEquipPrimary
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+          - name: onToggleLight
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+          - name: onShout
+            parameters:
+              - name: playerObj
+                type: IsoPlayer

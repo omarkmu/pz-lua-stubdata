@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CraftRecipeCode:
+        staticFields:
+          butcherHook: {}
+          removeLeather: {}
+          removeBlood: {}
+          removeGrease: {}
+          removeParts: {}
+          removeFeather: {}
+          COLUMN_ANIMAL:
+            defaultValue: "0"
+          COLUMN_TOOL:
+            defaultValue: "1"
+          COLUMN_BLOOD:
+            defaultValue: "5"
+          COLUMN_GREASE:
+            defaultValue: "6"
+          DUMMY_ITEM:
+            defaultValue: '"Base.Animal_Item_Dummy"'
+        staticMethods:
+          - name: getOutputResourceInProcessor
+            parameters:
+              - name: _craftProcessor
+              - name: name
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: getAnimalBody
+            parameters:
+              - name: _craftRecipeData
+            return:
+              - type: unknown
+                nullable: true

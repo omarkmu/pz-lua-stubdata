@@ -1,0 +1,57 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWidgetComponentHeader:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: component
+              - name: componentUiStyle
+              - name: _styleIcon
+              - name: _styleLabel
+        staticFields:
+          Type:
+            defaultValue: '"ISWidgetComponentHeader"'
+        fields:
+          iconSize:
+            type: number
+          icon:
+            nullable: true
+          title:
+            nullable: true
+          player: {}
+          entity: {}
+          component: {}
+          componentUiStyle: {}
+          styleIcon: {}
+          styleLabel: {}
+          padding:
+            type: number
+          margin:
+            type: number
+          enableIcon:
+            type: boolean
+          textureBackground:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

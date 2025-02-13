@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTakeEngineParts:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: item
+              - name: maxTime
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISTakeEngineParts"'
+        fields:
+          vehicle: {}
+          part: {}
+          item: {}
+          jobType:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getExtraLogData
+            return:
+              - type: table
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number

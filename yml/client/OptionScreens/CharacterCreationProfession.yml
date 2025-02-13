@@ -1,0 +1,323 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CharacterCreationProfession:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"CharacterCreationProfession"'
+          instance:
+            type: CharacterCreationProfession
+            nullable: true
+        fields:
+          freeTraits:
+            type: table
+          pointToSpend:
+            type: number
+          tablePadX:
+            type: number
+          tableWidth:
+            type: number
+          topOfLists:
+            type: number
+          tooltipHgt:
+            type: number
+          belowLists:
+            type: number
+          bottomOfLists:
+            type: number
+          traitButtonHgt:
+            type: number
+          traitButtonPad:
+            type: number
+          backButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          randomButton:
+            type: ISButton
+          resetButton:
+            type: ISButton
+          infoBtn:
+            type: ISButton
+          listboxTraitSelected: {}
+          listboxXpBoost:
+            type: ISScrollingListBox
+          listboxTrait: {}
+          listboxBadTrait: {}
+          addTraitBtn:
+            type: ISButton
+          removeTraitBtn:
+            type: ISButton
+          addBadTraitBtn:
+            type: ISButton
+          listboxProf: {}
+          tooltipRichText:
+            type: ISRichTextPanel
+          presetPanel: {}
+          savedBuilds:
+            type: ISComboBox
+          saveBuildButton:
+            type: ISButton
+          deleteBuildButton:
+            type: ISButton
+          profession:
+            nullable: true
+          cost:
+            type: number
+          infoRichText:
+            type: ISModalRichText
+            nullable: true
+          previousScreen:
+            nullable: true
+          tooltipLabel:
+            type: string
+            nullable: true
+          tooltipColor:
+            type: table
+          itemheightoverride:
+            type: table
+          whiteBar: {}
+          fontHgt: {}
+          inputModal:
+            type: ISTextBox
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: create
+          - name: onSelectChosenTrait
+            parameters:
+              - name: item
+          - name: onSelectTrait
+            parameters:
+              - name: item
+          - name: onSelectBadTrait
+            parameters:
+              - name: item
+          - name: onDblClickSelectedTrait
+            parameters:
+              - name: item
+          - name: onDblClickBadTrait
+            parameters:
+              - name: item
+          - name: onDblClickTrait
+            parameters:
+              - name: item
+          - name: checkXPBoost
+          - name: onSelectProf
+            parameters:
+              - name: item
+          - name: changeClothes
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+          - name: addTrait
+            parameters:
+              - name: bad
+          - name: mutualyExclusive
+            parameters:
+              - name: trait
+              - name: bAdd
+                type: boolean
+          - name: isTraitExcluded
+            parameters:
+              - name: trait
+            return:
+              - type: boolean
+          - name: removeTrait
+          - name: update
+          - name: prerender
+          - name: render
+          - name: PointToSpend
+            return:
+              - type: number
+          - name: populateProfessionList
+            parameters:
+              - name: list
+          - name: populateTraitList
+            parameters:
+              - name: list
+          - name: populateBadTraitList
+            parameters:
+              - name: list
+          - name: negativeTraitOffset
+            return:
+              - type: number
+          - name: drawXpBoostMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: getTraitColor
+            parameters:
+              - name: trait
+            return:
+              - type: table
+          - name: drawTraitMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: drawProfessionMap
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: saveBuildValidate
+            parameters:
+              - name: text
+            return:
+              - type: boolean
+          - name: presetExists
+            parameters:
+              - name: findText
+                type: string
+            return:
+              - type: boolean
+          - name: saveBuildStep1
+          - name: saveBuildStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+              - name: param2
+                type: unknown
+          - name: deleteBuildStep1
+          - name: deleteBuildStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: randomizeTraits
+          - name: resetBuild
+          - name: resetTraits
+        staticMethods:
+          - name: initWorld
+          - name: loadBuild
+            parameters:
+              - name: self
+                type: CharacterCreationProfession
+              - name: box
+      BCRC:
+        staticFields:
+          savefile:
+            defaultValue: '"saved_builds.txt"'
+        staticMethods:
+          - name: inputModal
+            parameters:
+              - name: _centered
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _posX
+              - name: _posY
+              - name: _text
+              - name: _onclick
+              - name: target
+                type: unknown
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+            return:
+              - type: ISTextBox
+          - name: readSaveFile
+            return:
+              - type: table
+          - name: writeSaveFile
+            parameters:
+              - name: options
+          - name: dump
+            parameters:
+              - name: o
+              - name: lvl
+            return:
+              - type: string
+                nullable: true
+          - name: pline
+            parameters:
+              - name: text
+      CharacterCreationMain:
+        staticMethods:
+          - name: sortByCost
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: sortByInvertCost
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: sort
+            parameters:
+              - name: list
+          - name: invertSort
+            parameters:
+              - name: list

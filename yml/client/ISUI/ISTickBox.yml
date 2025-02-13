@@ -1,0 +1,189 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTickBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: name
+                type: string
+              - name: changeOptionTarget
+                type: table
+                nullable: true
+              - name: changeOptionMethod
+                type: function
+                nullable: true
+              - name: changeOptionArg1
+                nullable: true
+              - name: changeOptionArg2
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISTickBox"'
+        fields:
+          joypadFocused:
+            type: boolean
+          joypadIndex:
+            type: number
+          selected:
+            type: table
+          _textColor:
+            type: table
+          tooltipUI:
+            type: ISToolTip
+          clickedOption:
+            type: number
+            nullable: true
+          mouseDownOverOption:
+            nullable: true
+          mouseOverOption:
+            type: number
+          disabledOptions:
+            type: table
+          options:
+            type: table
+          optionsIndex:
+            type: table
+          textures:
+            type: table
+          optionData:
+            type: table
+          optionCount:
+            type: number
+          font: {}
+          fontHgt: {}
+          tickTexture: {}
+          choicesColor:
+            type: table
+          name:
+            type: string
+          leftMargin:
+            type: number
+          boxSize:
+            type: number
+          textGap:
+            type: number
+          itemGap:
+            type: number
+          itemHgt:
+            type: number
+          isTickBox:
+            type: boolean
+          tooltip:
+            nullable: true
+          changeOptionMethod:
+            type: function
+            nullable: true
+          changeOptionTarget:
+            type: table
+            nullable: true
+          changeOptionArgs:
+            type: table
+          enable:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: prerender
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: forceClick
+          - name: setSelected
+            parameters:
+              - name: index
+                type: number
+              - name: selected
+                type: boolean
+          - name: isSelected
+            parameters:
+              - name: index
+                type: number
+            return:
+              - type: boolean
+          - name: render
+          - name: getTextColor
+            parameters:
+              - name: index
+              - name: color
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: disableOption
+            parameters:
+              - name: name
+                type: string
+              - name: disable
+                type: boolean
+          - name: clearOptions
+          - name: addOption
+            parameters:
+              - name: name
+                type: string
+              - name: data
+                type: string | number | table
+                nullable: true
+              - name: texture
+            return:
+              - type: number
+          - name: getOptionCount
+            return:
+              - type: number
+          - name: getOptionData
+            parameters:
+              - name: index
+            return:
+              - type: unknown
+          - name: setFont
+            parameters:
+              - name: font
+          - name: setWidthToFit

@@ -1,0 +1,55 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFeedingTroughMenu:
+        staticFields:
+          FEED_PER_DELTA:
+            defaultValue: "10"
+        staticMethods:
+          - name: OnFillWorldObjectContextMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+          - name: onAddWaterDebug
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: isoObject
+          - name: onRemoveFoodDebug
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: isoObject
+          - name: onAddFoodDebug
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: isoObject
+          - name: onEmptyWater
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: isoObject
+          - name: onAddWater
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: luaObject
+              - name: waterItem
+              - name: all
+          - name: onInfo
+            parameters:
+              - name: trough
+              - name: chr
+          - name: isValidAnimalFeed
+            parameters:
+              - name: item
+            return:
+              - type: boolean

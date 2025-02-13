@@ -1,0 +1,974 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      EditVehicleUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI"'
+        fields:
+          scene:
+            type: EditVehicleUI_Scene
+          bottomPanel:
+            type: ISPanel
+          views:
+            type: table
+          scriptCombo:
+            type: ISComboBox
+          editCombo:
+            type: ISComboBox
+          editUI:
+            type: table
+          wroteScriptLabel:
+            type: ISLabel
+          wroteScriptTime: {}
+        methods:
+          - name: createChildren
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: update
+          - name: prerender
+          - name: onComboEdit
+          - name: onComboVehicle
+          - name: setScript
+            parameters:
+              - name: scriptName
+                type: string
+          - name: setEditUI
+            parameters:
+              - name: ui
+          - name: alignEverythingToGrid
+          - name: onSave
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onExit
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onReload
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: showUI
+          - name: wroteScript
+            parameters:
+              - name: fileName
+                type: string
+      EditVehicleUI_Scene:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_Scene"'
+        fields:
+          gizmoAxis:
+            type: string
+          gizmoStartScenePos: {}
+          gizmoClickScenePos: {}
+        methods:
+          - name: prerenderEditor
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      EditVehicleUI_SwitchView:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: editor
+                type: EditVehicleUI
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_SwitchView"'
+        fields:
+          editor:
+            type: EditVehicleUI
+        methods:
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+      EditVehicleUI_ListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_ListBox"'
+        fields:
+          selectionMode:
+            type: string
+        methods:
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: clearSelection
+          - name: setSelectedRow
+            parameters:
+              - name: row
+          - name: setSelectedRows
+            parameters:
+              - name: rows
+          - name: getSelectedItems
+            return:
+              - type: table
+          - name: getSelectedCount
+            return:
+              - type: number
+          - name: iteratorSelected
+            return:
+              - type: unknown
+          - name: indexOf
+            parameters:
+              - name: text
+            return:
+              - type: number
+      EditVehicleUI_EditPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditPanel"'
+        fields:
+          script: {}
+        methods:
+          - name: updateEditor
+          - name: prerenderEditor
+          - name: onSceneMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: toUI
+          - name: undisplay
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+          - name: isScaleVehicle
+            return:
+              - type: boolean
+          - name: createList
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+            return:
+              - type: EditVehicleUI_ListBox
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+            return:
+              - type: unknown
+          - name: java7
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+            return:
+              - type: unknown
+          - name: java9
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+            return:
+              - type: unknown
+      EditVehicleUI_EditArea:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditArea"'
+        fields:
+          list: {}
+          gizmo:
+            type: string
+          button:
+            type: ISButton
+          buttonAlign:
+            type: ISButton
+          originalXYWH:
+            type: table
+        methods:
+          - name: createChildren
+          - name: onToggleGizmo
+          - name: onAlignToExtents
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: toUI
+          - name: prerenderEditor
+          - name: getSelectedAreas
+            return:
+              - type: table
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleUI_EditAttachment:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditAttachment"'
+        fields:
+          partCombo:
+            type: ISComboBox
+          modelCombo:
+            type: ISComboBox
+          list: {}
+          belowList:
+            type: ISPanel
+          nameEntry:
+            type: ISTextEntryBox
+          buttonNewAttachment:
+            type: ISButton
+          buttonDeleteAttachment:
+            type: ISButton
+          gizmo:
+            type: string
+          button3:
+            type: ISButton
+          transformMode:
+            type: string
+          button4:
+            type: ISButton
+          selectedAttachment: {}
+          selectedBone:
+            type: string
+            nullable: true
+          originalOffset:
+            type: table
+          originalRotate:
+            type: table
+        methods:
+          - name: createChildren
+          - name: onComboPart
+          - name: onComboModel
+          - name: populateComboPart
+          - name: populateComboModel
+          - name: getCurrentPart
+            return:
+              - type: unknown
+                nullable: true
+          - name: getCurrentModel
+            return:
+              - type: unknown
+                nullable: true
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: toUI
+          - name: populateAttachmentList
+          - name: getModelScriptForPart
+            parameters:
+              - name: part
+                nullable: true
+              - name: vehicleModel
+                nullable: true
+            return:
+              - type: unknown
+                nullable: true
+          - name: getScriptForAttachments
+            return:
+              - type: unknown
+                nullable: true
+          - name: prerenderEditor
+          - name: doLayout
+          - name: onNameEntered
+          - name: getUniqueAttachmentId
+            parameters:
+              - name: modelScript
+            return:
+              - type: string
+                nullable: true
+          - name: onNewAttachment
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDeleteAttachment
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onToggleGizmo
+          - name: onToggleGlobalLocal
+          - name: setSelectedAttachment
+            parameters:
+              - name: attach
+          - name: getSelectedAttachments
+            return:
+              - type: table
+          - name: getSelectedAttachmentIds
+            return:
+              - type: table
+          - name: pickPartBone
+            return:
+              - type: string
+          - name: onSceneMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+      EditVehicleUI_EditChassis:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditChassis"'
+        fields:
+          list: {}
+          originalCenterOfMassOffset: {}
+          originalExtents: {}
+          originalModelOffset: {}
+          originalModelScale: {}
+          originalChassisExtents: {}
+          originalShadowExtents: {}
+          originalShadowOffset: {}
+          tempVector3f_1: {}
+          tempVector3f_2: {}
+        methods:
+          - name: createChildren
+          - name: toUI
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerenderEditor
+          - name: addAABB
+            parameters:
+              - name: box
+              - name: offset
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: addSphere
+            parameters:
+              - name: offset
+              - name: radius
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleUI_EditPart:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditPart"'
+        fields:
+          list: {}
+          list2: {}
+          gizmo:
+            type: string
+          button3:
+            type: ISButton
+          transformMode:
+            type: string
+          button4:
+            type: ISButton
+          selectedPart: {}
+          originalValue:
+            type: table
+        methods:
+          - name: createChildren
+          - name: onToggleGizmo
+          - name: onToggleGlobalLocal
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: doDrawItem2
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerenderEditor
+          - name: addAABB
+            parameters:
+              - name: extents
+              - name: offset
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: setSelectedPart
+            parameters:
+              - name: part
+          - name: prerenderEditor2
+          - name: toUI
+          - name: indexOfModel
+            parameters:
+              - name: model
+            return:
+              - type: number
+          - name: getSelectedModels
+            return:
+              - type: table
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleUI_EditPassenger:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditPassenger"'
+        fields:
+          list: {}
+          list2: {}
+          selectedPassenger: {}
+          originalOffset:
+            type: table
+        methods:
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: doDrawItem2
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerenderEditor
+          - name: setSelectedPassenger
+            parameters:
+              - name: pngr
+          - name: prerenderEditor2
+          - name: toUI
+          - name: getSelectedPositions
+            return:
+              - type: table
+          - name: getSelectedPositionIds
+            return:
+              - type: table
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleUI_EditPhysics:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: EditVehicleUI
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditPhysics"'
+        fields:
+          list: {}
+          list2: {}
+          transformMode:
+            type: string
+          button1:
+            type: ISButton
+          button2:
+            type: ISButton
+          button3:
+            type: ISButton
+          button4:
+            type: ISButton
+          button5:
+            type: ISButton
+          physicsMeshPanel:
+            type: EditVehicleState_EditPhysics_PhysicsMeshPanel
+          selectedShape: {}
+          originalValue:
+            type: table
+          editor:
+            type: EditVehicleUI
+        methods:
+          - name: createChildren
+          - name: undisplay
+          - name: onToggleGlobalLocal
+          - name: onAddBox
+          - name: onAddSphere
+          - name: onAddMesh
+          - name: onRemoveShape
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: doDrawItem2
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerenderEditor
+          - name: addAABB
+            parameters:
+              - name: extents
+              - name: offset
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: addSphere
+            parameters:
+              - name: offset
+              - name: radius
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: addPhysicsMesh
+            parameters:
+              - name: offset
+              - name: rotate
+              - name: scale
+              - name: physicsShapeScript
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: setSelectedShape
+            parameters:
+              - name: shape
+          - name: prerenderEditor2
+          - name: toUI
+          - name: indexOfShape
+            parameters:
+              - name: shape
+            return:
+              - type: number
+          - name: getSelectedShapes
+            return:
+              - type: table
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleUI_EditWheel:
+        extends: EditVehicleUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleUI_EditWheel"'
+        fields:
+          list: {}
+          originalOffset:
+            type: table
+        methods:
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: toUI
+          - name: prerenderEditor
+          - name: getSelectedWheels
+            return:
+              - type: table
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+      EditVehicleState_EditPhysics_PhysicsMeshPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editPhysics
+                type: EditVehicleUI_EditPhysics
+        staticFields:
+          Type:
+            defaultValue: '"EditVehicleState_EditPhysics_PhysicsMeshPanel"'
+        fields:
+          comboPhysicsShape:
+            type: ISComboBox
+          editPhysics:
+            type: EditVehicleUI_EditPhysics
+        methods:
+          - name: createChildren
+          - name: fillCombo
+          - name: onSelectPhysicsShapeScript
+    functions:
+      - name: EditVehicleState_InitUI

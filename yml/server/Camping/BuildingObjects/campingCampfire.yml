@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      campingCampfire:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"campingCampfire"'
+        fields:
+          character:
+            nullable: true
+          noNeedHammer:
+            type: boolean
+          actionAnim:
+            type: string
+          craftingBank:
+            type: string
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: onTimedActionStart
+            parameters:
+              - name: action
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getLBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: isSquareFree
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean

@@ -1,0 +1,54 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMoveableTools:
+        staticMethods:
+          - name: getScrapableObjects
+            parameters:
+              - name: _char
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: table
+          - name: getObjectList
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: table
+          - name: canPlayerPickUpMoveable
+            parameters:
+              - name: _char
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _moveProps
+            return:
+              - type: unknown
+                nullable: true
+          - name: canPlayerPickUpObject
+            parameters:
+              - name: _char
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+            return:
+              - type: ISMoveableSpriteProps
+                nullable: true
+              - type: boolean
+                nullable: true
+          - name: isObjectMoveable
+            parameters:
+              - name: _object
+            return:
+              - type: ISMoveableSpriteProps
+                nullable: true
+              - type: boolean
+                nullable: true
+          - name: getMoveableList
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: table

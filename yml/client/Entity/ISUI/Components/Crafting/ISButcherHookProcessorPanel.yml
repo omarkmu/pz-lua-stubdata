@@ -1,0 +1,74 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISButcherHookProcessorPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: component
+              - name: craftProcessor
+        staticFields:
+          Type:
+            defaultValue: '"ISButcherHookProcessorPanel"'
+        fields:
+          tableLayout:
+            nullable: true
+          itemInputs:
+            nullable: true
+          craftProgress:
+            nullable: true
+          craftRecipeSelect:
+            nullable: true
+          craftControl:
+            nullable: true
+          craftControlDebug:
+            nullable: true
+          itemOutputs:
+            nullable: true
+          fluidOutputs:
+            nullable: true
+          player: {}
+          entity: {}
+          craftProcessor: {}
+          component: {}
+          resourceContainer: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createItemSlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: createFluidSlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: createEnergySlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

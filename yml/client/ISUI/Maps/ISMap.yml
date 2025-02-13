@@ -1,0 +1,203 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMap:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: map
+              - name: player
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISMap"'
+          SCALE:
+            defaultValue: "0.666"
+        fields:
+          mapAPI: {}
+          symbolsUI:
+            type: ISWorldMapSymbols
+          mapKey:
+            type: ISWorldMapKey
+          ok:
+            type: ISButton
+          showMapKey:
+            type: ISButton
+          editSymbolsBtn:
+            type: ISButton
+          scaleBtn:
+            type: ISButton
+          placeSymbBtn:
+            type: ISButton
+          draggingStartingX:
+            type: number
+          draggingStartingY:
+            type: number
+          dragStartCX: {}
+          dragStartCY: {}
+          dragStartZoomF: {}
+          dragStartWorldX: {}
+          dragStartWorldY: {}
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          getJoypadFocus:
+            type: boolean
+          setMapData:
+            type: boolean
+          updateMS: {}
+          LBumperZoom:
+            type: number
+            nullable: true
+          RBumperZoom:
+            type: number
+            nullable: true
+          povXms:
+            nullable: true
+          povYms:
+            nullable: true
+          character: {}
+          playerNum:
+            type: integer
+          mapObj: {}
+          textCursor: {}
+          cross: {}
+          symbolTexList:
+            type: table
+          selectedColor:
+            nullable: true
+        methods:
+          - name: instantiate
+          - name: createChildren
+          - name: destroy
+          - name: onButtonClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: canWrite
+            return:
+              - type: unknown
+          - name: canErase
+            return:
+              - type: unknown
+          - name: onConfirmRemove
+            parameters:
+              - name: button
+                type: ISButton
+              - name: note
+          - name: onMouseUpOutside
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: renderJoypadIcons
+            return:
+              - type: boolean
+          - name: update
+          - name: initMapData
+          - name: updateJoypad
+          - name: updateButtons
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ISMapWrapper:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISMapWrapper"'
+          __index:
+            defaultValue: ISMapWrapper
+        methods:
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+          - name: prerender
+          - name: render
+          - name: close

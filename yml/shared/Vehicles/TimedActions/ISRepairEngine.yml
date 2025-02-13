@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRepairEngine:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: item
+              - name: maxTime
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISRepairEngine"'
+        fields:
+          vehicle: {}
+          part: {}
+          item: {}
+          jobType:
+            type: string
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

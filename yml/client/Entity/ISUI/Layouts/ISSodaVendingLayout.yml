@@ -1,0 +1,22 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSodaVendingLayout:
+        extends: ISBaseVendingLayout
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: _parentPanel
+              - name: _blueprintLogic
+        staticFields:
+          Type:
+            defaultValue: '"ISSodaVendingLayout"'
+        fields:
+          frontImageOn: {}
+          frontImageOff: {}
+          btnNames:
+            type: table

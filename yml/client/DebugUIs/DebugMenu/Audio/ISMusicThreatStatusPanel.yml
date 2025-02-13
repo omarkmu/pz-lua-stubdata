@@ -1,0 +1,56 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMusicThreatStatusPanel:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ISMusicThreatStatusPanel"'
+        fields:
+          buttonReload: {}
+          allOptions:
+            type: table
+          floats:
+            type: table
+        methods:
+          - name: createChildren
+          - name: render
+          - name: setSliders
+          - name: addFloatOption
+            parameters:
+              - name: _label
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: onTicked
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: onButtonReload

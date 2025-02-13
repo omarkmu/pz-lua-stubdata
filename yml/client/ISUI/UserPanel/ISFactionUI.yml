@@ -1,0 +1,139 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFactionUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: faction
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISFactionUI"'
+          messages: {}
+          inviteDialogs: {}
+          instance:
+            type: ISFactionUI
+            nullable: true
+        fields:
+          changeTitle:
+            type: ISButton
+          owner:
+            type: ISLabel
+          changeOwnership:
+            type: ISButton
+          tag:
+            type: ISLabel
+          changeTag:
+            type: ISButton
+          tagColor:
+            type: ISButton
+          tagColorBtn:
+            type: ISButton
+          colorPicker:
+            type: ISColorPicker
+          playerList:
+            type: ISScrollingListBox
+          addPlayer:
+            type: ISButton
+          removePlayer:
+            type: ISButton
+          showTag:
+            type: ISTickBox
+          factionPvp:
+            type: ISTickBox
+          releaseFaction:
+            type: ISButton
+          quitFaction:
+            type: ISButton
+          no:
+            type: ISButton
+          selectedPlayer:
+            nullable: true
+          addPlayerUI:
+            type: ISFactionAddPlayerUI
+          player: {}
+          faction: {}
+          buttonBorderColor:
+            type: table
+          isOwner: {}
+          isAdmin: {}
+        methods:
+          - name: initialise
+          - name: onClickShowTag
+            parameters:
+              - name: clickedOption
+              - name: enabled
+          - name: onClickFactionPvp
+            parameters:
+              - name: clickedOption
+              - name: enabled
+          - name: onTagColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onPickedTagColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: updateButtons
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: close
+          - name: onChangeTitle
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onChangeTag
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onQuitFaction
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRemovePlayerFromFaction
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: onAnswerFactionInvite
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: ReceiveFactionInvite
+            parameters:
+              - name: factionName
+                type: string
+              - name: host
+          - name: AcceptedFactionInvite
+            parameters:
+              - name: factionName
+                type: string
+              - name: host
+          - name: SyncFaction
+            parameters:
+              - name: factionName
+                type: string

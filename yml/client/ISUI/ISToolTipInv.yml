@@ -1,0 +1,106 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISToolTipInv:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: item
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISToolTipInv"'
+        fields:
+          item:
+            nullable: true
+          owner:
+            type: table
+            nullable: true
+          tooltip: {}
+          toolTipDone:
+            type: boolean
+          followMouse:
+            type: boolean
+          anchorBottomLeft:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: setItem
+            parameters:
+              - name: item
+                nullable: true
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: adjustPositionToAvoidOverlap
+            parameters:
+              - name: avoidRect
+          - name: overlaps
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: boolean
+          - name: placeLeft
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: placeRight
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: placeAbove
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: setOwner
+            parameters:
+              - name: ui
+                type: table
+          - name: setCharacter
+            parameters:
+              - name: chr

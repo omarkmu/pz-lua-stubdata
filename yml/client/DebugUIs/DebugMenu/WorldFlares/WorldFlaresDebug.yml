@@ -1,0 +1,99 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldFlaresDebug:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"WorldFlaresDebug"'
+          instance:
+            type: WorldFlaresDebug
+            nullable: true
+        fields:
+          flareCount:
+            type: boolean
+          colExt:
+            type: table
+          colInt:
+            type: table
+          flareID:
+            type: number
+          entryBoxLifeTime:
+            type: ISTextEntryBox
+          entryBoxRange:
+            type: ISTextEntryBox
+          entryBoxWindspeed:
+            type: ISTextEntryBox
+          colExtBoxY:
+            type: number
+          colBoxWidth:
+            type: number
+          colIntBoxY:
+            type: number
+          flaresList:
+            type: ISScrollingListBox
+          infoX:
+            type: number
+          infoY:
+            type: number
+          infoWidth:
+            type: number
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onTicked
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: onSliderChange
+            parameters:
+              - name: _newVal
+              - name: _slider
+          - name: onClickDeleteFlares
+          - name: onClickAddFlare
+          - name: onClickClose
+          - name: OnFlaresListMouseDown
+            parameters:
+              - name: item
+          - name: populateList
+          - name: drawFlaresList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: update
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: WorldFlaresDebug
+                nullable: true

@@ -1,0 +1,14 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SpeedControlsHandler:
+        staticFields:
+          previousSpeed:
+            type: number
+            nullable: true
+        staticMethods:
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer

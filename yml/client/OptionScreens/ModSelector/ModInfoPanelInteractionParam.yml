@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModInfoPanel.InteractionParam:
+        extends: ISPanelJoypad
+        local: true
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: type
+        staticFields:
+          Type:
+            defaultValue: '"ModInfoPanelInteractionParam"'
+        fields:
+          pressed:
+            type: boolean
+          modInfo: {}
+          modDict:
+            type: table
+          type: {}
+          name:
+            type: string
+          labelWidth: {}
+          padX:
+            type: number
+          padY:
+            type: number
+          borderX:
+            type: number
+        methods:
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setModInfo
+            parameters:
+              - name: modInfo
+      ModInfoPanel:
+        staticFields:
+          InteractionParam:
+            type: ModInfoPanel.InteractionParam

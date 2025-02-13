@@ -1,0 +1,46 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISModsNagPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISModsNagPanel"'
+        fields:
+          textureX:
+            type: number
+          textureY:
+            type: number
+          textureW: {}
+          textureH: {}
+          richText:
+            type: ISRichTextPanel
+          ok:
+            type: ISButton
+          texture: {}
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onOK
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number

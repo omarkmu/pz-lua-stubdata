@@ -1,0 +1,262 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      JoypadState:
+        staticFields:
+          controllers: {}
+          players: {}
+          joypads: {}
+          forceActivate:
+            nullable: true
+          saveFocus:
+            type: table
+            nullable: true
+          debugUI:
+            type: ISJoypadDebugUI
+            nullable: true
+        staticMethods:
+          - name: onGamepadConnect
+            parameters:
+              - name: id
+          - name: onGamepadDisconnect
+            parameters:
+              - name: id
+          - name: useKeyboardMouse
+          - name: getMainMenuJoypad
+            return:
+              - type: unknown
+                nullable: true
+          - name: saveAllFocus
+          - name: restoreAllFocus
+          - name: onPlayerDeath
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onCoopJoinFailed
+            parameters:
+              - name: playerNum
+                type: integer
+          - name: onGameStart
+          - name: onRenderUI
+      Joypad:
+        staticFields:
+          AButton:
+            defaultValue: "0"
+          BButton:
+            defaultValue: "1"
+          XButton:
+            defaultValue: "2"
+          YButton:
+            defaultValue: "3"
+          LBumper:
+            defaultValue: "4"
+          RBumper:
+            defaultValue: "5"
+          Back:
+            defaultValue: "6"
+          Start:
+            defaultValue: "7"
+          LStickButton:
+            defaultValue: "8"
+          RStickButton:
+            defaultValue: "9"
+          Other:
+            defaultValue: "10"
+          DPadLeft:
+            defaultValue: "100"
+          DPadRight:
+            defaultValue: "101"
+          DPadUp:
+            defaultValue: "102"
+          DPadDown:
+            defaultValue: "103"
+          Texture: {}
+      joypad:
+        staticFields:
+          wantNoise:
+            defaultValue: getDebug()
+      JoypadControllerData:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: id
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"JoypadControllerData"'
+        fields:
+          joypad:
+            nullable: true
+          id:
+            type: number
+          pressed:
+            type: table
+          wasPressed:
+            type: table
+          connected: {}
+          timedown:
+            type: number
+          down:
+            type: boolean
+          timedownproc:
+            type: number
+          dtdown:
+            type: number
+          dtprocdown:
+            type: number
+          timeup:
+            type: number
+          up:
+            type: boolean
+          timeupproc:
+            type: number
+          dtup:
+            type: number
+          dtprocup:
+            type: number
+          timeleft:
+            type: number
+          left:
+            type: boolean
+          timeleftproc:
+            type: number
+          dtleft:
+            type: number
+          dtprocleft:
+            type: number
+          timeright:
+            type: number
+          right:
+            type: boolean
+          timerightproc:
+            type: number
+          dtright:
+            type: number
+          dtprocright:
+            type: number
+        methods:
+          - name: setJoypad
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: clearJoypad
+          - name: onPauseButtonPressed
+          - name: onPressButtonNoFocus
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onPressButton
+            parameters:
+              - name: button
+                type: number
+          - name: onReleaseButton
+            parameters:
+              - name: button
+                type: number
+          - name: onPressUp
+          - name: onReleaseUp
+          - name: onPressDown
+          - name: onReleaseDown
+          - name: onPressLeft
+          - name: onReleaseLeft
+          - name: onPressRight
+          - name: onReleaseRight
+          - name: update
+            parameters:
+              - name: time
+      JoypadData:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"JoypadData"'
+        fields:
+          id:
+            type: number
+          controller:
+            nullable: true
+          isActive:
+            type: boolean
+          player:
+            nullable: true
+          focus:
+            nullable: true
+          lastfocus:
+            nullable: true
+          prevfocus:
+            nullable: true
+          prevprevfocus:
+            nullable: true
+          inMainMenu:
+            type: boolean
+          listBox:
+            nullable: true
+        methods:
+          - name: setController
+            parameters:
+              - name: controller
+          - name: clearController
+          - name: isConnected
+            return:
+              - type: unknown
+                nullable: true
+          - name: setActive
+            parameters:
+              - name: isActive
+                type: boolean
+    functions:
+      - name: getFocusForPlayer
+        parameters:
+          - name: playerNum
+            type: integer
+        return:
+          - type: unknown
+            nullable: true
+      - name: getJoypadFocus
+        parameters:
+          - name: playerID
+        return:
+          - type: unknown
+            nullable: true
+      - name: setJoypadFocus
+        parameters:
+          - name: playerID
+            type: number
+            nullable: true
+          - name: control
+            type: table
+            nullable: true
+      - name: setPrevFocusForPlayer
+        parameters:
+          - name: playerID
+      - name: setPrevPrevFocusForPlayer
+        parameters:
+          - name: playerID
+      - name: updateJoypadFocus
+        parameters:
+          - name: joypadData
+            type: JoypadData
+            nullable: true
+      - name: onJoypadRenderTick
+        parameters:
+          - name: ticks
+      - name: onJoypadActivate
+        parameters:
+          - name: id
+      - name: onJoypadActivateUI
+        parameters:
+          - name: id
+      - name: onJoypadBeforeDeactivate
+        parameters:
+          - name: id
+      - name: onJoypadDeactivate
+        parameters:
+          - name: id
+      - name: onJoypadBeforeReactivate
+        parameters:
+          - name: id
+      - name: onJoypadReactivate
+        parameters:
+          - name: id

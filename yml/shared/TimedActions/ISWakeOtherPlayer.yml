@@ -1,0 +1,27 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWakeOtherPlayer:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: otherPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISWakeOtherPlayer"'
+        fields:
+          otherPlayer: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: complete
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISInventoryItem:
+        staticMethods:
+          - name: renderItemIcon
+            parameters:
+              - name: self
+                type: table
+              - name: _item
+                type: boolean
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _alpha
+                type: number
+                nullable: true
+              - name: _w
+                type: number
+                nullable: true
+              - name: _h
+                type: number
+                nullable: true
+          - name: renderScriptItemIcon
+            parameters:
+              - name: self
+                type: ISCraftInventoryPanel | ISFluidItemsViewPanel
+              - name: _scriptItem
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _alpha
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number

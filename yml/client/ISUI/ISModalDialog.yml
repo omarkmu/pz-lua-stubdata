@@ -1,0 +1,135 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISModalDialog:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+                type: string
+              - name: yesno
+                type: boolean
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+                type: function
+                nullable: true
+              - name: player
+                type: number
+                nullable: true
+              - name: param1
+                type: unknown
+                nullable: true
+              - name: param2
+                type: unknown
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISModalDialog"'
+        fields:
+          ok:
+            type: ISButton
+            nullable: true
+          yes:
+            type: ISButton
+            nullable: true
+          no:
+            type: ISButton
+            nullable: true
+          name:
+            nullable: true
+          text:
+            type: string
+          yesno:
+            type: boolean
+          target:
+            type: unknown
+            nullable: true
+          onclick:
+            type: function
+            nullable: true
+          player:
+            type: number
+            nullable: true
+          param1:
+            type: unknown
+            nullable: true
+          param2:
+            type: unknown
+            nullable: true
+        methods:
+          - name: initialise
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: render
+        staticMethods:
+          - name: CalcSize
+            parameters:
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+            return:
+              - type: number
+              - type: number

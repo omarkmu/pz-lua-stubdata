@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LuaDebugOutput:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"LuaDebugOutput"'
+          instance:
+            type: LuaDebugOutput
+            nullable: true
+        fields:
+          outputListbox:
+            type: ISScrollingListBox
+          cat:
+            type: table
+        methods:
+          - name: createChildren
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: debug
+            parameters:
+              - name: text
+          - name: clear
+          - name: error
+            parameters:
+              - name: text
+    functions:
+      - name: pzerror
+        parameters:
+          - name: text
+          - name: cat
+      - name: pzdebugenabled
+        parameters:
+          - name: cat
+            type: string
+          - name: enabled
+            type: boolean
+      - name: pzdebug
+        parameters:
+          - name: text
+            type: string
+          - name: cat
+            nullable: true
+      - name: DoTickDebugLuaDebugOutputWindow
+      - name: DoDebugLuaDebugOutputWindow

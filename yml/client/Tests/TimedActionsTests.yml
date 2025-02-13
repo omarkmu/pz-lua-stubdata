@@ -1,0 +1,15 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TimedActionTests:
+        staticMethods:
+          - name: runOne
+            parameters:
+              - name: name
+                type: string
+          - name: runAll
+          - name: stop
+          - name: getTests
+            return:
+              - type: table

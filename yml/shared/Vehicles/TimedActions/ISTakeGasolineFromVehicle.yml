@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTakeGasolineFromVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: part
+              - name: item
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISTakeGasolineFromVehicle"'
+        fields:
+          amountSent:
+            type: number
+          sound: {}
+          itemStart: {}
+          tankStart: {}
+          tankTarget:
+            type: number
+          itemTarget:
+            type: number
+          vehicle: {}
+          part: {}
+          item:
+            nullable: true
+          fluidCont: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: serverStop
+          - name: getDuration
+            return:
+              - type: number

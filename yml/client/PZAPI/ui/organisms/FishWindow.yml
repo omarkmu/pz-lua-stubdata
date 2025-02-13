@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.FishWindow:
+        extends: UI.Window
+        local: true
+        staticFields:
+          width:
+            defaultValue: "400"
+          height:
+            defaultValue: "400"
+          isPin:
+            defaultValue: "false"
+        fields:
+          super:
+            type: UI.Window
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.FishWindow
+        methods:
+          - name: init
+      PZAPI:
+        staticFields:
+          UI.FishWindow:
+            type: UI.FishWindow

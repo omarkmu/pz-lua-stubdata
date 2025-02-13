@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAttachTrailerToVehicle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicleA
+              - name: vehicleB
+                nullable: true
+              - name: attachmentA
+              - name: attachmentB
+        staticFields:
+          Type:
+            defaultValue: '"ISAttachTrailerToVehicle"'
+        fields:
+          sound: {}
+          vehicleA: {}
+          vehicleB:
+            nullable: true
+          attachmentA: {}
+          attachmentB: {}
+          hitchPos: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: stopSound

@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SRainBarrelGlobalObject:
+        extends: SGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: SRainBarrelSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"SRainBarrelGlobalObject"'
+        fields:
+          exterior:
+            type: boolean
+          taintedWater:
+            type: boolean
+          waterAmount:
+            type: number
+          waterMax:
+            type: number
+        methods:
+          - name: initNew
+          - name: stateFromIsoObject
+            parameters:
+              - name: isoObject
+          - name: stateToIsoObject
+            parameters:
+              - name: isoObject
+          - name: changeSprite

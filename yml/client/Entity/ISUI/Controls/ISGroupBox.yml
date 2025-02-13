@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGroupBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _styleLabel
+        staticFields:
+          Type:
+            defaultValue: '"ISGroupBox"'
+        fields:
+          borderLabel:
+            nullable: true
+          marginBorder:
+            type: number
+          element:
+            nullable: true
+          margin:
+            type: number
+          styleLabel: {}
+          title:
+            type: string
+          drawBorder:
+            type: boolean
+          textColor:
+            type: table
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setElement
+            parameters:
+              - name: _element
+          - name: addChild
+            parameters:
+              - name: _element
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update

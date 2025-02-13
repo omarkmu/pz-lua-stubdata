@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsChooseAccessLevelUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+                nullable: true
+              - name: onclick
+              - name: player
+              - name: admin
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsChooseAccessLevelUI"'
+        fields:
+          combo:
+            type: ISComboBox
+          ok:
+            type: ISButton
+          cancel:
+            type: ISButton
+          variableColor:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          onclick: {}
+          chr: {}
+          admin: {}
+          comboList:
+            type: table
+          zOffsetSmallFont:
+            type: number
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: render
+          - name: create
+          - name: populateComboList
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number

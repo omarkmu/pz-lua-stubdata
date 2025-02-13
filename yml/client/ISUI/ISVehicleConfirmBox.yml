@@ -1,0 +1,45 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleConfirmBox:
+        extends: ISPanelJoypad
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleConfirmBox"'
+        fields:
+          close:
+            type: ISButton
+          drawJoypadFocus:
+            type: boolean
+          texSpiffoWarning: {}
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+      ISVehiclePartListBox:
+        extends: ISScrollingListBox
+        staticFields:
+          Type:
+            defaultValue: '"ISVehiclePartListBox"'

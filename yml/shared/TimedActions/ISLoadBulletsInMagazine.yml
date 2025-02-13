@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLoadBulletsInMagazine:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: magazine
+              - name: ammoCount
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISLoadBulletsInMagazine"'
+        fields:
+          ammoCountStart: {}
+          playedInsertAmmoStartSound:
+            type: boolean
+          loadFinished:
+            type: boolean
+          magazine: {}
+          useProgressBar:
+            type: boolean
+          ammoCount:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: start
+          - name: update
+          - name: initVars
+          - name: isLoadFinished
+            return:
+              - type: boolean
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: stop
+          - name: perform

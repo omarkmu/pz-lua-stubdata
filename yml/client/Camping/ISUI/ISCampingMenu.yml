@@ -1,0 +1,169 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCampingMenu:
+        staticFields:
+          currentSquare:
+            nullable: true
+          campfire:
+            nullable: true
+        staticMethods:
+          - name: timeString
+            parameters:
+              - name: timeInMinutes
+                type: number
+            return:
+              - type: string
+                nullable: true
+          - name: isValidCampfire
+            parameters:
+              - name: campfire
+            return:
+              - type: boolean
+          - name: shouldBurn
+            parameters:
+              - name: item
+              - name: playersChoice
+                type: boolean
+            return:
+              - type: boolean
+          - name: isValidFuel
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+                nullable: true
+          - name: isValidTinder
+            parameters:
+              - name: item
+            return:
+              - type: boolean
+                nullable: true
+          - name: getFuelDurationForItemInHours
+            parameters:
+              - name: item
+            return:
+              - type: number
+                nullable: true
+          - name: getFuelDurationForItem
+            parameters:
+              - name: item
+                nullable: true
+            return:
+              - type: number
+          - name: getFuelItemUses
+            parameters:
+              - name: item
+            return:
+              - type: number
+          - name: doCampingMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: toPlayerInventory
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                nullable: true
+          - name: onDisplayInfo
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: isoCampfireObject
+              - name: campfire
+          - name: onDropCorpse
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: isoCampfireObject
+              - name: campfire
+          - name: walkToCampfire
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: doSleepOption
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: bed
+              - name: player
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAddFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: campfire
+              - name: fuelType
+          - name: onAddAllFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: campfire
+          - name: onAddMultipleFuel
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: campfire
+              - name: fuelType
+          - name: onPlaceCampfire
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+          - name: onPutOutCampfire
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: campfire
+          - name: onRemoveCampfire
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: campfire
+          - name: onLightFromLiterature
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: itemType
+              - name: lighter
+              - name: campfire
+          - name: onLightFromKindle
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: percedWood
+              - name: stickOrBranch
+              - name: campfire
+          - name: onLightFromPetrol
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: lighter
+              - name: petrol
+              - name: campfire
+          - name: onRest
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: tent

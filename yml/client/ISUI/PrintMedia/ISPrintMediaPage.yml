@@ -1,0 +1,115 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPrintMediaPage:
+        extends: ISCollapsableWindowJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: index
+              - name: player
+                nullable: true
+              - name: item
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaPage"'
+        fields:
+          content:
+            type: ISPanel
+          centerText:
+            type: ISPrintMediaRichText
+          player:
+            nullable: true
+          item:
+            nullable: true
+          index: {}
+          title: {}
+          visibleTarget:
+            type: ISPrintMediaPage
+          visibleFunction:
+            type: function
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: close
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onToggleVisible
+      ISPrintMediaRichText:
+        extends: ISPrintMediaTextPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISPrintMediaRichText"'
+          doRightJoystickScrolling:
+            defaultValue: ISPanelJoypad.doRightJoystickScrolling
+        fields:
+          yScrollDelta:
+            type: number
+          smoothScrollY:
+            type: number
+            nullable: true
+          smoothScrollTargetY:
+            type: number
+            nullable: true
+          printMedia:
+            type: boolean
+        methods:
+          - name: prerender
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: updateSmoothScrolling
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData

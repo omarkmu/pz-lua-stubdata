@@ -1,0 +1,126 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLabel:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: height
+                type: number
+              - name: name
+                type: string | number
+              - name: r
+                type: number | string
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+              - name: font
+                type: number
+              - name: bLeft
+                type: boolean
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISLabel"'
+        fields:
+          name:
+            type: string | number
+          r:
+            type: number | string
+          g:
+            type: number
+          b:
+            type: number
+          a:
+            type: number
+          mouseOver:
+            type: boolean
+          tooltipUI:
+            type: ISToolTip
+          tooltip:
+            nullable: true
+          joypadFocused:
+            type: boolean
+          joypadTexture: {}
+          translation:
+            type: string
+            nullable: true
+          width: {}
+          font:
+            type: number
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          originalX:
+            type: number
+          left:
+            type: boolean
+            nullable: true
+          center:
+            type: boolean
+          textColor:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: getName
+            return:
+              - type: string | number
+                nullable: true
+          - name: setName
+            parameters:
+              - name: name
+                type: string
+          - name: setWidthToName
+            parameters:
+              - name: minWidth
+          - name: getFontHeight
+            return:
+              - type: unknown
+          - name: setHeightToFont
+            parameters:
+              - name: minHeight
+          - name: setHeightToName
+            parameters:
+              - name: minHeight
+          - name: setColor
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: prerender
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: updateTooltip
+          - name: setTooltip
+            parameters:
+              - name: tooltip
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+          - name: setTranslation
+            parameters:
+              - name: translation
+                type: string

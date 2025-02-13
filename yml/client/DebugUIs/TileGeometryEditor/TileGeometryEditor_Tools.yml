@@ -1,0 +1,560 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TileGeometryEditor_Tool:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_Tool"'
+        fields:
+          editor: {}
+          scene: {}
+          javaObject: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: renderScene
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+            return:
+              - type: unknown
+          - name: java7
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+            return:
+              - type: unknown
+          - name: getMouseX
+            return:
+              - type: unknown
+          - name: getMouseY
+            return:
+              - type: unknown
+      TileGeometryEditor_GizmoTool:
+        extends: TileGeometryEditor_Tool
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool"'
+        fields:
+          gizmoAxis:
+            type: string
+          gizmoStartScenePos: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_GizmoTool_Translate:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_Translate"'
+        fields:
+          originalOffset:
+            type: table
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: snap
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_GizmoTool_Rotate:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_Rotate"'
+        fields:
+          originalRotate:
+            type: table
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+          - name: clampAngle
+            parameters:
+              - name: degrees
+            return:
+              - type: number
+      TileGeometryEditor_GizmoTool_Scale:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_Scale"'
+        fields:
+          originalScale:
+            type: table
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_GizmoTool_ResizeBox:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_ResizeBox"'
+        fields:
+          originalMin: {}
+          originalMax: {}
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_GizmoTool_ResizeCylinder:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_ResizeCylinder"'
+        fields:
+          originalHeight: {}
+          originalTranslation: {}
+          originalRadius: {}
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_GizmoTool_SetSurface:
+        extends: TileGeometryEditor_GizmoTool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GizmoTool_SetSurface"'
+        fields:
+          selection:
+            type: table
+        methods:
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoAccept
+          - name: onGizmoCancel
+      TileGeometryEditor_EditPolygonTool:
+        extends: TileGeometryEditor_Tool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditPolygonTool"'
+        fields:
+          dragPointIndex:
+            type: number
+          dragPointOriginalPos: {}
+          polygonPoint2D: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_DepthRectTool:
+        extends: TileGeometryEditor_Tool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_DepthRectTool"'
+        fields:
+          clickPixelX: {}
+          clickPixelY: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: addDefaultFloorPlane
+          - name: removeDefaultFloorPlane
+          - name: renderScene
+          - name: getMarqueeBounds
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+              - type: unknown
+              - type: unknown
+              - type: unknown
+        staticMethods:
+          - name: RasterizePolygonCallback
+            parameters:
+              - name: args
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_AddTileTool:
+        extends: TileGeometryEditor_Tool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_AddTileTool"'
+        fields:
+          mouseDown:
+            type: boolean
+          mouseDownX:
+            type: number
+          mouseDownY:
+            type: number
+          bRemoveTile:
+            type: boolean
+          vector3f_1: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: renderScene
+          - name: getFirstSelectedTile
+            return:
+              - type: unknown
+          - name: uiToTileLocation
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: mouseToTileLocation
+            return:
+              - type: unknown
+              - type: unknown
+          - name: renderBox3D
+            parameters:
+              - name: tx
+              - name: ty
+                type: number
+              - name: tz
+              - name: rx
+                type: number
+              - name: ry
+                type: number
+              - name: rz
+                type: number
+              - name: minX
+                type: number
+              - name: minY
+                type: number
+              - name: minZ
+                type: number
+              - name: maxX
+                type: number
+              - name: maxY
+                type: number
+              - name: maxZ
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: renderSceneTiles
+      TileGeometryEditor_MoveTileTool:
+        extends: TileGeometryEditor_Tool
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_MoveTileTool"'
+        fields:
+          draggedTile:
+            nullable: true
+          mouseDownX:
+            type: number
+          mouseDownY:
+            type: number
+          vector3f_1: {}
+        methods:
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: uiToTileLocation
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: mouseToTileLocation
+            return:
+              - type: unknown
+              - type: unknown
+          - name: renderScene
+          - name: renderSceneTiles
+          - name: renderBox3D
+            parameters:
+              - name: tx
+              - name: ty
+              - name: tz
+              - name: rx
+              - name: ry
+              - name: rz
+              - name: minX
+              - name: minY
+              - name: minZ
+              - name: maxX
+              - name: maxY
+              - name: maxZ
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number

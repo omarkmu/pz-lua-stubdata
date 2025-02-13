@@ -1,0 +1,75 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLedLight:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISLedLight"'
+        fields:
+          ledIsOn:
+            type: boolean
+          ledCntr:
+            type: number
+          oldState:
+            type: boolean
+          ledBlinkSpeed:
+            type: number
+          doLedBlink:
+            type: boolean
+          ledCol:
+            type: table
+          ledColOff:
+            type: table
+          ledBackTexture: {}
+          ledTexture: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: update
+          - name: prerender
+          - name: render
+          - name: getLedIsOn
+            return:
+              - type: boolean
+          - name: setLedIsOn
+            parameters:
+              - name: _b
+          - name: setBlinkingSpeed
+            parameters:
+              - name: _i
+          - name: setIsBlinking
+            parameters:
+              - name: _b
+                type: boolean
+          - name: setLedColor
+            parameters:
+              - name: _a
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+          - name: setLedColorOff
+            parameters:
+              - name: _a
+                type: number
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number

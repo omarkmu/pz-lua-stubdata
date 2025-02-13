@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SadisticMusicDirector:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SadisticMusicDirector"'
+          instance:
+            defaultValue: SadisticMusicDirector:new()
+        fields:
+          lastNumZombie:
+            type: number
+          lastChangedTrack:
+            type: number
+          lastSeenZombie:
+            type: number
+          drama:
+            type: number
+          lastTriggerDrama:
+            type: number
+          triggerDelay:
+            type: number
+          lastTimeSinceZombie:
+            type: number
+        methods:
+          - name: tick
+          - name: seenZombies
+            parameters:
+              - name: num
+                type: number
+          - name: shouldChangeTrack
+            return:
+              - type: boolean
+          - name: changeTrack
+    functions:
+      - name: SadisticMusicDirectorTick

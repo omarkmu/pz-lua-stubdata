@@ -1,0 +1,73 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ZombiesZoneDefinition:
+        staticFields:
+          Wedding: {}
+          TrailerPark: {}
+          Pharmacist: {}
+          Bowling: {}
+          Doctor: {}
+          Spiffo: {}
+          Jays: {}
+          Gigamart: {}
+          PizzaWhirled: {}
+          Dinner: {}
+          PileOCrepe: {}
+          Coffeeshop: {}
+          SeaHorse: {}
+          Restaurant: {}
+          Survivalist: {}
+          StreetPoor: {}
+          Rocker: {}
+          Theatre: {}
+          Shelter: {}
+          LaserTag: {}
+          Rich: {}
+          HotelRich: {}
+          BaseballFan: {}
+          NursingHome: {}
+          Young: {}
+          Nightclub: {}
+          Tennis: {}
+          VariousFoodMarket: {}
+          FarmingStore: {}
+          Athletic: {}
+          StreetSports: {}
+          Pony: {}
+          Baseball: {}
+          Farm: {}
+          CarRepair: {}
+          Fossoil: {}
+          Gas2Go: {}
+          ThunderGas: {}
+          McCoys: {}
+          Factory: {}
+          ConstructionSite: {}
+          Offices: {}
+          Bank: {}
+          SwimmingPool: {}
+          FancyHotel: {}
+          CountryClub: {}
+          Spa: {}
+          Golf: {}
+          Police: {}
+          PoliceState: {}
+          Prison: {}
+          FireDept: {}
+          Army: {}
+          SecretBase: {}
+          Bar: {}
+          Beach: {}
+          School: {}
+          University: {}
+          Boxing: {}
+          Nav: {}
+          CornMaze: {}
+          Cowboy: {}
+          Stripclub: {}
+          Mob: {}
+          Cultists: {}
+          SecretLab: {}
+          Default: {}

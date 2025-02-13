@@ -1,0 +1,68 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorkshopSubmitScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"WorkshopSubmit"'
+          TEST:
+            defaultValue: "false"
+          instance:
+            type: WorkshopSubmitScreen
+            nullable: true
+        fields:
+          page1:
+            type: table
+          page2:
+            type: table
+          page3:
+            type: table
+          page4:
+            type: table
+          page5:
+            type: table
+          page6:
+            type: table
+          page7:
+            type: table
+          page8:
+            type: table
+          page9:
+            type: table
+          page10:
+            type: table
+        methods:
+          - name: create
+          - name: render
+          - name: fillList
+          - name: onButtonBack
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: OnSteamWorkshopItemCreated
+            parameters:
+              - name: itemID
+              - name: bUserNeedsToAcceptWorkshopLegalAgreement
+          - name: OnSteamWorkshopItemNotCreated
+            parameters:
+              - name: result
+          - name: OnSteamWorkshopItemUpdated
+            parameters:
+              - name: bUserNeedsToAcceptWorkshopLegalAgreement
+          - name: OnSteamWorkshopItemNotUpdated
+            parameters:
+              - name: result

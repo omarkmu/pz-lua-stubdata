@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGrabCorpseAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: corpseBody
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISGrabCorpseAction"'
+        fields:
+          sound: {}
+          corpseBody:
+            nullable: true
+          corpse: {}
+          forceProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+                nullable: true
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

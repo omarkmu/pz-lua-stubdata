@@ -1,0 +1,65 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTutorialPageInfo:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: title
+                type: string
+              - name: text
+              - name: moreTextInfo
+              - name: nextcondition
+        staticFields:
+          Type:
+            defaultValue: '"ISTutorialPageInfo"'
+        fields:
+          data:
+            type: table
+          title:
+            type: string
+          text: {}
+          nextcondition: {}
+          moreTextInfo: {}
+        methods:
+          - name: initialise
+      ISTutorialSetInfo:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISTutorialSetInfo"'
+        fields:
+          pageCount:
+            type: number
+          currentPage:
+            type: number
+          pages:
+            type: table
+        methods:
+          - name: initialise
+          - name: addPage
+            parameters:
+              - name: pagetitle
+                type: string
+              - name: pagetext
+              - name: moreTextInfo
+              - name: pagenextcondition
+          - name: getCurrent
+            return:
+              - type: unknown
+          - name: applyPageToRichTextPanel
+            parameters:
+              - name: tutorialPanel
+                type: ISRichTextPanel
+          - name: hasNext
+            return:
+              - type: boolean
+          - name: hasPrevious
+            return:
+              - type: boolean
+          - name: update
+            parameters:
+              - name: tutorialPanel

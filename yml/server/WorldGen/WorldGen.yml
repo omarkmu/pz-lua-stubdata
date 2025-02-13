@@ -1,0 +1,15 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes: {}
+          features: {}
+          selection: {}
+          prefabs: {}
+          veins: {}
+          roads: {}
+          attachments: {}
+          similar: {}
+          priorities: {}

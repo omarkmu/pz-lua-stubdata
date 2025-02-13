@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidEmptyAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: containerObject
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidEmptyAction"'
+        fields:
+          sound: {}
+          containerObject: {}
+          container:
+            type: ISFluidContainer
+          amount: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean

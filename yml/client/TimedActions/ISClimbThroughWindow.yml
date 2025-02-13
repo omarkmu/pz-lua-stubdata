@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISClimbThroughWindow:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: time
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISClimbThroughWindow"'
+        fields:
+          item: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getNorth
+            parameters:
+              - name: object
+            return:
+              - type: unknown
+          - name: getFacingDirection
+            return:
+              - type: unknown
+          - name: getDeltaModifiers
+            parameters:
+              - name: deltas

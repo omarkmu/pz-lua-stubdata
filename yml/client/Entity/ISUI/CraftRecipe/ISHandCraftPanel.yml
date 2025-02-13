@@ -1,0 +1,121 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHandCraftPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: craftBench
+              - name: isoObject
+              - name: recipeQuery
+        staticFields:
+          Type:
+            defaultValue: '"ISHandCraftPanel"'
+          drawDirty:
+            type: boolean
+            nullable: true
+        fields:
+          rootTable:
+            nullable: true
+          recipeListMode:
+            type: boolean
+          recipeCategories:
+            nullable: true
+          recipesPanel:
+            nullable: true
+          inventoryPanel:
+            nullable: true
+          inventoryPanelColumn: {}
+          recipePanel:
+            nullable: true
+          recipePanelColumn: {}
+          tooltipRecipe:
+            nullable: true
+          tooltipCounter:
+            type: number
+          updateTimer:
+            type: number
+          isoObject:
+            nullable: true
+          activeTooltip:
+            nullable: true
+          _filterString:
+            type: string
+          _filterMode: {}
+          _categoryString: {}
+          logic: {}
+          tooltipLogic: {}
+          player: {}
+          craftBench: {}
+          recipeQuery: {}
+          leftHandedMode:
+            type: boolean
+          tooltipCounterTime:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createRecipeCategoryColumn
+          - name: onDoubleClick
+            parameters:
+              - name: item
+          - name: createRecipesColumn
+          - name: createInventoryPanel
+          - name: createRecipePanel
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: refreshRecipeList
+          - name: updateContainers
+          - name: updateTooltip
+          - name: deactivateTooltip
+          - name: getSelectedRecipe
+            return:
+              - type: unknown
+          - name: setRecipeList
+            parameters:
+              - name: _recipeList
+          - name: setRecipes
+            parameters:
+              - name: _recipeQuery
+          - name: onRecipeChanged
+            parameters:
+              - name: _recipe
+          - name: onUpdateRecipeList
+            parameters:
+              - name: _recipeList
+          - name: onShowManualSelectChanged
+            parameters:
+              - name: _showManualSelectInputs
+                type: boolean
+          - name: OnCloseWindow
+          - name: onStopCraft
+          - name: getCategoryList
+            return:
+              - type: unknown
+          - name: setRecipeFilter
+            parameters:
+              - name: _filterString
+              - name: _filterMode
+          - name: filterRecipeList
+          - name: onCategoryChanged
+            parameters:
+              - name: _category
+          - name: setRecipeListMode
+            parameters:
+              - name: _useListMode

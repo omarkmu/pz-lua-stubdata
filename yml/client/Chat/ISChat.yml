@@ -1,0 +1,293 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISChat:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISChat"'
+          maxLine:
+            defaultValue: "50"
+          focused:
+            defaultValue: "false"
+          allChatStreams: {}
+          defaultTabStream: {}
+          minControlOpaque:
+            defaultValue: "0.5"
+          minGeneralOpaque:
+            defaultValue: "0.0"
+          maxGeneralOpaque:
+            defaultValue: "1.0"
+          minTextEntryOpaque:
+            defaultValue: "0.3"
+          maxTextEntryOpaque:
+            defaultValue: "1.0"
+          minTextOpaque:
+            defaultValue: "0.8"
+          textEntryName:
+            defaultValue: '"chat text entry"'
+          tabPanelName:
+            defaultValue: '"chat tab panel"'
+          yResizeWidgetName:
+            defaultValue: '"chat bottom y resize widget"'
+          xyResizeWidgetName:
+            defaultValue: '"chat xy resize widget"'
+          closeButtonName:
+            defaultValue: '"chat close button"'
+          lockButtonName:
+            defaultValue: '"chat lock button"'
+          gearButtonName:
+            defaultValue: '"chat gear button"'
+          textPanelName:
+            defaultValue: '"chat text element"'
+          windowName:
+            defaultValue: '"chat window"'
+          instance:
+            type: ISChat
+            nullable: true
+          chat:
+            type: ISChat
+            nullable: true
+        fields:
+          showTimestamp:
+            type: boolean
+          showTitle:
+            type: boolean
+          minOpaque:
+            type: number
+          maxOpaque:
+            type: number
+          fadeTime:
+            type: number
+          chatFont:
+            type: string
+          opaqueOnFocus:
+            type: boolean
+          lockButton:
+            type: ISButton
+          gearButton:
+            type: ISButton
+          tabs:
+            type: table
+          tabCnt:
+            type: number
+          btnHeight:
+            type: number
+          currentTabID:
+            type: number
+          inset:
+            type: number
+          fontHgt: {}
+          textEntry:
+            type: ISTextEntryBox
+          panel:
+            type: ISTabPanel
+          mutedUsers:
+            type: table
+          locked:
+            type: boolean
+          timerTextEntry:
+            type: number
+          chatText:
+            type: table
+            nullable: true
+          defaultTab:
+            nullable: true
+          prevBtnTxt: {}
+          nextBtnTxt: {}
+          chatLockedButtonTexture: {}
+          chatUnLockedButtonTexture: {}
+          servermsg:
+            type: string
+          servermsgTimer:
+            type: number
+          fade: {}
+        methods:
+          - name: initialise
+          - name: pin
+          - name: createChildren
+          - name: setDrawFrame
+            parameters:
+              - name: visible
+                type: boolean
+          - name: collapse
+          - name: close
+          - name: onGearButtonClick
+          - name: createTab
+            return:
+              - type: ISRichTextPanel
+          - name: initFade
+            parameters:
+              - name: durationInS
+          - name: calcAlpha
+            parameters:
+              - name: defaultMin
+                type: number
+              - name: defaultMax
+                type: number
+              - name: fraction
+            return:
+              - type: number
+          - name: makeFade
+            parameters:
+              - name: fraction
+          - name: prerender
+          - name: render
+          - name: render_chatText
+          - name: onContextClear
+          - name: logChatCommand
+            parameters:
+              - name: command
+          - name: onCommandEntered
+          - name: onOtherKey
+            parameters:
+              - name: key
+          - name: focus
+          - name: unfocus
+          - name: updateChatPrefixSettings
+          - name: calcTabSize
+            return:
+              - type: table
+                nullable: true
+          - name: calcTabPos
+            return:
+              - type: table
+                nullable: true
+          - name: onActivateView
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onPressDown
+          - name: onPressUp
+          - name: isCursorOnTitlebar
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: mute
+            parameters:
+              - name: username
+                type: string
+          - name: isMuted
+            parameters:
+              - name: username
+                type: string
+            return:
+              - type: boolean
+          - name: RestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+        staticMethods:
+          - name: initChat
+          - name: onSwitchStream
+          - name: onTextChange
+          - name: onToggleTimestampPrefix
+          - name: onToggleTagPrefix
+          - name: onFontSizeChange
+            parameters:
+              - name: target
+              - name: value
+          - name: onMinOpaqueChange
+            parameters:
+              - name: target
+              - name: value
+          - name: onMaxOpaqueChange
+            parameters:
+              - name: target
+              - name: value
+          - name: onFadeTimeChange
+            parameters:
+              - name: target
+              - name: value
+          - name: onFocusOpaqueChange
+            parameters:
+              - name: target
+              - name: value
+          - name: addLineInChat
+            parameters:
+              - name: message
+              - name: tabID
+          - name: onToggleChatBox
+            parameters:
+              - name: key
+          - name: onKeyKeepPressed
+            parameters:
+              - name: key
+          - name: onTabAdded
+            parameters:
+              - name: tabTitle
+                type: string
+              - name: tabID
+          - name: onTabRemoved
+            parameters:
+              - name: tabTitle
+                type: string
+              - name: tabID
+          - name: onSetDefaultTab
+            parameters:
+              - name: defaultTabTitle
+                type: string
+          - name: onMouseUp
+            parameters:
+              - name: target
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDown
+            parameters:
+              - name: target
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: ISTabPanelOnMouseDown
+            parameters:
+              - name: target
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: ontick
+          - name: unfocusEvent
+          - name: createChat

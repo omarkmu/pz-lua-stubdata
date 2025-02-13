@@ -1,0 +1,137 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidBar:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _player
+              - name: _resource
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidBar"'
+        fields:
+          ratioOrig:
+            type: number
+          ratioNew:
+            type: number
+          innerX:
+            type: number
+          innerY:
+            type: number
+          innerW:
+            type: number
+          innerH:
+            type: number
+          container:
+            nullable: true
+          containerAdd:
+            nullable: true
+          containerMixed:
+            nullable: true
+          showMixed:
+            type: boolean
+            nullable: true
+          toolTip:
+            type: ISToolTipInv
+            nullable: true
+          detailInnerColor:
+            type: table
+          gradientTex: {}
+          bubblesTex: {}
+          bubblesAlpha:
+            type: number
+          gradientAlpha:
+            type: number
+          triangleWidth:
+            type: number
+          player: {}
+          fluidColor:
+            type: table
+          fluidAddColor:
+            type: table
+          drawMeasures:
+            type: boolean
+          doToolTip:
+            type: boolean
+          differenceAlpha:
+            type: number
+          resource:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: getRatioY
+            parameters:
+              - name: _ratio
+                type: number
+            return:
+              - type: number
+              - type: unknown
+          - name: render
+          - name: drawBubbles
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _alpha
+          - name: drawAmountLine
+            parameters:
+              - name: _y
+          - name: drawTriangle
+            parameters:
+              - name: _size
+              - name: _sx
+              - name: _y
+              - name: _col
+              - name: _xmod
+          - name: setContainer
+            parameters:
+              - name: _fluidContainer
+                nullable: true
+          - name: setContainerAdd
+            parameters:
+              - name: _fluidContainer
+                nullable: true
+          - name: setContainerMixed
+            parameters:
+              - name: _fluidContainer
+                nullable: true
+              - name: _showMixed
+                type: boolean
+                nullable: true
+          - name: setRatioNew
+            parameters:
+              - name: _ratio
+                type: number
+          - name: resetRatioNew
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: activateToolTip
+          - name: deactivateToolTip

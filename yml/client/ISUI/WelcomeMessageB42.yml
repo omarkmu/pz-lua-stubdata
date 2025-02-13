@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WelcomeMessageB42:
+        staticMethods:
+          - name: doMsg
+      WelcomeMessageUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"WelcomeMessageUI"'
+        fields:
+          refreshNeeded:
+            type: boolean
+          screenshot: {}
+          titleLabel:
+            type: ISLabel
+          changeLabel:
+            type: ISLabel
+          rich:
+            type: ISRichTextPanel
+        methods:
+          - name: create
+          - name: initialise
+          - name: render

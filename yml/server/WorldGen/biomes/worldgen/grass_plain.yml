@@ -1,0 +1,13 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      worldgen:
+        staticFields:
+          biomes.grass_plain: {}
+          biomes.grass_plain_boulder_none: {}
+          biomes.grass_plain_boulder_very_low: {}
+          biomes.grass_plain_boulder_low: {}
+          biomes.grass_plain_boulder_medium: {}
+          biomes.grass_plain_boulder_high: {}
+          biomes.grass_plain_boulder_very_high: {}

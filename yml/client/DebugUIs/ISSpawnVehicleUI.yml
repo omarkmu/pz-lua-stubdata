@@ -1,0 +1,85 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSpawnVehicleUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISSpawnVehicleUI"'
+        fields:
+          vehicleComboBox:
+            type: ISComboBox
+          boolOptions:
+            type: ISTickBox
+          spawn:
+            type: ISButton
+          close:
+            type: ISButton
+          getKey:
+            type: ISButton
+          repair:
+            type: ISButton
+          vehicle: {}
+          name:
+            nullable: true
+          player: {}
+          titlebarbkg: {}
+        methods:
+          - name: initialise
+          - name: onSelectOption
+          - name: populateList
+          - name: destroy
+          - name: getVehicle
+            return:
+              - type: unknown
+          - name: update
+          - name: onClick
+            parameters:
+              - name: button
+          - name: titleBarHeight
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number

@@ -1,0 +1,88 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RadioScriptDebugger:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+        staticFields:
+          Type:
+            defaultValue: '"RadioScriptDebugger"'
+          instance:
+            type: RadioScriptDebugger
+            nullable: true
+        fields:
+          radio: {}
+          scriptManager: {}
+          infoList:
+            type: ISScrollingListBox
+          channelsList:
+            type: ISScrollingListBox
+          broadcastList:
+            type: ISScrollingListBox
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+          panelTitle:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onClickClose
+          - name: OnDaysListMouseDown
+            parameters:
+              - name: item
+          - name: populateList
+            parameters:
+              - name: _force
+          - name: drawChannelList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: populateInfoList
+            parameters:
+              - name: _radioChannel
+          - name: drawInfoList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: populateBroadcastList
+            parameters:
+              - name: _bc
+          - name: drawBroadcastList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: update
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _radioChannel
+            return:
+              - type: RadioScriptDebugger
+                nullable: true

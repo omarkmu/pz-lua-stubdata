@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBulletTracerEffect:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ISBulletTracerEffect"'
+        fields:
+          optionToSlider:
+            type: table
+          ignoreSlider:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: setSliderValues
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: onResetToDefault

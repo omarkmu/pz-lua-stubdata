@@ -1,0 +1,473 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CharacterCreationMain:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"CharacterCreationMain"'
+          savefile:
+            defaultValue: '"saved_outfits.txt"'
+          forceUpdateCombo:
+            type: boolean
+            nullable: true
+          instance:
+            type: CharacterCreationMain
+            nullable: true
+        fields:
+          avatarPanel:
+            type: CharacterCreationAvatar
+          characterPanel:
+            type: CharacterCreationMainCharacterPanel
+          columnWidth: {}
+          comboWid: {}
+          xOffset:
+            type: number
+          yOffset:
+            type: number
+          clothingTextureComboWidth:
+            type: number
+          backButton:
+            type: ISButton
+          presetPanel: {}
+          savedBuilds:
+            type: ISComboBox
+          saveBuildButton:
+            type: ISButton
+          deleteBuildButton:
+            type: ISButton
+          playButton:
+            type: ISButton
+          randomButton:
+            type: ISButton
+          inputModal:
+            type: ISTextBox
+          forenameEntry:
+            type: ISTextEntryBox
+          surnameEntry:
+            type: ISTextEntryBox
+          genderCombo:
+            type: ISComboBox
+          skinColorLbl:
+            type: ISLabel
+          skinColors:
+            type: table
+          skinColorButton:
+            type: ISButton
+          colorPickerSkin:
+            type: ISColorPicker
+          chestHairLbl:
+            type: ISLabel
+          chestHairTickBox:
+            type: ISTickBox
+          hairTypeLbl:
+            type: ISLabel
+          hairTypeCombo:
+            type: ISComboBox
+          hairType:
+            type: number
+          hairColorLbl:
+            type: ISLabel
+          hairColorButton:
+            type: ISButton
+          colorPickerHair:
+            type: ISColorPicker
+          hairStubbleLbl:
+            type: ISLabel
+          hairStubbleTickBox:
+            type: ISTickBox
+          voiceLbl:
+            type: ISLabel
+          voiceRect:
+            type: ISRect
+          voiceTypeLbl:
+            type: ISLabel
+          voiceTypeCombo:
+            type: ISComboBox
+          voicePitchLbl:
+            type: ISLabel
+          voicePitchSlider:
+            type: ISSliderPanel
+          voiceDemoButton:
+            type: ISButton
+          soundPlayer: {}
+          soundRef:
+            type: number
+          beardLbl:
+            type: ISLabel
+          beardRect:
+            type: ISRect
+          beardTypeLbl:
+            type: ISLabel
+          beardTypeCombo:
+            type: ISComboBox
+          beardStubbleLbl:
+            type: ISLabel
+          beardStubbleTickBox:
+            type: ISTickBox
+          clothingComboLabel:
+            type: table
+          clothingCombo:
+            type: table
+          clothingColorBtn:
+            type: table
+          clothingTextureCombo:
+            type: table
+          clothingDecalCombo:
+            type: table
+          clothingPanel:
+            type: table
+          clothingLbl:
+            type: ISLabel
+          originalYOffset:
+            type: number
+          colorPicker:
+            type: ISColorPickerHSB
+          clothingDebugCreated:
+            type: boolean
+          clothingWidgets:
+            type: table
+          outfitLbl:
+            type: ISLabel
+            nullable: true
+          outfitCombo:
+            type: ISComboBox
+            nullable: true
+          randomizeOutfitBtn:
+            type: ISButton
+            nullable: true
+          female: {}
+          decalItem: {}
+          skinColor:
+            type: number
+          itemheightoverride:
+            type: table
+          colorPanel:
+            type: table
+          rArrow: {}
+          disabledRArrow: {}
+          lArrow: {}
+          disabledLArrow: {}
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: create
+          - name: deleteBuildStep1
+          - name: deleteBuildStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: saveBuildValidate
+            parameters:
+              - name: text
+            return:
+              - type: boolean
+          - name: saveBuildStep1
+          - name: saveBuildStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+              - name: param2
+                type: unknown
+          - name: createNameAndGender
+          - name: createBodyTypeBtn
+          - name: createHairTypeBtn
+          - name: createVoiceTypeBtn
+          - name: createBeardTypeBtn
+          - name: createClothingComboDebug
+            parameters:
+              - name: bodyLocation
+          - name: createClothingBtn
+          - name: createClothingCombo
+            parameters:
+              - name: bodyLocation
+          - name: arrangeClothingUI
+          - name: debugClothingDefinitions
+          - name: shouldShowAllOutfits
+            return:
+              - type: boolean
+          - name: checkAllClothingOptions
+          - name: initClothing
+          - name: removeAllClothingWidgets
+          - name: doClothingCombo
+            parameters:
+              - name: definition
+              - name: erasePrevious
+          - name: updateSelectedClothingCombo
+          - name: updateColorButton
+            parameters:
+              - name: bodyLocation
+              - name: clothing
+          - name: updateClothingTextureCombo
+            parameters:
+              - name: bodyLocation
+              - name: clothing
+          - name: initClothingDebug
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+                nullable: true
+          - name: disableBtn
+          - name: onHairColorMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onHairColorPicked
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: syncTorsoWithUI
+          - name: syncUIWithTorso
+          - name: onGenderSelected
+            parameters:
+              - name: combo
+          - name: randomVoice
+          - name: randomGenericOutfit
+          - name: dressWithDefinitions
+            parameters:
+              - name: definition
+              - name: resetWornItems
+          - name: onRandomCharacter
+          - name: onChestHairSelected
+            parameters:
+              - name: index
+              - name: selected
+          - name: onShavedHairSelected
+            parameters:
+              - name: index
+              - name: selected
+          - name: onBeardStubbleSelected
+            parameters:
+              - name: index
+              - name: selected
+          - name: onSkinColorSelected
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSkinColorPicked
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: onHairTypeSelected
+            parameters:
+              - name: combo
+          - name: onBeardTypeSelected
+            parameters:
+              - name: combo
+          - name: onVoiceTypeSelected
+            parameters:
+              - name: combo
+          - name: onOutfitSelected
+            parameters:
+              - name: combo
+                nullable: true
+          - name: onRandomizeOutfitClicked
+          - name: onClothingComboSelected
+            parameters:
+              - name: combo
+              - name: bodyLocation
+          - name: onClothingColorClicked
+            parameters:
+              - name: button
+                type: ISButton
+              - name: bodyLocation
+          - name: onClothingColorPicked
+            parameters:
+              - name: color
+              - name: mouseUp
+              - name: bodyLocation
+          - name: onClothingTextureComboSelected
+            parameters:
+              - name: combo
+              - name: bodyLocation
+          - name: onClothingDecalComboSelected
+            parameters:
+              - name: combo
+              - name: bodyLocation
+          - name: createAvatar
+          - name: setAvatarFromUI
+          - name: rescaleAvatarViewer
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: initPlayer
+          - name: update
+          - name: prerender
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: loadJoypadButtons
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: requiredSize
+            parameters:
+              - name: panel
+            return:
+              - type: number
+              - type: number
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: getVoicePrefix
+            return:
+              - type: string
+          - name: getVoiceType
+            return:
+              - type: string
+          - name: getVoicePitch
+            return:
+              - type: number
+          - name: showColorPicker
+            parameters:
+              - name: picker
+        staticMethods:
+          - name: loadOutfit
+            parameters:
+              - name: self
+              - name: box
+          - name: readSavedOutfitFile
+            return:
+              - type: table
+          - name: writeSaveFile
+            parameters:
+              - name: options
+      CharacterCreationMainCharacterPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"CharacterCreationMainCharacterPanel"'
+        fields:
+          scrollBar:
+            type: boolean
+          joypadButtons: {}
+          prevJoypadIndexY:
+            type: number
+        methods:
+          - name: prerender
+          - name: render
+          - name: positionRelativeToScrollBar
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+          - name: loadJoypadButtons
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      CharacterCreationMainPresetPanel:
+        extends: ISPanelJoypad
+        staticFields:
+          Type:
+            defaultValue: '"CharacterCreationMainPresetPanel"'
+        methods:
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData

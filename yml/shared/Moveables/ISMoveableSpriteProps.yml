@@ -1,0 +1,1029 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      InfoPanelFlags:
+        staticFields:
+          debug:
+            nullable: true
+          name:
+            type: string
+            nullable: true
+          weight:
+            type: string
+            nullable: true
+          hasItems:
+            type: boolean
+            nullable: true
+          canRotate:
+            type: boolean
+            nullable: true
+          hasSkill:
+            type: boolean
+            nullable: true
+          nameSkill:
+            nullable: true
+          perk:
+            nullable: true
+          levelSkill:
+            type: number
+            nullable: true
+          tool:
+            type: boolean
+            nullable: true
+          hasTool:
+            type: boolean
+            nullable: true
+          toolString:
+            type: table
+            nullable: true
+          tool2:
+            nullable: true
+          hasTool2:
+            type: boolean
+            nullable: true
+          tool2String:
+            type: table
+            nullable: true
+          hasRepairParts:
+            type: boolean
+            nullable: true
+          partsString:
+            type: table
+            nullable: true
+          scrapChance:
+            type: number
+            nullable: true
+          repairChance:
+            type: number
+            nullable: true
+          breakChance:
+            type: number
+            nullable: true
+          hasCompost:
+            type: boolean
+            nullable: true
+          tooHeavy:
+            type: boolean
+            nullable: true
+          tooHot:
+            nullable: true
+          itemsOnSurface:
+            type: boolean
+            nullable: true
+          hasWater:
+            nullable: true
+          notEmpty:
+            nullable: true
+          doorBarricaded:
+            nullable: true
+          doorInFrame:
+            nullable: true
+          floorAtTopOfStairs:
+            type: boolean
+            nullable: true
+          windowOpen:
+            nullable: true
+          windowBarricaded:
+            nullable: true
+          windowInFrame:
+            nullable: true
+          needStandingInside:
+            nullable: true
+          mustPlaceRoomRoof:
+            nullable: true
+          isOperational:
+            nullable: true
+          removePropane:
+            nullable: true
+      SpriteGridCache: {}
+      ISMoveableSpriteProps:
+        staticFields:
+          debug:
+            defaultValue: "false"
+          itemInstances: {}
+          multiSpriteFloorRadius:
+            defaultValue: "3"
+          ghc:
+            defaultValue: getCore():getGoodHighlitedColor()
+          bhc:
+            defaultValue: getCore():getBadHighlitedColor()
+        fields:
+          sprite:
+            type: string
+          spriteProps: {}
+          spriteName: {}
+          blocksPlacement: {}
+          isHigh: {}
+          isLow: {}
+          isTable: {}
+          isTableTop: {}
+          isStackable: {}
+          isWaterCollector: {}
+          material: {}
+          material2:
+            type: boolean
+            nullable: true
+          material3:
+            type: boolean
+            nullable: true
+          canScrap:
+            type: boolean
+          scrapUseTool:
+            type: boolean
+          scrapUseSkill:
+            type: boolean
+          scrapSize:
+            type: string
+          scrapToolUses:
+            type: number
+          surface:
+            type: number
+            nullable: true
+          surfaceIsOffset: {}
+          yOffsetCursor:
+            type: number
+          isMoveable:
+            type: boolean
+          facing:
+            nullable: true
+          isoType:
+            type: string
+          groupName:
+            nullable: true
+          name:
+            type: string
+          customItem:
+            nullable: true
+          type:
+            type: string
+          pickUpTool:
+            nullable: true
+          placeTool:
+            nullable: true
+          canBreak:
+            nullable: true
+          pickUpLevel:
+            type: number
+            nullable: true
+          rawWeight:
+            type: number
+            nullable: true
+          weight:
+            type: number
+          isClosedState:
+            type: boolean
+          Noffset:
+            type: number
+            nullable: true
+          Soffset:
+            type: number
+            nullable: true
+          Woffset:
+            type: number
+            nullable: true
+          Eoffset:
+            type: number
+            nullable: true
+          linkedOffset:
+            type: number
+            nullable: true
+          linkedLoc:
+            nullable: true
+          wallOverlay: {}
+          ignoreSurfaceSnap: {}
+          isGridExtensionTile: {}
+          allowDoorFrame: {}
+          isMultiSprite:
+            type: boolean
+          isForceSingleItem:
+            type: boolean
+          sheetName: {}
+          spriteID:
+            type: number
+            nullable: true
+          container:
+            nullable: true
+          keyId:
+            nullable: true
+        methods:
+          - name: getYOffsetCursor
+            return:
+              - type: number
+          - name: instanceItem
+            parameters:
+              - name: _spriteNameOverride
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getFaceDirectionFromSpriteName
+            parameters:
+              - name: _face
+            return:
+              - type: unknown
+          - name: hasFaces
+            return:
+              - type: boolean
+          - name: getFaces
+            return:
+              - type: table
+          - name: getIndexedFaces
+            return:
+              - type: table
+          - name: getFaceIndex
+            return:
+              - type: number
+          - name: getObjectHealth
+            return:
+              - type: number
+          - name: getBreakChance
+            parameters:
+              - name: _player
+            return:
+              - type: number
+          - name: doBreakTest
+            parameters:
+              - name: _player
+            return:
+              - type: boolean
+          - name: playBreakSound
+            parameters:
+              - name: _character
+              - name: _object
+          - name: addBreakDebris
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+          - name: addInventoryItemToSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _item
+              - name: _max
+              - name: _chance
+          - name: getActionTime
+            parameters:
+              - name: _player
+              - name: _mode
+            return:
+              - type: number
+          - name: hasRequiredSkill
+            parameters:
+              - name: _player
+              - name: _mode
+                type: string
+            return:
+              - type: boolean
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: hasTool
+            parameters:
+              - name: _player
+              - name: _mode
+                type: string
+            return:
+              - type: boolean
+                nullable: true
+          - name: getInfoPanelDescription
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _player
+              - name: _mode
+            return:
+              - type: table
+                nullable: true
+          - name: getToolString
+            parameters:
+              - name: _itemTypes
+                nullable: true
+              - name: _itemNames
+            return:
+              - type: table
+          - name: getPartsString
+            parameters:
+              - name: _inventory
+              - name: _parts
+                type: table
+            return:
+              - type: table
+          - name: getAllRepairParts
+            return:
+              - type: table
+          - name: getRepairPartsForMaterial
+            parameters:
+              - name: _material
+              - name: _partTable
+              - name: _damageFactor
+              - name: _objectCount
+            return:
+              - type: unknown
+          - name: getInfoPanelFlagsGeneral
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _player
+              - name: _mode
+          - name: getInfoPanelFlagsPerTile
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _player
+              - name: _mode
+          - name: findOnSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _spriteName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: findInInventory
+            parameters:
+              - name: _character
+              - name: _spriteName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getObjectMoveProps
+            parameters:
+              - name: _obj
+                type: IsoObject
+            return:
+              - type: ISMoveableSpriteProps
+                nullable: true
+          - name: isFreeTile
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: objectNoContainerOrEmpty
+            parameters:
+              - name: _object
+            return:
+              - type: boolean
+          - name: getSpriteGridCache
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _verifyOnly
+                type: boolean
+              - name: _getWorldObjects
+            return:
+              - type: boolean
+          - name: getSpriteGridInfo
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _getWorldObjects
+                type: boolean
+            return:
+              - type: SpriteGridCache | table
+                nullable: true
+          - name: canPickUpMoveable
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: canPickUpMoveableInternal
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _isMulti
+                type: boolean
+            return:
+              - type: boolean
+                nullable: true
+          - name: pickUpMoveableViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+          - name: pickUpMoveable
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _createItem
+                type: boolean
+              - name: _forceAllow
+                type: boolean
+            return:
+              - type: boolean | table
+                nullable: true
+          - name: pickUpMoveableInternal
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _sprInstance
+              - name: _spriteName
+                type: string
+              - name: _createItem
+              - name: _rotating
+            return:
+              - type: unknown
+                nullable: true
+          - name: getTopTable
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: unknown
+                nullable: true
+          - name: getTotalTableHeight
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: number
+          - name: findInInventoryMultiSprite
+            parameters:
+              - name: _character
+              - name: _spriteName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+              - type: string
+                nullable: true
+          - name: canPlaceMoveable
+            parameters:
+              - name: _character
+                type: string
+              - name: _square
+                type: IsoGridSquare
+              - name: _item
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: isWallBetweenParts
+            parameters:
+              - name: _spriteGrid
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _z
+                type: number
+            return:
+              - type: boolean
+          - name: isSquareAtTopOfStairs
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: canPlaceMoveableInternal
+            parameters:
+              - name: _character
+                nullable: true
+              - name: _square
+                type: IsoGridSquare
+              - name: _item
+                nullable: true
+              - name: _forceTypeObject
+            return:
+              - type: boolean
+                nullable: true
+          - name: placeMoveableViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+                nullable: true
+          - name: placeMoveable
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+            return:
+              - type: boolean
+                nullable: true
+          - name: placeMoveableInternal
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _item
+              - name: _spriteName
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: snapFaceToSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+            return:
+              - type: number
+                nullable: true
+          - name: getWallForFacing
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _dir
+                type: string
+                nullable: true
+              - name: _mode
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getMoveableOverlayFromObject
+            parameters:
+              - name: _object
+            return:
+              - type: unknown
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: getSpecificMoveableObjectFromSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _objectType
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getFaceSpriteFromParentObject
+            parameters:
+              - name: _object
+                nullable: true
+            return:
+              - type: string
+                nullable: true
+          - name: canManuallyRotate
+            return:
+              - type: boolean
+          - name: canRotateDirection
+            return:
+              - type: boolean
+          - name: canRotateMoveable
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+                nullable: true
+              - name: _origProps
+                type: ISMoveableSpriteProps
+            return:
+              - type: boolean
+          - name: canRotateMoveableInternal
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+            return:
+              - type: boolean
+          - name: rotateMoveableViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+                nullable: true
+          - name: rotateMoveable
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+          - name: rotateMoveableInternal
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+          - name: walkAdj
+            parameters:
+              - name: character
+              - name: square
+                type: IsoGridSquare
+              - name: keepActions
+                type: boolean
+            return:
+              - type: boolean
+                nullable: true
+          - name: walkToAndEquip
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _mode
+            return:
+              - type: boolean
+          - name: getSoundFromTool
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _character
+              - name: _mode
+            return:
+              - type: unknown
+                nullable: true
+          - name: getScrapToolUses
+            return:
+              - type: number
+          - name: scrapWalkToAndEquip
+            parameters:
+              - name: _character
+            return:
+              - type: boolean
+                nullable: true
+          - name: getScrapItemsList
+            parameters:
+              - name: _character
+            return:
+              - type: table
+                nullable: true
+          - name: addScrapItemToList
+            parameters:
+              - name: _list
+              - name: _item
+              - name: _max
+              - name: _chance
+              - name: _skillMod
+              - name: _doSizeMod
+            return:
+              - type: number
+          - name: addOrDropItem
+            parameters:
+              - name: _character
+              - name: _item
+          - name: addAllScrapItemsToInventory
+            parameters:
+              - name: _character
+              - name: _list
+                type: table
+                nullable: true
+            return:
+              - type: number
+          - name: addAllScrapItemsToSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _list
+                type: table
+                nullable: true
+            return:
+              - type: number
+          - name: scrapObject
+            parameters:
+              - name: _character
+            return:
+              - type: boolean
+                nullable: true
+          - name: getAdditionalObjects
+            parameters:
+              - name: _object
+            return:
+              - type: table
+          - name: repairObject
+            parameters:
+              - name: _character
+            return:
+              - type: boolean
+                nullable: true
+          - name: repairObjectInternal
+            parameters:
+              - name: _character
+            return:
+              - type: boolean
+                nullable: true
+          - name: getRepairDamageFactor
+            parameters:
+              - name: _object
+            return:
+              - type: number
+              - type: number
+          - name: repairHaloNoteCheck
+            parameters:
+              - name: _character
+              - name: _didRepair
+          - name: scrapHaloNoteCheck
+            parameters:
+              - name: _character
+              - name: _itemsAdded
+                type: number
+          - name: scrapObjectInternal
+            parameters:
+              - name: _character
+              - name: _scrapDef
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _scrapResult
+              - name: _chance
+              - name: _perkName
+                type: string
+            return:
+              - type: number
+          - name: scrapGiveXp
+            parameters:
+              - name: _character
+              - name: _scrapDef
+                type: boolean
+          - name: getChanceByDef
+            parameters:
+              - name: scrapDef
+              - name: chr
+            return:
+              - type: number
+          - name: canScrapObject
+            parameters:
+              - name: _character
+            return:
+              - type: table
+              - type: number
+              - type: unknown
+          - name: canScrapObjectInternal
+            parameters:
+              - name: _result
+              - name: _object
+            return:
+              - type: boolean
+          - name: isFloorAtTopOfStairs
+            parameters:
+              - name: object
+            return:
+              - type: boolean
+          - name: getScrapSkillChance
+            parameters:
+              - name: _player
+            return:
+              - type: number
+              - type: unknown
+          - name: hasScrapTool
+            parameters:
+              - name: _player
+              - name: _doSecond
+            return:
+              - type: boolean
+          - name: getScrapActionTime
+            parameters:
+              - name: _player
+            return:
+              - type: number
+          - name: getScrapSound
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+                nullable: true
+          - name: scrapObjectViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+          - name: startScrapAction
+            parameters:
+              - name: _action
+            return:
+              - type: boolean
+          - name: canRepairObject
+            parameters:
+              - name: _character
+            return:
+              - type: table
+              - type: number
+              - type: unknown
+          - name: canRepairObjectInternal
+            parameters:
+              - name: _result
+              - name: _object
+            return:
+              - type: boolean
+          - name: getRepairSkillChance
+            parameters:
+              - name: _player
+            return:
+              - type: number
+              - type: unknown
+          - name: checkForRepairPart
+            parameters:
+              - name: _inventory
+              - name: _itemType
+              - name: _amount
+              - name: _consume
+            return:
+              - type: boolean
+                nullable: true
+          - name: consumeRepairPart
+            parameters:
+              - name: _inventory
+              - name: _itemType
+              - name: _amount
+            return:
+              - type: boolean
+          - name: hasRepairParts
+            parameters:
+              - name: _player
+            return:
+              - type: boolean
+          - name: hasRepairTool
+            parameters:
+              - name: _player
+              - name: _doSecond
+            return:
+              - type: boolean
+          - name: getRepairActionTime
+            parameters:
+              - name: _player
+            return:
+              - type: number
+          - name: getRepairSound
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+                nullable: true
+          - name: repairObjectViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+          - name: isBreakablePlant
+            parameters:
+              - name: _object
+            return:
+              - type: boolean
+        staticMethods:
+          - name: fromObject
+            parameters:
+              - name: _object
+            return:
+              - type: ISThumpableSpriteProps | ISMoveableSpriteProps
+          - name: fromObjectForRepair
+            parameters:
+              - name: _object
+            return:
+              - type: ISMoveableSpriteProps | ISThumpableSpriteProps
+          - name: addLineToInfoTable
+            parameters:
+              - name: _table
+                type: table
+              - name: _lineA
+                type: string
+              - name: _rA
+                type: number
+              - name: _gA
+                type: number
+              - name: _bA
+                type: number
+              - name: _lineB
+                type: string
+                nullable: true
+              - name: _rB
+                type: number
+                nullable: true
+              - name: _gB
+                type: number
+                nullable: true
+              - name: _bB
+                type: number
+                nullable: true
+            return:
+              - type: table
+          - name: OnDynamicMovableRecipe
+            parameters:
+              - name: _sprite
+              - name: _recipe
+              - name: _item
+              - name: _player
+          - name: new
+            parameters:
+              - name: _sprite
+                type: string
+            return:
+              - type: ISMoveableSpriteProps
+      ISThumpableSpriteProps:
+        fields:
+          sprite: {}
+          spriteName: {}
+          canScrap:
+            type: boolean
+          scrapThumpable:
+            type: boolean
+          isFromObject:
+            type: boolean
+          object: {}
+          name:
+            type: string
+            nullable: true
+          material:
+            type: string
+          material2:
+            type: string | boolean
+          material3:
+            type: string | boolean
+          groupName:
+            nullable: true
+          customName:
+            nullable: true
+        methods:
+          - name: getYOffsetCursor
+            return:
+              - type: number
+          - name: getInfoPanelDescription
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _object
+              - name: _player
+              - name: _mode
+            return:
+              - type: table
+                nullable: true
+          - name: addToolString
+            parameters:
+              - name: infoTable
+              - name: tag
+              - name: hasTool
+            return:
+              - type: unknown
+                nullable: true
+          - name: walkToAndEquip
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _mode
+            return:
+              - type: boolean
+          - name: getScrapActionTime
+            parameters:
+              - name: _character
+            return:
+              - type: number
+          - name: getScrapSound
+            parameters:
+              - name: _character
+            return:
+              - type: unknown
+                nullable: true
+          - name: scrapObjectViaCursor
+            parameters:
+              - name: _character
+              - name: _square
+                type: IsoGridSquare
+              - name: _origSpriteName
+                type: string
+              - name: _moveCursor
+          - name: canScrapObject
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: table
+              - type: number
+              - type: string
+          - name: startScrapAction
+            parameters:
+              - name: _action
+            return:
+              - type: boolean
+        staticMethods:
+          - name: new
+            parameters:
+              - name: object
+            return:
+              - type: ISThumpableSpriteProps

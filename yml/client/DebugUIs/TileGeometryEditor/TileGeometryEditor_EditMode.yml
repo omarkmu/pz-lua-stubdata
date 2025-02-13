@@ -1,0 +1,916 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TileGeometryEditor_ListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_ListBox"'
+        methods:
+          - name: prerender
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: unknown
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: indexOf
+            parameters:
+              - name: text
+            return:
+              - type: number
+      TileGeometryEditor_GeometryListBox:
+        extends: TileGeometryEditor_ListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: TileGeometryEditor_EditMode_Geometry
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_GeometryListBox"'
+        fields:
+          editor:
+            type: TileGeometryEditor_EditMode_Geometry
+          scene: {}
+          selected: {}
+        methods:
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_BoxPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_BoxPanel"'
+        fields:
+          extentBoxes:
+            type: table
+          movingFace:
+            nullable: true
+          editor: {}
+          scene: {}
+        methods:
+          - name: createChildren
+          - name: createEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: id
+            return:
+              - type: ISTextEntryBox
+          - name: onTextEntered
+            parameters:
+              - name: entry
+              - name: id
+          - name: render
+          - name: toUI
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: configGizmoAux
+            parameters:
+              - name: face
+              - name: extentX
+              - name: extentY
+              - name: extentZ
+      TileGeometryEditor_CylinderPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_CylinderPanel"'
+        fields:
+          radiusEntry:
+            type: ISTextEntryBox
+          zMinEntry:
+            type: ISTextEntryBox
+          zMaxEntry:
+            type: ISTextEntryBox
+          movingFace:
+            nullable: true
+          editor: {}
+          scene: {}
+        methods:
+          - name: createChildren
+          - name: createEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: id
+            return:
+              - type: ISTextEntryBox
+          - name: onTextEntered
+            parameters:
+              - name: entry
+              - name: id
+          - name: render
+          - name: toUI
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: configGizmoAux
+            parameters:
+              - name: face
+      TileGeometryEditor_PropertiesPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_PropertiesPanel"'
+        fields:
+          surfaceEntry:
+            type: ISTextEntryBox
+          itemHeightEntry:
+            type: ISTextEntryBox
+          tickBox:
+            type: ISTickBox
+          movingFace:
+            nullable: true
+          vector3: {}
+          editor: {}
+          scene: {}
+        methods:
+          - name: createChildren
+          - name: createEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: id
+            return:
+              - type: ISTextEntryBox
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+              - name: tickBox
+          - name: toUI
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: configGizmoAux
+            parameters:
+              - name: face
+          - name: shouldShowInScene
+            return:
+              - type: unknown
+      TileGeometryEditor_DepthTexturePanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_DepthTexturePanel"'
+        fields:
+          editor: {}
+          tilePicker: {}
+        methods:
+          - name: render
+      TileGeometryEditor_SeatingPropertiesPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_SeatingPropertiesPanel"'
+        fields:
+          tickBox:
+            type: ISTickBox
+          editor: {}
+          scene: {}
+        methods:
+          - name: createChildren
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+              - name: tickBox
+          - name: toUI
+      TileGeometryEditor_EditMode:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: editor
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditMode"'
+        fields:
+          width: {}
+          height: {}
+          editor:
+            type: number
+          tilePicker: {}
+          tilePicker2: {}
+          scene: {}
+        methods:
+          - name: java0
+            parameters:
+              - name: func
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+            return:
+              - type: unknown
+          - name: java7
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+            return:
+              - type: unknown
+          - name: activate
+          - name: deactivate
+          - name: prerenderEditor
+          - name: renderTileName
+          - name: renderSceneTiles
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDownScene
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getValidGizmos
+            return:
+              - type: table
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onSave
+      TileGeometryEditor_EditMode_Geometry:
+        extends: TileGeometryEditor_EditMode
+        constructors:
+          - parameters:
+              - name: x
+                type: number | TileGeometryEditor
+              - name: y
+                type: number
+                nullable: true
+              - name: w
+                type: number
+                nullable: true
+              - name: h
+                type: number
+                nullable: true
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditMode_Geometry"'
+        fields:
+          listBox:
+            type: TileGeometryEditor_GeometryListBox
+          belowList:
+            type: ISPanel
+          button1:
+            type: ISButton
+          button2:
+            type: ISButton
+          button3:
+            type: ISButton
+          button4:
+            type: ISButton
+          button5:
+            type: ISButton
+          button5_1:
+            type: ISButton
+          button5_2:
+            type: ISButton
+          button6:
+            type: ISButton
+          button7:
+            type: ISButton
+          boxPanel:
+            type: TileGeometryEditor_BoxPanel
+          cylinderPanel:
+            type: TileGeometryEditor_CylinderPanel
+          propertiesPanel:
+            type: TileGeometryEditor_PropertiesPanel
+          depthTexturePanel:
+            type: TileGeometryEditor_DepthTexturePanel
+          tempTranslate: {}
+          tempExtentsMin: {}
+          tempExtentsMax: {}
+          animation:
+            type: string
+        methods:
+          - name: createChildren
+          - name: activate
+          - name: deactivate
+          - name: prerenderEditor
+          - name: renderTileName
+          - name: prerenderGeometry
+          - name: prerenderBox
+          - name: prerenderCylinder
+          - name: prerenderProperties
+          - name: prerenderDepthTexturePanel
+          - name: onMouseDownScene
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getValidGizmos
+            return:
+              - type: table
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: setGeometryList
+          - name: onToggleGizmo
+          - name: onToggleGeometryVisible
+          - name: onAddPolygonXY
+            return:
+              - type: unknown
+                nullable: true
+          - name: onAddPolygonXZ
+            return:
+              - type: unknown
+                nullable: true
+          - name: onAddPolygonYZ
+            return:
+              - type: unknown
+                nullable: true
+          - name: pickUniqueName
+            parameters:
+              - name: prefix
+                type: string
+            return:
+              - type: string
+          - name: onAddPolygon
+            parameters:
+              - name: plane
+          - name: onAddBox
+          - name: onAddCylinder
+          - name: onEditPoints
+          - name: onRemoveGeometry
+          - name: onGeometryToPixels
+            parameters:
+              - name: objectName
+                type: string
+          - name: onDuplicateObject
+            parameters:
+              - name: objectName
+                type: string
+          - name: onPolygonToPixels
+            parameters:
+              - name: objectName
+                type: string
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onSave
+          - name: zeroTranslation
+            parameters:
+              - name: objectName
+                type: string
+              - name: axis
+          - name: zeroRotation
+            parameters:
+              - name: objectName
+                type: string
+              - name: axis
+          - name: updateGeometryFile
+        staticMethods:
+          - name: RasterizePolygonCallback
+            parameters:
+              - name: args
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_TilePicker3:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_TilePicker3"'
+        fields:
+          comboTileset:
+            type: ISComboBox
+          listBox:
+            type: TileGeometryEditor_TileList3
+          editor: {}
+        methods:
+          - name: createChildren
+          - name: setTileset
+            parameters:
+              - name: tilesetName
+                type: string
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onSelectTileset
+      TileGeometryEditor_SeatingListBox:
+        extends: TileGeometryEditor_ListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: TileGeometryEditor_EditMode_Seating
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_SeatingListBox"'
+        fields:
+          editor:
+            type: TileGeometryEditor_EditMode_Seating
+          scene: {}
+          selected: {}
+        methods:
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_EditMode_SceneTiles:
+        extends: TileGeometryEditor_EditMode
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditMode_SceneTiles"'
+        fields:
+          buttonPanel:
+            type: ISPanel
+          button1:
+            type: ISButton
+          button2:
+            type: ISButton
+          button4:
+            type: ISButton
+          tilePicker3:
+            type: TileGeometryEditor_TilePicker3
+          previousGeometryVisible: {}
+          previousTool: {}
+          textColorEnabled:
+            type: table
+          textColorDisabled:
+            type: table
+        methods:
+          - name: createChildren
+          - name: onButtonPlace
+          - name: onButtonRemove
+          - name: onButtonSelect
+          - name: onButtonMove
+          - name: activate
+          - name: deactivate
+          - name: prerenderEditor
+          - name: renderTileName
+          - name: renderSceneTiles
+      TileGeometryEditor_CurtainPropertiesPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_CurtainPropertiesPanel"'
+        fields:
+          curtainOffsetLabel:
+            type: ISLabel
+          curtainOffsetEntry:
+            type: ISTextEntryBox
+          selectedTileForCurtain:
+            nullable: true
+          movingFace:
+            type: string
+            nullable: true
+          editor: {}
+          scene: {}
+        methods:
+          - name: createChildren
+          - name: createEntry
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+              - name: id
+            return:
+              - type: ISTextEntryBox
+          - name: onButtonCurtainW
+          - name: onButtonCurtainN
+          - name: onButtonClear
+          - name: toUI
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: isTranslatingCurtain
+            return:
+              - type: boolean
+          - name: getCurtainEdge
+            parameters:
+              - name: sprite
+            return:
+              - type: string
+                nullable: true
+          - name: selectedTileHasCurtainOffsetProperty
+            return:
+              - type: boolean
+      TileGeometryEditor_EditMode_Curtain:
+        extends: TileGeometryEditor_EditMode
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditMode_Curtain"'
+        fields:
+          buttonPanel:
+            type: ISPanel
+          button1:
+            type: ISButton
+          tilePicker3:
+            type: TileGeometryEditor_TilePicker3
+          propertiesPanel:
+            type: TileGeometryEditor_CurtainPropertiesPanel
+          previousTool: {}
+          previousAnimation: {}
+          selectedTile:
+            type: table
+        methods:
+          - name: createChildren
+          - name: onButtonToggleGeometry
+          - name: activate
+          - name: deactivate
+          - name: prerenderEditor
+          - name: prerenderProperties
+          - name: configGizmo
+            return:
+              - type: boolean
+          - name: renderSceneTiles
+          - name: onMouseDownScene
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: renderItemBackground
+            parameters:
+              - name: tilesetName
+                type: string
+              - name: col
+              - name: row
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+          - name: selectedTileHasCurtainOffsetProperty
+            return:
+              - type: boolean
+          - name: setGeometryModeSelection
+          - name: onSave
+      TileGeometryEditor_EditMode_Seating:
+        extends: TileGeometryEditor_EditMode
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_EditMode_Seating"'
+        fields:
+          listBox:
+            type: TileGeometryEditor_SeatingListBox
+          buttonPanel:
+            type: ISPanel
+          button1:
+            type: ISButton
+          button2:
+            type: ISButton
+          button3:
+            type: ISButton
+          button4:
+            type: ISButton
+          button5:
+            type: ISButton
+          button6:
+            type: ISButton
+          button7:
+            type: ISButton
+          tilePicker3:
+            type: TileGeometryEditor_TilePicker3
+          propertiesPanel:
+            type: TileGeometryEditor_SeatingPropertiesPanel
+          previousTool: {}
+          previousAnimation: {}
+          selectedPositionIndex:
+            type: number
+            nullable: true
+          textColorEnabled:
+            type: table
+          textColorDisabled:
+            type: table
+          selectedTile:
+            type: table
+        methods:
+          - name: createChildren
+          - name: renderItemBackground
+            parameters:
+              - name: tilesetName
+                type: string
+              - name: col
+              - name: row
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+          - name: onButtonToggleGeometry
+          - name: getSelectedPositionIndex
+            return:
+              - type: number
+          - name: onButtonApply
+          - name: onButtonAddPosition
+            parameters:
+              - name: positionID
+          - name: onButtonRemovePosition
+          - name: activate
+          - name: deactivate
+          - name: prerenderEditor
+          - name: checkSelectedTile
+            parameters:
+              - name: tilesetName
+                type: string
+              - name: col
+              - name: row
+            return:
+              - type: boolean
+          - name: hasPositionID
+            parameters:
+              - name: positionID
+            return:
+              - type: boolean
+          - name: checkSelectedPosition
+            return:
+              - type: boolean
+          - name: populateListBox
+          - name: canApplyChange
+            return:
+              - type: boolean
+          - name: renderTileName
+          - name: renderSceneTiles
+          - name: onMouseDownScene
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerenderProperties
+          - name: onSave
+          - name: setGeometryModeSelection

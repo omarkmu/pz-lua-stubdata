@@ -1,0 +1,40 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddAnimalInTrailer:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: vehicle
+              - name: animal
+              - name: fromHand
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISAddAnimalInTrailer"'
+        fields:
+          vehicle: {}
+          animal: {}
+          fromHand:
+            type: boolean
+          animalInventoryItem: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

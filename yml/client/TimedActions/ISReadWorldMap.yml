@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISReadWorldMap:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: centerX
+                type: number
+              - name: centerY
+                type: number
+              - name: zoom
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISReadWorldMap"'
+        fields:
+          playerNum:
+            type: integer
+          centerX:
+            type: number
+          centerY:
+            type: number
+          zoom:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

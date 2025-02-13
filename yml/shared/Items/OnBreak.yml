@@ -1,0 +1,391 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      OnBreak:
+        staticMethods:
+          - name: HandleHandler
+            parameters:
+              - name: item
+              - name: player
+              - name: newItemString
+                type: string
+              - name: breakItem
+                type: boolean
+          - name: HeadHandler
+            parameters:
+              - name: item
+              - name: player
+              - name: newItemString
+                type: string
+              - name: stickIn
+                type: boolean
+                nullable: true
+              - name: forceLocation
+                type: string
+                nullable: true
+              - name: bonusCount
+                type: number
+                nullable: true
+              - name: fullCondition
+                type: boolean
+                nullable: true
+          - name: GroundHandler
+            parameters:
+              - name: item
+              - name: player
+              - name: newItemString
+                type: string
+              - name: bonusCount
+          - name: SmallHandle
+            parameters:
+              - name: item
+              - name: player
+          - name: KitchenKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: Machete
+            parameters:
+              - name: item
+              - name: player
+          - name: HuntingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: LargeKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: MeatCleaver
+            parameters:
+              - name: item
+              - name: player
+          - name: LongHandle
+            parameters:
+              - name: item
+              - name: player
+          - name: LongHandle_RakeHead
+            parameters:
+              - name: item
+              - name: player
+          - name: LongStick
+            parameters:
+              - name: item
+              - name: player
+          - name: Sapling
+            parameters:
+              - name: item
+              - name: player
+          - name: BallPeenHammer
+            parameters:
+              - name: item
+              - name: player
+          - name: ClubHammer
+            parameters:
+              - name: item
+              - name: player
+          - name: Clawhammer
+            parameters:
+              - name: item
+              - name: player
+          - name: HandAxe
+            parameters:
+              - name: item
+              - name: player
+          - name: HandScythe
+            parameters:
+              - name: item
+              - name: player
+          - name: GardenHoe
+            parameters:
+              - name: item
+              - name: player
+          - name: PickAxe
+            parameters:
+              - name: item
+              - name: player
+          - name: Spade
+            parameters:
+              - name: item
+              - name: player
+          - name: HandleSpade
+            parameters:
+              - name: item
+              - name: player
+          - name: Sledgehammer
+            parameters:
+              - name: item
+              - name: player
+          - name: SledgehammerNoShaft
+            parameters:
+              - name: item
+              - name: player
+          - name: WoodAxe
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearBreadKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearHandFork
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearHuntingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLargeKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearFightingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScrapKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSmallKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearKitchenKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSteakKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearMachete
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScissors
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScrewdriver
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearButterKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearFork
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearIcePick
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLetterOpener
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScalpel
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSpoon
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLong
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearShort
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearStoneLong
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearStone
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearCrude
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearCrudeLong
+            parameters:
+              - name: item
+              - name: player
+          - name: Rake
+            parameters:
+              - name: item
+              - name: player
+          - name: BrokenGlass
+            parameters:
+              - name: item
+              - name: player
+          - name: StoneAxeLarge
+            parameters:
+              - name: item
+              - name: player
+          - name: StoneMaul
+            parameters:
+              - name: item
+              - name: player
+          - name: HammerStone
+            parameters:
+              - name: item
+              - name: player
+          - name: AxeStone
+            parameters:
+              - name: item
+              - name: player
+          - name: LargeBranch
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_Sawblade
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_Rakehead
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_RailSpike
+            parameters:
+              - name: item
+              - name: player
+          - name: GuitarElectric
+            parameters:
+              - name: item
+              - name: player
+          - name: GuitarElectricBass
+            parameters:
+              - name: item
+              - name: player
+          - name: GuitarAcoustic
+            parameters:
+              - name: item
+              - name: player
+          - name: Banjo
+            parameters:
+              - name: item
+              - name: player
+          - name: GardenTool
+            parameters:
+              - name: item
+              - name: player
+          - name: GardenFork
+            parameters:
+              - name: item
+              - name: player
+          - name: GardenFork_Forged
+            parameters:
+              - name: item
+              - name: player
+          - name: Katana
+            parameters:
+              - name: item
+              - name: player
+          - name: Katana_Broken
+            parameters:
+              - name: item
+              - name: player
+          - name: Sword
+            parameters:
+              - name: item
+              - name: player
+          - name: Sword_Broken
+            parameters:
+              - name: item
+              - name: player
+          - name: ShortSword
+            parameters:
+              - name: item
+              - name: player
+          - name: CrudeSword
+            parameters:
+              - name: item
+              - name: player
+          - name: CrudeSword_Broken
+            parameters:
+              - name: item
+              - name: player
+          - name: CrudeShortSword
+            parameters:
+              - name: item
+              - name: player
+          - name: Sword_Scrap
+            parameters:
+              - name: item
+              - name: player
+          - name: ShortBat_RakeHead
+            parameters:
+              - name: item
+              - name: player
+          - name: JawboneBovide_Axe
+            parameters:
+              - name: item
+              - name: player
+          - name: JawboneBovide_Club
+            parameters:
+              - name: item
+              - name: player
+          - name: FieldHockeyStick
+            parameters:
+              - name: item
+              - name: player
+          - name: WoodenStick
+            parameters:
+              - name: item
+              - name: player
+          - name: MetalPipe
+            parameters:
+              - name: item
+              - name: player
+          - name: TableLeg
+            parameters:
+              - name: item
+              - name: player
+          - name: CanoePadelX2
+            parameters:
+              - name: item
+              - name: player
+          - name: Plank
+            parameters:
+              - name: item
+              - name: player
+          - name: SmithingHammer
+            parameters:
+              - name: item
+              - name: player
+          - name: FlintNodule
+            parameters:
+              - name: item
+              - name: player
+          - name: BrassScrap
+            parameters:
+              - name: item
+              - name: player
+          - name: Hatchet_Bone
+            parameters:
+              - name: item
+              - name: player
+          - name: FireAxe
+            parameters:
+              - name: item
+              - name: player
+          - name: OldAxe
+            parameters:
+              - name: item
+              - name: player

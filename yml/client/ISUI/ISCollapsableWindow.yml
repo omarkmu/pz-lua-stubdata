@@ -1,0 +1,151 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCollapsableWindow:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISCollapsableWindow"'
+        fields:
+          title:
+            type: string
+            nullable: true
+          resizeWidget:
+            type: ISResizeWidget
+          resizeWidget2:
+            type: ISResizeWidget
+          closeButton:
+            type: ISButton
+          infoButton:
+            type: ISButton
+          pinButton:
+            type: ISButton
+          collapseButton:
+            type: ISButton
+          infoText: {}
+          infoRichText:
+            type: ISModalRichText
+          pin:
+            type: boolean
+          collapseCounter:
+            type: number
+          isCollapsed:
+            type: boolean
+          resizable:
+            type: boolean
+          background: {}
+          drawFrame:
+            type: boolean
+          widgetTextureColor:
+            type: table
+          titlebarbkg:
+            type: Texture
+          statusbarbkg: {}
+          resizeimage: {}
+          invbasic: {}
+          closeButtonTexture: {}
+          collapseButtonTexture: {}
+          pinButtonTexture: {}
+          infoBtn: {}
+          viewList:
+            type: table
+          clearStentil:
+            type: boolean
+          titleFont: {}
+          titleFontHgt: {}
+        methods:
+          - name: initialise
+          - name: setTitle
+            parameters:
+              - name: title
+                type: string
+          - name: getTitle
+            return:
+              - type: string
+                nullable: true
+          - name: createChildren
+          - name: setInfo
+            parameters:
+              - name: text
+          - name: onInfo
+          - name: close
+          - name: collapse
+          - name: pin
+          - name: prerender
+          - name: render
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: uncollapse
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: addView
+            parameters:
+              - name: view
+                type: table
+          - name: getViews
+            return:
+              - type: table
+          - name: titleBarHeight
+            return:
+              - type: unknown
+          - name: resizeWidgetHeight
+            return:
+              - type: number
+          - name: setResizable
+            parameters:
+              - name: resizable
+                type: boolean
+          - name: RestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: setDrawFrame
+            parameters:
+              - name: visible
+        staticMethods:
+          - name: TitleBarHeight
+            return:
+              - type: unknown

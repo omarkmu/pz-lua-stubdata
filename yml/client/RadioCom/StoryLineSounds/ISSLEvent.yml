@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSLEvent:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISSLEvent"'
+        fields:
+          eventFrame:
+            type: ISSLFrame
+          eventSoundList:
+            type: ISScrollingListBox
+          storyEvent: {}
+          eventData:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setEvent
+            parameters:
+              - name: _event
+          - name: addEventSoundItem
+            parameters:
+              - name: _eventSound
+          - name: drawEventSoundItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onResize

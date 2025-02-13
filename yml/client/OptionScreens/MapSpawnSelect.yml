@@ -1,0 +1,317 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MapSpawnSelect:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"MapSpawnSelect"'
+          instance:
+            type: MapSpawnSelect
+            nullable: true
+        fields:
+          selectedRegion:
+            type: table
+            nullable: true
+          sortedList:
+            type: table
+          notSortedList:
+            type: table
+          startY:
+            type: number
+          previousScreen:
+            type: string
+            nullable: true
+          checkExistsName:
+            type: string
+          checkExist: {}
+          ISButtonA:
+            nullable: true
+          selectedMapIndex: {}
+          mapPanel:
+            type: MapSpawnSelectImage
+          textEntryLabel:
+            type: ISLabel
+          textEntry:
+            type: ISTextEntryBox
+          listbox: {}
+          richText: {}
+          seedPanel:
+            type: ISPanel
+          seedLabel:
+            type: ISLabel
+          seedTextBox:
+            type: ISTextEntryBox
+          randomButton:
+            type: ISButton
+          backButton:
+            type: ISButton
+          nextButton:
+            type: ISButton
+          addY:
+            type: number
+        methods:
+          - name: initialise
+          - name: getFixedSpawnRegion
+            return:
+              - type: table
+                nullable: true
+          - name: getSafehouseSpawnRegion
+            return:
+              - type: table
+                nullable: true
+          - name: getChallengeSpawnRegion
+            return:
+              - type: table
+                nullable: true
+          - name: getSpawnRegions
+            return:
+              - type: table
+                nullable: true
+          - name: hasChoices
+            return:
+              - type: table | boolean
+                nullable: true
+          - name: useDefaultSpawnRegion
+            return:
+              - type: table
+                nullable: true
+          - name: fillList
+          - name: checkSorted
+            parameters:
+              - name: item
+          - name: hideOrShowSaveName
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDblClick
+          - name: clickBack
+          - name: clickNext
+          - name: prerender
+          - name: render
+          - name: recalculateMapSize
+          - name: zoomMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: scale
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_child
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_textEntry
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown_textEntry
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: checkSeed
+          - name: generateNewSeed
+          - name: saveGenParams
+          - name: discardGenParams
+          - name: create
+      MapSpawnSelectImage:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"MapSpawnSelectImage"'
+        fields:
+          mapAPI: {}
+          hasResetView:
+            type: boolean
+          shownInitialLocation:
+            type: boolean
+          dragging:
+            type: boolean
+          dragMoved:
+            type: boolean
+          dragStartX:
+            type: number
+          dragStartY:
+            type: number
+          dragStartCX: {}
+          dragStartCY: {}
+          dragStartZoomF: {}
+          dragStartWorldX: {}
+          dragStartWorldY: {}
+          pyramidFileName:
+            type: string
+            nullable: true
+        methods:
+          - name: instantiate
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseDoubleClick
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: clear
+          - name: setImagePyramid
+            parameters:
+              - name: fileName
+                type: string
+          - name: initMapData
+            parameters:
+              - name: directory
+          - name: hasSomethingToDisplay
+            return:
+              - type: boolean
+      MapSpawnSelectListBox:
+        extends: ISScrollingListBox
+        staticFields:
+          Type:
+            defaultValue: '"MapSpawnSelectListBox"'
+        methods:
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+      MapSpawnSelectInfoPanel:
+        extends: ISRichTextPanel
+        staticFields:
+          Type:
+            defaultValue: '"MapSpawnSelectInfoPanel"'
+          doRightJoystickScrolling:
+            defaultValue: ISPanelJoypad.doRightJoystickScrolling
+        methods:
+          - name: prerender
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData

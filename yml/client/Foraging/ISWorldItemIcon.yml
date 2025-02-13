@@ -1,0 +1,48 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldItemIcon:
+        extends: ISBaseIcon
+        constructors:
+          - parameters:
+              - name: _manager
+                type: ISSearchManager
+              - name: _icon
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldItemIcon"'
+        fields:
+          onClickContext:
+            type: function
+          isValidSquare:
+            type: boolean
+          itemObjTable: {}
+          container: {}
+        methods:
+          - name: onRightMouseUp
+            return:
+              - type: unknown
+          - name: onRightMouseDown
+            return:
+              - type: boolean
+          - name: doPickup
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _contextOption
+              - name: _targetContainer
+              - name: _items
+          - name: isValidWorldItem
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: boolean
+          - name: findPinOffset
+          - name: setWorldMarkerPosition
+          - name: checkIsForageable
+            return:
+              - type: boolean

@@ -1,0 +1,85 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDebugMenu:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISDebugMenu"'
+          instance:
+            type: ISDebugMenu
+            nullable: true
+          forceEnable:
+            defaultValue: "false"
+          shiftDown:
+            defaultValue: "0"
+          tab:
+            defaultValue: '"MAIN"'
+          classes: {}
+        fields:
+          buttons:
+            type: table
+          mainButton:
+            type: ISButton
+          devButton:
+            type: ISButton
+          mainTab:
+            type: table
+          devTab:
+            type: table
+          variableColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          zOffsetSmallFont:
+            type: number
+        methods:
+          - name: setupButtons
+          - name: addButtonInfo
+            parameters:
+              - name: _title
+                type: string
+              - name: _func
+              - name: _tab
+              - name: _marginTop
+            return:
+              - type: table
+          - name: bringToTop
+            parameters:
+              - name: _buttonInfo
+          - name: initialise
+          - name: createChildren
+          - name: onClick_Dev
+          - name: onClick_Main
+          - name: onClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: onClickSandboxSettings
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: ISDebugMenu
+                nullable: true
+          - name: RegisterClass
+            parameters:
+              - name: _class
+                type: table
+          - name: OnPlayerDeath
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+    functions:
+      - name: doNewUIDebug

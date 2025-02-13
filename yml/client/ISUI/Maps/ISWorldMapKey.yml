@@ -1,0 +1,99 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWorldMapKey:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: mapUI
+                type: ISWorldMap
+        staticFields:
+          Type:
+            defaultValue: '"ISWorldMapKey"'
+        fields:
+          iso:
+            type: boolean
+          character:
+            nullable: true
+          playerNum:
+            type: integer
+          keyImagePath:
+            type: string
+          key:
+            type: table
+          key1:
+            type: string
+          key2:
+            type: string
+          key3:
+            type: string
+          key4:
+            type: string
+          key5:
+            type: string
+          key6:
+            type: string
+          key7:
+            type: string
+          key8:
+            type: string
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: undisplay
+          - name: setIso
+            parameters:
+              - name: bool
+          - name: getIso
+            return:
+              - type: boolean

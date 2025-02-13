@@ -1,0 +1,77 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFluidDebugWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISFluidDebugWindow"'
+          coords:
+            type: boolean | table
+          instance:
+            type: ISFluidDebugWindow
+            nullable: true
+        fields:
+          th: {}
+          rh:
+            type: number
+          width: {}
+          height: {}
+          heightMod:
+            type: number
+          panel:
+            type: ISTabPanel
+          fluidOverviewScreen:
+            type: ISFluidOverviewPanel
+          fluidCategoriesScreen:
+            type: ISFluidCategoriesViewPanel
+          fluidItemsScreen:
+            type: ISFluidItemsViewPanel
+          fluidMixerScreen:
+            type: ISFluidMixerViewPanel
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+          searchText:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: incY
+            parameters:
+              - name: _y
+              - name: _obj
+                type: IsoObject
+              - name: _margin
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: close
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _player
+            return:
+              - type: ISFluidDebugWindow
+                nullable: true

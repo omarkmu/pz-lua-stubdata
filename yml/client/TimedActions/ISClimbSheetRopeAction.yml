@@ -1,0 +1,23 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISClimbSheetRopeAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: down
+        staticFields:
+          Type:
+            defaultValue: '"ISClimbSheetRopeAction"'
+        fields:
+          down: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

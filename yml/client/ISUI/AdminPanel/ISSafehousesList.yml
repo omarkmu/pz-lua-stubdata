@@ -1,0 +1,54 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISSafehousesList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISSafehousesList"'
+          messages: {}
+          instance:
+            type: ISSafehousesList
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          teleportBtn:
+            type: ISButton
+          viewBtn:
+            type: ISButton
+          player: {}
+          selectedFaction:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: close
+        staticMethods:
+          - name: OnSafehousesChanged

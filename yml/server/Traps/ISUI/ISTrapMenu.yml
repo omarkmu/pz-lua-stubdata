@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTrapMenu:
+        staticMethods:
+          - name: doTrapMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onRemoveBait
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: trap
+              - name: player
+          - name: onAddBait
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: bait
+              - name: trap
+              - name: player
+          - name: onCheckTrap
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: trap
+              - name: player
+          - name: addAnimalDebug
+            parameters:
+              - name: trap
+              - name: player
+              - name: animal
+          - name: onRemoveTrap
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: trap
+              - name: player
+          - name: onPlaceTrap
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: trap
+              - name: player

@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      UI.TextEntry:
+        extends: UI.Node
+        local: true
+        staticFields:
+          _ATOM_UI_CLASS:
+            defaultValue: AtomUITextEntry
+          font:
+            defaultValue: UIFont.SdfRegular
+          text:
+            defaultValue: '""'
+        fields:
+          super:
+            type: UI.Node
+        overloads:
+          - parameters:
+              - name: args
+                type: table
+            return:
+              - type: UI.TextEntry
+        methods:
+          - name: setText
+            parameters:
+              - name: text
+          - name: getText
+            return:
+              - type: unknown
+          - name: setFont
+            parameters:
+              - name: uiFont
+          - name: focus
+          - name: unfocus
+      PZAPI:
+        staticFields:
+          UI.TextEntry:
+            type: UI.TextEntry

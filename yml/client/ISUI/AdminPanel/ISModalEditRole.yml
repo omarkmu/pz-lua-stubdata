@@ -1,0 +1,84 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISModalEditRole:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: role
+        staticFields:
+          Type:
+            defaultValue: '"ISModalEditRole"'
+          instance:
+            type: ISModalEditRole
+            nullable: true
+        fields:
+          labelTitle:
+            type: ISLabel
+          valueDescriptionLabel:
+            type: ISLabel
+          valueDescription:
+            type: ISTextEntryBox
+          buttonColorLabel:
+            type: ISLabel
+          buttonColor:
+            type: ISButton
+          colorPicker:
+            type: ISColorPicker
+          tickBoxCapabilityLabel:
+            type: ISLabel
+          filter:
+            type: ISTextEntryBox
+          scrollPanel:
+            type: ISPanelJoypad
+          tickBoxCapability:
+            type: ISTickBox
+          close:
+            type: ISButton
+          save:
+            type: ISButton
+          color:
+            type: table
+          role: {}
+          capabilities:
+            type: table
+        methods:
+          - name: initialise
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: onColor
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onPickedTagColor
+            parameters:
+              - name: color
+              - name: mouseUp
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onSelectRole
+            parameters:
+              - name: _item
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: closeModal

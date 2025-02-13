@@ -1,0 +1,66 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFitnessAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: exercise
+                type: string
+              - name: timeToExe
+                type: number
+                nullable: true
+              - name: exeData
+              - name: exeDataType
+        staticFields:
+          Type:
+            defaultValue: '"ISFitnessAction"'
+        fields:
+          repnb:
+            type: number
+          fitness: {}
+          switchTime:
+            type: number
+          switchHandUsed:
+            type: string
+          exercise:
+            type: string
+          timeToExe:
+            type: number
+            nullable: true
+          exeData: {}
+          exeDataType: {}
+          startMS: {}
+          endMS:
+            type: number
+        methods:
+          - name: isValidStart
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: showHandModel
+          - name: stop
+          - name: complete
+            return:
+              - type: boolean
+          - name: perform
+          - name: exeLooped
+          - name: serverStart
+          - name: serverStop
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: setFitnessSpeed
+          - name: getDuration
+            return:
+              - type: number

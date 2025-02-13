@@ -1,0 +1,35 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CharacterInfoPage:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: desc
+        staticFields:
+          Type:
+            defaultValue: '"CharacterInfoPage"'
+        fields:
+          avatarPanel:
+            type: ISPanel
+          avatar: {}
+          desc: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: prerender
+          - name: createAvatar
+          - name: drawAvatar
+        staticMethods:
+          - name: doInfo
+            parameters:
+              - name: desc

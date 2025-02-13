@@ -1,0 +1,157 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTradingUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: otherPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISTradingUI"'
+          messages: {}
+          CoolDownMessage:
+            defaultValue: "300"
+          States: {}
+          MaxItems:
+            defaultValue: "20"
+          instance:
+            type: ISTradingUI
+            nullable: true
+          tradeQuestionUI:
+            type: ISModalDialog
+            nullable: true
+        fields:
+          infoBtn:
+            type: ISButton
+          no:
+            type: ISButton
+          yourOfferDatas:
+            type: ISScrollingListBox
+          remove:
+            type: ISButton
+          hisOfferDatas:
+            type: ISScrollingListBox
+          sealOffer:
+            type: ISTickBox
+          historic:
+            type: ISButton
+          acceptDeal:
+            type: ISButton
+          otherSealedOffer:
+            type: boolean
+          blockingMessage:
+            type: string
+            nullable: true
+          blockingMessage2:
+            type: string
+            nullable: true
+          toolRender:
+            type: ISToolTipInv
+          historyMessageCD:
+            type: number
+          infoRichText:
+            type: ISModalRichText
+          historicalUI:
+            type: ISTradingUIHistorical
+          listHeaderColor:
+            type: table
+          player: {}
+          otherPlayer: {}
+          yourOffer:
+            nullable: true
+          hisOffer:
+            nullable: true
+          selectedItem:
+            nullable: true
+          pendingRequest:
+            type: boolean
+          historyMessage:
+            type: string
+            nullable: true
+          historical:
+            type: table
+        methods:
+          - name: initialise
+          - name: onSealOffer
+            parameters:
+              - name: clickedOption
+              - name: enabled
+          - name: addItemToYourOffer
+            parameters:
+              - name: item
+          - name: yourOfferMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: populateList
+          - name: update
+          - name: removeItem
+            parameters:
+              - name: item
+          - name: drawOffer
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: updateTooltip
+          - name: updateButtons
+          - name: render
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: finalizeDeal
+          - name: onAnswerTradeRequest
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getIndexFromItemId
+            parameters:
+              - name: itemId
+            return:
+              - type: number
+          - name: setHistoryMessage
+            parameters:
+              - name: message
+                type: string
+              - name: publishInHistorical
+                type: boolean
+              - name: add
+                type: boolean
+              - name: remove
+                type: boolean
+        staticMethods:
+          - name: ReceiveTradeRequest
+            parameters:
+              - name: requester
+          - name: AcceptedTrade
+            parameters:
+              - name: accepted
+          - name: OtherAddNewItem
+            parameters:
+              - name: player
+              - name: item
+          - name: RemoveItem
+            parameters:
+              - name: player
+              - name: itemId
+          - name: UpdateState
+            parameters:
+              - name: player
+              - name: state

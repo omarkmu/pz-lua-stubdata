@@ -1,0 +1,17 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      EDebug:
+        staticMethods:
+          - name: DemoTime
+            parameters:
+              - name: _erosionMain
+            return:
+              - type: DebugDemoTime
+      DebugDemoTime:
+        local: true
+        staticMethods:
+          - name: GameStart
+            return:
+              - type: boolean

@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      MusicChoices:
+        staticFields:
+          drama:
+            defaultValue: "0"
+          last:
+            defaultValue: '""'
+          choices: {}
+          ambient: {}
+          remasteredchoices: {}
+        staticMethods:
+          - name: compareByDrama
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+                nullable: true
+          - name: compareByAmbientDrama
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+                nullable: true
+          - name: get
+            parameters:
+              - name: drama
+                type: number
+            return:
+              - type: unknown
+          - name: getAmbient
+            parameters:
+              - name: drama
+            return:
+              - type: unknown

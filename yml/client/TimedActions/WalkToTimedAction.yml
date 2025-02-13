@@ -1,0 +1,51 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWalkToTimedAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: location
+                nullable: true
+              - name: additionalTest
+              - name: additionalContext
+        staticFields:
+          Type:
+            defaultValue: '"ISWalkToTimedAction"'
+        fields:
+          result: {}
+          onCompleteFunc:
+            type: function
+          onCompleteArgs:
+            type: table
+          character:
+            nullable: true
+          location:
+            nullable: true
+          pathIndex:
+            type: number
+          additionalTest: {}
+          additionalContext: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: setOnComplete
+            parameters:
+              - name: func
+                type: function
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown

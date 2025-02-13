@@ -1,0 +1,14 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      forageZones:
+        staticFields:
+          DeepForest: {}
+          FarmLand: {}
+          Farm: {}
+          Forest: {}
+          ForagingNav: {}
+          TownZone: {}
+          TrailerPark: {}
+          Vegitation: {}

@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRichTextBox:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: text
+              - name: defaultEntryText
+              - name: target
+                type: unknown
+              - name: onclick
+              - name: player
+              - name: param1
+                type: unknown
+              - name: param2
+                type: unknown
+              - name: param3
+                type: unknown
+              - name: param4
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"ISRichTextBox"'
+        fields:
+          yes:
+            type: ISButton
+          no:
+            type: ISButton
+          fontHgt: {}
+          entry:
+            type: ISTextEntryBox
+          chatText:
+            type: ISRichTextPanel
+          validateTarget: {}
+          validateFunc: {}
+          validateArgs:
+            type: table
+          validateTooltipText: {}
+          name:
+            nullable: true
+          text: {}
+          onclick: {}
+          player: {}
+          param1:
+            type: unknown
+          param2:
+            type: unknown
+          param3:
+            type: unknown
+          param4:
+            type: unknown
+          defaultEntryText: {}
+        methods:
+          - name: initialise
+          - name: update
+          - name: setOnlyNumbers
+            parameters:
+              - name: onlyNumbers
+          - name: setValidateFunction
+            parameters:
+              - name: target
+                type: unknown
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+          - name: setValidateTooltipText
+            parameters:
+              - name: text
+          - name: destroy
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: prerender
+          - name: render
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData

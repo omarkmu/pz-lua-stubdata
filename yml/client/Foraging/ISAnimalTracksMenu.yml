@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAnimalTracksMenu:
+        staticMethods:
+          - name: doContextMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: trackItem
+              - name: chr
+          - name: inspect
+            parameters:
+              - name: track
+              - name: chr
+          - name: handleIsoTracks
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: track
+              - name: chr
+          - name: inspectIsoTrack
+            parameters:
+              - name: track
+              - name: chr
+          - name: onGrab
+            parameters:
+              - name: track
+              - name: chr

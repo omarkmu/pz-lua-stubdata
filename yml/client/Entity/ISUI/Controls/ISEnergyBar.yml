@@ -1,0 +1,80 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEnergyBar:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: resource
+        staticFields:
+          Type:
+            defaultValue: '"ISEnergyBar"'
+        fields:
+          background:
+            type: boolean
+          toolTip:
+            type: ISToolTipInv
+            nullable: true
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          progressColor:
+            type: table
+          moveWithMouse:
+            type: boolean
+          isVertical:
+            type: boolean
+          padding:
+            type: number
+          doToolTip:
+            type: boolean
+          player: {}
+          resource: {}
+          doRenderTexture:
+            type: boolean
+          horizontalTexture: {}
+          verticalTexture: {}
+        methods:
+          - name: initialise
+          - name: noBackground
+          - name: prerender
+          - name: getRenderTexture
+            return:
+              - type: unknown
+                nullable: true
+          - name: renderTexture
+            parameters:
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _vertical
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: activateToolTip
+          - name: deactivateToolTip

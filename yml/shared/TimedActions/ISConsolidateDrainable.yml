@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISConsolidateDrainable:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: drainable
+              - name: intoItem
+              - name: otherItems
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISConsolidateDrainable"'
+        fields:
+          intoItem: {}
+          drainable:
+            nullable: true
+          otherItems:
+            nullable: true
+          fromStart: {}
+          intoStart: {}
+          fromTarget:
+            type: number
+          intoTarget:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: runAgain
+            parameters:
+              - name: drainable
+              - name: intoItem
+          - name: nextItem
+            return:
+              - type: unknown
+                nullable: true
+          - name: serverStop
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

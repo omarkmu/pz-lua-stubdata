@@ -1,0 +1,105 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRadialMenu:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: innerRadius
+                type: number
+              - name: outerRadius
+                type: number
+              - name: playerNum
+                type: integer
+        staticFields:
+          Type:
+            defaultValue: '"ISRadialMenu"'
+        fields:
+          slices:
+            type: table
+          hideWhenButtonReleased: {}
+          innerRadius:
+            type: number
+          outerRadius:
+            type: number
+          playerNum:
+            type: integer
+          sounds:
+            type: table
+        methods:
+          - name: instantiate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: isEmpty
+            return:
+              - type: boolean
+          - name: clear
+          - name: addSlice
+            parameters:
+              - name: text
+              - name: texture
+              - name: command
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+          - name: setSliceText
+            parameters:
+              - name: sliceIndex
+              - name: text
+          - name: setSliceTexture
+            parameters:
+              - name: sliceIndex
+              - name: texture
+          - name: getSliceCommand
+            parameters:
+              - name: sliceIndex
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: center
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: setHideWhenButtonReleased
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadButtonReleased
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: undisplay

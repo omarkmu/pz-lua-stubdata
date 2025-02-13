@@ -1,0 +1,32 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGenericCraftStart:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: entity
+              - name: component
+              - name: funcCanStart
+              - name: funcStart
+        staticFields:
+          Type:
+            defaultValue: '"ISGenericCraftStart"'
+        fields:
+          entity: {}
+          component: {}
+          funcCanStart: {}
+          funcStart: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: getDuration
+            return:
+              - type: number

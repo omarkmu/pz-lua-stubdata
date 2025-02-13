@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISServerDisconnectUI:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: reason
+        staticFields:
+          Type:
+            defaultValue: '"ISServerDisconnectUI"'
+          instance:
+            type: ISServerDisconnectUI
+            nullable: true
+        fields:
+          buttonExit:
+            type: ISButton
+          buttonQuit:
+            type: ISButton
+          reason: {}
+        methods:
+          - name: createChildren
+          - name: configButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onToMainMenu
+          - name: onToDesktop
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+    functions:
+      - name: ISServerDisconnectUI_OnServerDisconnectUI
+        parameters:
+          - name: reason

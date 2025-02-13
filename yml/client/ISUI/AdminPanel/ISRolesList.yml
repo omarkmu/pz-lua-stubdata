@@ -1,0 +1,79 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRolesList:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISRolesList"'
+          instance:
+            type: ISRolesList
+            nullable: true
+        fields:
+          add:
+            type: ISButton
+          edit:
+            type: ISButton
+          delete:
+            type: ISButton
+          close:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          player: {}
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onSelectRole
+            parameters:
+              - name: _item
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onClickOption
+            parameters:
+              - name: item
+              - name: action
+          - name: onDeleteModalClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onAddRoleClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onRightMouse
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doContextMenu
+            parameters:
+              - name: item
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: closeModal

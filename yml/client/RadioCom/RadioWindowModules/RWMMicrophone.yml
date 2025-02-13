@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMMicrophone:
+        extends: RWMPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"RWMMicrophone"'
+        fields:
+          muteButton:
+            type: ISButton
+          muteState:
+            type: boolean
+          fontheight:
+            type: number
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onMuteButton
+          - name: setMuteButtonText
+          - name: readFromObject
+            parameters:
+              - name: _player
+              - name: _deviceObject
+              - name: _deviceData
+              - name: _deviceType
+            return:
+              - type: boolean
+          - name: update
+          - name: prerender
+          - name: render
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: getAPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getBPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getXPrompt
+            return:
+              - type: unknown
+                nullable: true
+          - name: getYPrompt
+            return:
+              - type: unknown
+                nullable: true

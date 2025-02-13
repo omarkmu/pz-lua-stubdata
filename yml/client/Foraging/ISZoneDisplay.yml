@@ -1,0 +1,143 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISZoneDisplay:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: _parent
+                type: ISSearchWindow
+        staticFields:
+          Type:
+            defaultValue: '"ISZoneDisplay"'
+          tips: {}
+        fields:
+          currentTip:
+            type: number
+          flashTipButton:
+            type: boolean
+          flashNumber:
+            type: number
+          perkLevel: {}
+          blinkStep:
+            type: number
+          currentZone:
+            type: string
+          fadeTarget:
+            type: string
+          tooltip:
+            type: ISToolTip
+          updateTick:
+            type: number
+          canSeeSky:
+            type: boolean
+            nullable: true
+          fogStep:
+            type: number
+          timeOfDay:
+            type: number
+          dawn:
+            type: number
+          noon:
+            type: number
+          dusk:
+            type: number
+          cloudIntensity:
+            type: number
+          fogIntensity:
+            type: number
+          sunBright:
+            type: number
+          moonBright:
+            type: number
+          tipPanel:
+            type: ISRichTextPanel
+          prevBtn:
+            type: ISButton
+          nextBtn:
+            type: ISButton
+          infoBtn:
+            type: ISButton
+          visionBonuses:
+            type: table
+          showBackground:
+            type: boolean
+          showBorder:
+            type: boolean
+          alpha:
+            type: number
+          zdImages:
+            type: table
+          fadeElements:
+            type: table
+          timeString:
+            type: string
+          moonPhase:
+            type: string
+          updateTickMax:
+            type: number
+          player: {}
+          character: {}
+          manager: {}
+          gameTime: {}
+          climateManager: {}
+          climateMoon: {}
+          flashNumberMax:
+            type: number
+        methods:
+          - name: toggleTips
+          - name: showNextTip
+          - name: showPrevTip
+          - name: showTip
+            parameters:
+              - name: _tip
+              - name: _force
+          - name: updateTips
+          - name: updateMoonPosition
+            parameters:
+              - name: _dawn
+              - name: _dusk
+              - name: _timeOfDay
+          - name: updateSunPosition
+            parameters:
+              - name: _dawn
+              - name: _dusk
+              - name: _timeOfDay
+          - name: doFadeStep
+          - name: canSeeThroughObject
+            parameters:
+              - name: _object
+            return:
+              - type: boolean
+          - name: canSeeOutside
+            return:
+              - type: boolean
+                nullable: true
+          - name: updateLocation
+          - name: getVisionTooltipText
+            return:
+              - type: string
+          - name: getZoneTooltipText
+            return:
+              - type: string
+          - name: updateTooltip
+          - name: update
+          - name: isLeapYear
+            parameters:
+              - name: _yearNum
+                type: number
+            return:
+              - type: boolean
+          - name: updateMoonPhase
+          - name: updateData
+          - name: initialise
+          - name: initialiseImages
+            parameters:
+              - name: imageTable
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: fade
+          - name: close

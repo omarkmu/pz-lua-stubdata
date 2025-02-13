@@ -1,0 +1,18 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CRainBarrelGlobalObject:
+        extends: CGlobalObject
+        constructors:
+          - parameters:
+              - name: luaSystem
+                type: CRainBarrelSystem
+              - name: globalObject
+        staticFields:
+          Type:
+            defaultValue: '"CRainBarrelGlobalObject"'
+        methods:
+          - name: getObject
+            return:
+              - type: unknown

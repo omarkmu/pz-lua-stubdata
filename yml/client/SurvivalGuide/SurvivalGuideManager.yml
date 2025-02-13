@@ -1,0 +1,39 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      SurvivalGuideManager:
+        extends: ISBaseObject
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"SurvivalGuideManager"'
+          instance:
+            type: SurvivalGuideManager
+            nullable: true
+        fields:
+          panel:
+            type: ISTutorialPanel
+        methods:
+          - name: update
+          - name: RestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+        staticMethods:
+          - name: OnNewGame
+          - name: onKeyPressed
+            parameters:
+              - name: key
+                type: integer
+          - name: OnGameStart
+          - name: OnCreatePlayer
+    functions:
+      - name: doSurvivalGuide

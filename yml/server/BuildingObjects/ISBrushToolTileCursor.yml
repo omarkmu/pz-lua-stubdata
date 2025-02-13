@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBrushToolTileCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: northSprite
+                type: string
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISBrushToolTileCursor"'
+        fields:
+          character: {}
+          player: {}
+          isTileCursor:
+            type: boolean
+          spriteName:
+            type: string
+          noNeedHammer:
+            type: boolean
+          skipBuildAction:
+            type: boolean
+          skipWalk2:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare

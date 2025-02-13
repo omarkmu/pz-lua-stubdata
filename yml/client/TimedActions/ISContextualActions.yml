@@ -1,0 +1,137 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ContextualActionHandlers:
+        staticMethods:
+          - name: ClimbOverFence
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: ClimbSheetRope
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: ClimbThroughWindow
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: CloseCurtain
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: CloseDoor
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: CloseWindow
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: OpenCurtain
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: OpenDoor
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: OpenWindow
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+    functions:
+      - name: ContextualActionHandlerWrapper
+        parameters:
+          - name: action
+          - name: playerObj
+            type: IsoPlayer
+          - name: arg1
+            type: unknown
+          - name: arg2
+            type: unknown
+          - name: arg3
+            type: unknown
+          - name: arg4
+            type: unknown

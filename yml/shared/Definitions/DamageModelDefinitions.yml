@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DamageModelDefinitions:
+        staticFields:
+          list: {}
+        staticMethods:
+          - name: addDefinition
+            parameters:
+              - name: texture
+                type: string
+              - name: bodyPart
+              - name: damageCategories
+                type: table
+              - name: criticalHit
+                type: boolean
+                nullable: true
+          - name: OnHitZombie
+            parameters:
+              - name: zombie
+              - name: wielder
+              - name: bodyPart
+              - name: weapon
+          - name: checkCategory
+            parameters:
+              - name: weapon
+              - name: damageCategories
+            return:
+              - type: boolean
+          - name: checkCrit
+            parameters:
+              - name: wielder
+              - name: damage
+            return:
+              - type: boolean

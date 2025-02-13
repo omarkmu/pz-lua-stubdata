@@ -1,0 +1,279 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFarmingMenu:
+        staticFields:
+          info: {}
+          GardeningSprayMilk:
+            nullable: true
+          GardeningSprayCigarettes:
+            nullable: true
+          SlugRepellent:
+            nullable: true
+          cheat:
+            defaultValue: "false"
+          GardeningSprayAphids:
+            nullable: true
+          cursor:
+            type: ISFarmingCursorMouse
+            nullable: true
+          TEMP_PLANT:
+            nullable: true
+        methods:
+          - name: onHarvestSquareSelected
+          - name: isHarvestValid
+            return:
+              - type: boolean
+          - name: onInfoSquareSelected
+          - name: isInfoValid
+            return:
+              - type: boolean
+          - name: onWaterSquareSelected
+          - name: isWaterValid
+            return:
+              - type: boolean
+          - name: doSeedMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSeedSquareSelected
+          - name: isSeedValid
+            return:
+              - type: boolean
+          - name: isFertilizeValid
+            return:
+              - type: boolean
+          - name: isCompostValid
+            return:
+              - type: boolean
+          - name: onFertilizeSquareSelected
+          - name: onCompostSquareSelected
+        staticMethods:
+          - name: getFluidContainerMillilitresPerUse
+            return:
+              - type: number
+          - name: getWaterUsesFloat
+            parameters:
+              - name: item
+            return:
+              - type: number
+          - name: getWaterUsesInteger
+            parameters:
+              - name: item
+                nullable: true
+            return:
+              - type: number
+          - name: doFarmingMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: getShovel
+            parameters:
+              - name: player
+            return:
+              - type: unknown
+          - name: itemSortByName
+            parameters:
+              - name: a
+              - name: b
+            return:
+              - type: boolean
+          - name: doFarmingMenu2
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: canDigHere
+            parameters:
+              - name: worldObjects
+                type: IsoObject[]
+            return:
+              - type: boolean
+          - name: canDigHereSquare
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: canPlow
+            parameters:
+              - name: seedAvailable
+              - name: typeOfSeed
+              - name: option
+              - name: seedName
+                type: string
+              - name: playerObj
+                type: IsoPlayer
+          - name: plantInfo
+            parameters:
+              - name: prop
+            return:
+              - type: string
+          - name: isValidPlant
+            parameters:
+              - name: plant
+            return:
+              - type: boolean
+          - name: walkToPlant
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: onHarvest
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plantToharvest
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onMildewCure
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: uses
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onFliesCure
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: uses
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSlugsCure
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: uses
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onAphidsCure
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: uses
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onInfo
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onWater
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: uses
+              - name: handItem
+              - name: playerObj
+                type: IsoPlayer
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+          - name: getPlantName
+            parameters:
+              - name: plant
+            return:
+              - type: string
+                nullable: true
+          - name: onSeed
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: typeOfSeed
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+              - name: seedName
+                type: string
+          - name: onPlow
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: player
+              - name: handItem
+          - name: onShovel
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plant
+              - name: player
+              - name: sq
+                type: IsoGridSquare
+          - name: onFertilize
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: handItem
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onCompost
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: handItem
+              - name: plant
+              - name: sq
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+          - name: onCheatGrow
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plant
+          - name: onCheatWater
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plant
+          - name: onJoypadFarming
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: player
+          - name: onCheat
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: plant
+              - name: args

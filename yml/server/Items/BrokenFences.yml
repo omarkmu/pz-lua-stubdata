@@ -1,0 +1,66 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      debris:
+        staticFields:
+          VERSION:
+            defaultValue: "1"
+          fencing_01_1: {}
+          fencing_01_2:
+            defaultValue: debris["fencing_01_1"]
+          fencing_01_5: {}
+          fencing_01_4:
+            defaultValue: debris["fencing_01_5"]
+          fencing_01_24: {}
+          fencing_01_25:
+            defaultValue: debris["fencing_01_24"]
+          fencing_01_26:
+            defaultValue: debris["fencing_01_24"]
+          fencing_01_27:
+            defaultValue: debris["fencing_01_24"]
+          carpentry_02_41: {}
+          carpentry_02_40:
+            defaultValue: debris["carpentry_02_41"]
+          carpentry_02_45:
+            defaultValue: debris["carpentry_02_41"]
+          carpentry_02_44:
+            defaultValue: debris["carpentry_02_41"]
+          carpentry_02_49:
+            defaultValue: debris["carpentry_02_41"]
+          carpentry_02_48:
+            defaultValue: debris["carpentry_02_41"]
+          fencing_01_32: {}
+          fencing_01_33:
+            defaultValue: debris["fencing_01_32"]
+          fencing_01_34:
+            defaultValue: debris["fencing_01_32"]
+          fencing_01_35:
+            defaultValue: debris["fencing_01_32"]
+          fencing_01_41: {}
+          fencing_01_40:
+            defaultValue: debris["fencing_01_41"]
+          fencing_01_56: {}
+          fencing_01_57:
+            defaultValue: debris["fencing_01_56"]
+          fencing_01_58:
+            defaultValue: debris["fencing_01_56"]
+          fencing_01_59:
+            defaultValue: debris["fencing_01_56"]
+          fencing_01_64: {}
+          fencing_01_65:
+            defaultValue: debris["fencing_01_64"]
+          fencing_01_66:
+            defaultValue: debris["fencing_01_64"]
+          fencing_01_67:
+            defaultValue: debris["fencing_01_64"]
+          fencing_01_73: {}
+          fencing_01_72:
+            defaultValue: debris["fencing_01_5"]
+          fencing_01_8: {}
+          fencing_01_9:
+            defaultValue: debris["fencing_01_8"]
+          fencing_01_10:
+            defaultValue: debris["fencing_01_8"]
+          fencing_01_11:
+            defaultValue: debris["fencing_01_8"]

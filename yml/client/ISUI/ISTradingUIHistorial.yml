@@ -1,0 +1,52 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTradingUIHistorical:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: list
+              - name: otherPlayer
+        staticFields:
+          Type:
+            defaultValue: '"ISTradingUIHistorical"'
+          messages: {}
+          instance:
+            type: ISTradingUIHistorical
+            nullable: true
+        fields:
+          no:
+            type: ISButton
+          list:
+            type: ISScrollingListBox
+          msgList:
+            type: table
+          otherPlayer: {}
+        methods:
+          - name: initialise
+          - name: populateList
+            parameters:
+              - name: list
+                type: table
+          - name: drawList
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: render
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton

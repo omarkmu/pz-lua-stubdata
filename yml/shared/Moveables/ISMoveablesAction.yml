@@ -1,0 +1,76 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISMoveablesAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: square
+                type: IsoGridSquare
+              - name: mode
+                type: string
+              - name: origSpriteName
+                type: string
+                nullable: true
+              - name: object
+                nullable: true
+              - name: direction
+              - name: item
+                nullable: true
+              - name: moveCursor
+                type: ISMoveableCursor
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISMoveablesAction"'
+        fields:
+          sound:
+            nullable: true
+          square:
+            type: IsoGridSquare
+          origSpriteName:
+            type: string
+            nullable: true
+          spriteFrame:
+            type: number
+          mode:
+            type: string
+          object:
+            nullable: true
+          direction: {}
+          item:
+            nullable: true
+          moveProps:
+            type: ISMoveableSpriteProps
+          moveCursor:
+            type: ISMoveableCursor
+            nullable: true
+          cursorFacing:
+            type: number
+            nullable: true
+        methods:
+          - name: isReachableObjectType
+            return:
+              - type: boolean
+          - name: isValidObject
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: setActionSound
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,58 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LuaFileBrowser:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"LuaFileBrowser"'
+        fields:
+          title:
+            type: string
+          lastText: {}
+          buttonReloadRow:
+            type: number
+          fileList: {}
+          textEntry:
+            type: ISTextEntryBox
+          buttonReload:
+            type: ISButton
+        methods:
+          - name: initialise
+          - name: onMouseDoubleClickFile
+            parameters:
+              - name: item
+          - name: update
+          - name: fill
+          - name: updateReloadButton
+          - name: onButtonReload
+          - name: createChildren
+      LuaFileBrowserList:
+        extends: ISScrollingListBox
+        staticFields:
+          Type:
+            defaultValue: '"LuaFileBrowserList"'
+        methods:
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+            return:
+              - type: boolean

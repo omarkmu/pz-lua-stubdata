@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISShearAnimal:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: animal
+              - name: shear
+        staticFields:
+          Type:
+            defaultValue: '"ISShearAnimal"'
+        fields:
+          timer:
+            type: number
+          lastTimer:
+            type: number
+          sound: {}
+          animal: {}
+          shear: {}
+          timePerLiter:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: stress
+          - name: update
+          - name: start
+          - name: forceStop
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: stopSound

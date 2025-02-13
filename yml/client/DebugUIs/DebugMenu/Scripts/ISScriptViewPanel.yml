@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISScriptViewPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: script
+        staticFields:
+          Type:
+            defaultValue: '"ISScriptViewPanel"'
+        fields:
+          viewModes:
+            type: table
+          currentViewMode:
+            type: number
+          toggleViewButton:
+            type: ISButton
+          listView:
+            type: ISStringListView
+          script:
+            nullable: true
+          greyCol:
+            type: table
+          searchText:
+            type: string
+          autoExpandAll:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: setScript
+            parameters:
+              - name: _script
+                nullable: true
+          - name: populate
+          - name: update
+          - name: prerender
+          - name: render

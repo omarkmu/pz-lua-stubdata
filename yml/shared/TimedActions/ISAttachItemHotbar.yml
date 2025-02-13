@@ -1,0 +1,48 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAttachItemHotbar:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: slot
+              - name: slotIndex
+              - name: slotDef
+        staticFields:
+          Type:
+            defaultValue: '"ISAttachItemHotbar"'
+        fields:
+          item: {}
+          slot: {}
+          slotIndex: {}
+          slotDef: {}
+          fromHotbar:
+            type: boolean
+          hotbar:
+            nullable: true
+          useProgressBar:
+            type: boolean
+          ignoreHandsWounds:
+            type: boolean
+          animSpeed:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: update
+          - name: start
+          - name: serverStart
+          - name: stop
+          - name: complete
+            return:
+              - type: boolean
+          - name: perform
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter

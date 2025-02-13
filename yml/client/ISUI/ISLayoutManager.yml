@@ -1,0 +1,69 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISLayoutManager:
+        staticFields:
+          windows: {}
+          enableLog:
+            defaultValue: "false"
+          layouts:
+            type: table
+            nullable: true
+        staticMethods:
+          - name: RegisterWindow
+            parameters:
+              - name: name
+                type: string
+              - name: funcs
+                type: table
+              - name: target
+                type: unknown
+          - name: DefaultRestoreWindow
+            parameters:
+              - name: window
+                type: table
+              - name: layout
+          - name: DefaultSaveWindow
+            parameters:
+              - name: window
+                type: table
+              - name: layout
+          - name: SaveWindowVisible
+            parameters:
+              - name: window
+                type: ISTutorialPanel
+              - name: layout
+          - name: TryRestore
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: CallRestoreLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+          - name: CallSaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: layout
+                type: table
+                nullable: true
+          - name: FindResizeWidget
+            parameters:
+              - name: window
+            return:
+              - type: unknown
+                nullable: true
+          - name: ReadIni
+          - name: WriteIni
+          - name: SaveLayout
+            parameters:
+              - name: name
+                type: string
+              - name: window
+          - name: OnPostSave

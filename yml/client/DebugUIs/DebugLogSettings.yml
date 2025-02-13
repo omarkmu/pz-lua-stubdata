@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugLogSettings:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"DebugLogSettings"'
+        fields:
+          comboLookup:
+            type: table
+        methods:
+          - name: onComboBox
+            parameters:
+              - name: comboBox
+              - name: debugType
+          - name: onSetAll
+            parameters:
+              - name: comboBox
+          - name: createChildren
+          - name: setVisible
+            parameters:
+              - name: bVisible
+                type: boolean
+          - name: syncCombos
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number

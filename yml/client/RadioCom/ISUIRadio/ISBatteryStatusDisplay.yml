@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBatteryStatusDisplay:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: addAlertLed
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISBatteryStatusDisplay"'
+        fields:
+          led:
+            type: ISLedLight
+          power:
+            type: number
+          powerInt:
+            type: number
+          powerDisp:
+            type: string
+          fontheight:
+            type: number
+          doLed:
+            type: boolean
+          backTexture: {}
+          powerDispH: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: round
+            parameters:
+              - name: num
+                type: number
+              - name: idp
+                type: number
+            return:
+              - type: number
+          - name: setPower
+            parameters:
+              - name: _power
+          - name: update
+          - name: prerender
+          - name: render

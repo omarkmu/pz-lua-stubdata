@@ -1,0 +1,59 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFactionAddPlayerUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: faction
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISFactionAddPlayerUI"'
+          messages: {}
+          instance:
+            type: ISFactionAddPlayerUI
+            nullable: true
+        fields:
+          playerList:
+            type: ISScrollingListBox
+          no:
+            type: ISButton
+          addPlayer:
+            type: ISButton
+          player: {}
+          faction: {}
+          isOwner: {}
+          scoreboard:
+            type: table
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawPlayers
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: OnScoreboardUpdate
+            parameters:
+              - name: usernames
+              - name: displayNames
+              - name: steamIDs
+          - name: OnMiniScoreboardUpdate

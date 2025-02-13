@@ -1,0 +1,61 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBuildCursorMouse:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+              - name: onSquareSelected
+              - name: isValid
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISBuildCursorMouse"'
+          spriteRender:
+            nullable: true
+        fields:
+          sq:
+            type: IsoGridSquare
+          chosenSprite: {}
+          previousSprite: {}
+          tooltip:
+            nullable: true
+          onSquareSelected: {}
+          isValid:
+            type: boolean
+          character: {}
+          player: {}
+          noNeedHammer:
+            type: boolean
+          skipBuildAction:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: deactivate
+          - name: hideTooltip
+          - name: renderTooltip
+        staticMethods:
+          - name: IsVisible
+            return:
+              - type: boolean

@@ -1,0 +1,86 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISShovelGroundCursor:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: sprite
+                type: string
+              - name: northSprite
+                type: string
+              - name: character
+              - name: groundType
+        staticFields:
+          Type:
+            defaultValue: '"ISShovelGroundCursor"'
+        fields:
+          groundType: {}
+          character: {}
+          player: {}
+          noNeedHammer:
+            type: boolean
+          skipBuildAction:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+          - name: getDirtGravelSand
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: string
+                nullable: true
+          - name: getEmptyItem
+            return:
+              - type: string
+        staticMethods:
+          - name: GetEmptyItemCounts
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: table
+          - name: GetEmptyItem
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: groundType
+            return:
+              - type: string
+              - type: unknown
+          - name: GetDirtGravelSand
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: string
+                nullable: true
+              - type: unknown
+                nullable: true

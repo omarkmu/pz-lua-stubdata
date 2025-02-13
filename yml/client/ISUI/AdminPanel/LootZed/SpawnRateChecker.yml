@@ -1,0 +1,51 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      LootZedTool:
+        staticFields:
+          SpawnItemCheckerList: {}
+          SpawnItemChecker: {}
+        staticMethods:
+          - name: rollProceduralItem_CalcChances
+            parameters:
+              - name: proceduralItems
+              - name: container
+              - name: _
+                type: number
+              - name: character
+              - name: roomDist
+          - name: doRollItem_CalcChances
+            parameters:
+              - name: containerDist
+              - name: _
+              - name: _
+                type: number
+              - name: character
+              - name: _
+              - name: isJunk
+                type: boolean
+              - name: _
+          - name: rollItem_CalcChances
+            parameters:
+              - name: containerDist
+                nullable: true
+              - name: container
+              - name: doItemContainer
+                type: boolean
+              - name: player
+              - name: roomDist
+                nullable: true
+          - name: fillContainerType_CalcChances
+            parameters:
+              - name: roomDist
+                type: table
+              - name: container
+              - name: roomName
+                type: string
+                nullable: true
+              - name: player
+          - name: fillContainer_CalcChances
+            parameters:
+              - name: container
+              - name: player

@@ -1,0 +1,22 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHorn:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISHorn"'
+        fields:
+          t: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

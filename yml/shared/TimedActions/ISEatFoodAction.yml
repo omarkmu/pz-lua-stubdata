@@ -1,0 +1,70 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEatFoodAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: percentage
+        staticFields:
+          Type:
+            defaultValue: '"ISEatFoodAction"'
+        fields:
+          eatAudio:
+            type: number
+          scrapeSound: {}
+          playedScrapeSound:
+            type: boolean
+          item: {}
+          percentage:
+            type: number
+          carLighter: {}
+          openFlame:
+            type: boolean
+          useUtensil:
+            type: boolean
+          isEating:
+            type: boolean
+          eatSound:
+            type: string
+          ignoreHandsWounds:
+            type: boolean
+        methods:
+          - name: isValidStart
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: update
+          - name: start
+          - name: stop
+          - name: serverStop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getRequiredItem
+            return:
+              - type: unknown
+                nullable: true
+          - name: eat
+            parameters:
+              - name: food
+              - name: percentage
+          - name: getDuration
+            return:
+              - type: number
+          - name: getSecondItem
+          - name: isEatingRemaining
+            parameters:
+              - name: item
+            return:
+              - type: boolean

@@ -1,0 +1,34 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlaceCarBatteryChargerAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: charger
+        staticFields:
+          Type:
+            defaultValue: '"ISPlaceCarBatteryChargerAction"'
+        fields:
+          charger: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

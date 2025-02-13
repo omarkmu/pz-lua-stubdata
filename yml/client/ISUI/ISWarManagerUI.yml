@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWarManagerUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISWarManagerUI"'
+          instance:
+            type: ISWarManagerUI
+            nullable: true
+        fields:
+          acceptBtn:
+            type: ISButton
+          refuseBtn:
+            type: ISButton
+          endBtn:
+            type: ISButton
+          cancelBtn:
+            type: ISButton
+          closeBtn:
+            type: ISButton
+          datas:
+            type: ISScrollingListBox
+          scrollBarSpacing:
+            type: number
+          player: {}
+          itemheight:
+            type: number
+        methods:
+          - name: initialise
+          - name: populateList
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onSelectWar
+            parameters:
+              - name: _item
+          - name: prerender
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: closeModal
+        staticMethods:
+          - name: OnWarUpdate

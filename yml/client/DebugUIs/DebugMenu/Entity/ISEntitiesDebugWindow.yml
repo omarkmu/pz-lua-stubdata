@@ -1,0 +1,74 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISEntitiesDebugWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISEntitiesDebugWindow"'
+          coords:
+            type: boolean | table
+          instance:
+            type: ISEntitiesDebugWindow
+            nullable: true
+        fields:
+          th: {}
+          rh:
+            type: number
+          width: {}
+          height: {}
+          heightMod:
+            type: number
+          panel:
+            type: ISTabPanel
+          instancesScreen:
+            type: ISEntityInstancesPanel
+          scriptScreen:
+            type: ISEntityScriptsPanel
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+          searchText:
+            type: string
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onResize
+            parameters:
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+          - name: incY
+            parameters:
+              - name: _y
+              - name: _obj
+                type: IsoObject
+              - name: _margin
+            return:
+              - type: number
+          - name: prerender
+          - name: render
+          - name: close
+          - name: onReloadEntities
+        staticMethods:
+          - name: OnOpenPanel
+            parameters:
+              - name: _player
+            return:
+              - type: ISEntitiesDebugWindow
+                nullable: true

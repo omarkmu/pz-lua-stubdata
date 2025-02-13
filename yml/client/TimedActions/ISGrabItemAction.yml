@@ -1,0 +1,41 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGrabItemAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: time
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISGrabItemAction"'
+        fields:
+          transactionId:
+            type: number
+          started:
+            type: boolean
+          item: {}
+          queueList:
+            type: table
+          ignoreAction:
+            type: boolean
+          loopedAction:
+            type: boolean
+          destContainer: {}
+          sourceContainer: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: transferItem
+            parameters:
+              - name: item
+          - name: checkQueueList

@@ -1,0 +1,59 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISRestAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: bed
+              - name: useAnimations
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISRestAction"'
+        fields:
+          sideStr:
+            nullable: true
+          delayStart:
+            type: number
+          forceProgressBar:
+            type: boolean
+          bed: {}
+          mul:
+            type: number
+          useAnimations:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: boolean
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+          - name: furnitureHasSittingData
+            parameters:
+              - name: bed
+            return:
+              - type: boolean
+          - name: setBeforeSitDirection
+          - name: calculateSitOnFurnitureDirection
+            parameters:
+              - name: character
+              - name: bed
+            return:
+              - type: unknown
+              - type: unknown
+                nullable: true
+          - name: setWhileSittingDirection

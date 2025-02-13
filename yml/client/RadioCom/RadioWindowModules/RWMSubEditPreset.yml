@@ -1,0 +1,95 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      RWMSubEditPreset:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: target
+                type: unknown
+              - name: onSave
+        staticFields:
+          Type:
+            defaultValue: '"RWMSubEditPreset"'
+        fields:
+          lineSplit:
+            type: number
+          entryName:
+            type: ISTextEntryBox
+          frequencySlider:
+            type: ISSliderPanel
+          saveButton:
+            type: ISButton
+          joypadStepIndex:
+            type: number
+          linePairs:
+            type: table
+          linePadding:
+            type: number
+          lineHeight:
+            type: number
+          target:
+            type: unknown
+          onSave: {}
+          joypadSteps:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: onSliderChange
+            parameters:
+              - name: value
+          - name: setValues
+            parameters:
+              - name: name
+                type: string
+              - name: freq
+                type: number
+              - name: min
+                type: number
+              - name: max
+                type: number
+              - name: step
+                type: number
+              - name: shift
+                type: number
+          - name: prerender
+          - name: doSaveButton
+          - name: addLinePair
+            parameters:
+              - name: _text
+              - name: _UIelement
+          - name: calcLinePairs
+          - name: render
+          - name: clearJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+            return:
+              - type: boolean
+              - type: boolean
+          - name: getAPrompt
+            return:
+              - type: unknown
+          - name: getBPrompt
+            return:
+              - type: unknown
+          - name: getXPrompt
+            return:
+              - type: unknown
+          - name: getYPrompt
+            return:
+              - type: unknown

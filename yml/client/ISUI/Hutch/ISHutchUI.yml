@@ -1,0 +1,292 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHutch3DModel:
+        extends: ISUI3DModel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISHutch3DModel"'
+        methods:
+          - name: instantiate
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+      ISHutchNestBox:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hutchUI
+                type: ISHutchUI
+              - name: index
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchNestBox"'
+        fields:
+          avatar:
+            type: ISHutch3DModel
+          hutchUI:
+            type: ISHutchUI
+          index: {}
+          chr: {}
+          playerObj:
+            type: IsoPlayer
+          playerNum:
+            type: integer
+          possibleEggPosition:
+            type: table
+          favoriteStar: {}
+        methods:
+          - name: createChildren
+          - name: render
+          - name: checkGrabBtn
+            parameters:
+              - name: btn
+          - name: doNestStuff
+          - name: getNest
+            return:
+              - type: unknown
+          - name: getAnimal
+            return:
+              - type: unknown
+          - name: initEggPos
+          - name: onButtonGrab
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onCheatAddAnimal
+          - name: onCheatRemoveAnimal
+          - name: onCheatAddEgg
+          - name: onCheatRemoveEgg
+      ISHutchRoost:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hutchUI
+                type: ISHutchUI
+              - name: index
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchRoost"'
+        fields:
+          avatar:
+            type: ISHutch3DModel
+          hutchUI:
+            type: ISHutchUI
+          index:
+            type: number
+          chr: {}
+          playerObj:
+            type: IsoPlayer
+          playerNum:
+            type: integer
+          favoriteStar: {}
+        methods:
+          - name: createChildren
+          - name: render
+          - name: checkGrabBtn
+            parameters:
+              - name: btn
+          - name: getAnimal
+            return:
+              - type: unknown
+          - name: getBody
+            return:
+              - type: unknown
+          - name: onButtonGrab
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onForceEgg
+            parameters:
+              - name: animal
+          - name: onKill
+            parameters:
+              - name: animal
+          - name: onCheatAddAnimal
+          - name: onCheatRemoveAnimal
+            parameters:
+              - name: animal
+      ISHutchUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hutch
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchUI"'
+          instance:
+            type: ISHutchUI
+            nullable: true
+        fields:
+          avatarPanel:
+            type: table
+          grabBtnList:
+            type: table
+          nestBoxPanelList:
+            type: table
+          grabEggsBtnList:
+            type: table
+          nestBoxUI:
+            type: table
+          roostUI:
+            type: table
+          avatarBackgroundTexture: {}
+          boxCleanBtn:
+            type: ISButton
+          birdPooCleanBtn:
+            type: ISButton
+          doorBtn:
+            type: ISButton
+          eggHatchDoorBtn:
+            type: ISButton
+          closedDoorPanel:
+            type: ISPanel
+          hutch: {}
+          chr: {}
+          playerNum:
+            type: integer
+          refreshNeeded:
+            type: boolean
+          btnBorder:
+            type: table
+          fgBar:
+            type: table
+          fgBarOrange:
+            type: table
+          fgBarRed:
+            type: table
+          chickenTexture: {}
+          chickenEmptyTexture: {}
+          eggTexture: {}
+        methods:
+          - name: prerender
+          - name: render
+          - name: initialise
+          - name: create
+          - name: onCleanNest
+          - name: onCleanFloor
+          - name: onToggleDoor
+          - name: onToggleEggHatchDoor
+          - name: onGrabNest
+            parameters:
+              - name: index
+          - name: onGrabRoost
+            parameters:
+              - name: index
+          - name: add3DAnimal
+            parameters:
+              - name: panel
+              - name: animal
+              - name: chickenX
+              - name: chickenY
+          - name: checkAnimalSit
+            parameters:
+              - name: panel
+              - name: animal
+          - name: checkAnimal
+            parameters:
+              - name: index
+              - name: chickenX
+              - name: chickenY
+              - name: rowY
+              - name: rowHeight
+              - name: btnGrabOffset
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer
+          - name: close

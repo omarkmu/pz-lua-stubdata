@@ -1,0 +1,98 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DailyValuesDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"DailyValuesDebug"'
+          instance:
+            type: DailyValuesDebug
+            nullable: true
+          shiftDown:
+            defaultValue: "0"
+          fx:
+            nullable: true
+          cm:
+            nullable: true
+        fields:
+          labels:
+            type: table
+          tempColor:
+            type: table
+          currentTile:
+            nullable: true
+          player: {}
+          playerNum:
+            type: integer
+          title:
+            type: string
+          richtext:
+            nullable: true
+          overrideBPrompt:
+            type: boolean
+          subFocus:
+            nullable: true
+          hotKeyPanels:
+            type: table
+          isJoypadWindow:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addLabel
+            parameters:
+              - name: _curY
+              - name: _labelID
+              - name: _title
+                type: string
+            return:
+              - type: number
+          - name: addLabelValue
+            parameters:
+              - name: _curY
+              - name: _type
+              - name: _labelID
+              - name: _title
+                type: string
+              - name: _defaultVal
+            return:
+              - type: number
+          - name: getTitleLabel
+            parameters:
+              - name: _labelID
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: getValueLabel
+            parameters:
+              - name: _labelID
+                type: string
+            return:
+              - type: unknown
+                nullable: true
+          - name: onResize
+          - name: update
+          - name: prerender
+          - name: stayOnSplitScreen
+          - name: render
+          - name: close
+          - name: clear
+        staticMethods:
+          - name: OnOpenPanel
+            return:
+              - type: DailyValuesDebug
+                nullable: true

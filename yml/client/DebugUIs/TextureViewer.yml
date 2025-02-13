@@ -1,0 +1,29 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TextureWindow:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: tex
+        staticFields:
+          Type:
+            defaultValue: '"TextureWindow"'
+        fields:
+          title: {}
+          renderPanel:
+            type: ISPanel
+          tex: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: renderTex

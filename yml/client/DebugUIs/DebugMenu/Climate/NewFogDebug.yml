@@ -1,0 +1,98 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      NewFogDebug:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"NewFogDebug"'
+        fields:
+          clim: {}
+          newFogID:
+            type: number
+          allOptions:
+            type: table
+          floats:
+            type: table
+          colors:
+            type: table
+          bools:
+            type: table
+          floatOptions:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addFloatOption
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _min
+              - name: _max
+              - name: _stepsize
+            return:
+              - type: number
+          - name: addBoolOption
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: addFloatOptionAuto
+            parameters:
+              - name: _id
+              - name: _float
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: prerender
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: onTicked
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: onTickedValue
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: update

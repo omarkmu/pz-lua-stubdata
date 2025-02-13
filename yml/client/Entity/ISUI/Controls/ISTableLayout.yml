@@ -1,0 +1,288 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTableLayout:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: _styleColumn
+              - name: _styleRow
+              - name: _styleCell
+        staticFields:
+          Type:
+            defaultValue: '"ISTableLayout"'
+        fields:
+          columns:
+            type: table
+          rows:
+            type: table
+          cells:
+            type: table
+          drawGrid:
+            type: boolean
+          gridColor:
+            type: table
+          styleColumn: {}
+          styleRow: {}
+          styleCell: {}
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: row
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+          - name: rowCount
+            return:
+              - type: number
+          - name: column
+            parameters:
+              - name: _index
+            return:
+              - type: unknown
+          - name: columnCount
+            return:
+              - type: number
+          - name: cell
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: unknown
+          - name: cellGetFirst
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: unknown
+                nullable: true
+          - name: cellCount
+            return:
+              - type: number
+          - name: cellFor
+            parameters:
+              - name: _element
+            return:
+              - type: unknown
+                nullable: true
+          - name: isValidPos
+            parameters:
+              - name: _column
+              - name: _row
+            return:
+              - type: boolean
+          - name: setElement
+            parameters:
+              - name: _column
+              - name: _row
+              - name: _element
+          - name: addChild
+            parameters:
+              - name: _element
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: createTable
+            parameters:
+              - name: columns
+              - name: rows
+          - name: addColumnFill
+            parameters:
+              - name: _styleColumn
+            return:
+              - type: unknown
+                nullable: true
+          - name: addColumn
+            parameters:
+              - name: _styleColumn
+              - name: _autoFill
+            return:
+              - type: unknown
+                nullable: true
+          - name: addRowFill
+            parameters:
+              - name: _styleRow
+            return:
+              - type: unknown
+                nullable: true
+          - name: addRow
+            parameters:
+              - name: _styleRow
+              - name: _autoFill
+            return:
+              - type: unknown
+                nullable: true
+          - name: ensureCells
+          - name: clearTable
+      ISTableLayoutColumn:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _parentTable
+              - name: _columnIndex
+              - name: _isAutoFill
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISTableLayoutColumn"'
+        fields:
+          columnIndex: {}
+          isAutoFill:
+            type: boolean
+          width:
+            type: number
+          minimumWidth:
+            type: number
+          x:
+            type: number
+          temp:
+            type: number
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          visible:
+            type: boolean
+          parentTable: {}
+        methods:
+          - name: index
+            return:
+              - type: unknown
+          - name: setVisible
+            parameters:
+              - name: _b
+              - name: _silent
+      ISTableLayoutRow:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _parentTable
+              - name: _rowIndex
+              - name: _isAutoFill
+                type: boolean
+        staticFields:
+          Type:
+            defaultValue: '"ISTableLayoutRow"'
+        fields:
+          rowIndex: {}
+          isAutoFill:
+            type: boolean
+          height:
+            type: number
+          minimumHeight:
+            type: number
+          y:
+            type: number
+          temp:
+            type: number
+          backgroundColor:
+            type: table
+          borderColor:
+            type: table
+          visible:
+            type: boolean
+          parentTable: {}
+        methods:
+          - name: index
+            return:
+              - type: unknown
+          - name: setVisible
+            parameters:
+              - name: _b
+              - name: _silent
+      ISTableLayoutCell:
+        extends: ISBaseObject
+        constructors:
+          - parameters:
+              - name: _columnIndex
+              - name: _rowIndex
+              - name: _parent
+        staticFields:
+          Type:
+            defaultValue: '"ISTableLayoutCell"'
+        fields:
+          parent: {}
+          columnIndex: {}
+          rowIndex: {}
+          x:
+            type: number
+          y:
+            type: number
+          width:
+            type: number
+          height:
+            type: number
+          drawBackground:
+            type: boolean
+          backgroundColor:
+            type: table
+          drawBorder:
+            type: boolean
+          borderColor:
+            type: table
+          element:
+            nullable: true
+          minimumWidth:
+            type: number
+          minimumHeight:
+            type: number
+          padding:
+            type: number
+          visible:
+            type: boolean
+        methods:
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: setVisible
+            parameters:
+              - name: _b
+          - name: setX
+            parameters:
+              - name: _x
+          - name: setY
+            parameters:
+              - name: _y
+          - name: getAbsoluteX
+            return:
+              - type: number
+          - name: getAbsoluteY
+            return:
+              - type: number
+          - name: getX
+            return:
+              - type: number
+          - name: getY
+            return:
+              - type: number
+          - name: getWidth
+            return:
+              - type: number
+          - name: getHeight
+            return:
+              - type: number
+          - name: addChild
+            parameters:
+              - name: _child

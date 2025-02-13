@@ -1,0 +1,30 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      forageServer:
+        staticMethods:
+          - name: updateData
+          - name: clearData
+          - name: addZone
+            parameters:
+              - name: _zoneData
+          - name: removeZone
+            parameters:
+              - name: _zoneData
+          - name: updateZone
+            parameters:
+              - name: _zoneData
+          - name: syncForageData
+          - name: updateIcon
+            parameters:
+              - name: _zoneData
+              - name: _iconID
+              - name: _icon
+          - name: OnClientCommand
+            parameters:
+              - name: _module
+              - name: _command
+              - name: _plObj
+              - name: _packet
+              - name: _clientID

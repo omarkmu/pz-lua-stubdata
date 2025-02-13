@@ -1,0 +1,335 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISHealthPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: player
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISHealthPanel"'
+          cheat:
+            defaultValue: false or getDebug()
+          instance:
+            type: ISHealthPanel
+            nullable: true
+        fields:
+          healthPanel:
+            type: ISNewHealthPanel
+          listbox:
+            type: ISHealthBodyPartListBox
+          bodyPartPanel:
+            type: ISHealthBodyPartPanel
+          fitness:
+            type: ISButton
+          blockingAlpha:
+            type: number
+          otherPlayer:
+            nullable: true
+          actions:
+            type: table
+          blockingMessage:
+            type: string
+            nullable: true
+          damagedParts:
+            type: table
+          textRight:
+            type: number
+          allTextHeight:
+            type: number
+          bodyPartAction:
+            type: table
+          characterX: {}
+          characterY: {}
+          otherPlayerX: {}
+          otherPlayerY: {}
+          progressBarLoaded:
+            type: boolean
+          character: {}
+          playerNum:
+            type: integer
+          doctorLevel: {}
+          abutton: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: setVisible
+            parameters:
+              - name: visible
+          - name: toPlayerInventory
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+              - name: bodyPart
+          - name: update
+          - name: prerender
+          - name: render
+          - name: getDoctor
+            return:
+              - type: unknown
+                nullable: true
+          - name: getPatient
+            return:
+              - type: unknown
+          - name: getDamagedParts
+            return:
+              - type: table
+          - name: updateBodyPartList
+          - name: drawText
+            parameters:
+              - name: str
+                type: string
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+              - name: font
+          - name: setBodyPartAction
+            parameters:
+              - name: bodyPart
+              - name: args
+          - name: setOtherPlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onJoypadDirUp
+          - name: onJoypadDirDown
+          - name: checkItems
+            parameters:
+              - name: handlers
+                type: table
+          - name: checkContainerItems
+            parameters:
+              - name: container
+              - name: childContainers
+              - name: handlers
+          - name: doBodyPartContextMenu
+            parameters:
+              - name: bodyPart
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: dropItemsOnBodyPart
+            parameters:
+              - name: bodyPart
+              - name: items
+        staticMethods:
+          - name: onCheatCurrentPlayer
+            parameters:
+              - name: bodyPart
+              - name: action
+              - name: player
+          - name: onCheatOtherPlayer
+            parameters:
+              - name: bodyPart
+              - name: action
+              - name: player
+              - name: otherPlayer
+          - name: onCheat
+            parameters:
+              - name: bodyPart
+              - name: action
+              - name: player
+              - name: otherPlayer
+          - name: onCheatItem
+            parameters:
+              - name: itemType
+              - name: playerObj
+                type: IsoPlayer
+          - name: setBodyPartActionForPlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: bodyPart
+              - name: action
+                type: ISApplyBandage
+                nullable: true
+              - name: jobType
+                type: string
+                nullable: true
+              - name: args
+                type: table
+                nullable: true
+          - name: DidPatientMove
+            parameters:
+              - name: doctor
+              - name: patient
+              - name: patientX
+              - name: patientY
+            return:
+              - type: boolean
+          - name: IsCharactersInSameCar
+            parameters:
+              - name: doctor
+              - name: patient
+            return:
+              - type: boolean
+          - name: getBandageType
+            parameters:
+              - name: bodyPart
+            return:
+              - type: string
+                nullable: true
+          - name: onCheatHealthCommand
+            parameters:
+              - name: module
+              - name: command
+              - name: args
+      ISNewHealthPanel:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISNewHealthPanel"'
+        fields:
+          character: {}
+        methods:
+          - name: instantiate
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+      ISHealthBodyPartPanel:
+        extends: ISBodyPartPanel
+        constructors:
+          - parameters:
+              - name: character
+              - name: x
+                type: number
+              - name: y
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISHealthBodyPartPanel"'
+        fields:
+          functionTarget:
+            type: ISHealthBodyPartPanel
+        methods:
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: prerender
+          - name: cbSetSelected
+            parameters:
+              - name: bp
+      ISHealthBodyPartListBox:
+        extends: ISScrollingListBox
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISHealthBodyPartListBox"'
+        fields:
+          drawText:
+            type: function
+          selected: {}
+          textRight:
+            type: number
+        methods:
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: doDrawItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+      HealthPanelAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: handler
+                type: table
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+        staticFields:
+          Type:
+            defaultValue: '"HealthPanelAction"'
+        fields:
+          handler:
+            type: table
+          args:
+            type: table
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: start
+          - name: update
+          - name: stop
+          - name: perform

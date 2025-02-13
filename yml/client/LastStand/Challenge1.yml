@@ -1,0 +1,62 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      Challenge1:
+        staticFields:
+          zombiesSpawned:
+            defaultValue: "0"
+          deadZombie:
+            defaultValue: "0"
+          wave:
+            defaultValue: "0"
+          waveTime:
+            defaultValue: "0"
+          alphaTxt:
+            defaultValue: "0"
+          lastWaveTime:
+            defaultValue: "0"
+          id:
+            defaultValue: '"Challenge1"'
+          image:
+            defaultValue: '"media/lua/client/LastStand/Challenge1.png"'
+          world:
+            defaultValue: '"challengemaps/Challenge1"'
+          x:
+            defaultValue: "153"
+          y:
+            defaultValue: "158"
+          z:
+            defaultValue: "0"
+          gameMode:
+            defaultValue: '"LastStand"'
+          cratePositions: {}
+          spawnCount: {}
+          hourOfDay:
+            defaultValue: "3"
+          zombieSpawnsRect: {}
+        staticMethods:
+          - name: Add
+          - name: OnInitWorld
+          - name: AddPlayer
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: playerObj
+                type: IsoPlayer
+          - name: RemovePlayer
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: Init
+          - name: FillContainers
+          - name: SpawnZombies
+            parameters:
+              - name: count
+          - name: Render
+          - name: Tick
+          - name: onBackButtonWheel
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: dir

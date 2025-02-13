@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAddTakeDispenserBottle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: waterdispenser
+              - name: bottle
+        staticFields:
+          Type:
+            defaultValue: '"ISAddTakeDispenserBottle"'
+        fields:
+          waterdispenser: {}
+          square:
+            type: IsoGridSquare
+          bottle: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number

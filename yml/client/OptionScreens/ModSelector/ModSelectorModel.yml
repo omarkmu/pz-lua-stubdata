@@ -1,0 +1,110 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ModSelector.Model:
+        local: true
+        constructors:
+          - parameters:
+              - name: view
+        staticFields:
+          categories: {}
+        fields:
+          view: {}
+          mods:
+            type: table
+          sortedMods:
+            type: table
+          presets:
+            type: table
+          favs:
+            type: table
+          currentMods:
+            type: table
+          isUnsupportedModsVisible:
+            type: boolean
+          mapGroups: {}
+          loadGameFolder:
+            nullable: true
+          serverSettingsFinishFunc: {}
+          isServerSettingsMods:
+            type: boolean
+          serverSettingsMods: {}
+          ModsEnabled: {}
+          incompatibles:
+            type: table
+          requirements:
+            type: table
+        methods:
+          - name: showUnsupportedMods
+            parameters:
+              - name: value
+          - name: setExistingSavefile
+            parameters:
+              - name: folder
+          - name: setServerSettingsMods
+            parameters:
+              - name: data
+              - name: finishFunc
+          - name: setFavorite
+            parameters:
+              - name: id
+              - name: val
+          - name: reloadMods
+          - name: refreshMods
+          - name: correctAndSaveModOrder
+            parameters:
+              - name: data
+          - name: checkMapConflicts
+            return:
+              - type: unknown
+          - name: getAllMapsInOrder
+            return:
+              - type: unknown
+          - name: getMapConflicts
+            parameters:
+              - name: mapName
+                type: string
+            return:
+              - type: unknown
+          - name: filterMods
+            parameters:
+              - name: category
+              - name: searchWord
+              - name: favoriteMode
+              - name: onlyEnabled
+          - name: isModActive
+            parameters:
+              - name: id
+            return:
+              - type: unknown
+          - name: getActiveMods
+            return:
+              - type: unknown
+          - name: setModActive
+            parameters:
+              - name: id
+              - name: active
+                type: boolean
+          - name: acceptChanges
+          - name: loadModDataFromFile
+          - name: saveModDataToFile
+          - name: getPresetShareText
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: string
+          - name: addSharedPreset
+            parameters:
+              - name: button
+                type: ISButton
+          - name: forceActivateMods
+            parameters:
+              - name: modInfo
+              - name: activate
+                type: boolean
+      ModSelector:
+        staticFields:
+          Model:
+            type: ModSelector.Model

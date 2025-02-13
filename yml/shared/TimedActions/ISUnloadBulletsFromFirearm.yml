@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUnloadBulletsFromFirearm:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: gun
+        staticFields:
+          Type:
+            defaultValue: '"ISUnloadBulletsFromFirearm"'
+        fields:
+          ammoCountStart: {}
+          unloadFinished:
+            type: boolean
+          playedEjectAmmoStartSound:
+            type: boolean
+          gun: {}
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: start
+          - name: update
+          - name: initVars
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: stop
+          - name: perform

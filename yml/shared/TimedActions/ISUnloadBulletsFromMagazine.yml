@@ -1,0 +1,42 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISUnloadBulletsFromMagazine:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: magazine
+        staticFields:
+          Type:
+            defaultValue: '"ISUnloadBulletsFromMagazine"'
+        fields:
+          magazine: {}
+          ammoCountStart: {}
+          unloadFinished:
+            type: boolean
+          useProgressBar:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+                nullable: true
+          - name: start
+          - name: update
+          - name: initVars
+          - name: serverStop
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: stop
+          - name: perform

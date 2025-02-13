@@ -1,0 +1,100 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISCraftInventoryPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: logic
+        staticFields:
+          Type:
+            defaultValue: '"ISCraftInventoryPanel"'
+        fields:
+          colGood:
+            type: table
+          colBad:
+            type: table
+          itemListBox:
+            nullable: true
+          isDirty:
+            type: boolean
+          inputScriptFilter:
+            nullable: true
+          selectedItem: {}
+          unavailablesExpanded:
+            type: boolean
+          player: {}
+          logic: {}
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: selectFirst
+          - name: populate
+          - name: createListHeader
+            parameters:
+              - name: _text
+              - name: hasExpandArrow
+            return:
+              - type: table
+          - name: createListItemNode
+            parameters:
+              - name: _node
+            return:
+              - type: table
+          - name: createListItemEntree
+            parameters:
+              - name: _node
+              - name: _inventoryItem
+              - name: _index
+            return:
+              - type: table
+          - name: createUnavailableListItemEntree
+            parameters:
+              - name: _item
+              - name: _index
+            return:
+              - type: table
+          - name: drawListItem
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onListSelected
+            parameters:
+              - name: _item
+          - name: onRebuildItemNodes
+            parameters:
+              - name: _inputItems
+          - name: updateContainers
+            parameters:
+              - name: _containers

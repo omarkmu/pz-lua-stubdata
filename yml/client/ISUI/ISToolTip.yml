@@ -1,0 +1,147 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISToolTip:
+        extends: ISPanel
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"ISToolTip"'
+        fields:
+          name:
+            type: string
+            nullable: true
+          contextMenu:
+            nullable: true
+          texture:
+            nullable: true
+          desiredX:
+            type: number
+            nullable: true
+          desiredY:
+            type: number
+            nullable: true
+          owner:
+            type: table
+            nullable: true
+          description:
+            type: string
+          footNote:
+            nullable: true
+          maxLineWidth:
+            nullable: true
+          followMouse:
+            type: boolean
+          descriptionPanel:
+            type: ISRichTextPanel
+          nameMarginX:
+            type: number
+          defaultMyWidth:
+            type: number
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: setName
+            parameters:
+              - name: name
+                type: string
+          - name: setContextMenu
+            parameters:
+              - name: contextMenu
+          - name: setTexture
+            parameters:
+              - name: textureName
+                type: string
+          - name: setTextureDirectly
+            parameters:
+              - name: texture
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: prerender
+          - name: render
+          - name: doLayout
+          - name: layoutContents
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: myWidth
+            return:
+              - type: number
+              - type: number
+          - name: renderContents
+          - name: setDesiredPosition
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: adjustPositionToAvoidOverlap
+            parameters:
+              - name: avoidRect
+          - name: overlaps
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: boolean
+          - name: placeLeft
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: placeRight
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: placeAbove
+            parameters:
+              - name: r1
+              - name: r2
+            return:
+              - type: unknown
+          - name: setOwner
+            parameters:
+              - name: ui
+                type: table
+          - name: reset
+        staticMethods:
+          - name: GetFont
+            return:
+              - type: unknown

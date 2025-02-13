@@ -1,0 +1,618 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      WorldMapEditorMode_Style:
+        extends: WorldMapEditorMode
+        constructors:
+          - parameters:
+              - name: editor
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapEditorMode_Style"'
+        fields:
+          listbox:
+            type: WorldMapEditorListBox
+          layerNameEntry:
+            type: ISTextEntryBox
+          layerType:
+            type: ISComboBox
+          zoomEntry:
+            type: ISTextEntryBox
+          editors:
+            type: table
+          currentEditor:
+            nullable: true
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: display
+          - name: undisplay
+          - name: loadSettingsFromMap
+          - name: fillList
+          - name: onListboxEvent
+            parameters:
+              - name: action
+          - name: onAdd
+          - name: onRemove
+          - name: onMoveUp
+          - name: onMoveDown
+          - name: onSelect
+          - name: onLayerNameEntered
+          - name: onChangeLayerType
+          - name: onMinZoomEntered
+          - name: setCurrentEditor
+            parameters:
+              - name: layer
+          - name: generateLuaScript
+            return:
+              - type: string
+          - name: generateLuaScript_FillStops
+            parameters:
+              - name: layer
+            return:
+              - type: string
+          - name: generateLuaScript_TextureStops
+            parameters:
+              - name: layer
+            return:
+              - type: string
+      WorldMapStyleEditor:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor"'
+        fields:
+          layer:
+            nullable: true
+          editorMode: {}
+          mapUI: {}
+          mapAPI: {}
+          styleAPI: {}
+        methods:
+          - name: shrinkWrap
+          - name: display
+            parameters:
+              - name: layer
+          - name: undisplay
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+      WorldMapStyleEditor_TabPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: width
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_TabPanel"'
+        fields:
+          layer: {}
+          editorMode: {}
+          mapUI: {}
+          mapAPI: {}
+          styleAPI: {}
+        methods:
+          - name: undisplay
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutsideMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseMoveMap
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: populateList
+            parameters:
+              - name: layer
+          - name: getEntryClamped
+            parameters:
+              - name: entry
+              - name: min
+              - name: max
+            return:
+              - type: number
+                nullable: true
+      WorldMapStyleEditor_FilterPanel:
+        extends: WorldMapStyleEditor_TabPanel
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_FilterPanel"'
+        fields:
+          keyEntry:
+            type: ISTextEntryBox
+          valueEntry:
+            type: ISTextEntryBox
+        methods:
+          - name: createChildren
+          - name: populateList
+            parameters:
+              - name: layer
+          - name: onKeyEntered
+          - name: onValueEntered
+      WorldMapStyleEditor_ColorStopsPanel:
+        extends: WorldMapStyleEditor_TabPanel
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_ColorStopsPanel"'
+        fields:
+          listbox:
+            type: WorldMapEditorListBox
+          zoomEntry:
+            type: ISTextEntryBox
+          redEntry:
+            type: ISTextEntryBox
+          greenEntry:
+            type: ISTextEntryBox
+          blueEntry:
+            type: ISTextEntryBox
+          alphaEntry:
+            type: ISTextEntryBox
+        methods:
+          - name: createChildren
+          - name: onListboxEvent
+            parameters:
+              - name: action
+          - name: onAdd
+          - name: onRemove
+          - name: onMoveUp
+          - name: onMoveDown
+          - name: onSelect
+          - name: populateList
+            parameters:
+              - name: layer
+          - name: onZoomEntered
+          - name: onRedEntered
+          - name: onGreenEntered
+          - name: onBlueEntered
+          - name: onAlphaEntered
+          - name: getSelectedIndex
+            return:
+              - type: number
+                nullable: true
+          - name: getSelectedZoom
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedRed
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedGreen
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedBlue
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedAlpha
+            return:
+              - type: unknown
+                nullable: true
+          - name: setRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+      WorldMapStyleEditor_TextureStopsPanel:
+        extends: WorldMapStyleEditor_TabPanel
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_TextureStopsPanel"'
+        fields:
+          listbox:
+            type: WorldMapEditorListBox
+          zoomEntry:
+            type: ISTextEntryBox
+          texturePathEntry:
+            type: ISTextEntryBox
+        methods:
+          - name: createChildren
+          - name: render
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutsideMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseMoveMap
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onListboxEvent
+            parameters:
+              - name: action
+          - name: onAdd
+          - name: onRemove
+          - name: onMoveUp
+          - name: onMoveDown
+          - name: onSelect
+          - name: populateList
+            parameters:
+              - name: layer
+          - name: getSelectedIndex
+            return:
+              - type: number
+                nullable: true
+          - name: getSelectedZoom
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedTexturePath
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedTexture
+            return:
+              - type: unknown
+                nullable: true
+          - name: onTexturePathEntered
+          - name: onZoomEntered
+      WorldMapStyleEditor_TexturePanel:
+        extends: WorldMapStyleEditor_TextureStopsPanel
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_TexturePanel"'
+        fields:
+          scaleEntry:
+            type: ISTextEntryBox
+          lockSize:
+            type: ISTickBox
+          useWorldBounds:
+            type: ISTickBox
+          textureMode:
+            type: ISComboBox
+          snapButtons:
+            type: table
+          mode:
+            type: string
+            nullable: true
+          resizeMode:
+            type: string
+            nullable: true
+          snapMode:
+            type: string
+          sizeLocked:
+            type: boolean
+          resizer:
+            type: WorldMapEditorResizer
+        methods:
+          - name: createChildren
+          - name: render
+          - name: undisplay
+          - name: populateList
+            parameters:
+              - name: layer
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onMouseUpOutsideMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseMoveMap
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: boolean
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: cancelResize
+            return:
+              - type: boolean
+          - name: onSelect
+          - name: getSelectedTextureScale
+            return:
+              - type: number
+              - type: number
+          - name: onResizeToTexture
+          - name: onBoundsFromTexture
+          - name: onChangeSnapMode
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onScaleEntered
+          - name: onChangeSizeLocked
+          - name: onChangeUseWorldBounds
+          - name: onChangeTextureMode
+      WorldMapStyleEditor_PolygonLayerPanel:
+        extends: WorldMapStyleEditor
+        constructors:
+          - parameters:
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_PolygonLayerPanel"'
+        fields:
+          tabs:
+            type: ISTabPanel
+          filterPanel:
+            type: WorldMapStyleEditor_FilterPanel
+          fillPanel:
+            type: WorldMapStyleEditor_ColorStopsPanel
+          texturePanel:
+            type: WorldMapStyleEditor_TextureStopsPanel
+        methods:
+          - name: createChildren
+          - name: display
+            parameters:
+              - name: layer
+          - name: undisplay
+          - name: render
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseUpOutsideMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseMoveMap
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: unknown
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+      WorldMapStyleEditor_TextureLayerPanel:
+        extends: WorldMapStyleEditor
+        constructors:
+          - parameters:
+              - name: editorMode
+        staticFields:
+          Type:
+            defaultValue: '"WorldMapStyleEditor_TextureLayerPanel"'
+        fields:
+          tabs:
+            type: ISTabPanel
+          fillPanel:
+            type: WorldMapStyleEditor_ColorStopsPanel
+          texturePanel:
+            type: WorldMapStyleEditor_TexturePanel
+        methods:
+          - name: createChildren
+          - name: display
+            parameters:
+              - name: layer
+          - name: undisplay
+          - name: render
+          - name: onMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseUpMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseUpOutsideMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onMouseMoveMap
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+            return:
+              - type: unknown
+          - name: onRightMouseDownMap
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: unknown

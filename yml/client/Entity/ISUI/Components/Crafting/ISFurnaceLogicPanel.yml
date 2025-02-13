@@ -1,0 +1,87 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFurnaceLogicPanel:
+        extends: ISBaseComponentPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: entity
+              - name: component
+              - name: componentUiStyle
+        staticFields:
+          Type:
+            defaultValue: '"ISFurnaceLogicPanel"'
+        fields:
+          tableLayout:
+            nullable: true
+          furnaceInputs:
+            nullable: true
+          furnaceOutputs:
+            nullable: true
+          fuelTableLayout:
+            nullable: true
+          fuelInputs:
+            nullable: true
+          craftProgress:
+            nullable: true
+          craftControl:
+            nullable: true
+          craftControlDebug:
+            nullable: true
+          fuelOutputs:
+            nullable: true
+          furnaceInputsGroupName: {}
+          furnaceOutputsGroupName: {}
+          fuelInputsGroupName: {}
+          fuelOutputsGroupName: {}
+          resourcesComponent: {}
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: createItemSlotPanel
+            parameters:
+              - name: _style
+              - name: _drawProgress
+            return:
+              - type: unknown
+                nullable: true
+          - name: createFluidSlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: createEnergySlotPanel
+            parameters:
+              - name: _style
+            return:
+              - type: unknown
+                nullable: true
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+        staticMethods:
+          - name: CanCreatePanelFor
+            parameters:
+              - name: _player
+              - name: _entity
+              - name: _component
+              - name: _componentUiScript
+            return:
+              - type: boolean
+                nullable: true

@@ -1,0 +1,141 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      PuddlesControl:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"PuddlesControl"'
+        fields:
+          puddles: {}
+          allOptions:
+            type: table
+          floats:
+            type: table
+          colors:
+            type: table
+          bools:
+            type: table
+          horzBarX:
+            type: number
+          horzBarW:
+            type: number
+          horzBars:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addFloatOption
+            parameters:
+              - name: _id
+              - name: _float
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+            return:
+              - type: number
+          - name: addTickBox
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _title
+                type: string
+              - name: options
+            return:
+              - type: number
+              - type: ISTickBox
+          - name: addSlider
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+            return:
+              - type: number
+              - type: ISSliderPanel
+          - name: addLabel
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+              - name: _bLeft
+            return:
+              - type: number
+              - type: ISLabel
+          - name: addButton
+            parameters:
+              - name: _id
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _title
+                type: string
+            return:
+              - type: number
+              - type: ISButton
+          - name: addHorzBar
+            parameters:
+              - name: _y
+            return:
+              - type: unknown
+          - name: prerender
+          - name: onSliderChange
+            parameters:
+              - name: _newval
+              - name: _slider
+          - name: onTicked
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: onTickedValue
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: update
+          - name: close

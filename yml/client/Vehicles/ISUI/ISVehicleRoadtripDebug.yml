@@ -1,0 +1,55 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISVehicleRoadtripDebug:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: character
+        staticFields:
+          Type:
+            defaultValue: '"ISVehicleRoadtripDebug"'
+        fields:
+          start:
+            type: ISButton
+          stop:
+            type: ISButton
+          vehicle: {}
+          startedTrip:
+            type: boolean
+          startTimer: {}
+          stopTimer:
+            nullable: true
+          initialGas:
+            type: number
+          initialBattery:
+            type: number
+          partsCondition:
+            type: table
+          previousSq: {}
+          totalDist:
+            type: number
+          playerNum:
+            type: integer
+          character: {}
+        methods:
+          - name: createChildren
+          - name: update
+          - name: startRoadtrip
+          - name: stopRoadtrip
+          - name: render
+          - name: updateXY
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: startingListY
+            return:
+              - type: number
+              - type: number

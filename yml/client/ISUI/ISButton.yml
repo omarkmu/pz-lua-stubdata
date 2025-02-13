@@ -1,0 +1,297 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISButton:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: title
+                type: string
+              - name: clicktarget
+                type: table
+                nullable: true
+              - name: onclick
+                type: ISButton | function
+                nullable: true
+              - name: onmousedown
+                type: function
+                nullable: true
+              - name: allowMouseUpProcessing
+                type: boolean
+                nullable: true
+        staticFields:
+          Type:
+            defaultValue: '"ISButton"'
+        fields:
+          joypadFocused:
+            type: boolean
+          pressed:
+            type: boolean
+          isJoypad:
+            type: boolean
+          joypadTexture:
+            nullable: true
+          backgroundColorPressed:
+            type: table
+          blinkBGAlpha:
+            type: number
+          blinkBGAlphaIncrease:
+            type: boolean
+          image: {}
+          forcedWidthImage:
+            type: number
+          forcedHeightImage:
+            type: number
+          overlayText: {}
+          blinkImageAlpha:
+            type: number
+          blinkImageAlphaIncrease:
+            type: boolean
+          font: {}
+          title:
+            type: string
+          onmouseover:
+            nullable: true
+          onmouseoutfunction:
+            nullable: true
+          displayBackground:
+            type: boolean
+          pressedTime:
+            nullable: true
+          tooltipUI:
+            type: ISToolTip
+          repeatWhilePressedFunc: {}
+          enable:
+            type: boolean
+          borderColorEnabled:
+            type: table
+          backgroundColorEnabled:
+            type: table
+          tooltip:
+            type: string
+            nullable: true
+          originalWidth:
+            type: number
+          onclick:
+            type: ISButton | function
+            nullable: true
+          onClickArgs:
+            type: table
+          backgroundColorMouseOver:
+            type: table
+          textureColor:
+            type: table
+          textColor:
+            type: table
+          target:
+            type: unknown
+            nullable: true
+          onmousedown:
+            type: function
+            nullable: true
+          isButton:
+            type: boolean
+          allowMouseUpProcessing:
+            type: boolean
+            nullable: true
+          yoffset:
+            type: number
+          fade: {}
+          joypadTextureWH:
+            type: number
+          sounds:
+            type: table
+          originalHeight:
+            type: number
+          textureBackground:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDoubleClick
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: unknown
+                nullable: true
+          - name: forceClick
+            return:
+              - type: unknown
+                nullable: true
+          - name: setJoypadButton
+            parameters:
+              - name: texture
+          - name: clearJoypadButton
+          - name: prerender
+          - name: setImage
+            parameters:
+              - name: image
+          - name: forceImageSize
+            parameters:
+              - name: width
+                type: number
+              - name: height
+                type: number
+          - name: setOverlayText
+            parameters:
+              - name: text
+          - name: render
+          - name: setFont
+            parameters:
+              - name: font
+          - name: getTitle
+            return:
+              - type: string
+          - name: setTitle
+            parameters:
+              - name: title
+                type: string
+          - name: setOnMouseOverFunction
+            parameters:
+              - name: onmouseover
+                nullable: true
+          - name: setOnMouseOutFunction
+            parameters:
+              - name: onmouseout
+                nullable: true
+          - name: setDisplayBackground
+            parameters:
+              - name: background
+          - name: update
+          - name: updateTooltip
+          - name: setRepeatWhilePressed
+            parameters:
+              - name: func
+          - name: setBackgroundRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: setBackgroundColorMouseOverRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: setBorderRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: setTextureRGBA
+            parameters:
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: enableAcceptColor
+          - name: enableCancelColor
+          - name: toggleAcceptCancel
+            parameters:
+              - name: bEnabled
+          - name: setEnable
+            parameters:
+              - name: bEnabled
+                type: boolean
+          - name: isEnabled
+            return:
+              - type: boolean
+                nullable: true
+          - name: setTooltip
+            parameters:
+              - name: tooltip
+                type: string
+                nullable: true
+          - name: setWidthToTitle
+            parameters:
+              - name: minWidth
+                type: number
+                nullable: true
+              - name: isJoypad
+                type: boolean
+                nullable: true
+          - name: setOnClick
+            parameters:
+              - name: func
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: setSound
+            parameters:
+              - name: which
+                type: string
+              - name: soundName
+                type: string
+                nullable: true
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight

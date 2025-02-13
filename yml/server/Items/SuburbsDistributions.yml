@@ -1,0 +1,60 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      NoContainerFillRooms:
+        staticFields:
+          armysurplus: {}
+          armysurplustorage: {}
+          bookstore: {}
+          camping: {}
+          campingstorage: {}
+          carsupply: {}
+          clothingstore: {}
+          clothingstorage: {}
+          hunting: {}
+          jayschicken_dining: {}
+          jayschicken_kitchen: {}
+          pawnshop: {}
+          pawnshopoffice: {}
+          pawnshopstorage: {}
+          spiffo_dining: {}
+          spiffoskitchen: {}
+      WeaponUpgrades:
+        staticFields:
+          VarmintRifle: {}
+          HuntingRifle: {}
+          Shotgun: {}
+          Pistol: {}
+          Pistol2: {}
+          Pistol3: {}
+          Revolver: {}
+          Revolver_Long: {}
+    functions:
+      - name: ClearAllDistributionItems
+        parameters:
+          - name: _dist
+          - name: _dorecursive
+      - name: RemoveItemFromDistribution
+        parameters:
+          - name: _dist
+          - name: _item
+          - name: _chance
+          - name: _dorecursive
+      - name: ReplaceItemInDistribution
+        parameters:
+          - name: _dist
+          - name: _item
+          - name: _chance
+          - name: _replacement
+          - name: _replaceChance
+          - name: _dorecursive
+      - name: MergeDistributionRecursive
+        parameters:
+          - name: _orig
+            type: SuburbsDistributions
+          - name: _mod
+      - name: DeepPrintDistributionTable
+        parameters:
+          - name: _dist
+          - name: tab

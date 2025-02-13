@@ -1,0 +1,37 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPickAxeGroundCoverItem:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISPickAxeGroundCoverItem"'
+        fields:
+          spriteFrame:
+            type: number
+          pickAxe: {}
+          item: {}
+          objectType:
+            nullable: true
+          cornerCounter:
+            type: number
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter

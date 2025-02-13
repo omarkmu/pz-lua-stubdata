@@ -1,0 +1,97 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      AdminContextMenu:
+        staticMethods:
+          - name: onTriggerThunderUI
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: doMenu
+            parameters:
+              - name: player
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+            return:
+              - type: boolean
+                nullable: true
+          - name: onTeleportUI
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onRemoveItemTool
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onSpawnVehicle
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+          - name: onHordeManager
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: player
+          - name: onDebugColor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: onDebugBlood
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: vehicle
+          - name: OnGetDoorKey
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+              - name: player
+          - name: OnDoorLock
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: OnSetDoorKeyID
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: OnSetDoorKeyIDRandom
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: setForceLockDoor
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+              - name: player
+          - name: OnSetDoorKeyIDBuilding
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: door
+                type: IsoDoor | IsoThumpable
+          - name: OnRemoveAllZombiesClient
+            parameters:
+              - name: zombie
+          - name: onMakeNoise
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: playerObj
+                type: IsoPlayer
+              - name: radius
+              - name: volume

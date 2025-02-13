@@ -1,0 +1,69 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      fishingNet:
+        extends: ISBuildingObject
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"fishingNet"'
+        fields:
+          character: {}
+          player: {}
+          item: {}
+          skipBuildAction:
+            type: boolean
+          skipWalk:
+            type: boolean
+        methods:
+          - name: create
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: north
+              - name: sprite
+          - name: isValid
+            parameters:
+              - name: square
+                type: IsoGridSquare
+              - name: north
+            return:
+              - type: boolean
+          - name: render
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: z
+                type: number
+              - name: square
+                type: IsoGridSquare
+        staticMethods:
+          - name: doTimestamp
+            parameters:
+              - name: net
+          - name: setBait
+            parameters:
+              - name: net
+              - name: baitForce
+          - name: updateBait
+            parameters:
+              - name: net
+          - name: remove
+            parameters:
+              - name: net
+              - name: player
+          - name: checkTrap
+            parameters:
+              - name: player
+              - name: trap
+              - name: hours

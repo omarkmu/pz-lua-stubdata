@@ -1,0 +1,201 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISPlayerStatsUI:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: playerChecked
+              - name: admin
+        staticFields:
+          Type:
+            defaultValue: '"ISPlayerStatsUI"'
+          instance:
+            type: ISPlayerStatsUI
+            nullable: true
+        fields:
+          selectedPerk:
+            nullable: true
+          syncWeightTimer:
+            type: number
+          mainPanel:
+            type: ISPanel
+          closeBtn:
+            type: ISButton
+          addTraitBtn:
+            type: ISButton
+          changeProfession:
+            type: ISButton
+          changeUsernameBtn:
+            type: ISButton
+          changeForename:
+            type: ISButton
+          changeSurname:
+            type: ISButton
+          muteAllBtn:
+            type: ISButton
+          changeAccessLvlBtn:
+            type: ISButton
+          userlogBtn:
+            type: ISButton
+          warningPointsBtn:
+            type: ISButton
+          weightBtn:
+            type: ISButton
+          manageInvBtn:
+            type: ISButton
+          xpListBox:
+            type: ISScrollingListBox
+          addXpBtn:
+            type: ISButton
+          addLvlBtn:
+            type: ISButton
+          loseLvlBtn:
+            type: ISButton
+          warningPoint:
+            type: number
+          char: {}
+          variableColor:
+            type: table
+          admin: {}
+          listHeaderColor:
+            type: table
+          buttonBorderColor:
+            type: table
+          traits:
+            type: table
+          traitsRemoveButtons:
+            type: table
+          perks:
+            type: table
+          perksAddXPButtons:
+            type: table
+          userlogs:
+            type: table
+          buttonOffset:
+            type: number
+          buttonWidth:
+            type: number
+          buttonPadY:
+            type: number
+          buttonHeight:
+            type: number
+          windows:
+            type: table
+        methods:
+          - name: initialise
+          - name: setVisible
+            parameters:
+              - name: visible
+                type: boolean
+          - name: subPanelPreRender
+          - name: subPanelRender
+          - name: prerender
+          - name: render
+          - name: updateWeight
+          - name: canModifyThis
+            return:
+              - type: boolean
+          - name: updateButtons
+          - name: onMouseWheelXXX
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+                nullable: true
+          - name: create
+          - name: onOptionMouseDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onAddWarningPoint
+            parameters:
+              - name: button
+                type: ISButton
+              - name: reason
+              - name: amount
+          - name: onAddTrait
+            parameters:
+              - name: button
+                type: ISButton
+              - name: trait
+          - name: onChangeProfession
+            parameters:
+              - name: button
+                type: ISButton
+              - name: prof
+          - name: onChangeAccessLevel
+            parameters:
+              - name: button
+                type: ISButton
+              - name: accessLevel
+          - name: onChangeName
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+              - name: changedName
+                type: string
+          - name: onChangeWeight
+            parameters:
+              - name: button
+                type: ISButton
+              - name: player
+          - name: onRemoveTrait
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: drawPerk
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: onAddXP
+            parameters:
+              - name: button
+                type: ISButton
+              - name: perk
+              - name: amount
+              - name: addGlobalXP
+              - name: useMultipliers
+          - name: updateColumns
+        staticMethods:
+          - name: loadTraits
+            parameters:
+              - name: self
+          - name: loadProfession
+            parameters:
+              - name: self
+          - name: loadPerks
+            parameters:
+              - name: self
+                type: ISPlayerStatsUI
+          - name: loadUserlog
+            parameters:
+              - name: self
+          - name: receiveUserLog
+            parameters:
+              - name: username
+                type: string
+              - name: logs
+          - name: OnOpenPanel

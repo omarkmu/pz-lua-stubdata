@@ -1,0 +1,31 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISDigStairsAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+              - name: sq
+                type: IsoGridSquare
+              - name: dir
+              - name: time
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISDigStairsAction"'
+        fields:
+          item: {}
+          dir: {}
+          square:
+            type: IsoGridSquare
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: update
+          - name: start
+          - name: stop
+          - name: perform

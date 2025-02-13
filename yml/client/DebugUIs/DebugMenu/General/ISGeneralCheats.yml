@@ -1,0 +1,44 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISGeneralCheats:
+        extends: ISDebugSubPanelBase
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: doStencil
+        staticFields:
+          Type:
+            defaultValue: '"ISGeneralCheats"'
+        fields:
+          boolOptions:
+            type: table
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: addBoolOption
+            parameters:
+              - name: _title
+                type: string
+              - name: _lua
+            return:
+              - type: table
+          - name: prerender
+          - name: onTicked
+            parameters:
+              - name: _index
+              - name: _selected
+              - name: _arg1
+                type: unknown
+              - name: _arg2
+                type: unknown
+              - name: _tickbox
+          - name: update

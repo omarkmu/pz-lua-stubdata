@@ -1,0 +1,36 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBaseObject:
+        constructors:
+          - {}
+        fields:
+          Type:
+            type: string
+          __eventListeners:
+            type: table
+            nullable: true
+        methods:
+          - name: initialise
+          - name: derive
+            parameters:
+              - name: type
+                type: string
+            return:
+              - type: ISBaseObject
+          - name: addEventListener
+            parameters:
+              - name: _event
+              - name: _callback
+              - name: _target
+                type: unknown
+          - name: removeEventListener
+            parameters:
+              - name: _event
+              - name: _callback
+          - name: triggerEvent
+            parameters:
+              - name: _event
+              - name: ...
+          - name: clearEventListeners

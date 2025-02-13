@@ -1,0 +1,47 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISFireplaceLightFromKindle:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+                nullable: true
+              - name: plank
+              - name: item
+              - name: fireplace
+        staticFields:
+          Type:
+            defaultValue: '"ISFireplaceLightFromKindle"'
+        fields:
+          item:
+            nullable: true
+          plank: {}
+          sound: {}
+          fireplace: {}
+          isOutdoorsMan: {}
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: updateKindling
+          - name: start
+          - name: stop
+          - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: animEvent
+            parameters:
+              - name: event
+              - name: parameter
+          - name: serverStart
+          - name: getDuration
+            return:
+              - type: number

@@ -1,0 +1,53 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISForageAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: iconID
+              - name: targetContainer
+              - name: discardItems
+                type: boolean
+              - name: itemType
+        staticFields:
+          Type:
+            defaultValue: '"ISForageAction"'
+        fields:
+          targetContainer: {}
+          discardItems:
+            type: boolean
+          iconID: {}
+          itemType: {}
+          manager: {}
+          forageIcon: {}
+          zoneData: {}
+          itemDef: {}
+          maxTime:
+            type: number
+            nullable: true
+          currentTime:
+            type: number
+          started:
+            type: boolean
+        methods:
+          - name: isValid
+            return:
+              - type: boolean
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: update
+          - name: stop
+          - name: start
+          - name: perform
+          - name: forage
+          - name: complete
+            return:
+              - type: boolean
+          - name: getDuration
+            return:
+              - type: number
+                nullable: true

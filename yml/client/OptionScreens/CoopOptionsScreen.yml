@@ -1,0 +1,238 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      CoopOptionsScreen:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"CoopOptionsScreen"'
+          instance:
+            type: CoopOptionsScreen
+            nullable: true
+        fields:
+          startY:
+            type: number
+          itemheightoverride:
+            type: table
+          selected:
+            type: number
+          panel: {}
+          accountNameEntry:
+            type: ISTextEntryBox
+          settingsComboBox:
+            type: ISComboBox
+          settingsButton:
+            type: ISButton
+          memoryToIndex:
+            type: table
+          memoryComboBox:
+            type: ISComboBox
+          softResetButton:
+            type: ISButton
+          deleteWorldButton:
+            type: ISButton
+          deletePlayerButton:
+            type: ISButton
+          checkPlayer:
+            type: boolean
+          backButton:
+            type: ISButton
+          startButton:
+            type: ISButton
+          abortButton:
+            type: ISButton
+          richText:
+            type: ISRichTextPanel
+          statusTextY:
+            type: number
+          serverProgressBar:
+            type: ISProgressBar
+          progress:
+            type: number
+          nextProgress:
+            type: number
+          workshopCount:
+            type: number
+            nullable: true
+          serverStatus:
+            type: string
+          uiStatus:
+            type: string
+          softreset:
+            type: boolean
+          worldVersion: {}
+          softresetProgress:
+            type: number
+            nullable: true
+          softresetCount:
+            type: number
+            nullable: true
+          connecting:
+            type: boolean
+          failMessage:
+            type: string
+        methods:
+          - name: initialise
+          - name: instantiate
+          - name: create
+          - name: render
+          - name: prerender
+          - name: aboutToShow
+          - name: onEditSettings
+          - name: onSettingsSelected
+          - name: onMemorySelected
+          - name: getServerSaveFolder
+            return:
+              - type: string
+          - name: getPlayerSaveFolder
+            return:
+              - type: string
+          - name: onSoftReset
+          - name: onSoftResetStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onDeleteWorld
+          - name: onDeleteWorldStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onDeletePlayer
+          - name: onDeletePlayerStep2
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onBackButtonDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onStartButtonDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onAbortButtonDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: checkWorldExists
+          - name: onUsernameChanged
+          - name: checkPlayerExists
+          - name: checkWorldVersion
+          - name: saveOptions
+          - name: loadOptions
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: onCoopServerMessage
+            parameters:
+              - name: tag
+              - name: cookie
+              - name: payload
+          - name: OnConnected
+          - name: OnConnectFailed
+            parameters:
+              - name: message
+          - name: OnConnectionStateChanged
+            parameters:
+              - name: state
+              - name: message
+      CoopOptionsScreenPanel:
+        extends: ISPanelJoypad
+        staticFields:
+          Type:
+            defaultValue: '"CoopOptionsScreenPanel"'
+        fields:
+          joypadButtons: {}
+          oldJoypadIndexY:
+            type: number
+          oldJoypadIndex:
+            type: number
+        methods:
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      CoopConnection:
+        staticFields:
+          username:
+            defaultValue: '"admin"'
+          servername:
+            defaultValue: '"servertest"'
+          memory:
+            type: number
+            nullable: true
+            defaultValue: is64bit() and 4096 or 1024
+          serverPassword:
+            nullable: true
+    functions:
+      - name: basicButtonSetup
+        parameters:
+          - name: button
+            type: ISButton
+          - name: internal
+            type: string
+          - name: anchors
+            type: table

@@ -1,0 +1,98 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISWindow:
+        extends: ISUIElement
+        constructors:
+          - parameters:
+              - name: title
+                type: string
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"ISWindow"'
+          TitleBarHeight:
+            defaultValue: "19"
+          SideMargin:
+            defaultValue: "12"
+          BottomMargin:
+            defaultValue: "12"
+        fields:
+          hasClose:
+            type: boolean
+          toolbars:
+            type: table
+          resizing:
+            type: boolean
+          mDownX:
+            type: number
+          mDownY:
+            type: number
+          title:
+            type: string
+        methods:
+          - name: initialise
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: getClientLeft
+            return:
+              - type: number
+          - name: getClientRight
+            return:
+              - type: number
+          - name: getClientBottom
+            return:
+              - type: number
+          - name: getClientTop
+            return:
+              - type: number
+          - name: getNClientTop
+            return:
+              - type: number
+          - name: getTotalToolbarHeight
+            return:
+              - type: number
+          - name: addToolbar
+            parameters:
+              - name: toolbar
+              - name: height
+          - name: removeToolbar
+            parameters:
+              - name: toolbar
+          - name: getClientWidth
+            return:
+              - type: number
+          - name: getClientHeight
+            return:
+              - type: number
+          - name: render

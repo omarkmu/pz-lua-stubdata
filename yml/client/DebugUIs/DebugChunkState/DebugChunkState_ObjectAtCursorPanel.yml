@@ -1,0 +1,50 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      DebugChunkState_ObjectAtCursorPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: debugChunkState
+                type: DebugChunkStateUI
+        staticFields:
+          Type:
+            defaultValue: '"DebugChunkState_ObjectAtCursorPanel"'
+        fields:
+          combo:
+            type: ISComboBox
+          sliderLevels:
+            type: ISSliderPanel
+          sliderWidth:
+            type: ISSliderPanel
+          sliderScale:
+            type: ISSliderPanel
+          debugChunkState:
+            type: DebugChunkStateUI
+        methods:
+          - name: createChildren
+          - name: update
+          - name: render
+          - name: syncUI
+          - name: onChangeObject
+          - name: onLevelsChanged
+            parameters:
+              - name: value
+              - name: slider
+          - name: onWidthChanged
+            parameters:
+              - name: value
+              - name: slider
+          - name: onScaleChanged
+            parameters:
+              - name: value
+              - name: slider

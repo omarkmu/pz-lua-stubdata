@@ -1,0 +1,670 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      TileGeometryEditor:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor"'
+        fields:
+          scene:
+            type: TileGeometryEditor_Scene
+          tilePicker:
+            type: TileGeometryEditor_TilePicker
+          tilePicker2:
+            type: TileGeometryEditor_TilePicker2
+          bottomPanel:
+            type: ISPanel
+          switchViewPanel:
+            type: ISPanel
+          views:
+            type: table
+          sceneTiles:
+            type: TileGeometryEditor_SceneTiles
+          editMode:
+            type: table
+          toolBar:
+            type: ISPanel
+          comboModID:
+            type: ISComboBox
+          comboMode:
+            type: ISComboBox
+          buttonOptions:
+            type: ISButton
+          optionsPanel:
+            type: TileGeometryEditor_OptionsPanel
+          zeroVector: {}
+          polygonPoint2D: {}
+          uiPoint: {}
+          modID:
+            type: string
+            nullable: true
+          animate:
+            type: boolean
+        methods:
+          - name: createChildren
+          - name: createToolbar
+          - name: setEditMode
+            parameters:
+              - name: mode
+                type: table
+          - name: setGeometryList
+          - name: getValidGizmos
+            return:
+              - type: table
+          - name: indexOf
+            parameters:
+              - name: tbl
+              - name: element
+                type: string
+            return:
+              - type: number
+          - name: resetView
+          - name: onResolutionChange
+            parameters:
+              - name: oldw
+              - name: oldh
+              - name: neww
+              - name: newh
+          - name: update
+          - name: prerender
+          - name: configGizmo
+          - name: render
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
+          - name: onSelectModID
+          - name: onSelectMode
+          - name: onOptions
+          - name: onExit
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onSave
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onReloadTexture
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: updateGeometryFile
+          - name: updateGeometryFile2
+            parameters:
+              - name: selectedTile
+          - name: showUI
+      TileGeometryEditor_SwitchView:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: editor
+                type: TileGeometryEditor
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_SwitchView"'
+        fields:
+          editor:
+            type: TileGeometryEditor
+        methods:
+          - name: prerender
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseMoveOutside
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+      TileGeometryEditor_OptionsPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_OptionsPanel"'
+        fields:
+          tickBox:
+            type: ISTickBox
+        methods:
+          - name: createChildren
+          - name: onTickBox
+            parameters:
+              - name: index
+              - name: selected
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+      TileGeometryEditor_Scene:
+        extends: ISUI3DScene
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_Scene"'
+        fields:
+          zeroVector: {}
+          selectedTileName:
+            nullable: true
+          tempTranslate: {}
+          tempRotate: {}
+          tempExtentsMin: {}
+          tempExtentsMax: {}
+          mouseAction:
+            nullable: true
+          dragPointIndex:
+            type: number
+          editor:
+            type: TileGeometryEditor
+          gizmo:
+            type: string
+          gizmoAxis:
+            type: string
+          animation:
+            type: string
+          tools:
+            type: table
+          selectedObjectName: {}
+          editPoints:
+            type: boolean
+        methods:
+          - name: prerenderEditor
+          - name: prerender
+          - name: render
+          - name: isViewUserDefined
+            return:
+              - type: boolean
+          - name: renderSelectedTile
+            parameters:
+              - name: tileName
+                type: string
+              - name: texture
+          - name: renderSpriteGridTile
+            parameters:
+              - name: sprite
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+              - name: dz
+          - name: renderUnderlyingTile
+            parameters:
+              - name: overlayName
+                type: string
+          - name: renderSurfaceOffset
+          - name: renderSurfaceOffsetAux
+            parameters:
+              - name: value
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: renderBox3D
+            parameters:
+              - name: tx
+                type: number
+              - name: ty
+                type: number
+              - name: tz
+                type: number
+              - name: rx
+                type: number
+              - name: ry
+                type: number
+              - name: rz
+                type: number
+              - name: minX
+                type: number
+              - name: minY
+                type: number
+              - name: minZ
+                type: number
+              - name: maxX
+                type: number
+              - name: maxY
+                type: number
+              - name: maxZ
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+          - name: renderSolidBox3D
+            parameters:
+              - name: tx
+                type: number
+              - name: ty
+                type: number
+              - name: tz
+                type: number
+              - name: rx
+                type: number
+              - name: ry
+                type: number
+              - name: rz
+                type: number
+              - name: minX
+                type: number
+              - name: minY
+                type: number
+              - name: minZ
+                type: number
+              - name: maxX
+                type: number
+              - name: maxY
+                type: number
+              - name: maxZ
+                type: number
+              - name: r
+                type: number
+              - name: g
+                type: number
+              - name: b
+                type: number
+              - name: a
+                type: number
+          - name: renderTileName
+          - name: removeAllGeometryObjects
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseMove
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+          - name: onMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseUpOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRightMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: getTileBoundsEtc
+            return:
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+          - name: getTileBounds2
+            parameters:
+              - name: dx
+                type: number
+              - name: dy
+                type: number
+              - name: dz
+                type: number
+            return:
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+              - type: number
+          - name: uiToPixel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: snapToTilePixel
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: number
+              - type: number
+          - name: getSelectedTileName
+            return:
+              - type: unknown
+                nullable: true
+          - name: getSelectedTile
+            return:
+              - type: string
+                nullable: true
+              - type: unknown
+                nullable: true
+          - name: renderPixelGrid
+            parameters:
+              - name: tileName
+                type: string
+          - name: renderPixelGrid2
+            parameters:
+              - name: sx
+              - name: sy
+              - name: sx2
+              - name: sy2
+              - name: pixelSize
+          - name: renderNorthWall
+          - name: renderWestWall
+          - name: renderSquareBox
+          - name: renderSolidSquareBox
+          - name: renderTextureOutline
+            parameters:
+              - name: sx
+              - name: sy
+              - name: sx2
+              - name: sy2
+              - name: pixelSize
+              - name: texture
+          - name: renderTextureMask
+            parameters:
+              - name: sx
+              - name: sy
+              - name: sx2
+              - name: sy2
+              - name: pixelSize
+              - name: texture
+          - name: renderSpriteGridTextureMask
+            parameters:
+              - name: sx
+              - name: sy
+              - name: sx2
+              - name: sy2
+              - name: pixelSize
+              - name: tileName
+                type: string
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: isPolygonObject
+            parameters:
+              - name: objectId
+            return:
+              - type: boolean
+          - name: java0
+            parameters:
+              - name: func
+                type: string
+            return:
+              - type: unknown
+          - name: java1
+            parameters:
+              - name: func
+                type: string
+              - name: arg0
+                type: unknown
+            return:
+              - type: unknown
+          - name: java2
+            parameters:
+              - name: func
+                type: string
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+            return:
+              - type: unknown
+          - name: java3
+            parameters:
+              - name: func
+                type: string
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+            return:
+              - type: unknown
+          - name: java4
+            parameters:
+              - name: func
+                type: string
+              - name: arg0
+                type: unknown
+                nullable: true
+              - name: arg1
+                type: unknown
+                nullable: true
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+            return:
+              - type: unknown
+          - name: java5
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+            return:
+              - type: unknown
+          - name: java6
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+            return:
+              - type: unknown
+          - name: java7
+            parameters:
+              - name: func
+                type: string
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+            return:
+              - type: unknown
+          - name: java9
+            parameters:
+              - name: func
+              - name: arg0
+                type: unknown
+              - name: arg1
+                type: unknown
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+              - name: arg5
+                type: unknown
+              - name: arg6
+                type: unknown
+              - name: arg7
+                type: unknown
+              - name: arg8
+                type: unknown
+            return:
+              - type: unknown
+      TileGeometryEditor_TilePicker:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_TilePicker"'
+        fields:
+          comboTileset:
+            type: ISComboBox
+          listBox:
+            type: TileGeometryEditor_TileList
+          editor:
+            type: TileGeometryEditor
+        methods:
+          - name: createChildren
+          - name: setTileset
+            parameters:
+              - name: tilesetName
+                type: string
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onSelectTileset
+      TileGeometryEditor_TilePicker2:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: TileGeometryEditor
+        staticFields:
+          Type:
+            defaultValue: '"TileGeometryEditor_TilePicker2"'
+        fields:
+          comboTileset:
+            type: ISComboBox
+          listBox:
+            type: TileGeometryEditor_TileList2
+          editor:
+            type: TileGeometryEditor
+        methods:
+          - name: createChildren
+          - name: setTileset
+            parameters:
+              - name: tilesetName
+                type: string
+          - name: onMouseWheel
+            parameters:
+              - name: del
+                type: number
+            return:
+              - type: boolean
+          - name: onSelectTileset
+    functions:
+      - name: TileGeometryEditor_InitUI

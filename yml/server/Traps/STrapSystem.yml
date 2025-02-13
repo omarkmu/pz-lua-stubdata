@@ -1,0 +1,49 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      STrapSystem:
+        extends: SGlobalObjectSystem
+        constructors:
+          - {}
+        staticFields:
+          Type:
+            defaultValue: '"STrapSystem"'
+          removedCache:
+            nullable: true
+        methods:
+          - name: initSystem
+          - name: convertOldModData
+          - name: newLuaObject
+            parameters:
+              - name: globalObject
+            return:
+              - type: STrapGlobalObject
+          - name: isValidIsoObject
+            parameters:
+              - name: isoObject
+            return:
+              - type: boolean
+          - name: OnClientCommand
+            parameters:
+              - name: command
+              - name: playerObj
+                type: IsoPlayer
+              - name: args
+          - name: OnObjectAboutToBeRemoved
+            parameters:
+              - name: isoObject
+          - name: OnDestroyIsoThumpable
+            parameters:
+              - name: isoObject
+              - name: playerObj
+                type: IsoPlayer
+        staticMethods:
+          - name: EveryDays
+          - name: checkTrap
+          - name: isValidModData
+            parameters:
+              - name: modData
+            return:
+              - type: boolean
+          - name: addSound

@@ -1,0 +1,122 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISTiledIconPanel:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+              - name: dataList
+              - name: callbackTarget
+        staticFields:
+          Type:
+            defaultValue: '"ISTiledIconPanel"'
+        fields:
+          buttonPrev:
+            nullable: true
+          pagesLabel:
+            nullable: true
+          buttonNext:
+            nullable: true
+          tiledIconListBox:
+            nullable: true
+          entryBox:
+            nullable: true
+          searchHackLabel:
+            nullable: true
+          sourceDataList: {}
+          searchInfoText:
+            type: string
+          player: {}
+          callbackTarget: {}
+          dataList: {}
+          searchText:
+            type: string
+          enableSearchBox:
+            type: boolean
+          margin:
+            type: number
+          autoFillContents:
+            type: boolean
+          isAutoFill:
+            type: boolean
+          isAutoFillX:
+            type: boolean
+          isAutoFillY:
+            type: boolean
+        methods:
+          - name: initialise
+          - name: createChildren
+          - name: calculateLayout
+            parameters:
+              - name: _preferredWidth
+              - name: _preferredHeight
+          - name: onResize
+          - name: prerender
+          - name: render
+          - name: update
+          - name: onPageChanged
+          - name: onPageScrolled
+            parameters:
+              - name: _newPage
+          - name: onRenderTile
+            parameters:
+              - name: _tileData
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _mouseover
+          - name: onTileClicked
+            parameters:
+              - name: _tileData
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _mouseover
+          - name: onTileMouseHover
+            parameters:
+              - name: _tileData
+          - name: onFilterData
+            parameters:
+              - name: _string
+              - name: _dataList
+              - name: _sourceDataList
+          - name: onButtonClick
+            parameters:
+              - name: _button
+                type: ISButton
+          - name: filterData
+            parameters:
+              - name: _string
+          - name: setDataList
+            parameters:
+              - name: _dataList
+          - name: setSearchInfoText
+            parameters:
+              - name: _text
+          - name: setSelectedData
+            parameters:
+              - name: _data
+        staticMethods:
+          - name: onTextChange
+            parameters:
+              - name: box
