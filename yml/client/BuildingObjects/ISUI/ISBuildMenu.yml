@@ -16,11 +16,14 @@ languages:
           - name: doBuildMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -33,7 +36,9 @@ languages:
           - name: buildRampsMenu
             parameters:
               - name: subMenu
+                type: ISContextMenu
               - name: option
+                type: umbrella.ISContextMenu.Option
               - name: playerNum
                 type: integer
           - name: onCreateRamp
@@ -41,3 +46,4 @@ languages:
               - name: playerNum
                 type: integer
               - name: which
+                type: string

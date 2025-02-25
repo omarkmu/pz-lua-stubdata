@@ -25,9 +25,10 @@ languages:
               - name: _playerNum
                 type: integer
               - name: _object
+                type: IsoObject
                 nullable: true
               - name: _objects
-                type: table
+                type: IsoObject[]
               - name: _x
                 type: number
               - name: _y
@@ -36,7 +37,7 @@ languages:
                 type: boolean
                 nullable: true
             return:
-              - type: boolean
+              - type: ISContextMenu | boolean
                 nullable: true
           - name: createInventoryMenu
             parameters:
@@ -45,8 +46,9 @@ languages:
               - name: _context
                 type: ISContextMenu
               - name: _items
+                type: InventoryItem[] | ContextMenuItemStack[]
               - name: _item
-            return:
-              - type: unknown
                 nullable: true
+            return:
+              - type: nil
           - name: init

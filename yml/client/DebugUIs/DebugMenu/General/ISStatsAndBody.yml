@@ -15,48 +15,71 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISStatsAndBody"'
         fields:
           sliderOptions:
-            type: table
+            type: table[]
           boolOptions:
-            type: table
+            type: table[]
         methods:
           - name: initialise
           - name: createChildren
           - name: addSliderOption
             parameters:
               - name: _java
+                type: unknown
               - name: _var
+                type: string
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _step
+                type: number
+                nullable: true
               - name: _get
+                type: string
+                nullable: true
               - name: _set
+                type: string
+                nullable: true
             return:
               - type: table
           - name: addBoolOption
             parameters:
               - name: _java
+                type: unknown
               - name: _var
+                type: string
               - name: _get
+                type: string
+                nullable: true
               - name: _set
+                type: string
+                nullable: true
             return:
               - type: table
           - name: prerender
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update

@@ -15,9 +15,15 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: craftBench
+                type: CraftBench
+                nullable: true
               - name: isoObject
+                type: IsoObject
               - name: recipeQuery
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBuildPanel"'
@@ -26,29 +32,47 @@ languages:
             type: ISBuildIsoEntity
             nullable: true
           rootTable:
+            type: ISTableLayout
             nullable: true
           recipeListMode:
             type: boolean
           inventoryPanel:
+            type: ISCraftInventoryPanel
             nullable: true
-          inventoryPanelColumn: {}
+          inventoryPanelColumn:
+            type: ISTableLayoutColumn
+            nullable: true
           craftRecipePanel:
-            nullable: true
-          categoryColumn: {}
+            type: ISBuildRecipePanel
+          categoryColumn:
+            type: ISTableLayoutColumn
           recipeCategories:
-            nullable: true
-          recipeColumn: {}
+            type: ISWidgetRecipeCategories
+          recipeColumn:
+            type: ISTableLayoutColumn
           recipesPanel:
-            nullable: true
+            type: ISWidgetRecipesPanel
           playerLastSquare:
+            type: IsoGridSquare
             nullable: true
-          _filterString: {}
-          _categoryString: {}
-          logic: {}
-          player: {}
-          craftBench: {}
-          isoObject: {}
-          recipeQuery: {}
+          _filterString:
+            type: string
+            nullable: true
+          _categoryString:
+            type: string
+            nullable: true
+          logic:
+            type: BuildLogic
+          player:
+            type: IsoPlayer
+          craftBench:
+            type: CraftBench
+            nullable: true
+          isoObject:
+            type: IsoObject
+          recipeQuery:
+            type: string
+            nullable: true
           leftHandedMode:
             type: boolean
           drawDebugLines:
@@ -61,17 +85,23 @@ languages:
           - name: ReselectRecipeOrFirst
             parameters:
               - name: _recipe
+                type: CraftRecipe
           - name: createInventoryPanel
           - name: createRecipePanel
           - name: createRecipeCategoryColumn
           - name: onDoubleClick
             parameters:
               - name: item
+                type: CraftRecipe
           - name: createRecipesColumn
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -84,42 +114,51 @@ languages:
           - name: setRecipeListMode
             parameters:
               - name: _useListMode
+                type: boolean
           - name: getSelectedRecipe
             return:
-              - type: unknown
+              - type: CraftRecipe
           - name: setRecipeList
             parameters:
               - name: _recipeList
+                type: ArrayList #<CraftRecipe>
           - name: setRecipes
             parameters:
               - name: _recipeQuery
           - name: onRecipeChanged
             parameters:
               - name: _recipe
+                type: CraftRecipe
           - name: setRecipeFilter
             parameters:
               - name: _filterString
+                type: string
           - name: filterRecipeList
           - name: onCategoryChanged
             parameters:
               - name: _category
+                type: string
           - name: onUpdateContainers
           - name: createBuildIsoEntity
             parameters:
               - name: dontSetDrag
+                type: boolean
           - name: onUpdateRecipeList
             parameters:
               - name: _recipeList
+                type: ArrayList #<CraftRecipe>
           - name: onShowManualSelectChanged
             parameters:
               - name: _showManualSelectInputs
+                type: boolean
           - name: onStopCraft
           - name: getCategoryList
             return:
-              - type: unknown
+              - type: ArrayList #<string>
         staticMethods:
           - name: SetDragItem
             parameters:
               - name: item
+                type: table
               - name: playerNum
                 type: integer

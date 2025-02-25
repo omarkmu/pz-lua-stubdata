@@ -79,40 +79,47 @@ languages:
           gearButton:
             type: ISButton
           tabs:
-            type: table
+            type: ISRichTextPanel[]
           tabCnt:
-            type: number
+            type: integer
           btnHeight:
             type: number
           currentTabID:
-            type: number
+            type: integer
           inset:
             type: number
-          fontHgt: {}
+          fontHgt:
+            type: number
           textEntry:
             type: ISTextEntryBox
           panel:
             type: ISTabPanel
           mutedUsers:
-            type: table
+            type: table<string, true?>
           locked:
             type: boolean
           timerTextEntry:
             type: number
           chatText:
-            type: table
+            type: ISRichTextPanel
             nullable: true
           defaultTab:
+            type: ISRichTextPanel
             nullable: true
-          prevBtnTxt: {}
-          nextBtnTxt: {}
-          chatLockedButtonTexture: {}
-          chatUnLockedButtonTexture: {}
+          prevBtnTxt:
+            type: Texture
+          nextBtnTxt:
+            type: Texture
+          chatLockedButtonTexture:
+            type: Texture
+          chatUnLockedButtonTexture:
+            type: Texture
           servermsg:
             type: string
           servermsgTimer:
             type: number
-          fade: {}
+          fade:
+            type: UITransition
         methods:
           - name: initialise
           - name: pin
@@ -130,6 +137,7 @@ languages:
           - name: initFade
             parameters:
               - name: durationInS
+                type: number
           - name: calcAlpha
             parameters:
               - name: defaultMin
@@ -137,11 +145,13 @@ languages:
               - name: defaultMax
                 type: number
               - name: fraction
+                type: number
             return:
               - type: number
           - name: makeFade
             parameters:
               - name: fraction
+                type: number
           - name: prerender
           - name: render
           - name: render_chatText
@@ -149,21 +159,21 @@ languages:
           - name: logChatCommand
             parameters:
               - name: command
+                type: string
           - name: onCommandEntered
           - name: onOtherKey
             parameters:
               - name: key
+                type: integer
           - name: focus
           - name: unfocus
           - name: updateChatPrefixSettings
           - name: calcTabSize
             return:
-              - type: table
-                nullable: true
+              - type: "{ width: number, height: number }"
           - name: calcTabPos
             return:
-              - type: table
-                nullable: true
+              - type: "{ x: number, y: number }"
           - name: onActivateView
           - name: onRightMouseUp
             parameters:
@@ -206,11 +216,13 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: table
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: table
         staticMethods:
           - name: initChat
           - name: onSwitchStream
@@ -220,43 +232,59 @@ languages:
           - name: onFontSizeChange
             parameters:
               - name: target
+                type: ISChat
               - name: value
+                type: string
           - name: onMinOpaqueChange
             parameters:
               - name: target
+                type: ISChat
               - name: value
+                type: number
           - name: onMaxOpaqueChange
             parameters:
               - name: target
+                type: ISChat
               - name: value
+                type: number
           - name: onFadeTimeChange
             parameters:
               - name: target
+                type: ISChat
               - name: value
+                type: number
           - name: onFocusOpaqueChange
             parameters:
               - name: target
+                type: ISChat
               - name: value
+                type: number
           - name: addLineInChat
             parameters:
               - name: message
+                type: ChatMessage
               - name: tabID
+                type: integer
           - name: onToggleChatBox
             parameters:
               - name: key
+                type: integer
           - name: onKeyKeepPressed
             parameters:
               - name: key
+                type: integer
           - name: onTabAdded
             parameters:
               - name: tabTitle
                 type: string
               - name: tabID
+                type: integer
           - name: onTabRemoved
             parameters:
               - name: tabTitle
                 type: string
               - name: tabID
+                type: integer
           - name: onSetDefaultTab
             parameters:
               - name: defaultTabTitle
@@ -264,6 +292,7 @@ languages:
           - name: onMouseUp
             parameters:
               - name: target
+                type: ISUIElement
               - name: x
                 type: number
               - name: y
@@ -273,6 +302,7 @@ languages:
           - name: onMouseDown
             parameters:
               - name: target
+                type: ISUIElement
               - name: x
                 type: number
               - name: y
@@ -282,6 +312,7 @@ languages:
           - name: ISTabPanelOnMouseDown
             parameters:
               - name: target
+                type: ISTabPanel
               - name: x
                 type: number
               - name: y

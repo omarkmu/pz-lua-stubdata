@@ -18,21 +18,26 @@ languages:
           Type:
             defaultValue: '"DebugOptionsWindow"'
         fields:
-          categoryList: {}
+          categoryList:
+            type: ISScrollingListBox
           categoryMap:
-            type: table
+            type: table<string, BooleanDebugOption[]>
           tickBoxes:
-            type: table
+            type: ISTickBox[]
         methods:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
               - name: option
+                type: BooleanDebugOption
           - name: createChildren
           - name: onCategorySelected
             parameters:
               - name: category
+                type: string
           - name: calcTickBoxBounds
             return:
               - type: number

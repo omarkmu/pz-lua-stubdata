@@ -7,13 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_Tool"'
         fields:
-          editor: {}
-          scene: {}
-          javaObject: {}
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
+          javaObject:
+            type: UI3DScene
         methods:
           - name: onMouseDown
             parameters:
@@ -47,11 +51,13 @@ languages:
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
           - name: java1
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
             return:
@@ -59,6 +65,7 @@ languages:
           - name: java2
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -68,6 +75,7 @@ languages:
           - name: java3
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -79,6 +87,7 @@ languages:
           - name: java4
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -92,6 +101,7 @@ languages:
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -107,6 +117,7 @@ languages:
           - name: java6
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -124,6 +135,7 @@ languages:
           - name: java7
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -142,22 +154,24 @@ languages:
               - type: unknown
           - name: getMouseX
             return:
-              - type: unknown
+              - type: number
           - name: getMouseY
             return:
-              - type: unknown
+              - type: number
       TileGeometryEditor_GizmoTool:
         extends: TileGeometryEditor_Tool
         constructors:
           - parameters:
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_GizmoTool"'
         fields:
           gizmoAxis:
             type: string
-          gizmoStartScenePos: {}
+          gizmoStartScenePos:
+            type: Vector3f
         methods:
           - name: onMouseDown
             parameters:
@@ -201,7 +215,7 @@ languages:
             defaultValue: '"TileGeometryEditor_GizmoTool_Translate"'
         fields:
           originalOffset:
-            type: table
+            type: table<string, Vector3f>
         methods:
           - name: onGizmoStart
           - name: onGizmoChanged
@@ -222,7 +236,7 @@ languages:
             defaultValue: '"TileGeometryEditor_GizmoTool_Rotate"'
         fields:
           originalRotate:
-            type: table
+            type: table<string, Vector3f>
         methods:
           - name: onGizmoStart
           - name: onGizmoChanged
@@ -234,6 +248,7 @@ languages:
           - name: clampAngle
             parameters:
               - name: degrees
+                type: number
             return:
               - type: number
       TileGeometryEditor_GizmoTool_Scale:
@@ -247,7 +262,7 @@ languages:
             defaultValue: '"TileGeometryEditor_GizmoTool_Scale"'
         fields:
           originalScale:
-            type: table
+            type: table<string, Vector3f>
         methods:
           - name: onGizmoStart
           - name: onGizmoChanged
@@ -266,8 +281,10 @@ languages:
           Type:
             defaultValue: '"TileGeometryEditor_GizmoTool_ResizeBox"'
         fields:
-          originalMin: {}
-          originalMax: {}
+          originalMin:
+            type: Vector3f
+          originalMax:
+            type: Vector3f
         methods:
           - name: onGizmoStart
           - name: onGizmoChanged
@@ -286,9 +303,12 @@ languages:
           Type:
             defaultValue: '"TileGeometryEditor_GizmoTool_ResizeCylinder"'
         fields:
-          originalHeight: {}
-          originalTranslation: {}
-          originalRadius: {}
+          originalHeight:
+            type: number
+          originalTranslation:
+            type: Vector3f
+          originalRadius:
+            type: number
         methods:
           - name: onGizmoStart
           - name: onGizmoChanged
@@ -329,8 +349,10 @@ languages:
         fields:
           dragPointIndex:
             type: number
-          dragPointOriginalPos: {}
-          polygonPoint2D: {}
+          dragPointOriginalPos:
+            type: Vector3f
+          polygonPoint2D:
+            type: Vector2f
         methods:
           - name: onMouseDown
             parameters:
@@ -366,8 +388,10 @@ languages:
           Type:
             defaultValue: '"TileGeometryEditor_DepthRectTool"'
         fields:
-          clickPixelX: {}
-          clickPixelY: {}
+          clickPixelX:
+            type: integer
+          clickPixelY:
+            type: integer
         methods:
           - name: onMouseDown
             parameters:
@@ -403,14 +427,15 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: integer
+              - type: integer
+              - type: integer
+              - type: integer
         staticMethods:
           - name: RasterizePolygonCallback
             parameters:
               - name: args
+                type: table
               - name: x
                 type: number
               - name: y
@@ -433,7 +458,8 @@ languages:
             type: number
           bRemoveTile:
             type: boolean
-          vector3f_1: {}
+          vector3f_1:
+            type: Vector3f
         methods:
           - name: onMouseDown
             parameters:
@@ -450,7 +476,7 @@ languages:
           - name: renderScene
           - name: getFirstSelectedTile
             return:
-              - type: unknown
+              - type: table
           - name: uiToTileLocation
             parameters:
               - name: x
@@ -458,17 +484,19 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: Vector3f
           - name: mouseToTileLocation
             return:
-              - type: unknown
-              - type: unknown
+              - type: number
+              - type: number
           - name: renderBox3D
             parameters:
               - name: tx
+                type: number
               - name: ty
                 type: number
               - name: tz
+                type: number
               - name: rx
                 type: number
               - name: ry
@@ -510,7 +538,8 @@ languages:
             type: number
           mouseDownY:
             type: number
-          vector3f_1: {}
+          vector3f_1:
+            type: Vector3f
         methods:
           - name: onMouseDown
             parameters:
@@ -531,27 +560,39 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: Vector3f
           - name: mouseToTileLocation
             return:
-              - type: unknown
-              - type: unknown
+              - type: number
+              - type: number
           - name: renderScene
           - name: renderSceneTiles
           - name: renderBox3D
             parameters:
               - name: tx
+                type: number
               - name: ty
+                type: number
               - name: tz
+                type: number
               - name: rx
+                type: number
               - name: ry
+                type: number
               - name: rz
+                type: number
               - name: minX
+                type: number
               - name: minY
+                type: number
               - name: minZ
+                type: number
               - name: maxX
+                type: number
               - name: maxY
+                type: number
               - name: maxZ
+                type: number
               - name: r
                 type: number
               - name: g

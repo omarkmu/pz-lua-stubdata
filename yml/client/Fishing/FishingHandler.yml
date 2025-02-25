@@ -4,5 +4,6 @@ languages:
     classes:
       Fishing:
         staticFields:
-          ManagerInstances: {}
+          ManagerInstances:
+            type: table<integer, FishingManager>
           Handler: {}

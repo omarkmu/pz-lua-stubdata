@@ -15,59 +15,83 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: craftProcessor
+                type: Component
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISButcherHookProcessorPanel"'
         fields:
           tableLayout:
+            type: ISTableLayout
             nullable: true
           itemInputs:
+            type: ISItemSlotPanel
             nullable: true
           craftProgress:
+            type: ISWidgetCraftProgress
             nullable: true
           craftRecipeSelect:
+            type: ISWidgetRecipeSelect
             nullable: true
           craftControl:
+            type: ISWidgetCraftControl
             nullable: true
           craftControlDebug:
+            type: ISWidgetCraftDebug
             nullable: true
           itemOutputs:
+            type: ISItemSlotPanel
             nullable: true
           fluidOutputs:
+            type: ISFluidSlotPanel
             nullable: true
-          player: {}
-          entity: {}
-          craftProcessor: {}
-          component: {}
-          resourceContainer: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          craftProcessor:
+            type: Component
+            nullable: true
+          component:
+            type: Component
+          resourceContainer:
+            type: Resources
+            nullable: true
         methods:
           - name: initialise
           - name: createChildren
           - name: createItemSlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISItemSlotPanel
           - name: createFluidSlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISFluidSlotPanel
           - name: createEnergySlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISEnergySlotPanel
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

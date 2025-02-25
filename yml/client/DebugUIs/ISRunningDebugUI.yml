@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISRunningDebugUI"'
@@ -25,18 +26,24 @@ languages:
             type: boolean
           stopTimer:
             nullable: true
-          startTimer: {}
-          startingEndurance: {}
+          startTimer:
+            type: number
+          startingEndurance:
+            type: number
           totalDistance:
             type: number
           totalDist:
             type: number
-          previousSq: {}
+          previousSq:
+            type: IsoGridSquare
           playerNum:
             type: integer
-          title: {}
-          character: {}
-          chr: {}
+          title:
+            type: string
+          character:
+            type: IsoPlayer
+          chr:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: restoreEndurance

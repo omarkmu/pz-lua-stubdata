@@ -5,8 +5,10 @@ languages:
       ISCampingMenu:
         staticFields:
           currentSquare:
+            type: IsoGridSquare
             nullable: true
           campfire:
+            type: CCampfireGlobalObject
             nullable: true
         staticMethods:
           - name: timeString
@@ -15,15 +17,16 @@ languages:
                 type: number
             return:
               - type: string
-                nullable: true
           - name: isValidCampfire
             parameters:
               - name: campfire
+                type: CCampfireGlobalObject
             return:
               - type: boolean
           - name: shouldBurn
             parameters:
               - name: item
+                type: InventoryItem
               - name: playersChoice
                 type: boolean
             return:
@@ -31,40 +34,46 @@ languages:
           - name: isValidFuel
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
                 nullable: true
           - name: isValidTinder
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
                 nullable: true
           - name: getFuelDurationForItemInHours
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: number
-                nullable: true
           - name: getFuelDurationForItem
             parameters:
               - name: item
-                nullable: true
+                type: InventoryItem
             return:
               - type: number
           - name: getFuelItemUses
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: number
           - name: doCampingMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -73,21 +82,27 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: item
-                nullable: true
+                type: InventoryItem
           - name: onDisplayInfo
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: isoCampfireObject
+                type: IsoObject
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onDropCorpse
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: isoCampfireObject
+                type: IsoObject
               - name: campfire
+                type: CCampfireGlobalObject
           - name: walkToCampfire
             parameters:
               - name: playerObj
@@ -101,7 +116,9 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: bed
+                type: IsoObject
               - name: player
+                type: integer
               - name: playerObj
                 type: IsoPlayer
           - name: onAddFuel
@@ -109,61 +126,84 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: campfire
+                type: CCampfireGlobalObject
               - name: fuelType
+                type: string
           - name: onAddAllFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onAddMultipleFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: campfire
+                type: CCampfireGlobalObject
               - name: fuelType
+                type: string
           - name: onPlaceCampfire
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
           - name: onPutOutCampfire
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onRemoveCampfire
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onLightFromLiterature
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: itemType
+                type: string
               - name: lighter
+                type: InventoryItem
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onLightFromKindle
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: percedWood
+                type: InventoryItem
               - name: stickOrBranch
+                type: InventoryItem
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onLightFromPetrol
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: lighter
+                type: InventoryItem
               - name: petrol
+                type: InventoryItem
               - name: campfire
+                type: CCampfireGlobalObject
           - name: onRest
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: tent
+                type: IsoObject

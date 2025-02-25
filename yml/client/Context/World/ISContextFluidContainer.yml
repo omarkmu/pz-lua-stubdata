@@ -15,33 +15,43 @@ languages:
           - name: createMenu
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
             return:
               - type: boolean
                 nullable: true
           - name: transferFluids
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _container
+                type: FluidContainer
           - name: showInfo
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _container
+                type: FluidContainer
           - name: emptyFluidContainer
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _container
+                type: FluidContainer
           - name: addWater
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _obj
                 type: IsoObject
           - name: addPetrol
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _obj
                 type: IsoObject
           - name: removeContainer
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _obj
                 type: IsoObject

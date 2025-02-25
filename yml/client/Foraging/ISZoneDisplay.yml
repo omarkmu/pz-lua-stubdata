@@ -19,7 +19,8 @@ languages:
             type: boolean
           flashNumber:
             type: number
-          perkLevel: {}
+          perkLevel:
+            type: number
           blinkStep:
             type: number
           currentZone:
@@ -60,7 +61,7 @@ languages:
           infoBtn:
             type: ISButton
           visionBonuses:
-            type: table
+            type: ISPanel
           showBackground:
             type: boolean
           showBorder:
@@ -68,21 +69,27 @@ languages:
           alpha:
             type: number
           zdImages:
-            type: table
+            type: table<string, ISPanel>
           fadeElements:
-            type: table
+            type: table<string, ISPanel>
           timeString:
             type: string
           moonPhase:
             type: string
           updateTickMax:
             type: number
-          player: {}
-          character: {}
-          manager: {}
-          gameTime: {}
-          climateManager: {}
-          climateMoon: {}
+          player:
+            type: integer
+          character:
+            type: IsoPlayer
+          manager:
+            type: ISSearchManager
+          gameTime:
+            type: GameTime
+          climateManager:
+            type: ClimateManager
+          climateMoon:
+            type: ClimateMoon
           flashNumberMax:
             type: number
         methods:
@@ -92,22 +99,32 @@ languages:
           - name: showTip
             parameters:
               - name: _tip
+                type: umbrella.ISZoneDisplay.Tip
               - name: _force
+                type: boolean
+                nullable: true
           - name: updateTips
           - name: updateMoonPosition
             parameters:
               - name: _dawn
+                type: number
               - name: _dusk
+                type: number
               - name: _timeOfDay
+                type: number
           - name: updateSunPosition
             parameters:
               - name: _dawn
+                type: number
               - name: _dusk
+                type: number
               - name: _timeOfDay
+                type: number
           - name: doFadeStep
           - name: canSeeThroughObject
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
           - name: canSeeOutside
@@ -135,9 +152,12 @@ languages:
           - name: initialiseImages
             parameters:
               - name: imageTable
+                type: table<string, Texture>
               - name: width
                 type: number
               - name: height
                 type: number
               - name: fade
+                type: boolean
+                nullable: true
           - name: close

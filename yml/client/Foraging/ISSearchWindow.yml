@@ -7,10 +7,12 @@ languages:
         constructors:
           - parameters:
               - name: _manager
+                type: ISSearchManager
         staticFields:
           Type:
             defaultValue: '"ISSearchWindow"'
-          players: {}
+          players:
+            type: table<IsoPlayer, ISSearchWindow>
           showDebug:
             defaultValue: "false"
         fields:
@@ -35,15 +37,21 @@ languages:
             type: boolean
           showBorder:
             type: boolean
-          manager: {}
-          character: {}
-          player: {}
-          gameTime: {}
-          climateManager: {}
+          manager:
+            type: ISSearchManager
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
+          gameTime:
+            type: GameTime
+          climateManager:
+            type: ClimateManager
           title:
             type: string
           visibleTarget:
-            type: ISSearchWindow
+            type: unknown
+            nullable: true
           visibleFunction:
             type: function
         methods:
@@ -64,29 +72,30 @@ languages:
                 type: ISButton
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: isValidPrompt
             return:
-              - type: unknown
+              - type: boolean
           - name: checkShowFirstTimeSearchTutorial
           - name: onChangeSearchFocusCategory
             parameters:
               - name: _option
+                type: ISComboBox
           - name: nextSearchFocus
           - name: updateSearchFocusCategories
           - name: initialise
@@ -94,22 +103,28 @@ languages:
           - name: toggleWindow
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: showWindow
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: createUI
             parameters:
               - name: _player
+                type: integer
           - name: destroyUI
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: OnFillWorldObjectContextMenu
             parameters:
               - name: _player
+                type: integer
               - name: _context
                 type: ISContextMenu
           - name: onEnableSearchMode
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _isSearchMode
                 type: boolean

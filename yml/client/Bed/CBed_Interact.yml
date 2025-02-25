@@ -9,11 +9,13 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: timePressedContext
+                type: number
           - name: trySquareInDirection
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: dir
+                type: IsoDirections
             return:
               - type: boolean
           - name: trySquareForBed
@@ -29,5 +31,5 @@ languages:
               - name: sq
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true

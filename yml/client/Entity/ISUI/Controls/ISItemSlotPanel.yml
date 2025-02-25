@@ -15,18 +15,28 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: _styleLabel
+                type: string
+                nullable: true
               - name: _styleCell
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISItemSlotPanel"'
         fields:
           tableLayout:
             nullable: true
-          player: {}
-          entity: {}
-          styleCell: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          styleCell:
+            type: string
+            nullable: true
           drawProgress:
             type: boolean
         methods:
@@ -35,11 +45,17 @@ languages:
           - name: addResources
             parameters:
               - name: _resources
+                type: ArrayList #<Resource>
               - name: _styleItemSlot
+                type: string
+                nullable: true
           - name: addResource
             parameters:
               - name: _resourceItem
+                type: Resource
               - name: _styleItemSlot
+                type: string
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -47,10 +63,13 @@ languages:
           - name: onItemSlotRemoveSingleItem
             parameters:
               - name: _itemSlot
+                type: ISItemSlot
               - name: _item
+                type: InventoryItem
           - name: onItemSlotRemoveItems
             parameters:
               - name: _itemSlot
+                type: ISItemSlot
               - name: _isRightClick
                 type: boolean
               - name: _isShift
@@ -58,4 +77,6 @@ languages:
           - name: onItemSlotAddItems
             parameters:
               - name: _itemSlot
+                type: ISItemSlot
               - name: _itemList
+                type: InventoryItem[]

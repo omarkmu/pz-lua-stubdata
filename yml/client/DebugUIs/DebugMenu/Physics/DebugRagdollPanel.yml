@@ -26,4 +26,4 @@ languages:
         staticMethods:
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: DebugRagdollPanel

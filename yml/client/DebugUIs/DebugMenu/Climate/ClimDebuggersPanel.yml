@@ -15,12 +15,13 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ClimDebuggersPanel"'
         fields:
           buttons:
-            type: table
+            type: table[]
         methods:
           - name: initialise
           - name: addButtonInfo
@@ -28,8 +29,13 @@ languages:
               - name: _title
                 type: string
               - name: _func
+                type: function
               - name: _marginBot
+                type: number
+                nullable: true
               - name: _arg
+                type: unknown
+                nullable: true
           - name: createChildren
           - name: prerender
           - name: onClick
@@ -39,28 +45,37 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedValue
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update
         staticMethods:
           - name: OnSimulationButton
           - name: OnSimulationButtonOverride
             parameters:
               - name: _rainModOverride
+                type: integer

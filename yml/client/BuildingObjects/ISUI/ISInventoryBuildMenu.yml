@@ -7,11 +7,14 @@ languages:
           - name: doBuildMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -20,6 +23,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: groundType
+                type: string
           - name: onSpillGravel
             parameters:
               - name: playerObj

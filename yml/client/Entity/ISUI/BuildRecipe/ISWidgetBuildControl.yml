@@ -15,26 +15,32 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BuildLogic
         staticFields:
           Type:
             defaultValue: '"ISWidgetBuildControl"'
         fields:
           colProgress:
-            type: table
+            type: umbrella.RGBA
           entryBox:
-            nullable: true
+            type: ISTextEntryBox
           slider:
-            nullable: true
+            type: ISSliderPanel
           buttonCraft:
-            nullable: true
-          origButtonHeight: {}
+            type: ISButton
+          origButtonHeight:
+            type: number
           buttonForceCraft:
+            type: ISButton
             nullable: true
           boxHeight:
             type: number
-          player: {}
-          logic: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BuildLogic
           interactiveMode:
             type: boolean
           allowBatchCraft:
@@ -55,7 +61,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -63,6 +73,7 @@ languages:
           - name: onAutoToggled
             parameters:
               - name: _newState
+                type: boolean
           - name: onButtonClick
             parameters:
               - name: _button
@@ -70,12 +81,16 @@ languages:
           - name: startBuild
             parameters:
               - name: force
+                type: boolean
           - name: onHandcraftActionComplete
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
         staticMethods:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

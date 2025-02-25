@@ -20,26 +20,28 @@ languages:
         fields:
           puddles: {}
           allOptions:
-            type: table
+            type: table<string, table>
           floats:
-            type: table
+            type: table<string, table>
           colors:
-            type: table
+            type: table<string, table>
           bools:
-            type: table
+            type: table<string, table>
           horzBarX:
             type: number
           horzBarW:
             type: number
           horzBars:
-            type: table
+            type: number[]
         methods:
           - name: initialise
           - name: createChildren
           - name: addFloatOption
             parameters:
               - name: _id
+                type: string
               - name: _float
+                type: number
               - name: _x
                 type: number
               - name: _y
@@ -51,6 +53,7 @@ languages:
           - name: addTickBox
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -62,12 +65,14 @@ languages:
               - name: _title
                 type: string
               - name: options
+                type: table[]
             return:
               - type: number
               - type: ISTickBox
           - name: addSlider
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -82,6 +87,7 @@ languages:
           - name: addLabel
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -89,13 +95,17 @@ languages:
               - name: _title
                 type: string
               - name: _font
+                type: UIFont
               - name: _bLeft
+                type: boolean
+                nullable: true
             return:
               - type: number
               - type: ISLabel
           - name: addButton
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -112,30 +122,39 @@ languages:
           - name: addHorzBar
             parameters:
               - name: _y
+                type: number
             return:
-              - type: unknown
+              - type: number
           - name: prerender
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedValue
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update
           - name: close

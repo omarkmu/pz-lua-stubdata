@@ -35,8 +35,10 @@ languages:
             type: number
           panning:
             type: boolean
-          xpos: {}
-          ypos: {}
+          xpos:
+            type: number
+          ypos:
+            type: number
           zoom:
             type: number
         methods:
@@ -83,26 +85,35 @@ languages:
           - name: onTeleport
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: onSquareDetails
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: onUnsetSelect
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: onRecalcChunks
           - name: onOpenLogs
           - name: onChangeEditOption
             parameters:
               - name: option
+                type: ConfigOption
           - name: onChangeZLevelOption
             parameters:
               - name: option
+                type: ConfigOption
           - name: onChangeOption
             parameters:
               - name: option
+                type: ConfigOption
           - name: onMapRightMouseUp
             parameters:
               - name: x

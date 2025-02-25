@@ -7,11 +7,13 @@ languages:
         constructors:
           - parameters:
               - name: ui
+                type: DebugGlobalObjectStateUI
         staticFields:
           Type:
             defaultValue: '"DebugGlobalObjectStateUI_Tool"'
         fields:
-          ui: {}
+          ui:
+            type: DebugGlobalObjectStateUI
         methods:
           - name: onMouseDown
             parameters:
@@ -34,11 +36,13 @@ languages:
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
           - name: java1
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
             return:
@@ -46,6 +50,7 @@ languages:
           - name: java2
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -64,8 +69,10 @@ languages:
         fields:
           mouseDown:
             type: boolean
-          startDragX: {}
-          startDragY: {}
+          startDragX:
+            type: number
+          startDragY:
+            type: number
           startScreenX:
             type: number
           startScreenY:

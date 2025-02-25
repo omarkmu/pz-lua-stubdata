@@ -16,26 +16,32 @@ languages:
             type: ISScrollingListBox
           pointList:
             type: ISScrollingListBox
-          title: {}
+          title:
+            type: string
         methods:
           - name: createChildren
           - name: fillMapList
           - name: doDrawPointListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
                 nullable: true
           - name: onMapSelected
             parameters:
               - name: directory
+                type: string
           - name: onProfessionSelected
           - name: onPointSelected
           - name: onPointDoubleClick
             parameters:
               - name: item
+                type: umbrella.SpawnPoint
           - name: PointList_onRightMouseUp
             parameters:
               - name: x
@@ -45,19 +51,24 @@ languages:
           - name: normalizePoint
             parameters:
               - name: point
+                type: umbrella.SpawnPoint
             return:
-              - type: unknown
+              - type: umbrella.SpawnPoint
           - name: isSamePoint
             parameters:
               - name: point1
+                type: umbrella.SpawnPoint
               - name: point2
+                type: umbrella.SpawnPoint
             return:
               - type: boolean
           - name: onSetPointToPlayerPosition
             parameters:
               - name: allProfessions
+                type: boolean
           - name: onRemovePoint
             parameters:
               - name: allProfessions
+                type: boolean
           - name: onCopyToClipboard
           - name: close

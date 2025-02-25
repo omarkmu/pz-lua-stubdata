@@ -15,23 +15,40 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: callbackTarget
+                type: unknown
+                nullable: true
               - name: _styleButton
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetCraftDebug"'
         fields:
           buttonDebug:
+            type: ISButton
             nullable: true
-          originalButtonWidth: {}
-          originalButtonHeight: {}
-          player: {}
-          entity: {}
-          component: {}
-          callbackTarget: {}
-          styleButton: {}
+          originalButtonWidth:
+            type: number
+          originalButtonHeight:
+            type: number
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          component:
+            type: Component
+          callbackTarget:
+            type: unknown
+            nullable: true
+          styleButton:
+            type: string
+            nullable: true
           margin:
             type: number
           autoFillContents:
@@ -48,7 +65,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

@@ -6,18 +6,19 @@ languages:
         staticMethods:
           - name: GetVendingInteriorTextures
             return:
-              - type: table
+              - type: Texture[]
           - name: GetVendingInteriorUnlitTextures
             return:
-              - type: table
+              - type: Texture[]
           - name: GetVendingAlphabeticalButtonTexture
             parameters:
               - name: _index
                 type: number
             return:
-              - type: unknown
+              - type: Texture
           - name: GetVendingAlphabeticalLabelTexture
             parameters:
               - name: _index
+                type: number
             return:
-              - type: unknown
+              - type: Texture

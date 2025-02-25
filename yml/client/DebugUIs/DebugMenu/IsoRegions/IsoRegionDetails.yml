@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"IsoRegionDetails"'
@@ -35,11 +36,12 @@ languages:
             nullable: true
           tmpTxt:
             type: string
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           currentTile:
@@ -64,6 +66,8 @@ languages:
               - name: _z
                 type: number
               - name: _o
+                type: IsoChunkRegion
+                nullable: true
           - name: addTitle
             parameters:
               - name: _title
@@ -71,11 +75,14 @@ languages:
           - name: addLine
             parameters:
               - name: _prefix
+                type: string
               - name: _line
+                type: unknown
           - name: addLineEnd
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: onResize
           - name: update
           - name: prerender

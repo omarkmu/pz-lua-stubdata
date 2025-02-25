@@ -19,15 +19,18 @@ languages:
             defaultValue: '"DebugLogSettings"'
         fields:
           comboLookup:
-            type: table
+            type: table<DebugType, ISComboBox>
         methods:
           - name: onComboBox
             parameters:
               - name: comboBox
+                type: ISComboBox
               - name: debugType
+                type: DebugType
           - name: onSetAll
             parameters:
               - name: comboBox
+                type: ISComboBox
           - name: createChildren
           - name: setVisible
             parameters:

@@ -16,8 +16,12 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onclick
+                type: umbrella.ISAddGeneticDisorderUI.OnClick
+                nullable: true
               - name: allele
+                type: AnimalAllele
         staticFields:
           Type:
             defaultValue: '"ISAddGeneticDisorderUI"'
@@ -32,14 +36,17 @@ languages:
             type: table
           target:
             type: unknown
-          onclick: {}
-          allele: {}
+          onclick:
+            type: umbrella.ISAddGeneticDisorderUI.OnClick
+            nullable: true
+          allele:
+            type: AnimalAllele
           comboList:
             type: table
           zOffsetSmallFont:
             type: number
           gdList:
-            type: table
+            type: string[]
         methods:
           - name: initialise
           - name: setVisible

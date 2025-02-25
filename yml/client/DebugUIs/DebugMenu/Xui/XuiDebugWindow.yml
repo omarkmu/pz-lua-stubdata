@@ -15,17 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"XuiDebugWindow"'
           instance:
-            type: boolean | XuiDebugWindow
+            type: XuiDebugWindow | false
             nullable: true
           customTestWindow: {}
           testWindow: {}
           viewScriptWindow: {}
         fields:
-          th: {}
+          th:
+            type: number
           rh:
             type: number
           heightMod:
@@ -63,22 +65,23 @@ languages:
           selectedElementItem:
             type: boolean
           styleColor:
-            type: table
+            type: umbrella.RGBA
           defStyleColor:
-            type: table
+            type: umbrella.RGBA
           scriptColor:
-            type: table
+            type: umbrella.RGBA
           disableColor:
-            type: table
+            type: umbrella.RGBA
           nullColor:
-            type: table
+            type: umbrella.RGBA
           headerColor:
-            type: table
+            type: umbrella.RGBA
           referenceColor:
-            type: table
+            type: umbrella.RGBA
           tableColor:
-            type: table
-          player: {}
+            type: umbrella.RGBA
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -105,6 +108,7 @@ languages:
           - name: onVarSelected
             parameters:
               - name: _item
+                type: table
           - name: createVarItem
             parameters:
               - name: _name
@@ -114,6 +118,7 @@ languages:
               - name: _order
                 type: number
               - name: _var
+                type: XuiScript.XuiVar
                 nullable: true
             return:
               - type: table
@@ -128,13 +133,15 @@ languages:
           - name: onElementSelected
             parameters:
               - name: _item
+                type: table
           - name: addScriptElements
             parameters:
               - name: _script
+                type: XuiScript
               - name: _depth
                 type: number
               - name: _color
-                type: table
+                type: umbrella.RGBA
                 nullable: true
           - name: populateElements
           - name: drawConfigItem
@@ -147,6 +154,7 @@ languages:
           - name: onConfigSelected
             parameters:
               - name: _item
+                type: table
           - name: drawColorItem
             parameters:
               - name: y
@@ -157,6 +165,7 @@ languages:
           - name: onColorSelected
             parameters:
               - name: _item
+                type: table
           - name: populate
           - name: onButtonClick
             parameters:
@@ -165,10 +174,11 @@ languages:
           - name: positionSubWindow
             parameters:
               - name: _window
+                type: table
           - name: onCloseSubWindow
             parameters:
               - name: _window
-                type: boolean | XuiDebugLayoutWindow | ISScriptViewWindow
+                type: table
                 nullable: true
               - name: _closeIt
                 type: boolean
@@ -177,6 +187,7 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
-              - type: boolean | XuiDebugWindow
+              - type: XuiDebugWindow
                 nullable: true

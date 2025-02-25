@@ -15,33 +15,41 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISCheatPanelUI"'
           instance:
             type: ISCheatPanelUI
             nullable: true
-          cheatTooltips: {}
+          cheatTooltips:
+            type: table<string, string>
         fields:
           ok:
             type: ISButton
           tickBox:
             type: ISTickBox
           setFunction:
-            type: table
-          player: {}
+            type: table<integer, function>
+          player:
+            type: number
         methods:
           - name: initialise
           - name: addAdminPowerOptions
           - name: addOption
             parameters:
               - name: text
+                type: string
               - name: selected
+                type: boolean
               - name: setFunction
+                type: "fun(self: ISCheatPanelUI, selected: boolean)"
           - name: onTicked
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: render
           - name: prerender
           - name: onClick

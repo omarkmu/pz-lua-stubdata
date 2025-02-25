@@ -19,14 +19,14 @@ languages:
             defaultValue: '"ISSectionedPanel"'
         fields:
           sections:
-            type: table
+            type: ISSectionedPanel_Section[]
           maintainHeight:
             type: boolean
         methods:
           - name: addSection
             parameters:
               - name: panel
-                type: ISScrollingListBox | DebugChunkStateUI_ObjPropsPanel
+                type: ISPanel
               - name: title
                 type: string
           - name: clear
@@ -35,6 +35,7 @@ languages:
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
       ISSectionedPanel_Section:
@@ -50,6 +51,7 @@ languages:
               - name: height
                 type: number
               - name: panel
+                type: ISPanel
               - name: title
                 type: string
         staticFields:
@@ -62,8 +64,10 @@ languages:
             type: boolean
           enabled:
             type: boolean
-          panelHeight: {}
-          panel: {}
+          panelHeight:
+            type: number
+          panel:
+            type: ISPanel
           title:
             type: string
         methods:

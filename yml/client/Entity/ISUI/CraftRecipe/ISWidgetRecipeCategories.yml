@@ -22,14 +22,17 @@ languages:
             type: ISScrollingListBox
           isInitialised:
             type: boolean
-          selectedCategory: {}
+          selectedCategory:
+            type: string
         methods:
           - name: initialise
           - name: createChildren
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
               - name: _preferredHeight
+                type: number
           - name: onResize
           - name: prerender
           - name: render
@@ -37,7 +40,9 @@ languages:
           - name: setInternalHeight
             parameters:
               - name: _height
+                type: number
           - name: populateCategoryList
           - name: onCategoryChanged
             parameters:
               - name: _item
+                type: string

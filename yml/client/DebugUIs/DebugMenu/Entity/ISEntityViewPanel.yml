@@ -15,6 +15,8 @@ languages:
               - name: height
                 type: number
               - name: entity
+                type: GameEntity
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISEntityViewPanel"'
@@ -40,14 +42,16 @@ languages:
           viewMode:
             type: number
           entity:
+            type: GameEntity
             nullable: true
-          selectedEntityItem: {}
-          greyCol:
+          selectedEntityItem:
             type: table
+          greyCol:
+            type: umbrella.RGBA
           searchText:
             type: string
           viewButtons:
-            type: table
+            type: ISButton[]
         methods:
           - name: initialise
           - name: createChildren
@@ -55,9 +59,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -68,6 +75,7 @@ languages:
           - name: setEntity
             parameters:
               - name: _entity
+                type: GameEntity
                 nullable: true
           - name: populate
           - name: drawEntityListItem
@@ -80,6 +88,7 @@ languages:
           - name: onEntityListSelected
             parameters:
               - name: _item
+                type: table
           - name: update
           - name: prerender
           - name: render

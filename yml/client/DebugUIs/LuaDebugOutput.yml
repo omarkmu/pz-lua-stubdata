@@ -24,28 +24,36 @@ languages:
           outputListbox:
             type: ISScrollingListBox
           cat:
-            type: table
+            type: table<string, boolean>
         methods:
           - name: createChildren
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: debug
             parameters:
               - name: text
+                type: string
           - name: clear
           - name: error
             parameters:
               - name: text
+                type: string
     functions:
       - name: pzerror
         parameters:
           - name: text
+            type: string
           - name: cat
+            type: string
+            nullable: true
       - name: pzdebugenabled
         parameters:
           - name: cat
@@ -57,6 +65,7 @@ languages:
           - name: text
             type: string
           - name: cat
+            type: string
             nullable: true
       - name: DoTickDebugLuaDebugOutputWindow
       - name: DoDebugLuaDebugOutputWindow

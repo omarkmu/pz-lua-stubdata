@@ -23,20 +23,24 @@ languages:
             type: ZomboidRadioDebug
             nullable: true
         fields:
-          radio: {}
-          scriptManager: {}
+          radio:
+            type: ZomboidRadio
+          scriptManager:
+            type: RadioScriptManager
           channelsList:
             type: ISScrollingListBox
           infoList:
             type: ISScrollingListBox
           broadcastList:
             type: ISScrollingListBox
-          channelsSize: {}
-          currentChannel: {}
+          channelsSize:
+            type: number
+          currentChannel:
+            type: RadioChannel
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -50,9 +54,12 @@ languages:
           - name: OnDaysListMouseDown
             parameters:
               - name: item
+                type: RadioChannel
           - name: populateList
             parameters:
               - name: _force
+                type: boolean
+                nullable: true
           - name: drawChannelList
             parameters:
               - name: y
@@ -63,6 +70,7 @@ languages:
           - name: populateInfoList
             parameters:
               - name: _radioChannel
+                type: RadioChannel
           - name: drawInfoList
             parameters:
               - name: y
@@ -73,6 +81,7 @@ languages:
           - name: populateBroadcastList
             parameters:
               - name: _radioChannel
+                type: RadioChannel
           - name: drawBroadcastList
             parameters:
               - name: y

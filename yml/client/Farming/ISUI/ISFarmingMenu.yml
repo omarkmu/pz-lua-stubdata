@@ -4,21 +4,27 @@ languages:
     classes:
       ISFarmingMenu:
         staticFields:
-          info: {}
+          info:
+            type: table<IsoPlayer, ISFarmingWindow>
           GardeningSprayMilk:
+            type: InventoryItem
             nullable: true
           GardeningSprayCigarettes:
+            type: InventoryItem
             nullable: true
           SlugRepellent:
+            type: InventoryItem
             nullable: true
           cheat:
             defaultValue: "false"
           GardeningSprayAphids:
+            type: InventoryItem
             nullable: true
           cursor:
             type: ISFarmingCursorMouse
             nullable: true
           TEMP_PLANT:
+            type: table
             nullable: true
         methods:
           - name: onHarvestSquareSelected
@@ -38,6 +44,7 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -61,47 +68,55 @@ languages:
           - name: getWaterUsesFloat
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: number
           - name: getWaterUsesInteger
             parameters:
               - name: item
-                nullable: true
             return:
-              - type: number
+              - type: integer
           - name: doFarmingMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
           - name: getShovel
             parameters:
               - name: player
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: InventoryItem
+                nullable: true
           - name: itemSortByName
             parameters:
               - name: a
+                type: InventoryItem
               - name: b
+                type: InventoryItem
             return:
               - type: boolean
           - name: doFarmingMenu2
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
-            return:
-              - type: boolean
+                type: boolean
                 nullable: true
+
           - name: canDigHere
             parameters:
               - name: worldObjects
@@ -117,8 +132,11 @@ languages:
           - name: canPlow
             parameters:
               - name: seedAvailable
+                type: number
               - name: typeOfSeed
+                type: string
               - name: option
+                type: umbrella.ISContextMenu.Option
               - name: seedName
                 type: string
               - name: playerObj
@@ -126,11 +144,13 @@ languages:
           - name: plantInfo
             parameters:
               - name: prop
+                type: umbrella.FarmingProps
             return:
               - type: string
           - name: isValidPlant
             parameters:
               - name: plant
+                type: CPlantGlobalObject
             return:
               - type: boolean
           - name: walkToPlant
@@ -146,6 +166,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: plantToharvest
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -155,6 +176,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: uses
+                type: integer
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -164,6 +186,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: uses
+                type: integer
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -173,6 +196,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: uses
+                type: integer
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -182,6 +206,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: uses
+                type: integer
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -191,6 +216,7 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -200,24 +226,29 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: uses
+                type: integer
               - name: handItem
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
           - name: getPlantName
             parameters:
               - name: plant
+                type: CPlantGlobalObject
             return:
               - type: string
-                nullable: true
           - name: onSeed
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: typeOfSeed
+                type: string
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: seedName
@@ -227,13 +258,17 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: handItem
+                type: InventoryItem
           - name: onShovel
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: plant
+                type: CPlantGlobalObject
               - name: player
+                type: IsoPlayer
               - name: sq
                 type: IsoGridSquare
           - name: onFertilize
@@ -241,7 +276,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: handItem
+                type: InventoryItem
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -251,7 +288,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: handItem
+                type: InventoryItem
               - name: plant
+                type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
               - name: playerObj
@@ -261,19 +300,24 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: plant
+                type: SPlantGlobalObject
           - name: onCheatWater
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: plant
+                type: SPlantGlobalObject
           - name: onJoypadFarming
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: IsoPlayer
           - name: onCheat
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: plant
+                type: CPlantGlobalObject
               - name: args
+                type: umbrella.ISFarmingMenu.CheatArgs

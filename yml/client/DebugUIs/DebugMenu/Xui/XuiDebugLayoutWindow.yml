@@ -15,20 +15,24 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: script
+                type: XuiScript
         staticFields:
           Type:
             defaultValue: '"XuiDebugLayoutWindow"'
         fields:
-          th: {}
+          th:
+            type: number
           rh:
             type: number
           heightMod:
             type: number
           xuiPanel:
+            type: ISUIElement
             nullable: true
           selections:
-            type: table
+            type: table[]
           toggle:
             type: boolean
           selectedUUID:
@@ -36,10 +40,12 @@ languages:
             nullable: true
           colMod:
             type: number
-          player: {}
-          xuiScript: {}
+          player:
+            type: IsoPlayer
+          xuiScript:
+            type: XuiScript
           selectColor:
-            type: table
+            type: umbrella.RGBA
           dAplha:
             type: number
         methods:
@@ -57,13 +63,17 @@ languages:
               - name: _self
                 type: XuiDebugLayoutWindow
               - name: _uuid
+                type: string
                 nullable: true
               - name: _list
                 type: table
+                nullable: true
             return:
               - type: table
           - name: selectUUID
             parameters:
               - name: _uuid
+                type: string
+                nullable: true
           - name: prerender
           - name: render

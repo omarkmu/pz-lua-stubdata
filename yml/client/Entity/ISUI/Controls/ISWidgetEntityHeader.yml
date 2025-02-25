@@ -15,11 +15,21 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: entityStyle
+                type: XuiSkin.EntityUiStyle
+                nullable: true
               - name: _styleIcon
+                type: number
+                nullable: true
               - name: _styleLabel
+                type: number
+                nullable: true
               - name: _styleButton
+                type: number
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetEntityHeader"'
@@ -27,17 +37,30 @@ languages:
           iconSize:
             type: number
           icon:
+            type: ISImage
             nullable: true
           title:
+            type: ISLabel
             nullable: true
           buttonInfo:
+            type: ISButton
             nullable: true
-          player: {}
-          entity: {}
-          entityStyle: {}
-          styleIcon: {}
-          styleLabel: {}
-          styleButton: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          entityStyle:
+            type: XuiSkin.EntityUiStyle
+            nullable: true
+          styleIcon:
+            type: string
+            nullable: true
+          styleLabel:
+            type: string
+            nullable: true
+          styleButton:
+            type: string
+            nullable: true
           paddingTop:
             type: number
           paddingBottom:
@@ -64,7 +87,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onButtonClick
             parameters:
               - name: _button

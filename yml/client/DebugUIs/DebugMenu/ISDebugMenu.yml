@@ -26,22 +26,23 @@ languages:
             defaultValue: "0"
           tab:
             defaultValue: '"MAIN"'
-          classes: {}
+          classes:
+            type: ISUIElement[]
         fields:
           buttons:
-            type: table
+            type: "{ title: string, func: function, tab: string, marginTop?: number }[]"
           mainButton:
             type: ISButton
           devButton:
             type: ISButton
           mainTab:
-            type: table
+            type: "{ _y: number, _buttons: ISButton[] }"
           devTab:
-            type: table
+            type: "{ _y: number, _buttons: ISButton[] }"
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
         methods:
@@ -51,13 +52,18 @@ languages:
               - name: _title
                 type: string
               - name: _func
+                type: function
               - name: _tab
+                type: string
               - name: _marginTop
+                type: number
+                nullable: true
             return:
-              - type: table
+              - type: "{ title: string, func: function, tab: string, marginTop?: number }"
           - name: bringToTop
             parameters:
               - name: _buttonInfo
+                type: table
           - name: initialise
           - name: createChildren
           - name: onClick_Dev
@@ -76,7 +82,7 @@ languages:
           - name: RegisterClass
             parameters:
               - name: _class
-                type: table
+                type: ISUIElement
           - name: OnPlayerDeath
             parameters:
               - name: playerObj

@@ -20,10 +20,11 @@ languages:
           Type:
             defaultValue: '"ISAudioDebugPanel"'
           instance:
+            type: ISAudioDebugPanel
             nullable: true
         methods:
           - name: initialise
         staticMethods:
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: ISAudioDebugPanel

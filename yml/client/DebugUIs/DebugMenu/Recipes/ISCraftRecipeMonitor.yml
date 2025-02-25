@@ -22,18 +22,21 @@ languages:
           instance:
             nullable: true
         fields:
-          btnRecipe: {}
+          btnRecipe:
+            type: ISButton
           infoListY:
             type: number
           listView:
             type: ISStringListView
           monitor:
+            type: CraftRecipeMonitor
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           currentTile:
@@ -56,6 +59,7 @@ languages:
           - name: setMonitor
             parameters:
               - name: _monitor
+                type: CraftRecipeMonitor
           - name: onResize
           - name: onBtnClick
             parameters:
@@ -69,5 +73,6 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _monitor
+                type: CraftRecipeMonitor
             return:
               - type: ISCraftRecipeMonitor

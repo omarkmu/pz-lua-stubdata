@@ -15,12 +15,14 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISDebugBlood"'
         fields:
           partToSlider:
-            type: table
+            type: table<BloodBodyPartType, ISSliderPanel>
           updateTime:
             type: number
           ignoreSlider:
@@ -33,6 +35,8 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onZeroAll
           - name: onRandomBlood

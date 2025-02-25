@@ -10,8 +10,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
-          manager: {}
+          manager:
+            type: FishingManager
         methods:
           - name: start
           - name: update
@@ -21,8 +23,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
-          manager: {}
+          manager:
+            type: FishingManager
         methods:
           - name: start
           - name: update
@@ -32,9 +36,13 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
-          manager: {}
-          sound: {}
+          manager:
+            type: FishingManager
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: start
           - name: update
@@ -44,11 +52,15 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
           reelSoundStarted:
             type: boolean
-          manager: {}
-          sound: {}
+          manager:
+            type: FishingManager
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: start
           - name: update
@@ -58,11 +70,15 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
           isHighTensionSound:
             type: boolean
-          manager: {}
-          sound: {}
+          manager:
+            type: FishingManager
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: start
           - name: update
@@ -72,8 +88,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
-          manager: {}
+          manager:
+            type: FishingManager
         methods:
           - name: start
           - name: update
@@ -83,8 +101,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
+                type: FishingManager
         fields:
-          manager: {}
+          manager:
+            type: FishingManager
           action:
             type: ISPickupFishAction
         methods:

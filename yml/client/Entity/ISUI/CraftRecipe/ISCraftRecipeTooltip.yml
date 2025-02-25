@@ -15,37 +15,56 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: recipe
+                type: CraftRecipe
               - name: logic
+                type: BaseCraftingLogic
               - name: followMouse
+                type: boolean
+                nullable: true
               - name: debugMode
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISCraftRecipeTooltip"'
         fields:
           rootTable:
+            type: ISTableLayout
             nullable: true
           titleWidget:
+            type: ISWidgetTitleHeader
             nullable: true
           infoBox:
+            type: ISCraftRecipeInfoBox
             nullable: true
           toolsWidget:
+            type: ISWidgetRecipeTools
             nullable: true
           ingredients:
+            type: ISWidgetIngredients
             nullable: true
           dirtyLayout:
             type: boolean
-          recipe: {}
+          recipe:
+            type: CraftRecipe
           titleOnly:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
-          logic: {}
-          followMouse: {}
+          logic:
+            type: BaseCraftingLogic
+          followMouse:
+            type: boolean
+            nullable: true
           titleOnlyAlpha:
             type: number
-          debugMode: {}
+          debugMode:
+            type: boolean
+            nullable: true
           margin:
             type: number
           autoFillContents:
@@ -64,8 +83,10 @@ languages:
             parameters:
               - name: _preferredWidth
                 type: number
+                nullable: true
               - name: _preferredHeight
                 type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: position
@@ -75,19 +96,24 @@ languages:
           - name: setRecipe
             parameters:
               - name: _recipe
+                type: CraftRecipe
               - name: _titleOnly
+                type: boolean
           - name: setTitleOnly
             parameters:
               - name: _b
+                type: boolean
         staticMethods:
           - name: activateToolTipFor
             parameters:
               - name: _parent
-                nullable: true
+                type: ISUIElement
               - name: _player
+                type: IsoPlayer
               - name: _recipe
-                nullable: true
+                type: CraftRecipe
               - name: _logic
+                type: BaseCraftingLogic
                 nullable: true
               - name: _followMouse
                 type: boolean
@@ -96,11 +122,12 @@ languages:
               - name: _debugMode
                 type: boolean
             return:
-              - type: unknown
+              - type: ISCraftRecipeTooltip
                 nullable: true
           - name: deactivateToolTipFor
             parameters:
               - name: _parent
+                type: ISUIElement
                 nullable: true
             return:
               - type: boolean

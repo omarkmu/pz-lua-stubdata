@@ -15,51 +15,59 @@ languages:
           debug:
             type: boolean
           contextData:
-            type: table
+            type: umbrella.WorldMenuContextData[]
         staticMethods:
           - name: reset
             parameters:
               - name: _playerNum
                 type: integer
-                nullable: true
           - name: init
           - name: getContextData
             parameters:
               - name: _playerNum
                 type: integer
             return:
-              - type: unknown
+              - type: umbrella.WorldMenuContextData
           - name: createMenu
             parameters:
               - name: _playerNum
                 type: integer
               - name: _object
+                type: IsoObject
+                nullable: true
               - name: _objects
+                type: IsoObject[]
               - name: _x
                 type: number
               - name: _y
                 type: number
               - name: _test
+                type: boolean
+                nullable: true
             return:
-              - type: boolean
+              - type: ISContextMenu | boolean
                 nullable: true
           - name: getAllObjects
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
             return:
-              - type: unknown
-                nullable: true
+              - type: IsoObject[]
           - name: getObjectsSquare
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _sq
                 type: IsoGridSquare
           - name: tableContains
             parameters:
               - name: _table
+                type: unknown[]
               - name: _item
+                type: unknown
             return:
               - type: boolean
           - name: printDebug
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData

@@ -10,27 +10,35 @@ languages:
           Type:
             defaultValue: '"CFarmingSystem"'
         fields:
-          hoursElapsed: {}
+          hoursElapsed:
+            type: number
+            nullable: true
         methods:
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: CPlantGlobalObject
           - name: OnServerCommand
             parameters:
               - name: command
+                type: string
               - name: args
+                type: table
           - name: getXp
             parameters:
               - name: character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: number
           - name: changePlayer
             parameters:
               - name: player
+                type: IsoPlayer

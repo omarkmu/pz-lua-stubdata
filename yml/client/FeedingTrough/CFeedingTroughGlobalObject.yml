@@ -9,6 +9,7 @@ languages:
               - name: luaSystem
                 type: CFeedingTroughSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"CFeedingTroughGlobalObject"'

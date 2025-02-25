@@ -8,6 +8,7 @@ languages:
           Type:
             defaultValue: '"StatisticChartMemory"'
           instance:
+            type: StatisticChartMemory
             nullable: true
           shiftDown:
             defaultValue: "0"
@@ -20,10 +21,10 @@ languages:
         staticMethods:
           - name: doInstance
             return:
-              - type: unknown
+              - type: StatisticChartMemory
                 nullable: true
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: StatisticChartMemory
                 nullable: true
           - name: OnServerStatisticReceived

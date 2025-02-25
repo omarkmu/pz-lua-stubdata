@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: _player
+                type: IsoPlayer
               - name: _resource
+                type: ResourceFluid
                 nullable: true
         staticFields:
           Type:
@@ -46,20 +48,23 @@ languages:
             type: ISToolTipInv
             nullable: true
           detailInnerColor:
-            type: table
-          gradientTex: {}
-          bubblesTex: {}
+            type: umbrella.RGBA
+          gradientTex:
+            type: Texture
+          bubblesTex:
+            type: Texture
           bubblesAlpha:
             type: number
           gradientAlpha:
             type: number
           triangleWidth:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           fluidColor:
-            type: table
+            type: umbrella.RGBA
           fluidAddColor:
-            type: table
+            type: umbrella.RGBA
           drawMeasures:
             type: boolean
           doToolTip:
@@ -67,6 +72,7 @@ languages:
           differenceAlpha:
             type: number
           resource:
+            type: ResourceFluid
             nullable: true
         methods:
           - name: initialise
@@ -78,7 +84,7 @@ languages:
                 type: number
             return:
               - type: number
-              - type: unknown
+              - type: number
           - name: render
           - name: drawBubbles
             parameters:
@@ -91,27 +97,37 @@ languages:
               - name: _h
                 type: number
               - name: _alpha
+                type: number
           - name: drawAmountLine
             parameters:
               - name: _y
+                type: number
           - name: drawTriangle
             parameters:
               - name: _size
+                type: number
               - name: _sx
+                type: number
               - name: _y
+                type: number
               - name: _col
+                type: umbrella.RGBA
               - name: _xmod
+                type: number
           - name: setContainer
             parameters:
               - name: _fluidContainer
+                type: FluidContainer
                 nullable: true
           - name: setContainerAdd
             parameters:
               - name: _fluidContainer
+                type: FluidContainer
                 nullable: true
           - name: setContainerMixed
             parameters:
               - name: _fluidContainer
+                type: FluidContainer
                 nullable: true
               - name: _showMixed
                 type: boolean

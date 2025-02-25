@@ -15,20 +15,29 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: script
+                type: XuiScript
         staticFields:
           Type:
             defaultValue: '"XuiTestWindow"'
         fields:
-          th: {}
+          th:
+            type: number
           heightMod:
             type: number
           xuiPanel:
+            type: ISUIElement
             nullable: true
-          buttonHello: {}
-          panelButton: {}
-          player: {}
-          xuiScript: {}
+          buttonHello:
+            type: ISButton
+            nullable: true
+          panelButton:
+            type: ISUIElement
+          player:
+            type: IsoPlayer
+          xuiScript:
+            type: XuiScript
         methods:
           - name: initialise
           - name: createChildren

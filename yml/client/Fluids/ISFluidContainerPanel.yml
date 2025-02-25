@@ -11,13 +11,19 @@ languages:
               - name: y
                 type: number
               - name: _player
+                type: IsoPlayer
               - name: _container
+                type: FluidContainer
                 nullable: true
               - name: _doTitle
                 type: boolean
+                nullable: true
               - name: _isLeft
                 type: boolean
+                nullable: true
               - name: _isoHeight
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISFluidContainerPanel"'
@@ -31,13 +37,14 @@ languages:
           fluidBar:
             type: ISFluidBar
           containerBox:
-            type: table
+            type: "{ x: number, y: number, w: number, h: number }"
           itemDropBox:
             type: ISItemDropBox
           container:
             type: ISFluidContainer
             nullable: true
           containerCopy:
+            type: ISFluidContainer
             nullable: true
           isLeft:
             type: boolean
@@ -46,48 +53,59 @@ languages:
           isInvalid:
             type: boolean
           customTitle:
-            type: string | boolean
+            type: string | false
           containerName:
-            type: string | boolean
+            type: string | false
           textureList:
-            type: table
-          ownerTexture: {}
+            type: umbrella.ISFluidContainerPanel.TextureItem[]
+          ownerTexture:
+            type: Texture
+            nullable: true
           borderOuterColor:
-            type: table
+            type: umbrella.RGBA
           detailInnerColor:
-            type: table
+            type: umbrella.RGBA
           textColor:
-            type: table
+            type: umbrella.RGBA
           tagColor:
-            type: table
+            type: umbrella.RGBA
           invalidColor:
-            type: table
-          player: {}
+            type: umbrella.RGBA
+          player:
+            type: IsoPlayer
           isItem:
             type: boolean
-          owner: {}
-          isIso: {}
-          isoHeight: {}
+          owner:
+            type: GameEntity
+            nullable: true
+          isIso:
+            type: boolean
+            nullable: true
+          isoHeight:
+            type: boolean
+            nullable: true
           doTitle:
             type: boolean
           funcTarget:
-            type: boolean
+            type: unknown
+            nullable: true
           onContainerAdd:
-            type: boolean
+            type: umbrella.ISFluidContainerPanel.OnContainerAdd | false
+            nullable: true
           overrideAddFull:
             type: boolean
           onContainerRemove:
-            type: boolean
+            type: umbrella.ISFluidContainerPanel.OnContainerRemove | false
           overrideRemoveFull:
             type: boolean
           onContainerVerify:
-            type: boolean
+            type: umbrella.ISFluidContainerPanel.OnContainerVerify | false
           doOwnerOutlines:
             type: boolean
           outlineColor:
-            type: table
+            type: umbrella.RGBA
           info:
-            type: table
+            type: umbrella.ISFluidContainerPanel.InfoTable
         methods:
           - name: initialise
           - name: createChildren
@@ -100,6 +118,7 @@ languages:
           - name: drawTextureIso
             parameters:
               - name: texture
+                type: Texture
               - name: x
                 type: number
               - name: y
@@ -119,6 +138,7 @@ languages:
           - name: drawTextureOutlines
             parameters:
               - name: texture
+                type: Texture
               - name: x
                 type: number
               - name: y
@@ -128,6 +148,7 @@ languages:
           - name: renderText
             parameters:
               - name: _s
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -141,19 +162,24 @@ languages:
               - name: _a
                 type: number
               - name: _font
+                type: UIFont
               - name: _func
+                type: umbrella.ISFluidContainerPanel.RenderText
           - name: addItem
             parameters:
               - name: _items
+                type: InventoryItem[]
           - name: addItemAux
             parameters:
               - name: _item
+                type: InventoryItem
           - name: removeItem
           - name: verifyItem
             parameters:
               - name: _item
+                type: InventoryItem
             return:
-              - type: boolean
+              - type: boolean | FluidContainer
                 nullable: true
           - name: setIsLeft
             parameters:
@@ -173,15 +199,15 @@ languages:
                 type: string
           - name: getContainer
             return:
-              - type: unknown
+              - type: FluidContainer
                 nullable: true
           - name: getContainerOwner
             return:
-              - type: unknown
+              - type: GameEntity
                 nullable: true
           - name: getIsoObjectTextures
             return:
-              - type: table
+              - type: umbrella.ISFluidContainerPanel.TextureItem[]
                 nullable: true
           - name: hasValidContainer
             return:

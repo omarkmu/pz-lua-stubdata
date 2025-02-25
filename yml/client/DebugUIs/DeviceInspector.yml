@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"DeviceInspector"'
@@ -29,7 +30,8 @@ languages:
             nullable: true
           tmpTxt:
             type: string
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -55,6 +57,7 @@ languages:
           - name: readObject
             parameters:
               - name: _object
+                type: IsoObject
           - name: addTitle
             parameters:
               - name: _title
@@ -62,16 +65,19 @@ languages:
           - name: addLine
             parameters:
               - name: _prefix
+                type: unknown
               - name: _line
+                type: unknown
+                nullable: true
           - name: addLineEnd
         staticMethods:
           - name: onMouseButtonUp
             parameters:
               - name: _object
+                type: IsoObject
               - name: _x
                 type: number
               - name: _y
                 type: number
             return:
               - type: DeviceInspector
-                nullable: true

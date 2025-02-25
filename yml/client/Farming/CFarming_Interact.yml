@@ -14,7 +14,9 @@ languages:
           - name: onContextKey
             parameters:
               - name: player
+                type: IsoPlayer
               - name: timePressedContext
+                type: number
           - name: FastDropItem
             parameters:
               - name: key
@@ -26,6 +28,7 @@ languages:
           - name: getObjectClutterType
             parameters:
               - name: v
+                type: IsoObject
             return:
-              - type: unknown
+              - type: string
                 nullable: true

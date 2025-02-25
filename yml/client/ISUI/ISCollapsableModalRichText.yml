@@ -15,15 +15,24 @@ languages:
               - name: height
                 type: number
               - name: text
+                type: string
               - name: yesno
+                type: boolean
+                nullable: true
               - name: target
                 type: unknown
+                nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: player
+                type: integer
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISCollapsableModalRichText"'
@@ -41,14 +50,21 @@ languages:
             type: ISRichTextPanel
           name:
             nullable: true
-          text: {}
-          yesno: {}
-          onclick: {}
-          player: {}
+          text:
+            type: string
+          yesno:
+            type: boolean
+            nullable: true
+          onclick:
+            type: umbrella.ISButton.OnClick
+          player:
+            type: integer
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
         methods:
           - name: createChildren
           - name: initialise

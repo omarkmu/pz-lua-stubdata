@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAttachedItemsUI"'
@@ -35,15 +36,19 @@ languages:
             type: ISButton
           playerNum:
             type: integer
-          title: {}
-          character: {}
-          chr: {}
+          title:
+            type: string
+          character:
+            type: IsoPlayer
+          chr:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: onAddOnChar
           - name: onAdd
             parameters:
               - name: char
+                type: IsoPlayer
           - name: onAddZombie
           - name: onRemoveZombie
           - name: onRemove
@@ -51,8 +56,11 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: update

@@ -14,18 +14,24 @@ languages:
           - name: addZone
             parameters:
               - name: _zoneData
-                type: table
+                type: umbrella.Foraging.ZoneData
           - name: removeZone
             parameters:
               - name: _zoneData
           - name: updateZone
             parameters:
               - name: _zoneData
-                type: table
+                type: umbrella.Foraging.ZoneData
           - name: updateIcon
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _iconID
+                type: string
               - name: _icon
+                type: umbrella.Foraging.ZoneIconData
                 nullable: true
-      forageData: {}
+      forageData:
+        fields:
+          "[string]":
+            type: umbrella.Foraging.ZoneData

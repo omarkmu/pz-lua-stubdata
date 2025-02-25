@@ -12,7 +12,8 @@ languages:
           Type:
             defaultValue: '"ISBackButtonWheel"'
         fields:
-          showPausedMessage: {}
+          showPausedMessage:
+            type: boolean
         methods:
           - name: center
           - name: addCommands
@@ -33,3 +34,4 @@ languages:
           - name: onCommand
             parameters:
               - name: command
+                type: string

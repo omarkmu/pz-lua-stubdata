@@ -18,3 +18,4 @@ languages:
           - name: loadElements
             parameters:
               - name: _targetTable
+                type: "table<string, fun(): ISMenuElement>"

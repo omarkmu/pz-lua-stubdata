@@ -15,8 +15,11 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: entityUiStyle
+                type: XuiSkin.EntityUiStyle
         staticFields:
           Type:
             defaultValue: '"ISBaseEntityWindow"'
@@ -37,15 +40,18 @@ languages:
             type: boolean
           maximumWidth:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
             nullable: true
           panelCloseDistance:
             type: number
-          entity: {}
-          entityUiStyle: {}
+          entity:
+            type: GameEntity
+          entityUiStyle:
+            type: XuiSkin.EntityUiStyle
           enableHeader:
             type: boolean
           maximumHeightPercent:
@@ -58,18 +64,35 @@ languages:
           - name: createEntityHeader
             parameters:
               - name: _xuiSkin
+                type: XuiSkin
               - name: _styleName
                 type: string
               - name: _force
+                type: boolean
+                nullable: true
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleLabel
+                type: string
+                nullable: true
               - name: _styleButton
+                type: string
+                nullable: true
           - name: xuiRecalculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
               - name: _force
+                type: boolean
+                nullable: true
               - name: _anchorRight
+                type: boolean
+                nullable: true
           - name: prerender
           - name: stayOnSplitScreen
           - name: render

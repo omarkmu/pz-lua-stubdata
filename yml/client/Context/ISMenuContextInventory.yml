@@ -16,13 +16,16 @@ languages:
             type: integer
             nullable: true
           player:
+            type: IsoPlayer
             nullable: true
           context:
             type: ISContextMenu
             nullable: true
           items:
+            type: InventoryItem[] | ContextMenuItemStack[]
             nullable: true
           inventory:
+            type: ItemContainer
             nullable: true
           test:
             type: boolean
@@ -32,10 +35,14 @@ languages:
           - name: createMenu
             parameters:
               - name: _player
+                type: integer
               - name: _context
                 type: ISContextMenu
               - name: _items
+                type: InventoryItem[] | ContextMenuItemStack[]
               - name: _item
+                nullable: true
           - name: checkInvItem
             parameters:
               - name: _item
+                type: InventoryItem

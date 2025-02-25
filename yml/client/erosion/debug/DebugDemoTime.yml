@@ -7,6 +7,7 @@ languages:
           - name: DemoTime
             parameters:
               - name: _erosionMain
+                type: ErosionMain
             return:
               - type: DebugDemoTime
       DebugDemoTime:

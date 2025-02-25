@@ -21,7 +21,7 @@ languages:
             type: ISScriptViewWindow
             nullable: true
           coords:
-            type: boolean | table
+            type: number[] | false
         fields:
           scriptPanelY:
             type: number
@@ -29,11 +29,12 @@ languages:
             type: ISScriptViewPanel
           title:
             type: string
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           currentTile:
             nullable: true
           richtext:
@@ -58,6 +59,7 @@ languages:
           - name: setScript
             parameters:
               - name: _script
+                type: BaseScriptObject
           - name: onResize
           - name: update
           - name: prerender
@@ -67,6 +69,7 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _script
+                type: BaseScriptObject
             return:
               - type: ISScriptViewWindow
                 nullable: true

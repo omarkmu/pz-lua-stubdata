@@ -5,43 +5,54 @@ languages:
       ISEntityBuildMenu:
         staticFields:
           buildables:
-            type: boolean | table
+            type: SpriteConfigManager.ObjectInfo[] | false
           items:
-            type: table
+            type: umbrella.ISBuildIsoEntity.ItemResult[]
         staticMethods:
           - name: init
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: boolean
           - name: hasSomethingToBuild
             return:
-              - type: boolean | table
+              - type: boolean
                 nullable: true
           - name: createMenu
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _context
                 type: ISContextMenu
               - name: _subMenu
+                type: ISContextMenu
               - name: _worldObjects
                 type: IsoObject[]
           - name: buildCategoryMenu
             parameters:
               - name: _subMenu
+                type: ISContextMenu
               - name: _player
+                type: IsoPlayer
               - name: _list
+                type: SpriteConfigManager.ObjectInfo[]
           - name: onBuildEntity
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _info
+                type: SpriteConfigManager.ObjectInfo
           - name: createToolTip
             parameters:
               - name: _option
+                type: umbrella.ISContextMenu.Option
               - name: _player
+                type: IsoPlayer
               - name: info
+                type: SpriteConfigManager.ObjectInfo
             return:
-              - type: unknown
+              - type: ISToolTip
           - name: addToolTip
             return:
-              - type: unknown
+              - type: ISToolTip

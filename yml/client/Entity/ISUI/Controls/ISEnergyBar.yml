@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: resource
+                type: ResourceEnergy
         staticFields:
           Type:
             defaultValue: '"ISEnergyBar"'
@@ -39,19 +41,23 @@ languages:
             type: number
           doToolTip:
             type: boolean
-          player: {}
-          resource: {}
+          player:
+            type: IsoPlayer
+          resource:
+            type: ResourceEnergy
           doRenderTexture:
             type: boolean
-          horizontalTexture: {}
-          verticalTexture: {}
+          horizontalTexture:
+            type: Texture
+          verticalTexture:
+            type: Texture
         methods:
           - name: initialise
           - name: noBackground
           - name: prerender
           - name: getRenderTexture
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true
           - name: renderTexture
             parameters:
@@ -64,6 +70,8 @@ languages:
               - name: _h
                 type: number
               - name: _vertical
+                type: boolean
+                nullable: true
           - name: onMouseMove
             parameters:
               - name: dx

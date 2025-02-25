@@ -11,7 +11,7 @@ languages:
               - name: y
                 type: number
               - name: HSBFactor
-                type: table
+                type: umbrella.HSB
                 nullable: true
         staticFields:
           Type:
@@ -20,12 +20,14 @@ languages:
           mouseDown:
             type: boolean
           index:
-            type: number
-          pickedFunc: {}
+            type: integer
+          pickedFunc:
+            type: umbrella.ISColorPicker.PickedFunction
+            nullable: true
           pickedArgs:
-            type: table
+            type: unknown[]
           colors:
-            type: table
+            type: umbrella.RGB[]
           columns:
             type: number
           rows:
@@ -71,6 +73,8 @@ languages:
           - name: picked2
             parameters:
               - name: hide
+                type: boolean
+                nullable: true
           - name: onMouseUpOutside
             parameters:
               - name: x
@@ -103,24 +107,32 @@ languages:
           - name: picked
             parameters:
               - name: hide
+                type: boolean
+                nullable: true
           - name: setInitialColor
             parameters:
               - name: initial
+                type: Color
           - name: setPickedFunc
             parameters:
               - name: func
+                type: umbrella.ISColorPicker.PickedFunction
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: setColors
             parameters:
               - name: colors
-                type: table
+                type: umbrella.RGB[]
               - name: columns
                 type: number
               - name: rows

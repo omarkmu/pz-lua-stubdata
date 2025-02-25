@@ -25,7 +25,8 @@ languages:
             nullable: true
           picker:
             type: TileGeometryEditor_TilePicker3
-          editor: {}
+          editor:
+            type: TileGeometryEditor
           selection:
             type: table
         methods:
@@ -46,7 +47,7 @@ languages:
               - name: tileName
                 type: string
             return:
-              - type: unknown
+              - type: string
                 nullable: true
               - type: number
                 nullable: true
@@ -62,25 +63,35 @@ languages:
           - name: isValidColRow
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
             return:
               - type: boolean
           - name: selectionAdd
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
           - name: selectionRemove
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
           - name: selectionToggle
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
           - name: selectionIndexOf
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
             return:
               - type: number
           - name: selectionClear
@@ -92,11 +103,11 @@ languages:
               - type: table
           - name: getSingleSelectedTile
             return:
-              - type: unknown
+              - type: table
                 nullable: true
           - name: getFirstSelectedTile
             return:
-              - type: unknown
+              - type: table
                 nullable: true
           - name: calculateSelectionBounds
           - name: onMouseWheel
@@ -107,9 +118,13 @@ languages:
           - name: renderGrid
             parameters:
               - name: xIndent
+                type: number
               - name: yIndent
+                type: number
               - name: texW
+                type: number
               - name: texH
+                type: number
           - name: setTileset
             parameters:
               - name: tilesetName

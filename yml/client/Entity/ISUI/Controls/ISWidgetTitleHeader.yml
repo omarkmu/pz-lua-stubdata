@@ -15,10 +15,15 @@ languages:
               - name: height
                 type: number
               - name: recipe
+                type: CraftRecipe
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: HandcraftLogic
+                nullable: true
               - name: isFavourite
                 type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetTitleHeader"'
@@ -26,30 +31,42 @@ languages:
           iconSize:
             type: number
           icon:
+            type: ISImage
             nullable: true
           titleLabel:
+            type: ISLabel
             nullable: true
           favouritesIcon:
+            type: ISButton
             nullable: true
           isCanWalkIcon:
+            type: ISImage
             nullable: true
           canBeDoneInDarkIcon:
+            type: ISImage
             nullable: true
           needToBeLearnIcon:
+            type: ISImage
             nullable: true
           requiresSurfaceIcon:
+            type: ISImage
             nullable: true
           timeIcon:
+            type: ISImage
             nullable: true
           tooltipLabel:
+            type: ISLabel
             nullable: true
           errorLabel:
+            type: ISLabel
             nullable: true
           isFavourite:
             type: boolean
           title:
             type: string
-          iconTex: {}
+          iconTex:
+            type: Texture
+            nullable: true
           isCanWalk:
             type: boolean
           canBeDoneInDark:
@@ -62,9 +79,13 @@ languages:
             type: boolean
           propertyIconSize:
             type: number
-          player: {}
-          recipe: {}
-          logic: {}
+          player:
+            type: IsoPlayer
+          recipe:
+            type: CraftRecipe
+          logic:
+            type: HandcraftLogic
+            nullable: true
           paddingTop:
             type: number
           paddingBottom:
@@ -82,13 +103,13 @@ languages:
           marginRight:
             type: number
           requiredSkillList:
-            type: table
+            type: ISLabel[]
           colWhite:
-            type: table
+            type: umbrella.RGBA
           colGood:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           enableIcon:
             type: boolean
         methods:
@@ -99,7 +120,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

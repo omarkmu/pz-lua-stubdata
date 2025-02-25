@@ -15,11 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleLabel
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetComponentHeader"'
@@ -27,15 +35,25 @@ languages:
           iconSize:
             type: number
           icon:
+            type: ISImage
             nullable: true
           title:
+            type: ISLabel
             nullable: true
-          player: {}
-          entity: {}
-          component: {}
-          componentUiStyle: {}
-          styleIcon: {}
-          styleLabel: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          component:
+            type: Component
+          componentUiStyle:
+            type: XuiSkin.ComponentUiStyle
+          styleIcon:
+            type: string
+            nullable: true
+          styleLabel:
+            type: string
+            nullable: true
           padding:
             type: number
           margin:
@@ -43,6 +61,7 @@ languages:
           enableIcon:
             type: boolean
           textureBackground:
+            type: Texture
             nullable: true
         methods:
           - name: initialise
@@ -50,7 +69,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

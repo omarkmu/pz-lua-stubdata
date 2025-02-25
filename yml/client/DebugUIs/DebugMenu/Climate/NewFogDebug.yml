@@ -15,29 +15,32 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"NewFogDebug"'
         fields:
-          clim: {}
+          clim:
+            type: ClimateManager
           newFogID:
             type: number
           allOptions:
-            type: table
+            type: table<string, table>
           floats:
-            type: table
+            type: table<string, table>
           colors:
-            type: table
+            type: table<string, table>
           bools:
-            type: table
+            type: table<string, table>
           floatOptions:
-            type: table
+            type: table<string, table>
         methods:
           - name: initialise
           - name: createChildren
           - name: addFloatOption
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -45,13 +48,17 @@ languages:
               - name: _w
                 type: number
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _stepsize
+                type: number
             return:
               - type: number
           - name: addBoolOption
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -63,7 +70,9 @@ languages:
           - name: addFloatOptionAuto
             parameters:
               - name: _id
+                type: string
               - name: _float
+                type: ClimateManager.ClimateFloat
               - name: _x
                 type: number
               - name: _y
@@ -76,23 +85,31 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedValue
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update

@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISLootStreetTestUI"'
@@ -33,18 +34,24 @@ languages:
             type: ISButton
           kitchenProclist:
             type: table
-          kitchenContainer: {}
-          bathroomContainer: {}
-          bedroomContainer: {}
-          shedContainer: {}
+          kitchenContainer:
+            type: ItemContainer
+          bathroomContainer:
+            type: ItemContainer
+          bedroomContainer:
+            type: ItemContainer
+          shedContainer:
+            type: ItemContainer
           totalList:
-            type: table
+            type: table<string, table>
           playerNum:
             type: integer
           title:
             type: string
-          character: {}
-          chr: {}
+          character:
+            type: IsoPlayer
+          chr:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: close
@@ -53,27 +60,30 @@ languages:
           - name: concatList
             parameters:
               - name: list
+                type: ItemContainer
             return:
-              - type: table
-              - type: table
-              - type: number
+              - type: string[]
+              - type: table<string, integer>
+              - type: integer
           - name: itemValidForList
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: getRandomKitchenCounter
             return:
               - type: string
-                nullable: true
           - name: doRichTextList
             parameters:
               - name: container
+                type: ItemContainer
               - name: roomName
                 type: string
           - name: doRoom
             parameters:
               - name: container
+                type: ItemContainer
               - name: roomName
                 type: string
               - name: contName
@@ -83,6 +93,5 @@ languages:
           - name: getLootDensity
             return:
               - type: number
-                nullable: true
           - name: update
           - name: render

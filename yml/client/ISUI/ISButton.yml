@@ -17,13 +17,13 @@ languages:
               - name: title
                 type: string
               - name: clicktarget
-                type: table
+                type: unknown
                 nullable: true
               - name: onclick
-                type: ISButton | function
+                type: umbrella.ISButton.OnClick
                 nullable: true
               - name: onmousedown
-                type: function
+                type: umbrella.ISButton.MouseCallback
                 nullable: true
               - name: allowMouseUpProcessing
                 type: boolean
@@ -46,73 +46,87 @@ languages:
             type: number
           blinkBGAlphaIncrease:
             type: boolean
-          image: {}
+          image:
+            type: Texture
+            nullable: true
           forcedWidthImage:
             type: number
+            nullable: true
           forcedHeightImage:
             type: number
-          overlayText: {}
+            nullable: true
+          overlayText:
+            type: string
+            nullable: true
           blinkImageAlpha:
             type: number
           blinkImageAlphaIncrease:
             type: boolean
-          font: {}
+          font:
+            type: UIFont
           title:
             type: string
           onmouseover:
+            type: umbrella.ISButton.MouseCallback
             nullable: true
           onmouseoutfunction:
+            type: umbrella.ISButton.MouseCallback
             nullable: true
           displayBackground:
             type: boolean
           pressedTime:
+            type: number
             nullable: true
           tooltipUI:
             type: ISToolTip
-          repeatWhilePressedFunc: {}
+          repeatWhilePressedFunc:
+            type: umbrella.ISButton.RepeatWhilePressed
+            nullable: true
           enable:
             type: boolean
           borderColorEnabled:
-            type: table
+            type: umbrella.RGBA
           backgroundColorEnabled:
-            type: table
+            type: umbrella.RGBA
           tooltip:
             type: string
             nullable: true
           originalWidth:
             type: number
           onclick:
-            type: ISButton | function
+            type: umbrella.ISButton.OnClick
             nullable: true
           onClickArgs:
-            type: table
+            type: unknown[]
           backgroundColorMouseOver:
-            type: table
+            type: umbrella.RGBA
           textureColor:
-            type: table
+            type: umbrella.RGBA
           textColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
           onmousedown:
-            type: function
+            type: umbrella.ISButton.MouseCallback
             nullable: true
           isButton:
-            type: boolean
+            type: "true"
           allowMouseUpProcessing:
             type: boolean
             nullable: true
           yoffset:
             type: number
-          fade: {}
+          fade:
+            type: UITransition
           joypadTextureWH:
             type: number
           sounds:
-            type: table
+            type: table<string, string>
           originalHeight:
             type: number
           textureBackground:
+            type: Texture
             nullable: true
         methods:
           - name: initialise
@@ -166,11 +180,14 @@ languages:
           - name: setJoypadButton
             parameters:
               - name: texture
+                type: Texture
           - name: clearJoypadButton
           - name: prerender
           - name: setImage
             parameters:
               - name: image
+                type: Texture
+                nullable: true
           - name: forceImageSize
             parameters:
               - name: width
@@ -180,10 +197,13 @@ languages:
           - name: setOverlayText
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: render
           - name: setFont
             parameters:
               - name: font
+                type: UIFont
           - name: getTitle
             return:
               - type: string
@@ -194,19 +214,24 @@ languages:
           - name: setOnMouseOverFunction
             parameters:
               - name: onmouseover
+                type: umbrella.ISButton.MouseCallback
                 nullable: true
           - name: setOnMouseOutFunction
             parameters:
               - name: onmouseout
+                type: umbrella.ISButton.MouseCallback
                 nullable: true
           - name: setDisplayBackground
             parameters:
               - name: background
+                type: boolean
           - name: update
           - name: updateTooltip
           - name: setRepeatWhilePressed
             parameters:
               - name: func
+                type: umbrella.ISButton.RepeatWhilePressed
+                nullable: true
           - name: setBackgroundRGBA
             parameters:
               - name: r
@@ -252,6 +277,7 @@ languages:
           - name: toggleAcceptCancel
             parameters:
               - name: bEnabled
+                type: boolean
           - name: setEnable
             parameters:
               - name: bEnabled
@@ -259,7 +285,6 @@ languages:
           - name: isEnabled
             return:
               - type: boolean
-                nullable: true
           - name: setTooltip
             parameters:
               - name: tooltip
@@ -276,14 +301,19 @@ languages:
           - name: setOnClick
             parameters:
               - name: func
+                type: umbrella.ISButton.OnClick
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: setSound
             parameters:
               - name: which
@@ -294,4 +324,8 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true

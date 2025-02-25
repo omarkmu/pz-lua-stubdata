@@ -26,12 +26,13 @@ languages:
           flareCount:
             type: boolean
           colExt:
-            type: table
+            type: umbrella.RGB
           colInt:
-            type: table
+            type: umbrella.RGB
           flareID:
             type: number
-          buttonToggleMonitor: {}
+          buttonToggleMonitor:
+            type: ISButton
           periodValue:
             type: ISLabel
           lastReport:
@@ -42,17 +43,20 @@ languages:
             type: ISLabel
           avgUpdatePeriod:
             type: ISLabel
-          buttonChartUpdatePeriod: {}
+          buttonChartUpdatePeriod:
+            type: ISButton
           loadCellFromDisk:
             type: ISLabel
           saveCellToDisk:
             type: ISLabel
-          buttonChartDiskOperations: {}
+          buttonChartDiskOperations:
+            type: ISButton
           usedMemory:
             type: ISLabel
           freeMemory:
             type: ISLabel
-          buttonChartMemory: {}
+          buttonChartMemory:
+            type: ISButton
           connections: {}
           connection_ip:
             type: ISLabel
@@ -96,14 +100,16 @@ languages:
             type: ISScrollingListBox
           outcomePackets:
             type: ISScrollingListBox
-          buttonChartPackets: {}
+          buttonChartPackets:
+            type: ISButton
           init:
             type: boolean
-          data: {}
+          data:
+            type: table
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -114,6 +120,7 @@ languages:
           - name: onCombo
             parameters:
               - name: _combo
+                type: ISComboBox
           - name: onClick
             parameters:
               - name: _button
@@ -122,10 +129,12 @@ languages:
           - name: OnFlaresListMouseDown
             parameters:
               - name: item
+                type: WorldFlares.Flare
           - name: populateConnectionsList
           - name: populateUsersList
             parameters:
               - name: connect
+                type: table
           - name: populatePacketsList
           - name: drawUsersList
             parameters:

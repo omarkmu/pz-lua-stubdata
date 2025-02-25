@@ -30,8 +30,10 @@ languages:
             type: table
           searchText:
             type: string
-          iconExpand: {}
-          iconCollapse: {}
+          iconExpand:
+            type: Texture
+          iconCollapse:
+            type: Texture
           rootNode:
             type: ISStringListViewNode
         methods:
@@ -43,10 +45,12 @@ languages:
           - name: buildNodes
             parameters:
               - name: _lines
+                type: ArrayList #<string>
           - name: buildList
           - name: populate
             parameters:
               - name: _lines
+                type: ArrayList #<string>
                 nullable: true
           - name: drawInfoList
             parameters:
@@ -58,6 +62,7 @@ languages:
           - name: onInfoListSelected
             parameters:
               - name: _item
+                type: table
           - name: update
           - name: prerender
           - name: render
@@ -66,28 +71,39 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox
       ISStringListViewNode:
         constructors:
           - parameters:
               - name: _parent
+                type: ISStringListViewNode
+                nullable: true
               - name: _text
+                type: string
               - name: _isRoot
                 type: boolean
+                nullable: true
         fields:
-          parent: {}
-          text: {}
+          parent:
+            type: ISStringListViewNode
+            nullable: true
+          text:
+            type: string
           isRoot:
             type: boolean
+            nullable: true
           key:
             type: string
-          keyCol: {}
+          keyCol:
+            type: Color
           keyX:
             type: number
           keyW:
             type: number
           val:
             nullable: true
-          valCol: {}
+          valCol:
+            type: Color
           valX:
             type: number
           valW:
@@ -95,7 +111,7 @@ languages:
           width:
             type: number
           highlight:
-            type: boolean
+            type: Colors | false
           isNeedle:
             type: boolean
           expanded:
@@ -103,17 +119,20 @@ languages:
           container:
             type: boolean
           children:
-            type: table
+            type: ISStringListViewNode[]
         methods:
           - name: reset
           - name: resetHighlights
           - name: setHighlight
             parameters:
               - name: _col
+                type: Colors
           - name: search
             parameters:
               - name: _text
+                type: string
               - name: _col
+                type: Colors
           - name: isDrawIcon
             return:
               - type: boolean
@@ -127,8 +146,10 @@ languages:
                 type: boolean
               - name: _noChildren
                 type: boolean
+                nullable: true
           - name: setExpandedAll
           - name: preBuild
           - name: build
             parameters:
               - name: _list
+                type: ISScrollingListBox

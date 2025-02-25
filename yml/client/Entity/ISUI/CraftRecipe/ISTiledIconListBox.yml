@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: dataList
+                type: ArrayList
         staticFields:
           Type:
             defaultValue: '"ISTiledIconListBox"'
@@ -22,33 +23,39 @@ languages:
           mouseOverTile:
             type: number
             nullable: true
-          columns: {}
-          rows: {}
+          columns:
+            type: integer
+          rows:
+            type: integer
           columnWidth:
             type: number
           rowHeight:
             type: number
           tileCount:
-            type: number
+            type: integer
           pages:
-            type: number
+            type: integer
           currentPage:
-            type: number
+            type: integer
           selectedTileData:
             type: boolean
             nullable: true
           lastMouseOverTile:
             type: number
             nullable: true
-          dataArrayList: {}
+          dataArrayList:
+            type: ArrayList
           callbackTarget:
             type: boolean
           onRenderTile:
-            type: boolean
+            type: umbrella.ISTiledIconListBox.OnRenderTile | false
           onHoverTile:
-            type: boolean
+            type: umbrella.ISTiledIconListBox.OnHoverTile | false
           onClickTile:
-            type: boolean
+            type: umbrella.ISTiledIconListBox.OnClickTile | false
+          onPageChanged:
+            type: umbrella.ISTiledIconListBox.OnPageChanged
+            nullable: true
           iconWidth:
             type: number
           iconHeight:
@@ -66,9 +73,9 @@ languages:
           tileMarginY:
             type: number
           minimumColumns:
-            type: number
+            type: integer
           minimumRows:
-            type: number
+            type: integer
           margin:
             type: number
           autoFillContents:
@@ -85,7 +92,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -106,11 +117,12 @@ languages:
               - name: _y
                 type: number
             return:
-              - type: number
+              - type: integer
                 nullable: true
           - name: getDataElement
             parameters:
               - name: _index
+                type: integer
             return:
               - type: unknown
                 nullable: true
@@ -127,6 +139,7 @@ languages:
               - name: _height
                 type: number
               - name: _mouseover
+                type: boolean
           - name: onMouseDown
             parameters:
               - name: x
@@ -160,12 +173,14 @@ languages:
           - name: onPageScrolled
             parameters:
               - name: _newPage
+                type: integer
           - name: setCurrentPage
             parameters:
               - name: _page
+                type: integer
           - name: getCurrentPage
             return:
-              - type: number
+              - type: integer
           - name: pageChanged
           - name: getPages
             return:

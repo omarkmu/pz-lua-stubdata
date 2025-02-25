@@ -15,11 +15,14 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: number
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISFMODEventPlayerPanel"'
         fields:
-          combo: {}
+          combo:
+            type: ISComboBox
           tickBox:
             type: ISTickBox
           sliderDuration:
@@ -28,44 +31,58 @@ languages:
             type: ISSliderPanel
           sliderTimeline:
             type: ISSliderPanel
-          buttonPlay: {}
-          buttonStop: {}
+          buttonPlay:
+            type: ISButton
+          buttonStop:
+            type: ISButton
           parameterY:
             type: number
           parameterEditors:
-            type: table
-          javaPlayer: {}
+            type: ISFMODEventPlayerParameterEditor[]
+          javaPlayer:
+            type: FMODDebugEventPlayer
         methods:
           - name: createChildren
           - name: initParameterEditors
             parameters:
               - name: eventPath
+                type: string
           - name: createParameterEditorUI
             parameters:
               - name: editor
+                type: ISFMODEventPlayerParameterEditor
               - name: parameterName
                 type: string
               - name: y
+                type: number
             return:
-              - type: unknown
+              - type: number
               - type: ISPanel
           - name: onCombo
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onSliderDuration
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onSliderVolume
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onSliderTimeline
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onButtonPlay
           - name: onButtonStop
           - name: prerender
@@ -75,8 +92,11 @@ languages:
         constructors:
           - parameters:
               - name: eventPlayer
+                type: FMODDebugEventPlayer
               - name: eventPath
+                type: string
               - name: parameterIndex
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISFMODEventPlayerParameterEditor"'
@@ -84,12 +104,18 @@ languages:
           currentValue:
             type: number
             nullable: true
-          ui: {}
-          eventPlayer: {}
-          eventPath: {}
-          parameterIndex: {}
-          parameterName: {}
-          isGlobal: {}
+          ui:
+            type: ISPanel
+          eventPlayer:
+            type: FMODDebugEventPlayer
+          eventPath:
+            type: string
+          parameterIndex:
+            type: integer
+          parameterName:
+            type: string
+          isGlobal:
+            type: boolean
         methods:
           - name: setCurrentValue
             parameters:
@@ -106,5 +132,6 @@ languages:
           - name: setUI
             parameters:
               - name: ui
+                type: ISUIElement
           - name: onCombo
           - name: onCommandEntered

@@ -15,19 +15,20 @@ languages:
               - name: height
                 type: number
               - name: maxPlotPoints
+                type: number
         staticFields:
           Type:
             defaultValue: '"FloatArrayPlotter"'
         fields:
           plotColor:
-            type: table
+            type: umbrella.RGBA
           data:
-            type: boolean
+            type: ArrayList
             nullable: true
           gridColor:
-            type: table
+            type: umbrella.RGBA
           greyCol:
-            type: table
+            type: umbrella.RGBA
           doGridLines:
             type: boolean
           gridHorzSpacing:
@@ -41,7 +42,7 @@ languages:
           vertBars:
             type: table
           horzBars:
-            type: table
+            type: "{ val: unknown, col: umbrella.RGBA }[]"
         methods:
           - name: initialise
           - name: createChildren
@@ -51,11 +52,11 @@ languages:
           - name: setData
             parameters:
               - name: _data
-                type: boolean
+                type: ArrayList
                 nullable: true
           - name: setHorzLine
             parameters:
               - name: value
                 type: number
               - name: col
-                type: table
+                type: umbrella.RGBA

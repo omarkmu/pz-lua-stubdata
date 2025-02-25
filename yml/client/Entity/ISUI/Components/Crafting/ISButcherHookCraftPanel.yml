@@ -15,9 +15,13 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
         staticFields:
           Type:
             defaultValue: '"ISButcherHookCraftPanel"'
@@ -30,7 +34,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -39,9 +47,13 @@ languages:
           - name: CanCreatePanelFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _component
+                type: Component
               - name: _componentUiScript
+                type: XuiSkinScript.ComponentUiScript
             return:
               - type: boolean
                 nullable: true

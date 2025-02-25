@@ -11,6 +11,8 @@ languages:
               - name: y
                 type: number
               - name: initial
+                type: ColorInfo
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISColorPickerHSB"'
@@ -25,43 +27,56 @@ languages:
             type: ISSliderPanel
           valSlider:
             type: ISSliderPanel
-          b:
+          h:
             type: number
           s:
             type: number
-          h:
+          b:
             type: number
-          currentColor: {}
+          currentColor:
+            type: Color
+            nullable: true
           mouseDownInColorBox:
             type: boolean
           mouseDown:
             type: boolean
-          initialColor: {}
-          pickedFunc: {}
+          initialColor:
+            type: Color
+            nullable: true
+          pickedFunc:
+            type: umbrella.ISColorPicker.PickedFunction
+            nullable: true
           pickedArgs:
-            type: table
+            type: unknown[]
           pickedRGB:
-            type: table
+            type: umbrella.RGB
           borderSize:
             type: number
           buttonSize:
             type: number
-          HueImage: {}
-          SatImage: {}
+          HueImage:
+            type: Texture
+            nullable: true
+          SatImage:
+            type: Texture
+            nullable: true
         methods:
           - name: createChildren
           - name: toHSB
             parameters:
               - name: Color
+                type: Color
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: render
           - name: onSliderChange
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onMouseDown
             parameters:
               - name: x
@@ -107,6 +122,8 @@ languages:
           - name: picked2
             parameters:
               - name: hide
+                type: boolean
+                nullable: true
           - name: onMouseUpOutside
             parameters:
               - name: x
@@ -131,22 +148,34 @@ languages:
           - name: picked
             parameters:
               - name: hide
+                type: boolean
+                nullable: true
           - name: setInitialColor
             parameters:
               - name: initial
+                type: ColorInfo
           - name: setCurrentColor
             parameters:
               - name: h
+                type: number
               - name: s
+                type: number
               - name: b
+                type: number
           - name: setPickedFunc
             parameters:
               - name: func
+                type: umbrella.ISColorPicker.PickedFunction
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true

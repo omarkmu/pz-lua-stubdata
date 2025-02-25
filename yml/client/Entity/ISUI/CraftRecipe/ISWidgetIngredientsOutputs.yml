@@ -15,20 +15,25 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
         staticFields:
           Type:
             defaultValue: '"ISWidgetIngredientsOutputs"'
         fields:
           outputsLabel:
-            nullable: true
+            type: ISLabel
           outputs:
-            type: table
-          player: {}
-          logic: {}
+            type: (ISWidgetOutput | ISWidgetInput)[]
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
           interactiveMode:
             type: boolean
-          textureLink: {}
+          textureLink:
+            type: Texture
           margin:
             type: number
           itemSpacing:
@@ -53,16 +58,23 @@ languages:
           - name: addInput
             parameters:
               - name: _inputScript
+                type: InputScript
           - name: addKeeps
             parameters:
               - name: _inputScript
+                type: InputScript
           - name: addOutput
             parameters:
               - name: _outputScript
+                type: OutputScript
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

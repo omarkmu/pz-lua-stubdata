@@ -16,12 +16,14 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"UnitTestsTimedActionsPanel"'
         fields:
           tests:
-            type: table
+            type: "table<string, { run: function }>"
         methods:
           - name: initialise
           - name: createChildren
@@ -41,12 +43,15 @@ languages:
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update
         staticMethods:
           - name: onStartTest

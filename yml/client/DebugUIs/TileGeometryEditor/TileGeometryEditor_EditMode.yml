@@ -25,7 +25,7 @@ languages:
               - name: item
               - name: alt
             return:
-              - type: unknown
+              - type: number
           - name: onMouseDown
             parameters:
               - name: x
@@ -35,6 +35,7 @@ languages:
           - name: indexOf
             parameters:
               - name: text
+                type: string
             return:
               - type: number
       TileGeometryEditor_GeometryListBox:
@@ -50,15 +51,17 @@ languages:
               - name: height
                 type: number
               - name: editor
-                type: TileGeometryEditor_EditMode_Geometry
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_GeometryListBox"'
         fields:
           editor:
-            type: TileGeometryEditor_EditMode_Geometry
-          scene: {}
-          selected: {}
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
+          selected:
+            type: integer
         methods:
           - name: onRightMouseDown
             parameters:
@@ -79,16 +82,20 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_BoxPanel"'
         fields:
           extentBoxes:
-            type: table
+            type: table<string, ISTextEntryBox>
           movingFace:
+            type: string
             nullable: true
-          editor: {}
-          scene: {}
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: createChildren
           - name: createEntry
@@ -102,12 +109,15 @@ languages:
               - name: h
                 type: number
               - name: id
+                type: string
             return:
               - type: ISTextEntryBox
           - name: onTextEntered
             parameters:
               - name: entry
+                type: ISTextEntryBox
               - name: id
+                type: string
           - name: render
           - name: toUI
           - name: configGizmo
@@ -116,6 +126,7 @@ languages:
           - name: configGizmoAux
             parameters:
               - name: face
+                type: string
               - name: extentX
               - name: extentY
               - name: extentZ
@@ -132,6 +143,7 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_CylinderPanel"'
@@ -144,8 +156,10 @@ languages:
             type: ISTextEntryBox
           movingFace:
             nullable: true
-          editor: {}
-          scene: {}
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: createChildren
           - name: createEntry
@@ -159,12 +173,15 @@ languages:
               - name: h
                 type: number
               - name: id
+                type: string
             return:
               - type: ISTextEntryBox
           - name: onTextEntered
             parameters:
               - name: entry
+                type: ISTextEntryBox
               - name: id
+                type: string
           - name: render
           - name: toUI
           - name: configGizmo
@@ -173,6 +190,7 @@ languages:
           - name: configGizmoAux
             parameters:
               - name: face
+                type: string
       TileGeometryEditor_PropertiesPanel:
         extends: ISPanel
         constructors:
@@ -186,6 +204,7 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_PropertiesPanel"'
@@ -198,9 +217,12 @@ languages:
             type: ISTickBox
           movingFace:
             nullable: true
-          vector3: {}
-          editor: {}
-          scene: {}
+          vector3:
+            type: Vector3f
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: createChildren
           - name: createEntry
@@ -214,13 +236,17 @@ languages:
               - name: h
                 type: number
               - name: id
+                type: string
             return:
               - type: ISTextEntryBox
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
               - name: tickBox
+                type: unknown
           - name: toUI
           - name: configGizmo
             return:
@@ -228,9 +254,10 @@ languages:
           - name: configGizmoAux
             parameters:
               - name: face
+                type: string
           - name: shouldShowInScene
             return:
-              - type: unknown
+              - type: boolean
       TileGeometryEditor_DepthTexturePanel:
         extends: ISPanel
         constructors:
@@ -244,12 +271,15 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_DepthTexturePanel"'
         fields:
-          editor: {}
-          tilePicker: {}
+          editor:
+            type: TileGeometryEditor
+          tilePicker:
+            type: TileGeometryEditor_TilePicker
         methods:
           - name: render
       TileGeometryEditor_SeatingPropertiesPanel:
@@ -265,48 +295,61 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_SeatingPropertiesPanel"'
         fields:
           tickBox:
             type: ISTickBox
-          editor: {}
-          scene: {}
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: createChildren
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
               - name: tickBox
+                type: unknown
           - name: toUI
       TileGeometryEditor_EditMode:
         extends: ISBaseObject
         constructors:
           - parameters:
               - name: editor
-                type: number
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_EditMode"'
         fields:
-          width: {}
-          height: {}
+          width:
+            type: number
+          height:
+            type: number
           editor:
             type: number
-          tilePicker: {}
-          tilePicker2: {}
-          scene: {}
+          tilePicker:
+            type: TileGeometryEditor_TilePicker
+          tilePicker2:
+            type: TileGeometryEditor_TilePicker2
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
           - name: java1
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
             return:
@@ -314,6 +357,7 @@ languages:
           - name: java2
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -323,6 +367,7 @@ languages:
           - name: java3
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -334,6 +379,7 @@ languages:
           - name: java4
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -347,6 +393,7 @@ languages:
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -362,6 +409,7 @@ languages:
           - name: java6
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -379,6 +427,7 @@ languages:
           - name: java7
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -440,7 +489,7 @@ languages:
                 type: number
           - name: getValidGizmos
             return:
-              - type: table
+              - type: string[]
           - name: configGizmo
             return:
               - type: boolean
@@ -454,17 +503,19 @@ languages:
         constructors:
           - parameters:
               - name: x
-                type: number | TileGeometryEditor
+                type: TileGeometryEditor
               - name: y
-                type: number
+                type: unknown
                 nullable: true
               - name: w
-                type: number
+                type: unknown
                 nullable: true
               - name: h
-                type: number
+                type: unknown
                 nullable: true
               - name: editor
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_EditMode_Geometry"'
@@ -499,9 +550,12 @@ languages:
             type: TileGeometryEditor_PropertiesPanel
           depthTexturePanel:
             type: TileGeometryEditor_DepthTexturePanel
-          tempTranslate: {}
-          tempExtentsMin: {}
-          tempExtentsMax: {}
+          tempTranslate:
+            type: Vector3f
+          tempExtentsMin:
+            type: Vector3f
+          tempExtentsMax:
+            type: Vector3f
           animation:
             type: string
         methods:
@@ -523,7 +577,7 @@ languages:
                 type: number
           - name: getValidGizmos
             return:
-              - type: table
+              - type: string[]
           - name: configGizmo
             return:
               - type: boolean
@@ -551,6 +605,7 @@ languages:
           - name: onAddPolygon
             parameters:
               - name: plane
+                type: string
           - name: onAddBox
           - name: onAddCylinder
           - name: onEditPoints
@@ -577,16 +632,19 @@ languages:
               - name: objectName
                 type: string
               - name: axis
+                type: string
           - name: zeroRotation
             parameters:
               - name: objectName
                 type: string
               - name: axis
+                type: string
           - name: updateGeometryFile
         staticMethods:
           - name: RasterizePolygonCallback
             parameters:
               - name: args
+                type: table
               - name: x
                 type: number
               - name: y
@@ -604,6 +662,7 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_TilePicker3"'
@@ -612,7 +671,8 @@ languages:
             type: ISComboBox
           listBox:
             type: TileGeometryEditor_TileList3
-          editor: {}
+          editor:
+            type: TileGeometryEditor
         methods:
           - name: createChildren
           - name: setTileset
@@ -646,8 +706,10 @@ languages:
         fields:
           editor:
             type: TileGeometryEditor_EditMode_Seating
-          scene: {}
-          selected: {}
+          scene:
+            type: TileGeometryEditor_Scene
+          selected:
+            type: integer
         methods:
           - name: onRightMouseDown
             parameters:
@@ -675,12 +737,14 @@ languages:
             type: ISButton
           tilePicker3:
             type: TileGeometryEditor_TilePicker3
-          previousGeometryVisible: {}
-          previousTool: {}
+          previousGeometryVisible:
+            type: boolean
+          previousTool:
+            type: TileGeometryEditor_Tool
           textColorEnabled:
-            type: table
+            type: umbrella.RGBA
           textColorDisabled:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: createChildren
           - name: onButtonPlace
@@ -705,6 +769,7 @@ languages:
               - name: height
                 type: number
               - name: editor
+                type: TileGeometryEditor
         staticFields:
           Type:
             defaultValue: '"TileGeometryEditor_CurtainPropertiesPanel"'
@@ -718,8 +783,10 @@ languages:
           movingFace:
             type: string
             nullable: true
-          editor: {}
-          scene: {}
+          editor:
+            type: TileGeometryEditor
+          scene:
+            type: TileGeometryEditor_Scene
         methods:
           - name: createChildren
           - name: createEntry
@@ -733,6 +800,7 @@ languages:
               - name: h
                 type: number
               - name: id
+                type: string
             return:
               - type: ISTextEntryBox
           - name: onButtonCurtainW
@@ -748,6 +816,7 @@ languages:
           - name: getCurtainEdge
             parameters:
               - name: sprite
+                type: IsoSprite
             return:
               - type: string
                 nullable: true
@@ -772,8 +841,10 @@ languages:
             type: TileGeometryEditor_TilePicker3
           propertiesPanel:
             type: TileGeometryEditor_CurtainPropertiesPanel
-          previousTool: {}
-          previousAnimation: {}
+          previousTool:
+            type: TileGeometryEditor_Tool
+          previousAnimation:
+            type: string
           selectedTile:
             type: table
         methods:
@@ -798,7 +869,9 @@ languages:
               - name: tilesetName
                 type: string
               - name: col
+                type: number
               - name: row
+                type: number
               - name: x
                 type: number
               - name: y
@@ -844,15 +917,17 @@ languages:
             type: TileGeometryEditor_TilePicker3
           propertiesPanel:
             type: TileGeometryEditor_SeatingPropertiesPanel
-          previousTool: {}
-          previousAnimation: {}
+          previousTool:
+            type: TileGeometryEditor_Tool
+          previousAnimation:
+            type: string
           selectedPositionIndex:
             type: number
             nullable: true
           textColorEnabled:
-            type: table
+            type: umbrella.RGBA
           textColorDisabled:
-            type: table
+            type: umbrella.RGBA
           selectedTile:
             type: table
         methods:
@@ -862,7 +937,9 @@ languages:
               - name: tilesetName
                 type: string
               - name: col
+                type: number
               - name: row
+                type: number
               - name: x
                 type: number
               - name: y
@@ -879,6 +956,7 @@ languages:
           - name: onButtonAddPosition
             parameters:
               - name: positionID
+                type: string
           - name: onButtonRemovePosition
           - name: activate
           - name: deactivate
@@ -888,12 +966,15 @@ languages:
               - name: tilesetName
                 type: string
               - name: col
+                type: number
               - name: row
+                type: number
             return:
               - type: boolean
           - name: hasPositionID
             parameters:
               - name: positionID
+                type: string
             return:
               - type: boolean
           - name: checkSelectedPosition

@@ -5,36 +5,46 @@ languages:
       ISAnimalTracksFinder:
         staticFields:
           tracks:
-            type: table
+            type: IsoAnimalTrack[]
           tick:
             defaultValue: "0"
         methods:
           - name: update
             parameters:
               - name: chr
+                type: IsoPlayer
           - name: canFindTrack
             parameters:
               - name: track
+                type: AnimalTracks
               - name: chr
+                type: IsoGameCharacter
             return:
-              - type: unknown
+              - type: boolean
           - name: updateTracks
             parameters:
               - name: chr
+                type: IsoPlayer
           - name: clearTracks
             parameters:
               - name: chr
+                type: IsoPlayer
           - name: addItemIcon
             parameters:
               - name: track
+                type: InventoryItem
               - name: chr
+                type: IsoPlayer
         staticMethods:
           - name: getAnimalTracks
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: tracks
+                type: AnimalTracks
           - name: isTrack
             parameters:
               - name: worldObject
+                type: IsoObject
             return:
               - type: boolean

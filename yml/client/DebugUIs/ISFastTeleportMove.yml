@@ -21,6 +21,7 @@ languages:
           - name: moveZ
             parameters:
               - name: player
+                type: IsoPlayer
               - name: dz
                 type: number
           - name: OnKeyKeepPressed

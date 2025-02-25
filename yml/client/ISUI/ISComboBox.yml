@@ -18,11 +18,14 @@ languages:
                 type: unknown
                 nullable: true
               - name: onChange
-                type: function
+                type: umbrella.ISComboBox.OnChange
                 nullable: true
               - name: onChangeArg1
+                type: unknown
                 nullable: true
               - name: onChangeArg2
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISComboBox"'
@@ -33,13 +36,14 @@ languages:
           popup:
             type: ISComboBoxPopup
           filterText:
+            type: string
             nullable: true
           joypadFocused:
             type: boolean
           expanded:
             type: boolean
           selected:
-            type: number
+            type: integer
           tooltipUI:
             type: ISToolTip
           sawMouseDown:
@@ -47,33 +51,36 @@ languages:
           editor:
             type: ISComboBoxEditor
           tooltip:
-            type: table
+            type: table<string, string>
             nullable: true
           options:
-            type: table
+            type: (string | umbrella.ISComboBox.Option)[]
           disabled:
             type: boolean
           editable:
             type: boolean
           backgroundColorMouseOver:
-            type: table
-          font: {}
+            type: umbrella.RGBA
+          font:
+            type: UIFont
           textColor:
-            type: table
+            type: umbrella.RGBA
           baseHeight:
             type: number
           target:
             type: unknown
             nullable: true
           onChange:
-            type: function
+            type: umbrella.ISComboBox.OnChange
             nullable: true
           onChangeArgs:
-            type: table
+            type: unknown[]
           isCombobox:
             type: boolean
-          image: {}
-          fade: {}
+          image:
+            type: Texture
+          fade:
+            type: UITransition
         methods:
           - name: initialise
           - name: createChildren
@@ -129,16 +136,19 @@ languages:
           - name: selectData
             parameters:
               - name: data
-                type: string
+                type: unknown
           - name: find
             parameters:
               - name: func
+                type: "fun(text: string, data: unknown?, ...: unknown)"
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
             return:
-              - type: number
+              - type: integer
           - name: addOption
             parameters:
               - name: option
@@ -148,11 +158,11 @@ languages:
               - name: option
                 type: string
               - name: data
-                type: table | string
+                type: unknown
                 nullable: true
           - name: getOptionCount
             return:
-              - type: number
+              - type: integer
           - name: isEmpty
             return:
               - type: boolean
@@ -164,22 +174,23 @@ languages:
           - name: getOptionText
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getOptionData
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getOptionTooltip
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: onMouseMoveOutside
             parameters:
@@ -190,17 +201,18 @@ languages:
           - name: setToolTipMap
             parameters:
               - name: tooltipmap
+                type: table<string, string>
           - name: getSelectedText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSelected
             return:
-              - type: number
+              - type: integer
           - name: setSelected
             parameters:
               - name: value
-                type: number
+                type: integer
           - name: setWidthToOptions
             parameters:
               - name: minWidth
@@ -224,9 +236,10 @@ languages:
           - name: setFilterText
             parameters:
               - name: text
+                type: string
           - name: getFilterText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: hasFilterText
             return:
@@ -277,11 +290,13 @@ languages:
             type: ISComboBox
             nullable: true
           tooWide:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
           tooWideY:
             type: number
+            nullable: true
           selected:
-            type: number
+            type: integer
         methods:
           - name: prerender
           - name: render

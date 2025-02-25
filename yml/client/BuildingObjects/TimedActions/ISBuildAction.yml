@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: ISBuildingObject
               - name: x
                 type: number
               - name: y
@@ -15,6 +17,7 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: spriteName
                 type: string
               - name: time
@@ -25,39 +28,51 @@ languages:
           soundDelay:
             defaultValue: "6"
           worldSoundTime:
+            type: number
             nullable: true
         fields:
-          onCompleteFunc: {}
+          onCompleteFunc:
+            type: function
+            nullable: true
           onCompleteTarget:
-            type: ISBuildingObject
-          onCancelFunc: {}
+            type: unknown
+            nullable: true
+          onCancelFunc:
+            type: function
+            nullable: true
           onCancelTarget:
-            type: ISBuildingObject
+            type: unknown
+            nullable: true
           soundTime:
             type: number
           hammerSound:
             type: number
+            nullable: true
           doSaw:
             type: boolean
           sawSound:
             type: number
+            nullable: true
           craftingSound:
             type: number
-          maxTime:
-            type: number
-          hammer: {}
+            nullable: true
+          hammer:
+            type: InventoryItem
+            nullable: true
           transactionId:
             type: number
           started:
             type: boolean
-          item: {}
+          item:
+            type: ISBuildingObject
           x:
             type: number
           y:
             type: number
           z:
             type: number
-          north: {}
+          north:
+            type: boolean
           spriteName:
             type: string
           square:
@@ -78,13 +93,19 @@ languages:
           - name: setOnComplete
             parameters:
               - name: _func
+                type: function
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
           - name: setOnCancel
             parameters:
               - name: _func
+                type: function
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
           - name: update
           - name: start
           - name: stop

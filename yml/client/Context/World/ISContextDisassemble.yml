@@ -15,10 +15,13 @@ languages:
           - name: createMenu
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
             return:
               - type: boolean
                 nullable: true
           - name: disassemble
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _v
+                type: umbrella.ISContextDisassemble.Data

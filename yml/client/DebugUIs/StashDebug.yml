@@ -30,6 +30,7 @@ languages:
           datas:
             type: ISScrollingListBox
           selectedStash:
+            type: Stash
             nullable: true
         methods:
           - name: initialise
@@ -37,13 +38,17 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
         staticMethods:
           - name: OnOpenPanel

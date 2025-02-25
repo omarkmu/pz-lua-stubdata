@@ -10,11 +10,14 @@ languages:
           - name: OnFillWorldObjectContextMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
           - name: onAddWaterDebug
@@ -22,34 +25,45 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: isoObject
+                type: IsoObject
           - name: onRemoveFoodDebug
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: isoObject
+                type: IsoObject
           - name: onAddFoodDebug
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: isoObject
+                type: IsoObject
           - name: onEmptyWater
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: isoObject
+                type: IsoObject
           - name: onAddWater
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: luaObject
+                type: CFeedingTroughGlobalObject
               - name: waterItem
+                type: InventoryItem
               - name: all
+                type: boolean
+                nullable: true
           - name: onInfo
             parameters:
               - name: trough
+                type: IsoFeedingTrough
               - name: chr
+                type: IsoPlayer
           - name: isValidAnimalFeed
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean

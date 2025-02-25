@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
               - name: recipeData
               - name: craftBench
               - name: isoObject
@@ -24,19 +26,26 @@ languages:
             defaultValue: '"ISCraftRecipePanel"'
         fields:
           rootTable:
+            type: ISTableLayout
             nullable: true
           overlayPanel:
             type: ISPanel
           titleWidget:
+            type: ISWidgetTitleHeader
             nullable: true
           inputs:
+            type: ISWidgetIngredientsInputs
             nullable: true
           outputs:
+            type: ISWidgetIngredientsOutputs
             nullable: true
           craftControl:
+            type: ISWidgetHandCraftControl
             nullable: true
-          player: {}
-          logic: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
           margin:
             type: number
           autoFillContents:
@@ -54,7 +63,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -62,10 +75,11 @@ languages:
           - name: setOverlayVisible
             parameters:
               - name: _b
+                type: boolean
           - name: onRecipeChanged
           - name: getRecipe
             return:
-              - type: unknown
+              - type: CraftRecipe
           - name: onRebuildItemNodes
             parameters:
               - name: _inputItems
@@ -73,3 +87,4 @@ languages:
           - name: updateContainers
             parameters:
               - name: containers
+                type: ArrayList #<ItemContainer>

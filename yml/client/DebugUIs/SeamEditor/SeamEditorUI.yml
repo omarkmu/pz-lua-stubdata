@@ -21,7 +21,7 @@ languages:
           scene:
             type: SeamEditorUI_Scene
           seamTileList:
-            type: table
+            type: table<string, SeamEditorUI_SeamTileList>
           tilePicker:
             type: SeamEditorUI_TilePicker
           tilePicker2:
@@ -50,15 +50,21 @@ languages:
           - name: indexOf
             parameters:
               - name: tbl
+                type: table
               - name: element
+                type: unknown
             return:
               - type: number
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: prerender
           - name: render
@@ -124,7 +130,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onMouseDownOutside
             parameters:
               - name: x
@@ -164,6 +172,7 @@ languages:
           - name: renderTileAt
             parameters:
               - name: texture
+                type: Texture
               - name: x
                 type: number
               - name: y
@@ -175,6 +184,7 @@ languages:
               - name: tileName
                 type: string
               - name: texture
+                type: Texture
           - name: renderTileName
           - name: renderDraggedTile
           - name: renderTileEast
@@ -263,13 +273,13 @@ languages:
               - type: number
           - name: getSelectedTileName
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSelectedTile
             return:
               - type: string
                 nullable: true
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: renderPixelGrid
             parameters:
@@ -278,11 +288,17 @@ languages:
           - name: renderTextureOutline
             parameters:
               - name: sx
+                type: number
               - name: sy
+                type: number
               - name: sx2
+                type: number
               - name: sy2
+                type: number
               - name: pixelSize
+                type: number
               - name: texture
+                type: Texture
       SeamEditorUI_TilePicker:
         extends: ISPanel
         constructors:
@@ -325,7 +341,7 @@ languages:
               - name: tileName
                 type: string
             return:
-              - type: unknown
+              - type: string
                 nullable: true
               - type: number
                 nullable: true
@@ -371,7 +387,7 @@ languages:
               - name: tileName
                 type: string
             return:
-              - type: unknown
+              - type: string
                 nullable: true
               - type: number
                 nullable: true

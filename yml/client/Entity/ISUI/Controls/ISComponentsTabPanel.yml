@@ -15,29 +15,41 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: entityConfig
+                type: XuiSkin.EntityUiStyle
         staticFields:
           Type:
             defaultValue: '"ISComponentsTabPanel"'
         fields:
           panels:
-            type: boolean | table
+            type: umbrella.ISEntityUI.ComponentPanelInfo[]
           multiPanels:
             type: boolean
           tableLayout:
+            type: ISTableLayout
             nullable: true
           menuLayout:
+            type: ISTableLayout
             nullable: true
-          panelColumn: {}
+          panelColumn:
+            type: ISTableLayoutColumn
           originalColor:
-            type: table
+            type: umbrella.RGBA
           entityDebug:
+            type: ISWidgetEntityDebug
             nullable: true
-          selectedIndex: {}
-          player: {}
-          entity: {}
-          entityConfig: {}
+          selectedIndex:
+            type: integer
+            nullable: true
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          entityConfig:
+            type: XuiSkin.EntityUiStyle
           maximumWidth:
             type: number
           maximumHeight:
@@ -49,7 +61,7 @@ languages:
           margin:
             type: number
           layoutParent:
-            type: boolean
+            type: ISEntityTabWindow | false
           disableHeaders:
             type: boolean
           doIcons:
@@ -57,13 +69,14 @@ languages:
           doText:
             type: boolean
           selectedColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: initialise
           - name: createChildren
           - name: selectPanel
             parameters:
               - name: _index
+                type: integer
               - name: _recalc
                 type: boolean
           - name: onButtonClick
@@ -73,7 +86,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

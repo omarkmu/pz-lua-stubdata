@@ -9,17 +9,17 @@ languages:
               - name: _manager
                 type: ISSearchManager
               - name: _icon
-                type: table
+                type: umbrella.Foraging.IconData
         staticFields:
           Type:
             defaultValue: '"ISBaseIcon"'
         fields:
           managedMarkers:
-            type: table
+            type: table<string, string>
           updateEvents:
-            type: table
+            type: umbrella.Foraging.UpdateEvent[]
           textureColor:
-            type: table
+            type: umbrella.RGBA
           isBeingRemoved:
             type: boolean
           isSeen:
@@ -36,14 +36,20 @@ languages:
             type: number
           alphaTarget:
             type: number
-          zoom: {}
+          zoom:
+            type: number
           pinAlpha:
             type: number
-          itemObj: {}
-          itemTexture: {}
+          itemObj:
+            type: InventoryItem
+            nullable: true
+          itemTexture:
+            type: Texture
+            nullable: true
           itemCount:
             type: number
           itemList:
+            type: ArrayList #<InventoryItem>
             nullable: true
           isKnownPoison:
             type: boolean
@@ -61,14 +67,18 @@ languages:
             type: boolean
           expandView:
             type: number
-          stareVal: {}
+          stareVal:
+            type: number
+            nullable: true
           viewDistance:
             type: number
           distanceToPlayer:
             type: number
           isoMarker:
+            type: IsoMarkers.IsoMarker
             nullable: true
           worldMarker:
+            type: WorldMarkers.PlayerHomingPoint
             nullable: true
           perkLevel:
             type: number
@@ -94,9 +104,9 @@ languages:
             type: IsoGridSquare
             nullable: true
           adjacentSquares:
-            type: table
+            type: table<"north" | "south" | "east" | "west", IsoGridSquare>
           altWorldTexture:
-            type: table
+            type: Texture[]
           baseWidth:
             type: number
           baseHeight:
@@ -105,11 +115,14 @@ languages:
             type: string
           manager:
             type: ISSearchManager
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           icon:
-            type: table
-          iconID: {}
+            type: umbrella.Foraging.IconData
+          iconID:
+            type: string
           xCoord:
             type: number
           yCoord:
@@ -118,7 +131,8 @@ languages:
             type: number
           zSize:
             type: number
-          texture: {}
+          texture:
+            type: Texture
           onSquareDistance:
             type: number
           darkVisionRadius:
@@ -143,16 +157,16 @@ languages:
             type: number
           maxPosChanges:
             type: number
-          itemRotation: {}
-          onMouseDoubleClick:
-            type: function
+          itemRotation:
+            type: integer
           modifiers:
-            type: table
+            type: umbrella.Foraging.Modifiers
           viewAngle:
             type: number
           expandViewStep:
             type: number
-          itemType: {}
+          itemType:
+            type: string
           itemSize:
             type: number
           isMover:
@@ -183,7 +197,7 @@ languages:
               - type: number
           - name: getColor
             return:
-              - type: table
+              - type: umbrella.RGBA
           - name: setAlpha
             parameters:
               - name: _a
@@ -191,11 +205,12 @@ languages:
           - name: setColor
             parameters:
               - name: _rgba
+                type: umbrella.RGBA
           - name: prerender
           - name: renderWorldIcon
           - name: getGridSquare
             return:
-              - type: boolean
+              - type: IsoGridSquare | false
           - name: doSearchFocusCheck
           - name: setIsBeingRemoved
             parameters:
@@ -208,6 +223,7 @@ languages:
             parameters:
               - name: _context
                 type: ISContextMenu
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -219,17 +235,23 @@ languages:
           - name: getAngleOffset2D
             parameters:
               - name: _angle1
+                type: number
               - name: _angle2
+                type: number
             return:
               - type: number
           - name: getAngle2D
             parameters:
               - name: _x1
+                type: number
               - name: _y1
+                type: number
               - name: _x2
+                type: number
               - name: _y2
+                type: number
             return:
-              - type: unknown
+              - type: number
           - name: isCenterView
             parameters:
               - name: _bonusAngle
@@ -239,16 +261,23 @@ languages:
           - name: getDistance3D
             parameters:
               - name: _x1
+                type: number
               - name: _y1
+                type: number
               - name: _z1
+                type: number
               - name: _x2
+                type: number
               - name: _y2
+                type: number
               - name: _z2
+                type: number
             return:
               - type: number
           - name: isInRangeOfPlayer
             parameters:
               - name: _range
+                type: number
             return:
               - type: boolean
           - name: isInRangeForUpdate
@@ -281,7 +310,7 @@ languages:
           - name: updateModifiers
           - name: doVisionCheck
             return:
-              - type: unknown
+              - type: number
           - name: remove
           - name: reset
           - name: getScreenDelta
@@ -328,11 +357,13 @@ languages:
           - name: updatePerkLevel
           - name: checkIsPlayerRunning
             return:
-              - type: unknown
+              - type: boolean
           - name: updateLastSeen
           - name: doUpdateEvents
             parameters:
               - name: _force
+                type: boolean
+                nullable: true
           - name: update
           - name: findPinOffset
           - name: findTextureCenter

@@ -20,7 +20,9 @@ languages:
           Type:
             defaultValue: '"DebugChunkState_ObjectPickerPanel"'
         fields:
-          lastPicked: {}
+          lastPicked:
+            type: IsoObject
+            nullable: true
           addLineX:
             type: number
           addLineY:
@@ -33,6 +35,7 @@ languages:
           - name: addLine
             parameters:
               - name: text
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1

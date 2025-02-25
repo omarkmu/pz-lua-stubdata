@@ -8,6 +8,7 @@ languages:
           Type:
             defaultValue: '"StatisticChartPackets"'
           instance:
+            type: StatisticChartPackets
             nullable: true
           shiftDown:
             defaultValue: "0"
@@ -20,10 +21,10 @@ languages:
         staticMethods:
           - name: doInstance
             return:
-              - type: unknown
+              - type: StatisticChartPackets
                 nullable: true
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: StatisticChartPackets
                 nullable: true
           - name: OnServerStatisticReceived

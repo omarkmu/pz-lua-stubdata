@@ -11,26 +11,37 @@ languages:
         extends: ISMenuElement
         local: true
         fields:
-          invMenu: {}
+          invMenu:
+            type: ISMenuContextInventory
         staticMethods:
           - name: init
           - name: createMenu
             parameters:
               - name: _item
+                type: InventoryItem
           - name: addDebugFluid
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: cont
+                type: FluidContainer
               - name: fluid
+                type: string
           - name: transferFluids
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _container
+                type: FluidContainer
           - name: showInfo
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _container
+                type: FluidContainer
           - name: emptyFluidContainer
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _container
+                type: FluidContainer

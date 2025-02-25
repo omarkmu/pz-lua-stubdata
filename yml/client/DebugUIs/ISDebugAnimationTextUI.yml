@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: chr
+                type: IsoGameCharacter
         staticFields:
           Type:
             defaultValue: '"ISDebugAnimationTextUI"'
@@ -23,7 +24,8 @@ languages:
             type: ISTextEntryBox
           title:
             type: string
-          character: {}
+          character:
+            type: IsoGameCharacter
         methods:
           - name: createChildren
           - name: setText

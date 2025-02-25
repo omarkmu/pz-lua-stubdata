@@ -45,7 +45,9 @@ languages:
           - name: onRemoveTile
             parameters:
               - name: tiles
+                type: ArrayList #<string>
               - name: index
+                type: integer
           - name: renderMouseOverTile
           - name: getRowAt
             parameters:
@@ -54,8 +56,8 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: integer
           - name: getTileNameList
             return:
-              - type: unknown
+              - type: ArrayList #<string>
                 nullable: true

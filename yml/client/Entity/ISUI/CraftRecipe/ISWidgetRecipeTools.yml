@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
         staticFields:
           Type:
             defaultValue: '"ISWidgetRecipeTools"'
@@ -23,27 +25,31 @@ languages:
           toolsLabel:
             nullable: true
           colDisabled:
-            type: table
+            type: umbrella.RGBA
           colEnabled:
-            type: table
+            type: umbrella.RGBA
           colTextEnabled:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           left:
-            type: table
+            type: umbrella.ISWidgetRecipeTools.ToolSide
           right:
-            type: table
-          player: {}
-          logic: {}
+            type: umbrella.ISWidgetRecipeTools.ToolSide
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
           editMode:
             type: boolean
           iconSize:
             type: number
           doToolBorder:
             type: boolean
-          textureKeep: {}
-          textureDrain: {}
+          textureKeep:
+            type: Texture
+          textureDrain:
+            type: Texture
           margin:
             type: number
           autoFillContents:
@@ -60,17 +66,25 @@ languages:
           - name: createToolSide
             parameters:
               - name: _recipe
+                type: CraftRecipe
               - name: _doLeft
+                type: boolean
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISWidgetRecipeTools.ToolSide
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: updateToolValues
             parameters:
               - name: _table
+                type: umbrella.ISWidgetRecipeTools.ToolSide
           - name: render
           - name: update

@@ -7,42 +7,54 @@ languages:
         constructors:
           - parameters:
               - name: _player
+                type: IsoPlayer
               - name: _recipeData
+                type: CraftRecipeData
         staticFields:
           Type:
             defaultValue: '"ISCraftInputItems"'
         fields:
           containers:
             nullable: true
-          allItems: {}
-          recipe: {}
+          allItems:
+            type: ArrayList #<InventoryItem>
+          recipe:
+            type: CraftRecipe
           oldNodes:
-            type: table
+            type: table<Item, ISCraftInputItemNode>
           nodes:
-            type: table
-          player: {}
-          recipeData: {}
+            type: ISCraftInputItemNode[]
+          player:
+            type: IsoPlayer
+          recipeData:
+            type: CraftRecipeData
         methods:
           - name: updateContainers
           - name: onRecipeChanged
           - name: rebuildItemNodes
           - name: getAllItems
             return:
-              - type: unknown
+              - type: ArrayList #<InventoryItem>
       ISCraftInputItemNode:
         extends: ISBaseObject
         constructors:
           - parameters:
               - name: _recipe
+                type: CraftRecipe
               - name: _scriptItem
+                type: Item
         staticFields:
           Type:
             defaultValue: '"ISCraftInputItemNode"'
         fields:
-          recipe: {}
-          scriptItem: {}
-          name: {}
-          textCol: {}
+          recipe:
+            type: CraftRecipe
+          scriptItem:
+            type: Item
+          name:
+            type: string
+          textCol:
+            type: Colors
           width:
             type: number
           expanded:

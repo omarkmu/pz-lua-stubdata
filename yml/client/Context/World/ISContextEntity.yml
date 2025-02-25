@@ -15,11 +15,16 @@ languages:
           - name: createMenu
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
           - name: openPanel
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _entity
+                type: IsoObject
           - name: buildTest
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _type
+                type: EntityDebugTestType

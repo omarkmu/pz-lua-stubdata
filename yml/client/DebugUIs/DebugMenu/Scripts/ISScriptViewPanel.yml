@@ -15,12 +15,14 @@ languages:
               - name: height
                 type: number
               - name: script
+                type: BaseScriptObject
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISScriptViewPanel"'
         fields:
           viewModes:
-            type: table
+            type: table[]
           currentViewMode:
             type: number
           toggleViewButton:
@@ -30,7 +32,7 @@ languages:
           script:
             nullable: true
           greyCol:
-            type: table
+            type: umbrella.RGBA
           searchText:
             type: string
           autoExpandAll:
@@ -46,6 +48,7 @@ languages:
           - name: setScript
             parameters:
               - name: _script
+                type: BaseScriptObject
                 nullable: true
           - name: populate
           - name: update

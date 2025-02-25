@@ -15,12 +15,16 @@ languages:
               - name: height
                 type: number
               - name: _player
+                type: IsoPlayer
               - name: _container
+                type: ISFluidContainer
               - name: source
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISFluidTransferUI"'
-          players: {}
+          players:
+            type: table<integer, umbrella.ISFluidTransferUI.PlayerTableItem>
           cheatSkill:
             defaultValue: "false"
           cheatTransfer:
@@ -38,7 +42,8 @@ languages:
             type: string
           panelLeft:
             type: ISFluidContainerPanel
-          panelLeftX: {}
+          panelLeftX:
+            type: number
           panelMiddle:
             type: ISPanel
           btnSwap:
@@ -61,28 +66,32 @@ languages:
             type: string
           panelRight:
             type: ISFluidContainerPanel
-          panelRightX: {}
+          panelRightX:
+            type: number
           disableTransfer:
             type: boolean
           disableSwap:
             type: boolean
           action:
-            type: boolean | ISFluidTransferAction
+            type: ISFluidTransferAction | false
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           transferColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
-          player: {}
-          container: {}
-          source: {}
+          player:
+            type: IsoPlayer
+          container:
+            type: ISFluidContainer
+          source:
+            type: boolean
           isIsoPanel:
             type: boolean
           info:
-            type: table
+            type: umbrella.ISFluidTransferUI.InfoTable
           errorDefault:
             type: string
         methods:
@@ -99,24 +108,33 @@ languages:
           - name: onContainerAdd
             parameters:
               - name: _item
+                type: InventoryItem
               - name: _panel
+                type: ISFluidContainerPanel
           - name: onContainerRemove
             parameters:
               - name: _removedItem
+                type: InventoryItem
               - name: _panel
+                type: ISFluidContainerPanel
           - name: onContainerVerify
             parameters:
               - name: _item
+                type: InventoryItem
               - name: _panel
+                type: ISFluidContainerPanel
             return:
               - type: boolean
           - name: onSlider
             parameters:
               - name: _value
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: validatePanel
             parameters:
               - name: _forceUpdate
+                type: boolean
           - name: prerender
           - name: render
           - name: update
@@ -125,12 +143,15 @@ languages:
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: toggleCheatSkill
             parameters:
               - name: _b
+                type: boolean
           - name: toggleCheatTransfer
             parameters:
               - name: _b
+                type: boolean
           - name: onRightMouseUp
             parameters:
               - name: x
@@ -143,6 +164,8 @@ languages:
           - name: OpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _container
                 type: ISFluidContainer
               - name: _source
+                type: boolean

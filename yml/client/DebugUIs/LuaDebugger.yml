@@ -18,7 +18,7 @@ languages:
           Type:
             defaultValue: '"LuaDebugger"'
           instance:
-            type: table
+            type: LuaDebugger
             nullable: true
         fields:
           title:
@@ -32,15 +32,23 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
     functions:
       - name: DoLuaDebuggerOnBreak
         parameters:
           - name: file
+            type: string
           - name: line
+            type: integer
       - name: DoLuaDebugger
         parameters:
           - name: f
+            type: string
           - name: line
+            type: integer

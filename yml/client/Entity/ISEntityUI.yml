@@ -6,145 +6,189 @@ languages:
         staticFields:
           drawDebugLines:
             defaultValue: "false"
-          players: {}
+          players:
+            type: table<integer, umbrella.ISEntityUI.PlayerTable>
           isoPanelWalkToDist:
             defaultValue: "3"
         staticMethods:
           - name: WalkToEntity
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: IsoObject
               - name: _dist
+                type: number
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: ItemSlotRemoveSingleItem
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: IsoObject
               - name: _itemSlot
+                type: ISItemSlot
               - name: _item
+                type: InventoryItem
           - name: ItemSlotRemoveItems
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: IsoObject
               - name: _itemSlot
+                type: ISItemSlot
           - name: ItemSlotAddItems
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: IsoObject
               - name: _itemSlot
+                type: ISItemSlot
               - name: _itemList
+                type: InventoryItem[]
           - name: GenericCraftStart
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: IsoObject
               - name: _component
+                type: Component
               - name: _funcCanStart
-                type: function
+                type: umbrella.ISEntityUI.CraftCanStart
               - name: _funcStart
-                type: function
+                type: umbrella.ISEntityUI.CraftStart
             return:
               - type: boolean
                 nullable: true
           - name: HandcraftStart
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _handcraftLogic
+                type: HandcraftLogic
               - name: force
                 type: boolean
               - name: addToQueue
                 type: boolean
             return:
-              - type: unknown
+              - type: ISHandcraftAction
                 nullable: true
           - name: HandcraftStartMultiple
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _handcraftLogic
+                type: HandcraftLogic
               - name: force
+                type: boolean
               - name: qty
+                type: integer
               - name: addToQueue
+                type: boolean
             return:
-              - type: table
+              - type: ISHandcraftAction[]
                 nullable: true
           - name: GetEntityUiConfig
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: UiConfig
                 nullable: true
           - name: GetEntityUiStyle
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: XuiSkin.EntityUiStyle
                 nullable: true
           - name: GetEntityUiSkin
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: XuiSkin
                 nullable: true
           - name: GetComponentPanelClass
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _componentType
+                type: ComponentType
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
-              - type: unknown
+              - type: Component
                 nullable: true
-              - type: unknown
+              - type: XuiSkin.ComponentUiStyle
                 nullable: true
           - name: GetComponentPanels
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _dontInstantiate
+                type: boolean
             return:
-              - type: boolean | table
+              - type: umbrella.ISEntityUI.ComponentPanelInfo[]
           - name: HasComponentPanels
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
             return:
-              - type: boolean | table
+              - type: boolean
           - name: GetWindowClass
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: GetWindowStyleName
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: GetCustomCanOpenWindowFunc
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: umbrella.ISEntityUI.CustomCanOpenWindow
                 nullable: true
           - name: GetCustomOpenWindowFunc
             parameters:
               - name: _entity
+                type: GameEntity
             return:
-              - type: unknown
+              - type: umbrella.ISEntityUI.CustomOpenWindow
                 nullable: true
           - name: CanOpenWindowFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
             return:
               - type: boolean
           - name: OpenWindow
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
           - name: OnCloseWindow
             parameters:
               - name: _window
@@ -152,34 +196,47 @@ languages:
           - name: CanPlayerUseEntity
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
             return:
               - type: boolean
           - name: GetReloadTable
             return:
-              - type: table
+              - type: umbrella.ISEntityUI.ReloadTableItem[]
           - name: CloseWindows
           - name: OpenBuildWindow
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _isoObject
+                type: IsoObject
                 nullable: true
               - name: _queryOverride
                 type: string
+                nullable: true
               - name: _ignoreFindSurface
+                type: boolean
+                nullable: true
           - name: OpenHandcraftWindow
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _isoObject
+                type: IsoObject
                 nullable: true
               - name: _queryOverride
                 type: string
                 nullable: true
               - name: _ignoreFindSurface
+                type: boolean
+                nullable: true
           - name: FindCraftSurface
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _radius
+                type: number
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true

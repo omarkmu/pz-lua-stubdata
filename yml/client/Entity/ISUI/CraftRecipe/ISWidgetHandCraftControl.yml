@@ -15,41 +15,46 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: HandcraftLogic
         staticFields:
           Type:
             defaultValue: '"ISWidgetHandCraftControl"'
         fields:
           colProgress:
-            type: table
+            type: umbrella.RGBA
           quantityLabel:
-            nullable: true
+            type: ISLabel
           durationLabel:
-            nullable: true
+            type: ISLabel
           entryBox:
-            nullable: true
+            type: ISTextEntryBox
           buttonMax:
-            nullable: true
+            type: ISButton
           buttonMore:
-            nullable: true
+            type: ISButton
           buttonLess:
-            nullable: true
+            type: ISButton
           progressBar:
-            nullable: true
+            type: ISProgressBar
           buttonCraft:
-            nullable: true
-          origButtonHeight: {}
+            type: ISButton
+          origButtonHeight:
+            type: number
           buttonForceCraft:
-            nullable: true
+            type: ISButton
           boxHeight:
             type: number
           craftTimes:
-            type: number
+            type: integer
             nullable: true
           returnToContainer:
-            type: table
-          player: {}
-          logic: {}
+            type: InventoryItem[]
+          player:
+            type: IsoPlayer
+          logic:
+            type: HandcraftLogic
           interactiveMode:
             type: boolean
           allowBatchCraft:
@@ -72,7 +77,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -80,6 +89,7 @@ languages:
           - name: onAutoToggled
             parameters:
               - name: _newState
+                type: boolean
           - name: onButtonClick
             parameters:
               - name: _button
@@ -87,17 +97,22 @@ languages:
           - name: startHandcraft
             parameters:
               - name: force
+                type: boolean
+                nullable: true
           - name: onHandcraftActionStart
             parameters:
               - name: action
+                type: ISHandcraftAction
           - name: onHandcraftActionComplete
           - name: onHandcraftActionCancelled
           - name: onInputsChanged
           - name: setCraftQuantity
             parameters:
               - name: amount
+                type: integer
           - name: sanitizeCraftQuantity
         staticMethods:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

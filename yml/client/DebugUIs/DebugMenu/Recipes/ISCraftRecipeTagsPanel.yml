@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISCraftRecipeTagsPanel"'
@@ -27,12 +28,16 @@ languages:
             type: ISScrollingListBox
           recipeList:
             type: ISScrollingListBox
-          selectedTag: {}
+          selectedTag:
+            type: string
           tooltipRecipe:
+            type: CraftRecipe
             nullable: true
           activeTooltip:
+            type: ISCraftRecipeTooltip
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:
@@ -51,9 +56,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -71,6 +79,7 @@ languages:
           - name: onTagSelected
             parameters:
               - name: _item
+                type: table
           - name: populateRecipes
           - name: drawRecipeListItem
             parameters:
@@ -89,3 +98,4 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

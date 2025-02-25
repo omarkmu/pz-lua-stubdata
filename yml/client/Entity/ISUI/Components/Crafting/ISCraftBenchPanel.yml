@@ -15,14 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
         staticFields:
           Type:
             defaultValue: '"ISCraftBenchPanel"'
         fields:
           handCraftPanel:
+            type: ISHandCraftPanel
             nullable: true
         methods:
           - name: initialise
@@ -30,7 +35,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -38,10 +47,14 @@ languages:
         staticMethods:
           - name: CanCreatePanelFor
             parameters:
-              - name: _player
-              - name: _entity
-              - name: _component
-              - name: _componentUiScript
+              - name: player
+                type: IsoPlayer
+              - name: entity
+                type: GameEntity
+              - name: component
+                type: Component
+              - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
             return:
               - type: boolean
                 nullable: true

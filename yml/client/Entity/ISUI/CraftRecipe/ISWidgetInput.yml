@@ -15,8 +15,11 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
               - name: inputScript
+                type: InputScript
         staticFields:
           Type:
             defaultValue: '"ISWidgetInput"'
@@ -24,30 +27,39 @@ languages:
           amountWidth: {}
           amountWidth2: {}
           textColor:
-            type: table
+            type: umbrella.RGBA
           colPartial:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           primary:
-            type: table
+            type: umbrella.ISWidgetInput.ScriptValues
           iconConsumed:
-            nullable: true
+            type: ISImage
           iconTool:
-            nullable: true
+            type: ISImage
           iconReturned:
-            nullable: true
+            type: ISImage
           secondary:
-            type: table
+            type: umbrella.ISWidgetInput.ScriptValues
+            nullable: true
           arrow:
+            type: ISImage
             nullable: true
           editedLabels:
             type: boolean
-          player: {}
-          logic: {}
-          inputScript: {}
-          consumeScript: {}
-          createScript: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
+          inputScript:
+            type: InputScript
+          consumeScript:
+            type: InputScript
+            nullable: true
+          createScript:
+            type: OutputScript
+            nullable: true
           iconSize:
             type: number
           iconMargin:
@@ -57,15 +69,15 @@ languages:
           selectInputButtonSize:
             type: number
           selectInputButtonBackgroundColor:
-            type: table
+            type: umbrella.RGBA
           selectInputButtonBackgroundColorMouseOver:
-            type: table
+            type: umbrella.RGBA
           selectInputButtonTextureColor:
-            type: table
+            type: umbrella.RGBA
           selectInputButtonTextureColorMouseOver:
-            type: table
+            type: umbrella.RGBA
           normalBorderColor:
-            type: table
+            type: umbrella.RGBA
           iconBorderSizeX:
             type: number
           iconBorderSizeY:
@@ -74,14 +86,22 @@ languages:
             type: boolean
           displayAsOutput:
             type: boolean
-          textureReturned: {}
-          textureConsumed: {}
-          textureUsed: {}
-          textureTool: {}
-          textureCreate: {}
-          textureSwapInput: {}
-          textureMissingInput: {}
-          textureButtonBG: {}
+          textureReturned:
+            type: Texture
+          textureConsumed:
+            type: Texture
+          textureUsed:
+            type: Texture
+          textureTool:
+            type: Texture
+          textureCreate:
+            type: Texture
+          textureSwapInput:
+            type: Texture
+          textureMissingInput:
+            type: Texture
+          textureButtonBG:
+            type: Texture
           margin:
             type: number
           doToolTip:
@@ -100,7 +120,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -108,10 +132,11 @@ languages:
           - name: createScriptValues
             parameters:
               - name: _script
+                type: InputScript
               - name: isSecondary
                 type: boolean
             return:
-              - type: table
+              - type: umbrella.ISWidgetInput.ScriptValues
           - name: onSelectInputsClicked
             parameters:
               - name: _button
@@ -119,7 +144,7 @@ languages:
           - name: updateScriptValues
             parameters:
               - name: _table
-                type: table
+                type: umbrella.ISWidgetInput.ScriptValues
           - name: updateValues
           - name: onRebuildItemNodes
             parameters:

@@ -15,9 +15,16 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: craftBench
+                type: Component
+                nullable: true
               - name: isoObject
+                type: IsoObject
+                nullable: true
               - name: recipeQuery
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISHandCraftPanel"'
@@ -26,38 +33,56 @@ languages:
             nullable: true
         fields:
           rootTable:
+            type: ISTableLayout
             nullable: true
           recipeListMode:
             type: boolean
           recipeCategories:
+            type: ISWidgetRecipeCategories
             nullable: true
           recipesPanel:
+            type: ISWidgetRecipesPanel
             nullable: true
           inventoryPanel:
+            type: ISCraftInventoryPanel
             nullable: true
-          inventoryPanelColumn: {}
+          inventoryPanelColumn:
+            type: ISTableLayoutColumn
           recipePanel:
+            type: ISCraftRecipePanel
             nullable: true
-          recipePanelColumn: {}
+          recipePanelColumn:
+            type: ISTableLayoutColumn
           tooltipRecipe:
+            type: CraftRecipe
             nullable: true
           tooltipCounter:
             type: number
           updateTimer:
             type: number
           isoObject:
+            type: IsoObject
             nullable: true
           activeTooltip:
+            type: ISCraftRecipeTooltip
             nullable: true
           _filterString:
             type: string
-          _filterMode: {}
-          _categoryString: {}
-          logic: {}
-          tooltipLogic: {}
-          player: {}
-          craftBench: {}
-          recipeQuery: {}
+          _filterMode:
+            type: string
+          _categoryString:
+            type: string
+          logic:
+            type: HandcraftLogic
+          tooltipLogic:
+            type: HandcraftLogic
+          player:
+            type: IsoPlayer
+          craftBench:
+            type: Component
+          recipeQuery:
+            type: string
+            nullable: true
           leftHandedMode:
             type: boolean
           tooltipCounterTime:
@@ -69,13 +94,18 @@ languages:
           - name: onDoubleClick
             parameters:
               - name: item
+                type: CraftRecipe
           - name: createRecipesColumn
           - name: createInventoryPanel
           - name: createRecipePanel
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -86,19 +116,22 @@ languages:
           - name: deactivateTooltip
           - name: getSelectedRecipe
             return:
-              - type: unknown
+              - type: CraftRecipe
           - name: setRecipeList
             parameters:
               - name: _recipeList
+                type: ArrayList #<CraftRecipe>
           - name: setRecipes
             parameters:
               - name: _recipeQuery
           - name: onRecipeChanged
             parameters:
               - name: _recipe
+                type: CraftRecipe
           - name: onUpdateRecipeList
             parameters:
               - name: _recipeList
+                type: ArrayList #<CraftRecipe>
           - name: onShowManualSelectChanged
             parameters:
               - name: _showManualSelectInputs
@@ -107,15 +140,19 @@ languages:
           - name: onStopCraft
           - name: getCategoryList
             return:
-              - type: unknown
+              - type: ArrayList #<string>
           - name: setRecipeFilter
             parameters:
               - name: _filterString
+                type: string
               - name: _filterMode
+                type: string
           - name: filterRecipeList
           - name: onCategoryChanged
             parameters:
               - name: _category
+                type: string
           - name: setRecipeListMode
             parameters:
               - name: _useListMode
+                type: boolean

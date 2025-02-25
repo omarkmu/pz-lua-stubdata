@@ -16,11 +16,14 @@ languages:
           - name: doDebugMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -45,6 +48,8 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
               - name: square
                 type: IsoGridSquare
           - name: onToggleAnimalCheat
@@ -58,7 +63,9 @@ languages:
           - name: stagger
             parameters:
               - name: player
+                type: integer
               - name: stag
+                type: boolean
           - name: doDebugObjectMenu
             parameters:
               - name: player
@@ -67,51 +74,66 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
           - name: doDebugCorpseMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
           - name: doDebugZombieMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
           - name: onSetAnimRecorderActive
             parameters:
               - name: character
+                type: IsoPlayer
               - name: isActive
                 type: boolean
           - name: OnRemoveAllZombies
             parameters:
               - name: zombie
+                type: nil
           - name: OnRemoveAllZombiesClient
             parameters:
               - name: zombie
+                type: nil
           - name: OnRemoveAllAnimals
             parameters:
               - name: zombie
+                type: nil
           - name: OnRemoveAllAnimalsClient
             parameters:
               - name: zombie
+                type: nil
           - name: OnAddZombieClient
             parameters:
               - name: player
+                type: integer
           - name: OnSelectZombie
             parameters:
               - name: zombie
+                type: IsoZombie
           - name: OnSelectedZombieWalk
             parameters:
               - name: square
@@ -123,27 +145,34 @@ languages:
           - name: OnSelectedZombieKnockDown
             parameters:
               - name: hitFromBehind
+                type: boolean
           - name: OnSelectedZombieToggleUseless
           - name: OnSetZombieOnFire
             parameters:
               - name: zombie
+                type: IsoZombie
           - name: OnReanimateCorpse
             parameters:
               - name: body
+                type: IsoDeadBody
           - name: OnDeadBodyToggleCrawling
             parameters:
               - name: body
+                type: IsoDeadBody
           - name: OnDeadBodyToggleFakeDead
             parameters:
               - name: body
+                type: IsoDeadBody
           - name: OnDeadBodyRemove
             parameters:
               - name: body
+                type: IsoDeadBody
           - name: OnGetBuildingKey
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
           - name: OnGetDoorKey
             parameters:
               - name: worldobjects
@@ -151,6 +180,7 @@ languages:
               - name: door
                 type: IsoDoor | IsoThumpable
               - name: player
+                type: integer
           - name: OnDoorLock
             parameters:
               - name: worldobjects
@@ -182,56 +212,67 @@ languages:
               - name: door
                 type: IsoDoor | IsoThumpable
               - name: player
+                type: integer
           - name: OnWindowLock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
           - name: OnWindowPermLock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
           - name: OnWindowSmash
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
           - name: OnWindowGlassRemoved
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
           - name: OnWindowAddMetal
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: OnWindowRemoveMetal
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: OnWindowAddMetalBar
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: OnWindowRemoveMetalBar
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: OnWindowAddPlank
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: OnWindowRemovePlank
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: window
+                type: IsoWindow
           - name: pickSquare
             parameters:
               - name: x
@@ -239,25 +280,29 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: IsoGridSquare
+                nullable: true
+              - type: number
+              - type: number
+              - type: number
           - name: OnBendFence
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: fence
+                type: IsoObject
           - name: OnUnbendFence
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: fence
+                type: IsoObject
           - name: OnBreakFence
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: fence
+                type: IsoObject
           - name: OnBBQZeroFuel
             parameters:
               - name: obj
@@ -287,19 +332,21 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: obj
-                type: IsoObject
+                type: IsoCompost
           - name: OnGeneratorSetFuel
             parameters:
               - name: obj
-                type: IsoObject
+                type: IsoGenerator
           - name: OnMannequinSetScript
             parameters:
               - name: obj
-                type: IsoObject
+                type: IsoMannequin
               - name: script
+                type: MannequinScript
           - name: OnMannequinCreateItem
             parameters:
               - name: script
+                type: MannequinScript
           - name: OnMetalDrumZeroWater
             parameters:
               - name: obj
@@ -317,11 +364,13 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: IsoPlayer
           - name: onSpawnPoints
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: IsoPlayer
           - name: doCheatMenu
             parameters:
               - name: context
@@ -331,10 +380,13 @@ languages:
           - name: onCheat
             parameters:
               - name: player
+                type: IsoPlayer
               - name: cheat
+                type: boolean
           - name: onSetAlarm
             parameters:
               - name: def
+                type: BuildingDef
           - name: onMakeNoise
             parameters:
               - name: square
@@ -342,7 +394,9 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: radius
+                type: number
               - name: volume
+                type: number
           - name: onAttachedItems
             parameters:
               - name: playerObj
@@ -366,6 +420,7 @@ languages:
           - name: onTeleportValid
             parameters:
               - name: button
+                type: nil
               - name: x
                 type: number
               - name: y
@@ -379,6 +434,7 @@ languages:
           - name: onShowAnimationText
             parameters:
               - name: chr
+                type: IsoGameCharacter
           - name: onDebugInterpolationUI
             parameters:
               - name: square
@@ -410,37 +466,47 @@ languages:
           - name: onRemoveVehicles
             parameters:
               - name: zone
+                type: Zone
           - name: doRandomizedZoneStory
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: rzs
+                type: RandomizedZoneStoryBase
           - name: doRandomizedVehicleStory
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: rvs
+                type: RandomizedVehicleStoryBase
           - name: addRBDebugMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: building
+                type: IsoBuilding
           - name: doRandomizedBuilding
             parameters:
               - name: building
+                type: BuildingDef
               - name: RBdef
+                type: RandomizedDeadSurvivorBase | RandomizedBuildingBase | string
           - name: doSurvivorSwapMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
           - name: onTick
           - name: onAvatarUI
             parameters:
               - name: player
+                type: IsoPlayer
           - name: onAddEnclosure
             parameters:
               - name: playerObj
@@ -448,7 +514,10 @@ languages:
           - name: AddAnimal
             parameters:
               - name: type
+                type: string
               - name: breed
+                type: AnimalBreed
               - name: square
                 type: IsoGridSquare
               - name: skeleton
+                type: boolean

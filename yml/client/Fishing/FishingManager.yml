@@ -11,15 +11,19 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
               - name: joypad
+                type: integer
         fields:
-          player: {}
-          joypad: {}
+          player:
+            type: IsoPlayer
+          joypad:
+            type: integer
           state:
-            type: Fishing.States.None
+            type: umbrella.FishingState
             nullable: true
           states:
-            type: table
+            type: umbrella.FishingManager.StatesTable
           tensionUI:
             type: Fishing.ISTensionUI
           onTickFunc:
@@ -27,6 +31,7 @@ languages:
           onSave:
             type: function
           fishingRod:
+            type: FishingRod
             nullable: true
         methods:
           - name: initStates
@@ -46,3 +51,4 @@ languages:
           - name: onFishingActionMPUpdate
             parameters:
               - name: data
+                type: umbrella.FishingManager.MPUpdateData

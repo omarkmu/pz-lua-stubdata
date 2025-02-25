@@ -15,30 +15,47 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: dataList
+                type: ArrayList
+                nullable: true
               - name: callbackTarget
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTiledIconPanel"'
         fields:
           buttonPrev:
+            type: ISButton
             nullable: true
           pagesLabel:
+            type: ISLabel
             nullable: true
           buttonNext:
+            type: ISButton
             nullable: true
           tiledIconListBox:
+            type: ISTiledIconListBox
             nullable: true
           entryBox:
+            type: ISTextEntryBox
             nullable: true
           searchHackLabel:
+            type: ISLabel
             nullable: true
-          sourceDataList: {}
+          sourceDataList:
+            type: ArrayList
+            nullable: true
           searchInfoText:
             type: string
-          player: {}
-          callbackTarget: {}
-          dataList: {}
+          player:
+            type: IsoPlayer
+          callbackTarget:
+            type: unknown
+            nullable: true
+          dataList:
+            type: ArrayList
           searchText:
             type: string
           enableSearchBox:
@@ -59,7 +76,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -68,9 +89,11 @@ languages:
           - name: onPageScrolled
             parameters:
               - name: _newPage
+                type: integer
           - name: onRenderTile
             parameters:
               - name: _tileData
+                type: unknown
               - name: _x
                 type: number
               - name: _y
@@ -80,9 +103,11 @@ languages:
               - name: _height
                 type: number
               - name: _mouseover
+                type: boolean
           - name: onTileClicked
             parameters:
               - name: _tileData
+                type: unknown
               - name: _x
                 type: number
               - name: _y
@@ -92,14 +117,20 @@ languages:
               - name: _height
                 type: number
               - name: _mouseover
+                type: boolean
           - name: onTileMouseHover
             parameters:
               - name: _tileData
+                type: unknown
           - name: onFilterData
             parameters:
               - name: _string
+                type: string
               - name: _dataList
+                type: ArrayList
               - name: _sourceDataList
+                type: ArrayList
+                nullable: true
           - name: onButtonClick
             parameters:
               - name: _button
@@ -107,16 +138,21 @@ languages:
           - name: filterData
             parameters:
               - name: _string
+                type: string
           - name: setDataList
             parameters:
               - name: _dataList
+                type: ArrayList
           - name: setSearchInfoText
             parameters:
               - name: _text
+                type: string
           - name: setSelectedData
             parameters:
               - name: _data
+                type: unknown
         staticMethods:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

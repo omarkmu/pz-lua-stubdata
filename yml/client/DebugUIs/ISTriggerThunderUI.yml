@@ -15,23 +15,27 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISTriggerThunderUI"'
         fields:
           users:
             type: ISComboBox
-          onlineUsers: {}
+          onlineUsers:
+            type: ArrayList #<IsoPlayer>
           tickBox:
             type: ISTickBox
           triggerThunder:
             type: ISButton
           title:
             type: string
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: close

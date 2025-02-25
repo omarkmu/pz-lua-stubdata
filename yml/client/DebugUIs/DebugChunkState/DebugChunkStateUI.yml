@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: gameState
+                type: DebugChunkState
         staticFields:
           Type:
             defaultValue: '"DebugChunkStateUI"'
@@ -47,7 +48,8 @@ languages:
             type: DebugChunkState_VehicleStoryPanel
           objectAtCursorPanel:
             type: DebugChunkState_ObjectAtCursorPanel
-          currentTool: {}
+          currentTool:
+            type: DebugChunkStateUI_Tool
           mouseDown:
             type: boolean
           mouseMoved:
@@ -57,25 +59,34 @@ languages:
           mouseDownY:
             type: number
           selectedSquare:
+            type: IsoGridSquare
             nullable: true
-          objectListSquare: {}
-          gameState: {}
-          dragCameraTool: {}
+          objectListSquare:
+            type: IsoGridSquare
+          gameState:
+            type: DebugChunkState
+          dragCameraTool:
+            type: DebugChunkStateUI_DragCameraTool
         methods:
           - name: createChildren
           - name: onChangePlayer
           - name: onChangeZLevel
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onCamera
           - name: onOptions
           - name: onExit
           - name: doDrawObjectListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseDown
@@ -116,14 +127,19 @@ languages:
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: prerender
           - name: render
           - name: update
@@ -134,10 +150,11 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: IsoGridSquare
+                nullable: true
+              - type: number
+              - type: number
+              - type: number
           - name: updateObjectList
           - name: setObjectList
             parameters:
@@ -164,19 +181,23 @@ languages:
               - name: height
                 type: number
               - name: gameState
+                type: DebugChunkState
         staticFields:
           Type:
             defaultValue: '"DebugChunkStateUI_OptionsPanel"'
         fields:
           tickBox:
             type: ISTickBox
-          gameState: {}
+          gameState:
+            type: DebugChunkState
         methods:
           - name: createChildren
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onMouseDownOutside
             parameters:
               - name: x
@@ -200,6 +221,7 @@ languages:
             defaultValue: '"DebugChunkStateUI_SpritePopupPanel"'
         fields:
           sprite:
+            type: IsoSprite
             nullable: true
           keepOnScreen:
             type: boolean
@@ -209,3 +231,4 @@ languages:
       - name: DebugChunkState_InitUI
         parameters:
           - name: gameState
+            type: DebugChunkState

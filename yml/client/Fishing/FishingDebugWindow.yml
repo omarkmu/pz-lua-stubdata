@@ -7,13 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"FishingDebugWindow"'
         fields:
           name:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           titlebarbkg:
             type: Texture
         methods:

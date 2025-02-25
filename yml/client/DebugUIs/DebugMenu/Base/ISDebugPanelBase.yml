@@ -20,16 +20,17 @@ languages:
           Type:
             defaultValue: '"ISDebugPanelBase"'
           instance:
+            type: ISDebugPanelBase
             nullable: true
         fields:
           panelInfo:
-            type: table
+            type: umbrella.ISDebugPanelBase.PanelInfo[]
           panels:
             type: table
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -41,7 +42,10 @@ languages:
               - name: _buttonTitle
                 type: string
               - name: _panelClass
+                type: ISUIElement
               - name: _ignoreSorting
+                type: boolean
+                nullable: true
           - name: createChildren
           - name: onClick
             parameters:
@@ -54,7 +58,7 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _class
-                type: table
+                type: ISUIElement
               - name: _x
                 type: number
               - name: _y
@@ -66,5 +70,5 @@ languages:
               - name: _title
                 type: string
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true

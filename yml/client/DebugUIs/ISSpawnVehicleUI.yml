@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISSpawnVehicleUI"'
@@ -31,11 +32,14 @@ languages:
             type: ISButton
           repair:
             type: ISButton
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           name:
             nullable: true
-          player: {}
-          titlebarbkg: {}
+          player:
+            type: IsoPlayer
+          titlebarbkg:
+            type: Texture
         methods:
           - name: initialise
           - name: onSelectOption
@@ -43,11 +47,12 @@ languages:
           - name: destroy
           - name: getVehicle
             return:
-              - type: unknown
+              - type: string
           - name: update
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: titleBarHeight
             return:
               - type: number

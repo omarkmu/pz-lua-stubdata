@@ -20,10 +20,12 @@ languages:
         fields:
           title:
             type: string
-          lastText: {}
+          lastText:
+            type: string
           buttonReloadRow:
             type: number
-          fileList: {}
+          fileList:
+            type: ISScrollingListBox
           textEntry:
             type: ISTextEntryBox
           buttonReload:
@@ -33,6 +35,7 @@ languages:
           - name: onMouseDoubleClickFile
             parameters:
               - name: item
+                type: string
           - name: update
           - name: fill
           - name: updateReloadButton
@@ -47,12 +50,16 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean

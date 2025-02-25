@@ -49,7 +49,9 @@ languages:
           - name: onToggleBreak
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onShowErrors
           - name: onButtonStepInto
           - name: onButtonStepOver

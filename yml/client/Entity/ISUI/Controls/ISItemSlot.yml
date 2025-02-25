@@ -15,16 +15,22 @@ languages:
               - name: height
                 type: number
               - name: resource
+                type: Resource
+                nullable: true
               - name: target
                 type: unknown
                 nullable: true
               - name: onItemDropped
+                type: umbrella.ISItemSlot.OnItemDropped
                 nullable: true
               - name: onItemRemove
+                type: umbrella.ISItemSlot.OnItemRemove
                 nullable: true
               - name: onVerifyItem
+                type: umbrella.ISItemSlot.OnVerifyItem
                 nullable: true
               - name: onBoxClicked
+                type: umbrella.ISItemSlot.OnBoxClicked
                 nullable: true
         staticFields:
           Type:
@@ -33,62 +39,73 @@ languages:
           mouseOverState:
             type: number
           storedItem:
+            type: InventoryItem
             nullable: true
           boxOccupied:
             type: boolean
           storedItemTex:
+            type: Texture
             nullable: true
           backDropTex:
+            type: Texture
             nullable: true
           backDropTexCol:
-            type: table
+            type: umbrella.RGBA
           doBackDropTex:
             type: boolean
           doToolTip:
             type: boolean
           toolTipText:
-            type: boolean
+            type: string | false
           toolTip:
             type: ISToolTip | ISToolTipInv
             nullable: true
           character:
+            type: IsoPlayer
             nullable: true
-          resource: {}
+          resource:
+            type: Resource
+            nullable: true
           locked:
             type: boolean
           backgroundEmpty:
-            type: table
+            type: umbrella.RGBA
           backgroundHover:
-            type: table
+            type: umbrella.RGBA
           borderValid:
-            type: table
+            type: umbrella.RGBA
           borderInvalid:
-            type: table
+            type: umbrella.RGBA
           actionAddColor:
-            type: table
+            type: umbrella.RGBA
           actionRemoveColor:
-            type: table
+            type: umbrella.RGBA
           progressColor:
-            type: table
+            type: umbrella.RGBA
           renderItemCount:
             type: boolean
           countColor:
-            type: table
+            type: umbrella.RGBA
           drawBorderLocked:
             type: boolean
           borderLockedColor:
-            type: table
+            type: umbrella.RGBA
           drawInnerBorder:
             type: boolean
           functionTarget:
+            type: unknown
             nullable: true
           onItemDropped:
+            type: umbrella.ISItemSlot.OnItemDropped
             nullable: true
           onBoxClicked:
+            type: umbrella.ISItemSlot.OnBoxClicked
             nullable: true
           onVerifyItem:
+            type: umbrella.ISItemSlot.OnVerifyItem
             nullable: true
           onItemRemove:
+            type: umbrella.ISItemSlot.OnItemRemove
             nullable: true
           storeItem:
             type: boolean
@@ -97,13 +114,13 @@ languages:
           mouseEnabled:
             type: boolean
           toolTipTextItem:
-            type: boolean
+            type: string | false
           toolTipTextLocked:
-            type: boolean
+            type: string | false
           bBlinkBorder:
             type: boolean
           borderColorOrig:
-            type: table
+            type: umbrella.RGBA
           drawProgress:
             type: boolean
         methods:
@@ -117,6 +134,7 @@ languages:
               - name: _itemSlot
                 type: ISItemSlot
               - name: _item
+                type: InventoryItem
             return:
               - type: boolean
           - name: hasValidItemInDrag
@@ -156,6 +174,7 @@ languages:
           - name: itemDropped
             parameters:
               - name: _items
+                type: InventoryItem[]
           - name: boxClicked
             parameters:
               - name: _isRightClick
@@ -165,9 +184,12 @@ languages:
           - name: setStoredItem
             parameters:
               - name: _item
+                type: InventoryItem
+                nullable: true
           - name: setBackDropTex
             parameters:
               - name: _tex
+                type: Texture
               - name: _a
                 type: number
               - name: _r
@@ -179,21 +201,27 @@ languages:
           - name: setDoBackDropTex
             parameters:
               - name: _b
+                type: boolean
           - name: setToolTip
             parameters:
               - name: _b
+                type: boolean
               - name: _text
+                type: string
           - name: activateToolTip
           - name: deactivateToolTip
           - name: setCharacter
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: setResource
             parameters:
               - name: _resource
+                type: Resource
           - name: isLocked
             return:
               - type: boolean
           - name: setLocked
             parameters:
               - name: _b
+                type: boolean

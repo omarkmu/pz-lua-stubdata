@@ -20,10 +20,11 @@ languages:
           Type:
             defaultValue: '"UnitTestsDebug"'
           instance:
+            type: UnitTestsDebug
             nullable: true
         methods:
           - name: initialise
         staticMethods:
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: UnitTestsDebug

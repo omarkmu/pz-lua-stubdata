@@ -9,25 +9,37 @@ languages:
               - name: _manager
                 type: ISSearchManager
               - name: _forageIcon
-                type: table
+                type: umbrella.Foraging.ZoneIconData
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
         staticFields:
           Type:
             defaultValue: '"ISForageIcon"'
         fields:
-          itemDef: {}
-          catDef: {}
-          altWorldTexture: {}
-          render3DTexture: {}
-          renderWorldIcon: {}
-          zoneData: {}
-          zoneDef: {}
+          itemDef:
+            type: umbrella.Foraging.ItemDef
+          catDef:
+            type: umbrella.Foraging.CategoryDef
+          altWorldTexture:
+            type: Texture
+            nullable: true
+          render3DTexture:
+            type: boolean
+            nullable: true
+          renderWorldIcon:
+            type: function
+            nullable: true
+          zoneData:
+            type: umbrella.Foraging.ZoneData
+          zoneDef:
+            type: umbrella.Foraging.ZoneDef
           onClickContext:
             type: function
         methods:
           - name: onRightMouseUp
             return:
-              - type: unknown
+              - type: boolean
+                nullable: true
           - name: onRightMouseDown
             return:
               - type: boolean
@@ -38,6 +50,8 @@ languages:
               - name: _y
                 type: number
               - name: _contextOption
+                type: ISContextMenu
+                nullable: true
           - name: doForage
             parameters:
               - name: _x
@@ -45,11 +59,17 @@ languages:
               - name: _y
                 type: number
               - name: _contextOption
+                type: ISContextMenu
+                nullable: true
               - name: _targetContainer
+                type: ItemContainer
+                nullable: true
           - name: getNewCategoryItem
             parameters:
               - name: _catDef
+                type: umbrella.Foraging.CategoryDef
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: doSearchFocusCheck
           - name: updatePinIconPosition
           - name: checkIsForageable

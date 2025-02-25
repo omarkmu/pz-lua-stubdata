@@ -23,9 +23,9 @@ languages:
           bottomPanel:
             type: ISPanel
           views:
-            type: table
+            type: AttachmentEditorUI_SwitchView[]
           editUI:
-            type: table
+            type: umbrella.AttachmentEditorUI.EditUI
           wroteScriptLabel:
             type: ISLabel
           buttonScale1:
@@ -36,20 +36,27 @@ languages:
             type: ISButton
           worldAttachmentPanel:
             type: AttachmentEditorUI_WorldAttachmentPanel
-          wroteScriptTime: {}
+          wroteScriptTime:
+            type: integer
+            nullable: true
         methods:
           - name: createChildren
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: prerender
           - name: setEditUI
             parameters:
               - name: ui
+                type: AttachmentEditorUI_EditPanel
           - name: onSetModelWeaponRotationHackChanged
             parameters:
               - name: isChecked
@@ -57,6 +64,7 @@ languages:
           - name: onSave
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -64,6 +72,7 @@ languages:
           - name: onExit
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -71,6 +80,7 @@ languages:
           - name: onGridMult1
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -78,6 +88,7 @@ languages:
           - name: onGridMult2
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -85,6 +96,7 @@ languages:
           - name: onGridMult3
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -114,10 +126,12 @@ languages:
           Type:
             defaultValue: '"AttachmentEditorUI_Scene"'
         fields:
-          zeroVector: {}
+          zeroVector:
+            type: Vector3f
           gizmoAxis:
             type: string
-          gizmoStartScenePos: {}
+          gizmoStartScenePos:
+            type: Vector3f
         methods:
           - name: prerenderEditor
           - name: prerender
@@ -157,6 +171,7 @@ languages:
           - name: onGizmoChanged
             parameters:
               - name: delta
+                type: Vector3f
           - name: onGizmoAccept
           - name: onGizmoCancel
       AttachmentEditorUI_SwitchView:
@@ -202,6 +217,7 @@ languages:
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
       AttachmentEditorUI_WorldAttachmentPanel:
@@ -233,7 +249,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: setModelScriptName
             parameters:
               - name: scriptName
@@ -268,21 +286,24 @@ languages:
           - name: setSelectedRow
             parameters:
               - name: row
+                type: integer
           - name: setSelectedRows
             parameters:
               - name: rows
+                type: integer[]
           - name: getSelectedItems
             return:
-              - type: table
+              - type: umbrella.ISScrollingListBox.Item[]
           - name: getSelectedCount
             return:
-              - type: number
+              - type: integer
           - name: iteratorSelected
             return:
-              - type: unknown
+              - type: "fun(): integer, umbrella.ISScrollingListBox.Item"
           - name: indexOf
             parameters:
               - name: text
+                type: string
             return:
               - type: number
       AttachmentEditorUI_EditPanel:
@@ -300,8 +321,6 @@ languages:
         staticFields:
           Type:
             defaultValue: '"AttachmentEditorUI_EditPanel"'
-        fields:
-          editor: {}
         methods:
           - name: updateEditor
           - name: prerenderEditor
@@ -316,6 +335,7 @@ languages:
           - name: onGizmoChanged
             parameters:
               - name: delta
+                type: Vector3f
           - name: onGizmoAccept
           - name: onGizmoCancel
           - name: createList
@@ -333,27 +353,34 @@ languages:
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
+                nullable: true
           - name: java1
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java2
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java3
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -362,9 +389,11 @@ languages:
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java4
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -375,9 +404,11 @@ languages:
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -390,9 +421,11 @@ languages:
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java6
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -407,9 +440,11 @@ languages:
                 type: unknown
             return:
               - type: unknown
+                nullable: true
           - name: java9
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -430,5 +465,289 @@ languages:
                 type: unknown
             return:
               - type: unknown
+                nullable: true
+      AttachmentEditorUI_EditAttachment:
+        extends: AttachmentEditorUI_EditPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: editor
+                type: AttachmentEditorUI
+        staticFields:
+          Type:
+            defaultValue: '"AttachmentEditorUI_EditAttachment"'
+        fields:
+          comboAddModel:
+            type: ISComboBox
+          femaleBodyScript:
+            type: ModelScript
+          maleBodyScript:
+            type: ModelScript
+          list:
+            type: AttachmentEditorUI_ListBox
+          buttonRemoveModel:
+            type: ISButton
+          comboPlayer:
+            type: ISComboBox
+          comboPlayerAnimation:
+            type: ISComboBox
+          comboAnimal:
+            type: ISComboBox
+          comboVehicle:
+            type: ISComboBox
+          list2:
+            type: AttachmentEditorUI_ListBox
+          belowList:
+            type: ISPanel
+          nameEntry:
+            type: ISTextEntryBox
+          buttonNewAttachment:
+            type: ISButton
+          buttonDeleteAttachment:
+            type: ISButton
+          gizmo:
+            type: string
+          button3:
+            type: ISButton
+          transformMode:
+            type: string
+          button4:
+            type: ISButton
+          animalScriptByName:
+            type: table<string, ModelScript>
+          animalScriptByModelScript:
+            type: table<ModelScript, ModelScript>
+          selectedBone:
+            type: string
+            nullable: true
+          selectedModelScript:
+            type: ModelScript
+            nullable: true
+          currentAnimalScript:
+            type: ModelScript
+          selectedAttachment:
+            type: ModelAttachment
+          originalOffset:
+            type: table<ModelScript, Vector3f>
+          originalRotate:
+            type: table<ModelScript, Vector3f>
+          originalScale:
+            type: table<ModelScript, Vector3f>
+          isWorldAttachment:
+            type: boolean
+          editor:
+            type: AttachmentEditorUI
+        methods:
+          - name: createChildren
+          - name: doLayout
+          - name: onComboAddModel
+          - name: fillAnimalCombo
+          - name: fillVehicleCombo
+          - name: initAnimalModelScripts
+          - name: onSceneMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onRemoveModel
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: setPlayerAnimationCombo
+          - name: onComboPlayerModel
+          - name: onComboPlayerAnimation
+          - name: onComboAnimalModel
+          - name: onComboVehicleModel
+          - name: onNameEntered
+          - name: getUniqueAttachmentId
+            parameters:
+              - name: modelScript
+                type: ModelScript
+                nullable: true
+            return:
+              - type: string
+                nullable: true
+          - name: isPlayerScript
+            parameters:
+              - name: modelScript
+                type: ModelScript
+            return:
+              - type: boolean
+          - name: isAnimalScript
+            parameters:
+              - name: modelScript
+                type: ModelScript
+            return:
+              - type: boolean
+          - name: isCharacterScript
+            parameters:
+              - name: modelScript
+                type: ModelScript
+                nullable: true
+            return:
+              - type: boolean
+          - name: isVehicleScript
+            parameters:
+              - name: modelScript
+                type: ModelScript
+                nullable: true
+            return:
+              - type: boolean
+          - name: getSceneObjectId
+            parameters:
+              - name: modelScript
+                type: ModelScript
+                nullable: true
+            return:
+              - type: string
+                nullable: true
+          - name: onNewAttachment
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onDeleteAttachment
+            parameters:
+              - name: button
+                type: ISButton
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onToggleGizmo
+          - name: onToggleGlobalLocal
+          - name: doDrawItem
+            parameters:
+              - name: y
+                type: number
+              - name: item
+                type: umbrella.ISScrollingListBox.Item
+              - name: alt
+                type: boolean
+            return:
+              - type: number
+          - name: doDrawItem2
+            parameters:
+              - name: y
+                type: number
+              - name: item
+                type: umbrella.ISScrollingListBox.Item
+              - name: alt
+                type: boolean
+            return:
+              - type: number
+          - name: onRightMouseDownList1
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: addVehiclePartParentMenus
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: vehicleScript
+                type: VehicleScript
+              - name: child
+                type: ModelScript
+              - name: parentMenu
+                type: ISContextMenu
+          - name: onSetObjectParent
+            parameters:
+              - name: child
+                type: string
+              - name: childAttachment
+                type: string
+                nullable: true
+              - name: parent
+                type: string
+                nullable: true
+              - name: parentAttachment
+                type: string
+                nullable: true
+          - name: onSetObjectParentToVehiclePart
+            parameters:
+              - name: child
+                type: string
+                nullable: true
+              - name: scriptPart
+                type: string
+                nullable: true
+              - name: scriptModel
+                type: string
+                nullable: true
+              - name: attachment
+                type: string
+                nullable: true
+          - name: onSetCharacterAnimate
+            parameters:
+              - name: child
+                type: string
+          - name: onSetCharacterShowBones
+            parameters:
+              - name: child
+                type: string
+          - name: onSetModelIgnoreVehicleScale
+            parameters:
+              - name: child
+                type: string
+          - name: onSetObjectAutoRotate
+            parameters:
+              - name: child
+                type: string
+          - name: onSetObjectVisible
+            parameters:
+              - name: child
+                type: string
+          - name: prerenderEditor
+          - name: setSelectedModel
+            parameters:
+              - name: modelScript
+                type: ModelScript
+                nullable: true
+          - name: setSelectedAttachment
+            parameters:
+              - name: attach
+                type: ModelAttachment
+                nullable: true
+          - name: pickCharacterBone
+            return:
+              - type: string
+          - name: pickModelBone
+            return:
+              - type: string
+          - name: toUI
+          - name: populateObjectList
+          - name: getSelectedAttachments
+            return:
+              - type: ModelAttachment[]
+          - name: getSelectedAttachmentIds
+            return:
+              - type: string[]
+          - name: onGizmoStart
+          - name: onGizmoChanged
+            parameters:
+              - name: delta
+                type: number
+          - name: onGizmoCancel
+          - name: onKeyPress
+            parameters:
+              - name: key
+                type: integer
     functions:
       - name: AttachmentEditorState_InitUI

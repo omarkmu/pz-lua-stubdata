@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: gameState
+                type: DebugChunkState
         staticFields:
           Type:
             defaultValue: '"DebugChunkStateUI_SquarePropsHandler"'
@@ -31,13 +32,15 @@ languages:
             type: number
           addLineY:
             type: number
-          gameState: {}
+          gameState:
+            type: DebugChunkState
           object:
+            type: IsoObject
             nullable: true
         methods:
           - name: playerIndex
             return:
-              - type: unknown
+              - type: integer
           - name: setSquare
             parameters:
               - name: square
@@ -57,6 +60,7 @@ languages:
           - name: addLine
             parameters:
               - name: text
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -87,14 +91,18 @@ languages:
         fields:
           square:
             type: IsoGridSquare
-          squareX: {}
-          squareY: {}
+          squareX:
+            type: number
+          squareY:
+            type: number
           squareZ:
             type: number
           debugChunkState:
             type: DebugChunkStateUI
-          font: {}
-          fontHgt: {}
+          font:
+            type: UIFont
+          fontHgt:
+            type: number
         methods:
           - name: createSections
           - name: setSquare

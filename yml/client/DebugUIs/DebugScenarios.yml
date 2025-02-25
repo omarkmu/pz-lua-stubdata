@@ -32,8 +32,11 @@ languages:
           - name: drawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseMove
@@ -51,15 +54,21 @@ languages:
           - name: onClickOption
             parameters:
               - name: option
+                type: string
           - name: launchScenario
             parameters:
               - name: scenario
+                type: table
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
         staticMethods:
           - name: onloadgs
             parameters:

@@ -15,26 +15,30 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ClimateOptionsDebug"'
         fields:
-          clim: {}
+          clim:
+            type: ClimateManager
           allOptions:
-            type: table
+            type: table<string, table>
           floats:
-            type: table
+            type: table<string, table>
           colors:
-            type: table
+            type: table<string, table>
           bools:
-            type: table
+            type: table<string, table>
         methods:
           - name: initialise
           - name: createChildren
           - name: addBoolOption
             parameters:
               - name: _id
+                type: string
               - name: _bool
+                type: boolean
               - name: _x
                 type: number
               - name: _y
@@ -46,7 +50,9 @@ languages:
           - name: addFloatOption
             parameters:
               - name: _id
+                type: string
               - name: _float
+                type: number
               - name: _x
                 type: number
               - name: _y
@@ -58,7 +64,9 @@ languages:
           - name: addColorOption
             parameters:
               - name: _id
+                type: string
               - name: _color
+                type: ClimateManager.ClimateColor
               - name: _x
                 type: number
               - name: _y
@@ -71,23 +79,31 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedValue
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update

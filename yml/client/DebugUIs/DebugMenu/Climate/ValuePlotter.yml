@@ -23,11 +23,11 @@ languages:
           indexPointer:
             type: number
           his:
-            type: table
+            type: number[][]
           gridColor:
-            type: table
+            type: umbrella.RGBA
           greyCol:
-            type: table
+            type: umbrella.RGBA
           doGridLines:
             type: boolean
           gridHorzSpacing:
@@ -37,11 +37,11 @@ languages:
           maxPlotPoints:
             type: number
           vars:
-            type: table
+            type: table[]
           vertBars:
-            type: table
+            type: table<integer, umbrella.RGBA | false>
           horzBars:
-            type: table
+            type: table[]
         methods:
           - name: initialise
           - name: createChildren
@@ -51,9 +51,9 @@ languages:
           - name: addPlotPoint
             parameters:
               - name: dataset
-                type: table
+                type: number[]
               - name: vertbarCol
-                type: boolean | table
+                type: umbrella.RGBA | false
           - name: calcMinMax
             parameters:
               - name: indexLine
@@ -71,10 +71,10 @@ languages:
                 type: number
           - name: getDataSet
             return:
-              - type: table
+              - type: number[][]
           - name: getVars
             return:
-              - type: table
+              - type: table[]
           - name: getVarCount
             return:
               - type: number
@@ -84,19 +84,24 @@ languages:
               - name: _name
                 type: string
               - name: _bool
+                type: boolean
           - name: defineVariable
             parameters:
               - name: name
                 type: string
               - name: color
+                type: umbrella.RGBA
               - name: minVal
+                type: number
               - name: maxVal
+                type: number
           - name: setHorzLine
             parameters:
               - name: value
                 type: number
               - name: col
-                type: table
+                type: umbrella.RGBA
           - name: unsetHorzLine
             parameters:
               - name: idx
+                type: integer

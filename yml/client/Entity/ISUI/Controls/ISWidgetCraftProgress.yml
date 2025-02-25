@@ -15,23 +15,38 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: callbackTarget
+                type: unknown
+                nullable: true
               - name: _styleBar
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetCraftProgress"'
         fields:
           progressBar:
+            type: ISProgressBar
             nullable: true
-          originalBarWidth: {}
-          originalBarHeight: {}
-          player: {}
-          entity: {}
-          callbackTarget: {}
+          originalBarWidth:
+            type: number
+          originalBarHeight:
+            type: number
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          callbackTarget:
+            type: unknown
+            nullable: true
           margin:
             type: number
-          styleBar: {}
+          styleBar:
+            type: string
+            nullable: true
           autoFillContents:
             type: boolean
           isAutoFill:
@@ -46,7 +61,9 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
               - name: _preferredHeight
+                type: number
           - name: onResize
           - name: prerender
           - name: render

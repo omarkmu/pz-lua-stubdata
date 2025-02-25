@@ -15,62 +15,85 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
         staticFields:
           Type:
             defaultValue: '"ISFurnaceLogicPanel"'
         fields:
           tableLayout:
+            type: ISTableLayout
             nullable: true
           furnaceInputs:
+            type: ISItemSlotPanel
             nullable: true
           furnaceOutputs:
+            type: ISItemSlotPanel
             nullable: true
           fuelTableLayout:
+            type: ISTableLayout
             nullable: true
           fuelInputs:
+            type: ISItemSlotPanel
             nullable: true
           craftProgress:
+            type: ISWidgetCraftProgress
             nullable: true
           craftControl:
+            type: ISWidgetCraftControl
             nullable: true
           craftControlDebug:
+            type: ISWidgetCraftDebug
             nullable: true
           fuelOutputs:
+            type: ISItemSlotPanel
             nullable: true
-          furnaceInputsGroupName: {}
-          furnaceOutputsGroupName: {}
-          fuelInputsGroupName: {}
-          fuelOutputsGroupName: {}
-          resourcesComponent: {}
+          furnaceInputsGroupName:
+            type: string
+          furnaceOutputsGroupName:
+            type: string
+          fuelInputsGroupName:
+            type: string
+          fuelOutputsGroupName:
+            type: string
+          resourcesComponent:
+            type: Resources
         methods:
           - name: initialise
           - name: createChildren
           - name: createItemSlotPanel
             parameters:
               - name: _style
+                type: string
               - name: _drawProgress
+                type: boolean
             return:
-              - type: unknown
-                nullable: true
+              - type: ISItemSlotPanel
           - name: createFluidSlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISFluidSlotPanel
           - name: createEnergySlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISEnergySlotPanel
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -79,9 +102,13 @@ languages:
           - name: CanCreatePanelFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _component
+                type: Component
               - name: _componentUiScript
+                type: XuiSkinScript.ComponentUiScript
             return:
               - type: boolean
                 nullable: true

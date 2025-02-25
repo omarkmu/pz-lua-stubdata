@@ -26,9 +26,9 @@ languages:
           flareCount:
             type: boolean
           colExt:
-            type: table
+            type: umbrella.RGB
           colInt:
-            type: table
+            type: umbrella.RGB
           flareID:
             type: number
           entryBoxLifeTime:
@@ -52,9 +52,9 @@ languages:
           infoWidth:
             type: number
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -65,22 +65,28 @@ languages:
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onSliderChange
             parameters:
               - name: _newVal
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onClickDeleteFlares
           - name: onClickAddFlare
           - name: onClickClose
           - name: OnFlaresListMouseDown
             parameters:
               - name: item
+                type: WorldFlares.Flare
           - name: populateList
           - name: drawFlaresList
             parameters:

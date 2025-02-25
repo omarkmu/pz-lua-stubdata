@@ -15,26 +15,30 @@ languages:
               - name: height
                 type: number
               - name: gameState
+                type: DebugChunkState
         staticFields:
           Type:
             defaultValue: '"DebugChunkStateUI_ObjPropsHandler"'
         fields:
           object:
+            type: IsoObject
             nullable: true
           addLineX:
             type: number
           addLineY:
             type: number
-          gameState: {}
+          gameState:
+            type: DebugChunkState
           highlightAreas:
-            type: table
+            type: "{ userData: IsoSprite, y1: number, y2?: number }[]"
         methods:
           - name: playerIndex
             return:
-              - type: unknown
+              - type: integer
           - name: setObject
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: prerender
@@ -44,6 +48,7 @@ languages:
           - name: addLine
             parameters:
               - name: text
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -57,10 +62,11 @@ languages:
           - name: startHighlightArea
             parameters:
               - name: userData
+                type: IsoSprite
           - name: endHighlightArea
           - name: getHighlightAreaUnderMouse
             return:
-              - type: unknown
+              - type: "{ userData: IsoSprite, y1: number, y2?: number }"
                 nullable: true
       DebugChunkStateUI_ObjPropsPanel:
         extends: ISSectionedPanel
@@ -81,6 +87,7 @@ languages:
             defaultValue: '"DebugChunkStateUI_ObjPropsPanel"'
         fields:
           object:
+            type: IsoObject
             nullable: true
           debugChunkState:
             type: DebugChunkStateUI
@@ -89,5 +96,6 @@ languages:
           - name: setObject
             parameters:
               - name: object
+                type: IsoObject
                 nullable: true
           - name: render

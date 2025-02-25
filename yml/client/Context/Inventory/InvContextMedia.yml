@@ -11,19 +11,28 @@ languages:
         extends: ISMenuElement
         local: true
         fields:
-          invMenu: {}
+          invMenu:
+            type: ISMenuContextInventory
         staticMethods:
           - name: init
           - name: createMenu
             parameters:
               - name: _item
+                type: InventoryItem
           - name: openMediaInfo
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _item
+                type: InventoryItem
               - name: _text
+                type: string
           - name: changeRecording
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _item
+                type: InventoryItem
               - name: _other
+                type: MediaData
+                nullable: true

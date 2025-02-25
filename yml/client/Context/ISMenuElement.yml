@@ -15,6 +15,7 @@ languages:
           zIndex:
             type: number
           parentMenu:
+            type: ISMenuContext
             nullable: true
           name:
             type: string

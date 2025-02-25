@@ -28,9 +28,9 @@ languages:
           tableNamesList:
             type: ISScrollingListBox
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -42,6 +42,7 @@ languages:
           - name: OnTableNamesListMouseDown
             parameters:
               - name: item
+                type: table
           - name: populateList
           - name: drawTableNameList
             parameters:

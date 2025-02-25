@@ -15,16 +15,22 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: _styleLabel
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISEnergySlotPanel"'
         fields:
           tableLayout:
             nullable: true
-          player: {}
-          entity: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
           isVertical:
             type: boolean
         methods:
@@ -33,15 +39,29 @@ languages:
           - name: addResources
             parameters:
               - name: _resources
+                type: ArrayList #<Resource>
               - name: _styleEnergySlot
+                type: string
+                nullable: true
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleBar
+                type: string
+                nullable: true
           - name: addResource
             parameters:
               - name: _resourceEnergy
+                type: ResourceEnergy
               - name: _styleEnergySlot
+                type: string
+                nullable: true
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleBar
+                type: string
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

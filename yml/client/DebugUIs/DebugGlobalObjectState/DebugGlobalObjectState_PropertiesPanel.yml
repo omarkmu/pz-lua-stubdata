@@ -49,7 +49,9 @@ languages:
           - name: renderKeyValue
             parameters:
               - name: k
+                type: unknown
               - name: v
+                type: unknown
       DebugGlobalObjectState_SystemPanel:
         extends: DebugGlobalObjectState_BasePropertiesPanel
         constructors:
@@ -66,12 +68,14 @@ languages:
           Type:
             defaultValue: '"DebugGlobalObjectState_SystemPanel"'
         fields:
-          system: {}
+          system:
+            type: GlobalObjectSystem
         methods:
           - name: render1
           - name: setSystem
             parameters:
               - name: system
+                type: GlobalObjectSystem
       DebugGlobalObjectState_GlobalObjectPanel:
         extends: DebugGlobalObjectState_BasePropertiesPanel
         staticFields:
@@ -79,15 +83,17 @@ languages:
             defaultValue: '"DebugGlobalObjectState_GlobalObjectPanel"'
         fields:
           system:
+            type: GlobalObjectSystem
             nullable: true
           objectPos:
-            type: table
+            type: "{ x: number, y: number, z: number }"
             nullable: true
         methods:
           - name: render1
           - name: setObject
             parameters:
               - name: globalObject
+                type: GlobalObject
       DebugGlobalObjectState_IsoObjectPanel:
         extends: DebugGlobalObjectState_BasePropertiesPanel
         staticFields:
@@ -95,15 +101,17 @@ languages:
             defaultValue: '"DebugGlobalObjectState_IsoObjectPanel"'
         fields:
           system:
+            type: GlobalObjectSystem
             nullable: true
           objectPos:
-            type: table
+            type: "{ x: number, y: number, z: number }"
             nullable: true
         methods:
           - name: render1
           - name: setObject
             parameters:
               - name: globalObject
+                type: GlobalObject
       DebugGlobalObjectState_PropertiesPanel:
         extends: ISSectionedPanel
         constructors:
@@ -117,22 +125,30 @@ languages:
               - name: height
                 type: number
               - name: state
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"DebugGlobalObjectState_PropertiesPanel"'
         fields:
           system:
+            type: GlobalObjectSystem
             nullable: true
           object:
+            type: GlobalObject
             nullable: true
-          state: {}
+          state:
+            type: unknown
+            nullable: true
         methods:
           - name: createChildren
           - name: setSystem
             parameters:
               - name: system
+                type: GlobalObjectSystem
                 nullable: true
           - name: setObject
             parameters:
               - name: globalObject
+                type: GlobalObject
                 nullable: true

@@ -9,13 +9,14 @@ languages:
               - name: luaSystem
                 type: CFarmingSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"CPlantGlobalObject"'
         methods:
           - name: getObject
             return:
-              - type: unknown
+              - type: IsoObject
           - name: isAlive
             return:
               - type: boolean

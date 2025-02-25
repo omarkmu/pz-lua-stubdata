@@ -17,19 +17,26 @@ languages:
               - name: prompt
                 type: string
               - name: time
+                type: integer
               - name: player
+                type: IsoPlayer
               - name: target
                 type: unknown
                 nullable: true
               - name: targetFunc
+                type: umbrella.ISButton.OnClick
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBombTimerDialog"'
@@ -52,28 +59,37 @@ languages:
             type: ISButton
           no:
             type: ISButton
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
-          playerX: {}
-          playerY: {}
+          playerX:
+            type: number
+          playerY:
+            type: number
           name:
             nullable: true
           prompt:
             type: string
-          time: {}
+          time:
+            type: integer
           target:
             type: unknown
             nullable: true
-          targetFunc: {}
+          targetFunc:
+            type: umbrella.ISButton.OnClick
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
           param3:
             type: unknown
+            nullable: true
           param4:
             type: unknown
+            nullable: true
         methods:
           - name: initialise
           - name: destroy
@@ -94,7 +110,7 @@ languages:
           - name: addTime
             parameters:
               - name: seconds
+                type: integer
           - name: getTime
             return:
               - type: number
-                nullable: true

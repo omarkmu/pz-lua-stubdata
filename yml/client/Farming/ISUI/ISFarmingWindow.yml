@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
               - name: plant
+                type: CPlantGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISFarmingWindow"'
@@ -24,11 +26,14 @@ languages:
             type: ISFarmingInfo | table
           title:
             type: string
-          character: {}
-          plant: {}
+          character:
+            type: IsoPlayer
+          plant:
+            type: CPlantGlobalObject
         methods:
           - name: initialise
           - name: visible
             parameters:
               - name: visible
+                type: boolean
           - name: createChildren

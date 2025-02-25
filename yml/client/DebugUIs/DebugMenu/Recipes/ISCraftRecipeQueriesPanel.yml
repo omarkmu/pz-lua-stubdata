@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISCraftRecipeQueriesPanel"'
@@ -37,12 +38,14 @@ languages:
             type: ISButton
           queryBox:
             type: ISTextEntryBox
-          selectedQuery: {}
+          selectedQuery:
+            type: string
           tooltipRecipe:
             nullable: true
           activeTooltip:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:
@@ -61,9 +64,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -73,6 +79,8 @@ languages:
           - name: populate
             parameters:
               - name: _noAutoSelect
+                type: boolean
+                nullable: true
           - name: drawQueryListItem
             parameters:
               - name: y
@@ -83,6 +91,7 @@ languages:
           - name: onQuerySelected
             parameters:
               - name: _item
+                type: table
           - name: populateRecipes
           - name: drawRecipeListItem
             parameters:
@@ -101,3 +110,4 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

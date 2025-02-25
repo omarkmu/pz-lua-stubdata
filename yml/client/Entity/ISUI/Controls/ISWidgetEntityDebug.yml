@@ -15,19 +15,30 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: _styleButton
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetEntityDebug"'
         fields:
           buttonDebug:
+            type: ISButton
             nullable: true
-          originalButtonWidth: {}
-          originalButtonHeight: {}
-          player: {}
-          entity: {}
-          styleButton: {}
+          originalButtonWidth:
+            type: number
+          originalButtonHeight:
+            type: number
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          styleButton:
+            type: string
+            nullable: true
           margin:
             type: number
           autoFillContents:
@@ -44,7 +55,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

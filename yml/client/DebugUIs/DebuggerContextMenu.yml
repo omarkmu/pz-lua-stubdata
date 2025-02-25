@@ -31,4 +31,3 @@ languages:
       - name: getDebuggerContextMenu
         return:
           - type: DebuggerContextMenu
-            nullable: true

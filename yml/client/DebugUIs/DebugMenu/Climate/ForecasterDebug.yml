@@ -23,8 +23,10 @@ languages:
             type: ForecasterDebug
             nullable: true
         fields:
-          clim: {}
-          forecaster: {}
+          clim:
+            type: ClimateManager
+          forecaster:
+            type: ClimateForecaster
           firstForecast:
             type: boolean
           daysList:
@@ -32,9 +34,9 @@ languages:
           infoList:
             type: ISScrollingListBox
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -46,6 +48,7 @@ languages:
           - name: OnDaysListMouseDown
             parameters:
               - name: item
+                type: ClimateForecaster.DayForecast
           - name: populateList
           - name: drawDayList
             parameters:
@@ -57,9 +60,12 @@ languages:
           - name: formatVal
             parameters:
               - name: _value
+                type: number
               - name: _func
                 type: function
               - name: _func2
+                type: function
+                nullable: true
             return:
               - type: string
           - name: printForecastValue
@@ -67,7 +73,9 @@ languages:
               - name: _name
                 type: string
               - name: _value
+                type: number
               - name: _func
+                type: function
                 nullable: true
               - name: _func2
                 type: function
@@ -75,9 +83,11 @@ languages:
           - name: populateInfoList
             parameters:
               - name: _forecast
+                type: ClimateForecaster.DayForecast
           - name: populateWeatherInfoList
             parameters:
               - name: _forecast
+                type: ClimateForecaster.DayForecast
               - name: _isOverlap
                 type: boolean
           - name: drawInfoList

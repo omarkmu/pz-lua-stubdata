@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISCollapsableWindowJoypad:
-        extends: ISPanelJoypad
+        extends: ISPanelJoypad, ISCollapsableWindow
         constructors:
           - parameters:
               - name: x
@@ -19,16 +19,23 @@ languages:
             defaultValue: '"ISCollapsableWindowJoypad"'
         fields:
           widgetTextureColor:
-            type: table
+            type: umbrella.RGBA
           titlebarbkg:
             type: Texture
-          statusbarbkg: {}
-          resizeimage: {}
-          invbasic: {}
-          closeButtonTexture: {}
-          collapseButtonTexture: {}
-          pinButtonTexture: {}
-          infoBtn: {}
+          statusbarbkg:
+            type: Texture
+          resizeimage:
+            type: Texture
+          invbasic:
+            type: Texture
+          closeButtonTexture:
+            type: Texture
+          collapseButtonTexture:
+            type: Texture
+          pinButtonTexture:
+            type: Texture
+          infoBtn:
+            type: Texture
           pin:
             type: boolean
           isCollapsed:
@@ -38,14 +45,16 @@ languages:
           title:
             nullable: true
           viewList:
-            type: table
+            type: ISUIElement[]
           resizable:
             type: boolean
           drawFrame:
             type: boolean
           clearStentil:
             type: boolean
-          titleFont: {}
-          titleFontHgt: {}
+          titleFont:
+            type: UIFont
+          titleFontHgt:
+            type: number
         methods:
           - name: initialise

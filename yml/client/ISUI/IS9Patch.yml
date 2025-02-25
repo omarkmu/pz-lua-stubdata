@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: _images
+                type: Texture[]
         staticFields:
           Type:
             defaultValue: '"IS9Patch"'
@@ -22,17 +23,21 @@ languages:
           background:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           border:
             type: boolean
           borderColor:
-            type: table
+            type: umbrella.RGBA
           img:
-            type: table
-          colWidthLeft: {}
-          colWidthRight: {}
-          rowHeightTop: {}
-          rowHeightBot: {}
+            type: Texture[]
+          colWidthLeft:
+            type: number
+          colWidthRight:
+            type: number
+          rowHeightTop:
+            type: number
+          rowHeightBot:
+            type: number
           drawOnPrerender:
             type: boolean
         methods:

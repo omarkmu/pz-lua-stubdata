@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: texture
+                type: Texture
                 nullable: true
         staticFields:
           Type:
@@ -23,9 +24,11 @@ languages:
           rotation:
             type: number
           texture:
+            type: Texture
             nullable: true
           renderTarget:
-            type: boolean
+            type: ISUIElement | false
+            nullable: true
         methods:
           - name: initialise
           - name: prerender
@@ -33,7 +36,8 @@ languages:
           - name: renderToTarget
             parameters:
               - name: _target
-                type: unknown
+                type: ISUIElement
           - name: setRotation
             parameters:
               - name: _rot
+                type: number

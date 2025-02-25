@@ -15,11 +15,13 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: target
                 type: unknown
                 nullable: true
               - name: onclick
-                type: function
+                type: "fun(target: unknown?, x: string, y: string, z: string)"
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTeleportDebugUI"'
@@ -40,9 +42,12 @@ languages:
             type: unknown
             nullable: true
           onclick:
-            type: function
-          player: {}
-          titlebarbkg: {}
+            type: "fun(target: unknown?, x: string, y: string, z: string)"
+            nullable: true
+          player:
+            type: IsoPlayer
+          titlebarbkg:
+            type: Texture
           numLines:
             type: number
           maxLines:
@@ -55,6 +60,7 @@ languages:
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: titleBarHeight
             return:
               - type: number

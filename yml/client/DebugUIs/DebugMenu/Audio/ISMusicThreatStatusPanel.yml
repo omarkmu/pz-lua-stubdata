@@ -15,15 +15,18 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISMusicThreatStatusPanel"'
         fields:
-          buttonReload: {}
+          buttonReload:
+            type: ISButton
           allOptions:
-            type: table
+            type: table<string, table>
           floats:
-            type: table
+            type: table<string, table>
         methods:
           - name: createChildren
           - name: render
@@ -31,7 +34,9 @@ languages:
           - name: addFloatOption
             parameters:
               - name: _label
+                type: string
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -43,7 +48,9 @@ languages:
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2

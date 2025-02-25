@@ -15,13 +15,16 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ClimateColorsDebug"'
         fields:
-          clim: {}
+          clim:
+            type: ClimateManager
           colorInfo:
-            type: table
+            type: umbrella.ClimateColorsDebug.ColorInfo[]
           colors:
             type: table
         methods:
@@ -36,16 +39,24 @@ languages:
               - name: _w
                 type: number
               - name: _col
+                type: ClimateColorInfo
               - name: _name
                 type: string
               - name: _daySegment
+                type: number
+                nullable: true
               - name: _temp
+                type: number
+                nullable: true
               - name: _season
+                type: number
+                nullable: true
             return:
               - type: number
           - name: addColorOption
             parameters:
               - name: _info
+                type: umbrella.ClimateColorsDebug.ColorInfo
               - name: _x
                 type: number
               - name: _y
@@ -58,6 +69,7 @@ languages:
           - name: onApplyColorChange
             parameters:
               - name: _colorInfo
+                type: umbrella.ClimateColorsDebug.ColorInfo
           - name: onButtonWriteConfig
             parameters:
               - name: _button

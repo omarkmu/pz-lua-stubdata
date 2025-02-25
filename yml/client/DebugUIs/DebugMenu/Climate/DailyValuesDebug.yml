@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"DailyValuesDebug"'
@@ -24,17 +25,20 @@ languages:
           shiftDown:
             defaultValue: "0"
           fx:
+            type: IsoWeatherFX
             nullable: true
           cm:
+            type: ClimateManager
             nullable: true
         fields:
           labels:
-            type: table
+            type: table<string, table>
           tempColor:
-            type: table
+            type: umbrella.RGBA
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -55,7 +59,9 @@ languages:
           - name: addLabel
             parameters:
               - name: _curY
+                type: number
               - name: _labelID
+                type: string
               - name: _title
                 type: string
             return:
@@ -63,11 +69,15 @@ languages:
           - name: addLabelValue
             parameters:
               - name: _curY
+                type: number
               - name: _type
+                type: string
               - name: _labelID
+                type: string
               - name: _title
                 type: string
               - name: _defaultVal
+                type: number
             return:
               - type: number
           - name: getTitleLabel
@@ -75,14 +85,14 @@ languages:
               - name: _labelID
                 type: string
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: getValueLabel
             parameters:
               - name: _labelID
                 type: string
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: onResize
           - name: update

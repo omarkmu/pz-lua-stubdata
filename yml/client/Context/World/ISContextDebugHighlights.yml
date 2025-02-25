@@ -12,7 +12,7 @@ languages:
         local: true
         fields:
           colors:
-            type: table
+            type: umbrella.RGB[]
           colorindex:
             type: number
           enableMe:
@@ -22,44 +22,59 @@ languages:
           - name: createMenu
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
             return:
               - type: boolean
                 nullable: true
           - name: openPanel01
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _square
                 type: IsoGridSquare
           - name: openPanel00
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _square
                 type: IsoGridSquare
           - name: openPanel0
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _square
                 type: IsoGridSquare
               - name: _texture
+                type: string
               - name: _size
+                type: number
               - name: _doAlpha
+                type: boolean
               - name: _c
+                type: umbrella.RGB
           - name: openPanel
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _square
                 type: IsoGridSquare
               - name: _texture
+                type: string
               - name: _size
+                type: number
               - name: _doAlpha
+                type: boolean
               - name: _c
+                type: umbrella.RGB
           - name: openPanel2
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _square
                 type: IsoGridSquare
           - name: openPanel3
             parameters:
               - name: _data
+                type: umbrella.WorldMenuContextData
               - name: _obj
                 type: IsoObject

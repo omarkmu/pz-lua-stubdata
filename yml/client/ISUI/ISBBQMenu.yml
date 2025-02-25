@@ -12,6 +12,8 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -20,78 +22,107 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoBarbecue
           - name: FindPropaneTank
             parameters:
               - name: player
+                type: IsoPlayer
               - name: bbq
+                type: IsoBarbecue
             return:
-              - type: unknown
+              - type: InventoryItem | IsoWorldInventoryObject
                 nullable: true
           - name: onAddFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bbq
+                type: IsoBarbecue
               - name: fuelType
+                type: string
           - name: onAddMultipleFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bbq
+                type: IsoBarbecue
               - name: fuelType
+                type: string
           - name: onAddAllFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bbq
+                type: IsoBarbecue
           - name: onLightFromLiterature
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: itemType
+                type: string
               - name: lighter
+                type: InventoryItem
               - name: bbq
+                type: IsoBarbecue
           - name: onLightFromPetrol
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: lighter
+                type: InventoryItem
               - name: petrol
+                type: InventoryItem
               - name: bbq
+                type: IsoBarbecue
           - name: onLightFromKindle
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: percedWood
+                type: InventoryItem
               - name: stickOrBranch
+                type: InventoryItem
               - name: bbq
+                type: IsoBarbecue
           - name: onExtinguish
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoBarbecue
           - name: onInsertPropaneTank
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoBarbecue
               - name: tank
+                type: InventoryItem | IsoWorldInventoryObject
           - name: onRemovePropaneTank
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoBarbecue
               - name: tank
           - name: onToggle
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoBarbecue
               - name: tank

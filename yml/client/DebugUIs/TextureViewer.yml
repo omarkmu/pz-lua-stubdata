@@ -15,14 +15,17 @@ languages:
               - name: height
                 type: number
               - name: tex
+                type: Texture
         staticFields:
           Type:
             defaultValue: '"TextureWindow"'
         fields:
-          title: {}
+          title:
+            type: string
           renderPanel:
             type: ISPanel
-          tex: {}
+          tex:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren

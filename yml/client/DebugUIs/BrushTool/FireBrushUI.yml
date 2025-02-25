@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"FireBrushUI"'
@@ -43,21 +44,24 @@ languages:
           selectEnd:
             type: boolean
           startPos:
-            type: table
+            type: "{ x: integer, y: integer }"
             nullable: true
           endPos:
-            type: table
+            type: "{ x: integer, y: integer }"
             nullable: true
           zPos:
             type: number
-          player: {}
-          titlebarbkg: {}
+          player:
+            type: IsoPlayer
+          titlebarbkg:
+            type: Texture
         methods:
           - name: initialise
           - name: destroy
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: prerender
           - name: render
           - name: onMouseMove

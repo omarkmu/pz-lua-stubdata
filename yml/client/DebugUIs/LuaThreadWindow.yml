@@ -33,20 +33,26 @@ languages:
           - name: onMouseDoubleClickCallframe
             parameters:
               - name: item
+                type: "{ call: LuaCallFrame, line: integer }"
           - name: onMouseDoubleClickObject
             parameters:
               - name: item
+                type: unknown
           - name: onMouseDoubleClickMeta
             parameters:
               - name: item
+                type: unknown
           - name: fill
           - name: populateLocalVariables
           - name: createChildren
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onResize

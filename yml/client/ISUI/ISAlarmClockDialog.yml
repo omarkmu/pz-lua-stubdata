@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: integer
               - name: alarm
+                type: AlarmClock
         staticFields:
           Type:
             defaultValue: '"ISAlarmClockDialog"'
@@ -36,15 +38,21 @@ languages:
             type: ISTickBox
           ok:
             type: ISButton
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           character:
+            type: IsoPlayer
             nullable: true
           name:
             nullable: true
-          player: {}
-          playerX: {}
-          playerY: {}
-          alarm: {}
+          player:
+            type: integer
+          playerX:
+            type: number
+          playerY:
+            type: number
+          alarm:
+            type: AlarmClock
         methods:
           - name: initialise
           - name: destroy

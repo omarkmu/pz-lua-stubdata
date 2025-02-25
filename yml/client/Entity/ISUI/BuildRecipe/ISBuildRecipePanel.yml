@@ -15,28 +15,43 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BuildLogic
               - name: recipeData
+                type: CraftRecipeData
+                nullable: true
               - name: craftBench
+                type: CraftBench
+                nullable: true
               - name: isoObject
+                type: IsoObject
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBuildRecipePanel"'
         fields:
           rootTable:
+            type: ISTableLayout
             nullable: true
           overlayPanel:
             type: ISPanel
           titleWidget:
+            type: ISWidgetTitleHeader
             nullable: true
           inputs:
+            type: ISBuildWidgetIngredientsInputs
             nullable: true
           outputs:
+            type: ISWidgetIngredientsOutputs
             nullable: true
           craftControl:
+            type: ISWidgetBuildControl
             nullable: true
-          player: {}
-          logic: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BuildLogic
           margin:
             type: number
           autoFillContents:
@@ -54,7 +69,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -62,10 +81,11 @@ languages:
           - name: setOverlayVisible
             parameters:
               - name: _b
+                type: boolean
           - name: onRecipeChanged
           - name: getRecipe
             return:
-              - type: unknown
+              - type: CraftRecipe
           - name: onRebuildItemNodes
             parameters:
               - name: _inputItems

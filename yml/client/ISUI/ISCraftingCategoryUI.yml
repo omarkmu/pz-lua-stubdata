@@ -29,8 +29,10 @@ languages:
         fields:
           filteringAll:
             type: boolean
-          lastText: {}
-          selected: {}
+          lastText:
+            type: string
+          selected:
+            type: integer
           recipes:
             type: ISScrollingListBox
           filterLabel:
@@ -41,10 +43,14 @@ languages:
             type: ISTickBox
           craftingUI:
             type: ISCraftingUI
-          character: {}
-          favoriteStar: {}
-          favCheckedTex: {}
-          favNotCheckedTex: {}
+          character:
+            type: IsoPlayer
+          favoriteStar:
+            type: Texture
+          favCheckedTex:
+            type: Texture
+          favNotCheckedTex:
+            type: Texture
           favPadX:
             type: number
           favWidth:
@@ -69,6 +75,7 @@ languages:
           - name: isMouseOverFavorite
             parameters:
               - name: x
+                type: number
             return:
               - type: boolean
           - name: onMouseDown_Recipes

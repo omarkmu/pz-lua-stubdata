@@ -15,12 +15,14 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISGeneralCheats"'
         fields:
           boolOptions:
-            type: table
+            type: table[]
         methods:
           - name: initialise
           - name: createChildren
@@ -29,16 +31,20 @@ languages:
               - name: _title
                 type: string
               - name: _lua
+                type: unknown
             return:
               - type: table
           - name: prerender
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update

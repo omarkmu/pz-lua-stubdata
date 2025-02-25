@@ -15,11 +15,14 @@ languages:
               - name: height
                 type: number
               - name: _player
+                type: IsoPlayer
               - name: _container
+                type: FluidContainer
         staticFields:
           Type:
             defaultValue: '"ISFluidInfoUI"'
-          players: {}
+          players:
+            type: table<integer, umbrella.ISFluidInfoUI.PlayerTableItem>
           cheatSkill:
             defaultValue: "false"
           cheatTransfer:
@@ -29,7 +32,8 @@ languages:
             type: string
           panel:
             type: ISFluidContainerPanel
-          panelX: {}
+          panelX:
+            type: number
           btnClose:
             type: ISButton
           variableColor:
@@ -40,10 +44,14 @@ languages:
             type: table
           zOffsetSmallFont:
             type: number
-          player: {}
-          container: {}
-          owner: {}
-          isIsoPanel: {}
+          player:
+            type: IsoPlayer
+          container:
+            type: FluidContainer
+          owner:
+            type: GameEntity
+          isIsoPanel:
+            type: boolean
         methods:
           - name: initialise
           - name: createChildren
@@ -54,9 +62,11 @@ languages:
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
         staticMethods:
           - name: OpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _container
                 type: ISFluidContainer

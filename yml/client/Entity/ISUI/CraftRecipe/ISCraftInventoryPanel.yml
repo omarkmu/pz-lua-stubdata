@@ -15,26 +15,33 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: HandcraftLogic
         staticFields:
           Type:
             defaultValue: '"ISCraftInventoryPanel"'
         fields:
           colGood:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           itemListBox:
+            type: ISScrollingListBox
             nullable: true
           isDirty:
             type: boolean
           inputScriptFilter:
+            type: InputScript
             nullable: true
-          selectedItem: {}
+          selectedItem:
+            type: umbrella.ISCraftInventoryPanel.ListItem
           unavailablesExpanded:
             type: boolean
-          player: {}
-          logic: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: HandcraftLogic
           margin:
             type: number
           autoFillContents:
@@ -51,7 +58,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -61,27 +72,36 @@ languages:
           - name: createListHeader
             parameters:
               - name: _text
+                type: string
               - name: hasExpandArrow
+                type: boolean
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISCraftInventoryPanel.ListItem
           - name: createListItemNode
             parameters:
               - name: _node
+                type: HandcraftLogic.InputItemNode
             return:
-              - type: table
+              - type: umbrella.ISCraftInventoryPanel.ListItem
           - name: createListItemEntree
             parameters:
               - name: _node
+                type: HandcraftLogic.InputItemNode
               - name: _inventoryItem
+                type: InventoryItem
               - name: _index
+                type: integer
             return:
-              - type: table
+              - type: umbrella.ISCraftInventoryPanel.ListItem
           - name: createUnavailableListItemEntree
             parameters:
               - name: _item
+                type: Item
               - name: _index
+                type: integer
             return:
-              - type: table
+              - type: umbrella.ISCraftInventoryPanel.ListItem
           - name: drawListItem
             parameters:
               - name: y
@@ -92,9 +112,11 @@ languages:
           - name: onListSelected
             parameters:
               - name: _item
+                type: umbrella.ISCraftInventoryPanel.ListItem
           - name: onRebuildItemNodes
             parameters:
               - name: _inputItems
           - name: updateContainers
             parameters:
               - name: _containers
+                type: ArrayList #<ItemContainer>

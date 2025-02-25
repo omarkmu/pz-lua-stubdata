@@ -8,6 +8,7 @@ languages:
           Type:
             defaultValue: '"StatisticChartDiskOperations"'
           instance:
+            type: StatisticChartDiskOperations
             nullable: true
           shiftDown:
             defaultValue: "0"
@@ -20,10 +21,10 @@ languages:
         staticMethods:
           - name: doInstance
             return:
-              - type: unknown
+              - type: StatisticChartDiskOperations
                 nullable: true
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: StatisticChartDiskOperations
                 nullable: true
           - name: OnServerStatisticReceived

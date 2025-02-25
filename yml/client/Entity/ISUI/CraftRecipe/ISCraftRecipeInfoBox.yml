@@ -15,15 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: recipe
+                type: CraftRecipe
         staticFields:
           Type:
             defaultValue: '"ISCraftRecipeInfoBox"'
         fields:
           infoPairs:
             type: table
-          recipe: {}
-          player: {}
+          recipe:
+            type: CraftRecipe
+          player:
+            type: IsoPlayer
           displayTags:
             type: boolean
           margin:
@@ -45,19 +49,30 @@ languages:
           - name: addInfoPair
             parameters:
               - name: _key
-                type: integer
+                type: unknown
               - name: _value
+                type: unknown
               - name: _valueColor
+                type: umbrella.RGBA
+                nullable: true
               - name: fullColor
+                type: boolean
+                nullable: true
           - name: addInfo
             parameters:
               - name: _key
-                type: integer
+                type: unknown
               - name: fullColor
+                type: boolean
+                nullable: true
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -65,3 +80,4 @@ languages:
           - name: setRecipe
             parameters:
               - name: _recipe
+                type: CraftRecipe

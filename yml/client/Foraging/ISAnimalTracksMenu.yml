@@ -9,22 +9,32 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: trackItem
+                type: InventoryItem
               - name: chr
+                type: IsoPlayer
           - name: inspect
             parameters:
               - name: track
+                type: InventoryItem
               - name: chr
+                type: IsoPlayer
           - name: handleIsoTracks
             parameters:
               - name: context
                 type: ISContextMenu
               - name: track
+                type: IsoAnimalTrack
               - name: chr
+                type: IsoPlayer
           - name: inspectIsoTrack
             parameters:
               - name: track
+                type: IsoAnimalTrack
               - name: chr
+                type: IsoPlayer
           - name: onGrab
             parameters:
               - name: track
+                type: InventoryItem
               - name: chr
+                type: IsoPlayer

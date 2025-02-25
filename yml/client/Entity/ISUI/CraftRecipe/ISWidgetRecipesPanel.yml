@@ -15,38 +15,59 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: craftBench
+                type: CraftBench
+                nullable: true
               - name: isoObject
+                type: IsoObject
+                nullable: true
               - name: logic
+                type: BaseCraftingLogic
               - name: callbackTarget
+                type: umbrella.ISWidgetRecipesPanel.CallbackTarget
         staticFields:
           Type:
             defaultValue: '"ISWidgetRecipesPanel"'
         fields:
           recipeTable:
-            nullable: true
-          starUnsetTexture: {}
-          starSetTexture: {}
+            type: ISTableLayout
+          starUnsetTexture:
+            type: Texture
+          starSetTexture:
+            type: Texture
           recipeFilterPanel:
-            nullable: true
-          recipeFilterPanelRow: {}
-          recipeListPanelRow: {}
+            type: ISWidgetRecipeFilterPanel
+          recipeFilterPanelRow:
+            type: ISTableLayoutRow
+          recipeListPanelRow:
+            type: ISTableLayoutRow
           recipeListPanel:
-            nullable: true
+            type: ISWidgetRecipeListPanel
           recipeIconPanel:
-            nullable: true
+            type: ISTiledIconPanel
           tooltipRecipe:
+            type: CraftRecipe
             nullable: true
           tooltipCounter:
             type: number
-          recipeIconPanelRow: {}
-          recipeListMode: {}
-          activeTooltip:
+          recipeIconPanelRow:
+            type: ISTableLayoutRow
+          recipeListMode:
+            type: boolean
             nullable: true
-          tooltipLogic: {}
-          player: {}
-          logic: {}
-          callbackTarget: {}
+          activeTooltip:
+            type: ISCraftRecipeTooltip
+            nullable: true
+          tooltipLogic:
+            type: HandcraftLogic
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
+          callbackTarget:
+            type: unknown
+            nullable: true
           tooltipCounterTime:
             type: number
           expandToFitTooltip:
@@ -59,49 +80,61 @@ languages:
           - name: OnFilterAll
             parameters:
               - name: filter
+                type: boolean
           - name: createRecipeFilterPanel
             parameters:
               - name: _parentTable
+                type: ISTableLayout
           - name: createRecipeListPanel
             parameters:
               - name: _parentTable
+                type: ISTableLayout
           - name: createRecipeIconPanel
             parameters:
               - name: _parentTable
+                type: ISTableLayout
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
           - name: update
           - name: getActivePanel
             return:
-              - type: unknown
-                nullable: true
+              - type: ISWidgetRecipeListPanel | ISTiledIconPanel
           - name: setRecipeListMode
             parameters:
               - name: _useListMode
+                type: boolean
           - name: onRecipeChanged
             parameters:
               - name: _recipe
+                type: CraftRecipe
           - name: filterRecipeList
           - name: onUpdateRecipeList
             parameters:
               - name: _recipeList
+                type: ArrayList #<string>
           - name: onRecipeItemMouseHover
             parameters:
               - name: _item
+                type: umbrella.ISScrollingListBox.Item #<CraftRecipe>
           - name: onRecipeListPanelScrolled
           - name: updateTooltip
           - name: updateContainers
             parameters:
               - name: _containers
+                type: ArrayList #<ItemContainer>
           - name: deactivateTooltip
           - name: getPlayer
             return:
-              - type: unknown
+              - type: IsoPlayer
           - name: getLogic
             return:
-              - type: unknown
+              - type: BaseCraftingLogic

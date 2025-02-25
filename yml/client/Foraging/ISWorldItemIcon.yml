@@ -9,20 +9,22 @@ languages:
               - name: _manager
                 type: ISSearchManager
               - name: _icon
+                type: umbrella.Foraging.WorldIconData
         staticFields:
           Type:
             defaultValue: '"ISWorldItemIcon"'
         fields:
-          onClickContext:
-            type: function
           isValidSquare:
             type: boolean
-          itemObjTable: {}
-          container: {}
+          itemObjTable:
+            type: table<InventoryItem, InventoryItem>
+          container:
+            type: ItemContainer
         methods:
           - name: onRightMouseUp
             return:
-              - type: unknown
+              - type: boolean
+                nullable: true
           - name: onRightMouseDown
             return:
               - type: boolean
@@ -33,8 +35,13 @@ languages:
               - name: _y
                 type: number
               - name: _contextOption
+                type: ISContextMenu
               - name: _targetContainer
+                type: ItemContainer
+                nullable: true
               - name: _items
+                type: InventoryItem[]
+                nullable: true
           - name: isValidWorldItem
             return:
               - type: boolean

@@ -13,10 +13,12 @@ languages:
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: CCampfireGlobalObject

@@ -15,19 +15,24 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISCraftRecipeIconsPanel"'
         fields:
           iconPanel:
+            type: ISTiledIconPanel
             nullable: true
           tooltipRecipe:
+            type: CraftRecipe
             nullable: true
           tooltipCounter:
             type: number
           activeTooltip:
+            type: ISCraftRecipeTooltip
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:

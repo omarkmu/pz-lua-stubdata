@@ -11,23 +11,33 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: campfireObject
+                type: IsoObject
               - name: campfireTable
+                type: CCampfireGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISCampingInfoWindow"'
-          windows: {}
+          windows:
+            type: table<IsoPlayer, ISCampingInfoWindow>
         fields:
           panel:
             type: ISToolTip
-          campfireTable: {}
-          object: {}
-          spriteName: {}
-          fuelAmount: {}
+          campfireTable:
+            type: CCampfireGlobalObject
+          object:
+            type: IsoObject
+          spriteName:
+            type: string
+          fuelAmount:
+            type: number
           isLit:
             type: boolean
           drawJoypadFocus:
             type: boolean
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -36,10 +46,13 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
+                type: integer
           - name: setObject
             parameters:
               - name: campfireObject
+                type: IsoObject
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
+                type: JoypadData
           - name: close

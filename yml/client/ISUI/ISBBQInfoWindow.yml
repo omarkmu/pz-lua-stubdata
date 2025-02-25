@@ -11,21 +11,29 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: bbq
+                type: IsoBarbecue
         staticFields:
           Type:
             defaultValue: '"ISBBQInfoWindow"'
-          windows: {}
+          windows:
+            type: table<IsoPlayer, ISBBQInfoWindow>
         fields:
           panel:
             type: ISToolTip
-          object: {}
-          spriteName: {}
-          fuelAmount: {}
-          isLit: {}
+          object:
+            type: IsoBarbecue
+          spriteName:
+            type: string
+          fuelAmount:
+            type: number
+          isLit:
+            type: boolean
           drawJoypadFocus:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -38,6 +46,7 @@ languages:
           - name: setObject
             parameters:
               - name: bbq
+                type: IsoBarbecue
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData

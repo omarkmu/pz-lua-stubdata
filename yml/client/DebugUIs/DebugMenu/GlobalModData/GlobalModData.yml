@@ -30,9 +30,9 @@ languages:
           infoList:
             type: ISScrollingListBox
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -45,6 +45,7 @@ languages:
           - name: OnTableNamesListMouseDown
             parameters:
               - name: item
+                type: string
           - name: populateList
           - name: drawTableNameList
             parameters:
@@ -56,15 +57,21 @@ languages:
           - name: formatVal
             parameters:
               - name: _value
+                type: number
               - name: _func
+                type: function
               - name: _func2
+                type: function
+                nullable: true
             return:
-              - type: unknown
+              - type: string
           - name: parseTable
             parameters:
               - name: _t
+                type: table
               - name: _ident
                 type: string
+                nullable: true
           - name: populateInfoList
             parameters:
               - name: _name

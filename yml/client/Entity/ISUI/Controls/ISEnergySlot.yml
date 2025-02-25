@@ -15,23 +15,38 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: resource
+                type: ResourceEnergy
               - name: styleIcon
+                type: string
+                nullable: true
               - name: styleBar
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISEnergySlot"'
         fields:
           icon:
+            type: ISImage
             nullable: true
           energyBar:
+            type: ISEnergyBar
+          energyBorderColorOrig:
+            type: umbrella.RGBA
+          resource:
+            type: ResourceEnergy
+          player:
+            type: IsoPlayer
+          energy:
+            type: Energy
+          styleIcon:
+            type: string
             nullable: true
-          energyBorderColorOrig: {}
-          resource: {}
-          player: {}
-          energy: {}
-          styleIcon: {}
-          styleBar: {}
+          styleBar:
+            type: string
+            nullable: true
           margin:
             type: number
           minimumBarSize:
@@ -48,10 +63,15 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: prerender
           - name: render
           - name: update
           - name: setResource
             parameters:
               - name: _resource
+                type: ResourceEnergy

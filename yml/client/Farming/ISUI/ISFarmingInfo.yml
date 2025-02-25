@@ -15,23 +15,31 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
               - name: plant
+                type: CPlantGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISFarmingInfo"'
         fields:
-          plant: {}
-          vegetable: {}
-          isEnabled: {}
-          character: {}
+          plant:
+            type: CPlantGlobalObject
+          vegetable:
+            type: Texture
+          isEnabled:
+            type: boolean
+          character:
+            type: IsoPlayer
         methods:
           - name: initialise
           - name: setPlant
             parameters:
               - name: plant
+                type: SPlantGlobalObject
           - name: setEnabled
             parameters:
               - name: val
+                type: boolean
           - name: prerender
           - name: render
           - name: update
@@ -55,114 +63,151 @@ languages:
           - name: getBlueBar
             parameters:
               - name: list
+                type: table
           - name: getOrangeBar
             parameters:
               - name: list
+                type: table
           - name: getRedBar
             parameters:
               - name: list
+                type: table
           - name: getDiseaseColor
             parameters:
               - name: diseaseLvl
+                type: number
               - name: index
                 type: string
               - name: info
+                type: ISFarmingInfo
           - name: getGreen
             parameters:
               - name: list
+                type: table
               - name: index
+                type: string
+                nullable: true
           - name: getRed
             parameters:
               - name: list
+                type: table
               - name: index
+                type: string
+                nullable: true
           - name: getOrange
             parameters:
               - name: list
+                type: table
               - name: index
+                type: string
+                nullable: true
           - name: getWhite
             parameters:
               - name: list
+                type: table
               - name: index
+                type: string
+                nullable: true
         staticMethods:
           - name: hasDisease
             parameters:
               - name: plant
+                type: SPlantGlobalObject
             return:
               - type: boolean
           - name: getDiseaseString
             parameters:
               - name: diseaseLvl
-                type: ISFarmingInfo
+                type: number
               - name: farmingLevel
+                type: number
             return:
               - type: string
           - name: getHealth
             parameters:
               - name: info
+                type: ISFarmingInfo
               - name: farmingLevel
+                type: number
             return:
               - type: string
-                nullable: true
           - name: getWaterLvl
             parameters:
               - name: plant
+                type: SPlantGlobalObject
               - name: farmingLevel
+                type: number
             return:
               - type: string
-                nullable: true
           - name: getTitleColor
             parameters:
               - name: plant
+                type: SPlantGlobalObject
             return:
-              - type: table
+              - type: umbrella.RGB
           - name: getWaterBarWidth
             parameters:
               - name: info
+                type: ISFarmingInfo
             return:
               - type: number
           - name: getWaterLvlBarColor
             parameters:
               - name: info
+                type: ISFarmingInfo
               - name: farmingLevel
+                type: number
           - name: getNoWateredSinceColor
             parameters:
               - name: plant
+                type: SPlantGlobalObject
               - name: lastWatedHour
+                type: number
               - name: farmingLevel
+                type: number
             return:
-              - type: nowateredsince_rgb
+              - type: umbrella.RGB
           - name: RequiredWidth
             return:
               - type: number
           - name: getWaterLvlColor
             parameters:
               - name: plant
+                type: SPlantGlobalObject
               - name: farmingLevel
+                type: number
             return:
-              - type: water_rgb
+              - type: umbrella.RGB
           - name: getHealthColor
             parameters:
               - name: info
+                type: ISFarmingInfo
               - name: farmingLevel
+                type: number
           - name: getCurrentGrowingPhase
             parameters:
               - name: info
+                type: ISFarmingInfo
               - name: farmingLevel
+                type: number
             return:
-              - type: boolean | string
+              - type: string | false
           - name: getNextGrowingPhase
             parameters:
               - name: info
-                type: table
+                type: ISFarmingInfo
             return:
               - type: string
           - name: getDisease
             parameters:
               - name: diseaseLvl
+                type: number
               - name: farmingLevel
+                type: number
               - name: disease
                 type: table
               - name: info
+                type: ISFarmingInfo
               - name: index
                 type: number
               - name: string
@@ -170,16 +215,19 @@ languages:
           - name: getDiseaseName
             parameters:
               - name: info
+                type: ISFarmingInfo
             return:
-              - type: table
+              - type: umbrella.ISFarmingInfo.DiseaseTable
           - name: getLastWatedHour
             parameters:
               - name: plant
+                type: SPlantGlobalObject
             return:
               - type: number
           - name: getFertilizerColor
             parameters:
               - name: info
+                type: ISFarmingInfo
       water_rgb:
         staticFields:
           r:

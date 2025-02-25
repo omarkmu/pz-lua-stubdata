@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"StatisticChart"'
@@ -27,25 +28,27 @@ languages:
             defaultValue: "false"
         fields:
           labels:
-            type: table
+            type: table<string, ISLabel>
           historyM1:
             type: ValuePlotter
           varInfo:
-            type: table
+            type: table[]
           colTable:
-            type: table
+            type: umbrella.RGBA[]
           currentStage:
             nullable: true
           clearOnNextRun:
             type: boolean
-          data: {}
+          data:
+            type: table
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           richtext:
@@ -72,8 +75,11 @@ languages:
           - name: addLabel
             parameters:
               - name: _curX
+                type: number
               - name: _curY
+                type: number
               - name: _labelID
+                type: string
               - name: _title
                 type: string
             return:
@@ -81,26 +87,34 @@ languages:
           - name: addLabelValue
             parameters:
               - name: _curX
+                type: number
               - name: _curY
+                type: number
               - name: _width
+                type: number
               - name: _type
+                type: string
               - name: _labelID
+                type: string
               - name: _title
                 type: string
               - name: _defaultVal
+                type: unknown
             return:
               - type: number
           - name: getTitleLabel
             parameters:
               - name: _labelID
+                type: string
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: getValueLabel
             parameters:
               - name: _labelID
+                type: string
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: initVariables
           - name: addColor
@@ -116,9 +130,13 @@ languages:
               - name: _name
                 type: string
               - name: _desc
+                type: string
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _func
+                type: string
           - name: updateValues
           - name: onMouseWheel
             parameters:
@@ -129,6 +147,7 @@ languages:
           - name: onButtonToggle
             parameters:
               - name: _btn
+                type: ISButton
           - name: onResize
           - name: update
           - name: prerender

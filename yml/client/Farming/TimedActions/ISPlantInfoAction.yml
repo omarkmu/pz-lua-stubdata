@@ -7,21 +7,24 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: plant
+                type: CPlantGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISPlantInfoAction"'
         fields:
           playerNum:
             type: integer
-          plant: {}
+          plant:
+            type: CPlantGlobalObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

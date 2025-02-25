@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISHotbar"'
@@ -16,11 +17,11 @@ languages:
           needsRefresh:
             type: boolean
           wornItems:
-            type: table
+            type: InventoryItem[]
           replacements:
-            type: table
+            type: table<string, string>
           availableSlot:
-            type: table
+            type: umbrella.ISHotbar.Slot[]
           slotWidth:
             type: number
           slotHeight:
@@ -29,14 +30,18 @@ languages:
             type: number
           margins:
             type: number
-          character: {}
-          chr: {}
+          character:
+            type: IsoPlayer
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           textColor:
-            type: table
-          font: {}
-          equippedItemIcon: {}
+            type: umbrella.RGBA
+          font:
+            type: UIFont
+          equippedItemIcon:
+            type: Texture
         methods:
           - name: render
           - name: getSlotDef
@@ -44,19 +49,22 @@ languages:
               - name: slot
                 type: string
             return:
-              - type: unknown
+              - type: umbrella.ISHotbar.AttachDefinition
                 nullable: true
           - name: getSlotDefReplacement
             parameters:
               - name: slot
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISHotbar.ReplaceDefinition
           - name: doMenu
             parameters:
               - name: slotIndex
+                type: integer
           - name: isInHotbar
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: setSizeAndPosition
@@ -70,47 +78,60 @@ languages:
           - name: canBeAttached
             parameters:
               - name: slot
+                type: umbrella.ISHotbar.Slot
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: setAttachAnim
             parameters:
               - name: item
+                type: InventoryItem
               - name: slot
+                type: umbrella.ISHotbar.Slot
           - name: removeItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: doAnim
                 type: boolean
+                nullable: true
           - name: isItemAttached
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: attachItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: slot
+                type: string
               - name: slotIndex
-                type: number
-                nullable: true
+                type: integer
               - name: slotDef
+                type: umbrella.ISHotbar.AttachDefinition
               - name: doAnim
                 type: boolean
+                nullable: true
           - name: reloadIcons
           - name: haveThisSlot
             parameters:
               - name: slotType
+                type: string
               - name: list
-                type: table
+                type: string[]
             return:
               - type: boolean
           - name: getThisSlotIndex
             parameters:
               - name: slotType
+                type: string
               - name: list
+                type: umbrella.ISHotbar.Slot[]
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: compareWornItems
             return:
@@ -119,10 +140,11 @@ languages:
           - name: activateSlot
             parameters:
               - name: slotIndex
-                type: number
+                type: integer
           - name: equipItem
             parameters:
               - name: item
+                type: InventoryItem
           - name: getSlotIndexAt
             parameters:
               - name: x
@@ -130,7 +152,7 @@ languages:
               - name: y
                 type: number
             return:
-              - type: number
+              - type: integer
           - name: onMouseUp
             parameters:
               - name: x
@@ -144,30 +166,35 @@ languages:
               - name: key
                 type: integer
             return:
-              - type: number
+              - type: integer
           - name: getKeyForIndex
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: integer
           - name: isAllowedToActivateSlot
             return:
               - type: boolean
           - name: onRadialAttach
             parameters:
               - name: item
+                type: InventoryItem
               - name: slotIndex
+                type: integer
               - name: v
+                type: string
           - name: onRadialRemove
             parameters:
               - name: item
+                type: InventoryItem
         staticMethods:
           - name: doMenuFromInventory
             parameters:
               - name: playerNum
                 type: integer
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
           - name: onKeyStartPressed
@@ -185,6 +212,8 @@ languages:
           - name: onClothingUpdated
             parameters:
               - name: player
+                type: IsoPlayer
           - name: onStopGrapple
             parameters:
               - name: player
+                type: IsoPlayer

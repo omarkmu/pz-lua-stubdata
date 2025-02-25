@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISCraftingUI"'
@@ -45,16 +46,20 @@ languages:
             type: table
           craftInProgress:
             type: boolean
-          knownRecipes: {}
-          totalRecipes: {}
-          containerList: {}
+          knownRecipes:
+            type: integer
+          totalRecipes:
+            type: integer
+          containerList:
+            type: ArrayList #<ItemContainer>
           recipeListHasFocus:
             type: boolean
-          refreshTypesAvailableMS: {}
+          refreshTypesAvailableMS:
+            type: number
           catListButtons:
-            type: table
+            type: ISButton[]
           catList:
-            type: table
+            type: table<string, umbrella.ISCraftingUI.IngredientItem[]>
           drawJoypadFocus:
             type: boolean
           keysText:
@@ -65,7 +70,8 @@ languages:
             type: boolean
           LabelDash:
             type: string
-          LabelDashWidth: {}
+          LabelDashWidth:
+            type: number
           LabelCraftOne:
             type: string
           LabelCraftAll:
@@ -80,22 +86,26 @@ languages:
             type: string
           bottomInfoText2:
             type: string
-          minimumWidth: {}
+          minimumWidth:
+            type: number
           title:
             type: string
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
           lineH:
             type: number
           fgBar:
-            type: table
-          TreeExpanded: {}
-          PoisonTexture: {}
+            type: umbrella.RGBA
+          TreeExpanded:
+            type: Texture
+          PoisonTexture:
+            type: Texture
           panel:
             type: ISTabPanel
           categories:
-            type: table
+            type: ISCraftingCategoryUI[]
           craftOneButton:
             type: ISButton
           craftAllButton:
@@ -117,11 +127,11 @@ languages:
           keysRichText:
             type: ISRichTextLayout
           allRecipesList:
-            type: table
+            type: umbrella.ISCraftingUI.RecipeItem[]
           recipesList:
-            type: table
+            type: table<string, umbrella.ISCraftingUI.RecipeItem[]>
           recipesListH:
-            type: table
+            type: string[]
         methods:
           - name: getRecipeListBox
             return:
@@ -134,23 +144,27 @@ languages:
           - name: isFluidSource
             parameters:
               - name: item
+                type: InventoryItem
               - name: fluid
-                nullable: true
+                type: Fluid
               - name: amount
+                type: number
             return:
               - type: boolean
           - name: isWaterSource
             parameters:
               - name: item
+                type: InventoryItem
               - name: count
+                type: number
             return:
               - type: boolean
           - name: transferItems
             return:
-              - type: table
+              - type: InventoryItem[]
           - name: getAvailableItemsType
             return:
-              - type: table
+              - type: table<string, integer>
           - name: initialise
           - name: close
           - name: getContainers
@@ -165,16 +179,19 @@ languages:
           - name: isExtraClothingItemOf
             parameters:
               - name: item1
+                type: umbrella.ISCraftingUI.RecipeSourceItemData
               - name: item2
+                type: umbrella.ISCraftingUI.RecipeSourceItemData
             return:
               - type: boolean
           - name: removeExtraClothingItemsFromList
             parameters:
               - name: index
-                type: number
+                type: integer
               - name: item
+                type: umbrella.ISCraftingUI.RecipeSourceItemData
               - name: itemList
-                type: table
+                type: umbrella.ISCraftingUI.RecipeSourceItemData[]
           - name: refreshIngredientPanel
           - name: drawEvolvedIngredient
             parameters:
@@ -186,6 +203,7 @@ languages:
           - name: onDblClickIngredientListbox
             parameters:
               - name: data
+                type: umbrella.ISCraftingUI.RecipeSourceItemData
           - name: onAddRandomIngredient
             parameters:
               - name: button
@@ -201,8 +219,10 @@ languages:
               - name: y
                 type: number
               - name: selectedItem
+                type: umbrella.ISCraftingUI.RecipeItem
               - name: _isWorkStation
                 type: boolean
+                nullable: true
           - name: onActivateView
           - name: createChildren
           - name: populateRecipesList
@@ -220,11 +240,13 @@ languages:
           - name: getFavoriteModDataString
             parameters:
               - name: recipe
+                type: Recipe
             return:
               - type: string
           - name: getFavoriteModDataLocalString
             parameters:
               - name: recipe
+                type: Recipe
             return:
               - type: string
           - name: update
@@ -244,6 +266,7 @@ languages:
                 type: ISButton
                 nullable: true
               - name: all
+                type: boolean
                 nullable: true
               - name: _isWorkStation
                 type: boolean
@@ -251,9 +274,13 @@ languages:
           - name: onCraftComplete
             parameters:
               - name: completedAction
+                type: ISCraftAction
               - name: recipe
+                type: Recipe
               - name: container
+                type: ItemContainer
               - name: containers
+                type: ArrayList #<ItemContainer>
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -271,13 +298,17 @@ languages:
           - name: sortByName
             parameters:
               - name: a
+                type: umbrella.ISCraftingUI.RecipeItem
               - name: b
+                type: umbrella.ISCraftingUI.RecipeItem
             return:
-              - type: unknown
+              - type: boolean
           - name: addIngredientTooltip
             parameters:
               - name: option
+                type: umbrella.ISScrollingListBox.Item
               - name: items
+                type: umbrella.ISCraftingUI.IngredientItem
           - name: toggleCraftingUI
           - name: onPressKey
             parameters:
@@ -288,7 +319,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: items
-                type: table
+                type: InventoryItem[]
       ISCraftingIngredientIconPanel:
         extends: ISPanel
         constructors:

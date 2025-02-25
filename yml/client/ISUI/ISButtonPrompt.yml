@@ -7,86 +7,134 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISButtonPrompt"'
           test:
-            type: table
+            type: umbrella.ISButtonPrompt.Test
             nullable: true
         fields:
           lmargin:
             type: number
+            nullable: true
           rmargin:
             type: number
+            nullable: true
           x1:
             type: number
+            nullable: true
           y1:
             type: number
+            nullable: true
           w1:
             type: number
+            nullable: true
           h1:
             type: number
+            nullable: true
           x2:
             type: number
+            nullable: true
           y2:
             type: number
+            nullable: true
           w2:
             type: number
+            nullable: true
           h2:
             type: number
+            nullable: true
           isLoot:
             type: boolean
           list:
             type: LuaList
+            nullable: true
           aPrompt:
             type: string
-          aFunc: {}
+            nullable: true
+          aFunc:
+            type: function
+            nullable: true
           aParams:
-            type: table
+            type: unknown[]
+            nullable: true
           bPrompt:
             type: string
-          bFunc: {}
+            nullable: true
+          bFunc:
+            type: function
+            nullable: true
           bParams:
-            type: table
+            type: unknown[]
+            nullable: true
           xPrompt:
             type: string
-          xFunc: {}
+            nullable: true
+          xFunc:
+            type: function
+            nullable: true
           xParams:
-            type: table
+            type: unknown[]
+            nullable: true
           yPrompt:
             type: string
-          yFunc: {}
+            nullable: true
+          yFunc:
+            type: function
+            nullable: true
           yParams:
-            type: table
+            type: unknown[]
+            nullable: true
           lbPrompt:
             type: string
-          lbFunc: {}
+            nullable: true
+          lbFunc:
+            type: function
+            nullable: true
           lbParams:
-            type: table
+            type: unknown[]
+            nullable: true
           rbPrompt:
             type: string
-          rbFunc: {}
+            nullable: true
+          rbFunc:
+            type: function
+            nullable: true
           rbParams:
-            type: table
+            type: unknown[]
           background:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
-          player: {}
-          buttonA: {}
-          buttonB: {}
-          buttonX: {}
-          buttonY: {}
-          buttonLB: {}
-          buttonRB: {}
-          movableIconPickup: {}
-          movableIconPlace: {}
-          movableIconRotate: {}
-          movableIconScrap: {}
-          moveableIconRepair: {}
-          moveableIconBuild: {}
+            type: umbrella.RGBA
+          player:
+            type: IsoPlayer
+          buttonA:
+            type: Texture
+          buttonB:
+            type: Texture
+          buttonX:
+            type: Texture
+          buttonY:
+            type: Texture
+          buttonLB:
+            type: Texture
+          buttonRB:
+            type: Texture
+          movableIconPickup:
+            type: Texture
+          movableIconPlace:
+            type: Texture
+          movableIconRotate:
+            type: Texture
+          movableIconScrap:
+            type: Texture
+          moveableIconRepair:
+            type: Texture
+          moveableIconBuild:
+            type: Texture
         methods:
           - name: initialise
           - name: prerender
@@ -105,99 +153,124 @@ languages:
           - name: climbOverWall
             parameters:
               - name: dir
+                type: IsoDirections
           - name: climbInWindow
             parameters:
               - name: window
+                type: IsoWindow
           - name: openWindow
             parameters:
               - name: window
+                type: IsoWindow
           - name: closeWindow
             parameters:
               - name: window
+                type: IsoWindow
           - name: openDoor
             parameters:
               - name: door
-                type: IsoDoor | IsoThumpable
+                type: IsoDoor
           - name: closeDoor
             parameters:
               - name: door
-                type: IsoDoor | IsoThumpable
+                type: IsoDoor
           - name: smashWindow
             parameters:
               - name: window
+                type: IsoWindow
           - name: sleep
           - name: cmdShowInventory
           - name: cmdShowLoot
           - name: cmdToggleLight
             parameters:
               - name: light
+                type: IsoLightSwitch
           - name: cmdToggleStove
             parameters:
               - name: stove
+                type: IsoStove
           - name: openDeviceOptions
             parameters:
               - name: device
+                type: Radio | IsoWaveSignal | VehiclePart
           - name: cmdUseVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: part
+                type: VehiclePart
           - name: cmdEnterVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: cmdCloseVehicleDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: cmdOpenVehicleDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: cmdExitVehicle
           - name: stopAction
           - name: dropCorpse
           - name: getBestAButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: testAButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: doAButtonDoorOrWindowOrWindowFrame
             parameters:
               - name: dir
+                type: IsoDirections
               - name: obj
                 type: IsoObject
           - name: getBestBButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: testBButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: doBButtonDoorOrWindowOrWindowFrame
             parameters:
               - name: dir
+                type: IsoDirections
               - name: obj
                 type: IsoObject
           - name: getBestYButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: getBestXButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: getXButtonObjects
             parameters:
               - name: dir
+                type: IsoDirections
             return:
               - type: LuaList
                 nullable: true
           - name: getBestLBButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: getBestRBButtonAction
             parameters:
               - name: dir
+                type: IsoDirections
           - name: onAPress
           - name: onBPress
           - name: onXPress
@@ -208,80 +281,122 @@ languages:
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: setBPrompt
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: setXPrompt
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: setYPrompt
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: setLBPrompt
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: setRBPrompt
             parameters:
               - name: str
                 type: string
+                nullable: true
               - name: func
+                type: function
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
           - name: onJoypadButtonReleased
             parameters:
               - name: button

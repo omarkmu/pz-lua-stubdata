@@ -9,21 +9,24 @@ languages:
               - name: _manager
                 type: ISSearchManager
               - name: _icon
-                type: table
+                type: umbrella.Foraging.WorldIconData
         staticFields:
           Type:
             defaultValue: '"ISStashIcon"'
         fields:
-          isForageable: {}
+          isForageable:
+            type: boolean
+            nullable: true
           isValidSquare:
             type: boolean
-          itemObjTable: {}
+          itemObjTable:
+            type: table<InventoryItem, InventoryItem>
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: findPinOffset
           - name: setWorldMarkerPosition
           - name: checkIsForageable
             return:
-              - type: unknown
+              - type: boolean

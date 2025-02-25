@@ -4,7 +4,8 @@ languages:
     tables:
       Point2D:
         staticFields:
-          meta: {}
+          meta:
+            type: table
         methods:
           - name: new
             parameters:
@@ -17,6 +18,21 @@ languages:
     classes:
       Point2D:
         local: true
+        operators:
+          - operation: add
+            parameter: Point2D
+            return: Point2D
+          - operation: sub
+            parameter: Point2D
+            return: Point2D
+          - operation: mul
+            parameter: Point2D
+            return: Point2D
+          - operation: div
+            parameter: Point2D
+            return: Point2D
+          - operation: unm
+            return: Point2D
         fields:
           Point2D:
             type: table
@@ -39,4 +55,4 @@ languages:
           - name: setPoint
             parameters:
               - name: targ
-                type: Point2D | number
+                type: Point2D

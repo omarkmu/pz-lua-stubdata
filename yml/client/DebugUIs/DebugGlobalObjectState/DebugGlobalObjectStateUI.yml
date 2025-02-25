@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: gameState
+                type: DebugGlobalObjectState
         staticFields:
           Type:
             defaultValue: '"DebugGlobalObjectStateUI"'
@@ -46,39 +47,52 @@ languages:
           mouseDownY:
             type: number
           selectedSquare:
+            type: IsoGridSquare
             nullable: true
           selectedSystem:
+            type: GlobalObjectSystem
             nullable: true
           selectedObject:
+            type: GlobalObject
             nullable: true
-          gameState: {}
+          gameState:
+            type: DebugGlobalObjectState
           dragCameraTool:
             type: DebugGlobalObjectStateUI_DragCameraTool
           currentTool:
-            type: DebugGlobalObjectStateUI_DragCameraTool
+            type: DebugGlobalObjectStateUI_Tool
         methods:
           - name: SystemList_doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: ObjectList_doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: ObjectList_OnMouseDoubleClick
             parameters:
               - name: item
+                type: umbrella.DebugGlobalObjectStateUI.Item
           - name: createChildren
           - name: onChangeZLevel
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onComboClientServer
           - name: onExit
           - name: onMouseDown
@@ -125,9 +139,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: pickSquare
             parameters:
@@ -136,10 +154,11 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: IsoGridSquare
+                nullable: true
+              - type: number
+              - type: number
+              - type: number
           - name: setSystemList
           - name: updateSelectedSystem
           - name: updateSelectedObject
@@ -160,3 +179,4 @@ languages:
       - name: DebugGlobalObjectState_InitUI
         parameters:
           - name: gameState
+            type: DebugGlobalObjectState

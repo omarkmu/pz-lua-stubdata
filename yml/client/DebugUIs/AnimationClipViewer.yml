@@ -45,11 +45,15 @@ languages:
           optionsPanel:
             type: AnimationClipViewer_OptionsPanel
           animalScriptByName:
-            type: table
+            type: table<string, ModelScript>
           animalScriptByModelScript:
-            type: table
-          currentAnimalScript: {}
-          filterText: {}
+            type: table<ModelScript, ModelScript>
+          currentAnimalScript:
+            type: ModelScript
+            nullable: true
+          filterText:
+            type: string
+            nullable: true
           animate:
             type: boolean
         methods:
@@ -58,7 +62,9 @@ languages:
           - name: onSpeedScaleChanged
             parameters:
               - name: speed
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: resetView
           - name: setClipList
           - name: initAnimalModelScripts
@@ -67,9 +73,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: prerender
           - name: render
@@ -96,6 +106,7 @@ languages:
           - name: onExit
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -104,71 +115,110 @@ languages:
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
+                nullable: true
           - name: java1
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
             return:
               - type: unknown
           - name: java2
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
             return:
               - type: unknown
           - name: java3
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
               - name: arg2
+                type: unknown
             return:
               - type: unknown
           - name: java4
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
               - name: arg2
+                type: unknown
               - name: arg3
+                type: unknown
             return:
               - type: unknown
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
               - name: arg2
+                type: unknown
               - name: arg3
+                type: unknown
               - name: arg4
+                type: unknown
             return:
               - type: unknown
           - name: java6
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
               - name: arg2
+                type: unknown
               - name: arg3
+                type: unknown
               - name: arg4
+                type: unknown
               - name: arg5
+                type: unknown
             return:
               - type: unknown
           - name: java9
             parameters:
               - name: func
+                type: string
               - name: arg0
+                type: unknown
               - name: arg1
+                type: unknown
               - name: arg2
+                type: unknown
               - name: arg3
+                type: unknown
               - name: arg4
+                type: unknown
               - name: arg5
+                type: unknown
               - name: arg6
+                type: unknown
               - name: arg7
+                type: unknown
               - name: arg8
+                type: unknown
             return:
               - type: unknown
       AnimationClipViewer_ListBox:
@@ -187,14 +237,18 @@ languages:
           Type:
             defaultValue: '"AnimationClipViewer_ListBox"'
         fields:
-          selectedClipName: {}
+          selectedClipName:
+            type: string
         methods:
           - name: prerender
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseDown
@@ -206,6 +260,7 @@ languages:
           - name: indexOf
             parameters:
               - name: text
+                type: string
             return:
               - type: number
       AnimationClipViewer_SoundBar:
@@ -231,13 +286,15 @@ languages:
           prevFraction:
             type: number
           soundList:
-            type: table
+            type: umbrella.AnimationClipViewer.Sound[]
         methods:
           - name: render
           - name: renderSound
             parameters:
               - name: index
+                type: integer
               - name: sound
+                type: umbrella.AnimationClipViewer.Sound
           - name: onMouseDown
             parameters:
               - name: x
@@ -273,6 +330,7 @@ languages:
           - name: getSoundBounds
             parameters:
               - name: sound
+                type: umbrella.AnimationClipViewer.Sound
             return:
               - type: number
               - type: number
@@ -289,11 +347,13 @@ languages:
           - name: playSound
             parameters:
               - name: index
+                type: integer
               - name: soundName
                 type: string
           - name: stopSound
             parameters:
               - name: index
+                type: integer
       AnimationClipViewer_SoundPanel:
         extends: ISPanel
         constructors:
@@ -313,28 +373,35 @@ languages:
           comboHgt:
             type: number
           soundTickBoxes:
-            type: table
+            type: ISTickBox[]
           soundCombos:
-            type: table
+            type: ISComboBox[]
         methods:
           - name: createChildren
           - name: createSoundCombo
             parameters:
               - name: index
+                type: integer
               - name: y
+                type: number
             return:
               - type: ISComboBox
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
               - name: soundIndex
+                type: integer
           - name: fillSoundCombo
             parameters:
               - name: combo
+                type: ISComboBox
           - name: onSoundComboSelected
             parameters:
               - name: combo
+                type: ISComboBox
       AnimationClipViewer_OptionsPanel:
         extends: ISPanel
         constructors:
@@ -358,7 +425,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onMouseDownOutside
             parameters:
               - name: x
@@ -435,10 +504,14 @@ languages:
           Type:
             defaultValue: '"AnimationClipViewer_Timeline"'
         fields:
-          selectedClipName: {}
-          keyframeTimes: {}
+          selectedClipName:
+            type: string
+          keyframeTimes:
+            type: ArrayList #<number>
+            nullable: true
           dragging:
             type: boolean
+            nullable: true
         methods:
           - name: render
           - name: onMouseDown

@@ -49,17 +49,24 @@ languages:
           optionsPanel:
             type: SpriteModelEditor_OptionsPanel
           currentModelScriptName:
+            type: string
             nullable: true
           animationComboModelScriptName:
+            type: string
             nullable: true
           animationComboTileProperties:
+            type: SpriteModel
             nullable: true
           runtimeEntryProperties:
+            type: SpriteModel
             nullable: true
           selectedTileProperties:
+            type: SpriteModel
             nullable: true
-          tempTranslate: {}
-          tempExtents: {}
+          tempTranslate:
+            type: Vector3f
+          tempExtents:
+            type: Vector3f
           modID:
             type: string
         methods:
@@ -71,13 +78,16 @@ languages:
           - name: onAnimationTimeChanged
             parameters:
               - name: time
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: syncChooseModelCombo
           - name: syncChooseAnimationCombo
           - name: setSelectedAnimation
             parameters:
               - name: animationName
                 type: string
+                nullable: true
           - name: syncAnimationTimeSlider
           - name: syncRuntimeEntry
           - name: onRuntimeEntered
@@ -85,19 +95,23 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: prerender
           - name: render
           - name: getTileProperties
             return:
-              - type: unknown
+              - type: SpriteModel
                 nullable: true
           - name: getOrCreateTileProperties
             return:
-              - type: unknown
+              - type: SpriteModel
                 nullable: true
           - name: onKeyPress
             parameters:
@@ -107,6 +121,7 @@ languages:
           - name: onExit
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -114,6 +129,7 @@ languages:
           - name: onSave
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -121,6 +137,7 @@ languages:
           - name: onCreateTilesetImage
             parameters:
               - name: button
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -128,6 +145,7 @@ languages:
           - name: onCreateTilesetImage2
             parameters:
               - name: button
+                type: ISButton
           - name: showUI
       SpriteModelEditor_ListBox:
         extends: ISScrollingListBox
@@ -154,8 +172,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseDown
@@ -167,8 +188,9 @@ languages:
           - name: indexOf
             parameters:
               - name: text
+                type: string
             return:
-              - type: number
+              - type: integer
       SpriteModelEditor_OptionsPanel:
         extends: ISPanel
         constructors:
@@ -192,7 +214,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onMouseDownOutside
             parameters:
               - name: x
@@ -217,26 +241,34 @@ languages:
           Type:
             defaultValue: '"SpriteModelEditor_Scene"'
         fields:
-          zeroVector: {}
-          selectedTileName: {}
+          zeroVector:
+            type: Vector3f
+          selectedTileName:
+            type: string
           gizmoAxis:
             type: string
-          gizmoStartScenePos: {}
-          gizmoClickScenePos: {}
+          gizmoStartScenePos:
+            type: Vector3f
+          gizmoClickScenePos:
+            type: Vector3f
           rotate:
             type: boolean
           dragPointIndex:
-            type: number
-          tempTranslate: {}
-          tempRotate: {}
-          tempExtentsMin: {}
-          tempExtentsMax: {}
+            type: integer
+          tempTranslate:
+            type: Vector3f
+          tempRotate:
+            type: Vector3f
+          tempExtentsMin:
+            type: Vector3f
+          tempExtentsMax:
+            type: Vector3f
           originalTranslate:
-            type: table
+            type: table<string, Vector3f>
           originalRotate:
-            type: table
+            type: table<string, Vector3f>
           originalScale:
-            type: table
+            type: table<string, Vector3f>
           editor:
             type: SpriteModelEditor
           gizmo:
@@ -327,11 +359,13 @@ languages:
           - name: onGizmoChanged
             parameters:
               - name: delta
+                type: number
           - name: onGizmoAccept
           - name: onGizmoCancel
           - name: java0
             parameters:
               - name: func
+                type: string
             return:
               - type: unknown
           - name: java1
@@ -368,6 +402,7 @@ languages:
           - name: java4
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -381,6 +416,7 @@ languages:
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -414,6 +450,7 @@ languages:
           - name: java7
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -473,7 +510,7 @@ languages:
             defaultValue: '"SpriteModelEditor_TileList"'
         fields:
           selected:
-            type: table
+            type: "{ col: number, row: number }"
             nullable: true
           tileset:
             type: string
@@ -498,6 +535,7 @@ languages:
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
           - name: render
           - name: setTileset
             parameters:
@@ -515,7 +553,9 @@ languages:
           - name: isValidColRow
             parameters:
               - name: col
+                type: number
               - name: row
+                type: number
             return:
               - type: boolean
       SpriteModelEditor_TilePicker:
@@ -547,6 +587,7 @@ languages:
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: onSelectTileset

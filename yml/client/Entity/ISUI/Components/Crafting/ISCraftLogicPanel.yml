@@ -15,71 +15,97 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
         staticFields:
           Type:
             defaultValue: '"ISCraftLogicPanel"'
         fields:
           tableLayout:
+            type: ISTableLayout
             nullable: true
           energyInputs:
+            type: ISEnergySlotPanel
             nullable: true
           fluidInputs:
+            type: ISFluidSlotPanel
             nullable: true
           itemInputs:
+            type: ISItemSlotPanel
             nullable: true
           craftProgress:
+            type: ISWidgetCraftProgress
             nullable: true
           craftControl:
+            type: ISWidgetCraftControl
             nullable: true
           craftControlDebug:
+            type: ISWidgetCraftDebug
             nullable: true
           itemOutputs:
+            type: ISItemSlotPanel
             nullable: true
           fluidOutputs:
+            type: ISFluidSlotPanel
             nullable: true
           energyOutputs:
+            type: ISEnergySlotPanel
             nullable: true
           recipeIconPanel:
+            type: ISTiledIconPanel
             nullable: true
-          tooltipRecipe: {}
+          tooltipRecipe:
+            type: CraftRecipe
           tooltipCounter:
             type: number
           recipePanel:
             nullable: true
-          inputsGroupName: {}
-          outputsGroupName: {}
-          resourcesComponent: {}
-          craftLogicComponent: {}
-          recipes: {}
-          logic: {}
+          inputsGroupName:
+            type: string
+          outputsGroupName:
+            type: string
+          resourcesComponent:
+            type: Resources
+          craftLogicComponent:
+            type: CraftLogic
+          recipes:
+            type: ArrayList #<CraftRecipe>
+          logic:
+            type: Component
         methods:
           - name: initialise
           - name: createChildren
           - name: createItemSlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISItemSlotPanel
           - name: createFluidSlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISFluidSlotPanel
           - name: createEnergySlotPanel
             parameters:
               - name: _style
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: ISEnergySlotPanel
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -90,9 +116,13 @@ languages:
           - name: CanCreatePanelFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _component
+                type: Component
               - name: _componentUiScript
+                type: XuiSkinScript.ComponentUiScript
             return:
               - type: boolean
                 nullable: true

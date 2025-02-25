@@ -15,16 +15,18 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISDebugSubPanelBase"'
         fields:
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           doStencilRender:
+            type: boolean
             nullable: true
         methods:
           - name: initHorzBars

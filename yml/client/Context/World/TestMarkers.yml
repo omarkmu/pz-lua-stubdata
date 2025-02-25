@@ -15,4 +15,6 @@ languages:
           - name: add
             parameters:
               - name: _circle
+                type: WorldMarkers.GridSquareMarker
               - name: _pointer
+                type: WorldMarkers.PlayerHomingPoint

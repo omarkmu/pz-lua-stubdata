@@ -11,13 +11,17 @@ languages:
         extends: ISMenuElement
         local: true
         fields:
-          invMenu: {}
+          invMenu:
+            type: ISMenuContextInventory
         staticMethods:
           - name: init
           - name: createMenu
             parameters:
               - name: _item
+                type: InventoryItem
           - name: openPanel
             parameters:
               - name: _p
+                type: ISMenuContextInventory
               - name: _item
+                type: InventoryItem

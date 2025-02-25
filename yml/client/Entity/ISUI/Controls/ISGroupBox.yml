@@ -15,25 +15,31 @@ languages:
               - name: height
                 type: number
               - name: _styleLabel
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISGroupBox"'
         fields:
           borderLabel:
+            type: ISLabel
             nullable: true
           marginBorder:
             type: number
           element:
+            type: ISUIElement
             nullable: true
           margin:
             type: number
-          styleLabel: {}
+          styleLabel:
+            type: string
+            nullable: true
           title:
             type: string
           drawBorder:
             type: boolean
           textColor:
-            type: table
+            type: number[] | umbrella.RGBA
           autoFillContents:
             type: boolean
           isAutoFill:
@@ -48,13 +54,20 @@ languages:
           - name: setElement
             parameters:
               - name: _element
+                type: ISUIElement
           - name: addChild
+            deprecated: true
             parameters:
               - name: _element
+                type: ISUIElement
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

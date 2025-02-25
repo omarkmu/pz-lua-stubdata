@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"WindDebug"'
@@ -27,22 +28,23 @@ languages:
           historyM1:
             type: ValuePlotter
           charts:
-            type: table
+            type: ValuePlotter[]
           chartLabelsLeft:
-            type: table
+            type: ISLabel[]
           chartLabelsLeftTxt:
-            type: table
+            type: string[]
           chartLabelsRight:
-            type: table
+            type: ISLabel[]
           chartLabelsRightTxt:
-            type: table
+            type: string[]
           varInfo:
-            type: table
+            type: table[]
           colTable:
-            type: table
+            type: umbrella.RGBA[]
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
@@ -84,15 +86,21 @@ languages:
               - name: _name
                 type: string
               - name: _desc
+                type: string
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _func
+                type: string
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonToggle
             parameters:
               - name: _btn
+                type: ISButton
           - name: onResize
           - name: update
           - name: prerender

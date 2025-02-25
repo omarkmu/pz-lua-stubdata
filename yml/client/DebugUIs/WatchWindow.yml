@@ -20,15 +20,16 @@ languages:
         fields:
           selected:
             type: number
-          sc: {}
+          sc:
+            type: number
           title:
             type: string
           objectView:
             type: ISScrollingListBox
           obj:
-            type: LuaList | table
+            type: umbrella.ObjectViewer.WatchItem[]
           objlist:
-            type: LuaList | table
+            type: LuaList
         methods:
           - name: onRightMouseDownObject
             parameters:
@@ -39,12 +40,14 @@ languages:
           - name: onMouseDoubleClickOpenObject
             parameters:
               - name: item
+                type: unknown
           - name: storePos
           - name: restorePos
           - name: initialise
           - name: onSourceMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: fill
@@ -52,18 +55,23 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: addWatch
             parameters:
               - name: obj
-                type: IsoObject
+                type: unknown
         staticMethods:
           - name: onDataWrite
             parameters:
               - name: data
+                type: umbrella.WatchWindow.DataItem
           - name: onDataRead
             parameters:
               - name: data
+                type: umbrella.WatchWindow.DataItem

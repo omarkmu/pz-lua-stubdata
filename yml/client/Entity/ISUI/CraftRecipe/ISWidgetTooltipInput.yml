@@ -15,33 +15,47 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
               - name: inputScript
+                type: InputScript
         staticFields:
           Type:
             defaultValue: '"ISWidgetTooltipInput"'
         fields:
-          amountWidth: {}
-          amountWidth2: {}
+          amountWidth:
+            type: number
+          amountWidth2:
+            type: number
           textColor:
-            type: table
+            type: umbrella.RGBA
           colPartial:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           primary:
-            type: table
+            type: umbrella.ISWidgetTooltipInput.ScriptValues
           secondary:
-            type: table
+            type: umbrella.ISWidgetInput.ScriptValues
+            nullable: true
           arrow:
+            type: ISImage
             nullable: true
           editedLabels:
             type: boolean
-          player: {}
-          logic: {}
-          inputScript: {}
-          consumeScript: {}
-          createScript: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
+          inputScript:
+            type: InputScript
+          consumeScript:
+            type: InputScript
+            nullable: true
+          createScript:
+            type: OutputScript
+            nullable: true
           iconSize:
             type: number
           interactiveMode:
@@ -50,11 +64,16 @@ languages:
             type: boolean
           normalBorderColor:
             type: table
-          textureFluid: {}
-          textureKeep: {}
-          textureDrain: {}
-          textureConsume: {}
-          textureCreate: {}
+          textureFluid:
+            type: Texture
+          textureKeep:
+            type: Texture
+          textureDrain:
+            type: Texture
+          textureConsume:
+            type: Texture
+          textureCreate:
+            type: Texture
           margin:
             type: number
           doToolTip:
@@ -73,7 +92,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -81,10 +104,11 @@ languages:
           - name: createScriptValues
             parameters:
               - name: _script
+                type: InputScript
             return:
-              - type: table
+              - type: umbrella.ISWidgetTooltipInput.ScriptValues
           - name: updateScriptValues
             parameters:
               - name: _table
-                type: table
+                type: umbrella.ISWidgetTooltipInput.ScriptValues
           - name: updateValues

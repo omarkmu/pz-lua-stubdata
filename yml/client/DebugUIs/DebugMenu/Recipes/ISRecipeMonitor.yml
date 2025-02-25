@@ -23,18 +23,20 @@ languages:
             type: ISRecipeMonitor
             nullable: true
         fields:
-          btnRecipe: {}
+          btnRecipe:
+            type: ISButton
           infoListY:
             type: number
           infoList:
             type: ISScrollingListBox
           monitorID:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           currentTile:
@@ -68,21 +70,27 @@ languages:
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedTooltip
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update
           - name: prerender
           - name: render

@@ -15,14 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
         staticFields:
           Type:
             defaultValue: '"ISBaseComponentPanel"'
         fields:
           componentHeader:
+            type: ISWidgetComponentHeader
             nullable: true
         methods:
           - name: initialise
@@ -30,16 +35,26 @@ languages:
           - name: createComponentHeader
             parameters:
               - name: _xuiSkin
+                type: XuiSkin
               - name: _styleName
                 type: string
               - name: _force
+                type: boolean
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleLabel
+                type: string
+                nullable: true
           - name: removeComponentHeader
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -52,21 +67,26 @@ languages:
               - type: string
           - name: getUiIcon
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true
         staticMethods:
           - name: CanCreatePanelFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
               - name: _component
+                type: Component
               - name: _componentUiStyle
+                type: XuiSkin.ComponentUiStyle
             return:
               - type: boolean
                 nullable: true
           - name: table_constructor
             parameters:
               - name: o
+                type: ISBaseComponentPanel
               - name: x
                 type: number
               - name: y
@@ -76,8 +96,12 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: componentUiStyle
+                type: XuiSkin.ComponentUiStyle
             return:
-              - type: unknown
+              - type: ISBaseComponentPanel

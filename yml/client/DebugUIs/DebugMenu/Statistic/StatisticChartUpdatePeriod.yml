@@ -8,6 +8,7 @@ languages:
           Type:
             defaultValue: '"StatisticChartUpdatePeriod"'
           instance:
+            type: StatisticChartUpdatePeriod
             nullable: true
           shiftDown:
             defaultValue: "0"
@@ -20,10 +21,10 @@ languages:
         staticMethods:
           - name: doInstance
             return:
-              - type: unknown
+              - type: StatisticChartUpdatePeriod
                 nullable: true
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: StatisticChartUpdatePeriod
                 nullable: true
           - name: OnServerStatisticReceived

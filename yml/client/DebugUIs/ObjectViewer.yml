@@ -15,18 +15,21 @@ languages:
               - name: height
                 type: number
               - name: obj
-                type: IsoObject
+                type: unknown
         staticFields:
           Type:
             defaultValue: '"ObjectViewer"'
-          map: {}
+          map:
+            type: table<unknown, ObjectViewer>
         fields:
           selected:
-            type: number
+            type: integer
           obj:
-            type: IsoObject
-          title: {}
-          sc: {}
+            type: unknown
+          title:
+            type: string
+          sc:
+            type: number
           objectView:
             type: ISScrollingListBox
         methods:
@@ -39,12 +42,14 @@ languages:
           - name: onMouseDoubleClickOpenObject
             parameters:
               - name: item
+                type: unknown
           - name: storePos
           - name: restorePos
           - name: initialise
           - name: onSourceMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: fill
@@ -52,17 +57,23 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
         staticMethods:
           - name: onWatch
             parameters:
               - name: item
+                type: umbrella.ObjectViewer.WatchItem
           - name: onDataWrite
             parameters:
               - name: data
+                type: umbrella.ObjectViewer.WatchItem
           - name: onDataRead
             parameters:
               - name: data
+                type: umbrella.ObjectViewer.WatchItem

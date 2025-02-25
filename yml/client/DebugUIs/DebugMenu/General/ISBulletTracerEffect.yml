@@ -15,12 +15,13 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISBulletTracerEffect"'
         fields:
           optionToSlider:
-            type: table
+            type: table<ConfigOption, ISSliderPanel>
           ignoreSlider:
             type: boolean
         methods:
@@ -31,5 +32,7 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onResetToDefault

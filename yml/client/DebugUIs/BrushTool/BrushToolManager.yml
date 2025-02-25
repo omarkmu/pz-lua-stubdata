@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"BrushToolManager"'
@@ -32,12 +33,14 @@ languages:
             type: ISButton
           title:
             type: string
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: close
         staticMethods:
           - name: openPanel

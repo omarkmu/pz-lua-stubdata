@@ -15,23 +15,31 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: entityConfig
+                type: XuiSkin.EntityUiStyle
         staticFields:
           Type:
             defaultValue: '"ISEntityWindow"'
         fields:
           entityDebug:
+            type: ISWidgetEntityDebug
             nullable: true
           componentsPanel:
-            nullable: true
+            type: ISComponentsListPanel
         methods:
           - name: initialise
           - name: createChildren
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
             parameters:
               - name: _width
@@ -56,7 +64,9 @@ languages:
           - name: CanOpenWindowFor
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _entity
+                type: GameEntity
             return:
-              - type: boolean | table
+              - type: boolean
                 nullable: true

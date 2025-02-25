@@ -26,8 +26,10 @@ languages:
             type: ISPanel
           objectView:
             type: ISScrollingListBox
-          xpos: {}
-          ypos: {}
+          xpos:
+            type: number
+          ypos:
+            type: number
           zoom:
             type: number
           level:
@@ -36,6 +38,7 @@ languages:
           - name: onMouseDoubleClickOpenObject
             parameters:
               - name: item
+                type: unknown
           - name: fillInfo
           - name: initialise
           - name: onMapMouseDown
@@ -73,14 +76,18 @@ languages:
           - name: onRenderMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: createChildren
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: renderTex

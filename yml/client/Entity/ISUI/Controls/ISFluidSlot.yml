@@ -15,26 +15,46 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: resource
+                type: ResourceFluid
               - name: _styleBtnTransfer
+                type: string
+                nullable: true
               - name: _styleBtnClear
+                type: string
+                nullable: true
               - name: _styleBar
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISFluidSlot"'
         fields:
           buttonTransfer:
+            type: ISButton
             nullable: true
           buttonClear:
+            type: ISButton
             nullable: true
           fluidBar:
+            type: ISFluidBar
             nullable: true
-          fluidBorderColorOrig: {}
-          resource: {}
-          player: {}
-          styleBtnTransfer: {}
-          styleBtnClear: {}
-          styleBar: {}
+          fluidBorderColorOrig:
+            type: umbrella.RGBA
+          resource:
+            type: ResourceFluid
+          player:
+            type: IsoPlayer
+          styleBtnTransfer:
+            type: string
+            nullable: true
+          styleBtnClear:
+            type: string
+            nullable: true
+          styleBar:
+            type: string
+            nullable: true
           margin:
             type: number
           minimumBarSize:
@@ -59,7 +79,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: prerender
           - name: render
           - name: update
@@ -70,3 +94,4 @@ languages:
           - name: setResource
             parameters:
               - name: _resource
+                type: ResourceFluid

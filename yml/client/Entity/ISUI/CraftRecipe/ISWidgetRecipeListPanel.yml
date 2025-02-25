@@ -15,8 +15,12 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
               - name: callbackTarget
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetRecipeListPanel"'
@@ -25,9 +29,13 @@ languages:
             type: ISScrollingListBox
           largestTooltipWidth:
             type: number
-          player: {}
-          logic: {}
-          callbackTarget: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
+          callbackTarget:
+            type: unknown
+            nullable: true
           enabledShowAllFilter:
             type: boolean
           wrapTooltipText:
@@ -40,7 +48,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -48,9 +60,11 @@ languages:
           - name: setSelectedData
             parameters:
               - name: _recipe
+                type: CraftRecipe
           - name: setDataList
             parameters:
               - name: _recipeList
+                type: ArrayList #<CraftRecipe>
           - name: setInternalDimensions
             parameters:
               - name: _x

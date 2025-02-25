@@ -29,11 +29,11 @@ languages:
           switchViewPanel:
             type: ISPanel
           views:
-            type: table
+            type: table[]
           sceneTiles:
             type: TileGeometryEditor_SceneTiles
           editMode:
-            type: table
+            type: table<string, TileGeometryEditor_EditMode>
           toolBar:
             type: ISPanel
           comboModID:
@@ -44,9 +44,12 @@ languages:
             type: ISButton
           optionsPanel:
             type: TileGeometryEditor_OptionsPanel
-          zeroVector: {}
-          polygonPoint2D: {}
-          uiPoint: {}
+          zeroVector:
+            type: Vector3f
+          polygonPoint2D:
+            type: Vector2f
+          uiPoint:
+            type: Vector2f
           modID:
             type: string
             nullable: true
@@ -58,14 +61,15 @@ languages:
           - name: setEditMode
             parameters:
               - name: mode
-                type: table
+                type: TileGeometryEditor_EditMode
           - name: setGeometryList
           - name: getValidGizmos
             return:
-              - type: table
+              - type: string[]
           - name: indexOf
             parameters:
               - name: tbl
+                type: table
               - name: element
                 type: string
             return:
@@ -74,9 +78,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: prerender
           - name: configGizmo
@@ -116,6 +124,7 @@ languages:
           - name: updateGeometryFile2
             parameters:
               - name: selectedTile
+                type: table
           - name: showUI
       TileGeometryEditor_SwitchView:
         extends: ISUI3DScene
@@ -186,7 +195,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onMouseDownOutside
             parameters:
               - name: x
@@ -211,14 +222,21 @@ languages:
           Type:
             defaultValue: '"TileGeometryEditor_Scene"'
         fields:
-          zeroVector: {}
+          zeroVector:
+            type: Vector3f
           selectedTileName:
+            type: string
             nullable: true
-          tempTranslate: {}
-          tempRotate: {}
-          tempExtentsMin: {}
-          tempExtentsMax: {}
+          tempTranslate:
+            type: Vector3f
+          tempRotate:
+            type: Vector3f
+          tempExtentsMin:
+            type: Vector3f
+          tempExtentsMax:
+            type: Vector3f
           mouseAction:
+            type: string
             nullable: true
           dragPointIndex:
             type: number
@@ -232,7 +250,8 @@ languages:
             type: string
           tools:
             type: table
-          selectedObjectName: {}
+          selectedObjectName:
+            type: string
           editPoints:
             type: boolean
         methods:
@@ -247,6 +266,7 @@ languages:
               - name: tileName
                 type: string
               - name: texture
+                type: Texture
           - name: renderSpriteGridTile
             parameters:
               - name: sprite
@@ -263,6 +283,7 @@ languages:
           - name: renderSurfaceOffsetAux
             parameters:
               - name: value
+                type: integer
               - name: r
                 type: number
               - name: g
@@ -408,13 +429,13 @@ languages:
               - type: number
           - name: getSelectedTileName
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSelectedTile
             return:
               - type: string
                 nullable: true
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: renderPixelGrid
             parameters:
@@ -423,10 +444,15 @@ languages:
           - name: renderPixelGrid2
             parameters:
               - name: sx
+                type: number
               - name: sy
+                type: number
               - name: sx2
+                type: number
               - name: sy2
+                type: number
               - name: pixelSize
+                type: number
           - name: renderNorthWall
           - name: renderWestWall
           - name: renderSquareBox
@@ -434,26 +460,43 @@ languages:
           - name: renderTextureOutline
             parameters:
               - name: sx
+                type: number
               - name: sy
+                type: number
               - name: sx2
+                type: number
               - name: sy2
+                type: number
               - name: pixelSize
+                type: number
               - name: texture
+                type: Texture
           - name: renderTextureMask
             parameters:
               - name: sx
+                type: number
               - name: sy
+                type: number
               - name: sx2
+                type: number
               - name: sy2
+                type: number
               - name: pixelSize
+                type: number
               - name: texture
+                type: Texture
           - name: renderSpriteGridTextureMask
             parameters:
               - name: sx
+                type: number
               - name: sy
+                type: number
               - name: sx2
+                type: number
               - name: sy2
+                type: number
               - name: pixelSize
+                type: number
               - name: tileName
                 type: string
           - name: onGizmoChanged
@@ -463,6 +506,7 @@ languages:
           - name: isPolygonObject
             parameters:
               - name: objectId
+                type: string
             return:
               - type: boolean
           - name: java0
@@ -520,6 +564,7 @@ languages:
           - name: java5
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -535,6 +580,7 @@ languages:
           - name: java6
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1
@@ -572,6 +618,7 @@ languages:
           - name: java9
             parameters:
               - name: func
+                type: string
               - name: arg0
                 type: unknown
               - name: arg1

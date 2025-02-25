@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISExtAnimListDebugUI"'
@@ -23,11 +24,14 @@ languages:
             type: ISButton
           playerNum:
             type: integer
-          character: {}
-          chr: {}
-          title: {}
+          character:
+            type: IsoPlayer
+          chr:
+            type: IsoPlayer
+          title:
+            type: string
           extList:
-            type: table
+            type: string[]
         methods:
           - name: createChildren
           - name: playAnim

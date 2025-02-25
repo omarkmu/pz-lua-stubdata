@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISRemoveItemTool"'
@@ -36,16 +37,19 @@ languages:
           zPos:
             type: number
           highlightSquares:
-            type: table
+            type: IsoObject[]
           marker:
+            type: WorldMarkers.GridSquareMarker
             nullable: true
           OnRenderTick:
             type: function
             nullable: true
           name:
             nullable: true
-          player: {}
-          titlebarbkg: {}
+          player:
+            type: IsoPlayer
+          titlebarbkg:
+            type: Texture
           numLines:
             type: number
           maxLines:
@@ -57,11 +61,14 @@ languages:
           - name: onItemType
             parameters:
               - name: buttons
+                type: ISRadioButtons
               - name: index
+                type: integer
           - name: destroy
           - name: onClick
             parameters:
               - name: button
+                type: ISButton
           - name: titleBarHeight
             return:
               - type: number
@@ -107,8 +114,12 @@ languages:
           - name: removeItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: removeItems
             parameters:
               - name: items
+                type: InventoryItem[]
               - name: player
+                type: integer

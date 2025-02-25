@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
         staticFields:
@@ -24,26 +25,37 @@ languages:
           cursor:
             type: ISSelectCursor
             nullable: true
-          selectX: {}
-          selectY: {}
-          selectZ: {}
+          selectX:
+            type: number
+          selectY:
+            type: number
+          selectZ:
+            type: number
           marker:
+            type: WorldMarkers.GridSquareMarker
             nullable: true
           arrow:
+            type: WorldMarkers.DirectionArrow
             nullable: true
           playerNum:
             type: integer
-          height: {}
-          chr: {}
-          title: {}
+          height:
+            type: integer
+          chr:
+            type: IsoPlayer
+          title:
+            type: string
         methods:
           - name: createChildren
           - name: populateList
           - name: drawTilesetList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onSelectNewSquare
@@ -58,6 +70,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: radius
+                type: number
           - name: removeMarker
           - name: close
       ISTilesPickerTilesList:
@@ -77,11 +90,13 @@ languages:
             defaultValue: '"ISTilesPickerTilesList"'
         fields:
           tileset:
+            type: string
             nullable: true
         methods:
           - name: render
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean

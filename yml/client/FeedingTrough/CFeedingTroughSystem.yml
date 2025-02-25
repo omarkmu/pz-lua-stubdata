@@ -13,13 +13,16 @@ languages:
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
-              - type: unknown
+              - type: boolean
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: CFeedingTroughGlobalObject
           - name: OnLuaObjectUpdated
             parameters:
               - name: luaObject
+                type: CFeedingTroughGlobalObject

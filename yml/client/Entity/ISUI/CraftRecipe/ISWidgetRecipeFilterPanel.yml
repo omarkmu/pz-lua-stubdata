@@ -15,23 +15,29 @@ languages:
               - name: height
                 type: number
               - name: callbackTarget
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetRecipeFilterPanel"'
         fields:
           entryBox:
-            nullable: true
+            type: ISTextEntryBox
           filterTypeCombo:
+            type: ISComboBox
             nullable: true
           searchHackLabel:
-            nullable: true
+            type: ISLabel
           buttonGrid:
-            nullable: true
+            type: ISButton
           buttonList:
-            nullable: true
+            type: ISButton
           tickbox:
+            type: ISTickBox
             nullable: true
-          callbackTarget: {}
+          callbackTarget:
+            type: unknown
+            nullable: true
           paddingTop:
             type: number
           paddingBottom:
@@ -65,7 +71,9 @@ languages:
           - name: OnShowAllClick
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: onButtonClick
             parameters:
               - name: _button
@@ -73,10 +81,15 @@ languages:
           - name: OnClickFilterType
             parameters:
               - name: box
+                type: ISTextEntryBox
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -85,3 +98,4 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

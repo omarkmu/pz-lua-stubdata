@@ -15,23 +15,40 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: component
+                type: Component
               - name: craftProcessor
+                type: Component
+                nullable: true
               - name: _styleComboBox
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWidgetRecipeSelect"'
         fields:
           comboBox:
+            type: ISComboBox
             nullable: true
-          originalComboBoxWidth: {}
-          originalComboBoxHeight: {}
-          player: {}
-          entity: {}
-          component: {}
-          craftProcessor: {}
-          styleComboBox: {}
+          originalComboBoxWidth:
+            type: number
+          originalComboBoxHeight:
+            type: number
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          component:
+            type: Component
+          craftProcessor:
+            type: Component
+            nullable: true
+          styleComboBox:
+            type: string
+            nullable: true
           margin:
             type: number
           autoFillContents:
@@ -48,7 +65,9 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
               - name: _preferredHeight
+                type: number
           - name: onResize
           - name: prerender
           - name: render
@@ -56,7 +75,10 @@ languages:
           - name: comboChange
             parameters:
               - name: _combo
+                type: ISComboBox
               - name: _arg1
                 type: unknown
+                nullable: true
               - name: _arg2
                 type: unknown
+                nullable: true

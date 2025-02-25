@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISEntityScriptsPanel"'
@@ -33,10 +34,12 @@ languages:
             type: ISButton
           scriptPanel:
             type: ISScriptViewPanel
-          selectedEntityItem: {}
+          selectedEntityItem:
+            type: table
           selectedCanBuild:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:
@@ -53,9 +56,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -73,9 +79,11 @@ languages:
           - name: onEntityListSelected
             parameters:
               - name: _item
+                type: table
           - name: prerender
           - name: render
         staticMethods:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

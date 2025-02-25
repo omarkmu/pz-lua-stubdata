@@ -7,6 +7,8 @@ languages:
           - name: ChunkReader
             parameters:
               - name: _chunkTileW
+                type: number
+                nullable: true
             return:
               - type: ChunkReader
       ChunkReader:
@@ -19,14 +21,16 @@ languages:
           - name: ResetChunkReader
             parameters:
               - name: _start_point
+                type: Point2D
               - name: _move_dir
+                type: Point2D
           - name: GetNextChunk
             parameters:
               - name: _curTick
+                type: number
             return:
-              - type: boolean
-                nullable: true
+              - type: IsoChunk | false
               - type: Point2D
                 nullable: true
-              - type: unknown
+              - type: table
                 nullable: true

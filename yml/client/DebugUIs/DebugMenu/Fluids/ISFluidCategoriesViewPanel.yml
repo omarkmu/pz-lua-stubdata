@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFluidCategoriesViewPanel"'
@@ -27,8 +28,11 @@ languages:
             type: ISScrollingListBox
           fluidList:
             type: ISScrollingListBox
-          selectedCategory: {}
-          player: {}
+          selectedCategory:
+            type: FluidCategory
+            nullable: true
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:
@@ -45,9 +49,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -65,6 +72,7 @@ languages:
           - name: onCategorySelected
             parameters:
               - name: _item
+                type: table
           - name: populateFluids
           - name: drawFluidListItem
             parameters:
@@ -80,3 +88,4 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

@@ -10,11 +10,14 @@ languages:
           - name: doPaintMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -28,10 +31,13 @@ languages:
           - name: addSignOption
             parameters:
               - name: subMenuPaint
+                type: ISContextMenu
               - name: name
                 type: string
               - name: wall
+                type: IsoObject
               - name: painting
+                type: string
               - name: r
                 type: number
               - name: g
@@ -41,9 +47,13 @@ languages:
           - name: onPaintSign
             parameters:
               - name: wall
+                type: IsoObject
               - name: player
+                type: integer
               - name: painting
+                type: string
               - name: sign
+                type: number
               - name: r
                 type: number
               - name: g
@@ -55,23 +65,29 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thumpable
                 type: IsoThumpable
               - name: painting
+                type: string
           - name: onPaper
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thumpable
                 type: IsoThumpable
               - name: papering
+                type: string
               - name: wallType
+                type: string
           - name: onPlaster
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thumpable
                 type: IsoThumpable
               - name: square

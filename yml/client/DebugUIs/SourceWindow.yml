@@ -19,9 +19,11 @@ languages:
         staticFields:
           Type:
             defaultValue: '"SourceWindow"'
-          map: {}
+          map:
+            type: table<string, SourceWindow>
         fields:
-          title: {}
+          title:
+            type: string
           sourceView:
             type: ISScrollingListBox
           reloadBtn:
@@ -34,10 +36,12 @@ languages:
           - name: onMouseDoubleClickBreakpointToggle
             parameters:
               - name: item
+                type: string
           - name: initialise
           - name: onSourceMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: reloadFile
@@ -49,6 +53,8 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
             return:
               - type: number

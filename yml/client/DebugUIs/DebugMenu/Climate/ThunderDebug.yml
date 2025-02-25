@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ThunderDebug"'
@@ -27,15 +28,17 @@ languages:
             defaultValue: "false"
         fields:
           labels:
-            type: table
-          thunderStorm: {}
+            type: ISLabel[]
+          thunderStorm:
+            type: ThunderStorm
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           richtext:
@@ -57,9 +60,9 @@ languages:
           year:
             type: number
           poi:
-            type: table
+            type: table[]
           strikes:
-            type: table
+            type: table[]
         methods:
           - name: initialise
           - name: createChildren
@@ -83,6 +86,7 @@ languages:
           - name: updateValues
             parameters:
               - name: _mgr
+                type: ClimateManager
           - name: addThunderEvent
             parameters:
               - name: _x
@@ -90,8 +94,11 @@ languages:
               - name: _y
                 type: number
               - name: strike
+                type: boolean
               - name: light
+                type: boolean
               - name: rumble
+                type: boolean
           - name: onResize
           - name: update
           - name: prerender
@@ -107,6 +114,7 @@ languages:
           - name: OnClimateTickDebug
             parameters:
               - name: mgr
+                type: ClimateManager
           - name: OnThunderEvent
             parameters:
               - name: x
@@ -114,5 +122,8 @@ languages:
               - name: y
                 type: number
               - name: strike
+                type: boolean
               - name: light
+                type: boolean
               - name: rumble
+                type: boolean

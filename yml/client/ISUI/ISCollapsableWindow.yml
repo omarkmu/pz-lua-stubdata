@@ -33,9 +33,12 @@ languages:
             type: ISButton
           collapseButton:
             type: ISButton
-          infoText: {}
+          infoText:
+            type: string
+            nullable: true
           infoRichText:
             type: ISModalRichText
+            nullable: true
           pin:
             type: boolean
           collapseCounter:
@@ -44,26 +47,36 @@ languages:
             type: boolean
           resizable:
             type: boolean
-          background: {}
+          background:
+            type: boolean
           drawFrame:
             type: boolean
           widgetTextureColor:
-            type: table
+            type: umbrella.RGBA
           titlebarbkg:
             type: Texture
-          statusbarbkg: {}
-          resizeimage: {}
-          invbasic: {}
-          closeButtonTexture: {}
-          collapseButtonTexture: {}
-          pinButtonTexture: {}
-          infoBtn: {}
+          statusbarbkg:
+            type: Texture
+          resizeimage:
+            type: Texture
+          invbasic:
+            type: Texture
+          closeButtonTexture:
+            type: Texture
+          collapseButtonTexture:
+            type: Texture
+          pinButtonTexture:
+            type: Texture
+          infoBtn:
+            type: Texture
           viewList:
-            type: table
+            type: ISUIElement[]
           clearStentil:
             type: boolean
-          titleFont: {}
-          titleFontHgt: {}
+          titleFont:
+            type: UIFont
+          titleFontHgt:
+            type: number
         methods:
           - name: initialise
           - name: setTitle
@@ -78,6 +91,7 @@ languages:
           - name: setInfo
             parameters:
               - name: text
+                nullable: true
           - name: onInfo
           - name: close
           - name: collapse
@@ -118,13 +132,13 @@ languages:
           - name: addView
             parameters:
               - name: view
-                type: table
+                type: ISUIElement
           - name: getViews
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: titleBarHeight
             return:
-              - type: unknown
+              - type: number
           - name: resizeWidgetHeight
             return:
               - type: number
@@ -137,15 +151,18 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: setDrawFrame
             parameters:
               - name: visible
+                type: boolean
         staticMethods:
           - name: TitleBarHeight
             return:
-              - type: unknown
+              - type: number

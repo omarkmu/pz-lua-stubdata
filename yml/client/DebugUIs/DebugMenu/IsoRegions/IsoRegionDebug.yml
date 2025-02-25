@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"IsoRegionDebug"'
@@ -50,11 +51,12 @@ languages:
             type: ISButton
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           richtext:
@@ -87,6 +89,7 @@ languages:
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: convertCoords
             parameters:
               - name: _x

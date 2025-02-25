@@ -15,25 +15,37 @@ languages:
               - name: height
                 type: number
               - name: _styleColumn
+                type: string
+                nullable: true
               - name: _styleRow
+                type: string
+                nullable: true
               - name: _styleCell
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTableLayout"'
         fields:
           columns:
-            type: table
+            type: ISTableLayoutColumn[]
           rows:
-            type: table
+            type: ISTableLayoutRow[]
           cells:
-            type: table
+            type: ISTableLayoutCell[]
           drawGrid:
             type: boolean
           gridColor:
-            type: table
-          styleColumn: {}
-          styleRow: {}
-          styleCell: {}
+            type: umbrella.RGBA
+          styleColumn:
+            type: string
+            nullable: true
+          styleRow:
+            type: string
+            nullable: true
+          styleCell:
+            type: string
+            nullable: true
           isAutoFill:
             type: boolean
           isAutoFillX:
@@ -46,59 +58,79 @@ languages:
           - name: row
             parameters:
               - name: _index
+                type: integer
             return:
-              - type: unknown
+              - type: ISTableLayoutRow
+                nullable: true
           - name: rowCount
             return:
               - type: number
           - name: column
             parameters:
               - name: _index
+                type: integer
             return:
-              - type: unknown
+              - type: ISTableLayoutColumn
+                nullable: true
           - name: columnCount
             return:
               - type: number
           - name: cell
             parameters:
               - name: _column
+                type: integer
               - name: _row
+                type: integer
             return:
-              - type: unknown
+              - type: ISTableLayoutCell
+                nullable: true
           - name: cellGetFirst
             parameters:
               - name: _column
+                type: integer
               - name: _row
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: cellCount
             return:
-              - type: number
+              - type: integer
           - name: cellFor
             parameters:
               - name: _element
+                type: ISUIElement
             return:
-              - type: unknown
+              - type: ISTableLayoutCell
                 nullable: true
           - name: isValidPos
             parameters:
               - name: _column
+                type: integer
               - name: _row
+                type: integer
             return:
               - type: boolean
           - name: setElement
             parameters:
               - name: _column
+                type: integer
               - name: _row
+                type: integer
               - name: _element
+                type: ISUIElement
           - name: addChild
+            deprecated: true
             parameters:
               - name: _element
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -106,32 +138,44 @@ languages:
           - name: createTable
             parameters:
               - name: columns
+                type: integer
               - name: rows
+                type: integer
           - name: addColumnFill
             parameters:
               - name: _styleColumn
-            return:
-              - type: unknown
+                type: string
                 nullable: true
+            return:
+              - type: ISTableLayoutColumn
           - name: addColumn
             parameters:
               - name: _styleColumn
-              - name: _autoFill
-            return:
-              - type: unknown
+                type: string
                 nullable: true
+              - name: _autoFill
+                type: boolean
+                nullable: true
+            return:
+              - type: ISTableLayoutColumn
           - name: addRowFill
             parameters:
               - name: _styleRow
+                type: string
+                nullable: true
             return:
-              - type: unknown
+              - type: ISTableLayoutRow
                 nullable: true
           - name: addRow
             parameters:
               - name: _styleRow
+                type: string
+                nullable: true
               - name: _autoFill
+                type: boolean
+                nullable: true
             return:
-              - type: unknown
+              - type: ISTableLayoutRow
                 nullable: true
           - name: ensureCells
           - name: clearTable
@@ -140,14 +184,17 @@ languages:
         constructors:
           - parameters:
               - name: _parentTable
+                type: ISTableLayout
               - name: _columnIndex
+                type: integer
               - name: _isAutoFill
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISTableLayoutColumn"'
         fields:
-          columnIndex: {}
+          columnIndex:
+            type: integer
           isAutoFill:
             type: boolean
           width:
@@ -159,33 +206,40 @@ languages:
           temp:
             type: number
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           visible:
             type: boolean
-          parentTable: {}
+          parentTable:
+            type: ISTableLayout
         methods:
           - name: index
             return:
-              - type: unknown
+              - type: integer
           - name: setVisible
             parameters:
               - name: _b
+                type: boolean
               - name: _silent
+                type: boolean
+                nullable: true
       ISTableLayoutRow:
         extends: ISBaseObject
         constructors:
           - parameters:
               - name: _parentTable
+                type: ISTableLayout
               - name: _rowIndex
+                type: integer
               - name: _isAutoFill
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISTableLayoutRow"'
         fields:
-          rowIndex: {}
+          rowIndex:
+            type: integer
           isAutoFill:
             type: boolean
           height:
@@ -197,34 +251,44 @@ languages:
           temp:
             type: number
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           visible:
             type: boolean
-          parentTable: {}
+          parentTable:
+            type: ISTableLayout
         methods:
           - name: index
             return:
-              - type: unknown
+              - type: integer
           - name: setVisible
             parameters:
               - name: _b
+                type: boolean
               - name: _silent
+                type: boolean
+                nullable: true
       ISTableLayoutCell:
         extends: ISBaseObject
         constructors:
           - parameters:
               - name: _columnIndex
+                type: integer
               - name: _rowIndex
+                type: integer
               - name: _parent
+                type: ISTableLayout
         staticFields:
           Type:
             defaultValue: '"ISTableLayoutCell"'
         fields:
-          parent: {}
-          columnIndex: {}
-          rowIndex: {}
+          parent:
+            type: ISTableLayout
+          columnIndex:
+            type: integer
+          rowIndex:
+            type: integer
           x:
             type: number
           y:
@@ -236,12 +300,13 @@ languages:
           drawBackground:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           drawBorder:
             type: boolean
           borderColor:
-            type: table
+            type: umbrella.RGBA
           element:
+            type: ISUIElement
             nullable: true
           minimumWidth:
             type: number
@@ -255,16 +320,23 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: setVisible
             parameters:
               - name: _b
+                type: boolean
           - name: setX
             parameters:
               - name: _x
+                type: number
           - name: setY
             parameters:
               - name: _y
+                type: number
           - name: getAbsoluteX
             return:
               - type: number
@@ -286,3 +358,4 @@ languages:
           - name: addChild
             parameters:
               - name: _child
+                type: ISUIElement

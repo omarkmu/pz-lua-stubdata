@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ClimateDebug"'
@@ -39,33 +40,36 @@ languages:
           historyD1:
             type: ValuePlotter
           charts:
-            type: table
+            type: ValuePlotter[]
           chartLabelsLeft:
-            type: table
+            type: ISLabel[]
           chartLabelsLeftTxt:
-            type: table
+            type: string[]
           chartLabelsRight:
-            type: table
+            type: ISLabel[]
           chartLabelsRightTxt:
-            type: table
+            type: string[]
           varInfo:
-            type: table
+            type: umbrella.ClimateDebug.VarInfo[]
           colTable:
-            type: table
+            type: umbrella.RGBA[]
           hourStamp:
             type: number
           dayStamp:
             type: number
           monthStamp:
             type: number
-          yearStamp: {}
+          yearStamp:
+            type: number
+            nullable: true
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
+            type: umbrella.RGBA
           title:
             type: string
           richtext:
@@ -97,18 +101,25 @@ languages:
               - name: _name
                 type: string
               - name: _desc
+                type: string
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _func
+                type: "fun(mgr: ErosionSeason): number"
           - name: updateValues
             parameters:
               - name: _mgr
+                type: ClimateManager
           - name: onButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonToggle
             parameters:
               - name: _btn
+                type: ISButton
           - name: onResize
           - name: update
           - name: prerender
@@ -124,3 +135,4 @@ languages:
           - name: OnClimateTickDebug
             parameters:
               - name: mgr
+                type: ClimateManager

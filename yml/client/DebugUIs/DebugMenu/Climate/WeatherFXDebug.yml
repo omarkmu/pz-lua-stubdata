@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"WeatherFXDebug"'
@@ -26,6 +27,7 @@ languages:
           eventAdded:
             defaultValue: "false"
           fx:
+            type: IsoWeatherFX
             nullable: true
         fields:
           labelWindIntensity:
@@ -112,7 +114,8 @@ languages:
             type: ISButton
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -133,79 +136,113 @@ languages:
           - name: onButtonGodMode
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonDebugBounds
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonClimate
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonDoStorm
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonDoTropical
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonDoBlizzard
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonNightVision
             parameters:
               - name: _btn
+                type: ISButton
           - name: onButtonLaunchFlare
             parameters:
               - name: _btn
+                type: ISButton
           - name: onLightColorChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onAmbientChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onViewDistanceChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onDesaturationChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onLightIntensityChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onNightStrengthChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onDayLightStrengthChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onWindIntensityChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onWindAngleChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onPrecipitationChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onFogIntensityChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: onCloudIntensityChange
             parameters:
               - name: _slider
+                type: ISVolumeControl
               - name: _value
+                type: number
           - name: tickBoxIsSnowChange
             parameters:
               - name: _optionIndex
+                type: integer
               - name: _value
+                type: boolean
           - name: onResize
           - name: update
           - name: prerender

@@ -34,14 +34,15 @@ languages:
           btnClose:
             type: ISButton
           setFunctionPlayer:
-            type: table
+            type: table<integer, function>
           setFunctionZombie:
-            type: table
+            type: table<integer, function>
           setFunctionAnimal:
-            type: table
+            type: table<integer, function>
           setFunctionDeadBody:
-            type: table
-          player: {}
+            type: table<integer, function>
+          player:
+            type: IsoPlayer
           tcks:
             type: number
         methods:
@@ -53,20 +54,27 @@ languages:
           - name: addOption
             parameters:
               - name: tickBox
+                type: ISTickBox
               - name: text
                 type: string
               - name: selected
+                type: boolean
               - name: setFunction
                 type: function
               - name: tickSetFunction
+                type: table
           - name: addTickOptions
             parameters:
               - name: tickBox
+                type: ISTickBox
               - name: tickSetFunction
+                type: table
           - name: onTicked
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: render
           - name: prerender
           - name: apply

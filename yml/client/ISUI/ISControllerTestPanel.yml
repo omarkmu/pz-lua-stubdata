@@ -20,7 +20,9 @@ languages:
         fields:
           selectedController:
             nullable: true
-          axisLabelWid: {}
+          axisLabelWid:
+            type: number
+            nullable: true
           buttonX:
             type: number
           label:
@@ -29,7 +31,8 @@ languages:
             type: ISComboBox
           axisY:
             type: table
-          smallFontHgt: {}
+          smallFontHgt:
+            type: number
         methods:
           - name: onControllerSelected
           - name: joypadSensitivityM
@@ -46,6 +49,10 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number

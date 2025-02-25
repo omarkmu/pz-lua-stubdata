@@ -15,24 +15,27 @@ languages:
               - name: height
                 type: number
               - name: doStencil
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISSearchMode"'
         fields:
           allOptions:
-            type: table
+            type: table[]
           floatOptions:
-            type: table
+            type: table[]
           boolOptions:
-            type: table
+            type: table[]
           buttons:
-            type: table
+            type: table<string, table>
         methods:
           - name: initialise
           - name: createChildren
           - name: addButton
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -42,14 +45,19 @@ languages:
               - name: _h
                 type: number
               - name: _margin
+                type: number
               - name: _command
+                type: number
               - name: _marginBot
+                type: number
+                nullable: true
             return:
               - type: number
-              - type: unknown
+              - type: ISButton
           - name: addBoolOption
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -57,12 +65,14 @@ languages:
               - name: _w
                 type: number
               - name: _tag
+                type: string
             return:
               - type: number
               - type: ISTickBox
           - name: addFloatOption
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -70,12 +80,22 @@ languages:
               - name: _w
                 type: number
               - name: _java
+                type: unknown
               - name: _min
+                type: number
               - name: _max
+                type: number
               - name: _stepsize
+                type: number
               - name: _get
+                type: string
+                nullable: true
               - name: _set
+                type: string
+                nullable: true
               - name: _reqIdx
+                type: boolean
+                nullable: true
             return:
               - type: number
               - type: ISSliderPanel
@@ -87,23 +107,31 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: onTickedValue
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
               - name: _arg2
                 type: unknown
               - name: _tickbox
+                type: ISTickBox
           - name: update

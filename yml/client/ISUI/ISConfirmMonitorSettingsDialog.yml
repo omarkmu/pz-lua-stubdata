@@ -15,15 +15,20 @@ languages:
               - name: height
                 type: number
               - name: callback
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISConfirmMonitorSettings"'
         fields:
-          startTime: {}
+          startTime:
+            type: number
         methods:
           - name: initialise
           - name: update

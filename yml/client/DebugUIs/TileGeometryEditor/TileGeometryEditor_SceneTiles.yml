@@ -12,18 +12,24 @@ languages:
           Type:
             defaultValue: '"TileGeometryEditor_SceneTiles"'
         fields:
-          tempTranslate: {}
-          tempRotate: {}
-          tempExtentsMin: {}
-          tempExtentsMax: {}
-          vector3f_1: {}
+          tempTranslate:
+            type: Vector3f
+          tempRotate:
+            type: Vector3f
+          tempExtentsMin:
+            type: Vector3f
+          tempExtentsMax:
+            type: Vector3f
+          vector3f_1:
+            type: Vector3f
           editor:
             type: TileGeometryEditor
           scene:
             type: TileGeometryEditor_Scene
-          javaObject: {}
+          javaObject:
+            type: UI3DScene
           tiles:
-            type: table
+            type: table<integer, table>
         methods:
           - name: index
             parameters:
@@ -54,7 +60,7 @@ languages:
               - name: dy
                 type: number
             return:
-              - type: unknown
+              - type: table
           - name: render
           - name: renderTile
             parameters:
@@ -67,17 +73,29 @@ languages:
           - name: renderBox3D
             parameters:
               - name: tx
+                type: number
               - name: ty
+                type: number
               - name: tz
+                type: number
               - name: rx
+                type: number
               - name: ry
+                type: number
               - name: rz
+                type: number
               - name: minX
+                type: number
               - name: minY
+                type: number
               - name: minZ
+                type: number
               - name: maxX
+                type: number
               - name: maxY
+                type: number
               - name: maxZ
+                type: number
               - name: r
                 type: number
               - name: g
@@ -91,4 +109,4 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: Vector3f

@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAnimDebugMonitor"'
@@ -23,18 +24,25 @@ languages:
             nullable: true
         fields:
           cGreen:
-            type: table
+            type: umbrella.RGBA
           cRed:
-            type: table
-          buttonToggleMonitor: {}
-          buttonLayers: {}
-          buttonVariables: {}
-          buttonActiveNodes: {}
-          buttonAnimTracks: {}
-          buttonStamps: {}
+            type: umbrella.RGBA
+          buttonToggleMonitor:
+            type: ISButton
+          buttonLayers:
+            type: ISButton
+          buttonVariables:
+            type: ISButton
+          buttonActiveNodes:
+            type: ISButton
+          buttonAnimTracks:
+            type: ISButton
+          buttonStamps:
+            type: ISButton
           labelVars:
             type: ISLabel
-          addVarComboType: {}
+          addVarComboType:
+            type: ISComboBox
           addVarKeyLabel:
             type: ISLabel
           addVarKey:
@@ -43,15 +51,20 @@ languages:
             type: ISLabel
           addVarValue:
             type: ISTextEntryBox
-          addVarAddButton: {}
-          comboVars: {}
+          addVarAddButton:
+            type: ISButton
+          comboVars:
+            type: ISComboBox
           entryBoxValue:
             type: ISTextEntryBox
-          buttonClearVar: {}
-          buttonSetVar: {}
+          buttonClearVar:
+            type: ISButton
+          buttonSetVar:
+            type: ISButton
           labelFloat:
             type: ISLabel
-          comboFloats: {}
+          comboFloats:
+            type: ISComboBox
           labelFloatInfo:
             type: ISLabel
           floatPlotter:
@@ -59,7 +72,8 @@ languages:
           richtext:
             type: ISRichTextPanel
             nullable: true
-          clearText: {}
+          clearText:
+            type: string
           init:
             type: boolean
           selectedVar:
@@ -67,17 +81,22 @@ languages:
           editEnabled:
             type: boolean
           monitor:
+            type: AnimatorDebugMonitor
             nullable: true
           oldNodesVal:
-            type: table
+            type: "[boolean]"
+            nullable: true
           oldTracksVal:
-            type: table
-          player: {}
+            type: "[boolean]"
+            nullable: true
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           greyCol:
-            type: table
-          title: {}
+            type: umbrella.RGBA
+          title:
+            type: string
           currentTile:
             nullable: true
           overrideBPrompt:
@@ -104,6 +123,7 @@ languages:
           - name: onCombo
             parameters:
               - name: _combo
+                type: ISComboBox
           - name: onResize
           - name: update
           - name: colorButtons

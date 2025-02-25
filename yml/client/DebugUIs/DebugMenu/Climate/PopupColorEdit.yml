@@ -24,15 +24,15 @@ languages:
             nullable: true
         fields:
           floats:
-            type: table
+            type: table<string, table>
           optionControls:
             type: table
           firstRun:
             type: boolean
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           panelTitle:
@@ -43,7 +43,9 @@ languages:
           - name: addFloatOption
             parameters:
               - name: _id
+                type: string
               - name: _float
+                type: number
               - name: _x
                 type: number
               - name: _y
@@ -55,6 +57,7 @@ languages:
           - name: addColorOption
             parameters:
               - name: _id
+                type: string
               - name: _color
               - name: _x
                 type: number
@@ -67,6 +70,7 @@ languages:
           - name: addSlider
             parameters:
               - name: _id
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -86,11 +90,15 @@ languages:
           - name: onFloatSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: prerender
           - name: update
           - name: close
@@ -98,6 +106,7 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _colorInfo
+                type: ClimateColorInfo
               - name: _parent
                 type: ClimateColorsDebug
               - name: _ambient

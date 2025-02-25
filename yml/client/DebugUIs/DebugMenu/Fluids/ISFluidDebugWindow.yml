@@ -15,20 +15,24 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFluidDebugWindow"'
           coords:
-            type: boolean | table
+            type: number[] | false
           instance:
             type: ISFluidDebugWindow
             nullable: true
         fields:
-          th: {}
+          th:
+            type: number
           rh:
             type: number
-          width: {}
-          height: {}
+          width:
+            type: number
+          height:
+            type: number
           heightMod:
             type: number
           panel:
@@ -41,7 +45,8 @@ languages:
             type: ISFluidItemsViewPanel
           fluidMixerScreen:
             type: ISFluidMixerViewPanel
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -60,9 +65,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: prerender
@@ -72,6 +80,7 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: ISFluidDebugWindow
                 nullable: true

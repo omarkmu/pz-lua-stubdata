@@ -15,8 +15,11 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: entity
+                type: GameEntity
               - name: entityConfig
+                type: XuiSkin.EntityUiStyle
         staticFields:
           Type:
             defaultValue: '"ISComponentsListPanel"'
@@ -24,12 +27,15 @@ languages:
           container:
             type: ISPanel
           panels:
-            type: boolean | table
+            type: umbrella.ISEntityUI.ComponentPanelInfo[]
           scrollBarWidth:
             type: number
-          player: {}
-          entity: {}
-          entityConfig: {}
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+          entityConfig:
+            type: XuiSkin.EntityUiStyle
           maximumWidth:
             type: number
           maximumHeight:
@@ -44,7 +50,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render

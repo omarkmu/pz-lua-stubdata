@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFluidItemsViewPanel"'
@@ -29,8 +30,10 @@ languages:
             type: ISButton
           itemScriptPanel:
             type: ISScriptViewPanel
-          selectedItem: {}
-          player: {}
+          selectedItem:
+            type: table
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           searchText:
@@ -47,9 +50,12 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: onButtonClick
@@ -59,6 +65,7 @@ languages:
           - name: addItem
             parameters:
               - name: item
+                type: InventoryItem
           - name: populate
           - name: drawListItem
             parameters:
@@ -70,6 +77,7 @@ languages:
           - name: onListSelected
             parameters:
               - name: _item
+                type: number
           - name: prerender
           - name: render
           - name: close
@@ -77,3 +85,4 @@ languages:
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

@@ -15,34 +15,46 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: logic
+                type: BaseCraftingLogic
               - name: outputScript
+                type: OutputScript
         staticFields:
           Type:
             defaultValue: '"ISWidgetOutput"'
         fields:
-          amountWidth: {}
-          amountWidth2: {}
+          amountWidth:
+            type: number
+          amountWidth2:
+            type: number
           textColor:
-            type: table
+            type: umbrella.RGBA
           colPartial:
-            type: table
+            type: umbrella.RGBA
           colBad:
-            type: table
+            type: umbrella.RGBA
           primary:
-            type: table
+            type: umbrella.ISWidgetInput.ScriptValues
           iconCreate:
-            nullable: true
+            type: ISImage
           secondary:
-            type: table
+            type: umbrella.ISWidgetInput.ScriptValues
+            nullable: true
           arrow:
+            type: ISImage
             nullable: true
           editedLabels:
             type: boolean
-          player: {}
-          logic: {}
-          outputScript: {}
-          createScript: {}
+          player:
+            type: IsoPlayer
+          logic:
+            type: BaseCraftingLogic
+          outputScript:
+            type: OutputScript
+          createScript:
+            type: OutputScript
+            nullable: true
           iconSize:
             type: number
           iconMargin:
@@ -57,10 +69,14 @@ languages:
             type: number
           interactiveMode:
             type: boolean
-          textureReturned: {}
-          textureConsumed: {}
-          textureTool: {}
-          textureCreate: {}
+          textureReturned:
+            type: Texture
+          textureConsumed:
+            type: Texture
+          textureTool:
+            type: Texture
+          textureCreate:
+            type: Texture
           margin:
             type: number
           doToolTip:
@@ -79,7 +95,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onResize
           - name: prerender
           - name: render
@@ -87,10 +107,11 @@ languages:
           - name: createScriptValues
             parameters:
               - name: _script
+                type: OutputScript
             return:
-              - type: table
+              - type: umbrella.ISWidgetInput.ScriptValues
           - name: updateScriptValues
             parameters:
               - name: _table
-                type: table
+                type: umbrella.ISWidgetInput.ScriptValues
           - name: updateValues

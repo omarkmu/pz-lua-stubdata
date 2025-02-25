@@ -15,20 +15,24 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISScriptsDebugWindow"'
           coords:
-            type: boolean | table
+            type: number[] | false
           instance:
             type: ISScriptsDebugWindow
             nullable: true
         fields:
-          th: {}
+          th:
+            type: number
           rh:
             type: number
-          width: {}
-          height: {}
+          width:
+            type: number
+          height:
+            type: number
           heightMod:
             type: number
           listLabel:
@@ -53,7 +57,8 @@ languages:
             type: ISScriptViewPanel
           selectedScriptItem:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -72,14 +77,18 @@ languages:
           - name: incY
             parameters:
               - name: _y
+                type: number
               - name: _obj
-                type: IsoObject
+                type: ISUIElement
               - name: _margin
+                type: number
+                nullable: true
             return:
               - type: number
           - name: comboChange
             parameters:
               - name: _combo
+                type: ISComboBox
               - name: _arg1
                 type: unknown
               - name: _arg2
@@ -99,6 +108,7 @@ languages:
           - name: onScriptListSelected
             parameters:
               - name: _item
+                type: table
           - name: prerender
           - name: render
           - name: close
@@ -106,9 +116,11 @@ languages:
           - name: OnOpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: ISScriptsDebugWindow
                 nullable: true
           - name: onTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox

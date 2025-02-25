@@ -15,20 +15,24 @@ languages:
               - name: h
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"BrushToolTilePickerList"'
         fields:
           imageName:
+            type: string
             nullable: true
-          character: {}
+          character:
+            type: IsoPlayer
           posToTileNameTable:
-            type: table
+            type: string[][]
         methods:
           - name: render
           - name: onMouseWheel
             parameters:
               - name: del
+                type: number
             return:
               - type: boolean
           - name: onMouseDown
@@ -50,6 +54,7 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"BrushToolChooseTileUI"'
@@ -65,15 +70,19 @@ languages:
             type: BrushToolTilePickerList
           title:
             type: string
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: onTextChange
           - name: doDrawImageListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: populateList
@@ -90,7 +99,9 @@ languages:
           - name: onSelectImage
             parameters:
               - name: _
+                type: nil
               - name: item
+                type: string
           - name: OnKeyPressed
             parameters:
               - name: key

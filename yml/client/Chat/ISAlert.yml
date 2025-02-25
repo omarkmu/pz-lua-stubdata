@@ -36,5 +36,7 @@ languages:
           - name: getAlert
             parameters:
               - name: message
+                type: ChatMessage
               - name: tabID
+                type: integer
           - name: setupAlerts

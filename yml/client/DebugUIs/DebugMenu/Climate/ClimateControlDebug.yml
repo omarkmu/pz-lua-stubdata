@@ -20,10 +20,11 @@ languages:
           Type:
             defaultValue: '"ClimateControlDebug"'
           instance:
+            type: ClimateControlDebug
             nullable: true
         methods:
           - name: initialise
         staticMethods:
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: ClimateControlDebug

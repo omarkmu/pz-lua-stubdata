@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"PlayerClimateDebug"'
@@ -26,33 +27,36 @@ languages:
           eventsAdded:
             defaultValue: "false"
           fx:
+            type: IsoWeatherFX
             nullable: true
           cm:
+            type: ClimateManager
             nullable: true
         fields:
           panel:
             type: ISPanel
           labels:
-            type: table
+            type: table<string, table>
           tempColor:
-            type: table
+            type: umbrella.RGBA
           colWhite:
-            type: table
+            type: umbrella.RGBA
           clrRed:
-            type: table
+            type: umbrella.RGBA
           clrOrangeRed:
-            type: table
+            type: umbrella.RGBA
           clrGold:
-            type: table
+            type: umbrella.RGBA
           clrGreenYellow:
-            type: table
+            type: umbrella.RGBA
           clrGreen:
-            type: table
+            type: umbrella.RGBA
           vars:
-            type: table
+            type: table[]
           currentTile:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
@@ -74,18 +78,29 @@ languages:
           - name: registerVariable
             parameters:
               - name: _variable
+                type: string
               - name: _title
                 type: string
               - name: _isValue
                 type: boolean
               - name: _javaInstance
+                type: unknown
+                nullable: true
               - name: _defaultVal
+                type: unknown
+                nullable: true
               - name: _color
+                type: umbrella.RGBA
+                nullable: true
               - name: _postfix
+                type: string
+                nullable: true
           - name: addLabel
             parameters:
               - name: _curY
+                type: number
               - name: _labelID
+                type: string
               - name: _title
                 type: string
             return:
@@ -93,13 +108,22 @@ languages:
           - name: addLabelValue
             parameters:
               - name: _curY
+                type: number
               - name: _type
+                type: string
               - name: _labelID
+                type: string
               - name: _title
                 type: string
               - name: _defaultVal
+                type: unknown
+                nullable: true
               - name: _col
+                type: umbrella.RGBA
+                nullable: true
               - name: _extension
+                type: string
+                nullable: true
             return:
               - type: number
               - type: table
@@ -108,14 +132,14 @@ languages:
             parameters:
               - name: _labelID
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: getValueLabel
             parameters:
               - name: _labelID
                 type: string
             return:
-              - type: unknown
+              - type: ISLabel
                 nullable: true
           - name: onResize
           - name: update
