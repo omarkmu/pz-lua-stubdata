@@ -42,6 +42,8 @@ languages:
             type: ISButton
           buttonResume:
             type: ISButton
+          comboFont:
+            type: ISComboBox
         methods:
           - name: onMapClick
           - name: onOptionsClick
@@ -56,5 +58,6 @@ languages:
           - name: onButtonStepInto
           - name: onButtonStepOver
           - name: onButtonResume
+          - name: onComboFont
           - name: prerender
           - name: createChildren

@@ -66,6 +66,8 @@ languages:
             parameters:
               - name: obj
                 type: unknown
+          - name: prerender
+          - name: checkFontSize
         staticMethods:
           - name: onDataWrite
             parameters:

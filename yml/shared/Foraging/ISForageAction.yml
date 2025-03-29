@@ -7,7 +7,8 @@ languages:
         constructors:
           - parameters:
               - name: character
-              - name: iconID
+              - name: icon
+                type: ISForageIcon
               - name: targetContainer
               - name: discardItems
                 type: boolean
@@ -16,13 +17,17 @@ languages:
           Type:
             defaultValue: '"ISForageAction"'
         fields:
+          itemCount: {}
           targetContainer: {}
           discardItems:
             type: boolean
+          icon:
+            type: ISForageIcon
           iconID: {}
           itemType: {}
           manager: {}
-          forageIcon: {}
+          forageIcon:
+            type: ISForageIcon
           zoneData: {}
           itemDef: {}
           maxTime:

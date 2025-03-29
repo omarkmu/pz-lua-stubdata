@@ -31,9 +31,6 @@ languages:
           characterPanel:
             type: CharacterCreationMainCharacterPanel
           columnWidth: {}
-          comboWid: {}
-          xOffset:
-            type: number
           yOffset:
             type: number
           clothingTextureComboWidth:
@@ -130,10 +127,13 @@ languages:
             type: table
           clothingLbl:
             type: ISLabel
+          clothingRect:
+            type: ISRect
           originalYOffset:
             type: number
           colorPicker:
             type: ISColorPickerHSB
+          comboWid: {}
           clothingDebugCreated:
             type: boolean
           clothingWidgets:
@@ -281,8 +281,6 @@ languages:
             parameters:
               - name: combo
           - name: onVoiceTypeSelected
-            parameters:
-              - name: combo
           - name: onOutfitSelected
             parameters:
               - name: combo
@@ -404,6 +402,18 @@ languages:
           joypadButtons: {}
           prevJoypadIndexY:
             type: number
+          columnWidth:
+            type: number
+          reposTable:
+            type: table
+          repos2Table:
+            type: table
+          repos3Table:
+            type: table
+          comboResizeTable:
+            type: table
+          dividerResizeTable:
+            type: table
         methods:
           - name: prerender
           - name: render

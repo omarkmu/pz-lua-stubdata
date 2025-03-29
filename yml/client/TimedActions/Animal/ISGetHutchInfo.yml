@@ -12,6 +12,8 @@ languages:
           Type:
             defaultValue: '"ISGetHutchInfo"'
         fields:
+          playerNum:
+            type: integer
           hutch: {}
         methods:
           - name: isValid

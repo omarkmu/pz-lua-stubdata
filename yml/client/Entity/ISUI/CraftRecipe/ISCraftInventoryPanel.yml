@@ -24,6 +24,8 @@ languages:
         fields:
           colGood:
             type: umbrella.RGBA
+          colYellow:
+            type: umbrella.RGBA
           colBad:
             type: umbrella.RGBA
           itemListBox:
@@ -82,9 +84,11 @@ languages:
             parameters:
               - name: _node
                 type: HandcraftLogic.InputItemNode
+              - name: _isUsedItems
+                type: boolean
             return:
               - type: umbrella.ISCraftInventoryPanel.ListItem
-          - name: createListItemEntree
+          - name: createListItemEntry
             parameters:
               - name: _node
                 type: HandcraftLogic.InputItemNode
@@ -92,9 +96,11 @@ languages:
                 type: InventoryItem
               - name: _index
                 type: integer
+              - name: _isUsedItems
+                type: boolean
             return:
               - type: umbrella.ISCraftInventoryPanel.ListItem
-          - name: createUnavailableListItemEntree
+          - name: createUnavailableListItemEntry
             parameters:
               - name: _item
                 type: Item

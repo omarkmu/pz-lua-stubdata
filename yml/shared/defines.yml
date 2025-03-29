@@ -78,6 +78,10 @@ languages:
             defaultValue: "1.25"
           LightFromPetrolAmount:
             defaultValue: "0.1"
+          IdleIncrease:
+            defaultValue: "0.0005"
+          IdleDecrease:
+            defaultValue: "0.0060"
       ZombiePopulationMultiplier:
         staticFields:
           Insane:

@@ -41,6 +41,12 @@ languages:
           - name: updateReloadButton
           - name: onButtonReload
           - name: createChildren
+          - name: prerender
+          - name: checkFontSize
+          - name: setListBoxItemHeight
+            parameters:
+              - name: listBox
+                type: ISScrollingListBox
       LuaFileBrowserList:
         extends: ISScrollingListBox
         staticFields:

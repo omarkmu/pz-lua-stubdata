@@ -47,8 +47,6 @@ languages:
             type: ISToolTip
           tooltip:
             nullable: true
-          joypadFocused:
-            type: boolean
           joypadTexture: {}
           translation:
             type: string

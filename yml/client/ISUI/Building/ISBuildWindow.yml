@@ -88,3 +88,19 @@ languages:
                 nullable: true
           - name: close
           - name: validateSizeBounds
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateStart_Descendant
+            parameters:
+              - name: descendant
+              - name: joypadData
+                type: JoypadData

@@ -327,6 +327,13 @@ languages:
             parameters:
               - name: doDragged
                 type: boolean
+          - name: isLiteratureRead
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+            return:
+              - type: boolean
           - name: drawProgressBar
             parameters:
               - name: x

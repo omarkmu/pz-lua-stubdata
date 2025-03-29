@@ -9,6 +9,15 @@ languages:
           Farm: {}
           Forest: {}
           ForagingNav: {}
+          Nav: {}
           TownZone: {}
           TrailerPark: {}
           Vegitation: {}
+          PHForest: {}
+          PHMixForest: {}
+          PRForest: {}
+          FarmMixForest: {}
+          FarmForest: {}
+          BirchForest: {}
+          BirchMixForest: {}
+          OrganicForest: {}

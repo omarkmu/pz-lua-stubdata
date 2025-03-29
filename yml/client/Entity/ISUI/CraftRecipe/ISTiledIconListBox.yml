@@ -38,7 +38,7 @@ languages:
           currentPage:
             type: integer
           selectedTileData:
-            type: boolean
+            type: unknown
             nullable: true
           lastMouseOverTile:
             type: number
@@ -184,5 +184,35 @@ languages:
           - name: pageChanged
           - name: getPages
             return:
-              - type: number
+              - type: integer
           - name: focusPageOnSelectedTile
+          - name: getDataElementColumnRow
+            parameters:
+              - name: _tileData
+                nullable: true
+            return:
+              - type: number
+              - type: number
+          - name: trySelectDataElement
+            parameters:
+              - name: _index
+                type: integer
+            return:
+              - type: unknown
+                nullable: true
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData

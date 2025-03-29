@@ -51,8 +51,6 @@ languages:
           itemList:
             type: ArrayList #<InventoryItem>
             nullable: true
-          isKnownPoison:
-            type: boolean
           currentTimestamp:
             type: number
           lastTimestamp:
@@ -80,6 +78,8 @@ languages:
           worldMarker:
             type: WorldMarkers.PlayerHomingPoint
             nullable: true
+          isKnownPoison:
+            type: boolean
           perkLevel:
             type: number
           lastSeenHours:
@@ -159,6 +159,8 @@ languages:
             type: number
           itemRotation:
             type: integer
+          onMouseDoubleClick:
+            type: function
           modifiers:
             type: umbrella.Foraging.Modifiers
           viewAngle:
@@ -169,8 +171,6 @@ languages:
             type: string
           itemSize:
             type: number
-          isMover:
-            type: boolean
           moveState:
             type: string
           moveTargetX:
@@ -219,6 +219,14 @@ languages:
           - name: getGameSpeed
             return:
               - type: number
+          - name: doGrabSubMenu
+            parameters:
+              - name: _context
+                type: ISContextMenu
+              - name: _contextOption
+                type: umbrella.ISContextMenu.Option
+              - name: _inventory
+                type: ItemContainer
           - name: doContextMenu
             parameters:
               - name: _context
@@ -353,6 +361,7 @@ languages:
           - name: checkIsForageable
             return:
               - type: boolean
+          - name: checkForPoison
           - name: updateManagerMarkers
           - name: updatePerkLevel
           - name: checkIsPlayerRunning

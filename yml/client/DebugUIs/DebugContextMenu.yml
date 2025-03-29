@@ -291,7 +291,15 @@ languages:
                 type: IsoObject[]
               - name: fence
                 type: IsoObject
+              - name: towards
+                type: boolean
           - name: OnUnbendFence
+            parameters:
+              - name: worldobjects
+                type: IsoObject[]
+              - name: fence
+                type: IsoObject
+          - name: OnResetFence
             parameters:
               - name: worldobjects
                 type: IsoObject[]
@@ -503,6 +511,17 @@ languages:
                 type: boolean
                 nullable: true
           - name: onTick
+          - name: doForageMenu
+            parameters:
+              - name: player
+                type: integer
+              - name: context
+                type: ISContextMenu
+              - name: worldobjects
+                type: IsoObject[]
+              - name: test
+                type: boolean
+                nullable: true
           - name: onAvatarUI
             parameters:
               - name: player

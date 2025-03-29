@@ -61,6 +61,7 @@ languages:
                 type: number
               - name: height
                 type: number
+          - name: checkFontSize
           - name: initialise
           - name: prerender
           - name: render

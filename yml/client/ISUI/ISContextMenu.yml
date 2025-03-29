@@ -41,6 +41,9 @@ languages:
           toolTip:
             type: ISToolTip
             nullable: true
+          highlightedOption:
+            type: umbrella.ISContextMenu.Option
+            nullable: true
           currentOptionRect:
             type: "{ x: number, y: number, width: number, height: number }"
             nullable: true
@@ -159,6 +162,12 @@ languages:
               - name: option
                 type: umbrella.ISContextMenu.Option
           - name: hideToolTip
+          - name: callOptionHighlightFunction
+            parameters:
+              - name: option
+                type: umbrella.ISContextMenu.Option
+              - name: isHighlighted
+                type: boolean
           - name: onJoypadDown
             parameters:
               - name: button
@@ -639,6 +648,18 @@ languages:
                 type: unknown
                 nullable: true
               - name: ...
+          - name: renderOptionTextureOrColor
+            parameters:
+              - name: option
+                type: umbrella.ISContextMenu.Option
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
           - name: getMenuOptionNames
             return:
               - type: table<string, umbrella.ISContextMenu.Option>

@@ -66,9 +66,9 @@ languages:
             type: ISModalRichText
           pin:
             type: boolean
-          capacity: {}
           coloredInv:
             nullable: true
+          capacity: {}
           collapseCounter:
             type: number
           isCollapsed:
@@ -129,6 +129,8 @@ languages:
             type: ISInventoryPage
           visibleFunction:
             type: function
+          disableJoypadNavigation:
+            type: boolean
           mouseOverButton:
             nullable: true
           render3DItemXOffset:
@@ -164,6 +166,7 @@ languages:
           - name: isRemoveButtonVisible
             return:
               - type: boolean
+          - name: updateContainerHighlight
           - name: update
           - name: setBlinkingContainer
             parameters:
@@ -172,6 +175,7 @@ languages:
           - name: setForceSelectedContainer
             parameters:
               - name: container
+              - name: ms
           - name: prerender
           - name: drawTextRight
             parameters:
@@ -398,6 +402,13 @@ languages:
           - name: onInventoryContainerSizeChanged
           - name: render3DItemPreview
         staticMethods:
+          - name: OnObjectHighlighted
+            parameters:
+              - name: playerNum
+                type: integer
+              - name: object
+              - name: isHighlighted
+                type: boolean
           - name: loadWeight
             parameters:
               - name: inv

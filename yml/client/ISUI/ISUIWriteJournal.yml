@@ -56,10 +56,6 @@ languages:
           joypadIndex: {}
           currentPage:
             type: number
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           name:
             nullable: true
           target:

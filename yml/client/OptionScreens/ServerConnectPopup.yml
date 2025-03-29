@@ -43,10 +43,6 @@ languages:
           ip: {}
           port:
             type: string
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           itemheightoverride:
             type: table
           NoLabel:

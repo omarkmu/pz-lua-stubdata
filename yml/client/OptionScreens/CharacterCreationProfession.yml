@@ -269,6 +269,7 @@ languages:
           - name: inputModal
             parameters:
               - name: _centered
+                type: boolean
               - name: _width
                 type: number
               - name: _height
@@ -276,6 +277,7 @@ languages:
               - name: _posX
               - name: _posY
               - name: _text
+                type: string
               - name: _onclick
               - name: target
                 type: unknown
@@ -301,23 +303,3 @@ languages:
           - name: pline
             parameters:
               - name: text
-      CharacterCreationMain:
-        staticMethods:
-          - name: sortByCost
-            parameters:
-              - name: a
-              - name: b
-            return:
-              - type: boolean
-          - name: sortByInvertCost
-            parameters:
-              - name: a
-              - name: b
-            return:
-              - type: boolean
-          - name: sort
-            parameters:
-              - name: list
-          - name: invertSort
-            parameters:
-              - name: list

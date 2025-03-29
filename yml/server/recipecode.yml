@@ -82,10 +82,6 @@ languages:
         parameters:
           - name: craftRecipeData
           - name: character
-      - name: CreateSpear_OnCreate
-        parameters:
-          - name: craftRecipeData
-          - name: character
       - name: CutAnimal_OnCreate
         parameters:
           - name: craftRecipeData

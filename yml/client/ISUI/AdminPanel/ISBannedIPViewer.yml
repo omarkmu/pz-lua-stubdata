@@ -1,0 +1,71 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISBannedIPViewer:
+        extends: ISPanel
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: player
+        staticFields:
+          Type:
+            defaultValue: '"ISBannedIPViewer"'
+          messages: {}
+          instance:
+            type: ISBannedIPViewer
+            nullable: true
+        fields:
+          datas:
+            type: ISScrollingListBox
+          no:
+            type: ISButton
+          searchEntry:
+            type: ISTextEntryBox
+          unbanBtn:
+            type: ISButton
+          refreshBtn:
+            type: ISButton
+          selectedIP:
+            nullable: true
+          listHeaderColor:
+            type: table
+          player: {}
+          selectedFaction:
+            nullable: true
+          bannedIPs:
+            nullable: true
+        methods:
+          - name: initialise
+          - name: getBannedIPs
+          - name: populateList
+          - name: update
+          - name: drawDatas
+            parameters:
+              - name: y
+              - name: item
+              - name: alt
+            return:
+              - type: number
+          - name: doSearch
+          - name: prerender
+          - name: render
+          - name: onClick
+            parameters:
+              - name: button
+                type: ISButton
+          - name: onUnbanIP
+            parameters:
+              - name: button
+                type: ISButton
+        staticMethods:
+          - name: gotBannedIPs
+            parameters:
+              - name: bannedIPs

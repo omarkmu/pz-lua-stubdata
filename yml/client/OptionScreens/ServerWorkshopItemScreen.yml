@@ -29,10 +29,6 @@ languages:
             type: ISButton
           disconnectButton:
             type: ISButton
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           prevScreen:
             type: CoopOptionsScreen | ConnectToServer
         methods:

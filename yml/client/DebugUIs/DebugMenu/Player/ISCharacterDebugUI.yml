@@ -21,7 +21,9 @@ languages:
             type: ISCharacterDebugUI
             nullable: true
         fields:
-          tickBoxPlayer:
+          tickBoxLocalPlayer:
+            type: ISTickBox
+          tickBoxRemotePlayer:
             type: ISTickBox
           tickBoxZombie:
             type: ISTickBox
@@ -33,7 +35,9 @@ languages:
             type: ISButton
           btnClose:
             type: ISButton
-          setFunctionPlayer:
+          setFunctionLocalPlayer:
+            type: table<integer, function>
+          setFunctionRemotePlayer:
             type: table<integer, function>
           setFunctionZombie:
             type: table<integer, function>
@@ -69,6 +73,8 @@ languages:
                 type: ISTickBox
               - name: tickSetFunction
                 type: table
+              - name: name
+                type: string
           - name: onTicked
             parameters:
               - name: index

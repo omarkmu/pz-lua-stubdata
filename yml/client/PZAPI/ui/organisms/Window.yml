@@ -18,6 +18,9 @@ languages:
           - name: init
           - name: renderUpdate
           - name: onMouseButtonDownOutside
+          - name: setCollapsed
+            parameters:
+              - name: collapsed
       PZAPI:
         staticFields:
           UI.Window:

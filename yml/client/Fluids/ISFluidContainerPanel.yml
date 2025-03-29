@@ -28,8 +28,6 @@ languages:
           Type:
             defaultValue: '"ISFluidContainerPanel"'
         fields:
-          pad:
-            type: number
           innerHeight:
             type: number
           innerY:

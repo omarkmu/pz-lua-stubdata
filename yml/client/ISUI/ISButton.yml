@@ -34,6 +34,7 @@ languages:
         fields:
           joypadFocused:
             type: boolean
+            nullable: true
           pressed:
             type: boolean
           isJoypad:
@@ -120,6 +121,8 @@ languages:
           fade:
             type: UITransition
           joypadTextureWH:
+            type: number
+          repeatWhilePressedTimer:
             type: number
           sounds:
             type: table<string, string>

@@ -30,8 +30,6 @@ languages:
           selectedBeforeReset:
             type: number
             nullable: true
-          joypadFocused:
-            type: boolean
           mouseoverselected:
             type: number
           count:
@@ -206,6 +204,9 @@ languages:
           - name: sort
           - name: updateTooltip
           - name: updateSmoothScrolling
+          - name: parentsHaveScrollChildren
+            return:
+              - type: boolean
           - name: prerender
           - name: onMouseDoubleClick
             parameters:

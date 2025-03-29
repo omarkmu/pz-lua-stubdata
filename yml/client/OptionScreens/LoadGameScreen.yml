@@ -46,8 +46,6 @@ languages:
           modal:
             type: ISModalDialog
             nullable: true
-          joypadFocused:
-            type: boolean
           itemheightoverride:
             type: table
           selected:

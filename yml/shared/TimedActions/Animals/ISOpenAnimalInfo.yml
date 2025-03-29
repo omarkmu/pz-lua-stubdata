@@ -8,14 +8,20 @@ languages:
           - parameters:
               - name: character
               - name: animal
+              - name: prevFocus
+                type: ISDesignationZoneAnimalZoneUI | ISVehicleAnimalUI
         staticFields:
           Type:
             defaultValue: '"ISOpenAnimalInfo"'
         fields:
           animal: {}
           player: {}
+          playerNum:
+            type: integer
           useProgressBar:
             type: boolean
+          prevFocus:
+            type: ISDesignationZoneAnimalZoneUI | ISVehicleAnimalUI
         methods:
           - name: isValid
             return:

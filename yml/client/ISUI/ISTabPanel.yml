@@ -167,6 +167,13 @@ languages:
             parameters:
               - name: view
                 type: table
+          - name: replaceView
+            parameters:
+              - name: view
+              - name: panel
+            return:
+              - type: unknown
+                nullable: true
           - name: setEqualTabWidth
             parameters:
               - name: equal

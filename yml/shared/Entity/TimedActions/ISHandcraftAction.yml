@@ -37,10 +37,18 @@ languages:
             return:
               - type: boolean
           - name: update
+          - name: clearItemsProgressBar
+            parameters:
+              - name: bSetJobType
+                type: boolean
           - name: serverStart
           - name: start
           - name: stop
           - name: perform
+          - name: complete
+            return:
+              - type: boolean
+          - name: performRecipe
           - name: getDuration
             return:
               - type: number

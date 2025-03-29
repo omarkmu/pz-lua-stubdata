@@ -116,7 +116,9 @@ languages:
               - name: test
                 type: boolean
                 nullable: true
-
+            return:
+              - type: boolean
+                nullable: true
           - name: canDigHere
             parameters:
               - name: worldObjects

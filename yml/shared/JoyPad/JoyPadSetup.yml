@@ -135,6 +135,8 @@ languages:
             type: number
           dtprocright:
             type: number
+          pressedTime:
+            type: table
         methods:
           - name: setJoypad
             parameters:
@@ -149,6 +151,12 @@ languages:
           - name: onPressButton
             parameters:
               - name: button
+                type: number
+          - name: onHoldButton
+            parameters:
+              - name: button
+                type: ISButton
+              - name: time
                 type: number
           - name: onReleaseButton
             parameters:
@@ -179,6 +187,10 @@ languages:
             nullable: true
           isActive:
             type: boolean
+          isDoingNavigation:
+            type: boolean
+          currentNavigateUI:
+            nullable: true
           player:
             nullable: true
           focus:
@@ -206,6 +218,13 @@ languages:
             parameters:
               - name: isActive
                 type: boolean
+          - name: isFocusOnElementOrDescendant
+            parameters:
+              - name: ui
+            return:
+              - type: boolean
+          - name: startNavigation
+          - name: endNavigation
     functions:
       - name: getFocusForPlayer
         parameters:
@@ -214,6 +233,20 @@ languages:
         return:
           - type: unknown
             nullable: true
+      - name: isJoypadFocusOnElementOrDescendant
+        parameters:
+          - name: playerNum
+            type: integer
+          - name: ui
+            type: ISBaseEntityWindow
+        return:
+          - type: unknown
+            nullable: true
+      - name: getJoypadData
+        parameters:
+          - name: playerID
+        return:
+          - type: unknown
       - name: getJoypadFocus
         parameters:
           - name: playerID

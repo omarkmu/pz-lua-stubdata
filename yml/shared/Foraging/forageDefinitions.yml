@@ -8,6 +8,4 @@ languages:
           defaultZoneDef: {}
           defaultCatDef: {}
           defaultSkillDef: {}
-      forageDefs:
-        staticFields:
-          SawflyLarva: {}
+      forageDefs: {}

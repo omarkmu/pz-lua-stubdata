@@ -121,6 +121,54 @@ languages:
                 type: unknown
               - name: arg4
                 type: unknown
+          - name: OpenButcherHook
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: hook
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: OpenHutch
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: hutch
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: AnimalsInteraction
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
+          - name: SleepInBed
+            parameters:
+              - name: action
+              - name: playerObj
+                type: IsoPlayer
+              - name: bed
+              - name: arg2
+                type: unknown
+              - name: arg3
+                type: unknown
+              - name: arg4
+                type: unknown
     functions:
       - name: ContextualActionHandlerWrapper
         parameters:

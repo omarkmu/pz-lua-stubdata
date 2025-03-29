@@ -48,10 +48,6 @@ languages:
             type: ISButton
           backButton:
             type: ISButton
-          choiceBackgroundNext:
-            type: ISButton
-          choiceBackgroundPrevious:
-            type: ISButton
           listbox:
             type: ISScrollingListBox
           registerNewPlayer:

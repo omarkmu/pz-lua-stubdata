@@ -96,6 +96,11 @@ languages:
             parameters:
               - name: button
                 type: ISButton
+          - name: clearISButtonA
+          - name: clearISButtonB
+          - name: clearISButtonX
+          - name: clearISButtonY
+          - name: clearISButtons
           - name: onJoypadDown
             parameters:
               - name: button
@@ -109,6 +114,24 @@ languages:
                 type: number
             return:
               - type: table
+          - name: getMinVisibleRow
+            return:
+              - type: number
+          - name: getMaxVisibleRow
+            return:
+              - type: number
+          - name: getPrevVisibleRow
+            parameters:
+              - name: row
+                type: number
+            return:
+              - type: number
+          - name: getNextVisibleRow
+            parameters:
+              - name: row
+                type: number
+            return:
+              - type: number
           - name: getClosestChild
             parameters:
               - name: children

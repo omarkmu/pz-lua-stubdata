@@ -102,6 +102,24 @@ languages:
               - name: scriptItem
             return:
               - type: boolean
+          - name: filterCraft
+            parameters:
+              - name: widget
+              - name: scriptItem
+            return:
+              - type: boolean
+          - name: filterForage
+            parameters:
+              - name: widget
+              - name: scriptItem
+            return:
+              - type: boolean
+          - name: filterLoot
+            parameters:
+              - name: widget
+              - name: scriptItem
+            return:
+              - type: boolean
           - name: onOtherKey
             parameters:
               - name: key

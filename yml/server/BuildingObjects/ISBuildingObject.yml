@@ -83,6 +83,8 @@ languages:
             type: boolean
           isThumpable:
             type: boolean
+          isFloor:
+            type: boolean
           modData:
             type: table
           RENDER_SPRITE_FLOOR: {}
@@ -135,6 +137,7 @@ languages:
           - name: onTimedActionStop
             parameters:
               - name: action
+          - name: updateModData
           - name: haveMaterial
             parameters:
               - name: square

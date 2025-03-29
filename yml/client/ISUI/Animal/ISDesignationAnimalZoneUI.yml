@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISDesignationZoneAnimalZoneUI:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -30,17 +30,20 @@ languages:
             type: ISButton
           reloadBtn:
             type: ISButton
+          animalInfoBtn:
+            type: ISButton
           infoBtn:
             type: ISButton
+          zOffsetAfterAnimal: {}
           nbOfAnimals:
+            type: number
+          zOffsetBeforeAnimal:
+            type: number
+          updateTick:
             type: number
           animalbuttons:
             type: table
           animalLabels:
-            type: table
-          zone: {}
-          player: {}
-          buttonBorderColor:
             type: table
         methods:
           - name: initialise
@@ -48,7 +51,11 @@ languages:
             return:
               - type: boolean
           - name: prerender
+          - name: render
           - name: updateAnimals
+            return:
+              - type: unknown
+          - name: calcNearRiver
             return:
               - type: unknown
           - name: calcWater
@@ -62,6 +69,36 @@ languages:
               - name: button
                 type: ISButton
           - name: reload
+          - name: close
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
       ISDesignationZoneAnimalZoneUI_AnimalsPanel:
         extends: ISPanelJoypad
         constructors:
@@ -80,6 +117,8 @@ languages:
           Type:
             defaultValue: '"ISDesignationZoneAnimalZoneUI_AnimalsPanel"'
         fields:
+          selected:
+            type: number
           ui:
             type: ISDesignationZoneAnimalZoneUI
         methods:
@@ -91,3 +130,28 @@ languages:
                 type: number
             return:
               - type: boolean
+          - name: size
+            return:
+              - type: number
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData

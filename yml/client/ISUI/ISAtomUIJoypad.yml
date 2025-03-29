@@ -1,0 +1,161 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISAtomUIJoypad:
+        fields:
+          joyfocus:
+            type: JoypadData
+            nullable: true
+          joypadFocused:
+            type: boolean
+        methods:
+          - name: getUIName
+            parameters:
+              - name: name
+                type: string
+                nullable: true
+            return:
+              - type: string
+          - name: toString
+            return:
+              - type: string
+          - name: isVisible
+            return:
+              - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: setJoypadFocused
+            parameters:
+              - name: focused
+                type: boolean
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadButtonReleased
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadButtonReleased_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
+          - name: hasConflictWithJoypadNavigateStart
+            return:
+              - type: boolean
+          - name: getJoypadNavigateStartDelay
+            return:
+              - type: number
+          - name: onJoypadNavigateStart
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateEnd
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateRight
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateParent
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateStart_Descendant
+            parameters:
+              - name: descendant
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: Apply
+            parameters:
+              - name: ui
+                type: ISUIElement

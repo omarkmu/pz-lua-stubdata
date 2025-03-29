@@ -77,9 +77,15 @@ languages:
           worldSprites: {}
           itemBlacklist:
             nullable: true
+          statisticsTable:
+            type: table
+            nullable: true
         staticMethods:
           - name: integrityCheck
           - name: doItemDefCheck
+            parameters:
+              - name: _doItemFile
+          - name: clearTables
           - name: init
           - name: setOptionValues
           - name: createZoneData
@@ -138,6 +144,13 @@ languages:
           - name: getWorldAge
             return:
               - type: unknown
+          - name: statisticsDebug
+            parameters:
+              - name: _createDebugLog
+              - name: _doItemStats
+          - name: createDebugLog
+            parameters:
+              - name: _doItemStats
           - name: createForageIcons
             parameters:
               - name: _zoneData
@@ -150,6 +163,10 @@ languages:
             return:
               - type: boolean
           - name: recreateIcons
+          - name: debugRefreshAllZones
+          - name: debugRefreshZone
+            parameters:
+              - name: _zoneData
           - name: getZoneData
             parameters:
               - name: _forageZone
@@ -189,7 +206,6 @@ languages:
           - name: populateItemDefs
             parameters:
               - name: _itemDefs
-              - name: _clearAllExisting
           - name: createForageZone
             parameters:
               - name: _x
@@ -273,6 +289,7 @@ languages:
           - name: populateZoneDefs
             parameters:
               - name: _zoneDefs
+          - name: populateMixedZoneCategories
           - name: addCatDef
             parameters:
               - name: _catDef
@@ -424,6 +441,8 @@ languages:
             parameters:
               - name: _itemDef
               - name: _month
+              - name: _monthBonus
+              - name: _monthMalus
             return:
               - type: number
           - name: getTimeOfDay
@@ -517,6 +536,10 @@ languages:
               - name: _month
             return:
               - type: boolean
+          - name: setScriptItemFocusCategories
+            parameters:
+              - name: _itemDef
+              - name: _scriptItem
           - name: isForageable
             parameters:
               - name: _character
@@ -524,6 +547,11 @@ languages:
               - name: _zoneDef
             return:
               - type: boolean
+          - name: addForageDef
+            parameters:
+              - name: _itemType
+              - name: _forageDef
+                type: table
           - name: itemFound
             parameters:
               - name: _character

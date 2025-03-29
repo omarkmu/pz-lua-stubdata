@@ -137,6 +137,7 @@ languages:
           - name: isScrapDefinitionValid
             parameters:
               - name: _material
+                type: string
             return:
               - type: boolean
           - name: addScrapItem

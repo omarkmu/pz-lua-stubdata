@@ -65,8 +65,6 @@ languages:
             type: ISButton
           buttonBack:
             type: ISButton
-          ISButtonB:
-            nullable: true
         methods:
           - name: createChildren
           - name: becomeCurrent

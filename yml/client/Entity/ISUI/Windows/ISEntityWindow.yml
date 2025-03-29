@@ -60,6 +60,18 @@ languages:
           - name: stayOnSplitScreen
           - name: refresh
           - name: close
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: CanOpenWindowFor
             parameters:

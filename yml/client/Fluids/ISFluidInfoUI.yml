@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISFluidInfoUI:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -28,8 +28,8 @@ languages:
           cheatTransfer:
             defaultValue: "false"
         fields:
-          panelText:
-            type: string
+          title:
+            type: ISLabel
           panel:
             type: ISFluidContainerPanel
           panelX:
@@ -63,6 +63,10 @@ languages:
             parameters:
               - name: _btn
                 type: ISButton
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: OpenPanel
             parameters:

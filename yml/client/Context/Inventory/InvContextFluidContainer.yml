@@ -45,3 +45,7 @@ languages:
                 type: ISMenuContextInventory
               - name: _container
                 type: FluidContainer
+          - name: joypadHideInventoryAndLoot
+            parameters:
+              - name: _p
+                type: InvContextFluidContainer

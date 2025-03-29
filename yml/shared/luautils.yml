@@ -220,3 +220,19 @@ languages:
               - name: _inventory
             return:
               - type: unknown
+          - name: roughlyEqual
+            parameters:
+              - name: _value
+              - name: _value2
+              - name: _delta
+                type: number
+            return:
+              - type: boolean
+          - name: lerp
+            parameters:
+              - name: _sourceValue
+              - name: _destinationValue
+              - name: _stepRate
+              - name: _finalStepRatio
+            return:
+              - type: number

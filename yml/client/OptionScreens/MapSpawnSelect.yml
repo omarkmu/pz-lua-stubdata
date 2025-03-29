@@ -36,8 +36,6 @@ languages:
           checkExistsName:
             type: string
           checkExist: {}
-          ISButtonA:
-            nullable: true
           selectedMapIndex: {}
           mapPanel:
             type: MapSpawnSelectImage
@@ -51,10 +49,10 @@ languages:
             type: ISPanel
           seedLabel:
             type: ISLabel
-          seedTextBox:
-            type: ISTextEntryBox
           randomButton:
             type: ISButton
+          seedTextBox:
+            type: ISTextEntryBox
           backButton:
             type: ISButton
           nextButton:

@@ -49,8 +49,6 @@ languages:
             type: table
           hadJoypadFocus:
             type: boolean
-          ISButtonY:
-            nullable: true
           nonDefaultOptions: {}
         methods:
           - name: syncStartDay

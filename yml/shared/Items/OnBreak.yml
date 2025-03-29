@@ -37,43 +37,7 @@ languages:
               - name: newItemString
                 type: string
               - name: bonusCount
-          - name: SmallHandle
-            parameters:
-              - name: item
-              - name: player
-          - name: KitchenKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: Machete
-            parameters:
-              - name: item
-              - name: player
-          - name: HuntingKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: LargeKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: MeatCleaver
-            parameters:
-              - name: item
-              - name: player
-          - name: LongHandle
-            parameters:
-              - name: item
-              - name: player
-          - name: LongHandle_RakeHead
-            parameters:
-              - name: item
-              - name: player
-          - name: LongStick
-            parameters:
-              - name: item
-              - name: player
-          - name: Sapling
+          - name: AxeStone
             parameters:
               - name: item
               - name: player
@@ -81,11 +45,31 @@ languages:
             parameters:
               - name: item
               - name: player
-          - name: ClubHammer
+          - name: BaseballBat
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_Nails
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_Sawblade
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_Rakehead
+            parameters:
+              - name: item
+              - name: player
+          - name: BaseballBat_RailSpike
             parameters:
               - name: item
               - name: player
           - name: Clawhammer
+            parameters:
+              - name: item
+              - name: player
+          - name: ClubHammer
             parameters:
               - name: item
               - name: player
@@ -101,15 +85,55 @@ languages:
             parameters:
               - name: item
               - name: player
+          - name: HandleSpade
+            parameters:
+              - name: item
+              - name: player
+          - name: HuntingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: KitchenKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: LargeKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: LongHandle
+            parameters:
+              - name: item
+              - name: player
+          - name: LongHandle_Nails
+            parameters:
+              - name: item
+              - name: player
+          - name: LongHandle_RakeHead
+            parameters:
+              - name: item
+              - name: player
+          - name: LongStick
+            parameters:
+              - name: item
+              - name: player
+          - name: Machete
+            parameters:
+              - name: item
+              - name: player
+          - name: MeatCleaver
+            parameters:
+              - name: item
+              - name: player
           - name: PickAxe
             parameters:
               - name: item
               - name: player
-          - name: Spade
+          - name: SmallHandle
             parameters:
               - name: item
               - name: player
-          - name: HandleSpade
+          - name: Sapling
             parameters:
               - name: item
               - name: player
@@ -117,11 +141,11 @@ languages:
             parameters:
               - name: item
               - name: player
-          - name: SledgehammerNoShaft
+          - name: Spade
             parameters:
               - name: item
               - name: player
-          - name: WoodAxe
+          - name: SledgehammerNoShaft
             parameters:
               - name: item
               - name: player
@@ -129,87 +153,7 @@ languages:
             parameters:
               - name: item
               - name: player
-          - name: SpearHandFork
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearHuntingKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearLargeKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearFightingKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearScrapKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearSmallKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearKitchenKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearSteakKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearMachete
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearScissors
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearScrewdriver
-            parameters:
-              - name: item
-              - name: player
           - name: SpearButterKnife
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearFork
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearIcePick
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearLetterOpener
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearScalpel
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearSpoon
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearLong
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearShort
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearStoneLong
-            parameters:
-              - name: item
-              - name: player
-          - name: SpearStone
             parameters:
               - name: item
               - name: player
@@ -221,11 +165,107 @@ languages:
             parameters:
               - name: item
               - name: player
+          - name: SpearFightingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearFork
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearHandFork
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearHuntingKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearIcePick
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLargeKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLetterOpener
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearKitchenKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearLong
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearMachete
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScalpel
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScissors
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScrapKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearScrewdriver
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSmallKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSpoon
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearSteakKnife
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearShort
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearStone
+            parameters:
+              - name: item
+              - name: player
+          - name: SpearStoneLong
+            parameters:
+              - name: item
+              - name: player
           - name: Rake
             parameters:
               - name: item
               - name: player
+          - name: WoodAxe
+            parameters:
+              - name: item
+              - name: player
           - name: BrokenGlass
+            parameters:
+              - name: item
+              - name: player
+          - name: HammerStone
+            parameters:
+              - name: item
+              - name: player
+          - name: LargeBranch
+            parameters:
+              - name: item
+              - name: player
+          - name: LargeBranch_Nails
             parameters:
               - name: item
               - name: player
@@ -234,34 +274,6 @@ languages:
               - name: item
               - name: player
           - name: StoneMaul
-            parameters:
-              - name: item
-              - name: player
-          - name: HammerStone
-            parameters:
-              - name: item
-              - name: player
-          - name: AxeStone
-            parameters:
-              - name: item
-              - name: player
-          - name: LargeBranch
-            parameters:
-              - name: item
-              - name: player
-          - name: BaseballBat
-            parameters:
-              - name: item
-              - name: player
-          - name: BaseballBat_Sawblade
-            parameters:
-              - name: item
-              - name: player
-          - name: BaseballBat_Rakehead
-            parameters:
-              - name: item
-              - name: player
-          - name: BaseballBat_RailSpike
             parameters:
               - name: item
               - name: player
@@ -281,15 +293,15 @@ languages:
             parameters:
               - name: item
               - name: player
-          - name: GardenTool
-            parameters:
-              - name: item
-              - name: player
           - name: GardenFork
             parameters:
               - name: item
               - name: player
           - name: GardenFork_Forged
+            parameters:
+              - name: item
+              - name: player
+          - name: GardenTool
             parameters:
               - name: item
               - name: player
@@ -349,6 +361,10 @@ languages:
             parameters:
               - name: item
               - name: player
+          - name: WoodenStick_Nails
+            parameters:
+              - name: item
+              - name: player
           - name: MetalPipe
             parameters:
               - name: item
@@ -357,11 +373,19 @@ languages:
             parameters:
               - name: item
               - name: player
+          - name: TableLeg_Nails
+            parameters:
+              - name: item
+              - name: player
           - name: CanoePadelX2
             parameters:
               - name: item
               - name: player
           - name: Plank
+            parameters:
+              - name: item
+              - name: player
+          - name: Plank_Nails
             parameters:
               - name: item
               - name: player
@@ -386,6 +410,58 @@ languages:
               - name: item
               - name: player
           - name: OldAxe
+            parameters:
+              - name: item
+              - name: player
+          - name: MetalBar
+            parameters:
+              - name: item
+              - name: player
+          - name: SteelRodHalf
+            parameters:
+              - name: item
+              - name: player
+          - name: SteelBar
+            parameters:
+              - name: item
+              - name: player
+          - name: SteelBarHalf
+            parameters:
+              - name: item
+              - name: player
+          - name: IronRod
+            parameters:
+              - name: item
+              - name: player
+          - name: IronRodHalf
+            parameters:
+              - name: item
+              - name: player
+          - name: IronBar
+            parameters:
+              - name: item
+              - name: player
+          - name: IronBarHalf
+            parameters:
+              - name: item
+              - name: player
+          - name: Nails
+            parameters:
+              - name: item
+              - name: player
+          - name: Mace
+            parameters:
+              - name: item
+              - name: player
+          - name: MaceStone
+            parameters:
+              - name: item
+              - name: player
+          - name: LongMace
+            parameters:
+              - name: item
+              - name: player
+          - name: LongMaceStone
             parameters:
               - name: item
               - name: player

@@ -26,6 +26,12 @@ languages:
                 type: string
             return:
               - type: unknown
+          - name: getSkull
+            parameters:
+              - name: name
+                type: string
+            return:
+              - type: unknown
           - name: addAnimalPart
             parameters:
               - name: part
@@ -48,6 +54,8 @@ languages:
               - name: meatRatio
               - name: carcass
               - name: fromGround
+              - name: rotten
+              - name: deathAge
             return:
               - type: string
           - name: getPartChance
@@ -64,6 +72,8 @@ languages:
               - name: size
               - name: meatRatio
               - name: hungerBoost
+              - name: rotten
+              - name: deathAge
             return:
               - type: string
           - name: getAnimalBones

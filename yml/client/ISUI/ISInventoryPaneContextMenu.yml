@@ -237,6 +237,9 @@ languages:
               - name: item
                 type: boolean
                 nullable: true
+              - name: preventTransferWorldObjects
+                type: boolean
+                nullable: true
           - name: onEjectMagazine
             parameters:
               - name: playerObj
@@ -400,7 +403,7 @@ languages:
               - name: waterContainer
               - name: playerObj
                 type: IsoPlayer
-              - name: units
+              - name: percent
           - name: onAddItemInEvoRecipe
             parameters:
               - name: recipe

@@ -698,6 +698,12 @@ languages:
           toolTip:
             type: ISToolTip
             nullable: true
+          onHighlight:
+            type: "fun(option: umbrella.ISContextMenu.Option, menu: ISContextMenu, isHighlighted: boolean, ...: unknown)"
+            nullable: true
+          onHighlightParams:
+            type: table
+            nullable: true
       umbrella.ISDebugPanelBase.PanelInfo:
         fields:
           buttonTitle:

@@ -31,6 +31,8 @@ languages:
             type: integer
           sounds:
             type: table
+          disableJoypadNavigation:
+            type: boolean
         methods:
           - name: instantiate
           - name: onMouseDown

@@ -116,6 +116,8 @@ languages:
             type: ISButton
           versionLabel:
             type: ISLabel
+          seedLabel:
+            type: ISLabel
           desc: {}
           animPopup:
             type: ISModalRichText

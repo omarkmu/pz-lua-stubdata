@@ -3,12 +3,14 @@ languages:
   lua:
     classes:
       ISAnimalZoneFirstInfo:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
                 type: number
               - name: y
+                type: number
+              - name: playerNum
                 type: number
         staticFields:
           Type:
@@ -18,14 +20,22 @@ languages:
             type: ISRichTextPanel
           okBtn:
             type: ISButton
+          playerNum:
+            type: integer
         methods:
           - name: initialise
           - name: prerender
           - name: render
           - name: onClickOk
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: showUI
             parameters:
+              - name: playerNum
+                type: number
               - name: force
                 type: boolean
                 nullable: true

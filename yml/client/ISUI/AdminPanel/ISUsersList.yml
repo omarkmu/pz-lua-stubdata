@@ -24,8 +24,10 @@ languages:
         fields:
           add:
             type: ISButton
-          delete:
+          bannedIPs:
             type: ISButton
+          searchEntry:
+            type: ISTextEntryBox
           close:
             type: ISButton
           datas:
@@ -44,6 +46,7 @@ languages:
           - name: onSelectUser
             parameters:
               - name: _item
+          - name: doSearch
           - name: prerender
           - name: onClick
             parameters:

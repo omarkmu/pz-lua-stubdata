@@ -42,6 +42,10 @@ languages:
           - name: complete
             return:
               - type: boolean
+          - name: transferFluid
+            parameters:
+              - name: _amount
+                type: number
           - name: serverStop
           - name: getDuration
             return:

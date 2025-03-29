@@ -18,6 +18,7 @@ languages:
           item: {}
           eatSound:
             type: string
+          fluidContainer: {}
           percentage:
             type: number
           useUtensil:

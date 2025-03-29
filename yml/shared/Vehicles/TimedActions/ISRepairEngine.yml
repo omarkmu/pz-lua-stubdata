@@ -35,5 +35,7 @@ languages:
             return:
               - type: boolean
           - name: getDuration
+            parameters:
+              - name: maxTime
             return:
               - type: number

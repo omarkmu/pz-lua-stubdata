@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISButcherHookUI:
-        extends: ISCollapsableWindow
+        extends: ISCollapsableWindowJoypad
         constructors:
           - parameters:
               - name: x
@@ -23,6 +23,10 @@ languages:
             type: ISButcherHookUI
             nullable: true
         fields:
+          configJoypadLater:
+            type: boolean
+          animal3D:
+            nullable: true
           knife: {}
           biggestWidth:
             type: number
@@ -41,6 +45,7 @@ languages:
             type: number
             nullable: true
           head:
+            type: boolean
             nullable: true
           meat:
             nullable: true
@@ -53,8 +58,6 @@ languages:
             type: number
           avatarHeight:
             type: number
-          animal3D:
-            nullable: true
           noAnimalPanel:
             type: ISPanel
           addCorpseBtn:
@@ -95,12 +98,14 @@ languages:
             nullable: true
           hook: {}
           chr: {}
-          corpse:
-            nullable: true
           playerNum:
             type: integer
+          corpse:
+            nullable: true
         methods:
           - name: render
+          - name: configJoypad
+          - name: checkAnimalOnHook
           - name: checkDistance
           - name: updateLabelAndButtons
           - name: renderDebugStuff
@@ -176,6 +181,16 @@ languages:
           - name: setVisible
             parameters:
               - name: vis
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: onStopBleedingAnimal
             parameters:

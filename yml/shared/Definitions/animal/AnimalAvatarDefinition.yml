@@ -31,3 +31,6 @@ languages:
           mouse: {}
           mousefemale: {}
           mousepups: {}
+          raccoonkit: {}
+          raccoonboar: {}
+          raccoonsow: {}

@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISWidgetBuildControl:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -89,6 +89,14 @@ languages:
                 type: number
               - name: _slider
                 type: ISSliderPanel
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: onTextChange
             parameters:

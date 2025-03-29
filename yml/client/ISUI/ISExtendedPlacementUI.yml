@@ -1,0 +1,126 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISExtendedPlacementUI:
+        extends: ISCollapsableWindow
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISExtendedPlacementUI"'
+          windows: {}
+        fields:
+          labelaxisx:
+            type: ISLabel
+          labelaxisy:
+            type: ISLabel
+          labelaxisz:
+            type: ISLabel
+          txtboxaxisx:
+            type: ISTextEntryBox
+          txtboxaxisy:
+            type: ISTextEntryBox
+          txtboxaxisz:
+            type: ISTextEntryBox
+          slideraxisxrot:
+            type: ISSliderPanel
+          slideraxisyrot:
+            type: ISSliderPanel
+          slideraxiszrot:
+            type: ISSliderPanel
+          slideraxisxmov:
+            type: ISSliderPanel
+          slideraxisymov:
+            type: ISSliderPanel
+          slideraxiszmov:
+            type: ISSliderPanel
+          labelmode:
+            type: ISLabel
+          btnmode:
+            type: ISButton
+          closeBtn:
+            type: ISButton
+          revertBtn:
+            type: ISButton
+          mode:
+            type: string
+          drawJoypadFocus:
+            type: boolean
+          title: {}
+          character: {}
+          playerNum:
+            type: integer
+          worlditem: {}
+          item: {}
+          font: {}
+          pressedTime:
+            type: number
+          pressedMaxTime:
+            type: number
+          wasPressing:
+            type: boolean
+          originalRotX: {}
+          originalRotY: {}
+          originalRotZ: {}
+          originalMovX: {}
+          originalMovY: {}
+          originalMovZ: {}
+        methods:
+          - name: initialise
+          - name: setTxtboxValueFromSliders
+          - name: resetSlidersValues
+          - name: onAxisSliderChange
+            parameters:
+              - name: value
+              - name: slider
+          - name: onAxisTextChange
+            parameters:
+              - name: box
+          - name: setupAxisTextBox
+            parameters:
+              - name: txtBox
+          - name: setupButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: revert
+          - name: modeChange
+          - name: clickedButton
+            parameters:
+              - name: button
+                type: ISButton
+          - name: adjust
+          - name: prerender
+          - name: createChildren
+          - name: update
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+          - name: setObject
+            parameters:
+              - name: item
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: close
+          - name: isKeyConsumed
+            parameters:
+              - name: key
+                type: integer
+            return:
+              - type: boolean
+          - name: onKeyRelease
+            parameters:
+              - name: key
+                type: integer

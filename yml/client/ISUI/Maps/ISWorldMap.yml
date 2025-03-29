@@ -173,6 +173,8 @@ languages:
             type: boolean
           getJoypadFocus:
             type: boolean
+          prevFocus:
+            nullable: true
           updateMS: {}
           LBumperZoom:
             type: number

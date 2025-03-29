@@ -35,6 +35,8 @@ languages:
             type: string
           zone:
             type: string
+          zones:
+            type: table
           player:
             type: string
           trappingSkill:
@@ -92,6 +94,12 @@ languages:
             return:
               - type: unknown
                 nullable: true
+          - name: testForAnimal
+            parameters:
+              - name: zoneType
+                type: string
+              - name: animalsList
+                type: table
           - name: checkForAnimal
             parameters:
               - name: square
@@ -105,6 +113,10 @@ languages:
               - name: age
               - name: baitAmountMulti
               - name: player
+          - name: setZones
+            parameters:
+              - name: square
+                type: IsoGridSquare
           - name: setDef
           - name: toObject
             parameters:

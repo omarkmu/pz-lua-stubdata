@@ -58,7 +58,7 @@ languages:
           toolTip:
             type: ISToolTip
             nullable: true
-          joypadFocused: {}
+          joyfocus: {}
           sliderBarColor:
             type: table
           target:
@@ -117,6 +117,10 @@ languages:
                 type: number
               - name: _y
                 type: number
+          - name: setWidth
+            parameters:
+              - name: w
+                type: number
           - name: onMouseMoveOutside
             parameters:
               - name: _x
@@ -174,5 +178,8 @@ languages:
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
+              - name: joypadData
+                type: JoypadData
           - name: onJoypadDirRight
           - name: onJoypadDirLeft

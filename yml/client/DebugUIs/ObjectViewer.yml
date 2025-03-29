@@ -54,6 +54,7 @@ languages:
               - type: boolean
           - name: fill
           - name: createChildren
+          - name: prerender
           - name: doDrawItem
             parameters:
               - name: y
@@ -64,6 +65,7 @@ languages:
                 type: boolean
             return:
               - type: number
+          - name: checkFontSize
         staticMethods:
           - name: onWatch
             parameters:

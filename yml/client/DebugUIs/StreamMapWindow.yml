@@ -91,3 +91,5 @@ languages:
             return:
               - type: number
           - name: renderTex
+          - name: prerender
+          - name: checkFontSize

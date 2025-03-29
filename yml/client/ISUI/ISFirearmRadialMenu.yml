@@ -55,6 +55,8 @@ languages:
                 type: ISButtonPrompt
               - name: button
                 type: ISButton
+              - name: joypadData
+                type: JoypadData
           - name: checkKey
             parameters:
               - name: key

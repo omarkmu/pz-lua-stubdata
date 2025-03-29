@@ -24,8 +24,6 @@ languages:
             type: number
           amplitude:
             type: number
-          joypadFocused:
-            type: boolean
           lastValue:
             type: number
           draggingX: {}

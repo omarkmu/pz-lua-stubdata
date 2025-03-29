@@ -27,6 +27,7 @@ languages:
           policeofficer: {}
           fireofficer: {}
           Whittler: {}
+          Mason: {}
           Unlucky: {}
           Lucky: {}
           Formerscout: {}
@@ -43,7 +44,7 @@ languages:
           Nutritionist2: {}
           Herbalist: {}
           Agoraphobic: {}
-          HeartyAppitite: {}
+          HeartyAppetite: {}
           Marksman: {}
           FirstAid: {}
           Fishing: {}

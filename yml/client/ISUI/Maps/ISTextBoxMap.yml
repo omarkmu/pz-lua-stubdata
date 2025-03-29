@@ -55,10 +55,6 @@ languages:
           validateArgs:
             type: table
           validateTooltipText: {}
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           character:
             nullable: true
           name:

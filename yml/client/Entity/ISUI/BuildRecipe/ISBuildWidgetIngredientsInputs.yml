@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISBuildWidgetIngredientsInputs:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -27,6 +27,10 @@ languages:
             nullable: true
           inputs:
             type: ISWidgetInput[]
+          joypadIndexY:
+            type: integer
+          joypadIndex:
+            type: integer
           player:
             type: IsoPlayer
           logic:
@@ -76,3 +80,11 @@ languages:
             parameters:
               - name: _inputItems
           - name: onRecipeChanged
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData

@@ -24,6 +24,7 @@ languages:
               - name: onclick
                 type: function
               - name: player
+                type: number
                 nullable: true
               - name: param1
                 type: unknown
@@ -59,16 +60,13 @@ languages:
             type: number
           validateTarget:
             type: ModListPresets | SandboxOptionsScreen
-          validateFunc: {}
+          validateFunc:
+            type: function
           validateArgs:
             type: table
           validateTooltipText: {}
           showError: {}
           errorMsg: {}
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           name:
             nullable: true
           text:
@@ -79,6 +77,7 @@ languages:
           onclick:
             type: function
           player:
+            type: number
             nullable: true
           param1:
             type: unknown
@@ -129,6 +128,7 @@ languages:
               - name: target
                 type: unknown
               - name: func
+                type: function
               - name: arg1
                 type: unknown
               - name: arg2

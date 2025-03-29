@@ -15,6 +15,7 @@ languages:
         fields:
           item: {}
           direction: {}
+          isTallHoppable: {}
         methods:
           - name: isValid
             return:

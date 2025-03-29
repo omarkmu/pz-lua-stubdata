@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISAddDesignationAnimalZoneUI:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -22,22 +22,27 @@ languages:
             type: ISAddDesignationAnimalZoneUI
             nullable: true
         fields:
+          buttonAdd:
+            type: ISButton
           cancel:
             type: ISButton
           titleEntry:
             type: ISLabel
-          selectedSq: {}
           startRenderTile:
             type: boolean
           drawTileMouse:
             type: boolean
           startingX:
+            type: number
             nullable: true
           startingY:
+            type: number
             nullable: true
           endX:
+            type: number
             nullable: true
           endY:
+            type: number
             nullable: true
           waitingConfirm:
             type: boolean
@@ -45,9 +50,15 @@ languages:
             type: boolean
           heightCorrect:
             type: boolean
+          joypadWorldX:
+            type: number
+          joypadWorldY:
+            type: number
           zoneColor:
             type: table
           player: {}
+          playerNum:
+            type: integer
           buttonBorderColor:
             type: table
         methods:
@@ -70,6 +81,7 @@ languages:
                 type: number
               - name: y
                 type: number
+          - name: askCreateZone
           - name: onCreateZone
             parameters:
               - name: button
@@ -88,8 +100,36 @@ languages:
               - type: unknown
               - type: unknown
           - name: highlightSquareAtMousePointer
+          - name: highlightSquareAtStartPosition
           - name: undisplay
           - name: onClick
             parameters:
               - name: button
                 type: ISButton
+          - name: onZoneWithNameExists
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirLeft
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirRight
+            parameters:
+              - name: joypadData
+                type: JoypadData

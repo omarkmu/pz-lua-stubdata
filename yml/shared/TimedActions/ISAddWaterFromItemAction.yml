@@ -21,8 +21,6 @@ languages:
             type: number
           itemFrom: {}
           objectTo: {}
-          itemFromTainted:
-            type: boolean
           itemFromStartAmount: {}
         methods:
           - name: isValid
@@ -40,9 +38,6 @@ languages:
           - name: complete
             return:
               - type: boolean
-          - name: setItemFromWaterAmount
-            parameters:
-              - name: _amount
           - name: getDuration
             return:
               - type: number

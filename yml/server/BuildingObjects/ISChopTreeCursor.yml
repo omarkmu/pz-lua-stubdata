@@ -48,3 +48,7 @@ languages:
                 type: number
               - name: square
                 type: IsoGridSquare
+          - name: getAPrompt
+            return:
+              - type: string
+                nullable: true

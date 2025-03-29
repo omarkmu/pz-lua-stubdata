@@ -24,3 +24,18 @@ languages:
           crafted_05_81: {}
           crafted_05_73: {}
           crafted_02_40: {}
+          camping_01_6: {}
+      CustomTileProps_RemovePair:
+        staticFields:
+          crafted_04_114: {}
+          crafted_04_115: {}
+          crafted_04_116: {}
+          crafted_04_117: {}
+          crafted_04_118: {}
+          crafted_04_119: {}
+          crafted_04_122: {}
+          crafted_04_123: {}
+          crafted_04_124: {}
+          crafted_04_125: {}
+          crafted_04_126: {}
+          crafted_04_127: {}

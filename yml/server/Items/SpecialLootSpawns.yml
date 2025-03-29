@@ -474,6 +474,9 @@ languages:
           - name: OnCreateCookwareSchematic
             parameters:
               - name: item
+          - name: OnCreateSurvivalSchematic
+            parameters:
+              - name: item
           - name: OnCreatePhotoBook
             parameters:
               - name: item

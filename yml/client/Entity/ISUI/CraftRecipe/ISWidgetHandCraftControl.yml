@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISWidgetHandCraftControl:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -111,6 +111,14 @@ languages:
               - name: amount
                 type: integer
           - name: sanitizeCraftQuantity
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: onTextChange
             parameters:

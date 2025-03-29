@@ -49,6 +49,7 @@ languages:
               - type: boolean
           - name: fill
           - name: createChildren
+          - name: prerender
           - name: renderSrc
           - name: doDrawItem
             parameters:
@@ -58,3 +59,12 @@ languages:
                 type: umbrella.ISScrollingListBox.Item
             return:
               - type: number
+          - name: scrollToLine
+            parameters:
+              - name: line
+                type: number
+          - name: checkFontSize
+          - name: setListBoxItemHeight
+            parameters:
+              - name: listBox 
+                type: ISScrollingListBox

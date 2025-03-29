@@ -53,6 +53,7 @@ languages:
             type: table
         methods:
           - name: initialise
+          - name: doSearch
           - name: onTickBox
             parameters:
               - name: index

@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISDesignationZonePanel:
-        extends: ISCollapsableWindow
+        extends: ISCollapsableWindowJoypad
         constructors:
           - parameters:
               - name: x
@@ -30,6 +30,8 @@ languages:
             type: ISButton
           renameZone:
             type: ISButton
+          closeButton:
+            type: ISButton
           currentWidth:
             type: number
           selectedZone:
@@ -39,6 +41,8 @@ languages:
           player: {}
           buttonBorderColor:
             type: table
+          listTakesFocus:
+            type: boolean
         methods:
           - name: initialise
           - name: close
@@ -66,5 +70,24 @@ languages:
             parameters:
               - name: button
                 type: ISButton
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirUp
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDirDown
+            parameters:
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: toggleZoneUI
+            parameters:
+              - name: playerNum
+                type: number

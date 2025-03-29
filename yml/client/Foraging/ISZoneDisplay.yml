@@ -12,6 +12,7 @@ languages:
           Type:
             defaultValue: '"ISZoneDisplay"'
           tips: {}
+          fuzzyChanceTable: {}
         fields:
           currentTip:
             type: number
@@ -25,10 +26,12 @@ languages:
             type: number
           currentZone:
             type: string
-          fadeTarget:
-            type: string
+          currentZones:
+            type: table<string, string>
           tooltip:
             type: ISToolTip
+          zoneTitleString:
+            type: string
           updateTick:
             type: number
           canSeeSky:
@@ -70,6 +73,10 @@ languages:
             type: number
           zdImages:
             type: table<string, ISPanel>
+          fadeTarget:
+            type: string
+          fadeTargets:
+            type: string[]
           fadeElements:
             type: table<string, ISPanel>
           timeString:
@@ -120,7 +127,6 @@ languages:
                 type: number
               - name: _timeOfDay
                 type: number
-          - name: doFadeStep
           - name: canSeeThroughObject
             parameters:
               - name: _object

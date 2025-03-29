@@ -48,8 +48,6 @@ languages:
           selectedExe:
             type: string
           exeData: {}
-          ISButtonA:
-            nullable: true
           joypadButtons: {}
           titleY:
             type: number

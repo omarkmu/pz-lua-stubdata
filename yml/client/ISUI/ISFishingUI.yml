@@ -50,8 +50,6 @@ languages:
           luresEnabled:
             type: boolean
             nullable: true
-          ISButtonA:
-            nullable: true
           checkStuffTime: {}
           joypadButtons: {}
           containers: {}

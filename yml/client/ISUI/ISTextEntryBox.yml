@@ -20,24 +20,25 @@ languages:
           Type:
             defaultValue: '"ISTextEntryBox"'
         fields:
+          font: {}
           title:
             type: string | ISTextEntryBox
           tooltipUI:
             type: ISToolTip
           tooltip:
             nullable: true
-          joypadFocused:
-            type: boolean
           keeplog:
             type: boolean
           logIndex:
             type: number
           fade: {}
-          font: {}
           currentText:
             type: string | ISTextEntryBox
         methods:
           - name: initialise
+          - name: setFont
+            parameters:
+              - name: font
           - name: onCommandEntered
           - name: onTextChange
           - name: onLostFocus

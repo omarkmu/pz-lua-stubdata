@@ -14,6 +14,10 @@ languages:
           Type:
             defaultValue: '"ISWorldItemIcon"'
         fields:
+          onClickContext:
+            type: function
+          onMouseDoubleClick:
+            type: function
           isValidSquare:
             type: boolean
           itemObjTable:
@@ -53,3 +57,4 @@ languages:
           - name: checkIsForageable
             return:
               - type: boolean
+          - name: checkForPoison

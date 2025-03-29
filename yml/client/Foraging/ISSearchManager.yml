@@ -14,7 +14,7 @@ languages:
           players:
             type: table<IsoPlayer, ISSearchManager>
           iconItems:
-            type: table<string, ArrayList> #<InventoryItem>
+            type: table<string, ArrayList>
           showDebug:
             defaultValue: "false"
           showDebugLocations:
@@ -44,8 +44,6 @@ languages:
             type: number
           timeSinceFind:
             type: number
-          triggerHalo:
-            type: boolean
           iconQueue:
             type: number
           currentZone:
@@ -120,8 +118,6 @@ languages:
             type: boolean
           isEffectOverlay:
             type: boolean
-          haloNotes:
-            type: string[]
           iconCategories:
             type: table<string, string>
           forageIcons:
@@ -260,16 +256,10 @@ languages:
             return:
               - type: boolean
                 nullable: true
-          - name: addHaloNote
-            parameters:
-              - name: _text
-                type: string
-          - name: displayHaloNotes
           - name: clearSpriteCheckedSquares
           - name: clearMovedIconsSquares
           - name: clearCheckedSquares
           - name: clearQueue
-          - name: clearHaloNotes
           - name: reset
           - name: clearZoneData
           - name: removeZoneAndIcons
@@ -325,6 +315,24 @@ languages:
                 type: umbrella.Foraging.CategoryDef
               - name: _zoneData
                 type: umbrella.Foraging.ZoneData
+          - name: createSpecificIcon
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _itemType
+                type: string
+              - name: _zoneData
+                type: umbrella.Foraging.ZoneData
+                nullable: true
+              - name: _isBonus
+                type: boolean
+                nullable: true
+              - name: _isFocus
+                type: boolean
+                nullable: true
+              - name: _count
+                type: number
+                nullable: true
           - name: findSpriteAffinityIcon
             parameters:
               - name: _square
@@ -436,6 +444,30 @@ languages:
             parameters:
               - name: _isSearchMode
                 type: boolean
+          - name: onEnteredItemType
+            parameters:
+              - name: button
+                type: ISButton
+              - name: _square
+                type: IsoGridSquare
+              - name: _zoneData
+                type: umbrella.Foraging.ZoneData
+              - name: _count
+                type: number
+          - name: moveAllZoneIconsToSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+          - name: refreshZoneIcons
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+          - name: createAllIconsOnSquare
+            parameters:
+              - name: _square
+                type: IsoGridSquare
+              - name: _category
+                type: string
         staticMethods:
           - name: getManager
             parameters:
@@ -478,6 +510,26 @@ languages:
                 type: string
               - name: _icon
                 type: ISBaseIcon
+          - name: createDebugSpawnAllContextMenu
+            parameters:
+              - name: _player
+                type: integer
+              - name: _context
+                type: ISContextMenu
+              - name: _manager
+                type: ISSearchManager
+              - name: _square
+                type: IsoGridSquare
+          - name: createDebugContextMenu
+            parameters:
+              - name: _player
+                type: integer
+              - name: _context
+                type: ISContextMenu
+              - name: _manager
+                type: ISSearchManager
+              - name: _square
+                type: IsoGridSquare
           - name: OnFillWorldObjectContextMenu
             parameters:
               - name: _player

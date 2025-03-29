@@ -939,10 +939,6 @@ languages:
         fields:
           sprite: {}
           spriteName: {}
-          canScrap:
-            type: boolean
-          scrapThumpable:
-            type: boolean
           isFromObject:
             type: boolean
           object: {}
@@ -959,6 +955,10 @@ languages:
             nullable: true
           customName:
             nullable: true
+          canScrap:
+            type: boolean
+          scrapThumpable:
+            type: boolean
         methods:
           - name: getYOffsetCursor
             return:

@@ -166,10 +166,6 @@ languages:
             type: ISButton
           no:
             type: ISButton
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           name:
             nullable: true
           target:

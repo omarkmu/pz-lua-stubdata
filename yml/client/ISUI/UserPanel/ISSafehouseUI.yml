@@ -35,6 +35,10 @@ languages:
             type: ISLabel
           pos:
             type: ISLabel
+          dateCreated:
+            type: ISLabel
+          location:
+            type: ISLabel
           points:
             type: ISLabel
           releaseSafehouse:

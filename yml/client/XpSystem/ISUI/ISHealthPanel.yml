@@ -60,6 +60,8 @@ languages:
             type: integer
           doctorLevel: {}
           abutton: {}
+          tabtotalwidth:
+            type: number
         methods:
           - name: initialise
           - name: createChildren
@@ -271,9 +273,9 @@ languages:
         fields:
           drawText:
             type: function
-          selected: {}
           textRight:
             type: number
+          selected: {}
         methods:
           - name: onMouseUp
             parameters:

@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISFluidTransferUI:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -58,16 +58,16 @@ languages:
             type: string
           transferringLabel:
             type: ISLabel
-          btnTransfer:
-            type: ISButton
-          btnClose:
-            type: ISButton
           panelRightText:
             type: string
           panelRight:
             type: ISFluidContainerPanel
           panelRightX:
             type: number
+          btnTransfer:
+            type: ISButton
+          btnClose:
+            type: ISButton
           disableTransfer:
             type: boolean
           disableSwap:
@@ -84,6 +84,8 @@ languages:
             type: number
           player:
             type: IsoPlayer
+          playerNum:
+            type: integer
           container:
             type: ISFluidContainer
           source:
@@ -94,6 +96,8 @@ languages:
             type: umbrella.ISFluidTransferUI.InfoTable
           errorDefault:
             type: string
+          disableJoypadNavigation:
+            type: boolean
         methods:
           - name: initialise
           - name: createChildren
@@ -160,6 +164,23 @@ languages:
                 type: number
             return:
               - type: boolean
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+            return:
+              - type: unknown
+                nullable: true
+          - name: setOrClearItem
+            parameters:
+              - name: panel
+                type: ISFluidContainerPanel
         staticMethods:
           - name: OpenPanel
             parameters:

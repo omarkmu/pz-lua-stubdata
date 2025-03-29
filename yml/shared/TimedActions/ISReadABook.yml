@@ -20,6 +20,8 @@ languages:
           isLiteratureRead:
             nullable: true
           startPage: {}
+          playerNum:
+            type: integer
           minutesPerPage:
             type: number
           maxMultiplier:

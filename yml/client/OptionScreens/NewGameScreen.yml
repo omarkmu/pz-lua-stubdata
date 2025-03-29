@@ -38,10 +38,6 @@ languages:
           fadeOut:
             nullable: true
           fadeIn: {}
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           overBottomPanelButton:
             nullable: true
           MouseEnterMainMenuItem:

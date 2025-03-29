@@ -36,5 +36,7 @@ languages:
               - type: table
                 nullable: true
           - name: getDuration
+            parameters:
+              - name: maxTime
             return:
               - type: number

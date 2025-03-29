@@ -132,6 +132,10 @@ languages:
             return:
               - type: boolean
                 nullable: true
+          - name: onExtendedPlacement
+            parameters:
+              - name: item
+              - name: char
           - name: addWaterFromItem
             parameters:
               - name: test
@@ -809,7 +813,7 @@ languages:
               - name: item2
             return:
               - type: boolean
-          - name: doFillWaterMenu
+          - name: doFillFluidMenu
             parameters:
               - name: sink
               - name: playerNum
@@ -1247,10 +1251,23 @@ languages:
                 type: IsoObject[]
               - name: player
               - name: shovel
+          - name: onBuryAnimalCorpse
+            parameters:
+              - name: grave
+              - name: playerObj
+                type: IsoPlayer
+              - name: animal
+          - name: updateGrave
+            parameters:
+              - name: grave
           - name: onBuryCorpse
             parameters:
               - name: grave
               - name: player
+              - name: primaryHandItem
+            return:
+              - type: unknown
+                nullable: true
           - name: onFillGrave
             parameters:
               - name: grave
@@ -1261,6 +1278,10 @@ languages:
               - name: player
               - name: fluidcontainer
           - name: onFluidInfo
+            parameters:
+              - name: player
+              - name: fluidcontainer
+          - name: onFluidEmpty
             parameters:
               - name: player
               - name: fluidcontainer
@@ -1323,6 +1344,14 @@ languages:
               - name: v
               - name: props
               - name: playerInv
+          - name: doFluidContainerMenu
+            parameters:
+              - name: context
+                type: ISContextMenu
+              - name: object
+              - name: player
+            return:
+              - type: boolean
           - name: getUpAndThen
             parameters:
               - name: playerObj
@@ -1341,3 +1370,10 @@ languages:
               - name: p8
               - name: p9
               - name: p10
+          - name: getMoveableDisplayName
+            parameters:
+              - name: obj
+                type: IsoObject
+            return:
+              - type: unknown
+                nullable: true

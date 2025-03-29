@@ -82,6 +82,7 @@ languages:
               - name: hutchUI
                 type: ISHutchUI
               - name: index
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISHutchNestBox"'
@@ -90,7 +91,8 @@ languages:
             type: ISHutch3DModel
           hutchUI:
             type: ISHutchUI
-          index: {}
+          index:
+            type: number
           chr: {}
           playerObj:
             type: IsoPlayer
@@ -102,9 +104,6 @@ languages:
         methods:
           - name: createChildren
           - name: render
-          - name: checkGrabBtn
-            parameters:
-              - name: btn
           - name: doNestStuff
           - name: getNest
             return:
@@ -124,8 +123,57 @@ languages:
           - name: onCheatRemoveAnimal
           - name: onCheatAddEgg
           - name: onCheatRemoveEgg
+          - name: onJoypadDownInParent
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ISHutchNestParentPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hutchUI
+                type: ISHutchUI
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchNestParentPanel"'
+        fields:
+          nestBoxUI:
+            type: table
+          eggHatchDoorBtn:
+            type: ISButton
+          closedDoorPanel:
+            type: ISPanel
+          openDoorBtn:
+            type: ISButton
+          disableJoypadNavigation:
+            type: boolean
+          hutchUI:
+            type: ISHutchUI
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: configJoypad
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
       ISHutchRoost:
-        extends: ISPanel
+        extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: x
@@ -159,9 +207,6 @@ languages:
         methods:
           - name: createChildren
           - name: render
-          - name: checkGrabBtn
-            parameters:
-              - name: btn
           - name: getAnimal
             return:
               - type: unknown
@@ -185,8 +230,64 @@ languages:
           - name: onCheatRemoveAnimal
             parameters:
               - name: animal
+          - name: onJoypadDownInParent
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+      ISHutchRoostParentPanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: hutchUI
+                type: ISHutchUI
+        staticFields:
+          Type:
+            defaultValue: '"ISHutchRoostParentPanel"'
+        fields:
+          roostUI:
+            type: table
+          avatarPanel:
+            type: table
+          birdPooCleanBtn:
+            type: ISButton
+          doorBtn:
+            type: ISButton
+          closedDoorPanel:
+            type: ISPanel
+          openDoorBtn:
+            type: ISButton
+          disableJoypadNavigation:
+            type: boolean
+          hutchUI:
+            type: ISHutchUI
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: render
+          - name: configJoypad
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: hasConflictWithJoypadNavigateStart
+            return:
+              - type: boolean
       ISHutchUI:
-        extends: ISCollapsableWindow
+        extends: ISCollapsableWindowJoypad
         constructors:
           - parameters:
               - name: x
@@ -205,30 +306,15 @@ languages:
           instance:
             type: ISHutchUI
             nullable: true
+          ui: {}
         fields:
-          avatarPanel:
-            type: table
-          grabBtnList:
-            type: table
-          nestBoxPanelList:
-            type: table
-          grabEggsBtnList:
-            type: table
-          nestBoxUI:
-            type: table
-          roostUI:
-            type: table
+          tabPanel:
+            type: ISTabPanel
+          nestParentPanel:
+            type: ISHutchNestParentPanel
+          roostParentPanel:
+            type: ISHutchRoostParentPanel
           avatarBackgroundTexture: {}
-          boxCleanBtn:
-            type: ISButton
-          birdPooCleanBtn:
-            type: ISButton
-          doorBtn:
-            type: ISButton
-          eggHatchDoorBtn:
-            type: ISButton
-          closedDoorPanel:
-            type: ISPanel
           hutch: {}
           chr: {}
           playerNum:
@@ -277,8 +363,9 @@ languages:
               - name: chickenX
               - name: chickenY
               - name: rowY
-              - name: rowHeight
+              - name: SHELF_HEIGHT
               - name: btnGrabOffset
+          - name: onTabsActivateView
           - name: isKeyConsumed
             parameters:
               - name: key
@@ -290,3 +377,31 @@ languages:
               - name: key
                 type: integer
           - name: close
+          - name: setVisible
+            parameters:
+              - name: vis
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+        staticMethods:
+          - name: ShowWindow
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: hutch
+            return:
+              - type: ISHutchUI

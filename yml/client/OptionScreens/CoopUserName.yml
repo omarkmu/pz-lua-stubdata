@@ -28,10 +28,6 @@ languages:
             type: ISButton
           nextButton:
             type: ISButton
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
         methods:
           - name: createChildren
           - name: shouldShow

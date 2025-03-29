@@ -158,10 +158,6 @@ languages:
             type: boolean
           firstDraw:
             type: boolean
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           hasVisibleItem:
             type: boolean
           showCountdownForJoin:

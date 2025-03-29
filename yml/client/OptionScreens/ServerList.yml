@@ -114,10 +114,6 @@ languages:
             type: ISButton
           getModBtn:
             type: ISButton
-          ISButtonA:
-            nullable: true
-          ISButtonB:
-            nullable: true
           showCountdownForJoin:
             type: boolean
           itemheightoverride:

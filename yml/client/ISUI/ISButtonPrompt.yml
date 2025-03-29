@@ -193,6 +193,10 @@ languages:
             parameters:
               - name: device
                 type: Radio | IsoWaveSignal | VehiclePart
+          - name: openEntityUI
+            parameters:
+              - name: entity
+                type: GameEntity
           - name: cmdUseVehicle
             parameters:
               - name: vehicle
@@ -401,3 +405,5 @@ languages:
             parameters:
               - name: button
                 type: ISButton
+              - name: joypadData
+                type: JoypadData

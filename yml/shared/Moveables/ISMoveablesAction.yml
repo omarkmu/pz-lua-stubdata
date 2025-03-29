@@ -28,6 +28,8 @@ languages:
         fields:
           sound:
             nullable: true
+          playerNum:
+            type: integer
           square:
             type: IsoGridSquare
           origSpriteName:

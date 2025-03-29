@@ -13,6 +13,8 @@ languages:
           name:
             type: string
             nullable: true
+          description:
+            type: string
           contextMenu:
             nullable: true
           texture:
@@ -26,8 +28,6 @@ languages:
           owner:
             type: table
             nullable: true
-          description:
-            type: string
           footNote:
             nullable: true
           maxLineWidth:
@@ -46,6 +46,14 @@ languages:
           - name: setName
             parameters:
               - name: name
+                type: string
+          - name: setTitle
+            parameters:
+              - name: str
+                type: string
+          - name: setDescription
+            parameters:
+              - name: str
                 type: string
           - name: setContextMenu
             parameters:

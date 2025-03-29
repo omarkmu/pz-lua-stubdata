@@ -35,6 +35,8 @@ languages:
             type: number
           toolTip:
             type: ISToolTip
+          playerNum:
+            type: integer
           inventory:
             nullable: true
           loot:
@@ -47,20 +49,23 @@ languages:
           HandSecondaryTexture: {}
           inventoryTexture: {}
           inventoryTextureOn: {}
-          zoneIcon: {}
-          zoneIconOn: {}
-          craftingIcon: {}
-          craftingIconOn: {}
           heartIcon: {}
           heartIconOn: {}
+          craftingIcon: {}
+          craftingIconOn: {}
+          moveableIconBuild: {}
+          moveableIconBuildOn: {}
           movableIcon: {}
+          movableIconOff: {}
           movableIconPickup: {}
           movableIconPlace: {}
           movableIconRotate: {}
-          moveableIconBuild: {}
-          moveableIconBuildOn: {}
           movableIconScrap: {}
           moveableIconRepair: {}
+          searchIcon: {}
+          searchIconOn: {}
+          zoneIcon: {}
+          zoneIconOn: {}
           mapIconOff: {}
           mapIconOn: {}
           debugIcon: {}
@@ -73,8 +78,6 @@ languages:
           warInactive: {}
           warSoon: {}
           lockTexture: {}
-          searchIconOn: {}
-          searchIconOff: {}
           offTexture: {}
           onTexture: {}
           disableTexture: {}
@@ -86,6 +89,7 @@ languages:
             type: number
           healthIconOscillatorStartLevel:
             type: number
+          sidebarSizeOption: {}
           mouseOverList:
             type: table
           mainHand:
@@ -211,6 +215,7 @@ languages:
               - name: y
                 type: number
           - name: removeFromUIManager
+          - name: checkSidebarSizeOption
           - name: toggleSafety
         staticMethods:
           - name: onKeyPressed

@@ -4,6 +4,12 @@ languages:
     classes:
       TrapSystem:
         staticMethods:
+          - name: getTrapZones
+            parameters:
+              - name: square
+                type: IsoGridSquare
+            return:
+              - type: table
           - name: initObjectModData
             parameters:
               - name: isoObject

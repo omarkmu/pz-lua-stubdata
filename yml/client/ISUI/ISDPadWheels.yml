@@ -12,6 +12,10 @@ languages:
           - name: showSurvGuide
             parameters:
               - name: playerIndex
+          - name: showAnimalZoneUI
+            parameters:
+              - name: playerNum
+                type: integer
           - name: onDisplayRight
             parameters:
               - name: joypadData

@@ -162,7 +162,8 @@ languages:
           - name: onDebugSetStress
             parameters:
               - name: animal
-              - name: chr
+              - name: playerNum
+                type: number
           - name: onDebugSetAcceptance
             parameters:
               - name: animal
@@ -242,11 +243,13 @@ languages:
           - name: onSetWoolQty
             parameters:
               - name: animal
-              - name: chr
+              - name: playerNum
+                type: number
           - name: onSetMilkQty
             parameters:
               - name: animal
-              - name: chr
+              - name: playerNum
+                type: number
           - name: onMilkAnimal
             parameters:
               - name: animal

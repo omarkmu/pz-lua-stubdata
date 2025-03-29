@@ -74,6 +74,18 @@ languages:
           - name: LookedAround
             return:
               - type: boolean
+          - name: inArea
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: w
+                type: number
+              - name: h
+                type: number
+            return:
+              - type: boolean
       WelcomeStep:
         extends: TutorialStep
         constructors:
@@ -153,7 +165,7 @@ languages:
           Type:
             defaultValue: '"InventoryLootingStep"'
           itemToEat:
-            defaultValue: '"DeadMouse"'
+            defaultValue: '"DeadRat"'
           container:
             nullable: true
           finished:
@@ -558,6 +570,9 @@ languages:
             return:
               - type: boolean
         staticMethods:
+          - name: playerUpdate
+            parameters:
+              - name: player
           - name: TheEnd
           - name: Outhouse
             return:

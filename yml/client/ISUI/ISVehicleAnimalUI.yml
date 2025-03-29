@@ -3,7 +3,7 @@ languages:
   lua:
     classes:
       ISVehicleAnimalUI:
-        extends: ISCollapsableWindow
+        extends: ISCollapsableWindowJoypad
         constructors:
           - parameters:
               - name: vehicle
@@ -22,6 +22,14 @@ languages:
           scrollPanel:
             type: ISPanelJoypad
           animalCount: {}
+          avatarWidth:
+            type: number
+          avatarHeight:
+            type: number
+          btnHeight:
+            type: number
+          btnWidth:
+            type: number
           character: {}
           playerNum:
             type: integer
@@ -34,14 +42,6 @@ languages:
           - name: createChildren
           - name: checkCanAddAnimal
           - name: onAddAnimal
-          - name: onRightMouseUpScrollPanel
-            parameters:
-              - name: x
-                type: number
-              - name: y
-                type: number
-            return:
-              - type: boolean
           - name: prerenderScrollPanel
           - name: update
           - name: prerender
@@ -51,33 +51,38 @@ languages:
               - name: reset
           - name: onAnimalInfo
             parameters:
-              - name: button
-                type: ISButton
-              - name: x
-                type: number
-              - name: y
-                type: number
+              - name: animal
           - name: onRemoveAnimal
             parameters:
-              - name: button
-                type: ISButton
-              - name: x
-                type: number
-              - name: y
-                type: number
+              - name: animal
           - name: onGrabAnimal
             parameters:
-              - name: button
-                type: ISButton
-              - name: x
-                type: number
-              - name: y
-                type: number
+              - name: animal
           - name: reset
             parameters:
               - name: panel
                 type: ISPanelJoypad
           - name: close
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown_Descendant
+            parameters:
+              - name: descendant
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadBeforeDeactivate_Descendant
+            parameters:
+              - name: descendant
+              - name: joypadData
+                type: JoypadData
           - name: isKeyConsumed
             parameters:
               - name: key
@@ -93,6 +98,41 @@ languages:
             parameters:
               - name: animal
               - name: player
+      ISAnimalInVehiclePanel:
+        extends: ISPanelJoypad
+        constructors:
+          - parameters:
+              - name: width
+                type: number
+              - name: height
+                type: number
+              - name: animalUI
+                type: ISVehicleAnimalUI
+        staticFields:
+          Type:
+            defaultValue: '"ISAnimalInVehiclePanel"'
+        fields:
+          avatar:
+            type: ISVehicleAnimal3DModel
+          animalUI:
+            type: ISVehicleAnimalUI
+        methods:
+          - name: createChildren
+          - name: prerender
+          - name: onRightMouseUp
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: onJoypadDownInParent
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
       ISVehicleAnimal3DModel:
         extends: ISUI3DModel
         constructors:

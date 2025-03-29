@@ -1,0 +1,25 @@
+version: "1.1"
+languages:
+  lua:
+    classes:
+      ISExtendedPlacementAction:
+        extends: ISBaseTimedAction
+        constructors:
+          - parameters:
+              - name: character
+              - name: item
+        staticFields:
+          Type:
+            defaultValue: '"ISExtendedPlacementAction"'
+        fields:
+          playerNum:
+            type: integer
+          item: {}
+        methods:
+          - name: isValid
+            return:
+              - type: unknown
+          - name: waitToStart
+            return:
+              - type: unknown
+          - name: perform

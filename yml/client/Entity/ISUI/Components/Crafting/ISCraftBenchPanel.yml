@@ -44,16 +44,36 @@ languages:
           - name: prerender
           - name: render
           - name: update
+          - name: onGainJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onLoseJoypadFocus
+            parameters:
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadDown
+            parameters:
+              - name: button
+                type: ISButton
+              - name: joypadData
+                type: JoypadData
+          - name: onJoypadNavigateStart_Descendant
+            parameters:
+              - name: descendant
+                type: ISUIElement
+              - name: joypadData
+                type: JoypadData
         staticMethods:
           - name: CanCreatePanelFor
             parameters:
-              - name: player
+              - name: _player
                 type: IsoPlayer
-              - name: entity
+              - name: _entity
                 type: GameEntity
-              - name: component
+              - name: _component
                 type: Component
-              - name: componentUiStyle
+              - name: _componentUiScript
                 type: XuiSkin.ComponentUiStyle
             return:
               - type: boolean

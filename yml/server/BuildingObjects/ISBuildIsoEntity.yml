@@ -9,7 +9,11 @@ languages:
               - name: character
               - name: objectInfo
                 type: boolean
-              - name: buildPanelLogic
+              - name: nSprite
+                type: number
+              - name: containers
+                nullable: true
+              - name: logic
                 nullable: true
         staticFields:
           Type:
@@ -25,17 +29,20 @@ languages:
           hoppable: {}
           isStairs:
             type: boolean
+          isFloor: {}
           face: {}
           nSpriteCache:
             type: number
-          buildPanelLogic:
-            nullable: true
           character: {}
+          containers:
+            nullable: true
           name: {}
           objectInfo:
             type: boolean
           craftRecipe:
             type: boolean
+          buildPanelLogic:
+            nullable: true
           dontNeedFrame:
             type: boolean
           needWindowFrame:

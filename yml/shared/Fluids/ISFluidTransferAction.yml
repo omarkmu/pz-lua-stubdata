@@ -23,6 +23,8 @@ languages:
             defaultValue: '"ISFluidTransferAction"'
         fields:
           sound: {}
+          amount:
+            type: number
           sourceFluidObject:
             nullable: true
           targetFluidObject:
@@ -37,7 +39,6 @@ languages:
             nullable: true
           targetOwner:
             nullable: true
-          amount: {}
         methods:
           - name: isValid
             return:
