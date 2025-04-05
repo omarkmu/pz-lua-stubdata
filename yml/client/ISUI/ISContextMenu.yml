@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISContextMenu.OnHighlight:
+        - type: "fun(option: umbrella.ISContextMenu.Option, menu: ISContextMenu,
+            isHighlighted: boolean, ...: unknown)"
     classes:
       ISContextMenu:
         extends: ISPanel
@@ -89,15 +93,6 @@ languages:
           parent:
             type: table | ISContextMenu
             nullable: true
-          instanceMap:
-            type: ISContextMenu[]
-            nullable: true
-          subMenuPool:
-            type: ISContextMenu[]
-            nullable: true
-          subInstance:
-            type: ISContextMenu
-            nullable: true
           keepOnScreen:
             type: boolean
           optionPool:
@@ -114,6 +109,21 @@ languages:
             type: Texture
           tickTexture:
             type: Texture
+          instanceMap:
+            type: ISContextMenu[]
+            nullable: true
+            tags:
+              - StubGen_Extra
+          subMenuPool:
+            type: ISContextMenu[]
+            nullable: true
+            tags:
+              - StubGen_Extra
+          subInstance:
+            type: ISContextMenu
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: initialise
           - name: isMouseOut
@@ -171,7 +181,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: closeAll
           - name: onMouseDownOutside
             parameters:
@@ -340,7 +350,6 @@ languages:
                 nullable: true
             return:
               - type: umbrella.ISContextMenu.Option
-                nullable: true
           - name: getOptionFromName
             parameters:
               - name: name
@@ -761,3 +770,66 @@ languages:
             parameters:
               - name: msg
                 type: string
+      umbrella.ISContextMenu.Option:
+        fields:
+          id:
+            type: integer
+          name:
+            type: string
+          onSelect:
+            type: "fun(target: unknown, ...: unknown)"
+            nullable: true
+          iconTexture:
+            type: Texture
+            nullable: true
+          color:
+            type: umbrella.RGB
+            nullable: true
+          checkMark:
+            type: boolean
+            nullable: true
+          target:
+            type: unknown
+            nullable: true
+          param1:
+            type: unknown
+            nullable: true
+          param2:
+            type: unknown
+            nullable: true
+          param3:
+            type: unknown
+            nullable: true
+          param4:
+            type: unknown
+            nullable: true
+          param5:
+            type: unknown
+            nullable: true
+          param6:
+            type: unknown
+            nullable: true
+          param7:
+            type: unknown
+            nullable: true
+          param8:
+            type: unknown
+            nullable: true
+          param9:
+            type: unknown
+            nullable: true
+          param10:
+            type: unknown
+            nullable: true
+          subOption:
+            type: number
+            nullable: true
+          toolTip:
+            type: ISToolTip
+            nullable: true
+          onHighlight:
+            type: umbrella.ISContextMenu.OnHighlight
+            nullable: true
+          onHighlightParams:
+            type: table
+            nullable: true

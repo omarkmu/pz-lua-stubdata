@@ -2,5 +2,11 @@ version: "1.1"
 languages:
   lua:
     classes:
-      MapsOrder: {}
-      IgnoredMap: {}
+      MapsOrder:
+        fields:
+          "[integer]":
+            type: string
+      IgnoredMap:
+        fields:
+          "[integer]":
+            type: string

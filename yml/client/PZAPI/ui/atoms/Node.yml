@@ -52,7 +52,8 @@ languages:
           isStencil:
             defaultValue: "false"
         fields:
-          javaObj: {}
+          javaObj:
+            type: AtomUI
           children:
             type: table<string, UI.Node>
             nullable: true
@@ -68,36 +69,47 @@ languages:
           - name: setX
             parameters:
               - name: value
+                type: number
           - name: setY
             parameters:
               - name: value
+                type: number
           - name: setWidth
             parameters:
               - name: value
+                type: number
           - name: setHeight
             parameters:
               - name: value
+                type: number
           - name: setWidthSilent
             parameters:
               - name: value
+                type: number
           - name: setHeightSilent
             parameters:
               - name: value
+                type: number
           - name: setPivotX
             parameters:
               - name: value
+                type: number
           - name: setPivotY
             parameters:
               - name: value
+                type: number
           - name: setAngle
             parameters:
               - name: value
+                type: number
           - name: setScaleX
             parameters:
               - name: value
+                type: number
           - name: setScaleY
             parameters:
               - name: value
+                type: number
           - name: setColor
             parameters:
               - name: r
@@ -111,16 +123,24 @@ languages:
           - name: setVisible
             parameters:
               - name: value
+                type: boolean
           - name: setEnabled
             parameters:
               - name: value
+                type: boolean
           - name: setAlwaysOnTop
             parameters:
               - name: value
+                type: boolean
           - name: setAlwaysBack
             parameters:
               - name: value
-      PZAPI:
+                type: boolean
+          - name: instantiate
+            tags:
+              - StubGen_Extra
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.Node:
+          Node:
             type: UI.Node

@@ -24,6 +24,7 @@ languages:
           - name: setModInfo
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
       ModInfoPanel:
         staticFields:
           Title:

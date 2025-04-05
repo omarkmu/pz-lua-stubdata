@@ -11,9 +11,12 @@ languages:
               - name: y
                 type: number
               - name: index
+                type: string
               - name: player
+                type: IsoPlayer
                 nullable: true
               - name: item
+                type: InventoryItem
                 nullable: true
         staticFields:
           Type:
@@ -24,11 +27,16 @@ languages:
           centerText:
             type: ISPrintMediaRichText
           player:
+            type: IsoPlayer
             nullable: true
           item:
+            type: InventoryItem
             nullable: true
-          index: {}
-          title: {}
+          index:
+            type: string
+          title:
+            type: string
+            nullable: true
           visibleTarget:
             type: ISPrintMediaPage
           visibleFunction:
@@ -94,7 +102,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirLeft

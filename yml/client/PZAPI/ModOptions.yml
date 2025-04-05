@@ -1,23 +1,41 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ModOptions.Element:
+        - type: umbrella.ModOptions.Title
+        - type: umbrella.ModOptions.Description
+        - type: umbrella.ModOptions.Separator
+        - type: umbrella.ModOptions.OptionElement
+      umbrella.ModOptions.OptionElement:
+        - type: umbrella.ModOptions.TextEntry
+        - type: umbrella.ModOptions.TickBox
+        - type: umbrella.ModOptions.MultipleTickBox
+        - type: umbrella.ModOptions.ComboBox
+        - type: umbrella.ModOptions.ColorPicker
+        - type: umbrella.ModOptions.Keybind
+        - type: umbrella.ModOptions.Slider
+        - type: umbrella.ModOptions.Button
     classes:
       PZAPI:
         staticFields:
-          ModOptions: {}
-      Options:
+          ModOptions:
+            type: PZAPI.ModOptions
+      PZAPI.ModOptions.Options:
         local: true
         constructors:
           - parameters:
               - name: modOptionsID
+                type: string
               - name: name
                 type: string
         fields:
           data:
-            type: table
+            type: umbrella.ModOptions.Element[]
           dict:
-            type: table
-          modOptionsID: {}
+            type: table<string, umbrella.ModOptions.OptionElement>
+          modOptionsID:
+            type: string
           name:
             type: string
         methods:
@@ -25,8 +43,10 @@ languages:
           - name: getOption
             parameters:
               - name: id
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ModOptions.OptionElement
+                nullable: true
           - name: addTitle
             parameters:
               - name: name
@@ -34,44 +54,60 @@ languages:
           - name: addDescription
             parameters:
               - name: text
+                type: string
           - name: addSeparator
           - name: addTextEntry
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: value
+                type: string
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.TextEntry
           - name: addTickBox
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: value
+                type: boolean
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.TickBox
           - name: addMultipleTickBox
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.MultipleTickBox
           - name: addComboBox
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.ComboBox
           - name: addColorPicker
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: r
@@ -83,46 +119,382 @@ languages:
               - name: a
                 type: number
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.ColorPicker
           - name: addKeyBind
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: key
                 type: integer
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.Keybind
           - name: addSlider
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: min
+                type: number
               - name: max
+                type: number
               - name: step
+                type: number
               - name: value
+                type: number
               - name: _tooltip
+                type: string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.Slider
           - name: addButton
             parameters:
               - name: id
+                type: string
               - name: name
                 type: string
               - name: tooltip
+                type: string
+                nullable: true
               - name: onclickfunc
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: target
                 type: unknown
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ModOptions.Button
+      PZAPI.ModOptions:
+        local: true
+        staticFields:
+          Data:
+            type: PZAPI.ModOptions.Options[]
+          Dict:
+            type: table<string, PZAPI.ModOptions.Options>
+          OtherOptions:
+            type: table
+          Options:
+            type: PZAPI.ModOptions.Options
+        methods:
+          - name: create
+            parameters:
+              - name: modOptionsID
+                type: string
+              - name: name
+                type: string
+                nullable: true
+            return:
+              - type: PZAPI.ModOptions.Options
+          - name: getOptions
+            parameters:
+              - name: modOptionsID
+                type: string
+            return:
+              - type: PZAPI.ModOptions.Options
+                nullable: true
+          - name: save
+          - name: load
+      umbrella.ModOptions.Title:
+        fields:
+          type:
+            type: '"title"'
+          name:
+            type: string
+      umbrella.ModOptions.Description:
+        fields:
+          type:
+            type: '"description"'
+          text:
+            type: string
+      umbrella.ModOptions.Separator:
+        fields:
+          type:
+            type: '"separator"'
+      umbrella.ModOptions.BaseOption:
+        fields:
+          id:
+            type: string
+          name:
+            type: string
+          tooltip:
+            type: string
+            nullable: true
+          element:
+            type: table
+            nullable: true
+        methods:
+          - name: setEnabled
+            parameters:
+              - name: bool
+                type: string
+      umbrella.ModOptions.TextEntry:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"textentry"'
+          value:
+            type: string
+          isEnabled:
+            type: boolean
+          element:
+            type: ISTextEntryBox
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.TextEntry, text: string)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.TextEntry, text: string)"
+            nullable: true
+        methods:
+          - name: getValue
+            return:
+              - type: string
+          - name: setValue
+            parameters:
+              - name: value
+                type: string
+      umbrella.ModOptions.TickBox:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"tickbox"'
+          value:
+            type: boolean
+          isEnabled:
+            type: boolean
+          element:
+            type: ISTickBox
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.TickBox, selected: boolean)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.TickBox, selected: boolean)"
+            nullable: true
+        methods:
+          - name: getValue
+            return:
+              - type: boolean
+          - name: setValue
+            parameters:
+              - name: value
+                type: boolean
+      umbrella.ModOptions.MultipleTickBox.Value:
+        fields:
+          name:
+            type: string
+          value:
+            type: boolean
+          isEnabled:
+            type: boolean
+      umbrella.ModOptions.MultipleTickBox:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"multipletickbox"'
+          values:
+            type: umbrella.ModOptions.MultipleTickBox.Value[]
+          nameToIndex:
+            type: table<string, integer>
+          element:
+            type: ISTickBox
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.MultipleTickBox, index: integer,
+              selected: boolean)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.MultipleTickBox, index: integer,
+              selected: boolean)"
+            nullable: true
+        methods:
+          - name: addTickBox
+            parameters:
+              - name: name
+                type: string
+              - name: value
+                type: boolean
+          - name: setEnabled
+            parameters:
+              - name: optionName
+                type: string
+              - name: value
+                type: boolean
+          - name: getValue
+            parameters:
+              - name: index
+                type: integer
+            return:
+              - type: boolean
+          - name: setValue
+            parameters:
+              - name: index
+                type: integer
+              - name: value
+                type: boolean
+      umbrella.ModOptions.ComboBox:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"combobox"'
+          values:
+            type: string[]
+          isEnabled:
+            type: table | boolean
+          selected:
+            type: integer
+          element:
+            type: ISComboBox
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.ComboBox, selected: integer)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.ComboBox, selected: integer)"
+            nullable: true
+        methods:
+          - name: addItem
+            parameters:
+              - name: name
+                type: string
+              - name: selected
+                type: boolean
+                nullable: true
+          - name: getValue
+            return:
+              - type: integer
+          - name: setValue
+            parameters:
+              - name: value
+                type: integer
+      umbrella.ModOptions.ColorPicker.Element:
+        extends: ISButton
+        fields:
+          colorPicker:
+            type: ISColorPicker
+          optionID:
+            type: string
+      umbrella.ModOptions.ColorPicker:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"colorpicker"'
+          color:
+            type: umbrella.RGBA
+          isEnabled:
+            type: boolean
+          element:
+            type: umbrella.ModOptions.ColorPicker.Element
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.ColorPicker, color: umbrella.RGBA)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.ColorPicker, color: umbrella.RGBA)"
+            nullable: true
+        methods:
+          - name: getValue
+            return:
+              - type: umbrella.RGBA
+          - name: setValue
+            parameters:
+              - name: value
+                type: umbrella.RGBA
+      umbrella.ModOptions.Keybind.Element:
+        extends: umbrella.MainOptions.KeyTextElement
+        fields:
+          defaultKeyCode:
+            type: integer
+          isModBind:
+            type: "true"
+      umbrella.ModOptions.Keybind:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"keybind"'
+          key:
+            type: integer
+          defaultkey:
+            type: integer
+          element:
+            type: umbrella.ModOptions.Keybind.Element
+            nullable: true
+        methods:
+          - name: getValue
+            return:
+              - type: integer
+          - name: setValue
+            parameters:
+              - name: value
+                type: integer
+      umbrella.ModOptions.Slider:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"slider"'
+          value:
+            type: number
+          isEnabled:
+            type: boolean
+          min:
+            type: number
+          max:
+            type: number
+          step:
+            type: number
+          element:
+            type: ISSliderPanel
+            nullable: true
+          onChange:
+            type: "fun(option: umbrella.ModOptions.Slider, value: number)"
+            nullable: true
+          onChangeApply:
+            type: "fun(option: umbrella.ModOptions.Slider, value: number)"
+            nullable: true
+        methods:
+          - name: getValue
+            return:
+              - type: number
+          - name: setValue
+            parameters:
+              - name: value
+                type: number
+      umbrella.ModOptions.Button:
+        extends: umbrella.ModOptions.BaseOption
+        fields:
+          type:
+            type: '"button"'
+          isEnabled:
+            type: boolean
+          onclick:
+            type: umbrella.ISButton.OnClick
+            nullable: true
+          target:
+            type: unknown
+            nullable: true
+          args:
+            type: table
+            nullable: true
+          element:
+            type: ISButton
+            nullable: true

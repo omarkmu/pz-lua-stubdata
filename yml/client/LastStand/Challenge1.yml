@@ -53,6 +53,7 @@ languages:
           - name: SpawnZombies
             parameters:
               - name: count
+                type: integer
           - name: Render
           - name: Tick
           - name: onBackButtonWheel
@@ -60,3 +61,4 @@ languages:
               - name: playerNum
                 type: integer
               - name: dir
+                type: string

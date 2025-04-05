@@ -25,15 +25,18 @@ languages:
           - name: setText
             parameters:
               - name: text
+                type: string
           - name: getText
             return:
-              - type: unknown
+              - type: string
           - name: setFont
             parameters:
               - name: uiFont
+                type: UIFont
           - name: focus
           - name: unfocus
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.TextEntry:
+          TextEntry:
             type: UI.TextEntry

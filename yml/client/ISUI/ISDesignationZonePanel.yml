@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISDesignationZonePanel"'
@@ -35,12 +36,14 @@ languages:
           currentWidth:
             type: number
           selectedZone:
+            type: DesignationZoneAnimal
             nullable: true
           playerNum:
             type: integer
-          player: {}
+          player:
+            type: IsoPlayer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           listTakesFocus:
             type: boolean
         methods:
@@ -50,8 +53,11 @@ languages:
           - name: drawList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender

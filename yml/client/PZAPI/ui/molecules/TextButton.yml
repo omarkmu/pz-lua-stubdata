@@ -6,7 +6,8 @@ languages:
         extends: UI.Panel
         local: true
         staticFields:
-          sounds: {}
+          sounds:
+            type: table<string, string>
         fields:
           super:
             type: UI.Panel
@@ -20,8 +21,10 @@ languages:
           - name: onHover
             parameters:
               - name: state
+                type: boolean
           - name: onLeftClick
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.TextButton:
+          TextButton:
             type: UI.TextButton

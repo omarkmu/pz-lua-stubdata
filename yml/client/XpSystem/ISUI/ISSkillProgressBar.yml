@@ -17,6 +17,7 @@ languages:
               - name: playerNum
                 type: integer
               - name: perk
+                type: PerkFactory.Perk
               - name: parent
                 type: ISCharacterInfo
         staticFields:
@@ -30,8 +31,10 @@ languages:
           tooltip:
             type: ISToolTip
             nullable: true
-          level: {}
-          xpForLvl: {}
+          level:
+            type: integer
+          xpForLvl:
+            type: number
           message:
             type: string
             nullable: true
@@ -39,12 +42,16 @@ languages:
             type: number
           playerNum:
             type: integer
-          char: {}
-          perk: {}
+          char:
+            type: IsoPlayer
+          perk:
+            type: PerkFactory.Perk
           parent:
             type: ISCharacterInfo
-          SkillUnitFilled: {}
-          SkillUnitBorder: {}
+          SkillUnitFilled:
+            type: Texture
+          SkillUnitBorder:
+            type: Texture
         methods:
           - name: initialise
           - name: render
@@ -57,6 +64,7 @@ languages:
           - name: updateTooltip
             parameters:
               - name: lvlSelected
+                type: integer
           - name: onMouseMove
             parameters:
               - name: dx
@@ -76,17 +84,22 @@ languages:
           - name: getXpForLvl
             parameters:
               - name: perk
+                type: PerkFactory.Perk
               - name: level
+                type: integer
             return:
               - type: unknown
           - name: getPreviousXpLvl
             parameters:
               - name: perk
+                type: PerkFactory.Perk
               - name: level
+                type: integer
             return:
               - type: number
           - name: getPerkXp
             parameters:
               - name: self
+                type: ISSkillProgressBar
             return:
               - type: number

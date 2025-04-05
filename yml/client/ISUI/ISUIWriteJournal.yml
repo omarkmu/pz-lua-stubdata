@@ -18,14 +18,21 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: character
+                type: IsoPlayer
               - name: notebook
+                type: Literature
               - name: defaultEntryText
+                type: string
+                nullable: true
               - name: title
                 type: string
               - name: lineNumber
-                type: number
+                type: integer
               - name: editable
+                type: boolean
               - name: numberOfPages
                 type: number
         staticFields:
@@ -52,34 +59,42 @@ languages:
             type: ISButton
           isUnlocked:
             type: boolean
-          joypadButtons: {}
-          joypadIndex: {}
+          joypadButtons:
+            type: ISButton[]
+          joypadIndex:
+            type: integer
           currentPage:
-            type: number
+            type: integer
           name:
             nullable: true
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          character: {}
+          onclick:
+            type: umbrella.ISButton.OnClick
+            nullable: true
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
           defaultEntryText:
             type: string
           lineNumber:
-            type: number
+            type: integer
           maxTextLength:
-            type: number
-          editable: {}
+            type: integer
+          editable:
+            type: boolean
           text:
             type: string
           numberOfPages:
-            type: number
-          notebook: {}
+            type: integer
+          notebook:
+            type: Literature
           newPage:
             type: table
-          fontHgt: {}
+          fontHgt:
+            type: number
           locked:
             type: boolean
         methods:
@@ -103,7 +118,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

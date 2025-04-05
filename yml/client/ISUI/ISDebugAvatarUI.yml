@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISDebugAvatarUI"'
@@ -17,7 +18,8 @@ languages:
             type: ISComboBox
           breedList:
             type: ISComboBox
-          avatarBackgroundTexture: {}
+          avatarBackgroundTexture:
+            type: Texture
           dirLeft:
             type: ISButton
           dirRight:
@@ -44,7 +46,8 @@ languages:
           avatarWidth:
             type: number
             nullable: true
-          direction: {}
+          direction:
+            type: IsoDirections
           yoffset:
             type: number
             nullable: true
@@ -60,8 +63,10 @@ languages:
             nullable: true
           animal:
             type: string
-          animalObj: {}
-          chr: {}
+          animalObj:
+            type: IsoAnimal
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           avatarX:
@@ -107,10 +112,15 @@ languages:
           - name: onSelectBreed
             parameters:
               - name: combo
+                type: ISComboBox
           - name: onSelectAnimal
             parameters:
               - name: combo
+                type: ISComboBox
           - name: doNewAnimal
             parameters:
               - name: animal
+                type: string
               - name: breed
+                type: string
+                nullable: true

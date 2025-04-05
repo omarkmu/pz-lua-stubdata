@@ -15,19 +15,29 @@ languages:
               - name: height
                 type: number
               - name: text
+                type: string
               - name: defaultEntryText
+                type: string
               - name: target
                 type: unknown
+                nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: player
+                type: integer
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISRichTextBox"'
@@ -36,48 +46,73 @@ languages:
             type: ISButton
           no:
             type: ISButton
-          fontHgt: {}
+          fontHgt:
+            type: number
           entry:
             type: ISTextEntryBox
           chatText:
             type: ISRichTextPanel
-          validateTarget: {}
-          validateFunc: {}
+          validateTarget:
+            type: unknown
+            nullable: true
+          validateFunc:
+            type: umbrella.ISTextBox.ValidateFunction
+            nullable: true
           validateArgs:
             type: table
-          validateTooltipText: {}
+            nullable: true
+          validateTooltipText:
+            type: string
+            nullable: true
           name:
             nullable: true
-          text: {}
-          onclick: {}
-          player: {}
+          text:
+            type: string
+          onclick:
+            type: umbrella.ISButton.OnClick
+            nullable: true
+          player:
+            type: integer
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
           param3:
             type: unknown
+            nullable: true
           param4:
             type: unknown
-          defaultEntryText: {}
+            nullable: true
+          defaultEntryText:
+            type: string
         methods:
           - name: initialise
           - name: update
           - name: setOnlyNumbers
             parameters:
               - name: onlyNumbers
+                type: boolean
           - name: setValidateFunction
             parameters:
               - name: target
                 type: unknown
+                nullable: true
               - name: func
+                type: umbrella.ISTextBox.ValidateFunction
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
           - name: setValidateTooltipText
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: destroy
           - name: onClick
             parameters:
@@ -92,6 +127,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

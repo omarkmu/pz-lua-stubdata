@@ -15,7 +15,7 @@ languages:
               - name: height
                 type: number
               - name: pagesCount
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISTabPanelPaginated"'
@@ -33,14 +33,15 @@ languages:
           tooMuchViews:
             type: boolean
           shownViews:
-            type: table
+            type: table<integer, boolean>
           forwardView:
-            type: table
+            type: umbrella.ISTabPanel.View
           backwardView:
-            type: table
-          isDragging: {}
+            type: umbrella.ISTabPanel.View
+          isDragging:
+            type: boolean
           pagesCount:
-            type: number
+            type: integer
           mouseDownHook:
             nullable: true
         methods:
@@ -52,13 +53,13 @@ languages:
           - name: renderView
             parameters:
               - name: viewObject
-                type: table
-                nullable: true
+                type: umbrella.ISTabPanel.View
               - name: tabDragSelected
                 type: number
               - name: _x
                 type: number
               - name: tabWidth
+                type: number
               - name: gap
                 type: number
             return:
@@ -66,9 +67,11 @@ languages:
           - name: getTabIndexAtX
             parameters:
               - name: x
+                type: number
               - name: scrollX
+                type: number
             return:
-              - type: number
+              - type: integer
           - name: onMouseDown
             parameters:
               - name: x
@@ -79,17 +82,19 @@ languages:
           - name: getViewByIndex
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: setPagesCount
             parameters:
               - name: pagesCount
-                type: number
+                type: integer
           - name: getPagesCount
             return:
-              - type: number
+              - type: integer
         staticMethods:
           - name: redoTab
             parameters:
               - name: self
+                type: ISTabPanel

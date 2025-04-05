@@ -149,3 +149,19 @@ languages:
           - name: onRebuildItemNodes
             parameters:
               - name: _inputItems
+      umbrella.ISWidgetInput.ScriptValues:
+        extends: umbrella.ISWidgetTooltipInput.ScriptValues
+        fields:
+          isDrain:
+            type: boolean
+          isTool:
+            type: boolean
+          inputFullName:
+            type: string
+            nullable: true
+          itemNameLabel:
+            type: ISLabel
+            nullable: true
+          selectInputButton:
+            type: ISButton
+            nullable: true

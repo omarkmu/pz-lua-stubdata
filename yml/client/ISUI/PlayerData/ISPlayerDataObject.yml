@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: id
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISPlayerDataObject"'
@@ -41,10 +42,12 @@ languages:
             type: ISRadialMenu
           sleepingUI:
             type: ISSleepingUI
-          x1left: {}
+          x1left:
+            type: number
           x1:
             type: number
-          y1top: {}
+          y1top:
+            type: number
           y1:
             type: number
           w1:
@@ -59,22 +62,28 @@ languages:
             type: number
           h2:
             type: number
-          id: {}
+          id:
+            type: integer
         methods:
           - name: createInventoryInterface
           - name: placeInventoryScreens
             parameters:
               - name: playerID
-                type: number
+                type: integer
               - name: totalPlayers
+                type: integer
               - name: mouse
                 type: boolean
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: integer
               - name: oldh
+                type: integer
               - name: neww
+                type: integer
               - name: newh
+                type: integer
           - name: revertToKeyboardAndMouse
         staticMethods:
           - name: onKeyPressed

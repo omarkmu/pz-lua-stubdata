@@ -36,11 +36,15 @@ languages:
           - name: onSelect
             parameters:
               - name: _item
+                type: PVPLogTool.PVPEvent
           - name: drawEvents
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -51,5 +55,7 @@ languages:
           - name: onTicked
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: closeModal

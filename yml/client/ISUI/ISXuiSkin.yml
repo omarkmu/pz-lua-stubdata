@@ -1,29 +1,44 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISXuiSkin.Constructor:
+        - type: "fun(xuiScript: XuiScript, ...: unknown?)"
     classes:
       ISXuiSkinFunctions:
         staticMethods:
           - name: xuiRecalculateLayout
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
               - name: _force
+                type: boolean
+                nullable: true
               - name: _anchorRight
+                type: boolean
+                nullable: true
           - name: xuiRootElement
             parameters:
               - name: _self
+                type: ISUIElement
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
       ISXuiSkin:
         staticFields:
-          constructors: {}
+          constructors:
+            type: ISXuiSkin.constructors
         staticMethods:
           - name: build
             parameters:
               - name: _skin
+                type: XuiSkin
                 nullable: true
               - name: _styleName
                 type: string
@@ -32,19 +47,392 @@ languages:
                 type: table
                 nullable: true
               - name: ...
-                type: number | string | ISTableLayout
+                type: unknown
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: RegisterXuiSkinFunctions
             parameters:
               - name: _o
-                type: ISPanel
+                type: ISUIElement
               - name: _force
                 type: boolean
           - name: autoApplyTableKeys
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _o
-                type: table
+                type: ISUIElement
               - name: _autoApplyOverride
+                type: XuiAutoApply
+                nullable: true
+      ISXuiSkin.constructors:
+        local: true
+        fields:
+          "[string]":
+            type: umbrella.ISXuiSkin.Constructor
+        staticMethods:
+          - name: ISWindow
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _title
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISWindow
+              - type: boolean
+          - name: ISCollapsableWindow
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISCollapsableWindow
+              - type: boolean
+          - name: ISButton
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _title
+                type: string
+              - name: _clicktarget
+                type: unknown
+                nullable: true
+              - name: _onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
+              - name: _onmousedown
+                type: umbrella.ISButton.MouseCallback
+                nullable: true
+              - name: _allowMouseUpProcessing
+                type: boolean
+                nullable: true
+            return:
+              - type: ISButton
+              - type: boolean
+          - name: ISImage
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _texture
+                type: Texture
+                nullable: true
+              - name: _r
+                type: number
+                nullable: true
+              - name: _g
+                type: number
+                nullable: true
+              - name: _b
+                type: number
+                nullable: true
+            return:
+              - type: ISImage
+              - type: boolean
+          - name: ISLabel
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _height
+                type: number
+              - name: _name
+                type: string
+              - name: _r
+                type: number
+              - name: _g
+                type: number
+              - name: _b
+                type: number
+              - name: _a
+                type: number
+              - name: _font
+                type: UIFont
+                nullable: true
+              - name: _bLeft
+                type: boolean
+                nullable: true
+            return:
+              - type: ISLabel
+              - type: boolean
+          - name: ISProgressBar
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _text
+                type: string
+                nullable: true
+              - name: _font
+                type: UIFont
+                nullable: true
+            return:
+              - type: ISProgressBar
+              - type: boolean
+          - name: ISRichTextPanel
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISRichTextPanel
+              - type: boolean
+          - name: ISScrollingListBox
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISScrollingListBox
+              - type: boolean
+          - name: ISTabPanel
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISTabPanel
+              - type: boolean
+          - name: ISTextEntryBox
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _title
+                type: string
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISTextEntryBox
+              - type: boolean
+          - name: ISTickBox
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _name
+                type: string
+              - name: _changeOptionTarget
+                type: unknown
+                nullable: true
+              - name: _changeOptionMethod
+                type: umbrella.ISTickBox.OnChange
+                nullable: true
+              - name: _changeOptionArg1
+                type: unknown
+                nullable: true
+              - name: _changeOptionArg2
+                type: unknown
+                nullable: true
+            return:
+              - type: ISTickBox
+              - type: boolean
+          - name: ISToolTip
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+            return:
+              - type: ISToolTip
+              - type: boolean
+          - name: ISToolTipInv
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _item
+                type: InventoryItem
+                nullable: true
+            return:
+              - type: ISToolTipInv
+              - type: boolean
+          - name: ISColorPicker
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _HSBFactor
+                type: umbrella.HSB
+                nullable: true
+            return:
+              - type: ISColorPicker
+              - type: boolean
+          - name: ISSliderPanel
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _target
+                type: unknown
+              - name: _onValueChange
+                type: umbrella.ISSliderPanel.OnValueChange
+                nullable: true
+              - name: _customPaginate
+                type: umbrella.ISSliderPanel.CustomPaginate
+                nullable: true
+            return:
+              - type: ISSliderPanel
+              - type: boolean
+          - name: ISFluidBar
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _player
+                type: IsoPlayer
+              - name: _resource
+                type: ResourceFluid
+                nullable: true
+            return:
+              - type: ISFluidBar
+              - type: boolean
+          - name: ISLedLight
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+            return:
+              - type: ISLedLight
+              - type: boolean
+          - name: ISLcdBar
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _charWidth
+                type: number
+            return:
+              - type: ISLcdBar
+              - type: boolean
+          - name: ISItemSlot
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _width
+                type: number
+              - name: _height
+                type: number
+              - name: _resource
+                type: Resource
+                nullable: true
+              - name: _target
+                type: unknown
+                nullable: true
+              - name: _onItemDropped
+                type: umbrella.ISItemSlot.OnItemDropped
+                nullable: true
+              - name: _onItemRemove
+                type: umbrella.ISItemSlot.OnItemRemove
+                nullable: true
+              - name: _onVerifyItem
+                type: umbrella.ISItemSlot.OnVerifyItem
+                nullable: true
+              - name: _onBoxClicked
+                type: umbrella.ISItemSlot.OnBoxClicked
+                nullable: true
+            return:
+              - type: ISItemSlot
+              - type: boolean

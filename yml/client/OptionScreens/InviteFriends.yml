@@ -22,12 +22,16 @@ languages:
             nullable: true
         fields:
           selectedFriend:
+            type: SteamFriend
             nullable: true
           inviteTime:
+            type: number
             nullable: true
-          mouseOverButtonIndex: {}
+          mouseOverButtonIndex:
+            type: integer
+            nullable: true
           invited:
-            type: table
+            type: table<integer, boolean>
           listbox:
             type: ISScrollingListBox
           filterEntry:
@@ -40,7 +44,8 @@ languages:
             type: ISButton
           statusLabel:
             type: ISLabel
-          isCoopHost: {}
+          isCoopHost:
+            type: boolean
         methods:
           - name: initialise
           - name: hasChoices
@@ -65,12 +70,17 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseDown_ListBox
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: x
                 type: number
               - name: y
@@ -78,6 +88,7 @@ languages:
           - name: toggleAllowDeny
             parameters:
               - name: index
+                type: integer
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -90,3 +101,4 @@ languages:
           - name: OnSteamFriendStatusChanged
             parameters:
               - name: steamID
+                type: string

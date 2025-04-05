@@ -65,8 +65,11 @@ languages:
           - name: drawCategoryListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onCategorySelected
@@ -77,8 +80,11 @@ languages:
           - name: drawFluidListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender

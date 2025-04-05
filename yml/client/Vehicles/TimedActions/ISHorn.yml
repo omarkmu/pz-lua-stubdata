@@ -7,11 +7,13 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISHorn"'
         fields:
-          t: {}
+          t:
+            type: number
         methods:
           - name: isValid
             return:

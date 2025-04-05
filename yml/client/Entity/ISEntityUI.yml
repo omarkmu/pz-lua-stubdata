@@ -1,6 +1,15 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISEntityUI.CraftCanStart:
+        - type: "fun(player: IsoPlayer, entity: IsoObject, component: Component): boolean"
+      umbrella.ISEntityUI.CraftStart:
+        - type: "fun(player: IsoPlayer, entity: IsoObject, component: Component)"
+      umbrella.ISEntityUI.CustomCanOpenWindow:
+        - type: "fun(player: IsoPlayer, entity: GameEntity): boolean"
+      umbrella.ISEntityUI.CustomOpenWindow:
+        - type: "fun(player: IsoPlayer, entity: GameEntity)"
     classes:
       ISEntityUI:
         staticFields:
@@ -240,3 +249,38 @@ languages:
             return:
               - type: IsoObject
                 nullable: true
+      umbrella.ISEntityUI.ComponentPanelInfo:
+        fields:
+          panelClass:
+            type: ISUIElement
+          component:
+            type: Component
+          uiStyle:
+            type: XuiSkin.ComponentUiStyle
+      umbrella.ISEntityUI.PlayerTable:
+        fields:
+          windows:
+            type: table<string, umbrella.ISEntityUI.WindowTable>
+      umbrella.ISEntityUI.ReloadTableItem:
+        fields:
+          player:
+            type: IsoPlayer
+          entity:
+            type: GameEntity
+      umbrella.ISEntityUI.WindowTable:
+        fields:
+          instance:
+            type: ISUIElement
+            nullable: true
+          x:
+            type: number
+            nullable: true
+          y:
+            type: number
+            nullable: true
+          width:
+            type: number
+            nullable: true
+          height:
+            type: number
+            nullable: true

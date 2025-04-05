@@ -27,11 +27,11 @@ languages:
             type: ISSliderPanel
           valSlider:
             type: ISSliderPanel
-          h:
+          b:
             type: number
           s:
             type: number
-          b:
+          h:
             type: number
           currentColor:
             type: Color
@@ -143,7 +143,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: removeSelf
           - name: picked
             parameters:

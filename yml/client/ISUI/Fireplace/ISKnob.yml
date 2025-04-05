@@ -11,34 +11,42 @@ languages:
               - name: y
                 type: number
               - name: tex
+                type: Texture
               - name: valuesBg
+                type: Texture
               - name: title
                 type: string
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISKnob"'
           messages: {}
         fields:
           selected:
-            type: number
+            type: integer
           amplitude:
             type: number
           lastValue:
             type: number
-          draggingX: {}
-          originalX: {}
+          draggingX:
+            type: number
+          originalX:
+            type: number
           dragging:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           values:
-            type: table
-          valuesBg: {}
+            type: umbrella.ISKnob.ValueTable[]
+          valuesBg:
+            type: Texture
           title:
             type: string
           isKnob:
             type: boolean
-          tex: {}
+          tex:
+            type: Texture
           switchSound:
             type: string
         methods:
@@ -55,6 +63,7 @@ languages:
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
           - name: onJoypadDirUp
             parameters:
               - name: joypadData
@@ -65,7 +74,7 @@ languages:
                 type: JoypadData
           - name: getValue
             return:
-              - type: unknown
+              - type: number
           - name: setKnobPosition
             parameters:
               - name: value
@@ -101,3 +110,9 @@ languages:
               - name: dy
                 type: number
           - name: playSwitchSound
+      umbrella.ISKnob.ValueTable:
+        fields:
+          angle:
+            type: number
+          value:
+            type: number

@@ -14,19 +14,23 @@ languages:
               - name: width
                 type: number
               - name: type
+                type: string
         staticFields:
           Type:
             defaultValue: '"ModInfoPanelInteractionParam"'
         fields:
           pressed:
             type: boolean
-          modInfo: {}
+          modInfo:
+            type: ChooseGameInfo.Mod
           modDict:
-            type: table
-          type: {}
+            type: umbrella.ModInfoPanel.InteractionParam.ModDict
+          type:
+            type: string
           name:
             type: string
-          labelWidth: {}
+          labelWidth:
+            type: number
           padX:
             type: number
           padY:
@@ -44,7 +48,21 @@ languages:
           - name: setModInfo
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
       ModInfoPanel:
         staticFields:
           InteractionParam:
             type: ModInfoPanel.InteractionParam
+      umbrella.ModInfoPanel.InteractionParam.ModDict:
+        fields:
+          id:
+            type: string
+          color:
+            type: umbrella.RGB
+          len:
+            type: number
+          available:
+            type: boolean
+          modInfo:
+            type: ChooseGameInfo.Mod
+            nullable: true

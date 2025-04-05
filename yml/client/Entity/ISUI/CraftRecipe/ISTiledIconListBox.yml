@@ -1,6 +1,16 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISTiledIconListBox.OnClickTile:
+        - type: "fun(target: unknown, data: unknown)"
+      umbrella.ISTiledIconListBox.OnHoverTile:
+        - type: "fun(target: unknown, data: unknown)"
+      umbrella.ISTiledIconListBox.OnRenderTile:
+        - type: "fun(listbox: ISTiledIconListBox, tileData: unknown, x: number, y: number,
+            width: number, height: number, isMouseOver: boolean)"
+      umbrella.ISTiledIconListBox.OnPageChanged:
+        - type: "fun(target: unknown, page: integer)"
     classes:
       ISTiledIconListBox:
         extends: ISPanel
@@ -53,9 +63,6 @@ languages:
             type: umbrella.ISTiledIconListBox.OnHoverTile | false
           onClickTile:
             type: umbrella.ISTiledIconListBox.OnClickTile | false
-          onPageChanged:
-            type: umbrella.ISTiledIconListBox.OnPageChanged
-            nullable: true
           iconWidth:
             type: number
           iconHeight:
@@ -86,6 +93,11 @@ languages:
             type: boolean
           isAutoFillY:
             type: boolean
+          onPageChanged:
+            type: umbrella.ISTiledIconListBox.OnPageChanged
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: initialise
           - name: createChildren

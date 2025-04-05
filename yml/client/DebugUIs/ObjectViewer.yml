@@ -35,6 +35,8 @@ languages:
         methods:
           - name: onRightMouseDownObject
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: x
                 type: number
               - name: y
@@ -48,6 +50,8 @@ languages:
           - name: initialise
           - name: onSourceMouseWheel
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: del
                 type: number
             return:
@@ -79,3 +83,9 @@ languages:
             parameters:
               - name: data
                 type: umbrella.ObjectViewer.WatchItem
+      umbrella.ObjectViewer.WatchItem:
+        fields:
+          obj:
+            type: unknown
+          item:
+            type: umbrella.ISScrollingListBox.Item

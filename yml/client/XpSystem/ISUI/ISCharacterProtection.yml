@@ -20,9 +20,10 @@ languages:
           Type:
             defaultValue: '"ISCharacterProtection"'
         fields:
-          cacheColor: {}
+          cacheColor:
+            type: Color
           colorScheme:
-            type: table
+            type: umbrella.ISBodyPartPanel.ColorSchemeTable[]
           bpPanelX:
             type: number
           bpPanelY:
@@ -32,14 +33,17 @@ languages:
           maxLabelWidth:
             type: number
           bparts:
-            type: table
+            type: table<string, boolean>
           playerNum:
             type: integer
-          char: {}
-          bFemale: {}
+          char:
+            type: IsoPlayer
+          bFemale:
+            type: boolean
           sex:
             type: string
-          bodyOutline: {}
+          bodyOutline:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -53,4 +57,4 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer

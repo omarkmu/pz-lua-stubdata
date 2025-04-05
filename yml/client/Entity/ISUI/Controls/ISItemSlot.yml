@@ -1,6 +1,16 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISItemSlot.OnBoxClicked:
+        - type: "fun(target: unknown, slot: ISItemSlot, isRightClick: boolean, isShift:
+            boolean)"
+      umbrella.ISItemSlot.OnItemDropped:
+        - type: "fun(target: unknown, slot: ISItemSlot, items: InventoryItem[])"
+      umbrella.ISItemSlot.OnItemRemove:
+        - type: "fun(target: unknown, slot: ISItemSlot, item: InventoryItem)"
+      umbrella.ISItemSlot.OnVerifyItem:
+        - type: "fun(target: unknown, slot: ISItemSlot, item: InventoryItem): boolean"
     classes:
       ISItemSlot:
         extends: ISPanel

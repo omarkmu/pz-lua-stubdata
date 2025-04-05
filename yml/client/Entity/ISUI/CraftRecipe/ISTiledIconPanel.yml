@@ -154,7 +154,7 @@ languages:
           - name: onJoypadButtonReleased
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirLeft

@@ -25,10 +25,13 @@ languages:
           - name: setText
             parameters:
               - name: text
+                type: string
           - name: setFont
             parameters:
               - name: uiFont
-      PZAPI:
+                type: UIFont
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.Text:
+          Text:
             type: UI.Text

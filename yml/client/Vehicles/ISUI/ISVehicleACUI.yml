@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISVehicleACUI"'
@@ -21,13 +22,18 @@ languages:
             type: ISKnob
           ok:
             type: ISButton
-          joypadButtons: {}
-          vehicle: {}
-          heater: {}
+          joypadButtons:
+            type: ISButton[]
+          vehicle:
+            type: BaseVehicle
+          heater:
+            type: VehiclePart
           playerNum:
             type: integer
-          character: {}
-          knobTex: {}
+          character:
+            type: IsoPlayer
+          knobTex:
+            type: Texture
         methods:
           - name: createChildren
           - name: changeKnob
@@ -48,8 +54,9 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: centerOnScreen
           - name: setVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle

@@ -7,16 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: campfireObject
+                type: IsoObject
               - name: campfire
+                type: CCampfireGlobalObject
         staticFields:
           Type:
             defaultValue: '"IsCampfireInfoAction"'
         fields:
           playerNum:
             type: integer
-          campfire: {}
-          campfireTable: {}
+          campfire:
+            type: IsoObject
+          campfireTable:
+            type: CCampfireGlobalObject
         methods:
           - name: isValid
             return:

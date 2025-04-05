@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: safehouse
+                type: SafeHouse
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISSafehouseAddPlayerUI"'
@@ -30,19 +32,26 @@ languages:
             type: ISButton
           addPlayer:
             type: ISButton
-          player: {}
-          safehouse: {}
+          player:
+            type: IsoPlayer
+          safehouse:
+            type: SafeHouse
           scoreboard:
+            type: umbrella.ISMiniScoreboardUI.Scoreboard
             nullable: true
-          isOwner: {}
+          isOwner:
+            type: boolean
         methods:
           - name: initialise
           - name: populateList
           - name: drawPlayers
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -54,6 +63,9 @@ languages:
           - name: OnScoreboardUpdate
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>
           - name: OnMiniScoreboardUpdate

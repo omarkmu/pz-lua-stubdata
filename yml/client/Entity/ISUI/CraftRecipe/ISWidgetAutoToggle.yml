@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISWidgetAutoToggle.OnToggled:
+        - type: "fun(target: unknown, state: boolean)"
     classes:
       ISWidgetAutoToggle:
         extends: ISPanel

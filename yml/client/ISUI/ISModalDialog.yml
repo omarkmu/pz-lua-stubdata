@@ -22,10 +22,10 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
-                type: function
+                type: umbrella.ISButton.OnClick
                 nullable: true
               - name: player
-                type: number
+                type: integer
                 nullable: true
               - name: param1
                 type: unknown
@@ -56,10 +56,10 @@ languages:
             type: unknown
             nullable: true
           onclick:
-            type: function
+            type: umbrella.ISButton.OnClick
             nullable: true
           player:
-            type: number
+            type: integer
             nullable: true
           param1:
             type: unknown
@@ -120,7 +120,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: render
         staticMethods:
           - name: CalcSize
@@ -130,6 +130,7 @@ languages:
               - name: height
                 type: number
               - name: text
+                type: string
             return:
               - type: number
               - type: number

@@ -26,8 +26,9 @@ languages:
           itemheightoverride:
             type: table
           selected:
-            type: number
-          panel: {}
+            type: integer
+          panel:
+            type: CoopOptionsScreenPanel
           accountNameEntry:
             type: ISTextEntryBox
           settingsComboBox:
@@ -35,7 +36,7 @@ languages:
           settingsButton:
             type: ISButton
           memoryToIndex:
-            type: table
+            type: table<integer, integer>
           memoryComboBox:
             type: ISComboBox
           softResetButton:
@@ -71,7 +72,8 @@ languages:
             type: string
           softreset:
             type: boolean
-          worldVersion: {}
+          worldVersion:
+            type: integer
           softresetProgress:
             type: number
             nullable: true
@@ -152,9 +154,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -175,23 +181,30 @@ languages:
           - name: onCoopServerMessage
             parameters:
               - name: tag
+                type: string
               - name: cookie
+                type: string
               - name: payload
+                type: string
           - name: OnConnected
           - name: OnConnectFailed
             parameters:
               - name: message
+                type: string
           - name: OnConnectionStateChanged
             parameters:
               - name: state
+                type: string
               - name: message
+                type: string
       CoopOptionsScreenPanel:
         extends: ISPanelJoypad
         staticFields:
           Type:
             defaultValue: '"CoopOptionsScreenPanel"'
         fields:
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           oldJoypadIndexY:
             type: number
           oldJoypadIndex:
@@ -212,7 +225,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       CoopConnection:
@@ -226,6 +239,7 @@ languages:
             nullable: true
             defaultValue: is64bit() and 4096 or 1024
           serverPassword:
+            type: string
             nullable: true
     functions:
       - name: basicButtonSetup
@@ -235,4 +249,4 @@ languages:
           - name: internal
             type: string
           - name: anchors
-            type: table
+            type: table<"top" | "bottom" | "left" | "right", boolean>

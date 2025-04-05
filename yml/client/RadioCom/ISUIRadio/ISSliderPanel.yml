@@ -1,6 +1,11 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISSliderPanel.CustomPaginate:
+        - type: "fun(target: unknown?)"
+      umbrella.ISSliderPanel.OnValueChange:
+        - type: "fun(target: unknown?, value: number, panel: ISSliderPanel)"
     classes:
       ISSliderPanel:
         extends: ISPanel
@@ -18,22 +23,23 @@ languages:
                 type: unknown
                 nullable: true
               - name: onValueChange
-                type: function
+                type: umbrella.ISSliderPanel.OnValueChange
                 nullable: true
               - name: customPaginate
+                type: umbrella.ISSliderPanel.CustomPaginate
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISSliderPanel"'
         fields:
           sliderBarDim:
-            type: table
+            type: umbrella.XYWH
           btnLeftDim:
-            type: table
+            type: umbrella.XYWH
           btnRightDim:
-            type: table
+            type: umbrella.XYWH
           sliderDim:
-            type: table
+            type: umbrella.XYWH
           leftPressed:
             type: boolean
           rightPressed:
@@ -58,31 +64,36 @@ languages:
           toolTip:
             type: ISToolTip
             nullable: true
-          joyfocus: {}
+          joyfocus:
+            type: JoypadData
+            nullable: true
           sliderBarColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
           onValueChange:
-            type: function
+            type: umbrella.ISSliderPanel.OnValueChange
             nullable: true
           customPaginate:
+            type: umbrella.ISSliderPanel.CustomPaginate
             nullable: true
-          texBtnLeft: {}
-          texBtnRight: {}
+          texBtnLeft:
+            type: Texture
+          texBtnRight:
+            type: Texture
           buttonColor:
-            type: table
+            type: umbrella.RGBA
           buttonMouseOverColor:
-            type: table
+            type: umbrella.RGBA
           sliderColor:
-            type: table
+            type: umbrella.RGBA
           sliderMouseOverColor:
-            type: table
+            type: umbrella.RGBA
           sliderBorderColor:
-            type: table
+            type: umbrella.RGBA
           sliderBarBorderColor:
-            type: table
+            type: umbrella.RGBA
           doToolTip:
             type: boolean
           toolTipText:
@@ -99,7 +110,7 @@ languages:
               - name: num
                 type: number
               - name: idp
-                type: number
+                type: integer
             return:
               - type: number
           - name: initialise
@@ -163,6 +174,7 @@ languages:
           - name: setDoButtons
             parameters:
               - name: _b
+                type: boolean
           - name: setCurrentValue
             parameters:
               - name: _v

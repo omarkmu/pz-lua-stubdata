@@ -9,10 +9,12 @@ languages:
               - name: luaSystem
                 type: CRainBarrelSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"CRainBarrelGlobalObject"'
         methods:
           - name: getObject
             return:
-              - type: unknown
+              - type: IsoObject
+                nullable: true

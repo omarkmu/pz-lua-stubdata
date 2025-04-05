@@ -15,16 +15,19 @@ languages:
           scriptName:
             type: ISLabel
           sliderBlood:
-            type: table
+            type: table<"Front" | "Rear" | "Left" | "Right", ISSliderPanel>
           tickBoxAll:
             type: ISTickBox
           vehicle:
+            type: BaseVehicle
             nullable: true
           script:
+            type: VehicleScript
             nullable: true
           title:
             type: string
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: addLabel
             parameters:
@@ -35,6 +38,7 @@ languages:
               - name: _title
                 type: string
               - name: _font
+                type: UIFont
               - name: _bLeft
                 type: boolean
             return:
@@ -51,14 +55,17 @@ languages:
               - name: _h
                 type: number
               - name: _func
-                type: function
+                type: umbrella.ISSliderPanel.OnValueChange
+                nullable: true
             return:
               - type: number
               - type: ISSliderPanel
           - name: callbackBlood
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: createChildren
           - name: clearVehicle
           - name: prerender
@@ -66,9 +73,12 @@ languages:
           - name: setVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
     functions:
       - name: debugVehicleBloodUI
         parameters:
           - name: playerObj
             type: IsoPlayer
           - name: vehicle
+            type: BaseVehicle
+            nullable: true

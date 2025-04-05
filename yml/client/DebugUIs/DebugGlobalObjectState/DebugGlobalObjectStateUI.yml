@@ -175,6 +175,16 @@ languages:
                 type: number
           - name: updateObjectProps
           - name: showUI
+      umbrella.DebugGlobalObjectStateUI.Item:
+        fields:
+          system:
+            type: GlobalObjectSystem
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
     functions:
       - name: DebugGlobalObjectState_InitUI
         parameters:

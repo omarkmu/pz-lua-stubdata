@@ -35,7 +35,8 @@ languages:
               - name: a
                 type: number
           - name: init
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.Panel:
+          Panel:
             type: UI.Panel

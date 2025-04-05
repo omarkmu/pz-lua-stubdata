@@ -1,6 +1,12 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ServerSettingsScreen.Setting:
+        - type: umbrella.ServerSettingsScreen.CheckboxSetting
+        - type: umbrella.ServerSettingsScreen.EntrySetting
+        - type: umbrella.ServerSettingsScreen.EnumSetting
+        - type: umbrella.ServerSettingsScreen.StringSetting
     classes:
       ServerSettingsScreen:
         extends: ISPanelJoypad
@@ -22,37 +28,44 @@ languages:
             nullable: true
         fields:
           pageStart:
-            type: table
+            type: ISPanelJoypad
           pageNew:
-            type: table
+            type: BaseServerSettingsPanel
           pageEdit:
-            type: table
+            type: ISPanelJoypad
           pageDuplicate:
-            type: table
+            type: BaseServerSettingsPanel
           pageRename:
-            type: table
+            type: BaseServerSettingsPanel
           pageDelete:
-            type: table
-          pageSpawnPoints: {}
+            type: ISPanelJoypad
+          pageSpawnPoints:
+            type: ISPanelJoypad
           prevScreen:
             type: CoopOptionsScreen
-          initialSelectedSettings: {}
+          initialSelectedSettings:
+            type: string
+            nullable: true
         methods:
           - name: create
           - name: aboutToShow
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
                 type: JoypadData
           - name: getCurrentFocusForController
             return:
-              - type: table | Page3.ChooseModsWindow
+              - type: ISUIElement
                 nullable: true
           - name: onJoypadBeforeDeactivate
             parameters:
@@ -61,10 +74,11 @@ languages:
           - name: onResetLua
             parameters:
               - name: reason
+                type: string
         staticMethods:
           - name: getSandboxSettingsTable
             return:
-              - type: unknown
+              - type: umbrella.ServerSettingsScreen.SettingsPage[]
       BaseServerSettingsPanel:
         extends: ISPanelJoypad
         staticFields:
@@ -78,7 +92,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -107,9 +121,14 @@ languages:
             type: ISTextEntryBox
           entryFile:
             type: ISTextEntryBox
-          joypadButtons: {}
-          selectedItem: {}
-          joypadFocused: {}
+          joypadButtons:
+            type: ISButton[]
+          selectedItem:
+            type: umbrella.ServerSettingsScreen.SpawnRegionItem
+            nullable: true
+          joypadFocused:
+            type: boolean
+            nullable: true
         methods:
           - name: createChildren
           - name: render
@@ -131,7 +150,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDownInParent
@@ -149,9 +168,11 @@ languages:
               - name: _table
                 type: table
               - name: value
+                type: unknown
           - name: setServerOptionValue
             parameters:
               - name: settings
+                type: ServerSettings
               - name: option
                 type: string
               - name: _table
@@ -159,6 +180,7 @@ languages:
           - name: setDefaultsFromSingleplayer
             parameters:
               - name: settings
+                type: ServerSettings
       Page3.ChooseModsWindow:
         extends: ISPanelJoypad
         local: true
@@ -176,7 +198,8 @@ languages:
           Type:
             defaultValue: '"Page3.ChooseModsWindow"'
         fields:
-          listbox: {}
+          listbox:
+            type: ISScrollingListBox
           buttonCancel:
             type: ISButton
           buttonMods:
@@ -184,7 +207,7 @@ languages:
           buttonAccept:
             type: ISButton
           modInfoByID:
-            type: table
+            type: table<string, ChooseGameInfo.Mod>
         methods:
           - name: create
           - name: onGainJoypadFocus
@@ -198,4 +221,66 @@ languages:
           - name: addModToList
             parameters:
               - name: modID
+                type: string
           - name: render
+      umbrella.ServerSettingsScreen.SettingsPage:
+        fields:
+          name:
+            type: string
+          title:
+            type: string
+            nullable: true
+          settings:
+            type: umbrella.ServerSettingsScreen.Setting[]
+          steamOnly:
+            type: boolean
+            nullable: true
+          customui:
+            type: ISUIElement
+            nullable: true
+      umbrella.ServerSettingsScreen.BaseSetting:
+        fields:
+          name:
+            type: string
+          translatedName:
+            type: string
+          tooltip:
+            type: string
+            nullable: true
+          type:
+            type: string
+      umbrella.ServerSettingsScreen.CheckboxSetting:
+        fields:
+          type:
+            type: '"checkbox"'
+          default:
+            type: boolean
+      umbrella.ServerSettingsScreen.EntrySetting:
+        fields:
+          type:
+            type: '"entry"'
+          text:
+            type: string
+          onlyNumbers:
+            type: boolean
+            nullable: true
+      umbrella.ServerSettingsScreen.EnumSetting:
+        fields:
+          type:
+            type: '"enum"'
+          values:
+            type: string[]
+          default:
+            type: integer
+      umbrella.ServerSettingsScreen.StringSetting:
+        fields:
+          type:
+            type: '"string" | "text"'
+          text:
+            type: string
+      umbrella.ServerSettingsScreen.SpawnRegionItem:
+        fields:
+          name:
+            type: string
+          file:
+            type: string

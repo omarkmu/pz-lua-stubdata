@@ -22,11 +22,13 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
         staticMethods:
           - name: OnNewGame
           - name: onKeyPressed

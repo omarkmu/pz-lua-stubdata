@@ -72,3 +72,12 @@ languages:
             return:
               - type: ISUIElement
                 nullable: true
+      umbrella.ISDebugPanelBase.PanelInfo:
+        fields:
+          buttonTitle:
+            type: string
+          panelClass:
+            type: ISUIElement
+          ignoreSorting:
+            type: boolean
+            nullable: true

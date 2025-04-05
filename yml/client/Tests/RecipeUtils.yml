@@ -7,30 +7,56 @@ languages:
           - name: CreateSourceItem1
             parameters:
               - name: recipe
+                type: Recipe
               - name: source
+                type: Recipe.Source
               - name: sourceFullType
+                type: string
               - name: options
+                type: umbrella.RecipeUtils.Options
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: CreateSourceItem2
             parameters:
               - name: recipe
+                type: Recipe
               - name: source
+                type: Recipe.Source
               - name: sourceFullType
+                type: string
               - name: options
+                type: umbrella.RecipeUtils.Options
               - name: result
+                type: InventoryItem[]
           - name: CreateSourceItem
             parameters:
               - name: recipe
+                type: Recipe
               - name: source
+                type: Recipe.Source
               - name: sourceFullType
+                type: string
               - name: options
+                type: umbrella.RecipeUtils.Options
               - name: result
+                type: InventoryItem[]
           - name: CreateSourceItems
             parameters:
               - name: recipe
+                type: Recipe
               - name: options
-                type: table
+                type: umbrella.RecipeUtils.Options
               - name: result
-                type: table
+                type: InventoryItem[]
+      umbrella.RecipeUtils.Options:
+        fields:
+          AvailableItemsAll:
+            type: ArrayList<InventoryItem>
+            nullable: true
+          MaxItemsPerSource:
+            type: integer
+            nullable: true
+          NoDuplicateKeep:
+            type: boolean
+            nullable: true

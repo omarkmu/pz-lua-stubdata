@@ -23,7 +23,8 @@ languages:
               - type: UI.FishWindow
         methods:
           - name: init
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.FishWindow:
+          FishWindow:
             type: UI.FishWindow

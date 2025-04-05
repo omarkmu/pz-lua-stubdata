@@ -7,23 +7,29 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: attachment
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISDetachTrailerFromVehicle"'
         fields:
           sound: {}
-          vehicle: {}
-          attachment: {}
-          hitchPos: {}
+          vehicle:
+            type: BaseVehicle
+          attachment:
+            type: string
+          hitchPos:
+            type: Vector3f
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

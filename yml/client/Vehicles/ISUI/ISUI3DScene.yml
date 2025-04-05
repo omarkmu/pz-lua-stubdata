@@ -23,9 +23,9 @@ languages:
           background:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: instantiate
           - name: prerender
@@ -65,4 +65,4 @@ languages:
                 type: string
           - name: getView
             return:
-              - type: unknown
+              - type: string

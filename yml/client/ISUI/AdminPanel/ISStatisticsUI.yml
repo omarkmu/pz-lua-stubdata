@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISStatisticsUI"'
@@ -54,20 +55,27 @@ languages:
             type: string
           playerNum:
             type: integer
-          player: {}
+          player:
+            type: IsoPlayer
         methods:
           - name: onTickedLeft
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onTickedCenter
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onTickedRight
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: createChildren
           - name: close
           - name: prerender
@@ -91,7 +99,8 @@ languages:
         fields:
           playerNum:
             type: integer
-          player: {}
+          player:
+            type: IsoPlayer
         methods:
           - name: prerender
           - name: onMouseWheel
@@ -105,12 +114,19 @@ languages:
           - name: drawRow
             parameters:
               - name: l
+                type: string
               - name: lC
+                type: number
               - name: c
+                type: string
               - name: cC
+                type: number
               - name: s
+                type: string
               - name: sC
+                type: number
               - name: y
+                type: number
               - name: r
                 type: number
               - name: g
@@ -120,5 +136,6 @@ languages:
               - name: a
                 type: number
               - name: background
+                type: boolean
             return:
               - type: number

@@ -7,7 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: title
-                type: string | ISTextEntryBox
+                type: string
               - name: x
                 type: number
               - name: y
@@ -20,9 +20,10 @@ languages:
           Type:
             defaultValue: '"ISTextEntryBox"'
         fields:
-          font: {}
+          font:
+            type: UIFont
           title:
-            type: string | ISTextEntryBox
+            type: string
           tooltipUI:
             type: ISToolTip
           tooltip:
@@ -31,14 +32,20 @@ languages:
             type: boolean
           logIndex:
             type: number
-          fade: {}
+          fade:
+            type: UITransition
           currentText:
-            type: string | ISTextEntryBox
+            type: string
+          javaObject:
+            type: UITextBox2
+            tags:
+              - StubGen_Extra
         methods:
           - name: initialise
           - name: setFont
             parameters:
               - name: font
+                type: UIFont
           - name: onCommandEntered
           - name: onTextChange
           - name: onLostFocus
@@ -54,34 +61,34 @@ languages:
           - name: instantiate
           - name: getText
             return:
-              - type: unknown
+              - type: string
           - name: setEditable
             parameters:
               - name: editable
                 type: boolean
           - name: isEditable
             return:
-              - type: unknown
+              - type: boolean
           - name: setSelectable
             parameters:
               - name: enable
           - name: isSelectable
             return:
-              - type: unknown
+              - type: boolean
           - name: setMultipleLine
             parameters:
               - name: multiple
                 type: boolean
           - name: isMultipleLine
             return:
-              - type: unknown
+              - type: boolean
           - name: setMaxLines
             parameters:
               - name: max
-                type: number
+                type: integer
           - name: getMaxLines
             return:
-              - type: unknown
+              - type: integer
           - name: setClearButton
             parameters:
               - name: hasButton
@@ -105,21 +112,24 @@ languages:
           - name: focus
             return:
               - type: unknown
+                nullable: true
           - name: unfocus
             return:
               - type: unknown
+                nullable: true
           - name: isFocused
             return:
-              - type: unknown
+              - type: boolean
           - name: getInternalText
             return:
-              - type: unknown
+              - type: string
           - name: setMasked
             parameters:
               - name: b
                 type: boolean
             return:
               - type: unknown
+                nullable: true
           - name: setMaxTextLength
             parameters:
               - name: length
@@ -127,12 +137,14 @@ languages:
           - name: setForceUpperCase
             parameters:
               - name: forceUpperCase
+                type: boolean
           - name: getCursorPos
             return:
-              - type: unknown
+              - type: integer
           - name: setCursorPos
             parameters:
               - name: charIndex
+                type: integer
           - name: prerender
           - name: onMouseMove
             parameters:
@@ -163,7 +175,7 @@ languages:
                 type: number
           - name: getFrameAlpha
             return:
-              - type: unknown
+              - type: number
           - name: setValid
             parameters:
               - name: valid
@@ -184,6 +196,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

@@ -39,6 +39,7 @@ languages:
           - name: onMouseButtonDown
             parameters:
               - name: btn
+                type: ISButton
           - name: onKeyRelease
             parameters:
               - name: key

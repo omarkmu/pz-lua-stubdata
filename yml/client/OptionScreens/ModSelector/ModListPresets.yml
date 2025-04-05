@@ -15,15 +15,17 @@ languages:
               - name: height
                 type: number
               - name: model
+                type: ModSelector.Model
         staticFields:
           Type:
             defaultValue: '"ModListPresets"'
         fields:
-          model: {}
+          model:
+            type: ModSelector.Model
           childrenLine:
-            type: table
+            type: table<integer, ISUIElement>
           childrenIndex:
-            type: number
+            type: integer
           presetCombo:
             type: ISComboBox
           savePresetButton:
@@ -36,12 +38,15 @@ languages:
             type: ISButton
           missedModsPanel:
             type: ModSelector.MissedModsWindow
-          joypadIndex: {}
+          joypadIndex:
+            type: integer
+            nullable: true
         methods:
           - name: createChildren
           - name: addChild
             parameters:
               - name: child
+                type: ISUIElement
           - name: updateView
           - name: onPresetButton
             parameters:
@@ -54,8 +59,9 @@ languages:
           - name: onValidateSavePreset
             parameters:
               - name: text
+                type: string
             return:
-              - type: unknown
+              - type: boolean
           - name: onSavePreset
             parameters:
               - name: button
@@ -63,10 +69,11 @@ languages:
           - name: choosePreset
             parameters:
               - name: combo
+                type: ISComboBox
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

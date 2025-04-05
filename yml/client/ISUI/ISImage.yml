@@ -15,23 +15,27 @@ languages:
               - name: height
                 type: number
               - name: texture
-                type: boolean | string
+                type: Texture
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISImage"'
         fields:
-          mouseovertext: {}
+          mouseovertext:
+            type: string
+            nullable: true
           mouseover:
             type: boolean
           tooltipUI:
             type: ISToolTip
           texture:
-            type: boolean | string
+            type: Texture
             nullable: true
           textureOverride:
+            type: Texture
             nullable: true
-          font: {}
+          font:
+            type: UIFont
           autoScale:
             type: boolean
           doBorder:
@@ -42,11 +46,13 @@ languages:
           - name: initialise
           - name: getTexture
             return:
-              - type: boolean | string
+              - type: Texture
                 nullable: true
           - name: setMouseOverText
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: setColor
             parameters:
               - name: r

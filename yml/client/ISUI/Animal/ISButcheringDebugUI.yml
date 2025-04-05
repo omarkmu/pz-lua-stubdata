@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: carcass
+                type: IsoDeadBody
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISButcheringDebugUI"'
@@ -25,8 +27,10 @@ languages:
           butcherText:
             type: string
             nullable: true
-          carcass: {}
-          chr: {}
+          carcass:
+            type: IsoDeadBody
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           refreshNeeded:

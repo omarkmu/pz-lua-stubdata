@@ -22,13 +22,16 @@ languages:
             type: number
           textureY:
             type: number
-          textureW: {}
-          textureH: {}
+          textureW:
+            type: number
+          textureH:
+            type: number
           richText:
             type: ISRichTextPanel
           ok:
             type: ISButton
-          texture: {}
+          texture:
+            type: Texture
         methods:
           - name: createChildren
           - name: render

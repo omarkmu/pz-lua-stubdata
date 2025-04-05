@@ -24,6 +24,10 @@ languages:
             type: number
           animateWhilePaused:
             type: boolean
+          javaObject:
+            type: UI3DModel
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: prerender
@@ -68,12 +72,14 @@ languages:
           - name: setAnimateWhilePaused
             parameters:
               - name: animate
+                type: boolean
           - name: setDirection
             parameters:
               - name: dir
+                type: IsoDirections
           - name: getDirection
             return:
-              - type: unknown
+              - type: IsoDirections
           - name: setOutfitName
             parameters:
               - name: name
@@ -85,15 +91,18 @@ languages:
           - name: setCharacter
             parameters:
               - name: character
+                type: IsoGameCharacter
           - name: getCharacter
             return:
-              - type: unknown
+              - type: IsoGameCharacter
           - name: setSurvivorDesc
             parameters:
               - name: survivorDesc
+                type: SurvivorDesc
           - name: setAnimSetName
             parameters:
               - name: animSet
+                type: string
           - name: setState
             parameters:
               - name: state
@@ -102,22 +111,24 @@ languages:
           - name: setVariable
             parameters:
               - name: key
-                type: integer
+                type: string
               - name: value
+                type: string
           - name: getVariable
             parameters:
               - name: key
-                type: integer
+                type: string
             return:
               - type: unknown
           - name: clearVariable
             parameters:
               - name: key
-                type: integer
+                type: string
           - name: clearVariables
           - name: reportEvent
             parameters:
               - name: event
+                type: string
           - name: setIsometric
             parameters:
               - name: iso

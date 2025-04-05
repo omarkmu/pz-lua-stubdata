@@ -14,7 +14,8 @@ languages:
             type: ISButton
           drawJoypadFocus:
             type: boolean
-          texSpiffoWarning: {}
+          texSpiffoWarning:
+            type: Texture
         methods:
           - name: createChildren
           - name: prerender
@@ -25,7 +26,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

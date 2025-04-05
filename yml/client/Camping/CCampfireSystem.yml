@@ -9,6 +9,11 @@ languages:
         staticFields:
           Type:
             defaultValue: '"CCampfireSystem"'
+          instance:
+            type: CCampfireSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: isValidIsoObject
             parameters:

@@ -7,24 +7,30 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: extra
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISClothingExtraAction"'
         fields:
-          equipSound: {}
-          item: {}
+          equipSound:
+            type: integer
+            nullable: true
+          item:
+            type: InventoryItem
           started:
             type: boolean
           transactionId:
             type: number
-          extra: {}
+          extra:
+            type: string
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
               - type: boolean
@@ -37,22 +43,30 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: extra
+                type: string
           - name: stopSound
           - name: createItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: itemType
+                type: string
             return:
-              - type: unknown
+              - type: InventoryItem
           - name: createItemNew
             parameters:
               - name: item
+                type: InventoryItem
               - name: newItem
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: InventoryItem
     functions:
       - name: copyClothingItem
         parameters:
           - name: item
+            type: InventoryItem
           - name: newItem
+            type: InventoryItem

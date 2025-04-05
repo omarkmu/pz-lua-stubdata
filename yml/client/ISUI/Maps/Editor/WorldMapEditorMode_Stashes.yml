@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: WorldMapEditor
         staticFields:
           Type:
             defaultValue: '"WorldMapEditorMode_Stashes"'
@@ -21,7 +22,7 @@ languages:
             type: string
             nullable: true
           loadedStash:
-            type: table
+            type: umbrella.StashUtil.Stash
             nullable: true
           locationControl:
             type: WorldMapEditorLocationControl
@@ -99,4 +100,4 @@ languages:
           - name: onLoadStash
           - name: generateLuaScript
             return:
-              - type: unknown
+              - type: string

@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: inGame
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"MainScreen"'
@@ -28,8 +29,10 @@ languages:
             type: ISPanel
           serverList:
             type: ServerList
-          bootstrapConnectPopup: {}
-          connectToServer: {}
+          bootstrapConnectPopup:
+            type: BootstrapConnectPopup
+          connectToServer:
+            type: ConnectToServer
           serverConnectPopup:
             type: ServerConnectPopup
           multiplayer:
@@ -118,7 +121,8 @@ languages:
             type: ISLabel
           seedLabel:
             type: ISLabel
-          desc: {}
+          desc:
+            type: SurvivorDesc
           animPopup:
             type: ISModalRichText
           threeD:
@@ -138,10 +142,13 @@ languages:
           demoMessagePanel:
             type: ISRichTextPanel
           overBottomPanelButton:
+            type: ISUIElement
             nullable: true
           MouseEnterMainMenuItem:
+            type: integer
             nullable: true
           tutorialButton:
+            type: ISButton
             nullable: true
           checkSavefileModal:
             type: ISModalRichText
@@ -165,10 +172,15 @@ languages:
             type: LuaList
           creditTimeMax:
             type: number
-          inGame: {}
-          logoTexture: {}
-          joypadIndexY: {}
-          joypadButtons: {}
+          inGame:
+            type: boolean
+          logoTexture:
+            type: Texture
+          joypadIndexY:
+            type: integer
+            nullable: true
+          joypadButtons:
+            type: ISButton[]
         methods:
           - name: initialise
           - name: getLatestSave
@@ -221,7 +233,7 @@ languages:
           - name: setSandboxPreset
             parameters:
               - name: preset
-                type: table
+                type: umbrella.SandboxOptionsScreen.Preset
           - name: setBeginnerPreset
           - name: setEasyPreset
           - name: setNormalPreset
@@ -251,7 +263,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -271,12 +283,14 @@ languages:
               - name: button
                 type: ISButton
               - name: focus
+                type: ISUIElement
+                nullable: true
           - name: getAllUIs
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: getCurrentFocusForController
             return:
-              - type: ISModalRichText | MainScreen
+              - type: ISUIElement
                 nullable: true
         staticMethods:
           - name: checkTutorial
@@ -292,15 +306,17 @@ languages:
               - name: mapName
                 type: string
               - name: activeMods
+                type: ActiveMods
               - name: mapAvailable
-                type: table
+                type: table<string, boolean>
             return:
               - type: boolean
           - name: getMissingMods
             parameters:
               - name: activeMods
+                type: ActiveMods
             return:
-              - type: table
+              - type: string[]
           - name: checkSaveFile
             return:
               - type: boolean
@@ -308,11 +324,14 @@ languages:
           - name: displayCheckSavefileModal
             parameters:
               - name: text
+                type: string
               - name: fatal
+                type: boolean
           - name: resetLuaIfNeeded
           - name: onCheckSavefileModalClick
             parameters:
               - name: model
+                nullable: true
               - name: button
                 type: ISButton
           - name: continueLatestSaveAux
@@ -322,12 +341,13 @@ languages:
           - name: continueLatestSave
             parameters:
               - name: gameMode
+                type: string
               - name: saveName
                 type: string
           - name: onMenuItemMouseDownMainMenu
             parameters:
               - name: item
-                type: ISLabel
+                type: ISUIElement
               - name: x
                 type: number
               - name: y
@@ -335,21 +355,29 @@ languages:
           - name: OnTick
             parameters:
               - name: totalTicks
+                type: number
           - name: onResetLua
             parameters:
               - name: reason
+                type: string
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: onAcceptInvite
             parameters:
               - name: connectionString
+                type: string
           - name: OnJoypadBeforeDeactivate
             parameters:
               - name: index
+                type: integer
     functions:
       - name: LoadMainScreenPanel
       - name: isPlayerDoingActionThatCanBeCancelled
@@ -374,11 +402,17 @@ languages:
       - name: LoadMainScreenPanelInt
         parameters:
           - name: ingame
+            type: boolean
       - name: MainScreenPanelJoinSteam
       - name: MainScreenPanelJoinSteam_onConfirmLeaveGame
         parameters:
           - name: this
+            type: unknown
+            nullable: true
           - name: button
             type: ISButton
           - name: player
+            type: integer
           - name: bed
+            type: unknown
+            nullable: true

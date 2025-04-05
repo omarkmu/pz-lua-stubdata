@@ -29,11 +29,13 @@ languages:
           doLedBlink:
             type: boolean
           ledCol:
-            type: table
+            type: umbrella.RGBA
           ledColOff:
-            type: table
-          ledBackTexture: {}
-          ledTexture: {}
+            type: umbrella.RGBA
+          ledBackTexture:
+            type: Texture
+          ledTexture:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -46,9 +48,11 @@ languages:
           - name: setLedIsOn
             parameters:
               - name: _b
+                type: boolean
           - name: setBlinkingSpeed
             parameters:
               - name: _i
+                type: integer
           - name: setIsBlinking
             parameters:
               - name: _b

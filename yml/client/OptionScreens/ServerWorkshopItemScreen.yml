@@ -24,13 +24,13 @@ languages:
           label:
             type: ISLabel
           listbox:
-            type: table
+            type: ISScrollingListBox
           installButton:
             type: ISButton
           disconnectButton:
             type: ISButton
           prevScreen:
-            type: CoopOptionsScreen | ConnectToServer
+            type: ISUIElement
         methods:
           - name: create
           - name: prerender
@@ -40,14 +40,19 @@ languages:
           - name: setRequiredItems
             parameters:
               - name: itemIDs
+                type: ArrayList<integer>
           - name: updateItemDetails
             parameters:
               - name: detailsList
+                type: ArrayList<SteamUGCDetails>
           - name: progress
             parameters:
               - name: id
+                type: string
               - name: downloaded
+                type: integer
               - name: total
+                type: integer
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData

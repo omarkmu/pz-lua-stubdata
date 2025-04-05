@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: container
+                type: ItemContainer
               - name: time
+                type: number
               - name: x
                 type: number
               - name: y
@@ -17,8 +20,10 @@ languages:
           Type:
             defaultValue: '"ISOpenContainerTimedAction"'
         fields:
-          container: {}
-          maxTime: {}
+          container:
+            type: ItemContainer
+          maxTime:
+            type: number
           x:
             type: number
           y:

@@ -18,8 +18,12 @@ languages:
           Type:
             defaultValue: '"RWM"'
         fields:
-          player: {}
-          device: {}
+          player:
+            type: IsoPlayer
+            nullable: true
+          device:
+            type: InventoryItem | IsoObject | VehiclePart
+            nullable: true
           fontheight:
             type: number
         methods:
@@ -28,6 +32,8 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
           - name: prerender
           - name: render

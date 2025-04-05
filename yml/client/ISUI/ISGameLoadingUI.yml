@@ -16,7 +16,8 @@ languages:
         fields:
           buttonQuit:
             type: ISButton
-          status: {}
+          status:
+            type: string
         methods:
           - name: createChildren
           - name: configButton
@@ -32,12 +33,14 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
         staticMethods:
           - name: OnJoypadActivateUI
             parameters:
               - name: id
+                type: integer
     functions:
       - name: ISGameLoadingUI_OnGameLoadingUI
         parameters:
           - name: status
+            type: string

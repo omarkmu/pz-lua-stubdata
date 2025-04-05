@@ -45,18 +45,21 @@ languages:
           - name: buildNodes
             parameters:
               - name: _lines
-                type: ArrayList #<string>
+                type: ArrayList<string>
           - name: buildList
           - name: populate
             parameters:
               - name: _lines
-                type: ArrayList #<string>
+                type: ArrayList<string>
                 nullable: true
           - name: drawInfoList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onInfoListSelected

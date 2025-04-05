@@ -29,9 +29,9 @@ languages:
           mouseOver:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           moveWithMouse:
             type: boolean
         methods:

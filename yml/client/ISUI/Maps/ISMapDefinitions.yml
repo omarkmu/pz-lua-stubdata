@@ -7,28 +7,29 @@ languages:
           - name: initDirectoryMapData
             parameters:
               - name: mapUI
-                type: MapSpawnSelectImage | ISWorldMap
+                type: umbrella.MapUI
               - name: directory
                 type: string
           - name: initDefaultMapData
             parameters:
               - name: mapUI
-                type: ISWorldMap
+                type: umbrella.MapUI
           - name: initDefaultStyleV1
             parameters:
               - name: mapUI
-                type: table
+                type: umbrella.MapUI
           - name: overlayPaper
             parameters:
               - name: mapUI
-                type: table
+                type: umbrella.MapUI
           - name: revealKnownArea
             parameters:
               - name: mapUI
-                type: ISMap
+                type: umbrella.MapUI
       LootMaps:
         staticFields:
-          Init: {}
+          Init:
+            type: LootMaps.Init
           DEFAULT_MAP_DIRECTORY:
             defaultValue: "'media/maps/Muldraugh, KY'"
         staticMethods:
@@ -37,18 +38,581 @@ languages:
               - name: functionName
                 type: string
               - name: mapUI
-                type: ISMap
+                type: umbrella.MapUI
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
             return:
               - type: unknown
                 nullable: true
+      LootMaps.Init:
+        local: true
+        staticMethods:
+          - name: MarchRidgeMap
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MuldraughMap
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodMap
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideMap
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WestpointMap
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap11
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap12
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap13
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap14
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap15
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap16
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap17
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap18
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MulStashMap19
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap11
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap12
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap13
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap14
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap15
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: LouisvilleStashMap16
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: MarchRidgeStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RiversideStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: RosewoodStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap11
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap12
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap13
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap14
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap15
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WpStashMap16
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: BBurgStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: EkronStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: IrvingtonStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap1
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap2
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap3
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap4
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap5
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap6
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap7
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap8
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap9
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap10
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap11
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap12
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap13
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap14
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap15
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap16
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap17
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap18
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap19
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap20
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap21
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap22
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
+          - name: WorldStashMap23
+            parameters:
+              - name: mapUI
+                type: umbrella.MapUI
       PrintMediaMaps:
         staticFields:
           Init: {}
@@ -58,14 +622,19 @@ languages:
               - name: functionName
                 type: string
               - name: mapUI
+                type: ISPrintMediaMap
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
             return:
               - type: unknown
                 nullable: true

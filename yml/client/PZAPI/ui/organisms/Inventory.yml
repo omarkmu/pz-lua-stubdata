@@ -26,9 +26,10 @@ languages:
                 type: table
             return:
               - type: UI.Inventory
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.playerInventory:
+          playerInventory:
             type: UI.playerInventory
-          UI.Inventory:
+          Inventory:
             type: UI.Inventory

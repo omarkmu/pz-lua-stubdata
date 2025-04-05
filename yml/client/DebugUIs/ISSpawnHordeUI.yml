@@ -35,9 +35,9 @@ languages:
           outfit:
             type: ISComboBox
           maleOutfits:
-            type: ArrayList #<string>
+            type: ArrayList<string>
           femaleOutfits:
-            type: ArrayList #<string>
+            type: ArrayList<string>
           boolOptions:
             type: ISTickBox
           healthSliderTitle:

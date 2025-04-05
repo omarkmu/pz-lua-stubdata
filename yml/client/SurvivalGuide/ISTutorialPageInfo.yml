@@ -9,8 +9,12 @@ languages:
               - name: title
                 type: string
               - name: text
+                type: string
               - name: moreTextInfo
+                type: string
               - name: nextcondition
+                type: "fun(): boolean"
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTutorialPageInfo"'
@@ -19,9 +23,13 @@ languages:
             type: table
           title:
             type: string
-          text: {}
-          nextcondition: {}
-          moreTextInfo: {}
+          text:
+            type: string
+          nextcondition:
+            type: "fun(): boolean"
+            nullable: true
+          moreTextInfo:
+            type: string
         methods:
           - name: initialise
       ISTutorialSetInfo:
@@ -33,11 +41,11 @@ languages:
             defaultValue: '"ISTutorialSetInfo"'
         fields:
           pageCount:
-            type: number
+            type: integer
           currentPage:
-            type: number
+            type: integer
           pages:
-            type: table
+            type: ISTutorialPageInfo[]
         methods:
           - name: initialise
           - name: addPage
@@ -45,11 +53,16 @@ languages:
               - name: pagetitle
                 type: string
               - name: pagetext
+                type: string
               - name: moreTextInfo
+                type: string
               - name: pagenextcondition
+                type: "fun(): boolean"
+                nullable: true
           - name: getCurrent
             return:
-              - type: unknown
+              - type: ISTutorialPageInfo
+                nullable: true
           - name: applyPageToRichTextPanel
             parameters:
               - name: tutorialPanel
@@ -63,3 +76,4 @@ languages:
           - name: update
             parameters:
               - name: tutorialPanel
+                type: ISRichTextPanel

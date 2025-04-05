@@ -17,9 +17,10 @@ languages:
           Type:
             defaultValue: '"ModInfoPanelThumbnail"'
         fields:
-          modInfo: {}
+          modInfo:
+            type: ChooseGameInfo.Mod
           posterCount:
-            type: number
+            type: integer
           padX:
             type: number
           padY:
@@ -29,7 +30,7 @@ languages:
           thumbnailHeight:
             type: number
           index:
-            type: number
+            type: integer
         methods:
           - name: render
           - name: getIndexAt
@@ -39,10 +40,11 @@ languages:
               - name: y
                 type: number
             return:
-              - type: number
+              - type: integer
           - name: setModInfo
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
       ModInfoPanel:
         staticFields:
           Thumbnail:

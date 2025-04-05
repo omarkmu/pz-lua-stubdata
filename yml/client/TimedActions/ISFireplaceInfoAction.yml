@@ -7,14 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
         staticFields:
           Type:
             defaultValue: '"ISFireplaceInfoAction"'
         fields:
           playerNum:
             type: integer
-          fireplace: {}
+          fireplace:
+            type: IsoFireplace
         methods:
           - name: isValid
             return:

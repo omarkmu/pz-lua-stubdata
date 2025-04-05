@@ -2,103 +2,123 @@ version: "1.1"
 languages:
   lua:
     classes:
-      ISPlayerData: {}
+      ISPlayerData:
+        fields:
+          "[integer]":
+            type: ISPlayerDataObject
     functions:
       - name: getPlayerData
         parameters:
           - name: id
-            type: number
+            type: integer
         return:
-          - type: unknown
+          - type: ISPlayerDataObject
+            nullable: true
       - name: removeInventoryUI
         parameters:
           - name: id
+            type: integer
       - name: getButtonPrompts
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISButtonPrompt
             nullable: true
       - name: getPlayerInventory
         parameters:
           - name: id
-            type: number
+            type: integer
         return:
-          - type: unknown
+          - type: ISInventoryPage
             nullable: true
       - name: getPlayerLoot
         parameters:
           - name: id
-            type: number
+            type: integer
         return:
-          - type: unknown
+          - type: ISInventoryPage
             nullable: true
       - name: getPlayerContextMenu
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISContextMenu
             nullable: true
       - name: getPlayerHotbar
         parameters:
           - name: id
-            type: number
+            type: integer
         return:
-          - type: unknown
+          - type: ISHotbar
             nullable: true
       - name: getPlayerInfoPanel
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISCharacterInfoWindow
             nullable: true
       - name: getPlayerBackButtonWheel
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISBackButtonWheel
             nullable: true
       - name: getPlayerCraftingUI
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISCraftingUI
+            nullable: true
       - name: getPlayerZoneUI
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISDesignationZonePanel
+            nullable: true
       - name: getPlayerMechanicsUI
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISVehicleMechanics
       - name: getPlayerMiniMap
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISMiniMapOuter
             nullable: true
       - name: getPlayerVehicleDashboard
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISVehicleDashboard
+            nullable: true
       - name: getPlayerRadialMenu
         parameters:
           - name: id
-            type: number
+            type: integer
         return:
-          - type: unknown
+          - type: ISRadialMenu
+            nullable: true
       - name: getPlayerSleepingUI
         parameters:
           - name: id
+            type: integer
         return:
-          - type: unknown
+          - type: ISSleepingUI
+            nullable: true
       - name: createPlayerData
         parameters:
           - name: id
-            type: number
+            type: integer
       - name: destroyPlayerData
         parameters:
           - name: playerObj

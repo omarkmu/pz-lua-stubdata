@@ -32,6 +32,7 @@ languages:
           - name: RemovePlayer
             parameters:
               - name: p
+                type: IsoPlayer
           - name: AddPlayer
             parameters:
               - name: playerNum

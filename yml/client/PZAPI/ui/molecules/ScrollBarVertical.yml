@@ -38,7 +38,8 @@ languages:
           - name: updateBar
             parameters:
               - name: percent
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.ScrollBarVertical:
+          ScrollBarVertical:
             type: UI.ScrollBarVertical

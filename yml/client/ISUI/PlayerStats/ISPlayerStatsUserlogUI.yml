@@ -18,10 +18,12 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: username
                 type: string
               - name: userlogs
-                type: table
+                type: umbrella.ISPlayerStatsUI.Userlog[]
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsUserlogUI"'
@@ -38,21 +40,23 @@ languages:
           removeLog:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
-          onclick: {}
+          onclick:
+            type: umbrella.ISButton.OnClick
+            nullable: true
           username:
             type: string
           userlogs:
-            type: table
+            type: umbrella.ISPlayerStatsUI.Userlog[]
           zOffsetSmallFont:
             type: number
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           windows:
-            type: table
+            type: ISUIElement[]
         methods:
           - name: initialise
           - name: setVisible
@@ -64,8 +68,11 @@ languages:
           - name: drawLog
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onOptionMouseDown
@@ -81,17 +88,21 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                nullable: true
           - name: onAddLog
             parameters:
               - name: button
                 type: ISButton
               - name: player
+                nullable: true
         staticMethods:
           - name: populateLogList
             parameters:
               - name: self
+                type: ISPlayerStatsUserlogUI
           - name: receiveUserLog
             parameters:
               - name: username
                 type: string
               - name: logs
+                type: ArrayList<Userlog>

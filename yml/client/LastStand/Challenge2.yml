@@ -7,10 +7,13 @@ languages:
           zombiesSpawned:
             defaultValue: "0"
           startedWaveCalendar:
+            type: PZCalendar
             nullable: true
           prepareTimeCalendar:
+            type: PZCalendar
             nullable: true
           timeNeeded:
+            type: PZCalendar
             nullable: true
           timeNeededTick:
             defaultValue: "0"
@@ -20,13 +23,16 @@ languages:
             defaultValue: "0"
           prepareTime:
             defaultValue: (2 * 60) * 1000
-          playersMoney: {}
+          playersMoney:
+            type: table<integer, integer>
           timeNeededAlpha:
             defaultValue: "1"
           wave:
             defaultValue: "0"
-          upgradeScreen: {}
-          radarPanel: {}
+          upgradeScreen:
+            type: table<integer, ISChallenge2UpgradeTab>
+          radarPanel:
+            type: table<integer, RadarPanel>
           moneyGained:
             type: number
             nullable: true
@@ -76,7 +82,7 @@ languages:
           - name: SpawnZombies
             parameters:
               - name: count
-                type: number
+                type: integer
           - name: Render
           - name: endWave
           - name: Tick
@@ -88,8 +94,10 @@ languages:
           - name: onCreatePlayer
             parameters:
               - name: playerId
+                type: integer
           - name: onBackButtonWheel
             parameters:
               - name: playerNum
                 type: integer
               - name: dir
+                type: string

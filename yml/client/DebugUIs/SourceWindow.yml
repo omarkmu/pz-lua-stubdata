@@ -40,6 +40,8 @@ languages:
           - name: initialise
           - name: onSourceMouseWheel
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: del
                 type: number
             return:
@@ -51,6 +53,9 @@ languages:
           - name: createChildren
           - name: prerender
           - name: renderSrc
+            parameters:
+              - name: self
+                type: ISScrollingListBox
           - name: doDrawItem
             parameters:
               - name: y
@@ -66,5 +71,5 @@ languages:
           - name: checkFontSize
           - name: setListBoxItemHeight
             parameters:
-              - name: listBox 
+              - name: listBox
                 type: ISScrollingListBox

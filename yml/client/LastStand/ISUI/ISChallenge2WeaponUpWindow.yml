@@ -15,15 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISChallenge2WeaponUpWindow"'
         fields:
-          joypadButtons: {}
-          char: {}
-          playerId: {}
+          joypadButtons:
+            type: ISButton[]
+          char:
+            type: IsoPlayer
+          playerId:
+            type: integer
           buttons:
-            type: table
+            type: ISButton[]
         methods:
           - name: initialise
           - name: render
@@ -35,8 +39,12 @@ languages:
               - name: y
                 type: number
               - name: itemType
+                type: string
               - name: cost
+                type: integer
               - name: itemType2
+                type: string
+                nullable: true
           - name: onOptionMouseDown
             parameters:
               - name: button
@@ -50,6 +58,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

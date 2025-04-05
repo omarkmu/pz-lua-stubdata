@@ -7,12 +7,13 @@ languages:
         constructors:
           - parameters:
               - name: joypadIndex
+                type: integer
                 nullable: true
               - name: joypadData
                 type: JoypadData
                 nullable: true
               - name: playerIndex
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"CoopCharacterCreation"'
@@ -20,7 +21,7 @@ languages:
             type: CoopCharacterCreation
             nullable: true
           visibleUI:
-            type: table
+            type: ISUIElement[]
         fields:
           coopUserName:
             type: CoopUserName
@@ -31,12 +32,13 @@ languages:
           charCreationProfession:
             type: CoopCharacterCreationProfession
           joypadIndex:
+            type: integer
             nullable: true
           joypadData:
             type: JoypadData
             nullable: true
           playerIndex:
-            type: number
+            type: integer
         methods:
           - name: initPlayer
           - name: accept1
@@ -50,10 +52,11 @@ languages:
           - name: OnJoypadBeforeDeactivate
             parameters:
               - name: index
+                type: integer
         staticMethods:
           - name: getJoypad
             return:
-              - type: unknown
+              - type: JoypadData
                 nullable: true
           - name: setVisibleAllUI
             parameters:
@@ -62,5 +65,6 @@ languages:
           - name: newPlayer
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData

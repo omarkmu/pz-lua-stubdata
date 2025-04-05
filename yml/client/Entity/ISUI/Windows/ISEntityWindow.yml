@@ -69,7 +69,7 @@ languages:
               - name: descendant
                 type: ISUIElement
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:

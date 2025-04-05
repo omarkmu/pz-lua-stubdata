@@ -7,21 +7,24 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoThumpable | IsoWindow | IsoWindowFrame
               - name: time
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISClimbThroughWindow"'
         fields:
-          item: {}
+          item:
+            type: IsoThumpable | IsoWindow | IsoWindowFrame
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -29,11 +32,13 @@ languages:
           - name: getNorth
             parameters:
               - name: object
+                type: IsoThumpable | IsoWindow | IsoWindowFrame
             return:
-              - type: unknown
+              - type: boolean
           - name: getFacingDirection
             return:
-              - type: unknown
+              - type: IsoDirections
           - name: getDeltaModifiers
             parameters:
               - name: deltas
+                type: MoveDeltaModifiers

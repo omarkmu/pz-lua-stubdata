@@ -22,12 +22,12 @@ languages:
             nullable: true
         fields:
           selectedRegion:
-            type: table
+            type: umbrella.SpawnRegion
             nullable: true
           sortedList:
-            type: table
+            type: umbrella.MapSpawnSelect.Item[]
           notSortedList:
-            type: table
+            type: umbrella.MapSpawnSelect.Item[]
           startY:
             type: number
           previousScreen:
@@ -35,16 +35,20 @@ languages:
             nullable: true
           checkExistsName:
             type: string
-          checkExist: {}
-          selectedMapIndex: {}
+          checkExist:
+            type: boolean
+          selectedMapIndex:
+            type: integer
           mapPanel:
             type: MapSpawnSelectImage
           textEntryLabel:
             type: ISLabel
           textEntry:
             type: ISTextEntryBox
-          listbox: {}
-          richText: {}
+          listbox:
+            type: MapSpawnSelectListBox
+          richText:
+            type: MapSpawnSelectInfoPanel
           seedPanel:
             type: ISPanel
           seedLabel:
@@ -63,32 +67,32 @@ languages:
           - name: initialise
           - name: getFixedSpawnRegion
             return:
-              - type: table
+              - type: umbrella.SpawnRegion[]
                 nullable: true
           - name: getSafehouseSpawnRegion
             return:
-              - type: table
+              - type: umbrella.SpawnRegion[]
                 nullable: true
           - name: getChallengeSpawnRegion
             return:
-              - type: table
+              - type: umbrella.SpawnRegion[]
                 nullable: true
           - name: getSpawnRegions
             return:
-              - type: table
+              - type: umbrella.SpawnRegion[]
                 nullable: true
           - name: hasChoices
             return:
-              - type: table | boolean
-                nullable: true
+              - type: boolean
           - name: useDefaultSpawnRegion
             return:
-              - type: table
+              - type: umbrella.SpawnRegion
                 nullable: true
           - name: fillList
           - name: checkSorted
             parameters:
               - name: item
+                type: umbrella.MapSpawnSelect.Item
           - name: hideOrShowSaveName
           - name: onOptionMouseDown
             parameters:
@@ -111,11 +115,15 @@ languages:
               - name: y
                 type: number
               - name: scale
+                type: number
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -143,9 +151,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: checkSeed
           - name: generateNewSeed
           - name: saveGenParams
@@ -167,7 +179,8 @@ languages:
           Type:
             defaultValue: '"MapSpawnSelectImage"'
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV3
           hasResetView:
             type: boolean
           shownInitialLocation:
@@ -180,11 +193,16 @@ languages:
             type: number
           dragStartY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
           pyramidFileName:
             type: string
             nullable: true
@@ -253,6 +271,7 @@ languages:
           - name: initMapData
             parameters:
               - name: directory
+                type: string
           - name: hasSomethingToDisplay
             return:
               - type: boolean
@@ -294,7 +313,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -313,3 +332,29 @@ languages:
             parameters:
               - name: joypadData
                 type: JoypadData
+      umbrella.MapSpawnSelect.Item:
+        fields:
+          name:
+            type: string
+          region:
+            type: umbrella.SpawnRegion
+            nullable: true
+          dir:
+            type: string
+          desc:
+            type: string
+          worldimage:
+            type: Texture
+            nullable: true
+          zoomX:
+            type: number
+            nullable: true
+          zoomY:
+            type: number
+            nullable: true
+          zoomS:
+            type: number
+            nullable: true
+          demoVideo:
+            type: string
+            nullable: true

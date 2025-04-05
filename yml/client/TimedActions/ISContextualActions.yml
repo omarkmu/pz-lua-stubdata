@@ -7,179 +7,238 @@ languages:
           - name: ClimbOverFence
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoObject
               - name: arg2
-                type: unknown
+                type: IsoDirections
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: ClimbSheetRope
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoGridSquare
               - name: arg2
-                type: unknown
+                type: boolean
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: ClimbThroughWindow
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoWindow | IsoWindowFrame | IsoThumpable
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: CloseCurtain
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoCurtain
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: CloseDoor
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoDoor | IsoThumpable
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: CloseWindow
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoWindow
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: OpenCurtain
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoCurtain
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: OpenDoor
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoDoor | IsoThumpable
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: OpenWindow
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: arg1
-                type: unknown
+                type: IsoWindow
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: OpenButcherHook
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: hook
+                type: IsoButcherHook
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: OpenHutch
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: hutch
+                type: IsoObject
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: AnimalsInteraction
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
           - name: SleepInBed
             parameters:
               - name: action
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: bed
+                type: IsoObject
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
     functions:
       - name: ContextualActionHandlerWrapper
         parameters:
           - name: action
+            type: string
           - name: playerObj
             type: IsoPlayer
           - name: arg1
             type: unknown
+            nullable: true
           - name: arg2
             type: unknown
+            nullable: true
           - name: arg3
             type: unknown
+            nullable: true
           - name: arg4
             type: unknown
+            nullable: true

@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISTradingUI"'
@@ -65,14 +67,17 @@ languages:
           historicalUI:
             type: ISTradingUIHistorical
           listHeaderColor:
-            type: table
-          player: {}
-          otherPlayer: {}
+            type: umbrella.RGBA
+          player:
+            type: IsoPlayer
+          otherPlayer:
+            type: IsoPlayer
           yourOffer:
             nullable: true
           hisOffer:
             nullable: true
           selectedItem:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
           pendingRequest:
             type: boolean
@@ -80,16 +85,19 @@ languages:
             type: string
             nullable: true
           historical:
-            type: table
+            type: umbrella.ISTradingUI.HistoryMessage[]
         methods:
           - name: initialise
           - name: onSealOffer
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: addItemToYourOffer
             parameters:
               - name: item
+                type: InventoryItem
           - name: yourOfferMouseUp
             parameters:
               - name: x
@@ -101,11 +109,15 @@ languages:
           - name: removeItem
             parameters:
               - name: item
+                type: umbrella.ISScrollingListBox.Item
           - name: drawOffer
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -124,8 +136,9 @@ languages:
           - name: getIndexFromItemId
             parameters:
               - name: itemId
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: setHistoryMessage
             parameters:
               - name: message
@@ -140,18 +153,36 @@ languages:
           - name: ReceiveTradeRequest
             parameters:
               - name: requester
+                type: string
           - name: AcceptedTrade
             parameters:
               - name: accepted
+                type: boolean
           - name: OtherAddNewItem
             parameters:
               - name: player
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
           - name: RemoveItem
             parameters:
               - name: player
+                type: IsoPlayer
               - name: itemId
+                type: integer
           - name: UpdateState
             parameters:
               - name: player
+                type: IsoPlayer
               - name: state
+                type: integer
+      umbrella.ISTradingUI.HistoryMessage:
+        fields:
+          message:
+            type: string
+          add:
+            type: boolean
+            nullable: true
+          remove:
+            type: boolean
+            nullable: true

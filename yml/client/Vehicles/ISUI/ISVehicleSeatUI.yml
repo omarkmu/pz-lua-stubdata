@@ -121,6 +121,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISVehicleSeatUI"'
@@ -139,11 +140,13 @@ languages:
             type: number
             nullable: true
           joypadSeat:
-            type: number
-          vehicle: {}
+            type: integer
+          vehicle:
+            type: BaseVehicle
           characterSeat:
             nullable: true
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -166,16 +169,17 @@ languages:
           - name: isSeatInstalled
             parameters:
               - name: seat
+                type: integer
             return:
               - type: boolean
           - name: useSeat
             parameters:
               - name: seat
-                type: number
+                type: integer
           - name: exitSeat
             parameters:
               - name: seat
-                type: number
+                type: integer
           - name: closeSelf
           - name: onGainJoypadFocus
             parameters:
@@ -184,7 +188,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
           - name: onJoypadDirDown
           - name: onJoypadDirLeft
@@ -192,6 +196,7 @@ languages:
           - name: setVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
           - name: isKeyConsumed
             parameters:
               - name: key

@@ -7,14 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: hutch
+                type: IsoHutch
         staticFields:
           Type:
             defaultValue: '"ISGetHutchInfo"'
         fields:
           playerNum:
             type: integer
-          hutch: {}
+          hutch:
+            type: IsoHutch
         methods:
           - name: isValid
             return:

@@ -23,13 +23,14 @@ languages:
           iso:
             type: boolean
           character:
+            type: IsoPlayer
             nullable: true
           playerNum:
             type: integer
           keyImagePath:
             type: string
           key:
-            type: table
+            type: string[]
           key1:
             type: string
           key2:
@@ -94,6 +95,7 @@ languages:
           - name: setIso
             parameters:
               - name: bool
+                type: boolean
           - name: getIso
             return:
               - type: boolean

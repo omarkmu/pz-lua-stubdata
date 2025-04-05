@@ -20,19 +20,19 @@ languages:
             defaultValue: '"ISAdmPanelWeather"'
         fields:
           lblCurrentWeather:
-            type: table
+            type: ISLabel
           bars:
-            type: table
+            type: umbrella.ISAdmPanelWeather.Bar[]
           bar1:
-            type: table
+            type: umbrella.ISAdmPanelWeather.Bar
           bar2:
-            type: table
+            type: umbrella.ISAdmPanelWeather.Bar
           sliderDurationSlider:
-            type: table
+            type: ISSliderPanel
           sliderCustomStrSlider:
-            type: table
+            type: ISSliderPanel
           tickBoxFrontType:
-            type: table
+            type: ISTickBox
           totalY:
             type: number
           player: {}
@@ -43,17 +43,44 @@ languages:
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
+                nullable: true
               - name: _arg2
                 type: unknown
+                nullable: true
               - name: _tickbox
+                type: ISTickBox
           - name: onClick
             parameters:
               - name: _button
                 type: ISButton
+      umbrella.ISAdmPanelWeather.Bar:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+          w:
+            type: number
+          h:
+            type: number
+          progress:
+            type: number
+          text:
+            type: string
+          back:
+            type: umbrella.RGBA
+          fill:
+            type: umbrella.RGBA
+          border:
+            type: umbrella.RGBA

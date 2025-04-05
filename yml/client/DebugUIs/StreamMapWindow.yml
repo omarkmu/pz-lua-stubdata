@@ -43,6 +43,8 @@ languages:
           - name: initialise
           - name: onMapMouseDown
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -51,6 +53,8 @@ languages:
               - type: boolean
           - name: onMapMouseMove
             parameters:
+              - name: self
+                type: ISPanel
               - name: dx
                 type: number
               - name: dy
@@ -59,6 +63,8 @@ languages:
               - type: boolean
           - name: onMapRightMouseDown
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -67,6 +73,8 @@ languages:
               - type: boolean
           - name: onMapRightMouseUp
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -75,6 +83,8 @@ languages:
               - type: boolean
           - name: onRenderMouseWheel
             parameters:
+              - name: self
+                type: ISPanel
               - name: del
                 type: number
             return:

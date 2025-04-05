@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISUIEmoteConfig"'
@@ -33,13 +34,15 @@ languages:
             type: ISButton
           playerNum:
             type: integer
-          chr: {}
+          chr:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: close
           - name: selectCategory
             parameters:
               - name: combo
+                type: ISComboBox
           - name: prerender
           - name: render
           - name: writeToFile

@@ -11,20 +11,27 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoGenerator
         staticFields:
           Type:
             defaultValue: '"ISGeneratorInfoWindow"'
-          windows: {}
+          windows:
+            type: table<IsoPlayer, ISGeneratorInfoWindow>
         fields:
           panel:
             type: ISToolTip
-          object: {}
-          fuel: {}
-          condition: {}
+          object:
+            type: IsoGenerator
+          fuel:
+            type: number
+          condition:
+            type: integer
           drawJoypadFocus:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -33,6 +40,7 @@ languages:
           - name: setObject
             parameters:
               - name: object
+                type: IsoGenerator
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -40,12 +48,13 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: close
         staticMethods:
           - name: getRichText
             parameters:
               - name: object
+                type: IsoGenerator
               - name: displayStats
                 type: boolean
             return:

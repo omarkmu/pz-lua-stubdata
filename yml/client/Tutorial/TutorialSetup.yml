@@ -15,3 +15,4 @@ languages:
       - name: doTutorialCreatePlayer
         parameters:
           - name: id
+            type: integer

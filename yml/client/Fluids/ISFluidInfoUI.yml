@@ -74,3 +74,11 @@ languages:
                 type: IsoPlayer
               - name: _container
                 type: ISFluidContainer
+      umbrella.ISFluidInfoUI.PlayerTableItem:
+        fields:
+          instance:
+            type: ISFluidInfoUI
+          x:
+            type: number
+          y:
+            type: number

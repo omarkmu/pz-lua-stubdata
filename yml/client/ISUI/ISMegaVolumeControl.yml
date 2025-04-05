@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISMegaVolumeControl.TargetFunction:
+        - type: "fun(target: unknown, control: ISMegaVolumeControl, volume: number)"
     classes:
       ISMegaVolumeControl:
         extends: ISPanel
@@ -16,7 +19,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: targetFunc
+                type: umbrella.ISMegaVolumeControl.TargetFunction
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISMegaVolumeControl"'
@@ -27,9 +33,12 @@ languages:
             type: ISToolTip
           volume:
             type: number
-          joypadFocused: {}
-          targetFunc: {}
-          fade: {}
+          joypadFocused:
+            type: boolean
+          targetFunc:
+            type: umbrella.ISMegaVolumeControl.TargetFunction
+          fade:
+            type: UITransition
           isSlider:
             type: boolean
         methods:
@@ -60,6 +69,7 @@ languages:
           - name: getVolumeAtX
             parameters:
               - name: x
+                type: number
             return:
               - type: number
           - name: prerender
@@ -74,6 +84,7 @@ languages:
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
           - name: onJoypadDirLeft
             parameters:
               - name: joypadData

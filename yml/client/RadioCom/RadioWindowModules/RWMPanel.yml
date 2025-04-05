@@ -19,19 +19,28 @@ languages:
             defaultValue: '"RWMPanel"'
         fields:
           player:
+            type: IsoPlayer
             nullable: true
           device:
+            type: InventoryItem | IsoObject | VehiclePart
             nullable: true
           deviceData:
+            type: DeviceData
             nullable: true
           deviceType:
+            type: string
             nullable: true
           focusElement:
+            type: ISUIElement
             nullable: true
           playerNum:
             type: integer
-          radioParent: {}
-          wrapParent: {}
+          radioParent:
+            type: ISRadioWindow
+            nullable: true
+          wrapParent:
+            type: RWMElement
+            nullable: true
           overrideBPrompt:
             type: boolean
         methods:
@@ -41,9 +50,13 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
               - type: boolean
           - name: update
@@ -58,7 +71,10 @@ languages:
               - name: _playerNum
                 type: integer
               - name: _radioParent
+                type: ISRadioWindow
               - name: _parent
+                type: RWMElement
+                nullable: true
           - name: clearJoypadFocus
             parameters:
               - name: joypadData
@@ -66,24 +82,24 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: isValidPrompt
             return:
-              - type: unknown
+              - type: boolean | DeviceData
                 nullable: true

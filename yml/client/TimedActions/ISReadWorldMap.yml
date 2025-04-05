@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: centerX
                 type: number
               - name: centerY

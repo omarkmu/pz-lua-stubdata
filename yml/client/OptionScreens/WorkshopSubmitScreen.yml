@@ -24,25 +24,25 @@ languages:
             nullable: true
         fields:
           page1:
-            type: table
+            type: ISPanelJoypad
           page2:
-            type: table
+            type: ISPanelJoypad
           page3:
-            type: table
+            type: ISPanelJoypad
           page4:
-            type: table
+            type: ISPanelJoypad
           page5:
-            type: table
+            type: ISPanelJoypad
           page6:
-            type: table
+            type: ISPanelJoypad
           page7:
-            type: table
+            type: ISPanelJoypad
           page8:
-            type: table
+            type: ISPanelJoypad
           page9:
-            type: table
+            type: ISPanelJoypad
           page10:
-            type: table
+            type: ISPanelJoypad
         methods:
           - name: create
           - name: render
@@ -56,13 +56,18 @@ languages:
           - name: OnSteamWorkshopItemCreated
             parameters:
               - name: itemID
+                type: string
               - name: bUserNeedsToAcceptWorkshopLegalAgreement
+                type: boolean
           - name: OnSteamWorkshopItemNotCreated
             parameters:
               - name: result
+                type: integer
           - name: OnSteamWorkshopItemUpdated
             parameters:
               - name: bUserNeedsToAcceptWorkshopLegalAgreement
+                type: boolean
           - name: OnSteamWorkshopItemNotUpdated
             parameters:
               - name: result
+                type: integer

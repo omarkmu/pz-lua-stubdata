@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISComboBox.OnChange:
+        - type: "fun(target: unknown, combo: ISComboBox, ...: unknown)"
     classes:
       ISComboBox:
         extends: ISPanel
@@ -37,9 +40,6 @@ languages:
             type: ISComboBoxPopup
           filterText:
             type: string
-            nullable: true
-          joypadFocused:
-            type: boolean
             nullable: true
           expanded:
             type: boolean
@@ -304,8 +304,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onMouseDown
@@ -327,5 +330,11 @@ languages:
             parameters:
               - name: comboBox
                 type: ISComboBox
+      umbrella.ISComboBox.Option:
+        fields:
+          text:
+            type: string
+          data:
+            type: unknown
     functions:
       - name: testcomboBox

@@ -63,8 +63,11 @@ languages:
           - name: drawChannelList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: populateInfoList
@@ -74,8 +77,11 @@ languages:
           - name: drawInfoList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: populateBroadcastList
@@ -85,8 +91,11 @@ languages:
           - name: drawBroadcastList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender

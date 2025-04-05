@@ -15,8 +15,13 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: isoObject
+                type: IsoObject
+                nullable: true
               - name: queryOverride
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBuildWindow"'
@@ -24,8 +29,10 @@ languages:
           maximumHeight:
             type: number
           windowHeader:
+            type: ISBuildWindowHeader
             nullable: true
           BuildPanel:
+            type: ISBuildPanel
             nullable: true
           xuiPreferredResizeWidth:
             type: number
@@ -39,15 +46,20 @@ languages:
             type: boolean
           maximumWidth:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           title:
             nullable: true
           panelCloseDistance:
             type: number
-          isoObject: {}
-          queryOverride: {}
+          isoObject:
+            type: IsoObject
+            nullable: true
+          queryOverride:
+            type: string
+            nullable: true
           enableHeader:
             type: boolean
           maximumHeightPercent:
@@ -70,21 +82,31 @@ languages:
           - name: xuiRecalculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
               - name: _force
+                type: boolean
+                nullable: true
               - name: _anchorRight
+                type: boolean
+                nullable: true
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
                 type: number
+                nullable: true
               - name: _preferredHeight
                 type: number
+                nullable: true
           - name: prerender
           - name: stayOnSplitScreen
           - name: render
           - name: update
             return:
-              - type: boolean
+              - type: boolean | IsoPlayer
                 nullable: true
           - name: close
           - name: validateSizeBounds
@@ -95,12 +117,14 @@ languages:
           - name: onJoypadDown_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadNavigateStart_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: joypadData
                 type: JoypadData

@@ -12,6 +12,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetWoolQtyClick
@@ -19,6 +20,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetMilkQtyClick
@@ -26,6 +28,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetFertilizedTimeClick
@@ -33,6 +36,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetPregnancyPeriodClick
@@ -40,6 +44,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetAnimalAgeClick
@@ -47,6 +52,7 @@ languages:
               - name: button
                 type: ISButton
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onKillAnimalConfirm
@@ -57,122 +63,156 @@ languages:
           - name: doInventoryMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: animalInv
-                nullable: true
+                type: AnimalInventoryItem
               - name: test
+                type: boolean
+                nullable: true
           - name: doFeedFromHandMenu
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: context
                 type: ISContextMenu
           - name: onFeedAnimalFood
             parameters:
               - name: player
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: food
+                type: InventoryItem
           - name: doMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: animal
+                type: IsoAnimal
               - name: test
+                type: boolean
+                nullable: true
           - name: onGenerateWorldSound
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onSetFire
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onForceEatMom
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onForceWanderNow
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onDebugForcePoop
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onDebugForceHutch
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onAddBucketMilk
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: doWaterAnimalMenu
             parameters:
               - name: animalSubMenu
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onGiveWater
             parameters:
               - name: player
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: item
+                type: InventoryItem
           - name: onAnimalBehavior
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
           - name: onRandomIdleAnim
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onRandomHappyAnim
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onKill
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onForceSit
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onToggleInvincible
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onDebugForceEgg
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onLure
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
               - name: item
           - name: onDebugSetStress
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerNum
                 type: number
           - name: onDebugSetAcceptance
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
               - name: acceptance
           - name: onForceAnimalGrowAway
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: doAnimalBodyMenuFromInv
@@ -182,161 +222,222 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: animalbody
-                nullable: true
+                type: IsoDeadBody
           - name: doAnimalBodyMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: player
+                type: integer
               - name: animalbody
+                type: IsoDeadBody
           - name: onButcherAnimalDebug
             parameters:
               - name: body
+                type: IsoDeadBody
               - name: chr
+                type: IsoPlayer
           - name: onGetAnimalBones
             parameters:
               - name: body
+                type: IsoDeadBody
               - name: chr
+                type: IsoPlayer
               - name: knife
+                type: InventoryItem
           - name: onButcherAnimal
             parameters:
               - name: body
+                type: IsoDeadBody
               - name: chr
+                type: IsoPlayer
               - name: knife
+                type: InventoryItem
           - name: onGetAnimalBonesFromInv
             parameters:
               - name: body
+                type: IsoDeadBody
               - name: chr
+                type: IsoPlayer
               - name: knife
+                nullable: true
           - name: onButcherAnimalFromInv
             parameters:
               - name: body
+                type: IsoDeadBody
               - name: chr
+                type: IsoPlayer
               - name: knife
+                type: InventoryItem
+                nullable: true
           - name: onSetHungry
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onAnimalGenome
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
           - name: onPetAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
           - name: onPickupAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
           - name: onAddEgg
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onShearAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
               - name: shear
+                type: InventoryItem
           - name: onSetWoolQty
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerNum
                 type: number
           - name: onSetMilkQty
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerNum
                 type: number
           - name: onMilkAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
               - name: bucket
+                type: InventoryItem
               - name: all
+                type: boolean
           - name: Impregnate
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
               - name: doIt
+                type: boolean
           - name: SetFertilized
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
               - name: doIt
+                type: boolean
               - name: male
+                type: IsoAnimal
+                nullable: true
           - name: PickMate
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: SetFertilizedTime
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: integer
           - name: onAddAnimalBaby
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: SetPregnancyPeriod
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: integer
           - name: onSetAnimalAge
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: integer
           - name: onRemoveAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onAnimalInfo
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
           - name: onDetachAnimalTree
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
           - name: onAttachAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
           - name: onDetachAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: chr
+                type: IsoPlayer
           - name: clickedAnimals
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: animals
+                type: IsoAnimal[]
               - name: test
+                type: boolean
           - name: onSanta
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onBowtieGold
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onBowtieGreen
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onBowtieRed
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: doDesignationZoneMenu
@@ -344,21 +445,25 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: zone
+                type: DesignationZoneAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onCheckZone
             parameters:
               - name: zone
+                type: DesignationZoneAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: onKillAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: playerObj
                 type: IsoPlayer
           - name: attachAnimalToObject
             parameters:
               - name: attachAnimalTo
+                type: IsoObject
               - name: playerObj
                 type: IsoPlayer
               - name: worldobjects
@@ -370,7 +475,8 @@ languages:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: IsoAnimal
+                nullable: true
           - name: showRadialMenu
             parameters:
               - name: playerObj

@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISSpeakerButton.OnClick:
+        - type: "fun(target: unknown?, isMute: boolean)"
     classes:
       ISSpeakerButton:
         extends: ISPanel
@@ -15,8 +18,11 @@ languages:
               - name: height
                 type: number
               - name: onclick
+                type: umbrella.ISSpeakerButton.OnClick
+                nullable: true
               - name: onclickTarget
-                type: ISGameSounds | RWMVolume
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISSpeakerButton"'
@@ -27,11 +33,16 @@ languages:
             type: boolean
           isMute:
             type: boolean
-          onclick: {}
+          onclick:
+            type: umbrella.ISSpeakerButton.OnClick
+            nullable: true
           onclickTarget:
-            type: ISGameSounds | RWMVolume
-          speakerTexture: {}
-          muteTexture: {}
+            type: unknown
+            nullable: true
+          speakerTexture:
+            type: Texture
+          muteTexture:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -58,6 +69,7 @@ languages:
           - name: setEnableControls
             parameters:
               - name: _b
+                type: boolean
           - name: getEnableControls
             return:
               - type: boolean

@@ -7,9 +7,9 @@ languages:
           - name: renderItemIcon
             parameters:
               - name: self
-                type: table
+                type: ISUIElement
               - name: _item
-                type: boolean
+                type: InventoryItem | false
               - name: _x
                 type: number
               - name: _y
@@ -26,8 +26,9 @@ languages:
           - name: renderScriptItemIcon
             parameters:
               - name: self
-                type: ISCraftInventoryPanel | ISFluidItemsViewPanel
+                type: ISUIElement
               - name: _scriptItem
+                type: Item
               - name: _x
                 type: number
               - name: _y

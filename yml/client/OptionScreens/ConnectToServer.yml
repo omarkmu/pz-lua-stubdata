@@ -35,8 +35,10 @@ languages:
             type: ISRichTextPanel
           backBtn:
             type: ISButton
-          arrowBG: {}
-          arrowFG: {}
+          arrowBG:
+            type: Texture
+          arrowFG:
+            type: Texture
           timerMultiplierAnim:
             type: number
           animOffset:
@@ -44,9 +46,10 @@ languages:
           connecting:
             type: boolean
           loadingBackground:
+            type: Texture
             nullable: true
           previousScreen:
-            type: table
+            type: ISUIElement
           failMessage:
             type: string
             nullable: true
@@ -67,7 +70,7 @@ languages:
           - name: connect
             parameters:
               - name: previousScreen
-                type: table
+                type: ISUIElement
               - name: serverName
                 type: string
               - name: userName
@@ -75,22 +78,25 @@ languages:
               - name: password
                 type: string
               - name: IP
+                type: string
               - name: localIP
                 type: string
               - name: port
+                type: string
               - name: serverPassword
+                type: string
               - name: useSteamRelay
+                type: boolean
               - name: doHash
                 type: boolean
-                nullable: true
               - name: authType
-                type: number
-                nullable: true
+                type: integer
           - name: connectCoop
             parameters:
               - name: previousScreen
-                type: BootstrapConnectPopup
+                type: ISUIElement
               - name: serverSteamID
+                type: string
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -106,5 +112,8 @@ languages:
           - name: OnConnectionStateChanged
             parameters:
               - name: state
+                type: string
               - name: message
+                type: string
               - name: arg
+                type: integer?

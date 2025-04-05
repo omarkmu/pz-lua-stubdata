@@ -7,19 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoWorldInventoryObject
         staticFields:
           Type:
             defaultValue: '"ISExtendedPlacementAction"'
         fields:
           playerNum:
             type: integer
-          item: {}
+          item:
+            type: IsoWorldInventoryObject
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: perform

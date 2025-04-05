@@ -12,4 +12,8 @@ languages:
           - name: stop
           - name: getTests
             return:
-              - type: table
+              - type: umbrella.TimedActionTests.Test[]
+      umbrella.TimedActionTests.Test:
+        fields:
+          run:
+            type: "fun(self: umbrella.TimedActionTests.Test)"

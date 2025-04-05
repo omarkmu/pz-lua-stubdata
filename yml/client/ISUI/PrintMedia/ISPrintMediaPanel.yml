@@ -43,7 +43,7 @@ languages:
           - name: setPage
             parameters:
               - name: pageNum
-                type: number
+                type: integer
           - name: fillChapterList
           - name: prerender
           - name: render
@@ -86,8 +86,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -101,7 +104,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirRight

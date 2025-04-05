@@ -25,3 +25,17 @@ languages:
                 type: umbrella.WorldMenuContextData
               - name: _v
                 type: umbrella.ISContextDisassemble.Data
+      umbrella.ISContextDisassemble.Data:
+        fields:
+          object:
+            type: IsoObject
+          moveProps:
+            type: ISMoveableSpriteProps
+          square:
+            type: IsoGridSquare
+          chance:
+            type: number
+          perkName:
+            type: string
+          resultScrap:
+            type: umbrella.ISMoveableSpriteProps.CanScrapResult

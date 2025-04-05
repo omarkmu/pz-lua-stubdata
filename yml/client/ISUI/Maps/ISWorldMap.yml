@@ -21,28 +21,34 @@ languages:
             defaultValue: '"WorldMapOptions"'
         fields:
           doubleBoxes:
-            type: table
+            type: table<integer, ISTextEntryBox>
           tickBoxes:
-            type: table
+            type: table<integer, ISTickBox>
           showAllOptions:
             type: boolean
-          screenHeight: {}
+          screenHeight:
+            type: integer
           map:
             type: ISWorldMap
         methods:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
               - name: option
+                type: ConfigOption
           - name: onCommandEntered
             parameters:
               - name: entry
+                type: ISTextEntryBox
               - name: option
+                type: ConfigOption
           - name: createChildren
           - name: getVisibleOptions
             return:
-              - type: table
+              - type: ConfigOption[]
           - name: isMultiplayerOption
             parameters:
               - name: optionName
@@ -63,7 +69,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ISWorldMapButtonPanel:
@@ -94,7 +100,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ISWorldMap:
@@ -113,7 +119,8 @@ languages:
           Type:
             defaultValue: '"ISWorldMap"'
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV1
           symbolsUI:
             type: ISWorldMapSymbols
           keyUI:
@@ -140,7 +147,8 @@ languages:
             type: ISButton
           isometric:
             type: boolean
-          joypadPromptHgt: {}
+          joypadPromptHgt:
+            type: number
           dragging:
             type: boolean
           dragMoved:
@@ -149,11 +157,16 @@ languages:
             type: number
           dragStartY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
           hideUnvisitedAreas:
             type: boolean
           forgetUI:
@@ -174,8 +187,10 @@ languages:
           getJoypadFocus:
             type: boolean
           prevFocus:
+            type: ISUIElement
             nullable: true
-          updateMS: {}
+          updateMS:
+            type: number
           LBumperZoom:
             type: number
             nullable: true
@@ -183,17 +198,24 @@ languages:
             type: number
             nullable: true
           povXms:
+            type: number
             nullable: true
           povYms:
+            type: number
             nullable: true
           character:
+            type: IsoPlayer
             nullable: true
           playerNum:
             type: integer
-          cross: {}
-          texViewIsometric: {}
-          texViewOrthographic: {}
-          texViewPyramid: {}
+          cross:
+            type: Texture
+          texViewIsometric:
+            type: Texture
+          texViewOrthographic:
+            type: Texture
+          texViewPyramid:
+            type: Texture
         methods:
           - name: instantiate
           - name: createChildren
@@ -202,7 +224,9 @@ languages:
           - name: renderJoypadPrompt
             parameters:
               - name: texture
+                type: Texture
               - name: text
+                type: string
               - name: x
                 type: number
               - name: y
@@ -291,7 +315,9 @@ languages:
           - name: onTeleport
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: setHideUnvisitedAreas
             parameters:
               - name: hide
@@ -339,7 +365,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: saveSettings
@@ -357,8 +383,14 @@ languages:
               - name: playerNum
                 type: integer
               - name: centerX
+                type: number
+                nullable: true
               - name: centerY
+                type: number
+                nullable: true
               - name: zoom
+                type: number
+                nullable: true
           - name: HideWorldMap
             parameters:
               - name: playerNum

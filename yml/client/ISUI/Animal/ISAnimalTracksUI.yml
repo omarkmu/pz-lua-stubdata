@@ -15,28 +15,34 @@ languages:
               - name: height
                 type: number
               - name: track
+                type: IsoAnimalTrack | InventoryItem
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAnimalTracksUI"'
         fields:
-          track: {}
-          chr: {}
+          track:
+            type: IsoAnimalTrack | InventoryItem
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           refreshNeeded:
             type: boolean
           texture:
-            nullable: true
-          trackingLevel: {}
-          isSprite: {}
-          xoffset: {}
+            type: Texture
+          trackingLevel:
+            type: integer
+          isSprite:
+            type: boolean
+          xoffset:
+            type: number
         methods:
           - name: prerender
           - name: render
           - name: getAnimalType
             return:
               - type: string
-                nullable: true
           - name: initialise
           - name: create

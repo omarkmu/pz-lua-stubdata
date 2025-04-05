@@ -9,9 +9,11 @@ languages:
               - name: mode
                 type: string
               - name: character
+                type: IsoPlayer
               - name: device
+                type: InventoryItem | IsoObject | VehiclePart
               - name: secondaryItem
-                type: boolean | number
+                type: InventoryItem | boolean | number
                 nullable: true
         staticFields:
           Type:
@@ -19,17 +21,19 @@ languages:
         fields:
           mode:
             type: string
-          device: {}
-          deviceData: {}
+          device:
+            type: InventoryItem | IsoObject | VehiclePart
+          deviceData:
+            type: DeviceData
           secondaryItem:
-            type: boolean | number
+            type: InventoryItem | boolean | number
             nullable: true
           ignoreHandsWounds:
             type: boolean
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: start
           - name: update
@@ -40,7 +44,7 @@ languages:
           - name: performToggleOnOff
           - name: isValidRemoveBattery
             return:
-              - type: unknown
+              - type: boolean
           - name: performRemoveBattery
           - name: isValidAddBattery
             return:
@@ -77,7 +81,7 @@ languages:
           - name: performAddHeadphones
           - name: isValidTogglePlayMedia
             return:
-              - type: unknown
+              - type: boolean
           - name: performTogglePlayMedia
           - name: isValidAddMedia
             return:
@@ -85,5 +89,5 @@ languages:
           - name: performAddMedia
           - name: isValidRemoveMedia
             return:
-              - type: unknown
+              - type: boolean
           - name: performRemoveMedia

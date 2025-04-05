@@ -16,7 +16,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: targetFunc
+                type: function
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISVolumeIndicator"'
@@ -25,9 +28,13 @@ languages:
             type: number
           iserror:
             type: boolean
-          serverVOIPEnable: {}
-          targetFunc: {}
-          fade: {}
+          serverVOIPEnable:
+            type: boolean
+          targetFunc:
+            type: function
+            nullable: true
+          fade:
+            type: UITransition
           isSlider:
             type: boolean
         methods:

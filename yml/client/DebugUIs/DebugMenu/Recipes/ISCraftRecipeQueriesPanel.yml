@@ -84,8 +84,11 @@ languages:
           - name: drawQueryListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onQuerySelected
@@ -96,8 +99,11 @@ languages:
           - name: drawRecipeListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender

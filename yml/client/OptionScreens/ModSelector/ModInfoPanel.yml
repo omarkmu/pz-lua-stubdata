@@ -19,10 +19,12 @@ languages:
             defaultValue: '"ModInfoPanel"'
         fields:
           modInfoParams:
-            type: table
+            type: string[]
           thumbnailPreviewImage:
+            type: Texture
             nullable: true
-          modInfo: {}
+          modInfo:
+            type: ChooseGameInfo.Mod
           titlePanel:
             type: ModInfoPanel.Title
           descPanel:
@@ -33,7 +35,9 @@ languages:
             type: ModInfoPanel.InteractionParam
           incompatiblePanel:
             type: ModInfoPanel.InteractionParam
-          joypadFocused: {}
+          joypadFocused:
+            type: boolean
+            nullable: true
         methods:
           - name: drawCustomRectBorder
             parameters:
@@ -58,16 +62,18 @@ languages:
           - name: updateView
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
           - name: createChildren
           - name: setJoypadFocused
             parameters:
               - name: val
+                type: boolean
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

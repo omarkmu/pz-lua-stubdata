@@ -11,11 +11,14 @@ languages:
               - name: y
                 type: number
               - name: item
+                type: InventoryItem
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISMakeUpUI"'
-          windows: {}
+          windows:
+            type: table<integer, ISMakeUpUI>
         fields:
           avatarX:
             type: number
@@ -27,7 +30,8 @@ languages:
             type: number
           avatarPanel:
             type: ISUI3DModel
-          avatarBackgroundTexture: {}
+          avatarBackgroundTexture:
+            type: Texture
           leftPanel:
             type: ISPanel
           rightPanel:
@@ -53,15 +57,20 @@ languages:
           needsUpdateLayout:
             type: boolean
           previousMakeUp:
+            type: InventoryItem
             nullable: true
           drawJoypadFocus:
             type: boolean
-          joypadButtons: {}
-          character: {}
-          item: {}
+          joypadButtons:
+            type: ISButton[]
+          character:
+            type: IsoPlayer
+          item:
+            type: InventoryItem
           title:
             type: string
-          desc: {}
+          desc:
+            type: SurvivorDesc
           playerNum:
             type: integer
         methods:
@@ -75,6 +84,7 @@ languages:
           - name: setWidthToChildren
             parameters:
               - name: panel
+                type: ISUIElement
               - name: minWidth
                 type: number
           - name: updateLayout
@@ -91,11 +101,12 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: close
           - name: displayBodyPart
             parameters:
               - name: cat
+                type: umbrella.MakeUpDefinitions.Category
         staticMethods:
           - name: OnPlayerDeath
             parameters:

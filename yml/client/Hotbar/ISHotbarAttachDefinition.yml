@@ -3,9 +3,29 @@ languages:
   lua:
     classes:
       ISHotbarAttachDefinition:
-        fields:
-          "[integer]":
-            type: umbrella.ISHotbar.AttachDefinition[]
         staticFields:
           replacements:
             type: umbrella.ISHotbar.ReplaceDefinition[]
+        fields:
+          "[integer]":
+            type: umbrella.ISHotbar.AttachDefinition[]
+      umbrella.ISHotbar.AttachDefinition:
+        fields:
+          type:
+            type: string
+          name:
+            type: string
+          animset:
+            type: string
+          attachments:
+            type: table<string, string>
+      umbrella.ISHotbar.ReplaceDefinition:
+        fields:
+          type:
+            type: string
+          name:
+            type: string
+          animset:
+            type: string
+          replacements:
+            type: table<string, string>

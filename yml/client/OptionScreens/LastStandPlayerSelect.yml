@@ -20,7 +20,7 @@ languages:
           playerSelected:
             nullable: true
           instance:
-            type: LastStandPlayerSelect | table | ISPanelJoypad
+            type: LastStandPlayerSelect
             nullable: true
         fields:
           listbox:
@@ -33,31 +33,41 @@ languages:
             type: ISButton
           deleteButton:
             type: ISButton
+          itemheightoverride:
+            type: table<string, number>
+          selected:
+            type: integer
+          playersDesc:
+            type: table<string, IsoSurvivor>
         methods:
           - name: initialise
           - name: instantiate
           - name: getAllSavedPlayers
             return:
-              - type: table
+              - type: umbrella.LastStandPlayerFile.PlayerData[]
           - name: createSurvivorDescFromData
             parameters:
               - name: newPlayer
-                nullable: true
+                type: umbrella.LastStandPlayerFile.PlayerData
             return:
-              - type: unknown
+              - type: SurvivorDesc
           - name: createPlayerList
           - name: getColor
             parameters:
               - name: line
+                type: string
             return:
-              - type: table
+              - type: umbrella.RGB
           - name: create
           - name: render
           - name: drawMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -99,6 +109,7 @@ languages:
           - name: newGame
             parameters:
               - name: player
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
           - name: clickPlay

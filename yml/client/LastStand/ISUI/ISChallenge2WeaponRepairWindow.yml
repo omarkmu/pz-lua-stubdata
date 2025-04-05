@@ -15,15 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISChallenge2WeaponRepairWindow"'
         fields:
           buttons:
-            type: table
-          joypadButtons: {}
-          char: {}
-          playerId: {}
+            type: ISButton[]
+          joypadButtons:
+            type: ISButton[]
+          char:
+            type: IsoPlayer
+          playerId:
+            type: integer
         methods:
           - name: initialise
           - name: render
@@ -41,6 +45,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

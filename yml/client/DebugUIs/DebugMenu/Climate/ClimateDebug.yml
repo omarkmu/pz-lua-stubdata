@@ -136,3 +136,17 @@ languages:
             parameters:
               - name: mgr
                 type: ClimateManager
+      umbrella.ClimateDebug.VarInfo:
+        fields:
+          name:
+            type: string
+          desc:
+            type: string
+          min:
+            type: integer
+          max:
+            type: integer
+          func:
+            type: "fun(mgr: ErosionSeason): number"
+          col:
+            type: number[]

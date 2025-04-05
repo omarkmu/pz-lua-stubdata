@@ -7,28 +7,34 @@ languages:
         constructors:
           - parameters:
               - name: item
+                type: InventoryItem
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISToolTipInv"'
         fields:
           item:
+            type: InventoryItem
             nullable: true
           owner:
-            type: table
+            type: ISUIElement
             nullable: true
-          tooltip: {}
+          tooltip:
+            type: ObjectTooltip
+            nullable: true
           toolTipDone:
             type: boolean
           followMouse:
             type: boolean
           anchorBottomLeft:
+            type: "{ x: number, y: number }"
             nullable: true
         methods:
           - name: initialise
           - name: setItem
             parameters:
               - name: item
+                type: InventoryItem
                 nullable: true
           - name: onMouseDown
             parameters:
@@ -73,34 +79,44 @@ languages:
           - name: adjustPositionToAvoidOverlap
             parameters:
               - name: avoidRect
+                type: umbrella.Rect
           - name: overlaps
             parameters:
               - name: r1
+                type: umbrella.Rect
               - name: r2
+                type: umbrella.Rect
             return:
               - type: boolean
           - name: placeLeft
             parameters:
               - name: r1
+                type: umbrella.Rect
               - name: r2
+                type: umbrella.Rect
             return:
-              - type: unknown
+              - type: umbrella.Rect
           - name: placeRight
             parameters:
               - name: r1
+                type: umbrella.Rect
               - name: r2
+                type: umbrella.Rect
             return:
-              - type: unknown
+              - type: umbrella.Rect
           - name: placeAbove
             parameters:
               - name: r1
+                type: umbrella.Rect
               - name: r2
+                type: umbrella.Rect
             return:
-              - type: unknown
+              - type: umbrella.Rect
           - name: setOwner
             parameters:
               - name: ui
-                type: table
+                type: ISUIElement
           - name: setCharacter
             parameters:
               - name: chr
+                type: IsoGameCharacter

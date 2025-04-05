@@ -7,22 +7,38 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: location
+                type: IsoGridSquare
               - name: additionalTest
+                type: umbrella.ISWalkToTimedAction.AdditionalTest
+                nullable: true
               - name: additionalContext
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWalkToTimedActionF"'
         fields:
-          result: {}
-          onCompleteFunc: {}
+          result:
+            type: BehaviorResult
+            nullable: true
+          onCompleteFunc:
+            type: function
+            nullable: true
           onCompleteArgs:
             type: table
-          location: {}
+            nullable: true
+          location:
+            type: IsoGridSquare
           pathIndex:
             type: number
-          additionalTest: {}
-          additionalContext: {}
+          additionalTest:
+            type: umbrella.ISWalkToTimedAction.AdditionalTest
+            nullable: true
+          additionalContext:
+            type: unknown
+            nullable: true
         methods:
           - name: isValid
             return:
@@ -34,11 +50,17 @@ languages:
           - name: setOnComplete
             parameters:
               - name: func
+                type: function
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true

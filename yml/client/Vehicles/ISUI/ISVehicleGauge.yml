@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: texture
+                type: Texture
               - name: needleX
                 type: number
               - name: needleY
@@ -23,7 +24,8 @@ languages:
           Type:
             defaultValue: '"ISVehicleGauge"'
         fields:
-          texture: {}
+          texture:
+            type: Texture
           needleX:
             type: number
           needleY:
@@ -40,6 +42,7 @@ languages:
           - name: setTexture
             parameters:
               - name: texture
+                type: Texture
           - name: setValue
             parameters:
               - name: value

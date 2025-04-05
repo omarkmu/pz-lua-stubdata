@@ -62,7 +62,8 @@ languages:
             type: ISLabel
           maxYSlider:
             type: ISSliderPanel
-          mapGroups: {}
+          mapGroups:
+            type: MapGroups
         methods:
           - name: initialise
           - name: hasChoices
@@ -88,21 +89,28 @@ languages:
           - name: onMinXSliderChange
             parameters:
               - name: value
+                type: string
           - name: onMinYSliderChange
             parameters:
               - name: value
+                type: string
           - name: onMaxXSliderChange
             parameters:
               - name: value
+                type: string
           - name: onMaxYSliderChange
             parameters:
               - name: value
+                type: string
           - name: render
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -120,7 +128,11 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: create

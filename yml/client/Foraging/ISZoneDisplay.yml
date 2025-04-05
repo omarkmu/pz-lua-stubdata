@@ -167,3 +167,13 @@ languages:
                 type: boolean
                 nullable: true
           - name: close
+      umbrella.ISZoneDisplay.Tip:
+        fields:
+          level:
+            type: integer
+          title:
+            type: string
+          text:
+            type: string
+          shown:
+            type: boolean

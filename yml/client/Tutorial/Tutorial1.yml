@@ -11,14 +11,18 @@ languages:
             type: string
             nullable: true
           marker:
+            type: WorldMarkers
             nullable: true
           joypad:
             type: boolean
             nullable: true
-          cratePositions: {}
+          cratePositions:
+            type: "[string, string, number, number, number][]"
           DeadMouseContainer:
+            type: IsoObject
             nullable: true
           DeadMouse:
+            type: InventoryItem
             nullable: true
           name:
             defaultValue: '"Tutorial1"'
@@ -38,21 +42,24 @@ languages:
           - name: AddPlayer
             parameters:
               - name: p
+                type: IsoPlayer
           - name: closeBothInv
           - name: closeLoot
           - name: closeInv
           - name: createInventoryContextMenu
             parameters:
               - name: player
+                type: InventoryItem
               - name: isInPlayerInventory
                 type: boolean
               - name: items
+                type: (InventoryItem | umbrella.ContextMenuItemStack)[]
               - name: x
                 type: number
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: ISContextMenu
           - name: createWorldContextMenuFromContext
             parameters:
               - name: context
@@ -60,10 +67,11 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
             return:
-              - type: unknown
+              - type: ISContextMenu
           - name: createWorldContextMenu
             parameters:
               - name: player
+                type: IsoPlayer
               - name: worldobjects
                 type: IsoObject[]
               - name: x
@@ -71,15 +79,17 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: ISContextMenu
           - name: doubleClickInventory
             parameters:
               - name: inventoryPane
+                type: ISInventoryPane
               - name: x
                 type: number
               - name: y
                 type: number
               - name: mouseOverOption
+                type: integer
             return:
               - type: boolean
           - name: Init
@@ -92,9 +102,11 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
           - name: collapseInv
             parameters:
               - name: inv
+                type: ISInventoryPage
           - name: lockDoor
             parameters:
               - name: x
@@ -104,7 +116,7 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: IsoDoor
                 nullable: true
           - name: unlockDoor
             parameters:
@@ -115,7 +127,7 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: IsoDoor
                 nullable: true
           - name: addBarricade
             parameters:
@@ -134,12 +146,13 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: IsoWindow
                 nullable: true
           - name: FillContainers
           - name: SpawnZombies
             parameters:
               - name: count
+                type: integer
           - name: Render
           - name: Tick
           - name: removeFences
@@ -148,3 +161,4 @@ languages:
               - name: sq
                 type: IsoGridSquare
               - name: north
+                type: boolean

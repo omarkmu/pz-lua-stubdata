@@ -14,47 +14,50 @@ languages:
           drawMargins:
             defaultValue: "false"
         fields:
-          font: {}
-          rgbCurrent: {}
+          font:
+            type: UIFont
+          rgbCurrent:
+            type: umbrella.RGB
+            nullable: true
           imageCount:
-            type: number
+            type: integer
           indent:
             type: number
             nullable: true
           textDirty:
             type: boolean
           fonts:
-            type: table
+            type: table<integer, UIFont>
           images:
-            type: table
+            type: Texture[]
           imageX:
-            type: table
+            type: number[]
           imageY:
-            type: table
+            type: number[]
           rgb:
-            type: table
+            type: table<integer, umbrella.RGB>
           orient:
-            type: table
+            type: table<integer, "left" | "right" | "centre">
           imageW:
-            type: table
+            type: number[]
           imageH:
-            type: table
+            type: number[]
           lineY:
-            type: table
+            type: table<integer, number>
           lineX:
-            type: table
+            type: table<integer, number>
           lines:
-            type: table
+            type: string[]
           currentLine:
-            type: number
+            type: integer
           height:
             type: number
           r:
-            type: number
+            type: integer
           g:
-            type: number
+            type: integer
           b:
-            type: number
+            type: integer
           text:
             type: string
           marginLeft:
@@ -71,15 +74,16 @@ languages:
             type: boolean
           maxLines:
             type: number
-          defaultFont: {}
+          defaultFont:
+            type: UIFont
         methods:
           - name: initialise
           - name: processCommand
             parameters:
               - name: command
+                type: string
               - name: x
                 type: number
-                nullable: true
               - name: y
                 type: number
               - name: lineImageHeight
@@ -88,7 +92,6 @@ languages:
                 type: number
             return:
               - type: number
-                nullable: true
               - type: number
               - type: number
           - name: paginate
@@ -99,7 +102,7 @@ languages:
               - name: y
                 type: number
               - name: ui
-                type: ISAdminPowerUI | ISVehicleSeatUI
+                type: ISUIElement
           - name: setText
             parameters:
               - name: text
@@ -120,6 +123,7 @@ languages:
           - name: setWidth
             parameters:
               - name: width
+                type: number
           - name: getHeight
             return:
               - type: number

@@ -17,9 +17,9 @@ languages:
             defaultValue: '"ISForageIcon"'
         fields:
           itemDef:
-            type: umbrella.Foraging.ItemDef
+            type: umbrella.Foraging.ItemDefinition
           catDef:
-            type: umbrella.Foraging.CategoryDef
+            type: umbrella.Foraging.CategoryDefinition
           altWorldTexture:
             type: Texture
             nullable: true
@@ -37,7 +37,7 @@ languages:
           zoneData:
             type: umbrella.Foraging.ZoneData
           zoneDef:
-            type: umbrella.Foraging.ZoneDef
+            type: umbrella.Foraging.ZoneDefinition
           onClickContext:
             type: function
         methods:
@@ -75,7 +75,7 @@ languages:
           - name: getNewCategoryItem
             parameters:
               - name: _catDef
-                type: umbrella.Foraging.CategoryDef
+                type: umbrella.Foraging.CategoryDefinition
               - name: _zoneData
                 type: umbrella.Foraging.ZoneData
             return:

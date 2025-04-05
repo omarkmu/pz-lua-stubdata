@@ -4,11 +4,12 @@ languages:
     classes:
       ISLayoutManager:
         staticFields:
-          windows: {}
+          windows:
+            type: table<string, umbrella.ISLayoutManager.RegisteredWindow>
           enableLog:
             defaultValue: "false"
           layouts:
-            type: table
+            type: umbrella.ISLayoutManager.Resolution[]
             nullable: true
         staticMethods:
           - name: RegisterWindow
@@ -16,24 +17,27 @@ languages:
               - name: name
                 type: string
               - name: funcs
-                type: table
+                type: ISUIElement
               - name: target
-                type: unknown
+                type: ISUIElement
           - name: DefaultRestoreWindow
             parameters:
               - name: window
-                type: table
+                type: ISUIElement
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: DefaultSaveWindow
             parameters:
               - name: window
-                type: table
+                type: ISUIElement
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveWindowVisible
             parameters:
               - name: window
-                type: ISTutorialPanel
+                type: ISUIElement
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: TryRestore
             parameters:
               - name: name
@@ -46,18 +50,19 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: CallSaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
-                type: table
-                nullable: true
+                type: umbrella.ISLayoutManager.Layout
           - name: FindResizeWidget
             parameters:
               - name: window
+                type: ISUIElement
             return:
-              - type: unknown
+              - type: ISResizeWidget
                 nullable: true
           - name: ReadIni
           - name: WriteIni
@@ -66,4 +71,37 @@ languages:
               - name: name
                 type: string
               - name: window
+                type: ISUIElement
           - name: OnPostSave
+      umbrella.ISLayoutManager.Layout:
+        fields:
+          name:
+            type: string
+          x:
+            type: number
+          y:
+            type: number
+          width:
+            type: number
+          height:
+            type: number
+          visible:
+            type: '"true" | "false"'
+            nullable: true
+          pin:
+            type: '"true" | "false"'
+            nullable: true
+      umbrella.ISLayoutManager.RegisteredWindow:
+        fields:
+          funcs:
+            type: ISUIElement
+          target:
+            type: ISUIElement
+      umbrella.ISLayoutManager.Resolution:
+        fields:
+          width:
+            type: number
+          height:
+            type: number
+          windows:
+            type: umbrella.ISLayoutManager.Layout[]

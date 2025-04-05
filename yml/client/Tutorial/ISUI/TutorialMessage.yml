@@ -59,7 +59,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
         staticMethods:
           - name: onKeyPressed
             parameters:

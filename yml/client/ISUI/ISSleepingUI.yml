@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: playerIndex
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISSleepingUI"'
         fields:
-          hourOfDay: {}
-          playerIndex: {}
+          hourOfDay:
+            type: number
+          playerIndex:
+            type: integer
         methods:
           - name: createChildren
           - name: prerender
@@ -51,9 +54,12 @@ languages:
           - name: onSleepingTick
             parameters:
               - name: hourOfDay
+                type: number
           - name: onResolutionChange
         staticMethods:
           - name: OnSleepingTick
             parameters:
               - name: playerIndex
+                type: integer
               - name: hourOfDay
+                type: number

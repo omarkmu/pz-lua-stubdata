@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAnimalUI"'
@@ -36,7 +38,8 @@ languages:
             type: number
           avatarPanel:
             type: ISCharacterScreenAvatar
-          avatarBackgroundTexture: {}
+          avatarBackgroundTexture:
+            type: Texture
           xOffset:
             type: number
           renameBtn:
@@ -53,12 +56,16 @@ languages:
             type: string
           refreshNeeded:
             type: boolean
-          animal: {}
-          chr: {}
+          animal:
+            type: IsoAnimal
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
-          avatarDefinition: {}
-          skillLvl: {}
+          avatarDefinition:
+            type: umbrella.AnimalAvatarDefinition
+          skillLvl:
+            type: integer
         methods:
           - name: prerender
           - name: render
@@ -77,26 +84,26 @@ languages:
           - name: maxTextWidth
             parameters:
               - name: font
+                type: UIFont
               - name: text
+                type: string
               - name: maxWidth
+                type: number
             return:
-              - type: unknown
+              - type: number
           - name: updateAvatar
           - name: getWoolText
             return:
               - type: string
-                nullable: true
           - name: getUdderText
             return:
               - type: string
           - name: getPregnantText
             return:
               - type: string
-                nullable: true
           - name: getClutchSizeText
             return:
               - type: unknown
-                nullable: true
           - name: onMilkAnimal
           - name: onGainJoypadFocus
             parameters:
@@ -105,7 +112,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ISAnimalAvatar:

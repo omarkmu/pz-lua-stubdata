@@ -15,17 +15,23 @@ languages:
               - name: height
                 type: number
               - name: leaderInstance
+                type: SurvivorDesc
         staticFields:
           Type:
             defaultValue: '"TeamOverview"'
         fields:
-          a: {}
-          b: {}
-          c: {}
-          group: {}
+          a:
+            type: SurvivorDesc
+          b:
+            type: SurvivorDesc
+          c:
+            type: SurvivorDesc
+          group:
+            type: SurvivorGroup
           memberList:
             type: ISScrollingListBox
-          leader: {}
+          leader:
+            type: SurvivorDesc
         methods:
           - name: initialise
           - name: createChildren
@@ -33,5 +39,8 @@ languages:
           - name: drawMember
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean

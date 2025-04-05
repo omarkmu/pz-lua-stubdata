@@ -16,15 +16,19 @@ languages:
               - name: height
                 type: number
               - name: model
+                type: ModSelector.Model
         staticFields:
           Type:
             defaultValue: '"ModLoadOrderPanel"'
         fields:
-          model: {}
-          upTexture: {}
-          downTexture: {}
+          model:
+            type: ModSelector.Model
+          upTexture:
+            type: Texture
+          downTexture:
+            type: Texture
           defaultOrder:
-            type: table
+            type: string[]
           modList:
             type: ModSelector.ModOrderListBox
           backButton:
@@ -33,17 +37,21 @@ languages:
             type: ISButton
           autoButton:
             type: ISButton
-          joypadIndex: {}
+          joypadIndex:
+            type: integer
+            nullable: true
         methods:
           - name: instantiate
           - name: getModName
             parameters:
               - name: id
+                type: string
             return:
-              - type: unknown
+              - type: string
           - name: getTooltip
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
             return:
               - type: string
                 nullable: true
@@ -62,12 +70,13 @@ languages:
           - name: getLoadAfterAndRequire
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
             return:
-              - type: table
+              - type: string[]
           - name: isCorrectOrder
             return:
               - type: boolean
-              - type: unknown
+              - type: string
                 nullable: true
           - name: acceptChanges
             parameters:
@@ -80,7 +89,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -103,3 +112,13 @@ languages:
         staticFields:
           ModLoadOrderPanel:
             type: ModSelector.ModLoadOrderPanel
+      umbrella.ModSelector.ModLoadOrderData:
+        fields:
+          name:
+            type: string
+          icon:
+            type: string
+          modId:
+            type: string
+          modInfo:
+            type: ChooseGameInfo.Mod

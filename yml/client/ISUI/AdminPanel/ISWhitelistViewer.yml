@@ -24,7 +24,8 @@ languages:
             nullable: true
         fields:
           activeView:
-            type: table
+            type: ISWhitelistTable
+            nullable: true
           panel:
             type: ISTabPanel
           close:
@@ -36,9 +37,9 @@ languages:
           delete:
             type: ISButton
           schema:
-            type: table
+            type: table<string, umbrella.DBSchemaEntry[]>
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           canModify:
             type: boolean
         methods:
@@ -60,9 +61,11 @@ languages:
               - name: button
                 type: ISButton
               - name: view
+                type: ISWhitelistTable
           - name: refresh
           - name: closeSelf
         staticMethods:
           - name: receiveDBSchema
             parameters:
               - name: schema
+                type: table<string, umbrella.DBSchemaEntry[]>

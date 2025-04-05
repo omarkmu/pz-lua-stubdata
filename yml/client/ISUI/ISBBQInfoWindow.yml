@@ -42,7 +42,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: setObject
             parameters:
               - name: bbq

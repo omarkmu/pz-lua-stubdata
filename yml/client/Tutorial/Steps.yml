@@ -13,12 +13,16 @@ languages:
           llight_y:
             defaultValue: "151"
           homing2:
+            type: WorldMarkers.PlayerHomingPoint
             nullable: true
           homing1:
+            type: WorldMarkers.PlayerHomingPoint
             nullable: true
           marker1:
+            type: WorldMarkers.GridSquareMarker
             nullable: true
           currentZoom:
+            type: number
             nullable: true
         staticMethods:
           - name: addHoming
@@ -32,7 +36,7 @@ languages:
                 type: number
                 nullable: true
               - name: color
-                type: table
+                type: umbrella.RGB
                 nullable: true
           - name: addMarker
             parameters:
@@ -44,14 +48,13 @@ languages:
             parameters:
               - name: obj
                 type: IsoObject
-                nullable: true
           - name: highlight
             parameters:
               - name: obj
                 type: IsoObject
-                nullable: true
               - name: thickness
                 type: number
+                nullable: true
           - name: RemoveMarkers
           - name: ZoomedIn
             return:
@@ -136,6 +139,7 @@ languages:
           sneaked:
             defaultValue: "false"
           appleContainer:
+            type: IsoObject
             nullable: true
           z:
             defaultValue: "0"
@@ -167,6 +171,7 @@ languages:
           itemToEat:
             defaultValue: '"DeadRat"'
           container:
+            type: IsoObject
             nullable: true
           finished:
             type: boolean
@@ -204,12 +209,15 @@ languages:
           sinkY:
             defaultValue: "154"
           sink:
+            type: IsoObject
             nullable: true
           lastInventory:
+            type: ItemContainer
             nullable: true
           clickedOnInventory:
             defaultValue: "false"
           panContainer:
+            type: IsoObject
             nullable: true
           dontTurn:
             type: boolean
@@ -250,7 +258,7 @@ languages:
         staticMethods:
           - name: spawnPan
             return:
-              - type: unknown
+              - type: InventoryItem
       FightStep:
         extends: TutorialStep
         constructors:
@@ -263,6 +271,7 @@ languages:
           windowY:
             defaultValue: "154"
           window:
+            type: IsoWindow
             nullable: true
           climbThrough:
             defaultValue: "false"
@@ -271,18 +280,22 @@ languages:
           zombieMomSpawnY:
             defaultValue: "154"
           momzombie:
+            type: IsoZombie
             nullable: true
           zombieSawYou:
             defaultValue: "false"
           highlightFloor:
             nullable: true
           floor:
+            type: IsoObject
             nullable: true
           wasOpen:
             defaultValue: "true"
           playerX:
+            type: number
             nullable: true
           playerY:
+            type: number
             nullable: true
           momDead:
             type: boolean
@@ -297,8 +310,10 @@ languages:
             type: boolean
             nullable: true
           floor1SQ:
+            type: IsoGridSquare
             nullable: true
           floor2SQ:
+            type: IsoGridSquare
             nullable: true
           markerDone:
             type: boolean
@@ -346,11 +361,13 @@ languages:
           zombieDadSpawnY:
             defaultValue: "147"
           dadzombie:
+            type: IsoZombie
             nullable: true
           isDadDead:
             type: boolean
             nullable: true
           sqGate:
+            type: IsoGridSquare
             nullable: true
           wasSneaking:
             type: boolean
@@ -359,8 +376,10 @@ languages:
             type: boolean
             nullable: true
           bag:
+            type: InventoryItem
             nullable: true
           shotgun:
+            type: InventoryItem
             nullable: true
           finished:
             type: boolean
@@ -406,12 +425,16 @@ languages:
           - name: OnSwingAtDad
             parameters:
               - name: owner
+                type: IsoGameCharacter
               - name: weapon
+                type: HandWeapon
               - name: zed
+                type: IsoZombie
               - name: dmg
+                type: number
           - name: spawnShotgun
             return:
-              - type: unknown
+              - type: InventoryItem
       BandageStep:
         extends: TutorialStep
         constructors:
@@ -424,9 +447,10 @@ languages:
           brotherY:
             defaultValue: "147"
           window:
+            type: IsoWindow
             nullable: true
           fences:
-            type: table
+            type: IsoObject[]
             nullable: true
           runned:
             type: boolean
@@ -453,15 +477,19 @@ languages:
             type: boolean
             nullable: true
           brother1:
+            type: IsoZombie
             nullable: true
           brother2:
+            type: IsoZombie
             nullable: true
           sqDoor:
+            type: IsoGridSquare
             nullable: true
           sqWindow:
+            type: IsoGridSquare
             nullable: true
           containers:
-            type: table
+            type: IsoGridSquare[]
             nullable: true
           spawnedItems:
             type: boolean
@@ -491,7 +519,7 @@ languages:
               - type: boolean
           - name: OpenCurtain
             return:
-              - type: unknown
+              - type: boolean
           - name: HealthOpen
             return:
               - type: boolean
@@ -520,12 +548,13 @@ languages:
           lockedY:
             nullable: true
           squares:
-            type: table
+            type: IsoGridSquare[]
             nullable: true
           outhouseSQ:
-            type: table
+            type: IsoGridSquare[]
             nullable: true
           timeOfDeath:
+            type: number
             nullable: true
           soundDone:
             type: boolean
@@ -555,7 +584,7 @@ languages:
           - name: begin
           - name: Aiming
             return:
-              - type: unknown
+              - type: boolean
           - name: Shout
             return:
               - type: boolean
@@ -573,6 +602,7 @@ languages:
           - name: playerUpdate
             parameters:
               - name: player
+                type: IsoPlayer
           - name: TheEnd
           - name: Outhouse
             return:

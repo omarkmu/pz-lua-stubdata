@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAddSafeZoneUI"'
@@ -24,13 +25,20 @@ languages:
         fields:
           notIntersecting:
             type: boolean
-          zonewidth: {}
-          zoneheight: {}
-          size: {}
-          X1: {}
-          Y1: {}
-          X2: {}
-          Y2: {}
+          zonewidth:
+            type: number
+          zoneheight:
+            type: number
+          size:
+            type: number
+          X1:
+            type: number
+          Y1:
+            type: number
+          X2:
+            type: number
+          Y2:
+            type: number
           cancel:
             type: ISButton
           ok:
@@ -43,23 +51,31 @@ languages:
             type: ISTextEntryBox
           claimOptions:
             type: ISTickBox
-          startingX: {}
-          startingY: {}
+          startingX:
+            type: number
+          startingY:
+            type: number
           fullHighlight:
             type: boolean
           creatingZone:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: highlightZone
             parameters:
               - name: _x1
+                type: number
               - name: _x2
+                type: number
               - name: _y1
+                type: number
               - name: _y2
+                type: number
               - name: _fullHighlight
+                type: boolean
           - name: checkIfIntersectingAnotherZone
           - name: updateButtons
           - name: prerender
@@ -68,7 +84,9 @@ languages:
           - name: onClickClaimOptions
             parameters:
               - name: _clickedOption
+                type: integer
               - name: _ticked
+                type: boolean
           - name: onClick
             parameters:
               - name: button

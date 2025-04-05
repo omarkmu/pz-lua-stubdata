@@ -64,7 +64,7 @@ languages:
           - name: setDataList
             parameters:
               - name: _recipeList
-                type: ArrayList #<CraftRecipe>
+                type: ArrayList<CraftRecipe>
           - name: setInternalDimensions
             parameters:
               - name: _x

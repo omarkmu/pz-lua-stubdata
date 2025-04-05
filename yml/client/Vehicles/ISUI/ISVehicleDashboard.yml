@@ -9,11 +9,12 @@ languages:
               - name: playerNum
                 type: integer
               - name: chr
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISVehicleDashboard"'
           lastVehicleDamage:
-            type: table
+            type: table<VehiclePart, integer>
             nullable: true
           lastVehicleDamageTimer:
             defaultValue: "0"
@@ -56,10 +57,13 @@ languages:
             type: number
           flickAlphaUp:
             type: boolean
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
+            nullable: true
           gauges:
-            type: table
+            type: ISVehicleGauge[]
           gasTank:
+            type: VehiclePart
             nullable: true
           fuelValue:
             type: number
@@ -67,29 +71,52 @@ languages:
             type: boolean
           playerNum:
             type: integer
-          character: {}
-          texEngine: {}
-          iconEngine: {}
-          iconAirCondition: {}
-          iconDoor: {}
-          iconLights: {}
-          iconHeater: {}
-          iconIgnition: {}
-          iconIgnitionKey: {}
-          iconIgnitionStarted: {}
-          iconIgnitionHotwired: {}
-          iconBattery: {}
-          iconTrunk: {}
-          iconSpeedRegulator: {}
-          dashboardBG: {}
-          gaugeFull: {}
-          gaugeLow: {}
-          gaugeEmpty: {}
-          engineGaugeTex: {}
-          speedGaugeTex: {}
-          leftSideFuelTex: {}
-          rightSideFuelTex: {}
-          iconRadio: {}
+          character:
+            type: IsoPlayer
+          texEngine:
+            type: Texture
+          iconEngine:
+            type: Texture
+          iconAirCondition:
+            type: Texture
+          iconDoor:
+            type: Texture
+          iconLights:
+            type: Texture
+          iconHeater:
+            type: Texture
+          iconIgnition:
+            type: Texture
+          iconIgnitionKey:
+            type: Texture
+          iconIgnitionStarted:
+            type: Texture
+          iconIgnitionHotwired:
+            type: Texture
+          iconBattery:
+            type: Texture
+          iconTrunk:
+            type: Texture
+          iconSpeedRegulator:
+            type: Texture
+          dashboardBG:
+            type: Texture
+          gaugeFull:
+            type: Texture
+          gaugeLow:
+            type: Texture
+          gaugeEmpty:
+            type: Texture
+          engineGaugeTex:
+            type: Texture
+          speedGaugeTex:
+            type: Texture
+          leftSideFuelTex:
+            type: Texture
+          rightSideFuelTex:
+            type: Texture
+          iconRadio:
+            type: Texture
         methods:
           - name: createChildren
           - name: getAlphaFlick
@@ -98,10 +125,10 @@ languages:
                 type: number
             return:
               - type: number
-                nullable: true
           - name: setVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
           - name: prerender
           - name: checkEngineFull
             return:
@@ -119,20 +146,25 @@ languages:
           - name: damageFlick
             parameters:
               - name: character
+                type: IsoPlayer
           - name: onEnterVehicle
             parameters:
               - name: character
+                type: IsoPlayer
           - name: onExitVehicle
             parameters:
               - name: character
+                type: IsoPlayer
           - name: onSwitchVehicleSeat
             parameters:
               - name: character
+                type: IsoPlayer
           - name: OnGameStart
           - name: getVehicleCondition
             parameters:
               - name: vehicle
+                type: BaseVehicle
             return:
-              - type: table
+              - type: table<VehiclePart, integer>
           - name: damageChecker
           - name: onGameStart

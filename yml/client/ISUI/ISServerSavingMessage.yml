@@ -15,13 +15,15 @@ languages:
               - name: height
                 type: number
               - name: text
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISServerSavingMessage"'
         fields:
           richtext:
             type: ISRichTextPanel
-          text: {}
+          text:
+            type: string
         methods:
           - name: initialise
           - name: destroy

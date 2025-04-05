@@ -7,12 +7,13 @@ languages:
           - {}
         fields:
           file:
+            type: BufferedReader
             nullable: true
           error:
             type: string
             nullable: true
           newPlayer:
-            type: table
+            type: umbrella.LastStandPlayerFile.PlayerData
             nullable: true
           version:
             type: number
@@ -23,11 +24,12 @@ languages:
               - name: fileName
                 type: string
             return:
-              - type: table
+              - type: umbrella.LastStandPlayerFile.PlayerData
                 nullable: true
           - name: readLine
             parameters:
               - name: line
+                type: string
             return:
               - type: boolean
           - name: readBlockStart
@@ -48,3 +50,37 @@ languages:
           - name: readBonus
             return:
               - type: boolean
+      umbrella.LastStandPlayerFile.PlayerData:
+        fields:
+          traits:
+            type: string[]
+          skills:
+            type: table<string, integer>
+          playedTime:
+            type: number | string
+          forename:
+            type: string
+          surname:
+            type: string
+          female:
+            type: boolean
+          profession:
+            type: string
+          globalXp:
+            type: string
+          level:
+            type: string
+          humanVisual:
+            type: string
+          clothingVisuals:
+            type: string[]
+            nullable: true
+          boostGoldLevel:
+            type: string
+            nullable: true
+          boostXpLevel:
+            type: string
+            nullable: true
+          startingGoldLevel:
+            type: string
+            nullable: true

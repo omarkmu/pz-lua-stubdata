@@ -20,10 +20,11 @@ languages:
           Type:
             defaultValue: '"ISAdminWeather"'
           instance:
+            type: ISAdminWeather
             nullable: true
         methods:
           - name: initialise
         staticMethods:
           - name: OnOpenPanel
             return:
-              - type: unknown
+              - type: ISAdminWeather

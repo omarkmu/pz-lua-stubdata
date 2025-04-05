@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
               - name: x
                 type: number
               - name: y
@@ -49,17 +50,24 @@ languages:
             type: number
           bodyPartAction:
             type: table
-          characterX: {}
-          characterY: {}
-          otherPlayerX: {}
-          otherPlayerY: {}
+          characterX:
+            type: number
+          characterY:
+            type: number
+          otherPlayerX:
+            type: number
+          otherPlayerY:
+            type: number
           progressBarLoaded:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
-          doctorLevel: {}
-          abutton: {}
+          doctorLevel:
+            type: integer
+          abutton:
+            type: Texture
           tabtotalwidth:
             type: number
         methods:
@@ -68,28 +76,33 @@ languages:
           - name: setVisible
             parameters:
               - name: visible
+                type: boolean
           - name: toPlayerInventory
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: bodyPart
+                type: BodyPart
           - name: update
           - name: prerender
           - name: render
           - name: getDoctor
             return:
-              - type: unknown
+              - type: IsoPlayer
                 nullable: true
           - name: getPatient
             return:
-              - type: unknown
+              - type: IsoPlayer
           - name: getDamagedParts
             return:
-              - type: table
+              - type: BodyPart[]
           - name: updateBodyPartList
           - name: drawText
             parameters:
+              - name: self
+                type: ISUIElement
               - name: str
                 type: string
               - name: x
@@ -105,10 +118,15 @@ languages:
               - name: a
                 type: number
               - name: font
+                type: UIFont
+                nullable: true
           - name: setBodyPartAction
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: args
+                type: table
+                nullable: true
           - name: setOtherPlayer
             parameters:
               - name: playerObj
@@ -124,21 +142,25 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
           - name: onJoypadDirDown
           - name: checkItems
             parameters:
               - name: handlers
-                type: table
+                type: umbrella.ISHealthPanel.BodyPartHandler[]
           - name: checkContainerItems
             parameters:
               - name: container
+                type: ItemContainer
               - name: childContainers
+                type: ItemContainer[]
               - name: handlers
+                type: umbrella.ISHealthPanel.BodyPartHandler[]
           - name: doBodyPartContextMenu
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: x
                 type: number
               - name: y
@@ -146,28 +168,42 @@ languages:
           - name: dropItemsOnBodyPart
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: items
+                type: InventoryItem[]
         staticMethods:
           - name: onCheatCurrentPlayer
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: action
+                type: string
               - name: player
+                type: IsoPlayer
           - name: onCheatOtherPlayer
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: action
+                type: string
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: onCheat
             parameters:
               - name: bodyPart
+                type: BodyPart
               - name: action
+                type: string
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: onCheatItem
             parameters:
               - name: itemType
+                type: string
               - name: playerObj
                 type: IsoPlayer
           - name: setBodyPartActionForPlayer
@@ -175,8 +211,9 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: bodyPart
+                type: BodyPart
               - name: action
-                type: ISApplyBandage
+                type: ISBaseTimedAction
                 nullable: true
               - name: jobType
                 type: string
@@ -187,28 +224,38 @@ languages:
           - name: DidPatientMove
             parameters:
               - name: doctor
+                type: IsoPlayer
               - name: patient
+                type: IsoPlayer
               - name: patientX
+                type: number
               - name: patientY
+                type: number
             return:
               - type: boolean
           - name: IsCharactersInSameCar
             parameters:
               - name: doctor
+                type: IsoPlayer
               - name: patient
+                type: IsoPlayer
             return:
               - type: boolean
           - name: getBandageType
             parameters:
               - name: bodyPart
+                type: BodyPart
             return:
               - type: string
                 nullable: true
           - name: onCheatHealthCommand
             parameters:
               - name: module
+                type: string
               - name: command
+                type: string
               - name: args
+                type: table
       ISNewHealthPanel:
         extends: ISUIElement
         constructors:
@@ -218,11 +265,13 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISNewHealthPanel"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: instantiate
           - name: onClick
@@ -234,6 +283,7 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: x
                 type: number
               - name: y
@@ -255,6 +305,7 @@ languages:
           - name: cbSetSelected
             parameters:
               - name: bp
+                type: umbrella.ISBodyPartPanel.BodyPartTable
       ISHealthBodyPartListBox:
         extends: ISScrollingListBox
         constructors:
@@ -272,10 +323,12 @@ languages:
             defaultValue: '"ISHealthBodyPartListBox"'
         fields:
           drawText:
-            type: function
+            type: "fun(str: string, x: number, y: number, r: number, g: number, b: number,
+              a: number, font?: UIFont)"
           textRight:
             type: number
-          selected: {}
+          selected:
+            type: integer
         methods:
           - name: onMouseUp
             parameters:
@@ -292,8 +345,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
       HealthPanelAction:
@@ -301,30 +357,39 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: handler
-                type: table
+                type: umbrella.ISHealthPanel.BodyPartHandler
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
               - name: arg5
                 type: unknown
+                nullable: true
               - name: arg6
                 type: unknown
+                nullable: true
               - name: arg7
                 type: unknown
+                nullable: true
               - name: arg8
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"HealthPanelAction"'
         fields:
           handler:
-            type: table
+            type: umbrella.ISHealthPanel.BodyPartHandler
           args:
             type: table
         methods:
@@ -335,3 +400,12 @@ languages:
           - name: update
           - name: stop
           - name: perform
+      umbrella.ISHealthPanel.BodyPartHandler:
+        extends: ISBaseObject
+        fields:
+          bodyPart:
+            type: BodyPart
+          panel:
+            type: ISHealthPanel
+          items:
+            type: table

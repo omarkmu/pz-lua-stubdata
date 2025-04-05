@@ -18,11 +18,12 @@ languages:
           Type:
             defaultValue: '"ISMultiplayerZoneEditor"'
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV3
           modeCombo:
             type: ISComboBox
           mode:
-            type: table
+            type: table<string, MultiplayerZoneEditorMode>
           buttonPanel:
             type: ISMultiplayerZoneEditor_ButtonPanel
           dragging:
@@ -33,11 +34,16 @@ languages:
             type: number
           dragStartY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
           hideUnvisitedAreas:
             type: boolean
           isometric:
@@ -55,15 +61,24 @@ languages:
           currentMode:
             type: string
           character:
+            type: IsoPlayer
             nullable: true
           playerNum:
             type: integer
-          cross: {}
-          texViewIsometric: {}
-          texViewOrthographic: {}
-          texViewPyramid: {}
+          cross:
+            type: Texture
+          texViewIsometric:
+            type: Texture
+          texViewOrthographic:
+            type: Texture
+          texViewPyramid:
+            type: Texture
           getJoypadFocus:
             type: boolean
+          javaObject:
+            type: UIWorldMap
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: createChildren
@@ -227,6 +242,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

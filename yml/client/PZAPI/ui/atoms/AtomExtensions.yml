@@ -2,6 +2,21 @@ version: "1.1"
 languages:
   lua:
     classes:
-      PZAPI:
+      PZAPI.UI.Extensions:
+        local: true
         staticFields:
-          UI: {}
+          Hooks: {}
+        staticMethods:
+          - name: Mouse
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: Scroll
+            parameters:
+              - name: ui
+                type: UI.Node
+      PZAPI.UI:
+        local: true
+        staticFields:
+          Extensions:
+            type: PZAPI.UI.Extensions

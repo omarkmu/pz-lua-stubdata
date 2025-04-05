@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISWidgetRecipesPanel.CallbackTarget:
+        - type: "{ player: IsoPlayer, logic: BaseCraftingLogic }"
     classes:
       ISWidgetRecipesPanel:
         extends: ISPanel
@@ -120,17 +123,17 @@ languages:
           - name: onUpdateRecipeList
             parameters:
               - name: _recipeList
-                type: ArrayList #<string>
+                type: ArrayList<string>
           - name: onRecipeItemMouseHover
             parameters:
               - name: _item
-                type: umbrella.ISScrollingListBox.Item #<CraftRecipe>
+                type: umbrella.ISScrollingListBox.Item<CraftRecipe>
           - name: onRecipeListPanelScrolled
           - name: updateTooltip
           - name: updateContainers
             parameters:
               - name: _containers
-                type: ArrayList #<ItemContainer>
+                type: ArrayList<ItemContainer>
           - name: deactivateTooltip
           - name: getPlayer
             return:

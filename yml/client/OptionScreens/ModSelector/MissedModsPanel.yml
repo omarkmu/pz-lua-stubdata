@@ -16,11 +16,13 @@ languages:
               - name: height
                 type: number
               - name: data
+                type: table<string, string>
         staticFields:
           Type:
             defaultValue: '"MissedModsPanel"'
         fields:
-          data: {}
+          data:
+            type: table<string, string>
         methods:
           - name: createChildren
           - name: onOptionMouseDown
@@ -43,11 +45,13 @@ languages:
               - name: height
                 type: number
               - name: data
+                type: table<string, string>
         staticFields:
           Type:
             defaultValue: '"MissedModsWindow"'
         fields:
-          data: {}
+          data:
+            type: table<string, string>
         methods:
           - name: prerender
           - name: createChildren

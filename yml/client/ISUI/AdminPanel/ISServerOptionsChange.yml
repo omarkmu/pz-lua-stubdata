@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISServerOptionsChange.OnClick:
+        - type: "fun(target: unknown?, option: ServerOptions.ServerOption, newValue:
+            string)"
     classes:
       ISServerOptionsChange:
         extends: ISPanel
@@ -16,9 +20,12 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onclick
-                type: function
+                type: umbrella.ISServerOptionsChange.OnClick
+                nullable: true
               - name: option
+                type: ServerOptions.ServerOption
         staticFields:
           Type:
             defaultValue: '"ISServerOptionsChange"'
@@ -45,16 +52,19 @@ languages:
             type: string
             nullable: true
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
           target:
             type: unknown
+            nullable: true
           onclick:
-            type: function
-          option: {}
+            type: umbrella.ISServerOptionsChange.OnClick
+            nullable: true
+          option:
+            type: ServerOptions.ServerOption
         methods:
           - name: initialise
           - name: setVisible

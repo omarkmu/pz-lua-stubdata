@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoWorldInventoryObject
               - name: time
                 type: number
         staticFields:
@@ -18,15 +20,19 @@ languages:
             type: number
           started:
             type: boolean
-          item: {}
+          item:
+            type: IsoWorldInventoryObject
           queueList:
-            type: table
+            type: umbrella.ISGrabItemAction.QueueItem[]
           ignoreAction:
             type: boolean
           loopedAction:
             type: boolean
-          destContainer: {}
-          sourceContainer: {}
+          destContainer:
+            type: ItemContainer
+          sourceContainer:
+            type: ItemContainer
+            nullable: true
         methods:
           - name: isValid
             return:
@@ -38,4 +44,13 @@ languages:
           - name: transferItem
             parameters:
               - name: item
+                type: IsoWorldInventoryObject
           - name: checkQueueList
+      umbrella.ISGrabItemAction.QueueItem:
+        fields:
+          items:
+            type: IsoWorldInventoryObject[]
+          time:
+            type: number
+          type:
+            type: string

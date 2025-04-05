@@ -10,10 +10,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
         methods:
           - name: start
           - name: update
@@ -23,10 +23,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
         methods:
           - name: start
           - name: update
@@ -36,10 +36,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
           sound:
             type: integer
             nullable: true
@@ -52,12 +52,12 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           reelSoundStarted:
             type: boolean
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
           sound:
             type: integer
             nullable: true
@@ -70,12 +70,12 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           isHighTensionSound:
             type: boolean
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
           sound:
             type: integer
             nullable: true
@@ -88,10 +88,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
         methods:
           - name: start
           - name: update
@@ -101,10 +101,10 @@ languages:
         constructors:
           - parameters:
               - name: manager
-                type: FishingManager
+                type: Fishing.FishingManager
         fields:
           manager:
-            type: FishingManager
+            type: Fishing.FishingManager
           action:
             type: ISPickupFishAction
         methods:

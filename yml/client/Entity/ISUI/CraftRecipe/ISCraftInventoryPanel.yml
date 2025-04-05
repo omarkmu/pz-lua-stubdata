@@ -111,8 +111,11 @@ languages:
           - name: drawListItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onListSelected
@@ -125,4 +128,33 @@ languages:
           - name: updateContainers
             parameters:
               - name: _containers
-                type: ArrayList #<ItemContainer>
+                type: ArrayList<ItemContainer>
+      umbrella.ISCraftInventoryPanel.ListItem:
+        fields:
+          isHeader:
+            type: boolean
+          isNode:
+            type: boolean
+          name:
+            type: string
+          text:
+            type: string
+          textWidth:
+            type: number
+          hasExpandArrow:
+            type: boolean
+            nullable: true
+          isUnavailable:
+            type: boolean
+            nullable: true
+          index:
+            type: integer
+            nullable: true
+          script:
+            type: Item
+            nullable: true
+          node:
+            type: HandcraftLogic.InputItemNode
+            nullable: true
+          inventoryItem:
+            type: InventoryItem

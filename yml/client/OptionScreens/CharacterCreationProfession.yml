@@ -22,9 +22,9 @@ languages:
             nullable: true
         fields:
           freeTraits:
-            type: table
+            type: TraitFactory.Trait[]
           pointToSpend:
-            type: number
+            type: integer
           tablePadX:
             type: number
           tableWidth:
@@ -51,21 +51,26 @@ languages:
             type: ISButton
           infoBtn:
             type: ISButton
-          listboxTraitSelected: {}
+          listboxTraitSelected:
+            type: ISScrollingListBox
           listboxXpBoost:
             type: ISScrollingListBox
-          listboxTrait: {}
-          listboxBadTrait: {}
+          listboxTrait:
+            type: ISScrollingListBox
+          listboxBadTrait:
+            type: ISScrollingListBox
           addTraitBtn:
             type: ISButton
           removeTraitBtn:
             type: ISButton
           addBadTraitBtn:
             type: ISButton
-          listboxProf: {}
+          listboxProf:
+            type: ISScrollingListBox
           tooltipRichText:
             type: ISRichTextPanel
-          presetPanel: {}
+          presetPanel:
+            type: ISScrollingListBox
           savedBuilds:
             type: ISComboBox
           saveBuildButton:
@@ -73,23 +78,27 @@ languages:
           deleteBuildButton:
             type: ISButton
           profession:
+            type: ProfessionFactory.Profession
             nullable: true
           cost:
-            type: number
+            type: integer
           infoRichText:
             type: ISModalRichText
             nullable: true
           previousScreen:
+            type: string
             nullable: true
           tooltipLabel:
             type: string
             nullable: true
           tooltipColor:
-            type: table
+            type: umbrella.RGB
           itemheightoverride:
-            type: table
-          whiteBar: {}
-          fontHgt: {}
+            type: table<string, number>
+          whiteBar:
+            type: Texture
+          fontHgt:
+            type: number
           inputModal:
             type: ISTextBox
         methods:
@@ -99,25 +108,32 @@ languages:
           - name: onSelectChosenTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: onSelectTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: onSelectBadTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: onDblClickSelectedTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: onDblClickBadTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: onDblClickTrait
             parameters:
               - name: item
+                type: TraitFactory.Trait
           - name: checkXPBoost
           - name: onSelectProf
             parameters:
               - name: item
+                type: ProfessionFactory.Profession
           - name: changeClothes
           - name: setVisible
             parameters:
@@ -139,14 +155,17 @@ languages:
           - name: addTrait
             parameters:
               - name: bad
+                type: boolean
           - name: mutualyExclusive
             parameters:
               - name: trait
+                type: TraitFactory.Trait
               - name: bAdd
                 type: boolean
           - name: isTraitExcluded
             parameters:
               - name: trait
+                type: TraitFactory.Trait
             return:
               - type: boolean
           - name: removeTrait
@@ -159,39 +178,52 @@ languages:
           - name: populateProfessionList
             parameters:
               - name: list
+                type: ISScrollingListBox
           - name: populateTraitList
             parameters:
               - name: list
+                type: ISScrollingListBox
           - name: populateBadTraitList
             parameters:
               - name: list
+                type: ISScrollingListBox
           - name: negativeTraitOffset
             return:
               - type: number
           - name: drawXpBoostMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: getTraitColor
             parameters:
               - name: trait
+                type: TraitFactory.Trait
             return:
-              - type: table
+              - type: umbrella.RGB
           - name: drawTraitMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: drawProfessionMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -221,12 +253,17 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: saveBuildValidate
             parameters:
               - name: text
+                type: string
             return:
               - type: boolean
           - name: presetExists
@@ -244,6 +281,7 @@ languages:
                 type: JoypadData
               - name: param2
                 type: unknown
+                nullable: true
           - name: deleteBuildStep1
           - name: deleteBuildStep2
             parameters:
@@ -261,6 +299,7 @@ languages:
               - name: self
                 type: CharacterCreationProfession
               - name: box
+                type: ISComboBox
       BCRC:
         staticFields:
           savefile:
@@ -272,19 +311,30 @@ languages:
                 type: boolean
               - name: _width
                 type: number
+                nullable: true
               - name: _height
                 type: number
+                nullable: true
               - name: _posX
+                type: number
+                nullable: true
               - name: _posY
+                type: number
+                nullable: true
               - name: _text
                 type: string
               - name: _onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: target
                 type: unknown
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
             return:
               - type: ISTextBox
           - name: readSaveFile
@@ -293,13 +343,17 @@ languages:
           - name: writeSaveFile
             parameters:
               - name: options
+                type: table<string, string>
           - name: dump
             parameters:
               - name: o
+                type: unknown
               - name: lvl
+                type: integer
+                nullable: true
             return:
               - type: string
-                nullable: true
           - name: pline
             parameters:
               - name: text
+                type: unknown

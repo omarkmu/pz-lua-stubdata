@@ -7,65 +7,77 @@ languages:
           - name: getNearbyFuelPump
             parameters:
               - name: vehicle
+                type: BaseVehicle
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getGasCanNotEmpty
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: typeToItem
+                type: table<string, InventoryItem[]>
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getGasCanNotFull
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: typeToItem
-                type: table
+                type: table<string, InventoryItem[]>
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: toPlayerInventory
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
                 nullable: true
           - name: toPlayerInventoryTag
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: tag
+                type: string
           - name: transferRequiredItems
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: tbl
+                type: table
           - name: equipRequiredItems
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: tbl
+                type: table
           - name: onInstallPart
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
           - name: onUninstallPart
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onPumpGasoline
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onPumpGasolinePathFail
             parameters:
               - name: playerObj
@@ -75,47 +87,57 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onTakeGasoline
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onDebugFill
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onInflateTire
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onDeflateTire
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onDeviceOptions
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onLockDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onUnlockDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onOpenCloseWindow
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: open
+                type: boolean
           - name: onLockDoors
             parameters:
               - name: playerObj
@@ -128,12 +150,15 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: open
+                type: boolean
           - name: doSiphonFuelMenu
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: context
                 type: ISContextMenu
             return:
@@ -144,14 +169,21 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: part
+                type: VehiclePart
               - name: fuelContainerList
+                type: InventoryItem[]
+                nullable: true
               - name: fuelContainer
+                type: InventoryItem
+                nullable: true
               - name: player
+                type: integer
           - name: doAddFuelMenu
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: context
                 type: ISContextMenu
           - name: onAddFuelNew
@@ -159,6 +191,12 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: part
+                type: VehiclePart
               - name: fuelContainerList
+                type: InventoryItem[]
+                nullable: true
               - name: fuelContainer
+                type: InventoryItem
+                nullable: true
               - name: player
+                type: integer

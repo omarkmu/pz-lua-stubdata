@@ -14,13 +14,23 @@ languages:
           - name: addSurvivalGuideEntry
             parameters:
               - name: index
+                type: integer
           - name: getEntry
             parameters:
               - name: num
-                type: number
+                type: integer
             return:
-              - type: unknown
+              - type: umbrella.SurvivalGuide.Entry
+                nullable: true
           - name: getEntryCount
             return:
-              - type: number
+              - type: integer
           - name: addEntry11
+      umbrella.SurvivalGuide.Entry:
+        fields:
+          title:
+            type: string
+          text:
+            type: string
+          moreInfo:
+            type: string

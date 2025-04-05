@@ -11,11 +11,14 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: clothing
+                type: Clothing
         staticFields:
           Type:
             defaultValue: '"ISGarmentUI"'
-          windows: {}
+          windows:
+            type: table<integer, ISGarmentUI>
           ghs:
             defaultValue: '"<GHC>"'
           bhs:
@@ -24,7 +27,7 @@ languages:
           listbox:
             type: ISScrollingListBox
           parts:
-            type: table
+            type: BloodBodyPartType[]
           texturesY:
             type: number
           texturesYOffset:
@@ -34,14 +37,17 @@ languages:
           progressY:
             type: number
           bodyPartAction:
-            type: table
+            type: table<BloodBodyPartType, table>
           actionToBodyPart:
-            type: table
+            type: table<ISBaseTimedAction, BloodBodyPartType>
           textures:
-            type: table
-          progressWidth1: {}
-          progressWidth2: {}
-          progressWidth3: {}
+            type: table<string, umbrella.ISGarmentUI.TextureInfo>
+          progressWidth1:
+            type: number
+          progressWidth2:
+            type: number
+          progressWidth3:
+            type: number
           progressWidthTotal:
             type: number
           progressX1:
@@ -52,23 +58,30 @@ languages:
             type: number
           biteColumn:
             type: number
-          scratchColumn: {}
-          bulletColumn: {}
+          scratchColumn:
+            type: number
+          bulletColumn:
+            type: number
           drawJoypadFocus:
             type: boolean
-          chr: {}
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
-          title: {}
-          clothing: {}
+          title:
+            type: string
+          clothing:
+            type: Clothing
           sex:
             type: string
           progressWidth:
             type: number
           progressHeight:
             type: number
-          noRepairWidth: {}
-          bodyPartColumn: {}
+          noRepairWidth:
+            type: number
+          bodyPartColumn:
+            type: number
           addedHeight:
             type: number
         methods:
@@ -87,36 +100,47 @@ languages:
           - name: doPatch
             parameters:
               - name: fabric
+                type: InventoryItem
               - name: thread
+                type: InventoryItem
               - name: needle
+                type: InventoryItem
               - name: part
+                type: BloodBodyPartType
               - name: context
                 type: ISContextMenu
               - name: submenu
+                type: ISContextMenu
                 nullable: true
             return:
-              - type: unknown
+              - type: ISContextMenu
                 nullable: true
           - name: getPaddablePartsNumber
             parameters:
               - name: clothing
+                type: Clothing
               - name: parts
+                type: BloodBodyPartType[]
             return:
               - type: number
           - name: doContextMenu
             parameters:
               - name: part
+                type: BloodBodyPartType
               - name: x
                 type: number
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: ISContextMenu
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: render
@@ -131,15 +155,22 @@ languages:
               - name: height
                 type: number
               - name: percent
+                type: number
               - name: highGood
+                type: boolean
           - name: setBodyPartAction
             parameters:
               - name: bodyPart
+                type: BloodBodyPartType
               - name: args
+                type: table
+                nullable: true
           - name: setBodyPartForAction
             parameters:
               - name: action
+                type: ISBaseTimedAction
               - name: bodyPart
+                type: BloodBodyPartType
           - name: close
           - name: addTextures
             parameters:
@@ -160,7 +191,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -177,8 +208,9 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: bodyPart
+                type: BloodBodyPartType
               - name: action
-                type: ISRemovePatch | ISRepairClothing
+                type: ISBaseTimedAction
                 nullable: true
               - name: jobType
                 type: string
@@ -191,9 +223,25 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: bodyPart
+                type: BloodBodyPartType
               - name: action
+                type: ISBaseTimedAction
           - name: setBodyPartForLastAction
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bodyPart
+                type: BloodBodyPartType
+      umbrella.ISGarmentUI.TextureInfo:
+        fields:
+          texture:
+            type: Texture
+          hole:
+            type: Texture
+            nullable: true
+          blood:
+            type: Texture
+            nullable: true
+          patch:
+            type: Texture
+            nullable: true

@@ -13,7 +13,7 @@ languages:
             defaultValue: '"ISHotbar"'
         fields:
           attachedItems:
-            type: table
+            type: table<integer, InventoryItem>
           needsRefresh:
             type: boolean
           wornItems:
@@ -217,3 +217,11 @@ languages:
             parameters:
               - name: player
                 type: IsoPlayer
+      umbrella.ISHotbar.Slot:
+        fields:
+          slotType:
+            type: string
+          name:
+            type: string
+          def:
+            type: umbrella.ISHotbar.AttachDefinition

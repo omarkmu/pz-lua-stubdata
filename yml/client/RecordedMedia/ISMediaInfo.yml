@@ -17,6 +17,7 @@ languages:
               - name: playerNum
                 type: integer
               - name: text
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISMediaInfo"'
@@ -30,8 +31,10 @@ languages:
             type: ISRichTextPanel
           name:
             nullable: true
-          text: {}
-          fontHgt: {}
+          text:
+            type: string
+          fontHgt:
+            type: number
           playerNum:
             type: integer
         methods:
@@ -52,13 +55,14 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
         staticMethods:
           - name: openPanel
             parameters:
               - name: _playerNum
                 type: integer
               - name: _text
+                type: string
             return:
               - type: ISMediaInfo
                 nullable: true

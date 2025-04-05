@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.MapUI:
+        - type: umbrella.MapUI.WithMapObj
+        - type: umbrella.MapUI.WithMapItem
     classes:
       ISMap:
         extends: ISPanelJoypad
@@ -15,15 +19,17 @@ languages:
               - name: height
                 type: number
               - name: map
+                type: MapItem
               - name: player
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISMap"'
           SCALE:
             defaultValue: "0.666"
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV1
           symbolsUI:
             type: ISWorldMapSymbols
           mapKey:
@@ -42,11 +48,16 @@ languages:
             type: number
           draggingStartingY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
           dragging:
             type: boolean
           dragMoved:
@@ -55,7 +66,8 @@ languages:
             type: boolean
           setMapData:
             type: boolean
-          updateMS: {}
+          updateMS:
+            type: number
           LBumperZoom:
             type: number
             nullable: true
@@ -63,19 +75,29 @@ languages:
             type: number
             nullable: true
           povXms:
+            type: number
             nullable: true
           povYms:
+            type: number
             nullable: true
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
-          mapObj: {}
-          textCursor: {}
-          cross: {}
+          mapObj:
+            type: MapItem
+          textCursor:
+            type: Texture
+          cross:
+            type: Texture
           symbolTexList:
             type: table
           selectedColor:
             nullable: true
+          javaObject:
+            type: UIWorldMap
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: createChildren
@@ -104,15 +126,16 @@ languages:
                 nullable: true
           - name: canWrite
             return:
-              - type: unknown
+              - type: boolean
           - name: canErase
             return:
-              - type: unknown
+              - type: boolean
           - name: onConfirmRemove
             parameters:
               - name: button
                 type: ISButton
               - name: note
+                type: integer
           - name: onMouseUpOutside
           - name: onMouseWheel
             parameters:
@@ -159,7 +182,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ISMapWrapper:
@@ -201,3 +224,17 @@ languages:
           - name: prerender
           - name: render
           - name: close
+      umbrella.MapUI.WithMapItem:
+        extends: ISUIElement
+        fields:
+          javaObject:
+            type: UIWorldMap
+          mapItem:
+            type: MapItem
+      umbrella.MapUI.WithMapObj:
+        extends: ISUIElement
+        fields:
+          javaObject:
+            type: UIWorldMap
+          mapItem:
+            type: MapItem

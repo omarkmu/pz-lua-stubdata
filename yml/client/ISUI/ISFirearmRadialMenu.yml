@@ -7,18 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFirearmRadialMenu"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
           - name: center
           - name: getWeapon
             return:
-              - type: unknown
+              - type: HandWeapon
                 nullable: true
           - name: fillMenu
           - name: display
@@ -54,7 +56,7 @@ languages:
               - name: buttonPrompt
                 type: ISButtonPrompt
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: checkKey

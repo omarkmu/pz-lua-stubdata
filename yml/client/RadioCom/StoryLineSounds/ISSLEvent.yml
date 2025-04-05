@@ -22,26 +22,40 @@ languages:
             type: ISSLFrame
           eventSoundList:
             type: ISScrollingListBox
-          storyEvent: {}
+          storyEvent:
+            type: StorySoundEvent
+            nullable: true
           eventData:
-            type: table
+            type: umbrella.ISSSLEvent.EventDataTable[]
         methods:
           - name: initialise
           - name: createChildren
           - name: setEvent
             parameters:
               - name: _event
+                type: StorySoundEvent
+                nullable: true
           - name: addEventSoundItem
             parameters:
               - name: _eventSound
+                type: EventSound
           - name: drawEventSoundItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: update
           - name: prerender
           - name: render
           - name: onResize
+      umbrella.ISSSLEvent.EventDataTable:
+        fields:
+          eventSound:
+            type: EventSound
+          dataPoints:
+            type: ArrayList<DataPoint>

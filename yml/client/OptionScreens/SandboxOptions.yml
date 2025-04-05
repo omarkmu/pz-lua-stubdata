@@ -21,13 +21,18 @@ languages:
             type: SandboxOptionsScreen
             nullable: true
         fields:
-          selectedYear: {}
-          selectedMonth: {}
+          selectedYear:
+            type: integer
+            nullable: true
+          selectedMonth:
+            type: integer
+            nullable: true
           backButton:
             type: ISButton
           playButton:
             type: ISButton
-          presetPanel: {}
+          presetPanel:
+            type: ISPanelJoypad
           presetList:
             type: ISComboBox
           savePresetButton:
@@ -40,55 +45,71 @@ languages:
             type: ISButton
           searchEntry:
             type: ISTextEntryBox
-          listbox: {}
+          listbox:
+            type: ISScrollingListBox
           controls:
-            type: table
+            type: table<string, ISUIElement>
           currentPanel:
+            type: ISUIElement
             nullable: true
           presets:
-            type: table
+            type: umbrella.SandboxOptionsScreen.Preset[]
           hadJoypadFocus:
             type: boolean
-          nonDefaultOptions: {}
+          nonDefaultOptions:
+            type: SandboxOptions
         methods:
           - name: syncStartDay
           - name: create
           - name: changeAdvancedMode
             parameters:
               - name: _
+                type: integer
               - name: bool
+                type: boolean
           - name: doSearch
           - name: createPanel
             parameters:
               - name: page
+                type: umbrella.ServerSettingsScreen.SettingsPage
             return:
-              - type: unknown
+              - type: ISUIElement
           - name: onTickBoxSelected
             parameters:
               - name: _
+                type: integer
               - name: value
+                type: boolean
               - name: optionName
                 type: string
           - name: onComboBoxSelected
             parameters:
               - name: combo
+                type: ISComboBox
               - name: optionName
                 type: string
           - name: settingsToUI
             parameters:
               - name: options
+                type: SandboxOptions
           - name: settingsFromUI
             parameters:
               - name: options
+                type: SandboxOptions
           - name: onMouseDownListbox
             parameters:
               - name: item
+                type: umbrella.SandboxOptionsScreen.ListBoxItem
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: onPanelChange
           - name: onPresetChange
           - name: addPresetToList
@@ -102,25 +123,25 @@ languages:
           - name: loadPresets
           - name: getNormalPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getSurvivalPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getHardPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getBeginnerPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getApocalypsePreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getSurvivorPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: getBuilderPreset
             return:
-              - type: table
+              - type: umbrella.SandboxOptionsScreen.Preset
           - name: prerender
           - name: render
           - name: setSandboxVars
@@ -141,6 +162,7 @@ languages:
           - name: deletePresetStep1
             parameters:
               - name: preset
+                type: umbrella.SandboxOptionsScreen.Preset
           - name: deletePresetStep2
             parameters:
               - name: button
@@ -150,8 +172,10 @@ languages:
           - name: onValidateSavePreset
             parameters:
               - name: text
+                type: string
+                nullable: true
             return:
-              - type: unknown
+              - type: boolean
           - name: onSaveDeveloperPreset
             parameters:
               - name: button
@@ -188,10 +212,26 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
           - name: searchPrerender
             parameters:
               - name: self
+                type: ISTextEntryBox
+      umbrella.SandboxOptionsScreen.Preset:
+        fields:
+          name:
+            type: string
+          options:
+            type: SandboxOptions
+          userDefined:
+            type: boolean
+            nullable: true
+      umbrella.SandboxOptionsScreen.ListBoxItem:
+        fields:
+          page:
+            type: umbrella.ServerSettingsScreen.SettingsPage
+          panel:
+            type: ISUIElement

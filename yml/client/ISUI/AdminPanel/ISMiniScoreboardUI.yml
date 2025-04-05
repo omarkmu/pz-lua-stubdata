@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: admin
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISMiniScoreboardUI"'
@@ -27,9 +28,13 @@ languages:
             type: ISButton
           playerList:
             type: ISScrollingListBox
-          selected: {}
-          admin: {}
+          selected:
+            type: integer
+            nullable: true
+          admin:
+            type: IsoPlayer
           scoreboard:
+            type: umbrella.ISMiniScoreboardUI.Scoreboard
             nullable: true
         methods:
           - name: initialise
@@ -42,6 +47,7 @@ languages:
           - name: doPlayerListContextMenu
             parameters:
               - name: player
+                type: umbrella.ISMiniScoreboardUI.Player
               - name: x
                 type: number
               - name: y
@@ -49,13 +55,18 @@ languages:
           - name: onCommand
             parameters:
               - name: player
+                type: umbrella.ISMiniScoreboardUI.Player
               - name: command
+                type: string
           - name: populateList
           - name: drawPlayers
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -68,6 +79,26 @@ languages:
           - name: onScoreboardUpdate
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>
           - name: OnMiniScoreboardUpdate
+      umbrella.ISMiniScoreboardUI.Scoreboard:
+        fields:
+          usernames:
+            type: ArrayList<string>
+          displayNames:
+            type: ArrayList<string>
+          steamIDs:
+            type: ArrayList<string>
+      umbrella.ISMiniScoreboardUI.Player:
+        fields:
+          username:
+            type: string
+          displayName:
+            type: string
+          tooltip:
+            type: string
+            nullable: true

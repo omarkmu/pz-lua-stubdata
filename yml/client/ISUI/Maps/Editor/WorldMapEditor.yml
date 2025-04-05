@@ -15,15 +15,19 @@ languages:
               - name: height
                 type: number
               - name: javaObject
+                type: WorldMapEditorState
         staticFields:
           Type:
             defaultValue: '"WorldMapEditor"'
         fields:
-          mapAPI: {}
-          styleAPI: {}
-          symbolsAPI: {}
+          mapAPI:
+            type: UIWorldMapV1
+          styleAPI:
+            type: WorldMapStyleV1
+          symbolsAPI:
+            type: WorldMapSymbolsV1
           modeButton:
-            type: table
+            type: table<string, ISButton>
           dragging:
             type: boolean
           dragMoved:
@@ -32,27 +36,39 @@ languages:
             type: number
           dragStartY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
-          currentMode: {}
-          state: {}
-          mapItem: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
+          currentMode:
+            type: string
+          state:
+            type: WorldMapEditorState
+          mapItem:
+            type: MapItem
           bounds:
             nullable: true
           mode:
-            type: table
+            type: table<string, WorldMapEditorMode>
         methods:
           - name: instantiate
           - name: createChildren
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: update
           - name: render
           - name: onMouseDown
@@ -124,6 +140,7 @@ languages:
           - name: setDataFiles
             parameters:
               - name: fileNames
+                type: string[]
           - name: loadSettingsFromMap
           - name: onGenerateLuaScript
           - name: onExit
@@ -140,3 +157,4 @@ languages:
       - name: WorldMapEditor_InitUI
         parameters:
           - name: javaObject
+            type: WorldMapEditorState

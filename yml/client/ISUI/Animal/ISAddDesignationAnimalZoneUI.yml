@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAddDesignationAnimalZoneUI"'
@@ -55,12 +56,13 @@ languages:
           joypadWorldY:
             type: number
           zoneColor:
-            type: table
-          player: {}
+            type: umbrella.RGBA
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: initialise
           - name: onMouseDownOutside
@@ -93,12 +95,14 @@ languages:
           - name: pickSquare
             parameters:
               - name: screenX
+                type: number
               - name: screenY
+                type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: IsoGridSquare
+              - type: number
+              - type: number
+              - type: number
           - name: highlightSquareAtMousePointer
           - name: highlightSquareAtStartPosition
           - name: undisplay
@@ -114,7 +118,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

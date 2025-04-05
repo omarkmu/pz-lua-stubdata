@@ -15,25 +15,37 @@ languages:
               - name: height
                 type: number
               - name: headerText
+                type: string
               - name: except
+                type: SurvivorDesc
               - name: scriptOnOk
+                type: string
               - name: leaderInstance
+                type: SurvivorDesc
         staticFields:
           Type:
             defaultValue: '"TeamPicker"'
         fields:
-          a: {}
-          b: {}
-          c: {}
-          group: {}
+          a:
+            type: SurvivorDesc
+          b:
+            type: SurvivorDesc
+          c:
+            type: SurvivorDesc
+          group:
+            type: SurvivorGroup
           teamMembers:
             type: ISTickBox
           playButton:
             type: ISButton
-          headerText: {}
-          except: {}
-          leader: {}
-          scriptOnOk: {}
+          headerText:
+            type: string
+          except:
+            type: SurvivorDesc
+          leader:
+            type: SurvivorDesc
+          scriptOnOk:
+            type: string
         methods:
           - name: initialise
           - name: onOptionMouseDown
@@ -48,5 +60,6 @@ languages:
           - name: changeOption
             parameters:
               - name: option
+                type: integer
           - name: create
           - name: prerender

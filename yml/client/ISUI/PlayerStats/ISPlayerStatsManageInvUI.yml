@@ -15,7 +15,7 @@ languages:
               - name: height
                 type: number
               - name: playerID
-                type: number
+                type: integer
               - name: playerUsername
                 type: string
         staticFields:
@@ -39,14 +39,16 @@ languages:
           datas:
             type: ISScrollingListBox
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           playerID:
-            type: number
+            type: integer
           playerUsername:
             type: string
           selectedItem:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
-          equippedIcon: {}
+          equippedIcon:
+            type: Texture
           capacityWeight:
             type: number
           maxWeight:
@@ -58,8 +60,11 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: render
@@ -77,8 +82,8 @@ languages:
           - name: OnOpenPanel
             return:
               - type: ISPlayerStatsManageInvUI
-                nullable: true
           - name: Close
           - name: ReceiveItems
             parameters:
               - name: itemtable
+                type: umbrella.MngInvItemTable

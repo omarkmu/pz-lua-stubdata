@@ -16,8 +16,6 @@ languages:
         fields:
           onClickContext:
             type: function
-          onMouseDoubleClick:
-            type: function
           isValidSquare:
             type: boolean
           itemObjTable:

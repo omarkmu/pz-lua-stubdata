@@ -20,7 +20,8 @@ languages:
           Type:
             defaultValue: '"ISCharacterScreen"'
         fields:
-          bFemale: {}
+          bFemale:
+            type: boolean
           sexText:
             type: string
           profImage:
@@ -35,7 +36,8 @@ languages:
             type: number
           avatarPanel:
             type: ISCharacterScreenAvatar
-          avatarBackgroundTexture: {}
+          avatarBackgroundTexture:
+            type: Texture
           xOffset:
             type: number
           hairButton:
@@ -48,35 +50,43 @@ languages:
             type: ISLiteratureUI
           refreshNeeded:
             type: boolean
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           playerNum:
             type: integer
-          char: {}
-          weightIncTexture: {}
-          weightIncLotTexture: {}
-          weightDecTexture: {}
+          char:
+            type: IsoPlayer
+          weightIncTexture:
+            type: Texture
+          weightIncLotTexture:
+            type: Texture
+          weightDecTexture:
+            type: Texture
           traits:
-            type: table
+            type: ISImage[]
           displayedTraits:
-            type: table
+            type: TraitFactory.Trait[]
         methods:
           - name: initialise
           - name: setVisible
             parameters:
               - name: visible
+                type: boolean
               - name: joypadData
                 type: JoypadData
+                nullable: true
           - name: prerender
           - name: render
           - name: maxTextWidth
             parameters:
               - name: font
+                type: UIFont
               - name: text
                 type: string
               - name: maxWidth
                 type: number
             return:
-              - type: unknown
+              - type: number
           - name: create
           - name: hairMenu
             parameters:
@@ -86,6 +96,7 @@ languages:
           - name: addTooltip
             parameters:
               - name: option
+                type: umbrella.ISContextMenu.Option
               - name: text
                 type: string
           - name: beardMenu
@@ -108,39 +119,48 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
         staticMethods:
           - name: onTrimBeard
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: beardStyle
+                type: string
           - name: onCutHair
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: hairStyle
+                type: string
               - name: time
+                type: number
           - name: setDisplayedTraits
             parameters:
               - name: self
+                type: ISCharacterScreen
           - name: traitsChanged
             parameters:
               - name: self
+                type: ISCharacterScreen
             return:
               - type: boolean
           - name: loadTraits
             parameters:
               - name: self
+                type: ISCharacterScreen
           - name: loadBeardAndHairStyle
             parameters:
               - name: self
+                type: ISCharacterScreen
           - name: loadProfession
             parameters:
               - name: self
+                type: ISCharacterScreen
           - name: loadFavouriteWeapon
             parameters:
               - name: self
+                type: ISCharacterScreen
       ISCharacterScreenAvatar:
         extends: ISUI3DModel
         constructors:

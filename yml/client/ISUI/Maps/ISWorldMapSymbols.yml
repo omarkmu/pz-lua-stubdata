@@ -15,19 +15,21 @@ languages:
               - name: height
                 type: number
               - name: mapUI
-                type: ISMap | ISWorldMap
+                type: umbrella.MapUI
         staticFields:
           Type:
             defaultValue: '"ISWorldMapSymbols"'
         fields:
           colorButtonInfo:
-            type: table
+            type: umbrella.ISTextBoxMap.ColorButtonInfo[]
           colorButtons:
-            type: table
+            type: ISButton[]
           panel:
             type: ISWorldMapSymbolsTabPanel
-          blackColor: {}
-          currentColor: {}
+          blackColor:
+            type: ColorInfo
+          currentColor:
+            type: ColorInfo
           addNoteBtn:
             type: ISButton
           editNoteBtn:
@@ -39,40 +41,52 @@ languages:
           sharingBtn:
             type: ISButton
           tools:
-            type: table
+            type: umbrella.ISWorldMapSymbols.Tools
           currentTool:
-            type: ISWorldMapSymbolTool_AddSymbol
+            type: ISWorldMapSymbolTool
             nullable: true
           wasCanWrite:
             type: boolean
           wasCanErase:
             type: boolean
-          noteX: {}
-          noteY: {}
+          noteX:
+            type: number
+            nullable: true
+          noteY:
+            type: number
+            nullable: true
           ignoreRightMouseUp:
             type: boolean
           selectedSymbol:
+            type: ISButton
             nullable: true
           keyPressConsumed:
             type: boolean
           mouseOverNote:
+            type: integer
             nullable: true
           mouseOverSymbol:
+            type: integer
             nullable: true
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           symbolList:
-            type: table
+            type: string[]
           mapUI:
-            type: ISMap | ISWorldMap
-          mapAPI: {}
-          symbolsAPI: {}
+            type: umbrella.MapUI
+          mapAPI:
+            type: UIWorldMapV2
+          symbolsAPI:
+            type: WorldMapSymbolsV2
           buttonList:
-            type: table
+            type: ISButton[]
           character:
+            type: IsoPlayer
             nullable: true
           playerNum:
             type: integer
-          textCursor: {}
+          textCursor:
+            type: Texture
           symbolTexList:
             type: table
           showTranslationOption:
@@ -90,12 +104,12 @@ languages:
           - name: setCurrentTool
             parameters:
               - name: tool
-                type: ISWorldMapSymbolTool_AddSymbol
+                type: ISWorldMapSymbolTool
                 nullable: true
           - name: toggleTool
             parameters:
               - name: tool
-                type: table
+                type: ISWorldMapSymbolTool
           - name: populateSymbolList
           - name: prerenderMap
           - name: prerender
@@ -103,6 +117,7 @@ languages:
           - name: renderSymbol
             parameters:
               - name: symbol
+                type: ISButton
               - name: x
                 type: number
               - name: y
@@ -110,6 +125,7 @@ languages:
           - name: renderNoteBeingAddedOrEdited
             parameters:
               - name: modal
+                type: ISTextBoxMap
           - name: onMouseDownMap
             parameters:
               - name: x
@@ -159,8 +175,7 @@ languages:
               - name: key
                 type: integer
             return:
-              - type: boolean | ISWorldMapSymbolTool_AddSymbol
-                nullable: true
+              - type: boolean
           - name: onKeyPress
             parameters:
               - name: key
@@ -190,10 +205,13 @@ languages:
               - name: y
                 type: number
               - name: mode
+                type: string
               - name: filter
+                type: "fun(symbol: WorldMapSymbolsV2.WorldMapBaseSymbolV2): boolean"
           - name: renderSymbolOutline
             parameters:
               - name: symbol
+                type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
               - name: r
                 type: number
               - name: g
@@ -211,7 +229,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDownInMap
@@ -222,7 +240,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
         staticMethods:
           - name: RequiredWidth
@@ -233,6 +251,7 @@ languages:
         constructors:
           - parameters:
               - name: symbolsUI
+                type: ISWorldMapSymbols
         staticFields:
           Type:
             defaultValue: '"ISWorldMapSymbolTool"'
@@ -245,10 +264,14 @@ languages:
             type: number
           dragStartY:
             type: number
-          symbolsUI: {}
-          mapUI: {}
-          mapAPI: {}
-          symbolsAPI: {}
+          symbolsUI:
+            type: ISWorldMapSymbols
+          mapUI:
+            type: umbrella.MapUI
+          mapAPI:
+            type: UIWorldMapV2
+          symbolsAPI:
+            type: WorldMapSymbolsV2
         methods:
           - name: activate
           - name: deactivate
@@ -313,10 +336,10 @@ languages:
           - name: render
           - name: getMouseX
             return:
-              - type: unknown
+              - type: number
           - name: getMouseY
             return:
-              - type: unknown
+              - type: number
           - name: onJoypadDownInMap
             parameters:
               - name: button
@@ -324,6 +347,10 @@ languages:
               - name: joypadData
                 type: JoypadData
           - name: getJoypadAButtonText
+            overloads:
+              - return:
+                  - type: string
+                    nullable: true
       ISWorldMapSymbolTool_AddSymbol:
         extends: ISWorldMapSymbolTool
         constructors:
@@ -352,7 +379,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
           - name: render
           - name: addSymbol
             parameters:
@@ -405,7 +432,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
       ISWorldMapSymbolTool_EditNote:
         extends: ISWorldMapSymbolTool
         constructors:
@@ -459,7 +486,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
       ISWorldMapSymbolTool_MoveAnnotation:
         extends: ISWorldMapSymbolTool
@@ -472,9 +499,12 @@ languages:
             defaultValue: '"ISWorldMapSymbolTool_MoveAnnotation"'
         fields:
           dragging:
+            type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
             nullable: true
-          originalX: {}
-          originalY: {}
+          originalX:
+            type: number
+          originalY:
+            type: number
           deltaX:
             type: number
           deltaY:
@@ -538,7 +568,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
       ISWorldMapSymbolTool_RemoveAnnotation:
         extends: ISWorldMapSymbolTool
@@ -577,7 +607,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: removeAnnotation
             return:
@@ -625,7 +655,7 @@ languages:
                 type: JoypadData
           - name: getJoypadAButtonText
             return:
-              - type: unknown
+              - type: string
                 nullable: true
       ISWorldMapSymbolsTabPanel:
         extends: ISTabPanel
@@ -645,7 +675,9 @@ languages:
           Type:
             defaultValue: '"ISWorldMapSymbolsTabPanel"'
         fields:
-          joypadFocused: {}
+          joypadFocused:
+            type: boolean
+            nullable: true
           symbolsUI:
             type: ISWorldMapSymbols
         methods:
@@ -653,9 +685,25 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
+      umbrella.ISWorldMapSymbols.Tools:
+        fields:
+          AddSymbol:
+            type: ISWorldMapSymbolTool_AddSymbol
+          AddNote:
+            type: ISWorldMapSymbolTool_AddNote
+          EditNote:
+            type: ISWorldMapSymbolTool_EditNote
+          MoveAnnotation:
+            type: ISWorldMapSymbolTool_MoveAnnotation
+          RemoveAnnotation:
+            type: ISWorldMapSymbolTool_RemoveAnnotation
+          Sharing:
+            type: ISWorldMapSymbolTool_Sharing
+            nullable: true

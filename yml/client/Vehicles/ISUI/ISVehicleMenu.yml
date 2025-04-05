@@ -5,10 +5,10 @@ languages:
       ISVehicleMenu:
         staticFields:
           acui:
-            type: table
+            type: table<integer, ISVehicleACUI>
             nullable: true
           seatUI:
-            type: table
+            type: table<integer, ISVehicleSeatUI>
             nullable: true
         staticMethods:
           - name: OnFillWorldObjectContextMenu
@@ -19,8 +19,10 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: showRadialMenu
             parameters:
@@ -31,7 +33,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: BaseVehicle
           - name: showRadialMenuOutside
             parameters:
               - name: playerObj
@@ -41,25 +43,32 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: menu
+                type: ISRadialMenu
           - name: FillMenuOutsideVehicle
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: vehicle
+                type: BaseVehicle
               - name: test
           - name: doAnimalSubMenu
             parameters:
               - name: subMenu
+                type: ISContextMenu
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
             return:
               - type: boolean
           - name: onCheckAnimalInside
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: playerObj
                 type: IsoPlayer
           - name: onAddAnimalFromHandsInTrailer
@@ -67,28 +76,37 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: AnimalInventoryItem | IsoDeadBody
               - name: vehicle
+                type: BaseVehicle
           - name: onAddAnimalInTrailer
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: IsoAnimal | IsoDeadBody
               - name: vehicle
+                type: BaseVehicle
           - name: onRemoveAnimalFromTrailer
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: vehicle
+                type: BaseVehicle
           - name: getVehicleDisplayName
             parameters:
               - name: vehicle
+                type: BaseVehicle
             return:
-              - type: unknown
+              - type: string
           - name: onRemoveBurntVehicle
             parameters:
               - name: player
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onRoadtrip
             parameters:
               - name: playerObj
@@ -98,31 +116,37 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onDebugColor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onDebugBlood
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onDebugEditor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onDisableAlarm
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onEnableAlarm
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: addSetScriptMenu
             parameters:
               - name: context
@@ -130,11 +154,13 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onDebugSetScript
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: scriptName
                 type: string
           - name: onMechanic
@@ -142,24 +168,30 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: getNextTire
             parameters:
               - name: currentTire
+                type: string
             return:
               - type: string
                 nullable: true
           - name: FillPartMenu
             parameters:
               - name: playerIndex
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: slice
+                type: ISRadialMenu
               - name: vehicle
+                type: BaseVehicle
           - name: onSwitchSeat
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: seatTo
+                type: integer
           - name: onToggleHeadlights
             parameters:
               - name: playerObj
@@ -177,6 +209,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onStartEngine
             parameters:
               - name: playerObj
@@ -194,91 +227,115 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onSleep
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onConfirmSleep
             parameters:
               - name: this
+                nullable: true
               - name: button
                 type: ISButton
               - name: player
+                type: integer
               - name: bed
+                nullable: true
           - name: onOpenDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onCloseDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onLockDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onUnlockDoor
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onWash
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: getBestSwitchSeatEnter
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: getBestSwitchSeatExit
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: moveItemsOnSeat
             parameters:
               - name: seat
+                type: integer
               - name: newSeat
+                type: integer
               - name: playerObj
                 type: IsoPlayer
               - name: moveThem
+                type: boolean
               - name: itemListIndex
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: tryMoveItemsFromSeat
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
               - name: moveThem
+                type: boolean
               - name: doEnter
+                type: boolean
               - name: seatTo
                 type: string
               - name: itemListIndex
-                type: number
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: moveItemsFromSeat
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
               - name: moveThem
                 type: boolean
               - name: doEnter
@@ -290,59 +347,76 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: processShiftEnter
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: processEnter
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: onEnterAux
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
-                nullable: true
+                type: integer
           - name: onEnter2
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: processEnter2
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: onEnterAux2
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
           - name: onExit
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: seatFrom
+                type: integer
+                nullable: true
           - name: onExitAux
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: seat
+                type: integer
           - name: onShowSeatUI
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onWalkPath
             parameters:
               - name: playerObj
@@ -376,11 +450,16 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: attachmentA
+                type: string
               - name: attachmentB
+                type: string
           - name: onDetachTrailer
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: attachmentA
+                type: string

@@ -23,7 +23,7 @@ languages:
             defaultValue: '"ISJoypadListBox"'
         fields:
           selected:
-            type: number
+            type: integer
           playerNum:
             type: integer
           joypadData:
@@ -39,6 +39,7 @@ languages:
           - name: cmdAddSaved
             parameters:
               - name: player
+                type: IsoPlayer
           - name: getUserNameCallback
             parameters:
               - name: button
@@ -49,7 +50,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
@@ -59,6 +60,5 @@ languages:
                 type: integer
               - name: joypadData
                 type: JoypadData
-                nullable: true
             return:
               - type: ISJoypadListBox

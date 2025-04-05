@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISPlayerStatsChooseProfessionUI.OnClick:
+        - type: "fun(target: unknown?, button: ISButton, profession:
+            ProfessionFactory.Profession)"
     classes:
       ISPlayerStatsChooseProfessionUI:
         extends: ISPanel
@@ -18,7 +22,10 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISPlayerStatsChooseProfessionUI.OnClick
+                nullable: true
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsChooseProfessionUI"'
@@ -30,14 +37,17 @@ languages:
           cancel:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          chr: {}
+          onclick:
+            type: umbrella.ISPlayerStatsChooseProfessionUI.OnClick
+            nullable: true
+          chr:
+            type: IsoPlayer
           comboList:
-            type: table
+            type: ProfessionFactory.Profession[]
           zOffsetSmallFont:
             type: number
         methods:

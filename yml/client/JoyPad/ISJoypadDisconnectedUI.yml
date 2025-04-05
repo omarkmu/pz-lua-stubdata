@@ -16,6 +16,10 @@ languages:
             type: ISLabel
           buttonKBM:
             type: ISButton
+          playerNum:
+            type: integer
+            tags:
+              - StubGen_Extra
         methods:
           - name: createChildren
           - name: prerender

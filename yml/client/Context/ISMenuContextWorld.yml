@@ -71,3 +71,43 @@ languages:
             parameters:
               - name: _data
                 type: umbrella.WorldMenuContextData
+      umbrella.WorldMenuContextData:
+        fields:
+          context:
+            type: ISContextMenu
+            nullable: true
+          playerNum:
+            type: integer
+            nullable: true
+          player:
+            type: IsoPlayer
+            nullable: true
+          playerRoom:
+            type: IsoRoom
+            nullable: true
+          inventory:
+            type: ItemContainer
+            nullable: true
+          object:
+            type: IsoObject
+            nullable: true
+          objects:
+            type: IsoObject[]
+            nullable: true
+          test:
+            type: boolean
+            nullable: true
+          isJoypad:
+            type: boolean
+            nullable: true
+          joypadData:
+            type: JoypadData
+            nullable: true
+          playerData:
+            type: ISPlayerDataObject
+            nullable: true
+          contains:
+            type: table<IsoObject, true?>
+            nullable: true
+          squares:
+            type: IsoGridSquare[]

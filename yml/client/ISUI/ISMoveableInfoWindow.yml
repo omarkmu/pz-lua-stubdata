@@ -11,11 +11,15 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: drag
+                type: ISBuildingObject
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISToolTip"'
-          infoPanels: {}
+          infoPanels:
+            type: table<integer, ISMoveableInfoWindow>
           displayPosition:
             defaultValue: '"cursor"'
         fields:
@@ -24,31 +28,38 @@ languages:
           bodyText:
             type: table
           customBodyAlign:
+            type: string
             nullable: true
           moveableTexture:
-            type: table
+            type: umbrella.ISMoveableInfoWindow.TextureInfo
             nullable: true
           allowCurrent:
             type: boolean
           texYOffset:
             type: number
           textureList:
-            type: table
+            type: umbrella.ISMoveableInfoWindow.TextureInfo[]
           square:
             type: IsoGridSquare
           drawJoypadFocus:
             type: boolean
-          drag: {}
-          character: {}
+          drag:
+            type: ISBuildingObject
+            nullable: true
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
           name:
             nullable: true
           description:
             type: string
-          header: {}
-          infoBody: {}
-          footer: {}
+          header:
+            type: TextDrawObject
+          infoBody:
+            type: TextDrawObject
+          footer:
+            type: TextDrawObject
         methods:
           - name: onMouseDown
             parameters:
@@ -90,6 +101,7 @@ languages:
           - name: drawTexture
             parameters:
               - name: texture
+                type: Texture
               - name: x
                 type: number
               - name: y
@@ -110,12 +122,17 @@ languages:
           - name: setHeaderText
             parameters:
               - name: _header
+                type: string
               - name: _font
+                type: UIFont
+                nullable: true
           - name: setBodyText
             parameters:
               - name: _bodyTextTable
+                type: table
                 nullable: true
               - name: _font
+                type: UIFont
                 nullable: true
               - name: _align
                 nullable: true
@@ -127,15 +144,20 @@ languages:
           - name: setFooterText
             parameters:
               - name: _footer
+                type: string
               - name: _font
+                type: UIFont
+                nullable: true
           - name: setTexture
             parameters:
               - name: _textureName
                 type: string
               - name: _allow
+                type: boolean
               - name: _square
                 type: IsoGridSquare
               - name: _yoffset
+                type: number
           - name: setSquare
             parameters:
               - name: _square
@@ -147,16 +169,24 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: close
           - name: setDrag
             parameters:
               - name: _drag
+                type: ISBuildingObject
         staticMethods:
           - name: setDisplayPosition
             parameters:
               - name: _position
+                type: '"left" | "center" | "right" | "cursor" | "norender"'
           - name: moveablePanelModeKey
             parameters:
               - name: _key
                 type: integer
+      umbrella.ISMoveableInfoWindow.TextureInfo:
+        fields:
+          texture:
+            type: Texture
+          offsetY:
+            type: number

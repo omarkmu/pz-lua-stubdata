@@ -18,7 +18,7 @@ languages:
           Type:
             defaultValue: '"ISPacketCounts"'
           instance:
-            type: table
+            type: ISPacketCounts
             nullable: true
         fields:
           category:

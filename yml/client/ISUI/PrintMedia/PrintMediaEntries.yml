@@ -18,9 +18,20 @@ languages:
           - name: getEntry
             parameters:
               - name: num
-                type: number
+                type: integer
             return:
-              - type: unknown
+              - type: umbrella.PrintMediaEntry
           - name: getEntryCount
             return:
-              - type: number
+              - type: integer
+      umbrella.PrintMediaEntry:
+        fields:
+          title:
+            type: string
+          info:
+            type: string
+          index:
+            type: string
+          type:
+            type: string
+            nullable: true

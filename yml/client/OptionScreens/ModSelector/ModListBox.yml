@@ -16,25 +16,37 @@ languages:
               - name: height
                 type: number
               - name: model
+                type: ModSelector.Model
         staticFields:
           Type:
             defaultValue: '"ModListBox"'
         fields:
           boxSize:
             type: number
-          tickTexture: {}
-          cantTexture: {}
-          starUnsetTexture: {}
-          starSetTexture: {}
-          joypadStarButtonTex: {}
-          model: {}
+          tickTexture:
+            type: Texture
+          cantTexture:
+            type: Texture
+          starUnsetTexture:
+            type: Texture
+          starSetTexture:
+            type: Texture
+          joypadStarButtonTex:
+            type: Texture
+          model:
+            type: ModSelector.Model
           mouseOverTickBox:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
           mouseOverFavoriteButton:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
           selectedBeforeReset:
+            type: integer
             nullable: true
-          joypadFocused: {}
+          joypadFocused:
+            type: boolean
+            nullable: true
         methods:
           - name: sort
           - name: enableTickMod
@@ -46,25 +58,30 @@ languages:
                 type: number
           - name: getSelectedModData
             return:
-              - type: unknown
+              - type: umbrella.ModSelector.ModData
                 nullable: true
           - name: prerender
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
               - name: joypadData
                 type: JoypadData
+                nullable: true
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ModSelector:

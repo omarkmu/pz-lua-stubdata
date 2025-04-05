@@ -18,13 +18,19 @@ languages:
                 type: boolean
               - name: target
                 type: unknown
+                nullable: true
               - name: onclick
-                type: function
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: player
+                type: integer
+                nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISNewsUpdate"'
@@ -48,13 +54,18 @@ languages:
             type: boolean
           target:
             type: unknown
+            nullable: true
           onclick:
-            type: function
-          player: {}
+            type: umbrella.ISButton.OnClick
+            nullable: true
+          player:
+            type: integer
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
           destroyOnClick:
             type: boolean
         methods:
@@ -83,7 +94,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirRight
           - name: onJoypadDirLeft
           - name: update

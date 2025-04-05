@@ -7,16 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: seat
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISEnterVehicle"'
         fields:
           started:
             type: boolean
-          vehicle: {}
-          seat: {}
+          vehicle:
+            type: BaseVehicle
+          seat:
+            type: integer
           ignoreHandsWounds:
             type: boolean
         methods:
@@ -29,5 +34,5 @@ languages:
           - name: perform
           - name: getExtraLogData
             return:
-              - type: table
+              - type: string[]
                 nullable: true

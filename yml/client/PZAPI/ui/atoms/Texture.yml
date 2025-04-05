@@ -39,20 +39,29 @@ languages:
           - name: setTexture
             parameters:
               - name: texture
+                type: Texture
           - name: setSlice9
             parameters:
               - name: sliceLeft
+                type: number
               - name: sliceRight
+                type: number
               - name: sliceTop
+                type: number
               - name: sliceDown
+                type: number
           - name: setAnimValues
             parameters:
               - name: animDelay
+                type: number
               - name: animFrameNum
                 type: number
               - name: animFrameRows
+                type: number
               - name: animFrameColumns
-      PZAPI:
+                type: number
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.Texture:
+          Texture:
             type: UI.Texture

@@ -27,18 +27,23 @@ languages:
           barheight:
             type: number
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           parent:
             type: ISUIElement
           vertical:
             type: boolean
-          uptex: {}
-          downtex: {}
-          toptex: {}
-          midtex: {}
-          bottex: {}
+          uptex:
+            type: Texture
+          downtex:
+            type: Texture
+          toptex:
+            type: Texture
+          midtex:
+            type: Texture
+          bottex:
+            type: Texture
           background:
             type: boolean
         methods:
@@ -102,17 +107,21 @@ languages:
           - name: onClickTrackUp
             parameters:
               - name: y
+                type: number
           - name: onClickTrackDown
             parameters:
               - name: y
+                type: number
           - name: onClickArrowLeft
           - name: onClickArrowRight
           - name: onClickTrackLeft
             parameters:
               - name: x
+                type: number
           - name: onClickTrackRight
             parameters:
               - name: x
+                type: number
           - name: updatePos
           - name: onMouseMove
             parameters:

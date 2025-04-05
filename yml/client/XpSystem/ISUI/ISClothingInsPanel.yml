@@ -31,15 +31,16 @@ languages:
             type: number
           bpPanelY:
             type: number
-          bpAnchorX: {}
+          bpAnchorX:
+            type: number
           bpAnchorY:
             type: number
           bodyPartPanel:
             type: ISBodyPartPanel
           mainGroup:
-            type: table
+            type: ISUIElement[]
           nodeGroup:
-            type: table
+            type: ISUIElement[]
           labelCoreTemp:
             type: ISLabel
           labelCoreTempMid:
@@ -63,13 +64,13 @@ languages:
           currentViewID:
             type: string
           viewButtons:
-            type: table
+            type: table<string, ISButton[]>
           nodeDetails:
-            type: table
+            type: table<string, umbrella.ISClothingInsPanel.NodeDetailsTable[]>
           mainGroupViews:
-            type: table
+            type: table<string, ISUIElement[]>
           nodeGroupViews:
-            type: table
+            type: table<string, ISUIElement[]>
           maxViewsY:
             type: number
           coreRectangleH:
@@ -84,71 +85,94 @@ languages:
             type: ISLabel
           legendBar:
             type: ISGradientBar
-          toggleAdvBtn: {}
+          toggleAdvBtn:
+            type: ISButton
           selectedViewIndex:
             type: number
           views:
-            type: table
+            type: umbrella.ISClothingInsPanel.View[]
           viewsSimple:
-            type: table
+            type: umbrella.ISClothingInsPanel.View[]
           viewsAdvanced:
-            type: table
+            type: umbrella.ISClothingInsPanel.View[]
           colorScheme:
-            type: table
+            type: umbrella.ISBodyPartPanel.ColorSchemeTable[]
           selectedBodyPart:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
           refreshNeeded:
             type: boolean
-          bFemale: {}
+          bFemale:
+            type: boolean
           titleColor:
-            type: table
+            type: umbrella.RGBA
           defTextColor:
-            type: table
+            type: umbrella.RGBA
           btnTextColor:
-            type: table
+            type: umbrella.RGBA
           sex:
             type: string
-          bodyOutline: {}
+          bodyOutline:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
           - name: addView
             parameters:
               - name: _viewID
+                type: string
               - name: _viewTable
+                type: umbrella.ISClothingInsPanel.View[]
               - name: _y
+                type: number
           - name: addMainGroup
             parameters:
               - name: _widget
+                type: ISUIElement
               - name: _ignoreAddChild
+                type: boolean
+                nullable: true
               - name: _view
+                type: string
+                nullable: true
           - name: addNodeGroup
             parameters:
               - name: _widget
+                type: ISUIElement
               - name: _view
+                type: string
+                nullable: true
           - name: create
           - name: onResetButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: onClickViewButton
             parameters:
               - name: _btn
+                type: ISButton
           - name: onToggleViewStyle
             parameters:
               - name: _btn
+                type: ISButton
           - name: setViewStyle
             parameters:
               - name: _viewStyle
+                type: string
               - name: _force
+                type: boolean
+                nullable: true
           - name: setViewIndex
             parameters:
               - name: _index
+                type: integer
           - name: setSelection
             parameters:
               - name: _node
+                type: umbrella.ISBodyPartPanel.BodyPartTable
           - name: prerender
           - name: render
           - name: update
@@ -164,6 +188,38 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
+      umbrella.ISClothingInsPanel.NodeDetailsTable:
+        fields:
+          labelTitle:
+            type: ISLabel
+          labelMid:
+            type: ISLabel
+            nullable: true
+          labelMin:
+            type: ISLabel
+            nullable: true
+          labelMax:
+            type: ISLabel
+            nullable: true
+          bar:
+            type: ISGradientBar
+            nullable: true
+      umbrella.ISClothingInsPanel.View:
+        fields:
+          title:
+            type: string
+          min:
+            type: string
+          mid:
+            type: string
+          max:
+            type: string
+          tex:
+            type: Texture
+          scheme:
+            type: umbrella.ISBodyPartPanel.ColorSchemeTable[]
+          functionName:
+            type: string

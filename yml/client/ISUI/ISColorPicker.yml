@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISColorPicker.PickedFunction:
+        - type: "fun(target: unknown?, color: umbrella.RGB, mouseUp: boolean?, ...:
+            unknown)"
     classes:
       ISColorPicker:
         extends: ISPanelJoypad
@@ -102,7 +106,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: removeSelf
           - name: picked
             parameters:

@@ -7,6 +7,7 @@ languages:
           drama:
             defaultValue: "0"
           last:
+            type: string
             defaultValue: '""'
           choices: {}
           ambient: {}
@@ -15,25 +16,50 @@ languages:
           - name: compareByDrama
             parameters:
               - name: a
+                type: umbrella.MusicChoices.Choice
               - name: b
+                type: umbrella.MusicChoices.Choice
             return:
               - type: boolean
-                nullable: true
           - name: compareByAmbientDrama
             parameters:
               - name: a
+                type: umbrella.MusicChoices.AmbientChoice
               - name: b
+                type: umbrella.MusicChoices.AmbientChoice
             return:
               - type: boolean
-                nullable: true
           - name: get
             parameters:
               - name: drama
                 type: number
             return:
-              - type: unknown
+              - type: string
           - name: getAmbient
             parameters:
               - name: drama
             return:
-              - type: unknown
+              - type: string
+      umbrella.MusicChoices.Choice:
+        fields:
+          file:
+            type: string
+          scores:
+            type: umbrella.MusicChoices.Scores
+      umbrella.MusicChoices.Scores:
+        fields:
+          bias:
+            type: integer
+          drama:
+            type: integer
+      umbrella.MusicChoices.AmbientChoice:
+        extends: umbrella.MusicChoices.Choice
+        fields:
+          file:
+            type: string
+          scores:
+            type: umbrella.MusicChoices.AmbientScores
+      umbrella.MusicChoices.AmbientScores:
+        fields:
+          drama:
+            type: integer

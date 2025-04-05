@@ -11,6 +11,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISLootZed"'
@@ -30,7 +31,8 @@ languages:
             type: ISComboBox
           name:
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           titlebarbkg:
             type: Texture
         methods:
@@ -41,8 +43,11 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: destroy

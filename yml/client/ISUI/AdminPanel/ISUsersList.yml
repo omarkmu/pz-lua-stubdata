@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISUsersList"'
@@ -32,20 +33,25 @@ languages:
             type: ISButton
           datas:
             type: ISScrollingListBox
-          player: {}
+          player:
+            type: IsoPlayer
         methods:
           - name: initialise
           - name: populateList
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onSelectUser
             parameters:
               - name: _item
+                type: IsoPlayer
           - name: doSearch
           - name: prerender
           - name: onClick
@@ -55,11 +61,15 @@ languages:
           - name: onClickOption
             parameters:
               - name: item
+                type: IsoPlayer
               - name: action
+                type: string
           - name: onSetRoleClickOption
             parameters:
               - name: item
+                type: IsoPlayer
               - name: role
+                type: string
           - name: onDeleteModalClick
             parameters:
               - name: button
@@ -83,6 +93,7 @@ languages:
           - name: doContextMenu
             parameters:
               - name: item
+                type: IsoPlayer
               - name: x
                 type: number
               - name: y
@@ -96,4 +107,6 @@ languages:
               - name: button
                 type: ISButton
               - name: reason
+                type: string
               - name: amount
+                type: string

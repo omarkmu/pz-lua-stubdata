@@ -7,23 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISEmoteRadialMenu"'
           defaultMenu:
-            type: table
+            type: table<string, umbrella.ISEmoteRadialMenu.MenuItem>
             nullable: true
           variants:
-            type: table
+            type: table<string, string[]>
             nullable: true
           icons:
-            type: table
+            type: table<string, Texture>
             nullable: true
           menu:
-            type: table
+            type: table<string, umbrella.ISEmoteRadialMenu.MenuItem>
             nullable: true
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -33,9 +35,12 @@ languages:
           - name: fillMenu
             parameters:
               - name: submenu
+                type: string
+                nullable: true
           - name: emote
             parameters:
               - name: emote
+                type: string
           - name: configEmote
         staticMethods:
           - name: checkKey
@@ -56,3 +61,10 @@ languages:
             parameters:
               - name: key
                 type: integer
+      umbrella.ISEmoteRadialMenu.MenuItem:
+        fields:
+          name:
+            type: string
+          subMenu:
+            type: table<string, string>
+            nullable: true

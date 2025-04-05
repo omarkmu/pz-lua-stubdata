@@ -7,17 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: stove
+                type: IsoStove
                 nullable: true
               - name: mcwave
+                type: IsoStove
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISOvenUITimedAction"'
         fields:
           stove:
+            type: IsoStove
             nullable: true
           mcwave:
+            type: IsoStove
             nullable: true
         methods:
           - name: isValid

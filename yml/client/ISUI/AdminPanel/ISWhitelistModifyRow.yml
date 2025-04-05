@@ -15,7 +15,7 @@ languages:
               - name: height
                 type: number
               - name: view
-                type: table
+                type: ISWhitelistTable
         staticFields:
           Type:
             defaultValue: '"ISWhitelistModifyRow"'
@@ -23,18 +23,23 @@ languages:
           schema:
             type: table
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
-          tableName: {}
-          columns: {}
-          columnSize: {}
-          data: {}
+            type: umbrella.RGBA
+          tableName:
+            type: string
+          columns:
+            type: umbrella.DBSchemaEntry[]
+          columnSize:
+            type: table<string, number>
+          data:
+            type: umbrella.ISWhitelistTable.UserData
           buttonDatas:
-            type: table
+            type: ISUIElement[]
           view:
-            type: table
-          entriesPerPages: {}
+            type: ISWhitelistTable
+          entriesPerPages:
+            type: integer
           close:
             type: ISButton
           Update:

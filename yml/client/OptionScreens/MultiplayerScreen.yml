@@ -19,6 +19,7 @@ languages:
             defaultValue: '"MultiplayerScreen"'
         fields:
           selectedServer:
+            type: Server
             nullable: true
           authPanel:
             type: ISPanel
@@ -54,8 +55,11 @@ languages:
             type: boolean
           passwordWasFocused:
             type: boolean
-          loginBackground: {}
+          loginBackground:
+            type: Texture
+            nullable: true
           serverIconTexture:
+            type: Texture
             nullable: true
         methods:
           - name: initialise
@@ -64,9 +68,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: prerender
           - name: onMouseDown
             parameters:
@@ -90,39 +98,50 @@ languages:
                 type: number
           - name: getServer
             return:
-              - type: unknown
+              - type: Server
           - name: saveServer
             parameters:
               - name: server
+                type: Server
           - name: refreshList
           - name: requestServerList
           - name: analyzeServerData
             parameters:
               - name: server
+                type: Server
           - name: selectServerData
             parameters:
               - name: server
+                type: Server
           - name: onComboAuthType
           - name: addServerToList
             parameters:
               - name: server
+                type: Server
           - name: fillFields
             parameters:
               - name: item
+                type: Server
           - name: formRefresh
             parameters:
               - name: authType
+                type: integer
           - name: setServerDescription
             parameters:
               - name: item
+                type: umbrella.MultiplayerScreen.ServerItem
           - name: setServerMods
             parameters:
               - name: item
+                type: umbrella.MultiplayerScreen.ServerItem
           - name: drawMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus_RightPanel
@@ -136,11 +155,26 @@ languages:
           - name: onClickServer
             parameters:
               - name: item
+                type: umbrella.MultiplayerScreen.ServerItem
         staticMethods:
           - name: serverIconRender
             parameters:
               - name: self
+                type: ISButton
           - name: OnSteamServerResponded
             parameters:
               - name: serverIndex
+                type: integer
           - name: OnServerCustomizationDataReceived
+      umbrella.MultiplayerScreen.ServerItem:
+        fields:
+          server:
+            type: Server
+          richText:
+            type: ISRichTextLayout
+          modsText:
+            type: ISRichTextLayout
+            nullable: true
+          responded:
+            type: boolean
+            nullable: true

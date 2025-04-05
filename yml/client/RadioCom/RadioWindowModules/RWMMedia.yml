@@ -30,14 +30,16 @@ languages:
             type: string
           fontheight:
             type: number
-          cdTex: {}
-          tapeTex: {}
+          cdTex:
+            type: Texture
+          tapeTex:
+            type: Texture
           idleText:
             type: string
           lcdBlue:
-            type: table
+            type: umbrella.RWMMedia.ColorContainer
           lcdGreen:
-            type: table
+            type: umbrella.RWMMedia.ColorContainer
           textPlay:
             type: string
           textStop:
@@ -54,13 +56,15 @@ languages:
           - name: addMedia
             parameters:
               - name: _items
-                type: table
+                type: InventoryItem[]
           - name: addMediaAux
             parameters:
               - name: item
+                type: InventoryItem
           - name: verifyItem
             parameters:
               - name: _item
+                type: InventoryItem
             return:
               - type: boolean
                 nullable: true
@@ -68,9 +72,13 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
               - type: boolean
           - name: getMediaText
@@ -82,20 +90,26 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
+      umbrella.RWMMedia.ColorContainer:
+        fields:
+          text:
+            type: umbrella.RGBA
+          back:
+            type: umbrella.RGBA

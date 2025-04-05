@@ -18,12 +18,15 @@ languages:
           Type:
             defaultValue: '"RWMGeneral"'
         fields:
-          itemTexture: {}
+          itemTexture:
+            type: Texture
+            nullable: true
           isoTexture:
             type: boolean
           infoLines:
-            type: table
-          isTv: {}
+            type: umbrella.RWMGeneral.InfoLine[]
+          isTv:
+            type: boolean
           deviceFrequency:
             type: number
           fontheight:
@@ -35,17 +38,29 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
               - type: boolean
           - name: setInfoLines
           - name: addInfoLine
             parameters:
               - name: _prefix
+                type: string
               - name: _line
+                type: string
           - name: recalulateDim
           - name: update
           - name: prerender
           - name: render
+      umbrella.RWMGeneral.InfoLine:
+        fields:
+          prefix:
+            type: string
+          line:
+            type: string

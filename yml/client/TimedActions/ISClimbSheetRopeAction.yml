@@ -7,16 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: down
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISClimbSheetRopeAction"'
         fields:
-          down: {}
+          down:
+            type: boolean
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

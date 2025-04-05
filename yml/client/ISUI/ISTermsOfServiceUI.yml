@@ -39,9 +39,12 @@ languages:
             nullable: true
           destroyOnClick:
             type: boolean
-          texture: {}
-          javaStateObj: {}
-          prevFocus: {}
+          texture:
+            type: Texture
+          javaStateObj:
+            type: TermsOfServiceState
+          prevFocus:
+            type: ISUIElement
         methods:
           - name: createChildren
           - name: destroy
@@ -81,9 +84,10 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: update
         staticMethods:
           - name: OnGameStateEnter
             parameters:
               - name: javaStateObj
+                type: GameState

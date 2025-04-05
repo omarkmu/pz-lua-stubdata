@@ -57,7 +57,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: getBlueBar
@@ -293,3 +293,18 @@ languages:
             defaultValue: "1.0"
           b:
             defaultValue: "1.0"
+      umbrella.ISFarmingInfo.DiseaseTable:
+        fields:
+          text:
+            type: string
+          "[integer]":
+            type: umbrella.ISFarmingInfo.DiseaseInfo
+            nullable: true
+      umbrella.ISFarmingInfo.DiseaseInfo:
+        fields:
+          name:
+            type: string
+            nullable: true
+          value:
+            type: string
+            nullable: true

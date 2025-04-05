@@ -7,15 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: usedHood
+                type: VehiclePart
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISOpenMechanicsUIAction"'
         fields:
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           usedHood:
+            type: VehiclePart
             nullable: true
         methods:
           - name: isValid

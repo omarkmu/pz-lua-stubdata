@@ -22,56 +22,57 @@ languages:
         fields:
           text:
             type: string
-          font: {}
+          font:
+            type: UIFont
           rgbCurrent:
-            type: table
+            type: umbrella.RGB
           imageCount:
-            type: number
+            type: integer
           indent:
             type: number
             nullable: true
           textDirty:
             type: boolean
           fonts:
-            type: table
+            type: table<integer, UIFont>
           images:
-            type: table
+            type: Texture[]
           imageX:
-            type: table
+            type: number[]
           imageY:
-            type: table
+            type: number[]
           maps:
-            type: table
+            type: umbrella.ISPrintMediaTextPanel.MapInfo[]
           rgb:
-            type: table
+            type: table<integer, umbrella.RGB>
           rgbStack:
-            type: table
+            type: umbrella.RGB[]
           orient:
-            type: table
+            type: table<integer, "left" | "right" | "centre">
           imageW:
-            type: table
+            type: number[]
           imageH:
-            type: table
+            type: number[]
           lineY:
-            type: table
+            type: table<integer, number>
           lineX:
-            type: table
+            type: table<integer, number>
           lines:
-            type: table
+            type: string[]
           keybinds:
-            type: table
+            type: table<string, string>
           currentLine:
-            type: number
+            type: integer
           contentTransparency:
             type: number
           r:
-            type: number
+            type: integer
           g:
-            type: number
+            type: integer
           b:
-            type: number
+            type: integer
           mapUI:
-            type: table
+            type: table<integer, ISPrintMediaMap>
           marginLeft:
             type: number
           marginTop:
@@ -92,18 +93,24 @@ languages:
             type: boolean
           maxLines:
             type: number
-          defaultFont: {}
+          defaultFont:
+            type: UIFont
+          javaObject:
+            type: UIWorldMap
+            tags:
+              - StubGen_Extra
         methods:
           - name: initialise
           - name: setText
             parameters:
               - name: text
+                type: string
           - name: processCommand
             parameters:
               - name: command
+                type: string
               - name: x
                 type: number
-                nullable: true
               - name: y
                 type: number
               - name: lineImageHeight
@@ -112,7 +119,6 @@ languages:
                 type: number
             return:
               - type: number
-                nullable: true
               - type: number
               - type: number
           - name: replaceKeyName
@@ -142,18 +148,25 @@ languages:
           - name: setContentTransparency
             parameters:
               - name: alpha
+                type: number
           - name: render
           - name: renderMap
             parameters:
               - name: index
+                type: integer
               - name: map
+                type: umbrella.ISPrintMediaTextPanel.MapInfo
           - name: onResize
           - name: setMargins
             parameters:
               - name: left
+                type: number
               - name: top
+                type: number
               - name: right
+                type: number
               - name: bottom
+                type: number
       ISPrintMediaMap:
         extends: ISUIElement
         constructors:
@@ -170,6 +183,19 @@ languages:
           Type:
             defaultValue: '"ISPrintMediaMap"'
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV3
         methods:
           - name: instantiate
+      umbrella.ISPrintMediaTextPanel.MapInfo:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+          w:
+            type: number
+          h:
+            type: number
+          mapID:
+            type: string

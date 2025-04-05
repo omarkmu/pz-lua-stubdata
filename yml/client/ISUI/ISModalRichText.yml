@@ -22,14 +22,17 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
                 nullable: true
               - name: player
-                type: number
+                type: integer
                 nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISModalRichText"'
@@ -55,14 +58,17 @@ languages:
             type: unknown
             nullable: true
           onclick:
+            type: umbrella.ISButton.OnClick
             nullable: true
           player:
             type: number
             nullable: true
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
           destroyOnClick:
             type: boolean
         methods:
@@ -93,6 +99,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: update
           - name: setHeightToContents

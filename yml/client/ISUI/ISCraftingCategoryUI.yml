@@ -64,8 +64,11 @@ languages:
           - name: drawRecipesMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
               - name: _drawBasic
             return:
               - type: number
@@ -80,6 +83,8 @@ languages:
               - type: boolean
           - name: onMouseDown_Recipes
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: x
                 type: number
               - name: y
@@ -95,6 +100,8 @@ languages:
                 type: boolean
           - name: onMouseDoubleClick_Recipes
             parameters:
+              - name: self
+                type: ISScrollingListBox
               - name: x
                 type: number
               - name: y

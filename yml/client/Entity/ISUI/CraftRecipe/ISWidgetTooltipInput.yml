@@ -112,3 +112,42 @@ languages:
               - name: _table
                 type: umbrella.ISWidgetTooltipInput.ScriptValues
           - name: updateValues
+      umbrella.ISWidgetTooltipInput.ScriptValues:
+        fields:
+          isConsume:
+            type: boolean
+          script:
+            type: InputScript
+          isKeep:
+            type: boolean
+          isCreate:
+            type: boolean
+            nullable: true
+          isItemCount:
+            type: boolean
+          iconColor:
+            type: umbrella.RGBA
+          cycleIcons:
+            type: boolean
+          icon:
+            type: ISImage
+          label:
+            type: ISLabel
+          iconText:
+            type: string
+            nullable: true
+          iconTexture:
+            type: Texture
+            nullable: true
+          amount:
+            type: number
+            nullable: true
+          amountStr:
+            type: string
+            nullable: true
+          inputObjects:
+            type: ArrayList<Item>
+            nullable: true
+          outputObjects:
+            type: ArrayList<Item>
+            nullable: true

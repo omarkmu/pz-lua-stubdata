@@ -28,9 +28,11 @@ languages:
             type: ISButton
           panel:
             type: ISTabPanel
-          items: {}
+          items:
+            type: ArrayList<Item>
+            nullable: true
           module:
-            type: table
+            type: table<string, Item[]>
         methods:
           - name: initialise
           - name: initList

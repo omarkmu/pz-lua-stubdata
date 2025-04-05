@@ -1,6 +1,13 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISItemDropBox.OnItemDropped:
+        - type: "fun(target: unknown?, items: InventoryItem[])"
+      umbrella.ISItemDropBox.OnItemRemove:
+        - type: "fun(target: unknown?)"
+      umbrella.ISItemDropBox.OnVerifyItem:
+        - type: "fun(target: unknown?, item: InventoryItem)"
     classes:
       ISItemDropBox:
         extends: ISPanel
@@ -18,11 +25,16 @@ languages:
                 type: boolean
               - name: target
                 type: unknown
+                nullable: true
               - name: onItemDropped
+                type: umbrella.ISItemDropBox.OnItemDropped
                 nullable: true
               - name: onItemRemove
+                type: umbrella.ISItemDropBox.OnItemRemove
                 nullable: true
               - name: onVerifyItem
+                type: umbrella.ISItemDropBox.OnVerifyItem
+                nullable: true
               - name: onDragSelf
                 nullable: true
         staticFields:
@@ -30,17 +42,20 @@ languages:
             defaultValue: '"ISItemDropBox"'
         fields:
           mouseOverState:
-            type: number
+            type: integer
           storedItem:
+            type: InventoryItem
             nullable: true
           boxOccupied:
             type: boolean
           storedItemTex:
+            type: Texture
             nullable: true
           backDropTex:
+            type: Texture
             nullable: true
           backDropTexCol:
-            type: table
+            type: umbrella.RGBA
           doBackDropTex:
             type: boolean
           doToolTip:
@@ -53,29 +68,34 @@ languages:
           doHighlight:
             type: number | boolean
           backgroundColorHL:
-            type: table
+            type: umbrella.RGBA
           borderColorHL:
-            type: table
+            type: umbrella.RGBA
           doValidHighlight:
             type: number | boolean
           backgroundColorHLVal:
-            type: table
+            type: umbrella.RGBA
           borderColorHLVal:
-            type: table
+            type: umbrella.RGBA
           doInvalidHighlight:
             type: number | boolean
           backgroundColorHLInv:
-            type: table
+            type: umbrella.RGBA
           borderColorHLInv:
-            type: table
+            type: umbrella.RGBA
           functionTarget:
-            type: table
-          onItemDropped:
+            type: unknown
             nullable: true
-          onVerifyItem: {}
+          onItemDropped:
+            type: umbrella.ISItemDropBox.OnItemDropped
+            nullable: true
+          onVerifyItem:
+            type: umbrella.ISItemDropBox.OnVerifyItem
+            nullable: true
           onDragSelf:
             nullable: true
           onItemRemove:
+            type: umbrella.ISItemDropBox.OnItemRemove
             nullable: true
           storeItem:
             type: boolean
@@ -86,9 +106,9 @@ languages:
           isLocked:
             type: boolean
           toolTipTextItem:
-            type: boolean
+            type: string | false
           toolTipTextLocked:
-            type: boolean
+            type: string | false
         methods:
           - name: initialise
           - name: createChildren
@@ -97,6 +117,7 @@ languages:
           - name: defaultVerifyItem
             parameters:
               - name: _item
+                type: InventoryItem
             return:
               - type: boolean
           - name: hasValidItemInDrag
@@ -117,7 +138,7 @@ languages:
                 type: number
           - name: getValidItems
             return:
-              - type: table
+              - type: InventoryItem[]
           - name: onMouseDown
             parameters:
               - name: x
@@ -142,25 +163,48 @@ languages:
           - name: itemDropped
             parameters:
               - name: _items
+                type: InventoryItem[]
           - name: setStoredItem
             parameters:
               - name: _item
+                type: InventoryItem
                 nullable: true
           - name: setStoredItemFake
             parameters:
               - name: _itemTex
+                type: Texture
                 nullable: true
           - name: setBackDropTex
             parameters:
               - name: _tex
+                type: Texture
               - name: _a
                 type: number
+                nullable: true
               - name: _r
                 type: number
+                nullable: true
               - name: _g
                 type: number
+                nullable: true
               - name: _b
                 type: number
+                nullable: true
+            overloads:
+              - parameters:
+                  - name: _tex
+                    type: Texture
+              - parameters:
+                  - name: _tex
+                    type: Texture
+                  - name: _a
+                    type: number
+                  - name: _r
+                    type: number
+                  - name: _g
+                    type: number
+                  - name: _b
+                    type: number
           - name: setDoBackDropTex
             parameters:
               - name: _b
@@ -171,12 +215,13 @@ languages:
                 type: boolean
               - name: _text
                 type: string
+                nullable: true
           - name: activateToolTip
           - name: deactivateToolTip
           - name: setHighlight
             parameters:
               - name: _b
-                type: number
+                type: unknown
               - name: _a
                 type: number
               - name: _r
@@ -184,15 +229,25 @@ languages:
               - name: _g
                 type: number
               - name: _b
-                type: number
+                type: unknown
               - name: _a2
+                type: number
               - name: _r2
+                type: number
               - name: _g2
+                type: number
               - name: _b2
+                type: number
+            overloads:
+              - parameters:
+                  - name: self
+                    type: ISItemDropBox
+                  - name: _b
+                    type: boolean
           - name: setValidHighlight
             parameters:
               - name: _b
-                type: number
+                type: unknown
               - name: _a
                 type: number
               - name: _r
@@ -200,15 +255,25 @@ languages:
               - name: _g
                 type: number
               - name: _b
-                type: number
+                type: unknown
               - name: _a2
+                type: number
               - name: _r2
+                type: number
               - name: _g2
+                type: number
               - name: _b2
+                type: number
+            overloads:
+              - parameters:
+                  - name: self
+                    type: ISItemDropBox
+                  - name: _b
+                    type: boolean
           - name: setInvalidHighlight
             parameters:
               - name: _b
-                type: number
+                type: unknown
               - name: _a
                 type: number
               - name: _r
@@ -216,8 +281,18 @@ languages:
               - name: _g
                 type: number
               - name: _b
-                type: number
+                type: unknown
               - name: _a2
+                type: number
               - name: _r2
+                type: number
               - name: _g2
+                type: number
               - name: _b2
+                type: number
+            overloads:
+              - parameters:
+                  - name: self
+                    type: ISItemDropBox
+                  - name: _b
+                    type: boolean

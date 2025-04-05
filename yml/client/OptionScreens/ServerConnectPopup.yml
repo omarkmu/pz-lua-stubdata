@@ -39,8 +39,10 @@ languages:
             type: ISButton
           connectBtn:
             type: ISButton
-          joypadButtons: {}
-          ip: {}
+          joypadButtons:
+            type: ISButton[]
+          ip:
+            type: string
           port:
             type: string
           itemheightoverride:
@@ -52,6 +54,7 @@ languages:
           - name: setServer
             parameters:
               - name: ip
+                type: string
               - name: port
                 type: string
               - name: passwordStr
@@ -77,7 +80,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

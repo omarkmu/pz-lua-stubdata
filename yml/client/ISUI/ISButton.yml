@@ -1,6 +1,13 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISButton.MouseCallback:
+        - type: "fun(target: unknown, button: ISButton, x: number, y: number)"
+      umbrella.ISButton.OnClick:
+        - type: "fun(target: unknown, button: ISButton, ...: unknown)"
+      umbrella.ISButton.RepeatWhilePressed:
+        - type: "fun(target: unknown, button: ISButton)"
     classes:
       ISButton:
         extends: ISPanel
@@ -32,9 +39,6 @@ languages:
           Type:
             defaultValue: '"ISButton"'
         fields:
-          joypadFocused:
-            type: boolean
-            nullable: true
           pressed:
             type: boolean
           isJoypad:

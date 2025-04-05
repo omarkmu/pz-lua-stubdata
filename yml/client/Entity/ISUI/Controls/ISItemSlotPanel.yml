@@ -45,7 +45,7 @@ languages:
           - name: addResources
             parameters:
               - name: _resources
-                type: ArrayList #<Resource>
+                type: ArrayList<Resource>
               - name: _styleItemSlot
                 type: string
                 nullable: true

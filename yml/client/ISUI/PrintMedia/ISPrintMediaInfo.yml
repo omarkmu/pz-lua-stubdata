@@ -9,8 +9,13 @@ languages:
               - name: title
                 type: string
               - name: text
+                type: string
+                nullable: true
               - name: moreTextInfo
+                type: string
               - name: nextcondition
+                type: "fun(): boolean"
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISPrintMediaInfo"'
@@ -19,9 +24,14 @@ languages:
             type: table
           title:
             type: string
-          text: {}
-          nextcondition: {}
-          moreTextInfo: {}
+          text:
+            type: string
+            nullable: true
+          nextcondition:
+            type: "fun(): boolean"
+            nullable: true
+          moreTextInfo:
+            type: string
         methods:
           - name: initialise
       ISPrintMediaSetInfo:
@@ -33,11 +43,11 @@ languages:
             defaultValue: '"ISPrintMediaSetInfo"'
         fields:
           pageCount:
-            type: number
+            type: integer
           currentPage:
             type: number
           pages:
-            type: table
+            type: ISPrintMediaInfo[]
         methods:
           - name: initialise
           - name: addPage
@@ -45,14 +55,21 @@ languages:
               - name: pagetitle
                 type: string
               - name: pagetext
+                type: string
+                nullable: true
               - name: moreTextInfo
+                type: string
               - name: pagenextcondition
+                type: "fun(): boolean"
+                nullable: true
           - name: getCurrent
             return:
-              - type: unknown
+              - type: ISPrintMediaInfo
+                nullable: true
           - name: applyPageToRichTextPanel
             parameters:
               - name: tutorialPanel
+                type: ISPrintMediaRichText
           - name: hasNext
             return:
               - type: boolean
@@ -62,3 +79,4 @@ languages:
           - name: update
             parameters:
               - name: tutorialPanel
+                type: ISPrintMediaRichText

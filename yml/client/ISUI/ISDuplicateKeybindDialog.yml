@@ -40,7 +40,9 @@ languages:
           - name: assignKey
             parameters:
               - name: keyText
+                type: umbrella.MainOptions.KeyTextItem
               - name: keybind
+                type: string
               - name: key
                 type: integer
           - name: nextDuplicate

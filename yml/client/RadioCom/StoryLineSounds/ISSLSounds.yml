@@ -19,10 +19,11 @@ languages:
             defaultValue: '"ISSLSounds"'
         fields:
           columns:
-            type: table
+            type: "{ percent: number }[]"
           filterEntry:
             type: ISTextEntryBox
-          lastText: {}
+          lastText:
+            type: string
           soundList:
             type: ISScrollingListBox
           playSoundButton:
@@ -35,9 +36,12 @@ languages:
           - name: loadSounds
             parameters:
               - name: _filter
+                type: string
+                nullable: true
           - name: addSoundItem
             parameters:
               - name: _sound
+                type: StorySound
           - name: playSoundFromMainList
           - name: update
           - name: prerender

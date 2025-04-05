@@ -15,10 +15,12 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISChallenge2UpgradeTab"'
-          instance: {}
+          instance:
+            type: table<integer, ISChallenge2UpgradeTab>
         fields:
           panel:
             type: ISTabPanel
@@ -30,7 +32,8 @@ languages:
             type: ISChallenge2VariousItemWindow
           repairScreen:
             type: ISChallenge2WeaponRepairWindow
-          playerId: {}
+          playerId:
+            type: integer
         methods:
           - name: initialise
           - name: createChildren
@@ -43,7 +46,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: close

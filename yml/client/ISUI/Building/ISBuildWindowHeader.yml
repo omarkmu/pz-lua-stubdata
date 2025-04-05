@@ -15,9 +15,16 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: _styleIcon
+                type: string
+                nullable: true
               - name: _styleLabel
+                type: string
+                nullable: true
               - name: _styleButton
+                type: string
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBuildWindowHeader"'
@@ -25,17 +32,27 @@ languages:
           iconSize:
             type: number
           icon:
+            type: ISImage
             nullable: true
           title:
+            type: ISLabel
             nullable: true
           buttonInfo:
+            type: ISButton
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           titleStr:
             type: boolean
-          styleIcon: {}
-          styleLabel: {}
-          styleButton: {}
+          styleIcon:
+            type: string
+            nullable: true
+          styleLabel:
+            type: string
+            nullable: true
+          styleButton:
+            type: string
+            nullable: true
           paddingTop:
             type: number
           paddingBottom:
@@ -62,7 +79,11 @@ languages:
           - name: calculateLayout
             parameters:
               - name: _preferredWidth
+                type: number
+                nullable: true
               - name: _preferredHeight
+                type: number
+                nullable: true
           - name: onButtonClick
             parameters:
               - name: _button

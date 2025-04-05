@@ -15,12 +15,15 @@ languages:
               - name: height
                 type: number
               - name: faction
+                type: Faction
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFactionUI"'
           messages: {}
-          inviteDialogs: {}
+          inviteDialogs:
+            type: table<string, ISModalDialog>
           instance:
             type: ISFactionUI
             nullable: true
@@ -58,25 +61,34 @@ languages:
           no:
             type: ISButton
           selectedPlayer:
+            type: string
             nullable: true
           addPlayerUI:
             type: ISFactionAddPlayerUI
-          player: {}
-          faction: {}
+          player:
+            type: IsoPlayer
+          faction:
+            type: Faction
           buttonBorderColor:
-            type: table
-          isOwner: {}
-          isAdmin: {}
+            type: umbrella.RGBA
+          isOwner:
+            type: boolean
+          isAdmin:
+            type: boolean
         methods:
           - name: initialise
           - name: onClickShowTag
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: onClickFactionPvp
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: onTagColor
             parameters:
               - name: button
@@ -89,8 +101,11 @@ languages:
           - name: drawPlayers
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: render
@@ -118,6 +133,7 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                nullable: true
           - name: onAnswerFactionInvite
             parameters:
               - name: button
@@ -128,11 +144,13 @@ languages:
               - name: factionName
                 type: string
               - name: host
+                type: string
           - name: AcceptedFactionInvite
             parameters:
               - name: factionName
                 type: string
               - name: host
+                type: string
           - name: SyncFaction
             parameters:
               - name: factionName

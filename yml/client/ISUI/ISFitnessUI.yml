@@ -15,11 +15,14 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: clickedSquare
+                type: IsoGridSquare
         staticFields:
           Type:
             defaultValue: '"ISFitnessUI"'
-          instance: {}
+          instance:
+            type: table<integer, ISFitnessUI>
           enduranceLevelTreshold:
             defaultValue: "2"
         fields:
@@ -47,23 +50,29 @@ languages:
             type: ISRichTextPanel
           selectedExe:
             type: string
-          exeData: {}
-          joypadButtons: {}
+          exeData:
+            type: umbrella.FitnessExercises.Exercise
+            nullable: true
+          joypadButtons:
+            type: ISButton[]
           titleY:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           fgBar:
-            type: table
+            type: umbrella.RGBA
           fgBarOrange:
-            type: table
+            type: umbrella.RGBA
           fgBarRed:
-            type: table
-          clickedSquare: {}
+            type: umbrella.RGBA
+          clickedSquare:
+            type: IsoGridSquare
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zoneProgress:
             type: number
-          fitness: {}
+          fitness:
+            type: Fitness
           regularityProgressBarWidth:
             type: number
         methods:
@@ -79,13 +88,17 @@ languages:
           - name: clickedExe
             parameters:
               - name: buttons
+                type: ISRadioButtons
               - name: index
+                type: integer
           - name: updateExercises
           - name: selectedNewExercise
           - name: addExerciseToList
             parameters:
               - name: type
+                type: string
               - name: data
+                type: umbrella.FitnessExercises.Exercise
           - name: render
           - name: getCurrentRegularity
             return:
@@ -94,6 +107,7 @@ languages:
           - name: updateButtons
             parameters:
               - name: currentAction
+                type: ISBaseTimedAction
           - name: equipItems
             return:
               - type: boolean
@@ -108,4 +122,4 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer

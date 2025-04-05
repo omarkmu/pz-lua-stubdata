@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISTextBox.ValidateFunction:
+        - type: "fun(target: unknown, text: string, ...: unknown)"
     classes:
       ISTextBox:
         extends: ISPanelJoypad
@@ -22,9 +25,10 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
-                type: function
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: player
-                type: number
+                type: integer
                 nullable: true
               - name: param1
                 type: unknown
@@ -34,20 +38,24 @@ languages:
                 nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTextBox"'
         fields:
-          fontHgt: {}
+          fontHgt:
+            type: number
           entry:
             type: ISTextEntryBox
           colorBtn:
             type: ISButton
           colorPicker:
             type: ISColorPicker
-          currentColor: {}
+          currentColor:
+            type: ColorInfo
           yes:
             type: ISButton
           no:
@@ -59,14 +67,22 @@ languages:
           maxLines:
             type: number
           validateTarget:
-            type: ModListPresets | SandboxOptionsScreen
+            type: unknown
+            nullable: true
           validateFunc:
-            type: function
+            type: umbrella.ISTextBox.ValidateFunction
+            nullable: true
           validateArgs:
             type: table
-          validateTooltipText: {}
-          showError: {}
-          errorMsg: {}
+          validateTooltipText:
+            type: string
+            nullable: true
+          showError:
+            type: boolean
+            nullable: true
+          errorMsg:
+            type: string
+            nullable: true
           name:
             nullable: true
           text:
@@ -75,9 +91,10 @@ languages:
             type: unknown
             nullable: true
           onclick:
-            type: function
+            type: umbrella.ISButton.OnClick
+            nullable: true
           player:
-            type: number
+            type: integer
             nullable: true
           param1:
             type: unknown
@@ -87,8 +104,10 @@ languages:
             nullable: true
           param3:
             type: unknown
+            nullable: true
           param4:
             type: unknown
+            nullable: true
           defaultEntryText:
             type: string
           titlebarbkg:
@@ -102,7 +121,9 @@ languages:
           - name: onPickedColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
           - name: enableColorPicker
           - name: setOnlyNumbers
             parameters:
@@ -115,27 +136,33 @@ languages:
           - name: setNumberOfLines
             parameters:
               - name: numLines
-                type: number
+                type: integer
           - name: setMaxLines
             parameters:
               - name: max
-                type: number
+                type: integer
           - name: getMaxLines
             return:
-              - type: number
+              - type: integer
           - name: setValidateFunction
             parameters:
               - name: target
                 type: unknown
+                nullable: true
               - name: func
-                type: function
+                type: umbrella.ISTextBox.ValidateFunction
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
           - name: setValidateTooltipText
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: destroy
           - name: onClick
             parameters:
@@ -148,7 +175,9 @@ languages:
           - name: showErrorMessage
             parameters:
               - name: show
+                type: boolean
               - name: errorMsg
+                type: string
           - name: updateButtons
           - name: render
           - name: onMouseMove
@@ -196,14 +225,17 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: close
       ISTextEntryBox:
         fields:
-          font: {}
+          font:
+            type: UIFont
+            tags:
+              - StubGen_Hidden
         methods:
           - name: isMultipleLine
             return:
-              - type: unknown
+              - type: boolean

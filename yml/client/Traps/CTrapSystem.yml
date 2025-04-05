@@ -9,14 +9,21 @@ languages:
         staticFields:
           Type:
             defaultValue: '"CTrapSystem"'
+          instance:
+            type: CTrapSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: CTrapGlobalObject

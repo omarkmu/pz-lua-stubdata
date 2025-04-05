@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISPlayerStatsChooseTraitUI.OnClick:
+        - type: "fun(target: unknown?, button: ISButton, trait: TraitFactory.Trait)"
     classes:
       ISPlayerStatsChooseTraitUI:
         extends: ISPanel
@@ -18,7 +21,10 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISPlayerStatsChooseTraitUI.OnClick
+                nullable: true
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsChooseTraitUI"'
@@ -34,20 +40,23 @@ languages:
           cancel:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          chr: {}
+          onclick:
+            type: umbrella.ISPlayerStatsChooseTraitUI.OnClick
+            nullable: true
+          chr:
+            type: IsoPlayer
           comboList:
             type: table
           zOffsetSmallFont:
             type: number
           goodTraits:
-            type: table
+            type: TraitFactory.Trait[]
           badTraits:
-            type: table
+            type: TraitFactory.Trait[]
         methods:
           - name: initialise
           - name: setVisible

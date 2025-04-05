@@ -9,18 +9,21 @@ languages:
               - name: luaSystem
                 type: CTrapSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"CTrapGlobalObject"'
         fields:
           bait:
+            type: string
             nullable: true
           animal:
-            type: table
+            type: umbrella.TrapAnimalDefinition
         methods:
           - name: fromModData
             parameters:
               - name: modData
+                type: table
           - name: checkForWallExploit
             parameters:
               - name: square

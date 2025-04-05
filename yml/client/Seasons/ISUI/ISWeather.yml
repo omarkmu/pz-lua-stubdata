@@ -19,17 +19,20 @@ languages:
             defaultValue: '"ISWeather"'
         fields:
           moon:
+            type: Texture
             nullable: true
           images:
-            type: table
+            type: Texture[]
         methods:
           - name: initialise
           - name: addImage
             parameters:
               - name: image
+                type: string
           - name: addMoon
             parameters:
               - name: moonImage
+                type: string
           - name: removeMoon
           - name: removeImages
           - name: prerender

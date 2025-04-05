@@ -15,9 +15,13 @@ languages:
               - name: height
                 type: number
               - name: inventory
+                type: ItemContainer
               - name: onCharacter
                 type: boolean
+                nullable: true
               - name: zoom
+                type: number
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISInventoryPage"'
@@ -29,7 +33,7 @@ languages:
             type: boolean
             nullable: true
           floorContainer:
-            type: table
+            type: table<integer, ItemContainer>
             nullable: true
         fields:
           render3DItemRot:
@@ -61,27 +65,35 @@ languages:
           totalItems:
             type: number
             nullable: true
-          infoText: {}
+          infoText:
+            type: string
+            nullable: true
           infoRichText:
             type: ISModalRichText
           pin:
             type: boolean
           coloredInv:
+            type: ItemContainer
             nullable: true
-          capacity: {}
+          capacity:
+            type: number
           collapseCounter:
             type: number
           isCollapsed:
             type: boolean
-          lastSquare: {}
-          lastDir: {}
+          lastSquare:
+            type: IsoGridSquare
+          lastDir:
+            type: IsoDirections
           backpackChoice:
             type: number
           blinkContainer:
             type: boolean
           blinkContainerType:
+            type: string
             nullable: true
           forceSelectedContainer:
+            type: ItemContainer
             nullable: true
           forceSelectedContainerTime:
             type: number
@@ -94,37 +106,54 @@ languages:
           blinkAlphaIncrease:
             type: boolean
           title:
+            type: string
             nullable: true
-          inventory: {}
-          downX: {}
-          downY: {}
+          inventory:
+            type: ItemContainer
+          downX:
+            type: number
+          downY:
+            type: number
           buttonPool:
-            type: table
-          lookDir: {}
-          selectedButton: {}
+            type: ISButton[]
+          lookDir:
+            type: IsoDirections
+          selectedButton:
+            type: ISButton
           zoom:
             type: number
           onCharacter:
             type: boolean
           titlebarbkg:
             type: Texture
-          statusbarbkg: {}
-          resizeimage: {}
-          invbasic: {}
-          infoBtn: {}
-          closebutton: {}
-          collapsebutton: {}
-          pinbutton: {}
-          conDefault: {}
+          statusbarbkg:
+            type: Texture
+          resizeimage:
+            type: Texture
+          invbasic:
+            type: Texture
+          infoBtn:
+            type: Texture
+          closebutton:
+            type: Texture
+          collapsebutton:
+            type: Texture
+          pinbutton:
+            type: Texture
+          conDefault:
+            type: Texture
           highlightColors:
-            type: table
+            type: umbrella.RGB
           containerIconMaps:
             type: ContainerButtonIcons
           backpacks:
-            type: table
-          titleFont: {}
-          titleFontHgt: {}
-          buttonSize: {}
+            type: ISButton[]
+          titleFont:
+            type: UIFont
+          titleFontHgt:
+            type: number
+          buttonSize:
+            type: integer
           visibleTarget:
             type: ISInventoryPage
           visibleFunction:
@@ -132,24 +161,31 @@ languages:
           disableJoypadNavigation:
             type: boolean
           mouseOverButton:
+            type: ISButton
             nullable: true
           render3DItemXOffset:
             type: number
+            nullable: true
           render3DItemYOffset:
             type: number
+            nullable: true
           render3DItemZOffset:
             type: number
-          selectedSqDrop: {}
+            nullable: true
+          selectedSqDrop:
+            type: IsoGridSquare
+            nullable: true
         methods:
           - name: initialise
           - name: onChangeFilter
             parameters:
               - name: selected
+                type: integer
           - name: titleBarHeight
             parameters:
               - name: selected
             return:
-              - type: unknown
+              - type: number
           - name: createChildren
           - name: transferAll
           - name: lootAll
@@ -160,6 +196,8 @@ languages:
           - name: setInfo
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: onInfo
           - name: collapse
           - name: setPinned
@@ -171,11 +209,17 @@ languages:
           - name: setBlinkingContainer
             parameters:
               - name: blinking
+                type: boolean
               - name: containerType
+                type: string
+                nullable: true
           - name: setForceSelectedContainer
             parameters:
               - name: container
+                type: ItemContainer
               - name: ms
+                type: number
+                nullable: true
           - name: prerender
           - name: drawTextRight
             parameters:
@@ -194,6 +238,7 @@ languages:
               - name: a
                 type: number
               - name: font
+                type: UIFont
           - name: drawText
             parameters:
               - name: str
@@ -211,6 +256,7 @@ languages:
               - name: a
                 type: number
               - name: font
+                type: UIFont
           - name: close
           - name: onToggleVisible
           - name: onLoseJoypadFocus
@@ -223,29 +269,29 @@ languages:
                 type: JoypadData
           - name: getCurrentBackpackIndex
             return:
-              - type: number
+              - type: integer
           - name: prevUnlockedContainer
             parameters:
               - name: index
-                type: number
+                type: integer
               - name: wrap
                 type: boolean
             return:
-              - type: number
+              - type: integer
           - name: nextUnlockedContainer
             parameters:
               - name: index
-                type: number
+                type: integer
               - name: wrap
                 type: boolean
             return:
-              - type: number
+              - type: integer
           - name: selectPrevContainer
           - name: selectNextContainer
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
             parameters:
               - name: joypadData
@@ -257,6 +303,7 @@ languages:
           - name: ensureVisible
             parameters:
               - name: index
+                type: integer
           - name: onJoypadDirLeft
           - name: onJoypadDirRight
           - name: render
@@ -273,9 +320,11 @@ languages:
           - name: setNewContainer
             parameters:
               - name: inventory
+                type: ItemContainer
           - name: selectButtonForContainer
             parameters:
               - name: container
+                type: ItemContainer
           - name: onMouseMove
             parameters:
               - name: dx
@@ -320,8 +369,7 @@ languages:
                 type: number
           - name: isCycleContainerKeyDown
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: onMouseWheel
             parameters:
               - name: del
@@ -355,7 +403,9 @@ languages:
           - name: addContainerButton
             parameters:
               - name: container
+                type: ItemContainer
               - name: texture
+                type: Texture
                 nullable: true
               - name: name
                 type: string
@@ -367,6 +417,7 @@ languages:
           - name: checkExplored
             parameters:
               - name: container
+                type: ItemContainer
               - name: playerObj
                 type: IsoPlayer
           - name: refreshBackpacks
@@ -394,11 +445,13 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: onInventoryContainerSizeChanged
           - name: render3DItemPreview
         staticMethods:
@@ -407,11 +460,13 @@ languages:
               - name: playerNum
                 type: integer
               - name: object
+                type: IsoObject
               - name: isHighlighted
                 type: boolean
           - name: loadWeight
             parameters:
               - name: inv
+                type: ItemContainer
             return:
               - type: number
           - name: dirtyUI
@@ -420,7 +475,7 @@ languages:
               - name: playerNum
                 type: integer
             return:
-              - type: unknown
+              - type: ItemContainer
           - name: onKeyPressed
             parameters:
               - name: key
@@ -431,4 +486,5 @@ languages:
           - name: OnContainerUpdate
             parameters:
               - name: object
+                nullable: true
           - name: ongamestart

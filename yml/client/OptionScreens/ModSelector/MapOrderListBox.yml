@@ -21,13 +21,16 @@ languages:
         fields:
           boxSize:
             type: number
-          dragTexture: {}
+          dragTexture:
+            type: Texture
           dragItem:
+            type: umbrella.ModSelector.MapOrderListBoxItem
             nullable: true
           mouseOverDragIcon:
+            type: umbrella.ModSelector.MapOrderListBoxItem
             nullable: true
           selected:
-            type: number
+            type: integer
         methods:
           - name: onMouseDown
             parameters:
@@ -52,8 +55,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ModSelector.MapOrderListBoxItem
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: updateTooltip
@@ -63,7 +69,13 @@ languages:
           - name: tooltipRender
             parameters:
               - name: self
+                type: ISToolTip
       ModSelector:
         staticFields:
           MapOrderListBox:
             type: ModSelector.MapOrderListBox
+      umbrella.ModSelector.MapOrderListBoxItem:
+        extends: umbrella.ISScrollingListBox.Item
+        fields:
+          color:
+            type: umbrella.RGB

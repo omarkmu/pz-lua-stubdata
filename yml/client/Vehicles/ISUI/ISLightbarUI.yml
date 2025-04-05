@@ -32,8 +32,10 @@ languages:
             type: ISButton
           lightsKnob:
             type: ISKnob
-          vehicle: {}
-          joypadButtons: {}
+          vehicle:
+            type: BaseVehicle
+          joypadButtons:
+            type: ISButton[]
           playerNum:
             type: integer
           playerObj:
@@ -45,6 +47,7 @@ languages:
           - name: setVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -52,7 +55,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onOptionMouseDown
@@ -66,7 +69,9 @@ languages:
           - name: setLightbarSirenMode
             parameters:
               - name: mode
+                type: integer
           - name: setLightbarLightsMode
             parameters:
               - name: mode
+                type: integer
           - name: addKnobValues

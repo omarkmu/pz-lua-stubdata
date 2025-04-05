@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPvpZonePanel"'
@@ -35,18 +36,23 @@ languages:
           no:
             type: ISButton
           selectedZone:
+            type: NonPvpZone
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: initialise
           - name: populateList
           - name: drawList
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: render

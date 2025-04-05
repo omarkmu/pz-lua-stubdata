@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISVehicleAnimalUI"'
@@ -21,7 +23,8 @@ languages:
             type: ISButton
           scrollPanel:
             type: ISPanelJoypad
-          animalCount: {}
+          animalCount:
+            type: integer
           avatarWidth:
             type: number
           avatarHeight:
@@ -30,13 +33,16 @@ languages:
             type: number
           btnWidth:
             type: number
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           btnBorder:
-            type: table
-          avatarBackgroundTexture: {}
+            type: umbrella.RGBA
+          avatarBackgroundTexture:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -52,16 +58,19 @@ languages:
           - name: onAnimalInfo
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onRemoveAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onGrabAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: reset
             parameters:
               - name: panel
-                type: ISPanelJoypad
+                type: ISUIElement
           - name: close
           - name: onGainJoypadFocus
             parameters:
@@ -70,8 +79,9 @@ languages:
           - name: onJoypadDown_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadBeforeDeactivate
@@ -81,6 +91,7 @@ languages:
           - name: onJoypadBeforeDeactivate_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: joypadData
                 type: JoypadData
           - name: isKeyConsumed
@@ -97,7 +108,9 @@ languages:
           - name: onKillAnimalDebug
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
       ISAnimalInVehiclePanel:
         extends: ISPanelJoypad
         constructors:
@@ -130,7 +143,7 @@ languages:
           - name: onJoypadDownInParent
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       ISVehicleAnimal3DModel:

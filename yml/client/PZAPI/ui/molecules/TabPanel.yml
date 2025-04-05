@@ -31,7 +31,9 @@ languages:
           - name: select
             parameters:
               - name: id
-      PZAPI:
+                type: string
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.TabPanel:
+          TabPanel:
             type: UI.TabPanel

@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: role
+                type: Role
         staticFields:
           Type:
             defaultValue: '"ISModalEditRole"'
@@ -47,17 +48,20 @@ languages:
           save:
             type: ISButton
           color:
-            type: table
-          role: {}
+            type: umbrella.RGBA
+          role:
+            type: Role
           capabilities:
-            type: table
+            type: table<Capability, boolean>
         methods:
           - name: initialise
           - name: doSearch
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onColor
             parameters:
               - name: button
@@ -65,13 +69,19 @@ languages:
           - name: onPickedTagColor
             parameters:
               - name: color
+                type: umbrella.RGBA
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: populateList
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onSelectRole

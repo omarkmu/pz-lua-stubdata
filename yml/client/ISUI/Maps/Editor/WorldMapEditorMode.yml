@@ -7,15 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: WorldMapEditor
         staticFields:
           Type:
             defaultValue: '"WorldMapEditorMode"'
         fields:
-          editor: {}
-          mapUI: {}
-          mapAPI: {}
-          styleAPI: {}
-          symbolsAPI: {}
+          editor:
+            type: WorldMapEditor
+          mapUI:
+            type: WorldMapEditor
+          mapAPI:
+            type: UIWorldMapV1
+          styleAPI:
+            type: WorldMapStyleV1
+          symbolsAPI:
+            type: WorldMapSymbolsV1
         methods:
           - name: display
           - name: undisplay

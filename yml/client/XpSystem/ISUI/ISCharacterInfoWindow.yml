@@ -19,7 +19,8 @@ languages:
         staticFields:
           Type:
             defaultValue: '"ISCharacterInfoWindow"'
-          view: {}
+          view:
+            type: umbrella.ISTabPanel.View[]
           instance:
             type: ISCharacterInfoWindow
             nullable: true
@@ -55,14 +56,14 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: createChildren
           - name: render
           - name: close
           - name: onTabTornOff
             parameters:
               - name: view
-                type: table
+                type: umbrella.ISTabPanel.View
               - name: window
                 type: ISCollapsableWindow
           - name: RestoreLayout
@@ -70,12 +71,15 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
         staticMethods:
           - name: OnClothingUpdated
             parameters:
               - name: chr
+                type: IsoPlayer

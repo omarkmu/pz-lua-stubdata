@@ -6,7 +6,8 @@ languages:
         extends: UI.Texture
         local: true
         staticFields:
-          sounds: {}
+          sounds:
+            type: table<string, string>
         fields:
           super:
             type: UI.Texture
@@ -20,8 +21,10 @@ languages:
           - name: onHover
             parameters:
               - name: state
+                type: boolean
           - name: onLeftClick
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.ImageButton:
+          ImageButton:
             type: UI.ImageButton

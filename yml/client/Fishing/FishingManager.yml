@@ -1,12 +1,21 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.FishingState:
+        - type: Fishing.States.None
+        - type: Fishing.States.Idle
+        - type: Fishing.States.Cast
+        - type: Fishing.States.Wait
+        - type: Fishing.States.ReelIn
+        - type: Fishing.States.ReelOut
+        - type: Fishing.States.PickupFish
     classes:
       Fishing:
         staticFields:
           FishingManager:
-            type: FishingManager
-      FishingManager:
+            type: Fishing.FishingManager
+      Fishing.FishingManager:
         local: true
         constructors:
           - parameters:
@@ -31,7 +40,7 @@ languages:
           onSave:
             type: function
           fishingRod:
-            type: FishingRod
+            type: Fishing.FishingRod
             nullable: true
         methods:
           - name: initStates
@@ -52,3 +61,23 @@ languages:
             parameters:
               - name: data
                 type: umbrella.FishingManager.MPUpdateData
+      umbrella.FishingManager.MPUpdateData:
+        fields:
+          Reject:
+            type: boolean
+      umbrella.FishingManager.StatesTable:
+        fields:
+          None:
+            type: Fishing.States.None
+          Idle:
+            type: Fishing.States.Idle
+          Cast:
+            type: Fishing.States.Cast
+          Wait:
+            type: Fishing.States.Wait
+          ReelIn:
+            type: Fishing.States.ReelIn
+          ReelOut:
+            type: Fishing.States.ReelOut
+          PickupFish:
+            type: Fishing.States.PickupFish

@@ -37,23 +37,33 @@ languages:
               - name: _name
                 type: string
               - name: _tickbox
+                type: ISTickBox
               - name: _label
+                type: ISLabel
               - name: _slider
+                type: ISSliderPanel
           - name: prerender
           - name: close
           - name: onSliderChange
             parameters:
               - name: _newval
+                type: number
               - name: _slider
+                type: ISSliderPanel
           - name: onTicked
             parameters:
               - name: _index
+                type: integer
               - name: _selected
+                type: boolean
               - name: _arg1
                 type: unknown
+                nullable: true
               - name: _arg2
                 type: unknown
+                nullable: true
               - name: _tickbox
+                type: ISTickBox
           - name: onClick
             parameters:
               - name: _button

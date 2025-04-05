@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: oven
+                type: IsoStove
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISMicrowaveUI"'
@@ -29,9 +31,12 @@ languages:
             type: ISButton
           close:
             type: ISButton
-          joypadButtons: {}
-          character: {}
-          oven: {}
+          joypadButtons:
+            type: ISButton[]
+          character:
+            type: IsoPlayer
+          oven:
+            type: IsoStove
         methods:
           - name: initialise
           - name: ChangeKnob
@@ -51,4 +56,4 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer

@@ -171,7 +171,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
             return:
@@ -190,3 +190,17 @@ languages:
                 type: ISFluidContainer
               - name: _source
                 type: boolean
+      umbrella.ISFluidTransferUI.InfoTable:
+        fields:
+          maxTransfer:
+            type: number
+          transferring:
+            type: number
+      umbrella.ISFluidTransferUI.PlayerTableItem:
+        fields:
+          instance:
+            type: ISFluidTransferUI
+          x:
+            type: number
+          y:
+            type: number

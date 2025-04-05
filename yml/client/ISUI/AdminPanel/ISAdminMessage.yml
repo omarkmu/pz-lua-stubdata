@@ -25,7 +25,8 @@ languages:
         staticFields:
           Type:
             defaultValue: '"ISAdminMessage"'
-          messages: {}
+          messages:
+            type: ISAdminMessage[]
         fields:
           yes:
             type: ISButton
@@ -69,6 +70,7 @@ languages:
           - name: AddAdminMessage
             parameters:
               - name: message
+                type: string
               - name: x
                 type: number
               - name: y

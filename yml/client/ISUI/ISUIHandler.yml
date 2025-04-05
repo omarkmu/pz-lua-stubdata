@@ -6,7 +6,8 @@ languages:
         staticFields:
           allUIVisible:
             defaultValue: "true"
-          visibleUI: {}
+          visibleUI:
+            type: string[]
         staticMethods:
           - name: setVisibleAllUI
             parameters:

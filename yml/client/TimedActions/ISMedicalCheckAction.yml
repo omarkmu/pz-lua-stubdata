@@ -7,15 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISMedicalCheckAction"'
-          HealthWindows: {}
+          HealthWindows:
+            type: table<integer, umbrella.ISMedicalCheckAction.HealthWindow>
         fields:
-          otherPlayer: {}
-          otherPlayerX: {}
-          otherPlayerY: {}
+          otherPlayer:
+            type: IsoPlayer
+          otherPlayerX:
+            type: number
+          otherPlayerY:
+            type: number
           forceProgressBar:
             type: boolean
         methods:
@@ -35,4 +41,10 @@ languages:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: umbrella.ISMedicalCheckAction.HealthWindow
+                nullable: true
+      umbrella.ISMedicalCheckAction.HealthWindow:
+        extends: ISCollapsableWindow
+        fields:
+          nested:
+            type: ISHealthPanel

@@ -11,7 +11,8 @@ languages:
           Type:
             defaultValue: '"ISLightSourceRadialMenu"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -19,44 +20,58 @@ languages:
           - name: getInsertBatteryRecipe
             parameters:
               - name: item
+                type: InventoryItem
               - name: containerList
+                type: ArrayList<ItemContainer>
                 nullable: true
             return:
-              - type: unknown
+              - type: Recipe
                 nullable: true
           - name: getRemoveBatteryRecipe
             parameters:
               - name: item
+                type: InventoryItem
               - name: containerList
+                type: ArrayList<ItemContainer>
                 nullable: true
             return:
-              - type: unknown
+              - type: Recipe
                 nullable: true
           - name: fillMenuForItem
             parameters:
               - name: menu
+                type: ISRadialMenu
               - name: item
+                type: InventoryItem
           - name: fillMenu
           - name: display
           - name: onEquipLight
             parameters:
               - name: item
+                type: InventoryItem
               - name: primary
+                type: boolean
+                nullable: true
           - name: onInsertBattery
             parameters:
               - name: item
+                type: InventoryItem
           - name: onRemoveBattery
             parameters:
               - name: item
+                type: InventoryItem
           - name: onToggle
             parameters:
               - name: item
+                type: InventoryItem
           - name: onLightCandle
             parameters:
               - name: item
+                type: InventoryItem
           - name: onExtinguishCandle
             parameters:
               - name: item
+                type: InventoryItem
         staticMethods:
           - name: checkKey
             parameters:

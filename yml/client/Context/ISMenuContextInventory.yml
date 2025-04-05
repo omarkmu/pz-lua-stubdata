@@ -22,7 +22,7 @@ languages:
             type: ISContextMenu
             nullable: true
           items:
-            type: InventoryItem[] | ContextMenuItemStack[]
+            type: InventoryItem[] | umbrella.ContextMenuItemStack[]
             nullable: true
           inventory:
             type: ItemContainer
@@ -39,7 +39,7 @@ languages:
               - name: _context
                 type: ISContextMenu
               - name: _items
-                type: InventoryItem[] | ContextMenuItemStack[]
+                type: InventoryItem[] | umbrella.ContextMenuItemStack[]
               - name: _item
                 nullable: true
           - name: checkInvItem

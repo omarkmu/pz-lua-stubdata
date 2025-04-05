@@ -21,7 +21,7 @@ languages:
           waveCntr:
             type: number
           wave:
-            type: table
+            type: number[]
           waveUpdInt:
             type: number
           offsetUpdInt:
@@ -35,9 +35,9 @@ languages:
           isOn:
             type: boolean
           gridColor:
-            type: table
+            type: umbrella.RGBA
           greyCol:
-            type: table
+            type: umbrella.RGBA
           doGridLines:
             type: boolean
           gridHorzSpacing:
@@ -45,7 +45,7 @@ languages:
           gridVertSpacing:
             type: number
           waveParams:
-            type: table
+            type: umbrella.ISSineWaveDisplay.WaveParams
         methods:
           - name: initialise
           - name: createChildren
@@ -67,17 +67,38 @@ languages:
               - name: _maxHeight
                 type: number
               - name: _minUpdFreq
-                type: number
+                type: integer
               - name: _maxUpdFreq
-                type: number
+                type: integer
               - name: _minScrollSpeed
-                type: number
+                type: integer
               - name: _maxScrollSpeed
-                type: number
+                type: integer
           - name: getWaveData
             parameters:
               - name: _len
+                type: integer
               - name: _minH
+                type: number
               - name: _maxH
+                type: number
             return:
               - type: table
+      umbrella.ISSineWaveDisplay.WaveParams:
+        fields:
+          minLen:
+            type: number
+          maxLen:
+            type: number
+          minHeight:
+            type: number
+          maxHeight:
+            type: number
+          minUpd:
+            type: integer
+          maxUpd:
+            type: integer
+          minSpeed:
+            type: integer
+          maxSpeed:
+            type: integer

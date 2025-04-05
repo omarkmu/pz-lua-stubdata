@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISDetachItemHotbar"'
         fields:
-          item: {}
-          equipped: {}
+          item:
+            type: InventoryItem
+          equipped:
+            type: boolean
           hotbar:
+            type: ISHotbar
             nullable: true
           fromHotbar:
             type: boolean
@@ -27,8 +32,7 @@ languages:
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -36,4 +40,6 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string

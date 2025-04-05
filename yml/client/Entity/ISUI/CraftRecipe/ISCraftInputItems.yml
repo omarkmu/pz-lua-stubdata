@@ -17,7 +17,7 @@ languages:
           containers:
             nullable: true
           allItems:
-            type: ArrayList #<InventoryItem>
+            type: ArrayList<InventoryItem>
           recipe:
             type: CraftRecipe
           oldNodes:
@@ -34,7 +34,7 @@ languages:
           - name: rebuildItemNodes
           - name: getAllItems
             return:
-              - type: ArrayList #<InventoryItem>
+              - type: ArrayList<InventoryItem>
       ISCraftInputItemNode:
         extends: ISBaseObject
         constructors:

@@ -29,13 +29,13 @@ languages:
             nullable: true
         fields:
           sorted:
-            type: table
+            type: PerkFactory.Perk[]
           nameToPerk:
-            type: table
+            type: table<string, PerkFactory.Perk>
           buttonList:
-            type: table
+            type: ISButton[]
           collapse:
-            type: table
+            type: table<integer, boolean>
           lastLevelUpTime:
             type: number
           progressBarLoaded:
@@ -43,31 +43,43 @@ languages:
           reloadSkillBar:
             type: boolean
           progressBars:
-            type: table
+            type: ISSkillProgressBar[]
           playerNum:
             type: integer
-          char: {}
+          char:
+            type: IsoPlayer
           txtLen:
             type: number
           perks:
-            type: table
+            type: table<PerkFactory.Perk, PerkFactory.Perk[]>
           lastLeveledUpPerk:
+            type: PerkFactory.Perk
             nullable: true
-          arrow: {}
-          arrowLeft: {}
-          yButton: {}
-          disabledArrow: {}
-          SkillPtsProgressBarEmpty: {}
-          SkillPtsProgressBarStart: {}
-          SkillPtsProgressBar: {}
-          SkillBarSeparator: {}
-          ProgressSkilMultiplier: {}
+          arrow:
+            type: Texture
+          arrowLeft:
+            type: Texture
+          yButton:
+            type: Texture
+          disabledArrow:
+            type: Texture
+          SkillPtsProgressBarEmpty:
+            type: Texture
+          SkillPtsProgressBarStart:
+            type: Texture
+          SkillPtsProgressBar:
+            type: Texture
+          SkillBarSeparator:
+            type: Texture
+          ProgressSkilMultiplier:
+            type: Texture
           showingPassive:
             type: boolean
           barWithTooltip:
+            type: ISSkillProgressBar
             nullable: true
           joypadIndex:
-            type: number
+            type: integer
             nullable: true
         methods:
           - name: initialise
@@ -100,7 +112,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
           - name: onJoypadDirDown
           - name: onJoypadDirLeft
@@ -109,11 +121,16 @@ languages:
           - name: loadPerk
             parameters:
               - name: self
+                type: ISCharacterInfo
             return:
-              - type: table
+              - type: table<PerkFactory.Perk, PerkFactory.Perk[]>
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number

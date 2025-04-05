@@ -7,10 +7,12 @@ languages:
         constructors:
           - parameters:
               - name: playerIndex
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISPostDeathUI"'
-          instance: {}
+          instance:
+            type: table<integer, ISPostDeathUI>
         fields:
           buttonRespawn:
             type: ISButton
@@ -18,10 +20,14 @@ languages:
             type: ISButton
           buttonQuit:
             type: ISButton
-          screenX: {}
-          screenY: {}
-          screenWidth: {}
-          screenHeight: {}
+          screenX:
+            type: number
+          screenY:
+            type: number
+          screenWidth:
+            type: number
+          screenHeight:
+            type: number
           waitOver:
             type: boolean
           textY:
@@ -29,10 +35,12 @@ languages:
           quitToDesktopDialog:
             type: ISModalDialog
             nullable: true
-          playerIndex: {}
-          timeOfDeath: {}
+          playerIndex:
+            type: integer
+          timeOfDeath:
+            type: number
           lines:
-            type: table
+            type: string[]
         methods:
           - name: createChildren
           - name: configButton

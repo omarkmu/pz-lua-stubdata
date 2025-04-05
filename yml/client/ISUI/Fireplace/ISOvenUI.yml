@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: oven
+                type: IsoStove
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISOvenUI"'
@@ -31,16 +33,22 @@ languages:
             type: ISButton
           close:
             type: ISButton
-          joypadButtons: {}
-          character: {}
-          oven: {}
-          knobTex: {}
+          joypadButtons:
+            type: ISButton[]
+          character:
+            type: IsoPlayer
+          oven:
+            type: IsoStove
+          knobTex:
+            type: Texture
         methods:
           - name: initialise
           - name: onChangeTempType
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: changeTempType
           - name: ChangeKnob
           - name: update
@@ -59,4 +67,4 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer

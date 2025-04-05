@@ -18,11 +18,11 @@ languages:
               - name: sep
                 type: string
             return:
-              - type: table
+              - type: string[]
           - name: playerInRange
             parameters:
               - name: _player
-                nullable: true
+                type: IsoPlayer
               - name: _x
                 type: number
               - name: _y
@@ -34,9 +34,11 @@ languages:
           - name: checkPlayer
             parameters:
               - name: player
-                nullable: true
+                type: IsoPlayer
               - name: _guid
+                type: string
               - name: _interactCodes
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -44,11 +46,14 @@ languages:
               - name: _z
                 type: number
               - name: _line
+                type: string
               - name: _source
           - name: OnDeviceText
             parameters:
               - name: _guid
+                type: string
               - name: _interactCodes
+                type: string
               - name: _x
                 type: number
               - name: _y
@@ -56,14 +61,20 @@ languages:
               - name: _z
                 type: number
               - name: _line
+                type: string
           - name: OnTick
           - name: addHalo
             parameters:
               - name: _str
                 type: string
               - name: _amount
+                type: number
               - name: _inverseCols
+                type: boolean
+                nullable: true
           - name: setNoHalo
             parameters:
               - name: _type
+                type: string
               - name: _b
+                type: boolean

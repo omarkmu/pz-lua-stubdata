@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISRadioButtons.OnChange:
+        - type: "fun(target: unknown, buttons: ISRadioButtons, ...: unknown)"
     classes:
       ISRadioButtons:
         extends: ISPanel
@@ -18,41 +21,52 @@ languages:
                 type: unknown
                 nullable: true
               - name: changeOptionFunc
+                type: umbrella.ISRadioButtons.OnChange
                 nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISRadioButtons"'
         fields:
           _textColor:
-            type: table
+            type: umbrella.RGBA
           tooltipUI:
             type: ISToolTip
           selected:
-            type: number
+            type: integer
             nullable: true
           mouseOverIndex:
-            type: number
+            type: integer
           itemHgt:
             type: number
           joypadIndex:
             type: number
-          font: {}
-          fontHgt: {}
-          joypadFocused: {}
-          textureCircle: {}
-          textureIndicator: {}
+          font:
+            type: UIFont
+          fontHgt:
+            type: number
+          joypadFocused:
+            type: boolean
+            nullable: true
+          textureCircle:
+            type: Texture
+          textureIndicator:
+            type: Texture
           choicesColor:
-            type: table
+            type: umbrella.RGBA
           options:
-            type: table
+            type: umbrella.ISRadioButtons.Option[]
           leftMargin:
             type: number
           boxSize:
@@ -66,11 +80,13 @@ languages:
           isRadioButtons:
             type: boolean
           tooltip:
+            type: string
             nullable: true
           changeOptionFunc:
+            type: umbrella.ISRadioButtons.OnChange
             nullable: true
           changeOptionTarget:
-            type: table
+            type: unknown
             nullable: true
           changeOptionArgs:
             type: table
@@ -83,7 +99,9 @@ languages:
           - name: getTextColor
             parameters:
               - name: index
+                type: integer
               - name: color
+                type: table
           - name: onMouseUp
             parameters:
               - name: x
@@ -117,86 +135,100 @@ languages:
               - name: text
                 type: string
               - name: data
-                type: string
+                type: unknown
                 nullable: true
               - name: texture
+                type: Texture
                 nullable: true
               - name: enabled
                 type: boolean
                 nullable: true
             return:
-              - type: number
+              - type: integer
           - name: checkIndex
             parameters:
               - name: index
-                type: number
+                type: integer
                 nullable: true
             return:
-              - type: number
+              - type: integer
                 nullable: true
           - name: setOptionText
             parameters:
               - name: index
+                type: integer
               - name: text
+                type: string
           - name: getOptionText
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: string
           - name: setOptionData
             parameters:
               - name: index
+                type: integer
               - name: data
+                type: unknown
+                nullable: true
           - name: getOptionData
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
               - type: unknown
+                nullable: true
           - name: setOptionTexture
             parameters:
               - name: index
+                type: integer
               - name: texture
+                type: Texture
           - name: getOptionTexture
             parameters:
               - name: index
+                type: integer
             return:
               - type: unknown
           - name: setOptionEnabled
             parameters:
               - name: index
-                type: number
+                type: integer
               - name: enabled
                 type: boolean
           - name: isOptionEnabled
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: boolean
           - name: clear
           - name: isEmpty
             return:
               - type: boolean
           - name: getNumOptions
             return:
-              - type: number
+              - type: integer
           - name: setFont
             parameters:
               - name: font
+                type: UIFont
           - name: setWidthToFit
           - name: setSelected
             parameters:
               - name: index
-                type: number
+                type: integer
           - name: isSelected
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
               - type: boolean
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
           - name: onJoypadDirUp
             parameters:
               - name: joypadData
@@ -206,3 +238,15 @@ languages:
               - name: joypadData
                 type: JoypadData
           - name: forceClick
+      umbrella.ISRadioButtons.Option:
+        fields:
+          text:
+            type: string
+          enabled:
+            type: boolean
+          data:
+            type: unknown
+            nullable: true
+          texture:
+            type: Texture
+            nullable: true

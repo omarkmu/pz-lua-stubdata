@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISGameSoundVolumeControl.TargetFunction:
+        - type: "fun(target: unknown, control: ISGameSoundVolumeControl, volume: number)"
     classes:
       ISGameSoundVolumeControl:
         extends: ISPanel
@@ -16,7 +19,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: targetFunc
+                type: umbrella.ISGameSoundVolumeControl.TargetFunction
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISGameSoundVolumeControl"'
@@ -32,9 +38,14 @@ languages:
             type: ISToolTip
           volume:
             type: number
-          joypadFocused: {}
-          targetFunc: {}
-          fade: {}
+          joypadFocused:
+            type: boolean
+            nullable: true
+          targetFunc:
+            type: umbrella.ISGameSoundVolumeControl.TargetFunction
+            nullable: true
+          fade:
+            type: UITransition
           isSlider:
             type: boolean
         methods:
@@ -66,6 +77,7 @@ languages:
           - name: getVolumeAtX
             parameters:
               - name: x
+                type: number
             return:
               - type: number
           - name: prerender
@@ -79,10 +91,11 @@ languages:
                 type: number
           - name: getTooltip
             return:
-              - type: unknown
+              - type: string
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
           - name: onJoypadDirLeft
             parameters:
               - name: joypadData

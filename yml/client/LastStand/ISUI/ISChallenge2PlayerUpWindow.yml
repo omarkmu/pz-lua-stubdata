@@ -15,15 +15,19 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISChallenge2PlayerUpWindow"'
         fields:
-          joypadButtons: {}
-          char: {}
-          playerId: {}
+          joypadButtons:
+            type: ISButton[]
+          char:
+            type: IsoPlayer
+          playerId:
+            type: integer
           buttons:
-            type: table
+            type: ISButton[]
         methods:
           - name: initialise
           - name: render
@@ -42,6 +46,6 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData

@@ -15,12 +15,15 @@ languages:
               - name: height
                 type: number
               - name: safehouse
+                type: SafeHouse
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISSafehouseUI"'
           messages: {}
-          inviteDialogs: {}
+          inviteDialogs:
+            type: table<table, ISModalDialog>
           instance:
             type: ISSafehouseUI
             nullable: true
@@ -58,29 +61,37 @@ languages:
           respawn:
             type: ISTickBox
           selectedPlayer:
+            type: string
             nullable: true
           updateTick:
             type: number
           addPlayerUI:
             type: ISSafehouseAddPlayerUI
-          player: {}
-          safehouse: {}
+          player:
+            type: IsoPlayer
+          safehouse:
+            type: SafeHouse
           updateTickMax:
             type: number
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: initialise
           - name: onClickRespawn
             parameters:
               - name: clickedOption
+                type: integer
               - name: enabled
+                type: boolean
           - name: populateList
           - name: drawPlayers
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: render
@@ -105,17 +116,19 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                nullable: true
           - name: onReleaseSafehouse
             parameters:
               - name: button
                 type: ISButton
               - name: player
+                nullable: true
           - name: isOwner
             return:
-              - type: unknown
+              - type: boolean
           - name: hasPrivilegedAccessLevel
             return:
-              - type: unknown
+              - type: boolean
           - name: onAnswerSafehouseInvite
             parameters:
               - name: button
@@ -125,9 +138,12 @@ languages:
           - name: ReceiveSafehouseInvite
             parameters:
               - name: safehouse
+                type: string
               - name: host
+                type: string
           - name: AcceptedSafehouseInvite
             parameters:
               - name: safehouseName
                 type: string
               - name: host
+                type: string

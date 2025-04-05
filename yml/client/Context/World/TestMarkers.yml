@@ -4,7 +4,8 @@ languages:
     classes:
       TestMarkers:
         staticFields:
-          loc: {}
+          loc:
+            type: type<integer, umbrella.TestMarkers.Loc>
           index:
             defaultValue: "1"
           enabled:
@@ -18,3 +19,9 @@ languages:
                 type: WorldMarkers.GridSquareMarker
               - name: _pointer
                 type: WorldMarkers.PlayerHomingPoint
+      umbrella.TestMarkers.Loc:
+        fields:
+          circle:
+            type: WorldMarkers.GridSquareMarker
+          pointer:
+            type: WorldMarkers.PlayerHomingPoint

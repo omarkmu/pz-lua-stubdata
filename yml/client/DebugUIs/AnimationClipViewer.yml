@@ -507,7 +507,7 @@ languages:
           selectedClipName:
             type: string
           keyframeTimes:
-            type: ArrayList #<number>
+            type: ArrayList<number>
             nullable: true
           dragging:
             type: boolean
@@ -544,5 +544,14 @@ languages:
                 type: number
               - name: y
                 type: number
+      umbrella.AnimationClipViewer.Sound:
+        fields:
+          fraction:
+            type: number
+          enabled:
+            type: boolean
+          eventInstance:
+            type: integer
+            nullable: true
     functions:
       - name: AnimationViewerState_InitUI

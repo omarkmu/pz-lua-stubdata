@@ -27,8 +27,9 @@ languages:
           - name: init
           - name: getRecipes
             return:
-              - type: unknown
-      PZAPI:
+              - type: CraftRecipe[]
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.BuildUI:
+          BuildUI:
             type: UI.BuildUI

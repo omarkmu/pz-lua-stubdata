@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: zone
+                type: DesignationZoneAnimal
         staticFields:
           Type:
             defaultValue: '"ISDesignationZoneAnimalZoneUI"'
@@ -34,7 +36,8 @@ languages:
             type: ISButton
           infoBtn:
             type: ISButton
-          zOffsetAfterAnimal: {}
+          zOffsetAfterAnimal:
+            type: number
           nbOfAnimals:
             type: number
           zOffsetBeforeAnimal:
@@ -42,9 +45,19 @@ languages:
           updateTick:
             type: number
           animalbuttons:
-            type: table
+            type: ISButton[]
           animalLabels:
-            type: table
+            type: ISLabel[]
+          zone:
+            type: DesignationZoneAnimal
+          player:
+            type: IsoPlayer
+          playerNum:
+            type: integer
+          buttonBorderColor:
+            type: umbrella.RGBA
+          listTakesFocus:
+            type: boolean
         methods:
           - name: initialise
           - name: checkExist
@@ -54,13 +67,13 @@ languages:
           - name: render
           - name: updateAnimals
             return:
-              - type: unknown
+              - type: number
           - name: calcNearRiver
             return:
-              - type: unknown
+              - type: integer
           - name: calcWater
             return:
-              - type: number
+              - type: integer
           - name: calcFood
             return:
               - type: number
@@ -81,14 +94,15 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDown_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -118,7 +132,7 @@ languages:
             defaultValue: '"ISDesignationZoneAnimalZoneUI_AnimalsPanel"'
         fields:
           selected:
-            type: number
+            type: integer
           ui:
             type: ISDesignationZoneAnimalZoneUI
         methods:
@@ -132,7 +146,7 @@ languages:
               - type: boolean
           - name: size
             return:
-              - type: number
+              - type: integer
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -144,7 +158,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

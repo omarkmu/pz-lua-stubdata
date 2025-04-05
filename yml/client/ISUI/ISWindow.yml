@@ -85,10 +85,13 @@ languages:
           - name: addToolbar
             parameters:
               - name: toolbar
+                type: ISUIElement
               - name: height
+                type: number
           - name: removeToolbar
             parameters:
               - name: toolbar
+                type: ISUIElement
           - name: getClientWidth
             return:
               - type: number

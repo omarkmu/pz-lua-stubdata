@@ -28,6 +28,7 @@ languages:
           - name: verifyItem
             parameters:
               - name: _item
+                type: InventoryItem
             return:
               - type: boolean
                 nullable: true
@@ -35,8 +36,12 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
           - name: prerender
           - name: render

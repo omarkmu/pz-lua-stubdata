@@ -87,7 +87,7 @@ languages:
           - name: updateContainers
             parameters:
               - name: containers
-                type: ArrayList #<ItemContainer>
+                type: ArrayList<ItemContainer>
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData

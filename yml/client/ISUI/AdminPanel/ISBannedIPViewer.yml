@@ -36,11 +36,12 @@ languages:
           selectedIP:
             nullable: true
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           player: {}
           selectedFaction:
             nullable: true
           bannedIPs:
+            type: ArrayList<DBBannedIP>
             nullable: true
         methods:
           - name: initialise
@@ -50,8 +51,11 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: doSearch
@@ -69,3 +73,4 @@ languages:
           - name: gotBannedIPs
             parameters:
               - name: bannedIPs
+                type: ArrayList<DBBannedIP>

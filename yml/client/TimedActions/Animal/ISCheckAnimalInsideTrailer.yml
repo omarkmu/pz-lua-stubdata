@@ -7,19 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
         staticFields:
           Type:
             defaultValue: '"ISCheckAnimalInsideTrailer"'
         fields:
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

@@ -13,7 +13,9 @@ languages:
                 type: number
                 nullable: true
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoWorldInventoryObject
         staticFields:
           Type:
             defaultValue: '"ISExtendedPlacementUI"'
@@ -55,25 +57,36 @@ languages:
             type: string
           drawJoypadFocus:
             type: boolean
-          title: {}
-          character: {}
+          title:
+            type: string
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
-          worlditem: {}
-          item: {}
-          font: {}
+          worlditem:
+            type: IsoWorldInventoryObject
+          item:
+            type: InventoryItem
+          font:
+            type: UIFont
           pressedTime:
             type: number
           pressedMaxTime:
             type: number
           wasPressing:
             type: boolean
-          originalRotX: {}
-          originalRotY: {}
-          originalRotZ: {}
-          originalMovX: {}
-          originalMovY: {}
-          originalMovZ: {}
+          originalRotX:
+            type: integer
+          originalRotY:
+            type: integer
+          originalRotZ:
+            type: integer
+          originalMovX:
+            type: integer
+          originalMovY:
+            type: integer
+          originalMovZ:
+            type: integer
         methods:
           - name: initialise
           - name: setTxtboxValueFromSliders
@@ -81,13 +94,17 @@ languages:
           - name: onAxisSliderChange
             parameters:
               - name: value
+                type: number
               - name: slider
+                type: ISSliderPanel
           - name: onAxisTextChange
             parameters:
               - name: box
+                type: ISTextEntryBox
           - name: setupAxisTextBox
             parameters:
               - name: txtBox
+                type: ISTextEntryBox
           - name: setupButton
             parameters:
               - name: button
@@ -105,7 +122,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: setObject
             parameters:
               - name: item

@@ -7,14 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoGenerator
         staticFields:
           Type:
             defaultValue: '"ISGeneratorInfoAction"'
         fields:
           playerNum:
             type: integer
-          object: {}
+          object:
+            type: IsoGenerator
         methods:
           - name: isValid
             return:

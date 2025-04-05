@@ -9,6 +9,11 @@ languages:
         staticFields:
           Type:
             defaultValue: '"CFeedingTroughSystem"'
+          instance:
+            type: CFeedingTroughSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: isValidIsoObject
             parameters:

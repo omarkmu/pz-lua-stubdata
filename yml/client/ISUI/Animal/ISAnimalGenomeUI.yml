@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAnimalGenomeUI"'
@@ -23,16 +25,19 @@ languages:
           mainPanel:
             type: ISPanel
           allGenes:
-            type: table
+            type: umbrella.ISAnimalGenomeUI.GeneData[]
           title:
             type: string
-          animal: {}
-          chr: {}
+          animal:
+            type: IsoAnimal
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           animalName:
             type: string
-          genomeList: {}
+          genomeList:
+            type: ArrayList<AnimalGene>
         methods:
           - name: prerender
           - name: render
@@ -50,14 +55,56 @@ languages:
               - name: button
                 type: ISButton
               - name: gd
+                type: string
               - name: allele
+                type: AnimalAllele
           - name: onChangeDominant
             parameters:
               - name: modal
+                type: ISModalDialog
               - name: allele
+                type: AnimalAllele
           - name: reinit
           - name: onChangeValue
             parameters:
               - name: button
                 type: ISButton
               - name: allele
+                type: AnimalAllele
+      umbrella.ISAnimalGenomeUI.AlleleData:
+        fields:
+          allele:
+            type: AnimalAllele
+          value:
+            type: integer
+          childValue:
+            type: integer
+            nullable: true
+          used:
+            type: boolean
+          dominant:
+            type: '"true" | "false"'
+          geneticDisorder:
+            type: string
+      umbrella.ISAnimalGenomeUI.GeneData:
+        fields:
+          name:
+            type: string
+          allele1:
+            type: umbrella.ISAnimalGenomeUI.AlleleData
+          allele2:
+            type: umbrella.ISAnimalGenomeUI.AlleleData
+          currentValue1Btn:
+            type: ISButton
+          currentValue2Btn:
+            type: ISButton
+          dominant1Btn:
+            type: ISButton
+          dominant2Btn:
+            type: ISButton
+          used1Btn:
+            type: ISButton
+          gd1Btn:
+            type: ISButton
+          gd2Btn:
+            type: ISButton

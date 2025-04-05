@@ -41,4 +41,3 @@ languages:
                 type: string
             return:
               - type: ISInfoContainer
-                nullable: true

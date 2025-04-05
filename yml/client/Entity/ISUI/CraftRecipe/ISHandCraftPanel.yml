@@ -120,7 +120,7 @@ languages:
           - name: setRecipeList
             parameters:
               - name: _recipeList
-                type: ArrayList #<CraftRecipe>
+                type: ArrayList<CraftRecipe>
           - name: setRecipes
             parameters:
               - name: _recipeQuery
@@ -131,7 +131,7 @@ languages:
           - name: onUpdateRecipeList
             parameters:
               - name: _recipeList
-                type: ArrayList #<CraftRecipe>
+                type: ArrayList<CraftRecipe>
           - name: onShowManualSelectChanged
             parameters:
               - name: _showManualSelectInputs
@@ -140,7 +140,7 @@ languages:
           - name: onStopCraft
           - name: getCategoryList
             return:
-              - type: ArrayList #<string>
+              - type: ArrayList<string>
           - name: setRecipeFilter
             parameters:
               - name: _filterString

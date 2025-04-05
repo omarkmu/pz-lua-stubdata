@@ -7,18 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: mapUI
+                type: umbrella.MapUI
         staticFields:
           Type:
             defaultValue: '"ISWorldMapSharing"'
         fields:
           panelMain:
-            type: table
+            type: ISPanelJoypad
           panelPlayers:
             type: ISWorldMapSharing_PanelPlayers
           currentPanel:
-            type: table
-          currentSymbol: {}
-          mapUI: {}
+            type: ISUIElement
+          currentSymbol:
+            type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
+            nullable: true
+          mapUI:
+            type: umbrella.MapUI
         methods:
           - name: createChildren
           - name: onMouseDownOutside
@@ -31,10 +35,11 @@ languages:
           - name: setCurrentSymbol
             parameters:
               - name: symbol
+                type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
           - name: setCurrentPanel
             parameters:
               - name: panel
-                type: table
+                type: ISUIElement
           - name: applyChanges
           - name: close
           - name: onGainJoypadFocus
@@ -58,7 +63,7 @@ languages:
             defaultValue: '"ISWorldMapSharing_PanelPlayers"'
         fields:
           listbox:
-            type: table
+            type: ISScrollingListBox
           buttonAll:
             type: ISButton
           buttonNone:
@@ -78,9 +83,11 @@ languages:
           - name: setCurrentSymbol
             parameters:
               - name: symbol
+                type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
           - name: populateList
             parameters:
               - name: symbol
+                type: WorldMapSymbolsV2.WorldMapBaseSymbolV2
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -88,7 +95,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
@@ -96,5 +103,8 @@ languages:
           - name: onScoreboardUpdate
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>

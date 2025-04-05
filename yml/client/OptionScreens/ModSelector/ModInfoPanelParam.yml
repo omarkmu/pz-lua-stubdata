@@ -14,26 +14,33 @@ languages:
               - name: width
                 type: number
               - name: type
+                type: string
         staticFields:
           Type:
             defaultValue: '"ModInfoPanelParam"'
         fields:
           pressed:
             type: boolean
-          modInfo: {}
+          modInfo:
+            type: ChooseGameInfo.Mod
           zomboidVersion:
             type: string
           workshopID:
             type: string
           modLink:
             type: string
-          urlLen: {}
-          modLinkLen: {}
-          type: {}
+          urlLen:
+            type: number
+          modLinkLen:
+            type: number
+          type:
+            type: string
           name:
             type: string
-          labelWidth: {}
-          tickTexture: {}
+          labelWidth:
+            type: number
+          tickTexture:
+            type: Texture
           borderX:
             type: number
         methods:
@@ -43,6 +50,7 @@ languages:
               - name: button
                 type: ISButton
               - name: url
+                type: string
           - name: onMouseDown
             parameters:
               - name: x
@@ -52,6 +60,7 @@ languages:
           - name: setModInfo
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
       ModInfoPanel:
         staticFields:
           Param:

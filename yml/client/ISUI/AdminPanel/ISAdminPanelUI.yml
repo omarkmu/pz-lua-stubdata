@@ -62,9 +62,9 @@ languages:
           cancel:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
         methods:

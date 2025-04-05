@@ -7,24 +7,29 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: sq
                 type: IsoGridSquare
               - name: dir
+                type: IsoDirections
               - name: time
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISDigStairsAction"'
         fields:
-          item: {}
-          dir: {}
+          item:
+            type: InventoryItem
+          dir:
+            type: IsoDirections
           square:
             type: IsoGridSquare
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

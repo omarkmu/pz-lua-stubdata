@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: faction
+                type: Faction
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISFactionAddPlayerUI"'
@@ -30,19 +32,25 @@ languages:
             type: ISButton
           addPlayer:
             type: ISButton
-          player: {}
-          faction: {}
-          isOwner: {}
+          player:
+            type: IsoPlayer
+          faction:
+            type: Faction
+          isOwner:
+            type: boolean
           scoreboard:
-            type: table
+            type: umbrella.ISMiniScoreboardUI.Scoreboard
         methods:
           - name: initialise
           - name: populateList
           - name: drawPlayers
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: prerender
@@ -54,6 +62,9 @@ languages:
           - name: OnScoreboardUpdate
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>
           - name: OnMiniScoreboardUpdate

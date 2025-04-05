@@ -18,7 +18,8 @@ languages:
           Type:
             defaultValue: '"CharacterCreationAvatar"'
         fields:
-          avatarBackgroundTexture: {}
+          avatarBackgroundTexture:
+            type: Texture
           avatarPanel:
             type: ISUI3DModel
           turnLeftButton:
@@ -27,7 +28,8 @@ languages:
             type: ISButton
           animCombo:
             type: ISComboBox
-          direction: {}
+          direction:
+            type: IsoDirections
         methods:
           - name: createChildren
           - name: prerender
@@ -42,13 +44,17 @@ languages:
           - name: onAnimSelected
             parameters:
               - name: combo
+                type: ISComboBox
           - name: setCharacter
             parameters:
               - name: character
+                type: IsoGameCharacter
           - name: setSurvivorDesc
             parameters:
               - name: survivorDesc
+                type: SurvivorDesc
           - name: setFacePreview
             parameters:
               - name: val
+                type: boolean
           - name: rescaleAvatarViewer

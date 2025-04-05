@@ -23,7 +23,8 @@ languages:
                 type: table
             return:
               - type: UI.TestExample
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.TestExample:
+          TestExample:
             type: UI.TestExample

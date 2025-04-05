@@ -88,3 +88,16 @@ languages:
                 type: umbrella.ISWidgetRecipeTools.ToolSide
           - name: render
           - name: update
+      umbrella.ISWidgetRecipeTools.ToolSide:
+        fields:
+          enabled:
+            type: boolean
+          inputScript:
+            type: InputScript
+          inputWidget:
+            type: ISWidgetInput
+            nullable: true
+          icon:
+            type: ISImage
+          label:
+            type: ISLabel

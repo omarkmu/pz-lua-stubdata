@@ -23,7 +23,7 @@ languages:
           users:
             type: ISComboBox
           onlineUsers:
-            type: ArrayList #<IsoPlayer>
+            type: ArrayList<IsoPlayer>
           tickBox:
             type: ISTickBox
           triggerThunder:

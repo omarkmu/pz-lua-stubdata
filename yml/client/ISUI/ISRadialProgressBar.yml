@@ -15,12 +15,18 @@ languages:
               - name: height
                 type: number
               - name: texturePath
+                type: string
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISRadialProgressBar"'
         fields:
-          texture: {}
+          texture:
+            type: Texture
+          javaObject:
+            type: RadialProgressBar
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: prerender
@@ -28,14 +34,17 @@ languages:
           - name: setValue
             parameters:
               - name: _val
+                type: number
           - name: getValue
             return:
-              - type: unknown
+              - type: number
                 nullable: true
           - name: setTexture
             parameters:
               - name: _tex
+                type: Texture
+                nullable: true
           - name: getTexture
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true

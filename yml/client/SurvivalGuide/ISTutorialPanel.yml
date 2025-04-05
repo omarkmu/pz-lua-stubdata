@@ -30,7 +30,8 @@ languages:
             type: ISRichTextPanel
           tutorialSetInfo:
             type: ISTutorialSetInfo
-          moreInfo: {}
+          moreInfo:
+            type: string
           title:
             type: string
           visibleTarget:
@@ -48,7 +49,7 @@ languages:
           - name: setPage
             parameters:
               - name: pageNum
-                type: number
+                type: integer
           - name: fillChapterList
           - name: prerender
           - name: render
@@ -86,13 +87,16 @@ languages:
             defaultValue: '"ISSurvivalGuideListBox"'
         fields:
           selected:
-            type: number
+            type: integer
         methods:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -106,7 +110,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirRight
@@ -139,7 +143,8 @@ languages:
           smoothScrollTargetY:
             type: number
             nullable: true
-          text: {}
+          text:
+            type: string
         methods:
           - name: prerender
           - name: onMouseWheel
@@ -152,7 +157,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirLeft
@@ -197,7 +202,9 @@ languages:
           - name: onTickBox
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -209,7 +216,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirLeft

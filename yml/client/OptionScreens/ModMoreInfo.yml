@@ -28,6 +28,7 @@ languages:
           - name: create
             parameters:
               - name: desc
+                type: string
           - name: prerender
         staticMethods:
           - name: onOptionMouseDown

@@ -17,10 +17,10 @@ languages:
             type: ISButton
           connecting:
             type: boolean
-          host: {}
+          host:
+            type: string
           port:
             type: number
-            nullable: true
           serverPassword:
             type: string
         methods:
@@ -30,18 +30,25 @@ languages:
           - name: connect
             parameters:
               - name: host
+                type: string
               - name: port
+                type: string
               - name: serverPassword
                 type: string
           - name: OnSteamServerResponded2
             parameters:
               - name: host
+                type: string
               - name: port
+                type: integer
               - name: server2
+                type: Server
           - name: OnSteamServerFailedToRespond2
             parameters:
               - name: host
+                type: string
               - name: port
+                type: integer
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData

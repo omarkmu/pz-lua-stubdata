@@ -74,7 +74,7 @@ languages:
           craftLogicComponent:
             type: CraftLogic
           recipes:
-            type: ArrayList #<CraftRecipe>
+            type: ArrayList<CraftRecipe>
           logic:
             type: Component
         methods:

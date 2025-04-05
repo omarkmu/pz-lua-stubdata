@@ -19,17 +19,25 @@ languages:
             defaultValue: '"ISPanelJoypad"'
         fields:
           joypadButtons:
-            type: table
+            type: ISButton[]
           background:
             type: boolean
-          ISButtonA: {}
-          ISButtonB: {}
-          ISButtonY: {}
-          ISButtonX: {}
+          ISButtonA:
+            type: ISButton
+            nullable: true
+          ISButtonB:
+            type: ISButton
+            nullable: true
+          ISButtonY:
+            type: ISButton
+            nullable: true
+          ISButtonX:
+            type: ISButton
+            nullable: true
           joypadIndex:
-            type: number
+            type: integer
           joypadIndexY:
-            type: number
+            type: integer
           moving:
             type: boolean
           downX:
@@ -39,11 +47,11 @@ languages:
           mouseOver:
             type: boolean
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           joypadButtonsY:
-            type: table
+            type: ISButton[][]
           moveWithMouse:
             type: boolean
         methods:
@@ -54,30 +62,49 @@ languages:
                 type: boolean
               - name: joypadData
                 type: JoypadData
+                nullable: true
           - name: insertNewLineOfButtons
             parameters:
               - name: button1
-                type: table
+                type: ISButton
+                nullable: true
               - name: button2
                 type: ISButton
                 nullable: true
               - name: button3
+                type: ISButton
+                nullable: true
               - name: button4
+                type: ISButton
+                nullable: true
               - name: button5
+                type: ISButton
+                nullable: true
               - name: button6
+                type: ISButton
+                nullable: true
               - name: button7
+                type: ISButton
+                nullable: true
               - name: button8
+                type: ISButton
+                nullable: true
               - name: button9
+                type: ISButton
+                nullable: true
               - name: button10
+                type: ISButton
+                nullable: true
             return:
-              - type: table
+              - type: ISButton[]
           - name: insertNewListOfButtons
             parameters:
               - name: list
+                type: ISButton[]
           - name: insertNewListOfButtonsList
             parameters:
               - name: list
-                type: table
+                type: ISButton[]
           - name: noBackground
           - name: close
           - name: setISButtonForA
@@ -104,42 +131,42 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
                 nullable: true
           - name: getVisibleChildren
             parameters:
               - name: joypadIndexY
-                type: number
+                type: integer
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: getMinVisibleRow
             return:
-              - type: number
+              - type: integer
           - name: getMaxVisibleRow
             return:
-              - type: number
+              - type: integer
           - name: getPrevVisibleRow
             parameters:
               - name: row
-                type: number
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: getNextVisibleRow
             parameters:
               - name: row
-                type: number
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: getClosestChild
             parameters:
               - name: children
-                type: table
+                type: ISUIElement[]
               - name: x
                 type: number
             return:
-              - type: number
+              - type: integer
           - name: onJoypadDirLeft
             parameters:
               - name: joypadData
@@ -158,10 +185,12 @@ languages:
                 type: JoypadData
           - name: getJoypadFocus
             return:
-              - type: unknown
+              - type: ISUIElement
+                nullable: true
           - name: setJoypadFocus
             parameters:
               - name: child
+                type: ISUIElement
               - name: joypadData
                 type: JoypadData
           - name: restoreJoypadFocus
@@ -212,5 +241,4 @@ languages:
                 type: number
               - name: dy
                 type: number
-                nullable: true
           - name: prerender

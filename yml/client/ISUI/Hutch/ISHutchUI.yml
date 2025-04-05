@@ -82,7 +82,7 @@ languages:
               - name: hutchUI
                 type: ISHutchUI
               - name: index
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISHutchNestBox"'
@@ -92,25 +92,29 @@ languages:
           hutchUI:
             type: ISHutchUI
           index:
-            type: number
-          chr: {}
+            type: integer
+          chr:
+            type: IsoPlayer
           playerObj:
             type: IsoPlayer
           playerNum:
             type: integer
           possibleEggPosition:
-            type: table
-          favoriteStar: {}
+            type: umbrella.XY[]
+          favoriteStar:
+            type: Texture
         methods:
           - name: createChildren
           - name: render
           - name: doNestStuff
           - name: getNest
             return:
-              - type: unknown
+              - type: IsoHutch.NestBox
+                nullable: true
           - name: getAnimal
             return:
-              - type: unknown
+              - type: IsoAnimal
+                nullable: true
           - name: initEggPos
           - name: onButtonGrab
           - name: onRightMouseUp
@@ -148,7 +152,7 @@ languages:
             defaultValue: '"ISHutchNestParentPanel"'
         fields:
           nestBoxUI:
-            type: table
+            type: ISHutchNestBox[]
           eggHatchDoorBtn:
             type: ISButton
           closedDoorPanel:
@@ -187,7 +191,7 @@ languages:
               - name: hutchUI
                 type: ISHutchUI
               - name: index
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISHutchRoost"'
@@ -197,22 +201,26 @@ languages:
           hutchUI:
             type: ISHutchUI
           index:
-            type: number
-          chr: {}
+            type: integer
+          chr:
+            type: IsoPlayer
           playerObj:
             type: IsoPlayer
           playerNum:
             type: integer
-          favoriteStar: {}
+          favoriteStar:
+            type: Texture
         methods:
           - name: createChildren
           - name: render
           - name: getAnimal
             return:
-              - type: unknown
+              - type: IsoAnimal
+                nullable: true
           - name: getBody
             return:
-              - type: unknown
+              - type: IsoDeadBody
+                nullable: true
           - name: onButtonGrab
           - name: onRightMouseUp
             parameters:
@@ -223,13 +231,16 @@ languages:
           - name: onForceEgg
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onKill
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onCheatAddAnimal
           - name: onCheatRemoveAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: onJoypadDownInParent
             parameters:
               - name: button
@@ -255,9 +266,9 @@ languages:
             defaultValue: '"ISHutchRoostParentPanel"'
         fields:
           roostUI:
-            type: table
+            type: ISHutchRoost[]
           avatarPanel:
-            type: table
+            type: ISHutch3DModel[]
           birdPooCleanBtn:
             type: ISButton
           doorBtn:
@@ -299,14 +310,17 @@ languages:
               - name: height
                 type: number
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISHutchUI"'
           instance:
             type: ISHutchUI
             nullable: true
-          ui: {}
+          ui:
+            type: table<integer, ISHutchUI>
         fields:
           tabPanel:
             type: ISTabPanel
@@ -314,24 +328,30 @@ languages:
             type: ISHutchNestParentPanel
           roostParentPanel:
             type: ISHutchRoostParentPanel
-          avatarBackgroundTexture: {}
-          hutch: {}
-          chr: {}
+          avatarBackgroundTexture:
+            type: Texture
+          hutch:
+            type: IsoHutch
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           refreshNeeded:
             type: boolean
           btnBorder:
-            type: table
+            type: umbrella.RGBA
           fgBar:
-            type: table
+            type: umbrella.RGBA
           fgBarOrange:
-            type: table
+            type: umbrella.RGBA
           fgBarRed:
-            type: table
-          chickenTexture: {}
-          chickenEmptyTexture: {}
-          eggTexture: {}
+            type: umbrella.RGBA
+          chickenTexture:
+            type: Texture
+          chickenEmptyTexture:
+            type: Texture
+          eggTexture:
+            type: Texture
         methods:
           - name: prerender
           - name: render
@@ -344,26 +364,39 @@ languages:
           - name: onGrabNest
             parameters:
               - name: index
+                type: integer
           - name: onGrabRoost
             parameters:
               - name: index
+                type: integer
           - name: add3DAnimal
             parameters:
               - name: panel
+                type: ISHutch3DModel
               - name: animal
+                type: IsoAnimal
               - name: chickenX
+                type: number
               - name: chickenY
+                type: number
           - name: checkAnimalSit
             parameters:
               - name: panel
+                type: ISHutch3DModel
               - name: animal
+                type: IsoAnimal
           - name: checkAnimal
             parameters:
               - name: index
+                type: integer
               - name: chickenX
+                type: number
               - name: chickenY
+                type: number
               - name: rowY
+                type: number
               - name: SHELF_HEIGHT
+                type: number
               - name: btnGrabOffset
           - name: onTabsActivateView
           - name: isKeyConsumed
@@ -380,6 +413,7 @@ languages:
           - name: setVisible
             parameters:
               - name: vis
+                type: boolean
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -387,14 +421,15 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDown_Descendant
             parameters:
               - name: descendant
+                type: ISUIElement
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
@@ -403,5 +438,6 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: hutch
+                type: IsoHutch
             return:
               - type: ISHutchUI

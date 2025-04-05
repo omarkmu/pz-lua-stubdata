@@ -16,24 +16,29 @@ languages:
                 type: number
               - name: addAlertLed
                 type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBatteryStatusDisplay"'
         fields:
           led:
             type: ISLedLight
+            nullable: true
           power:
             type: number
           powerInt:
-            type: number
+            type: integer
           powerDisp:
             type: string
           fontheight:
             type: number
           doLed:
             type: boolean
-          backTexture: {}
-          powerDispH: {}
+            nullable: true
+          backTexture:
+            type: Texture
+          powerDispH:
+            type: number
         methods:
           - name: initialise
           - name: createChildren
@@ -42,12 +47,14 @@ languages:
               - name: num
                 type: number
               - name: idp
-                type: number
+                type: integer
+                nullable: true
             return:
               - type: number
           - name: setPower
             parameters:
               - name: _power
+                type: number
           - name: update
           - name: prerender
           - name: render

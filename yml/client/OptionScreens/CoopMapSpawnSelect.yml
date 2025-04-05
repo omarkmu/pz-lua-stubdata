@@ -21,7 +21,9 @@ languages:
             type: CoopMapSpawnSelect
             nullable: true
         fields:
-          selectedRegion: {}
+          selectedRegion:
+            type: umbrella.SpawnRegion
+            nullable: true
         methods:
           - name: canRespawnWithSelf
             return:
@@ -31,7 +33,7 @@ languages:
               - type: boolean
           - name: hasChoices
             return:
-              - type: boolean | table
+              - type: boolean
                 nullable: true
           - name: fillList
           - name: clickBack

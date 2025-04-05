@@ -1,74 +1,105 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISXuiBuilder.Constructor:
+        - type: "fun(xuiScript: XuiScript, parent: UIElement?, buildInfo: unknown?, ...:
+            unknown?)"
     classes:
       ISXuiBuilder:
         staticFields:
-          constructors: {}
+          constructors:
+            type: ISXuiBuilder.constructors
         staticMethods:
           - name: RegisterXuiFunctions
             parameters:
               - name: _o
-                nullable: true
+                type: ISUIElement
               - name: _force
                 type: boolean
           - name: initialiseObject
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _o
-                type: ISXuiTableLayout
+                type: ISUIElement
               - name: _parent
+                type: ISUIElement
+                nullable: true
           - name: build
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _parent
-                type: table
+                type: ISUIElement
+                nullable: true
               - name: _buildInfo
-                type: table
+                type: unknown
                 nullable: true
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: buildSingle
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _parent
+                type: ISUIElement
+                nullable: true
               - name: _buildInfo
+                type: unknown
+                nullable: true
               - name: ...
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: applySpacing
             parameters:
               - name: _spacing
+                type: XuiScript.XuiSpacing
               - name: _origX
+                type: number
               - name: _origY
+                type: number
               - name: _origW
+                type: number
               - name: _origH
+                type: number
             return:
+              - type: number
+              - type: number
+              - type: number
               - type: number
           - name: applyXuiTable
             parameters:
               - name: _xuiScript
+                type: XuiScript
+                nullable: true
               - name: _o
-                type: ISXuiTableLayoutCell
+                type: ISUIElement
                 nullable: true
               - name: _parent
+                type: ISUIElement
                 nullable: true
               - name: _noChildTable
                 type: boolean
           - name: ensureXuiTable
             parameters:
               - name: _o
+                type: ISUIElement
           - name: applySizing
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _o
+                type: ISUIElement
               - name: _parent
+                type: ISUIElement
+                nullable: true
           - name: setDrawRectangle
             parameters:
               - name: _o
-                type: XuiDebugLayoutWindow | XuiTestWindow
+                type: ISUIElement
               - name: _x
                 type: number
               - name: _y
@@ -80,6 +111,7 @@ languages:
           - name: setCellRectangle
             parameters:
               - name: _o
+                type: ISUIElement
               - name: _x
                 type: number
               - name: _y
@@ -91,99 +123,290 @@ languages:
           - name: autoApplyTableKeys
             parameters:
               - name: _xuiScript
+                type: XuiScript
               - name: _o
-                type: ISXuiTableLayoutCell
-                nullable: true
+                type: ISUIElement
               - name: _parent
+                type: ISUIElement
                 nullable: true
               - name: _ignoreKeys
+                type: table<string, boolean>
                 nullable: true
               - name: _autoApplyOverride
+                type: XuiAutoApply
+                nullable: true
           - name: colorTable
             parameters:
               - name: _xuiColor
+                type: XuiColor
             return:
-              - type: table
+              - type: umbrella.RGBA
           - name: colorTableFromColor
             parameters:
               - name: _color
+                type: Color | ImmutableColor
             return:
-              - type: table
+              - type: umbrella.RGBA
           - name: texture
             parameters:
               - name: _texName
                 type: string
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true
       ISXuiFunctions:
         staticMethods:
           - name: xuiGet
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _xuiKey
+                type: string
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: xuiFind
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _xuiKey
+                type: string
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: xuiGetAll
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _xuiKey
+                type: string
               - name: _list
+                type: table
+                nullable: true
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: xuiFindAll
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _xuiKey
+                type: string
               - name: _list
+                type: table
+                nullable: true
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: xuiGetClass
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _luaClass
+                type: string
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: xuiFindClass
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _luaClass
+                type: string
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: xuiGetClassAll
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _luaClass
+                type: string
               - name: _list
+                type: table
+                nullable: true
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: xuiFindClassAll
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _luaClass
+                type: string
               - name: _list
+                type: table
+                nullable: true
             return:
-              - type: table
+              - type: ISUIElement[]
           - name: xuiGetUUID
             parameters:
               - name: _self
+                type: ISUIElement
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: xuiFindAllUUID
             parameters:
               - name: _self
+                type: ISUIElement
               - name: _uuid
+                type: string
               - name: _list
+                type: table
+                nullable: true
             return:
-              - type: table
+              - type: ISUIElement[]
+      ISXuiBuilder.constructors:
+        local: true
+        fields:
+          "[string]":
+            type: umbrella.ISXuiBuilder.Constructor
+        staticMethods:
+          - name: ISMyUIClassExample
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _parent
+                type: ISUIElement
+              - name: _buildInfo
+                type: unknown
+                nullable: true
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+              - name: width
+                type: number
+                nullable: true
+              - name: height
+                type: number
+                nullable: true
+              - name: clicktarget
+                nullable: true
+              - name: onclick
+                nullable: true
+              - name: onmousedown
+                nullable: true
+            return:
+              - type: unknown
+              - type: boolean
+          - name: ISXuiTableLayout
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _parent
+                type: ISUIElement
+              - name: _buildInfo
+                type: unknown
+                nullable: true
+              - name: x
+                type: number
+                nullable: true
+              - name: y
+                type: number
+                nullable: true
+              - name: width
+                type: number
+                nullable: true
+              - name: height
+                type: number
+                nullable: true
+              - name: columns
+                type: integer
+                nullable: true
+              - name: rows
+                type: integer
+                nullable: true
+            return:
+              - type: ISXuiTableLayout
+              - type: boolean
+          - name: ISColorPicker
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _parent
+                type: ISUIElement
+              - name: _buildInfo
+                type: unknown
+                nullable: true
+              - name: _x
+                type: number
+                nullable: true
+              - name: _y
+                type: number
+                nullable: true
+              - name: _HSBFactor
+                type: umbrella.HSB
+                nullable: true
+            return:
+              - type: ISColorPicker
+              - type: boolean
+          - name: ISImage
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _parent
+                type: ISUIElement
+              - name: _buildInfo
+                type: unknown
+                nullable: true
+              - name: _x
+                type: number
+                nullable: true
+              - name: _y
+                type: number
+                nullable: true
+              - name: _width
+                type: number
+                nullable: true
+              - name: _height
+                type: number
+                nullable: true
+              - name: _texture
+                type: Texture
+                nullable: true
+            return:
+              - type: ISImage
+              - type: boolean
+          - name: ISLabel
+            parameters:
+              - name: _xuiScript
+                type: XuiScript
+              - name: _parent
+                type: ISUIElement
+              - name: _buildInfo
+                type: unknown
+                nullable: true
+              - name: _x
+                type: number
+                nullable: true
+              - name: _y
+                type: number
+                nullable: true
+              - name: _height
+                type: number
+                nullable: true
+              - name: _name
+                type: string
+                nullable: true
+              - name: _r
+                type: number
+                nullable: true
+              - name: _g
+                type: number
+                nullable: true
+              - name: _b
+                type: number
+                nullable: true
+              - name: _a
+                type: number
+                nullable: true
+              - name: _font
+                type: UIFont
+                nullable: true
+              - name: _bLeft
+                type: boolean
+                nullable: true
+            return:
+              - type: ISLabel
+              - type: boolean

@@ -22,15 +22,19 @@ languages:
             type: ISComboBox
           tuneInButton:
             type: ISButton
-          selectedPreset: {}
+          selectedPreset:
+            type: PresetEntry
+            nullable: true
           presets:
+            type: ArrayList<PresetEntry>
             nullable: true
           lastModeExpanded:
             type: boolean
           parent:
+            type: ISUIElement
             nullable: true
           focusElement:
-            type: ISComboBox
+            type: ISUIElement
             nullable: true
           fontheight:
             type: number
@@ -46,18 +50,25 @@ languages:
           - name: addComboOption
             parameters:
               - name: _freq
+                type: number
               - name: _name
                 type: string
           - name: readPresets
             parameters:
               - name: _selected
+                type: integer
+                nullable: true
           - name: clear
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
               - type: boolean
           - name: prerender
@@ -66,34 +77,35 @@ languages:
           - name: setParent
             parameters:
               - name: _parent
+                type: ISUIElement
           - name: getParent
             return:
-              - type: unknown
+              - type: ISUIElement
                 nullable: true
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: boolean
               - type: boolean
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true

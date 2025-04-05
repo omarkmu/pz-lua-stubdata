@@ -7,29 +7,39 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicleA
+                type: BaseVehicle
               - name: vehicleB
-                nullable: true
+                type: BaseVehicle
               - name: attachmentA
+                type: string
               - name: attachmentB
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISAttachTrailerToVehicle"'
         fields:
-          sound: {}
-          vehicleA: {}
-          vehicleB:
+          sound:
+            type: integer
             nullable: true
-          attachmentA: {}
-          attachmentB: {}
-          hitchPos: {}
+          vehicleA:
+            type: BaseVehicle
+          vehicleB:
+            type: BaseVehicle
+          attachmentA:
+            type: string
+          attachmentB:
+            type: string
+          hitchPos:
+            type: Vector3f
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

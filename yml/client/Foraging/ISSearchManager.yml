@@ -189,11 +189,11 @@ languages:
           ignoredItemCategories:
             type: table<string, boolean>
           isoMarkers:
-            type: table<string, IsoMarkers.IsoMarker>
+            type: table<string, IsoMarker>
           worldMarkers:
             type: table<string, unknown>
           debugMarkers:
-            type: table<string, IsoMarkers.CircleIsoMarker>
+            type: table<string, CircleIsoMarker>
           debugArrows:
             type: table<string, WorldMarkers.PlayerHomingPoint>
           aimBonusTickMax:
@@ -312,7 +312,7 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _catDef
-                type: umbrella.Foraging.CategoryDef
+                type: umbrella.Foraging.CategoryDefinition
               - name: _zoneData
                 type: umbrella.Foraging.ZoneData
           - name: createSpecificIcon
@@ -338,7 +338,7 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _catDef
-                type: umbrella.Foraging.CategoryDef
+                type: umbrella.Foraging.CategoryDefinition
               - name: _zoneData
                 type: umbrella.Foraging.ZoneData
           - name: worldItemTest

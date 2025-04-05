@@ -21,13 +21,16 @@ languages:
         fields:
           boxSize:
             type: number
-          dragTexture: {}
+          dragTexture:
+            type: Texture
           dragItem:
+            type: umbrella.ModSelector.ModLoadOrderData
             nullable: true
           mouseOverDragIcon:
+            type: umbrella.ISScrollingListBox.Item
             nullable: true
           selected:
-            type: number
+            type: integer
         methods:
           - name: onMouseDown
             parameters:
@@ -54,8 +57,11 @@ languages:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: moveItemUp
@@ -64,6 +70,7 @@ languages:
           - name: tooltipRender
             parameters:
               - name: self
+                type: ISToolTip
       ModSelector:
         staticFields:
           ModOrderListBox:

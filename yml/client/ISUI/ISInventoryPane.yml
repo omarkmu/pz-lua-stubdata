@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISInventoryPane.ItemRecord:
+        - type: umbrella.ContextMenuItemStack
     classes:
       ISInventoryPane:
         extends: ISPanel
@@ -15,7 +18,9 @@ languages:
               - name: height
                 type: number
               - name: inventory
+                type: ItemContainer
               - name: zoom
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISInventoryPane"'
@@ -24,6 +29,7 @@ languages:
           ghc:
             defaultValue: getCore():getGoodHighlitedColor()
           highlightItem:
+            type: string
             nullable: true
         fields:
           headerHgt:
@@ -63,7 +69,7 @@ languages:
           mouseOverOption:
             type: number
           selected:
-            type: table
+            type: table<integer, InventoryItem | umbrella.ISInventoryPane.ItemRecord>
           dragStarted:
             type: boolean
           removeAllDialog:
@@ -95,12 +101,13 @@ languages:
           draggingMarquisY:
             type: number
           itemslist:
-            type: table
+            type: umbrella.ISInventoryPane.ItemRecord[]
           itemindex:
-            type: table
+            type: table<string, umbrella.ISInventoryPane.ItemRecord>
           collapsed:
-            type: table
+            type: table<string, boolean>
           hotbar:
+            type: ISHotbar
             nullable: true
           blinkAlpha:
             type: number
@@ -108,30 +115,46 @@ languages:
             type: boolean
           mode:
             type: string
-          font: {}
-          fontHgt: {}
-          itemHgt: {}
+          font:
+            type: UIFont
+          fontHgt:
+            type: number
+          itemHgt:
+            type: number
           texScale:
             type: number
-          inventory: {}
-          zoom: {}
+          inventory:
+            type: ItemContainer
+          zoom:
+            type: number
           items:
-            type: table
+            type: InventoryItem[]
           highlightItems:
             type: table
           draggedItems:
             type: ISInventoryPaneDraggedItems
-          expandicon: {}
-          filtericon: {}
-          collapseicon: {}
-          treeexpicon: {}
-          treecolicon: {}
-          equippedItemIcon: {}
-          equippedInHotbar: {}
-          brokenItemIcon: {}
-          frozenItemIcon: {}
-          poisonIcon: {}
-          favoriteStar: {}
+          expandicon:
+            type: Texture
+          filtericon:
+            type: Texture
+          collapseicon:
+            type: Texture
+          treeexpicon:
+            type: Texture
+          treecolicon:
+            type: Texture
+          equippedItemIcon:
+            type: Texture
+          equippedInHotbar:
+            type: Texture
+          brokenItemIcon:
+            type: Texture
+          frozenItemIcon:
+            type: Texture
+          poisonIcon:
+            type: Texture
+          favoriteStar:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -173,11 +196,13 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: RestoreLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: rowAt
             parameters:
               - name: x
@@ -185,11 +210,11 @@ languages:
               - name: y
                 type: number
             return:
-              - type: number
+              - type: integer
           - name: topOfItem
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
               - type: number
           - name: onMouseWheel
@@ -201,7 +226,7 @@ languages:
           - name: selectIndex
             parameters:
               - name: index
-                type: number
+                type: integer
           - name: onMouseMoveOutside
             parameters:
               - name: dx
@@ -215,24 +240,29 @@ languages:
                 type: number
           - name: toggleStove
             return:
-              - type: unknown
+              - type: boolean
           - name: sortItemsByType
             parameters:
               - name: items
+                type: InventoryItem[]
           - name: sortItemsByWeight
             parameters:
               - name: items
+                type: InventoryItem[]
           - name: sortItemsByTypeAndWeight
             parameters:
               - name: items
+                type: InventoryItem[]
           - name: transferItemsByWeight
             parameters:
               - name: items
-                type: table
+                type: InventoryItem[]
               - name: container
+                type: ItemContainer
           - name: removeAll
             parameters:
               - name: player
+                type: integer
           - name: onConfirmDelete
             parameters:
               - name: button
@@ -261,6 +291,7 @@ languages:
           - name: doContextualDblClick
             parameters:
               - name: item
+                type: InventoryItem
           - name: onMouseDoubleClick
             parameters:
               - name: x
@@ -309,19 +340,20 @@ languages:
           - name: updateSmoothScrolling
           - name: isMouseOverScrollBar
             return:
-              - type: unknown
+              - type: boolean
           - name: prerender
           - name: rendericons
           - name: update
           - name: saveSelection
             parameters:
               - name: selected
-                type: table
+                type: table<InventoryItem, "item" | "group">
             return:
-              - type: table
+              - type: table<InventoryItem, "item" | "group">
           - name: restoreSelection
             parameters:
               - name: selected
+                type: table<InventoryItem, "item" | "group">
           - name: refreshContainer
           - name: renderdetails
             parameters:
@@ -332,6 +364,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: drawProgressBar
@@ -347,7 +380,7 @@ languages:
               - name: f
                 type: number
               - name: fg
-                type: table
+                type: umbrella.RGBA
           - name: drawTextAndProgressBar
             parameters:
               - name: text
@@ -355,19 +388,26 @@ languages:
               - name: fraction
                 type: number
               - name: xoff
+                type: number
               - name: top
                 type: number
               - name: fgText
-                type: table
+                type: umbrella.RGBA
               - name: fgBar
-                type: table
+                type: umbrella.RGBA
           - name: drawItemDetails
             parameters:
               - name: item
+                type: InventoryItem
               - name: y
+                type: number
               - name: xoff
+                type: number
               - name: yoff
+                type: number
               - name: red
+                type: boolean
+                nullable: true
           - name: doWorldObjectHighlight
             parameters:
               - name: _item
@@ -388,45 +428,57 @@ languages:
           - name: itemSortByWeightAsc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: itemSortByWeightDesc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: itemSortByNameInc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: itemSortByNameDesc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: itemSortByCatInc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: itemSortByCatDesc
             parameters:
               - name: a
+                type: umbrella.ISInventoryPane.ItemRecord
               - name: b
+                type: umbrella.ISInventoryPane.ItemRecord
             return:
               - type: boolean
           - name: getActualItems
             parameters:
               - name: items
-                type: table
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
             return:
-              - type: table
+              - type: InventoryItem[]
       ISInventoryPaneDraggedItems:
         constructors:
           - parameters:
@@ -436,9 +488,10 @@ languages:
           playerNum:
             type: integer
           items:
-            type: table
+            type: InventoryItem[]
             nullable: true
           mouseOverContainer:
+            type: ItemContainer
             nullable: true
           mouseOverWhat:
             type: string
@@ -448,11 +501,11 @@ languages:
           inventoryPane:
             type: ISInventoryPane
           itemNotOK:
-            type: table
+            type: table<InventoryItem, boolean>
         methods:
           - name: getDropContainer
             return:
-              - type: unknown
+              - type: ItemContainer
                 nullable: true
               - type: string
                 nullable: true
@@ -460,6 +513,7 @@ languages:
           - name: cannotDropItem
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: reset

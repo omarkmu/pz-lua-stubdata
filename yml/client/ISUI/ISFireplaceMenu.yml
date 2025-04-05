@@ -12,6 +12,8 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -20,57 +22,79 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: bbq
+                type: IsoFireplace
           - name: toPlayerInventory
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem | ArrayList<InventoryItem>
                 nullable: true
           - name: onAddFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
               - name: fuelType
+                type: string
           - name: onAddMultipleFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
               - name: fuelType
+                type: string
           - name: onAddAllFuel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
           - name: onLightFromLiterature
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: itemType
+                type: string
               - name: lighter
+                type: InventoryItem
               - name: fireplace
+                type: IsoFireplace
               - name: fuelAmt
+                type: number
           - name: onLightFromPetrol
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: lighter
+                type: InventoryItem
               - name: petrol
+                type: InventoryItem
               - name: fireplace
+                type: IsoFireplace
           - name: onLightFromKindle
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: percedWood
+                type: InventoryItem
               - name: stickOrBranch
+                type: InventoryItem
               - name: fireplace
+                type: IsoFireplace
           - name: onExtinguish
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: fireplace
+                type: IsoFireplace

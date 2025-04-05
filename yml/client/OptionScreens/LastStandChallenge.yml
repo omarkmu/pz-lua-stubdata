@@ -2,9 +2,60 @@ version: "1.1"
 languages:
   lua:
     classes:
-      LastStandChallenge: {}
+      LastStandChallenge:
+        fields:
+          "[string]":
+            type: umbrella.LastStandChallenge.Challenge
+      umbrella.LastStandChallenge.BaseChallenge:
+        fields:
+          id:
+            type: string
+          gameMode:
+            type: string
+          image:
+            type: string
+          video:
+            type: string
+            nullable: true
+          x:
+            type: integer
+          y:
+            type: integer
+          z:
+            type: integer
+          hourOfDay:
+            type: integer
+          zombiesMinPerChunk:
+            type: integer
+            nullable: true
+          zombiesMaxPerChunk:
+            type: integer
+            nullable: true
+          xCell:
+            type: integer
+            nullable: true
+          yCell:
+            type: integer
+            nullable: true
+          OnInitWorld:
+            type: function
+          Render:
+            type: function
+          AddPlayer:
+            type: "fun(playerNum: integer, playerObj: IsoPlayer)"
+          RemovePlayer:
+            type: "fun(playerObj: IsoPlayer)"
+          onBackButtonWheel:
+            type: "fun(playerNum: integer, dir: string)"
+      umbrella.LastStandChallenge.Challenge:
+        extends: umbrella.LastStandChallenge.BaseChallenge
+        fields:
+          name:
+            type: string
+          description:
+            type: string
     functions:
       - name: addChallenge
         parameters:
           - name: challenge
-            type: table
+            type: umbrella.LastStandChallenge.BaseChallenge

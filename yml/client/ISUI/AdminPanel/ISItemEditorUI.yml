@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: admin
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISItemEditorUI"'
@@ -31,13 +33,15 @@ languages:
           cancel:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
-          admin: {}
-          item: {}
+          admin:
+            type: IsoPlayer
+          item:
+            type: InventoryItem
         methods:
           - name: initialise
           - name: createChildren
@@ -52,16 +56,20 @@ languages:
           - name: setVisible
             parameters:
               - name: visible
+                type: boolean
           - name: render
           - name: prerender
         staticMethods:
           - name: OpenPanel
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _item
+                type: InventoryItem
           - name: onMouseWheel
             parameters:
               - name: self
+                type: ISUIElement
               - name: del
                 type: number
             return:

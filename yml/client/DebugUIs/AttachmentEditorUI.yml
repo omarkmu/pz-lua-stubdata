@@ -749,5 +749,12 @@ languages:
             parameters:
               - name: key
                 type: integer
+      umbrella.AttachmentEditorUI.EditUI:
+        fields:
+          current:
+            type: AttachmentEditorUI_EditPanel
+            nullable: true
+          attachments:
+            type: AttachmentEditorUI_EditAttachment
     functions:
       - name: AttachmentEditorState_InitUI

@@ -30,14 +30,16 @@ languages:
             type: CharacterCreationAvatar
           characterPanel:
             type: CharacterCreationMainCharacterPanel
-          columnWidth: {}
+          columnWidth:
+            type: number
           yOffset:
             type: number
           clothingTextureComboWidth:
             type: number
           backButton:
             type: ISButton
-          presetPanel: {}
+          presetPanel:
+            type: CharacterCreationMainPresetPanel
           savedBuilds:
             type: ISComboBox
           saveBuildButton:
@@ -59,7 +61,7 @@ languages:
           skinColorLbl:
             type: ISLabel
           skinColors:
-            type: table
+            type: umbrella.RGB[]
           skinColorButton:
             type: ISButton
           colorPickerSkin:
@@ -98,7 +100,9 @@ languages:
             type: ISSliderPanel
           voiceDemoButton:
             type: ISButton
-          soundPlayer: {}
+          soundPlayer:
+            type: FMODSoundEmitter
+            nullable: true
           soundRef:
             type: number
           beardLbl:
@@ -114,17 +118,17 @@ languages:
           beardStubbleTickBox:
             type: ISTickBox
           clothingComboLabel:
-            type: table
+            type: table<string, ISLabel>
           clothingCombo:
-            type: table
+            type: table<string, ISComboBox>
           clothingColorBtn:
-            type: table
+            type: table<string, ISButton>
           clothingTextureCombo:
-            type: table
+            type: table<string, ISComboBox>
           clothingDecalCombo:
-            type: table
+            type: table<string, ISComboBox>
           clothingPanel:
-            type: table
+            type: ISPanelJoypad
           clothingLbl:
             type: ISLabel
           clothingRect:
@@ -133,11 +137,12 @@ languages:
             type: number
           colorPicker:
             type: ISColorPickerHSB
-          comboWid: {}
+          comboWid:
+            type: number
           clothingDebugCreated:
             type: boolean
           clothingWidgets:
-            type: table
+            type: "[ISComboBox, ISButton, ISComboBox?, ISComboBox?][]"
           outfitLbl:
             type: ISLabel
             nullable: true
@@ -147,18 +152,25 @@ languages:
           randomizeOutfitBtn:
             type: ISButton
             nullable: true
-          female: {}
-          decalItem: {}
+          female:
+            type: boolean
+          decalItem:
+            type: InventoryItem
+            nullable: true
           skinColor:
-            type: number
+            type: integer
           itemheightoverride:
             type: table
           colorPanel:
             type: table
-          rArrow: {}
-          disabledRArrow: {}
-          lArrow: {}
-          disabledLArrow: {}
+          rArrow:
+            type: Texture
+          disabledRArrow:
+            type: Texture
+          lArrow:
+            type: Texture
+          disabledLArrow:
+            type: Texture
         methods:
           - name: initialise
           - name: instantiate
@@ -173,6 +185,7 @@ languages:
           - name: saveBuildValidate
             parameters:
               - name: text
+                type: string
             return:
               - type: boolean
           - name: saveBuildStep1
@@ -184,6 +197,7 @@ languages:
                 type: JoypadData
               - name: param2
                 type: unknown
+                nullable: true
           - name: createNameAndGender
           - name: createBodyTypeBtn
           - name: createHairTypeBtn
@@ -192,10 +206,12 @@ languages:
           - name: createClothingComboDebug
             parameters:
               - name: bodyLocation
+                type: string
           - name: createClothingBtn
           - name: createClothingCombo
             parameters:
               - name: bodyLocation
+                type: string
           - name: arrangeClothingUI
           - name: debugClothingDefinitions
           - name: shouldShowAllOutfits
@@ -207,16 +223,22 @@ languages:
           - name: doClothingCombo
             parameters:
               - name: definition
+                type: umbrella.ClothingSelectionDefinition
               - name: erasePrevious
+                type: boolean
           - name: updateSelectedClothingCombo
           - name: updateColorButton
             parameters:
               - name: bodyLocation
+                type: string
               - name: clothing
+                type: InventoryItem
           - name: updateClothingTextureCombo
             parameters:
               - name: bodyLocation
+                type: string
               - name: clothing
+                type: InventoryItem
           - name: initClothingDebug
           - name: setVisible
             parameters:
@@ -237,31 +259,43 @@ languages:
           - name: onHairColorPicked
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: syncTorsoWithUI
           - name: syncUIWithTorso
           - name: onGenderSelected
             parameters:
               - name: combo
+                type: ISComboBox
           - name: randomVoice
           - name: randomGenericOutfit
           - name: dressWithDefinitions
             parameters:
               - name: definition
+                type: umbrella.ClothingSelectionDefinition
               - name: resetWornItems
+                type: boolean
           - name: onRandomCharacter
           - name: onChestHairSelected
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onShavedHairSelected
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onBeardStubbleSelected
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: onSkinColorSelected
             parameters:
               - name: button
@@ -273,41 +307,57 @@ languages:
           - name: onSkinColorPicked
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: onHairTypeSelected
             parameters:
               - name: combo
+                type: ISComboBox
           - name: onBeardTypeSelected
             parameters:
               - name: combo
+                type: ISComboBox
           - name: onVoiceTypeSelected
           - name: onOutfitSelected
             parameters:
               - name: combo
-                nullable: true
+                type: ISComboBox
           - name: onRandomizeOutfitClicked
           - name: onClothingComboSelected
             parameters:
               - name: combo
+                type: ISComboBox
               - name: bodyLocation
+                type: string
           - name: onClothingColorClicked
             parameters:
               - name: button
                 type: ISButton
               - name: bodyLocation
+                type: string
           - name: onClothingColorPicked
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
               - name: bodyLocation
+                type: string
           - name: onClothingTextureComboSelected
             parameters:
               - name: combo
+                type: ISComboBox
               - name: bodyLocation
+                type: string
           - name: onClothingDecalComboSelected
             parameters:
               - name: combo
+                type: ISComboBox
               - name: bodyLocation
+                type: string
           - name: createAvatar
           - name: setAvatarFromUI
           - name: rescaleAvatarViewer
@@ -346,18 +396,24 @@ languages:
             parameters:
               - name: joypadData
                 type: JoypadData
+                nullable: true
           - name: requiredSize
             parameters:
               - name: panel
+                type: ISUIElement
             return:
               - type: number
               - type: number
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: getVoicePrefix
             return:
               - type: string
@@ -370,17 +426,21 @@ languages:
           - name: showColorPicker
             parameters:
               - name: picker
+                type: ISColorPicker
         staticMethods:
           - name: loadOutfit
             parameters:
               - name: self
+                type: CharacterCreationMain
               - name: box
+                type: ISComboBox
           - name: readSavedOutfitFile
             return:
               - type: table
           - name: writeSaveFile
             parameters:
               - name: options
+                type: table<string, string>
       CharacterCreationMainCharacterPanel:
         extends: ISPanelJoypad
         constructors:
@@ -399,21 +459,22 @@ languages:
         fields:
           scrollBar:
             type: boolean
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           prevJoypadIndexY:
             type: number
           columnWidth:
             type: number
           reposTable:
-            type: table
+            type: ISLabel[]
           repos2Table:
-            type: table
+            type: ISLabel[]
           repos3Table:
-            type: table
+            type: ISButton[]
           comboResizeTable:
-            type: table
+            type: ISComboBox[]
           dividerResizeTable:
-            type: table
+            type: ISRect[]
         methods:
           - name: prerender
           - name: render
@@ -429,7 +490,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirLeft
@@ -448,6 +509,7 @@ languages:
             parameters:
               - name: joypadData
                 type: JoypadData
+                nullable: true
       CharacterCreationMainPresetPanel:
         extends: ISPanelJoypad
         staticFields:
@@ -466,7 +528,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

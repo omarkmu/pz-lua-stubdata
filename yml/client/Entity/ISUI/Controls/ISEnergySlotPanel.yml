@@ -39,7 +39,7 @@ languages:
           - name: addResources
             parameters:
               - name: _resources
-                type: ArrayList #<Resource>
+                type: ArrayList<Resource>
               - name: _styleEnergySlot
                 type: string
                 nullable: true

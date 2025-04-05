@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISRadioOption.OnChange:
+        - type: "fun(target: unknown, selected: integer)"
     classes:
       ISRadioOption:
         extends: ISPanel
@@ -17,7 +20,11 @@ languages:
               - name: name
                 type: string
               - name: changeOptionTarget
+                type: unknown
+                nullable: true
               - name: changeOptionMethod
+                type: umbrella.ISRadioOption.OnChange
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISRadioOption"'
@@ -28,17 +35,22 @@ languages:
             type: number
           optionCount:
             type: number
-          tickTexture: {}
+          tickTexture:
+            type: Texture
           choicesColor:
-            type: table
+            type: umbrella.RGBA
           name:
             type: string
           options:
-            type: table
+            type: string[]
           leftMargin:
             type: number
-          changeOptionMethod: {}
-          changeOptionTarget: {}
+          changeOptionMethod:
+            type: umbrella.ISRadioOption.OnChange
+            nullable: true
+          changeOptionTarget:
+            type: unknown
+            nullable: true
         methods:
           - name: initialise
           - name: prerender

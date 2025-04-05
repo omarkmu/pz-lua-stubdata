@@ -7,17 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: dir
+                type: integer
               - name: time
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISConfigHeadlight"'
         fields:
-          vehicle: {}
-          part: {}
-          dir: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          dir:
+            type: integer
         methods:
           - name: isValid
             return:

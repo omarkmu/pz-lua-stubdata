@@ -1,13 +1,20 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISWorldObjectContextMenu.ItemPredicate:
+        - type: "fun(item: InventoryItem): boolean"
     classes:
       ISWorldObjectContextMenu:
         staticFields:
-          fetchVars: {}
-          fetchSquares: {}
-          tooltipPool: {}
-          tooltipsUsed: {}
+          fetchVars:
+            type: table
+          fetchSquares:
+            type: table<IsoGridSquare, boolean>
+          tooltipPool:
+            type: ISToolTip[]
+          tooltipsUsed:
+            type: ISToolTip[]
           Test:
             type: boolean
             nullable: true
@@ -27,7 +34,9 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: padlock
+                type: InventoryItem
               - name: thump
+                type: IsoThumpable
           - name: onCheckDigitalCode
             parameters:
               - name: button
@@ -35,19 +44,25 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: padlock
+                type: InventoryItem
               - name: thump
+                type: IsoThumpable
         staticMethods:
           - name: clearFetch
           - name: fetch
             parameters:
               - name: v
+                type: IsoObject
               - name: player
+                type: integer
               - name: doSquare
                 type: boolean
           - name: isSomethingTo
             parameters:
               - name: item
+                type: IsoObject
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: setTest
@@ -56,7 +71,7 @@ languages:
           - name: createMenu
             parameters:
               - name: player
-                type: number
+                type: integer
               - name: worldobjects
                 type: IsoObject[]
               - name: x
@@ -64,6 +79,7 @@ languages:
               - name: y
                 type: number
               - name: test
+                type: boolean
                 nullable: true
             return:
               - type: boolean
@@ -71,14 +87,17 @@ languages:
           - name: getSquaresInRadius
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
               - name: worldZ
+                type: number
               - name: radius
                 type: number
               - name: doneSquares
-                type: table
+                type: table<IsoGridSquare, boolean>
               - name: squares
-                type: table
+                type: IsoGridSquare[]
           - name: getWorldObjectsInRadius
             parameters:
               - name: playerNum
@@ -88,7 +107,7 @@ languages:
               - name: screenY
                 type: number
               - name: squares
-                type: table
+                type: IsoGridSquare[]
               - name: radius
                 type: number
               - name: worldObjects
@@ -107,6 +126,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
                 nullable: true
@@ -115,6 +135,7 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: fetch
+                type: table
           - name: handleGrabWorldItem
             parameters:
               - name: x
@@ -122,6 +143,8 @@ languages:
               - name: y
                 type: number
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: worldobjects
@@ -129,16 +152,21 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
                 nullable: true
           - name: onExtendedPlacement
             parameters:
               - name: item
+                type: IsoWorldInventoryObject
               - name: char
+                type: IsoPlayer
           - name: addWaterFromItem
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: worldobjects
@@ -146,6 +174,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
                 nullable: true
@@ -153,18 +182,21 @@ languages:
           - name: getFishCheckTooltip
             parameters:
               - name: mx
+                type: number
               - name: my
+                type: number
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: ISToolTip
           - name: getChum
             parameters:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doChumOptions
             parameters:
               - name: context
@@ -196,9 +228,12 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: trapFish
+                type: IsoObject
           - name: handleCompost
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: worldobjects
@@ -206,11 +241,14 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
           - name: handleRainCollector
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: worldobjects
@@ -218,17 +256,21 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
                 nullable: true
           - name: emptyRainCollector
             parameters:
               - name: barrel
+                type: IsoThumpable
               - name: playerObj
                 type: IsoPlayer
           - name: handleCarBatteryCharger
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: worldobjects
@@ -236,6 +278,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: playerInv
+                type: ItemContainer
             return:
               - type: boolean
                 nullable: true
@@ -245,17 +288,23 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: safehouse
+                type: SafeHouse
               - name: player
+                type: IsoPlayer
           - name: onGetCompost
             parameters:
               - name: compost
+                type: IsoCompost
               - name: item
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onAddCompost
             parameters:
               - name: compost
+                type: IsoCompost
               - name: item
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onRemoveFire
@@ -263,13 +312,17 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: firetile
+                type: IsoGridSquare
               - name: extinguisher
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: onRemovePlayerFromSafehouse
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: safehouse
+                type: SafeHouse
               - name: playerName
                 type: string
               - name: playerNum
@@ -279,7 +332,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: safehouse
+                type: SafeHouse
               - name: player
+                type: integer
           - name: onTakeSafeHouse
             parameters:
               - name: worldobjects
@@ -287,17 +342,21 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: integer
           - name: onClaimWar
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: safehouse
+                type: integer
               - name: attacker
+                type: string
           - name: onViewSafeHouse
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: safehouse
+                type: SafeHouse
               - name: player
           - name: onTakeFuel
             parameters:
@@ -306,46 +365,63 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: fuelStation
+                type: IsoObject
           - name: onInfoGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
           - name: onPlugGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
               - name: plug
+                type: boolean
           - name: onActivateGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: enable
+                type: boolean
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
           - name: onFixGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
           - name: onAddFuel
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: petrolCan
+                type: InventoryItem
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
           - name: onAddFuelGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: petrolCan
+                type: InventoryItem
               - name: generator
+                type: IsoGenerator
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
           - name: doAddFuelGenerator
@@ -353,14 +429,20 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: generator
+                type: IsoGenerator
               - name: fuelContainerList
+                type: InventoryItem[]
               - name: fuelContainer
+                type: InventoryItem
+                nullable: true
               - name: player
+                type: integer
           - name: onTakeGenerator
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: generator
+                type: IsoGenerator
               - name: player
           - name: onFishing
             parameters:
@@ -370,20 +452,28 @@ languages:
           - name: onFishingNet
             parameters:
               - name: _
+                nullable: true
               - name: player
+                type: IsoPlayer
               - name: fishNet
+                type: InventoryItem
           - name: onCheckFishingNet
             parameters:
               - name: worldobjects
                 type: IsoObject[]
+                nullable: true
               - name: player
+                type: IsoPlayer
               - name: trap
+                type: IsoObject
               - name: hours
+                type: integer
           - name: onAddBaitToWater
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: chum
+                type: InventoryItem
               - name: square
                 type: IsoGridSquare
           - name: onRemoveFishingNet
@@ -391,7 +481,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: trap
+                type: IsoObject
           - name: onAddBaitToFishingNet
             parameters:
               - name: worldobjects
@@ -399,36 +491,47 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: trap
+                type: IsoObject
               - name: bait
+                type: InventoryItem
           - name: getFishingLure
             parameters:
               - name: player
+                type: IsoPlayer
               - name: rod
+                type: HandWeapon
             return:
-              - type: boolean
+              - type: boolean | InventoryItem
                 nullable: true
           - name: getFishingRode
             parameters:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: InventoryItem
+                nullable: true
           - name: onDestroy
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: sledgehammer
+                type: InventoryItem
           - name: getThumpableName
             parameters:
               - name: thump
+                type: IsoThumpable
             return:
-              - type: unknown
+              - type: string
           - name: onAttachAnimalToTree
             parameters:
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
               - name: tree
+                type: IsoObject
           - name: onChopTree
             parameters:
               - name: worldobjects
@@ -436,103 +539,135 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: tree
+                type: IsoTree
           - name: doChopTree
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: tree
+                type: IsoTree
           - name: onTrade
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: onCheckStats
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: onMedicalCheck
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: onWakeOther
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
           - name: checkWeapon
             parameters:
               - name: chr
+                type: IsoPlayer
           - name: onToggleThumpableLight
             parameters:
               - name: lightSource
+                type: IsoObject
               - name: player
+                type: integer
           - name: onInsertFuel
             parameters:
               - name: lightSource
+                type: IsoObject
               - name: fuel
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onRemoveFuel
             parameters:
               - name: lightSource
+                type: IsoObject
               - name: player
+                type: integer
           - name: onRest
             parameters:
               - name: bed
+                type: IsoObject
               - name: player
-                type: number
+                type: integer
           - name: onRestPathFound
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: action
+                type: ISPathFindAction
           - name: onRestPathFailed
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bed
+                type: IsoObject
               - name: action
+                type: ISPathFindAction
           - name: onSleep
             parameters:
               - name: bed
+                type: IsoObject
                 nullable: true
               - name: player
+                type: integer
           - name: onConfirmSleep
             parameters:
               - name: this
+                nullable: true
               - name: button
                 type: ISButton
               - name: player
+                type: integer
               - name: bed
+                type: IsoObject
           - name: onSleepWalkToComplete
             parameters:
               - name: player
+                type: integer
               - name: bed
+                type: IsoObject
                 nullable: true
           - name: canStoreWater
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: haveWaterContainer
             parameters:
               - name: playerId
+                type: integer
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: toggleClothingDryer
             parameters:
               - name: context
                 type: ISContextMenu
               - name: playerId
+                type: integer
               - name: object
+                type: IsoClothingDryer
             return:
               - type: boolean
                 nullable: true
@@ -541,7 +676,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: object
+                type: IsoClothingDryer
               - name: playerId
+                type: integer
           - name: toggleClothingWasher
             parameters:
               - name: context
@@ -549,7 +686,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: playerId
+                type: integer
               - name: object
+                type: IsoClothingWasher
             return:
               - type: boolean
                 nullable: true
@@ -558,14 +697,19 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: object
+                type: IsoClothingWasher
               - name: playerId
+                type: integer
           - name: onWashingDryer
             parameters:
               - name: source
+                type: string
               - name: context
                 type: ISContextMenu
               - name: object
+                type: IsoClothingDryer
               - name: player
+                type: integer
             return:
               - type: boolean
                 nullable: true
@@ -576,6 +720,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: object
+                type: IsoCombinationWasherDryer
             return:
               - type: boolean
                 nullable: true
@@ -584,18 +729,24 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: object
+                type: IsoCombinationWasherDryer
           - name: onSetComboWasherDryerMode
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: object
+                type: IsoCombinationWasherDryer
               - name: mode
+                type: '"dryer" | "washer"'
           - name: doStoveOption
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: onToggleStove
@@ -603,25 +754,34 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: stove
+                type: IsoStove
               - name: player
+                type: integer
           - name: onMicrowaveSetting
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: stove
+                type: IsoStove
               - name: player
+                type: integer
           - name: onStoveSetting
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: stove
+                type: IsoStove
               - name: player
+                type: integer
           - name: doLightSwitchOption
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: onToggleLight
@@ -630,42 +790,60 @@ languages:
                 type: IsoObject[]
                 nullable: true
               - name: light
+                type: IsoLightSwitch
               - name: player
-                type: number
+                type: integer
           - name: onLightBulb
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: light
+                type: IsoLightSwitch
               - name: player
+                type: integer
               - name: remove
+                type: boolean
               - name: bulbitem
+                type: InventoryItem
+                nullable: true
           - name: onLightModify
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: light
+                type: IsoLightSwitch
               - name: player
+                type: integer
               - name: scrapitem
+                nullable: true
           - name: onLightBattery
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: light
+                type: IsoLightSwitch
               - name: player
+                type: integer
               - name: remove
+                type: boolean
               - name: battery
+                type: DrainableComboItem
+                nullable: true
           - name: doThumpableWindowOption
             parameters:
               - name: test
+                type: boolean
+                nullable: true
               - name: context
                 type: ISContextMenu
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: doWaterDispenserMenu
             parameters:
               - name: waterdispenser
+                type: IsoObject
               - name: playerObj
                 type: IsoPlayer
               - name: context
@@ -673,6 +851,7 @@ languages:
           - name: onButcherHook
             parameters:
               - name: hook
+                type: IsoButcherHook
               - name: playerObj
                 type: IsoPlayer
           - name: onWaterDispenserBottle
@@ -682,12 +861,16 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: waterdispenser
+                type: IsoObject
               - name: bottle
+                type: InventoryItem
+                nullable: true
           - name: grabItemTime
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: witem
+                type: IsoWorldInventoryObject
             return:
               - type: number
           - name: onGrabWItem
@@ -695,49 +878,63 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: WItem
+                type: IsoWorldInventoryObject
               - name: player
+                type: integer
           - name: onGrabHalfWItems
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: WItems
+                type: IsoWorldInventoryObject[]
               - name: player
+                type: integer
           - name: onGrabAllWItems
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: WItems
+                type: IsoWorldInventoryObject[]
               - name: player
+                type: integer
           - name: onTakeTrap
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: trap
+                type: IsoTrap
               - name: player
+                type: integer
           - name: onGrabCorpseItem
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: WItem
+                type: IsoDeadBody
               - name: player
+                type: integer
           - name: onDropCorpseItem
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
           - name: onGetDoorKey
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: door
-                type: IsoDoor | IsoThumpable
+                type: IsoDoor
               - name: doorKeyId
+                type: integer
           - name: onLockDoor
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: door
                 type: IsoDoor | IsoThumpable
           - name: onUnLockDoor
@@ -745,77 +942,104 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: door
                 type: IsoDoor | IsoThumpable
               - name: doorKeyId
+                type: integer
           - name: onPlumbItem
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: itemToPipe
+                type: IsoObject
           - name: onRemoveDigitalPadlockWalkToComplete
             parameters:
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
           - name: onRemoveDigitalPadlock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
           - name: onPutDigitalPadlockWalkToComplete
             parameters:
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
               - name: padlock
+                type: InventoryItem
           - name: onPutDigitalPadlock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
               - name: padlock
+                type: InventoryItem
           - name: onExcavateStairs
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: excavatableFloor
           - name: onPutPadlock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
               - name: padlock
+                type: InventoryItem
           - name: onRemovePadlock
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: thump
+                type: IsoThumpable
           - name: onClearAshes
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: ashes
+                type: IsoObject
           - name: onBurnCorpse
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: corpse
+                type: IsoDeadBody
           - name: compareClothingBlood
             parameters:
               - name: item1
+                type: InventoryItem
               - name: item2
+                type: InventoryItem
             return:
               - type: boolean
           - name: doFillFluidMenu
             parameters:
               - name: sink
+                type: IsoObject
               - name: playerNum
                 type: integer
               - name: context
@@ -823,6 +1047,7 @@ languages:
           - name: doFillFuelMenu
             parameters:
               - name: source
+                type: IsoObject
               - name: playerNum
                 type: integer
               - name: context
@@ -830,13 +1055,17 @@ languages:
           - name: doDrinkWaterMenu
             parameters:
               - name: object
+                type: IsoObject
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
           - name: doWashClothingMenu
             parameters:
               - name: sink
+                type: IsoObject
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
           - name: onWashClothing
@@ -844,16 +1073,24 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: sink
+                type: IsoObject
               - name: soapList
+                type: InventoryItem[]
               - name: washList
+                type: InventoryItem[]
               - name: singleClothing
+                type: InventoryItem
+                nullable: true
               - name: noSoap
+                type: boolean
           - name: onWashYourself
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: sink
+                type: IsoObject
               - name: soapList
+                type: InventoryItem[]
           - name: doBrushToolOptions
             parameters:
               - name: context
@@ -861,9 +1098,11 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
           - name: doRecipeUsingWaterMenu
             parameters:
               - name: waterObject
+                type: IsoObject
               - name: playerNum
                 type: integer
               - name: context
@@ -873,57 +1112,78 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: waterObject
+                type: IsoObject
               - name: player
+                type: integer
           - name: onTakeWater
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: waterObject
+                type: IsoObject
               - name: waterContainerList
+                type: InventoryItem[]
               - name: waterContainer
+                type: InventoryItem
+                nullable: true
               - name: player
+                type: integer
           - name: onTakeFuelNew
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: fuelObject
+                type: IsoObject
               - name: fuelContainerList
+                type: InventoryItem[]
               - name: fuelContainer
+                type: InventoryItem
+                nullable: true
               - name: player
+                type: integer
           - name: onAddWaterFromItem
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: waterObject
+                type: IsoObject
               - name: waterItem
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onChooseSafehouse
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: building
+                type: IsoBuilding
           - name: onTalkTo
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: survivor
           - name: onStay
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: survivor
           - name: onGuard
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: survivor
           - name: onFollow
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: survivor
           - name: onTeamUp
+            deprecated: true
             parameters:
               - name: worldobjects
                 type: IsoObject[]
@@ -933,23 +1193,29 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: onUnbarricadeMetal
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: onUnbarricadeMetalBar
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: isThumpDoor
             parameters:
               - name: thumpable
-                type: IsoThumpable
+                type: IsoObject
             return:
               - type: boolean
           - name: onClimbSheetRope
@@ -960,28 +1226,38 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: down
+                type: boolean
               - name: player
+                type: integer
           - name: onMetalBarBarricade
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: onMetalBarricade
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: onBarricade
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoThumpable
               - name: player
+                type: integer
           - name: doorCurtainCheck
             parameters:
               - name: argTable
+                type: "{ playerObj: IsoPlayer, door: IsoDoor, open: boolean, action:
+                  ISWalkToTimedAction }"
             return:
               - type: boolean
           - name: restoreDoor
@@ -989,7 +1265,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: door
-                type: IsoDoor | IsoThumpable
+                type: IsoDoor
               - name: isOpen
                 type: boolean
           - name: onAddSheet
@@ -997,7 +1273,9 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
               - name: player
+                type: integer
           - name: addRemoveCurtainOption
             parameters:
               - name: context
@@ -1005,47 +1283,63 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: curtain
+                type: IsoCurtain | IsoDoor
               - name: player
+                type: integer
             return:
-              - type: unknown
+              - type: umbrella.ISContextMenu.Option
                 nullable: true
           - name: onRemoveCurtain
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: curtain
+                type: IsoCurtain | IsoDoor
               - name: player
+                type: integer
           - name: onOpenCloseCurtain
             parameters:
               - name: worldobjects
                 type: IsoObject[]
                 nullable: true
               - name: curtain
+                type: IsoCurtain
               - name: player
+                type: integer
           - name: onOpenCloseWindow
             parameters:
               - name: worldobjects
                 type: IsoObject[]
                 nullable: true
               - name: window
+                type: IsoWindow
               - name: player
+                type: integer
           - name: onAddSheetRope
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoObject
               - name: player
+                type: integer
               - name: sheetRope
+                type: boolean
+                nullable: true
           - name: onRemoveSheetRope
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
               - name: player
+                type: integer
           - name: isTrappedAdjacentToWindow
             parameters:
               - name: player
+                type: integer
               - name: window
+                type: IsoWindow
             return:
               - type: boolean
           - name: onClimbOverFence
@@ -1054,33 +1348,44 @@ languages:
                 type: IsoObject[]
                 nullable: true
               - name: fence
+                type: IsoDoor | IsoThumpable
               - name: direction
+                type: IsoDirections
               - name: player
+                type: integer
           - name: onClimbThroughWindow
             parameters:
               - name: worldobjects
                 type: IsoObject[]
                 nullable: true
               - name: window
+                type: IsoObject
               - name: player
+                type: integer
           - name: onSmashWindow
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
               - name: player
+                type: integer
           - name: onRemoveBrokenGlass
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: window
+                type: IsoWindow
               - name: player
+                type: integer
           - name: onPickupBrokenGlass
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: brokenGlass
+                type: IsoBrokenGlass
               - name: player
+                type: integer
           - name: onOpenCloseDoor
             parameters:
               - name: worldobjects
@@ -1089,7 +1394,7 @@ languages:
               - name: door
                 type: IsoDoor | IsoThumpable
               - name: player
-                type: number
+                type: integer
           - name: canCleanBlood
             parameters:
               - name: playerObj
@@ -1105,6 +1410,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: integer
           - name: doCleanBlood
             parameters:
               - name: playerObj
@@ -1126,6 +1432,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: integer
           - name: doCleanGraffiti
             parameters:
               - name: playerObj
@@ -1139,7 +1446,9 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: wallVine
+                type: boolean
               - name: player
+                type: integer
           - name: doRemovePlant
             parameters:
               - name: playerObj
@@ -1147,6 +1456,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: wallVine
+                type: boolean
           - name: onRemoveGrass
             parameters:
               - name: worldobjects
@@ -1154,6 +1464,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: integer
           - name: doRemoveGrass
             parameters:
               - name: playerObj
@@ -1167,40 +1478,52 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: player
+                type: integer
           - name: onWalkTo
             parameters:
               - name: worldobjects
-                type: IsoObject[]
+                type: IsoObject[] | integer
               - name: item
+                type: IsoObject | integer
               - name: player
+                type: integer
           - name: transferIfNeeded
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
                 nullable: true
           - name: equip
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: handItem
+                type: InventoryItem
+                nullable: true
               - name: item
-                type: function
+                type: string | InventoryItem | umbrella.ISWorldObjectContextMenu.ItemPredicate
               - name: primary
                 type: boolean
               - name: twoHands
                 type: boolean
                 nullable: true
             return:
-              - type: function
+              - type: InventoryItem
           - name: equip2
             parameters:
               - name: player
+                type: IsoPlayer
               - name: handItem
+                type: InventoryItem
+                nullable: true
               - name: item
+                type: InventoryItem
               - name: primary
+                type: boolean
             return:
-              - type: unknown
+              - type: InventoryItem
+                nullable: true
           - name: getZone
             parameters:
               - name: x
@@ -1210,22 +1533,25 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: Zone
                 nullable: true
           - name: addToolTip
             return:
-              - type: unknown
+              - type: ISToolTip
           - name: checkBlowTorchForBarricade
             parameters:
               - name: chr
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: boolean
           - name: doSleepOption
             parameters:
               - name: context
                 type: ISContextMenu
               - name: bed
+                type: IsoObject
               - name: player
+                type: integer
               - name: playerObj
                 type: IsoPlayer
           - name: doBedOption
@@ -1235,73 +1561,101 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: bed
+                type: IsoObject
           - name: onGetOnBed
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bed
+                type: IsoObject
           - name: onBedAnim
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: anim
+                type: string
           - name: onDigGraves
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: shovel
+                type: InventoryItem
           - name: onBuryAnimalCorpse
             parameters:
               - name: grave
+                type: IsoObject
               - name: playerObj
                 type: IsoPlayer
               - name: animal
+                type: InventoryItem
           - name: updateGrave
             parameters:
               - name: grave
+                type: IsoObject
           - name: onBuryCorpse
             parameters:
               - name: grave
+                type: IsoObject
               - name: player
+                type: integer
               - name: primaryHandItem
+                type: InventoryItem
             return:
               - type: unknown
                 nullable: true
           - name: onFillGrave
             parameters:
               - name: grave
+                type: IsoObject
               - name: player
+                type: integer
               - name: shovel
+                type: InventoryItem
           - name: onFluidTransfer
             parameters:
               - name: player
+                type: integer
               - name: fluidcontainer
+                type: FluidContainer
           - name: onFluidInfo
             parameters:
               - name: player
+                type: integer
               - name: fluidcontainer
+                type: FluidContainer
           - name: onFluidEmpty
             parameters:
               - name: player
+                type: integer
               - name: fluidcontainer
+                type: FluidContainer
           - name: onSitOnGround
             parameters:
               - name: player
+                type: integer
           - name: onScytheGrass
             parameters:
               - name: player
+                type: IsoPlayer
               - name: scythe
+                type: InventoryItem
           - name: addGarderingOptions
+            deprecated: true
             parameters:
               - name: context
                 type: ISContextMenu
               - name: wobjs
+                type: IsoObject[]
               - name: player
+                type: integer
           - name: onRakeDung
             parameters:
               - name: player
+                type: IsoPlayer
               - name: scythe
+                type: InventoryItem
           - name: prePickupGroundCoverItem
             parameters:
               - name: context
@@ -1315,41 +1669,54 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: object
+                type: IsoObject
           - name: onRemoveGroundCoverItemPickAxe
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: object
+                type: IsoObject
           - name: onRemoveGroundCoverItemHammerOrPickAxe
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: player
+                type: integer
               - name: object
+                type: IsoObject
           - name: chairCheck
             parameters:
               - name: bed
+                type: IsoObject
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getBedQuality
             parameters:
               - name: bed
+                type: IsoObject
             return:
               - type: string
           - name: localVariableOverflow
             parameters:
               - name: v
+                type: IsoObject
               - name: props
+                type: PropertyContainer
               - name: playerInv
+                type: ItemContainer
           - name: doFluidContainerMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: object
+                type: IsoObject
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: getUpAndThen
@@ -1358,22 +1725,41 @@ languages:
                 type: IsoPlayer
               - name: function1
                 type: function
+                nullable: true
               - name: p1
+                type: unknown
                 nullable: true
               - name: p2
+                type: unknown
+                nullable: true
               - name: p3
-                type: number
+                type: unknown
+                nullable: true
               - name: p4
+                type: unknown
+                nullable: true
               - name: p5
+                type: unknown
+                nullable: true
               - name: p6
+                type: unknown
+                nullable: true
               - name: p7
+                type: unknown
+                nullable: true
               - name: p8
+                type: unknown
+                nullable: true
               - name: p9
+                type: unknown
+                nullable: true
               - name: p10
+                type: unknown
+                nullable: true
           - name: getMoveableDisplayName
             parameters:
               - name: obj
                 type: IsoObject
             return:
-              - type: unknown
+              - type: string
                 nullable: true

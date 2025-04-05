@@ -4,70 +4,87 @@ languages:
     tags:
       - StubGen_Definitions
     aliases:
-      umbrella.FishingState:
-        - type: Fishing.States.None
-        - type: Fishing.States.Idle
-        - type: Fishing.States.Cast
-        - type: Fishing.States.Wait
-        - type: Fishing.States.ReelIn
-        - type: Fishing.States.ReelOut
-        - type: Fishing.States.PickupFish
-      umbrella.Foraging.SpawnFunction:
-        - type: "fun(character: IsoPlayer, inventory: ItemContainer, itemDef: umbrella.Foraging.ItemDef, itemList: ArrayList)" #<InventoryItem>
+      ChooseGameInfo.Mod:
+        - type: Mod
+      ClimateForecaster.DayForecast:
+        - type: DayForecast
+      ClimateManager.ClimateColor:
+        - type: ClimateColor
+      ClimateManager.ClimateFloat:
+        - type: ClimateFloat
+      Fixing.Fixer:
+        - type: Fixer
+      IsoHutch.NestBox:
+        - type: NestBox
+      HandcraftLogic.InputItemNode:
+        - type: InputItemNode
+      PerkFactory.Perk:
+        - type: Perk
+      ProfessionFactory.Profession:
+        - type: Profession
+      PVPLogTool.PVPEvent:
+        - type: PVPEvent
+      Recipe.Source:
+        - type: Source
+      SearchMode.PlayerSearchMode:
+        - type: PlayerSearchMode
+      ServerOptions.ServerOption:
+        - type: ServerOption
+      SpriteConfigManager.ObjectInfo:
+        - type: ObjectInfo
+      TraitFactory.Trait:
+        - type: Trait
+      VehicleScript.Area:
+        - type: Area
+      VehicleScript.Model:
+        - type: Model
+      VehicleScript.Part:
+        - type: Part
+      VehicleScript.Passenger:
+        - type: Passenger
+      VehicleScript.PhysicsShape:
+        - type: PhysicsShape
+      VehicleScript.Position:
+        - type: Position
+      VehicleScript.Wheel:
+        - type: Wheel
+      WarManager.War:
+        - type: War
+      WorldFlares.Flare:
+        - type: Flare
+      WorldMapStyleV1.WorldMapStyleLayerV1:
+        - type: WorldMapStyleLayerV1
+      WorldMapSymbolsV2.WorldMapBaseSymbolV2:
+        - type: WorldMapBaseSymbolV2
+      WorldMarkers.DirectionArrow:
+        - type: DirectionArrow
+      WorldMarkers.GridSquareMarker:
+        - type: GridSquareMarker
+      WorldMarkers.PlayerHomingPoint:
+        - type: PlayerHomingPoint
+      XuiScript.XuiSpacing:
+        - type: XuiSpacing
+      XuiScript.XuiVar:
+        - type: XuiVar
+      XuiSkin.ComponentUiStyle:
+        - type: ComponentUiStyle
+      XuiSkin.EntityUiStyle:
+        - type: EntityUiStyle
+      XuiSkinScript.ComponentUiScript:
+        - type: ComponentUiScript
+      umbrella.ClothingSelectionDefinition:
+        - type: table<string, umbrella.ClothingSelectionDefinitionTable>
+      umbrella.ContainerDistribution:
+        - type: umbrella.Distributions.ItemsContainerDistribution
+        - type: umbrella.Distributions.ListContainerDistribution
       umbrella.Foraging.ValidateFunction:
-        - type: "fun(square: IsoGridSquare, itemDef: umbrella.Foraging.ItemDef, catDef: umbrella.Foraging.CategoryDef): boolean"
-      umbrella.ISAddGeneticDisorderUI.OnClick:
-        - type: "fun(target: unknown, button: ISButton, geneticDisorder: string, allele: AnimalAllele)"
-      umbrella.ISButton.MouseCallback:
-        - type: "fun(target: unknown, button: ISButton, x: number, y: number)"
-      umbrella.ISButton.OnClick:
-        - type: "fun(target: unknown, button: ISButton, ...: unknown)"
-      umbrella.ISButton.RepeatWhilePressed:
-        - type: "fun(target: unknown, button: ISButton)"
-      umbrella.ISColorPicker.PickedFunction:
-        - type: "fun(target: unknown, color: umbrella.RGB, mouseUp: boolean?, ...: unknown)"
-      umbrella.ISComboBox.OnChange:
-        - type: "fun(target: unknown, combo: ISComboBox, ...: unknown)"
-      umbrella.ISEntityUI.CustomCanOpenWindow:
-        - type: "fun(player: IsoPlayer, entity: GameEntity): boolean"
-      umbrella.ISEntityUI.CustomOpenWindow:
-        - type: "fun(player: IsoPlayer, entity: GameEntity)"
-      umbrella.ISEntityUI.CraftCanStart:
-        - type: "fun(player: IsoPlayer, entity: IsoObject, component: Component): boolean"
-      umbrella.ISEntityUI.CraftStart:
-        - type: "fun(player: IsoPlayer, entity: IsoObject, component: Component)"
-      umbrella.ISFluidContainerPanel.RenderText:
-        - type: "fun(self: ISFluidContainerPanel, s: string, x: number, y: number, r: number, g: number, b: number, a: number, font: UIFont)"
-      umbrella.ISFluidContainerPanel.OnContainerAdd:
-        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel)"
-      umbrella.ISFluidContainerPanel.OnContainerRemove:
-        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel)"
-      umbrella.ISFluidContainerPanel.OnContainerVerify:
-        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel): boolean"
-      umbrella.ISItemSlot.OnBoxClicked:
-        - type: "fun(target: unknown, slot: ISItemSlot, isRightClick: boolean, isShift: boolean)"
-      umbrella.ISItemSlot.OnItemDropped:
-        - type: "fun(target: unknown, slot: ISItemSlot, items: InventoryItem[])"
-      umbrella.ISItemSlot.OnItemRemove:
-        - type: "fun(target: unknown, slot: ISItemSlot, item: InventoryItem)"
-      umbrella.ISItemSlot.OnVerifyItem:
-        - type: "fun(target: unknown, slot: ISItemSlot, item: InventoryItem): boolean"
-      umbrella.ISTickBox.OnChange:
-        - type: "fun(target: unknown, index: integer, selected: boolean, arg1: unknown?, arg2: unknown?, tickbox: ISTickBox)"
-      umbrella.ISTiledIconListBox.OnClickTile:
-        - type: "fun(target: unknown, data: unknown)"
-      umbrella.ISTiledIconListBox.OnHoverTile:
-        - type: "fun(target: unknown, data: unknown)"
-      umbrella.ISTiledIconListBox.OnRenderTile:
-        - type: "fun(listbox: ISTiledIconListBox, tileData: unknown, x: number, y: number, width: number, height: number, isMouseOver: boolean)"
-      umbrella.ISTiledIconListBox.OnPageChanged:
-        - type: "fun(target: unknown, page: integer)"
-      umbrella.ISWidgetAutoToggle.OnToggled:
-        - type: "fun(target: unknown, state: boolean)"
-      umbrella.ISWidgetRecipesPanel.CallbackTarget:
-        - type: "{ player: IsoPlayer, logic: BaseCraftingLogic }"
+        - type: "fun(square: IsoGridSquare, itemDef: umbrella.Foraging.ItemDefinition, catDef: umbrella.Foraging.CategoryDefinition): boolean"
+      umbrella.Foraging.SpawnFunction:
+        - type: "fun(character: IsoPlayer, inventory: ItemContainer, itemDef: umbrella.Foraging.ItemDefinition, itemList: ArrayList<InventoryItem>)"
+      umbrella.KeybindTable:
+        - type: umbrella.KeybindElement
+        - type: umbrella.KeybindSection
     classes:
-      ContextMenuItemStack: {} # documented in PZEventDoc
       umbrella.HSB:
         fields:
           h:
@@ -75,6 +92,32 @@ languages:
           s:
             type: number
           b:
+            type: number
+      umbrella.XY:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+      umbrella.XYWH:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+          w:
+            type: number
+          h:
+            type: number
+      umbrella.Rect:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+          width:
+            type: number
+          height:
             type: number
       umbrella.RGB:
         fields:
@@ -89,6 +132,22 @@ languages:
         fields:
           a:
             type: number
+      umbrella.ServerProperties:
+        fields:
+          description:
+            type: string
+          version:
+            type: string
+          open:
+            type: '"0" | "1"'
+          public:
+            type: '"0" | "1"'
+          mods:
+            type: string
+          modCount:
+            type: string
+          pvp:
+            type: '"0" | "1"'
       umbrella.SpawnPoint:
         fields:
           posX:
@@ -103,65 +162,158 @@ languages:
           worldY:
             type: integer
             nullable: true
-      umbrella.AnimationClipViewer.Sound:
+      umbrella.SpawnRegion:
         fields:
-          fraction:
+          name:
+            type: string
+          points:
+            type: umbrella.SpawnPoint
+      umbrella.KeybindSection:
+        fields:
+          value:
+            type: string
+      umbrella.KeybindElement:
+        fields:
+          key:
+            type: integer
+          value:
+            type: string
+      umbrella.AnimalAvatarDefinition:
+        fields:
+          zoom:
+            type: integer
+          xoffset:
             type: number
-          enabled:
+          yoffset:
+            type: number
+          avatarWidth:
+            type: integer
+          avatarDir:
+            type: IsoDirections
+          trailerDir:
+            type: IsoDirections
+          trailerZoom:
+            type: number
+          trailerXoffset:
+            type: number
+          trailerYoffset:
+            type: number
+          hook:
             type: boolean
-          eventInstance:
+            nullable: true
+          butcherHookZoom:
             type: integer
             nullable: true
-      umbrella.AttachmentEditorUI.EditUI:
-        fields:
-          current:
-            type: AttachmentEditorUI_EditPanel
+          butcherHookXoffset:
+            type: number
             nullable: true
-          attachments:
-            type: AttachmentEditorUI_EditAttachment
-      umbrella.ClimateColorsDebug.ColorInfo:
+          butcherHookYoffset:
+            type: number
+            nullable: true
+          animalPositionSize:
+            type: number
+            nullable: true
+          animalPositionX:
+            type: number
+            nullable: true
+          animalPositionY:
+            type: number
+            nullable: true
+          animalPositionZ:
+            type: number
+            nullable: true
+      umbrella.ClothingSelectionDefinitionTable:
         fields:
-          colorInfo:
-            type: ClimateColorInfo
+          chance:
+            type: integer
+          items:
+            type: string[]
+      umbrella.Distributions.ProceduralItem:
+        fields:
           name:
-            type: string
-          isSeasonal:
-            type: boolean
-            nullable: true
-          daySegment:
-            type: number
-            nullable: true
-          temperature:
-            type: number
-            nullable: true
-          season:
-            type: number
-            nullable: true
-      umbrella.ClimateDebug.VarInfo:
-        fields:
-          name:
-            type: string
-          desc:
             type: string
           min:
             type: integer
           max:
             type: integer
-          func:
-            type: "fun(mgr: ErosionSeason): number"
-          col:
-            type: number[]
-      umbrella.DebugGlobalObjectStateUI.Item:
+          weightChance:
+            type: integer
+          forceForItems:
+            type: string
+            nullable: true
+          forceForZones:
+            type: string
+            nullable: true
+          forceForTiles:
+            type: string
+            nullable: true
+          forceForRooms:
+            type: string
+            nullable: true
+      umbrella.Distributions.ListContainerDistribution:
         fields:
-          system:
-            type: GlobalObjectSystem
-          x:
-            type: number
-          y:
-            type: number
-          z:
-            type: number
-      umbrella.FarmingProps:
+          procedural:
+            type: "true"
+          procList:
+            type: umbrella.Distributions.ProceduralItem[]
+          isShop:
+            type: boolean
+            nullable: true
+      umbrella.Distributions.ItemsContainerDistribution:
+        fields:
+          rolls:
+            type: integer
+          items:
+            type: (string | integer)[]
+          isShop:
+            type: boolean
+            nullable: true
+          noAutoAge:
+            type: boolean
+            nullable: true
+          fillRand:
+            type: integer
+            nullable: true
+          maxMap:
+            type: integer
+            nullable: true
+          stashChance:
+            type: integer
+            nullable: true
+          dontSpawnAmmo:
+            type: boolean
+            nullable: true
+          ignoreZombieDensity:
+            type: boolean
+            nullable: true
+          cookFood:
+            type: boolean
+            nullable: true
+          canBurn:
+            type: boolean
+            nullable: true
+          isTrash:
+            type: boolean
+            nullable: true
+          isWorn:
+            type: boolean
+            nullable: true
+          isRotten:
+            type: boolean
+            nullable: true
+          onlyOne:
+            type: boolean
+            nullable: true
+          defaultInventoryLoot:
+            type: boolean
+            nullable: true
+          junk:
+            type: umbrella.ContainerDistribution
+            nullable: true
+          bags:
+            type: umbrella.ContainerDistribution
+            nullable: true
+      umbrella.Farming.Props:
         fields:
           icon:
             type: string
@@ -211,41 +363,27 @@ languages:
           harvestPosition:
             type: '"Low" | "Mid" | "High"'
             nullable: true
-      umbrella.FishingManager.MPUpdateData:
+      umbrella.FitnessExercises.Exercise:
         fields:
-          Reject:
-            type: boolean
-      umbrella.FishingManager.StatesTable:
-        fields:
-          None:
-            type: Fishing.States.None
-          Idle:
-            type: Fishing.States.Idle
-          Cast:
-            type: Fishing.States.Cast
-          Wait:
-            type: Fishing.States.Wait
-          ReelIn:
-            type: Fishing.States.ReelIn
-          ReelOut:
-            type: Fishing.States.ReelOut
-          PickupFish:
-            type: Fishing.States.PickupFish
-      umbrella.Foraging.BaseIconData:
-        fields:
-          id:
+          type:
             type: string
-          x:
-            type: number
-          y:
-            type: number
-          z:
-            type: number
-          itemType:
+          name:
             type: string
-          isBonusIcon:
-            type: boolean
-      umbrella.Foraging.CategoryDef:
+          tooltip:
+            type: string
+          stiffness:
+            type: string
+          metabolics:
+            type: Metabolics
+          xpMod:
+            type: number
+          item:
+            type: string
+            nullable: true
+          prop:
+            type: string
+            nullable: true
+      umbrella.Foraging.CategoryDefinition:
         fields:
           name:
             type: string
@@ -285,14 +423,7 @@ languages:
             type: number
           focusChanceMax:
             type: number
-      umbrella.Foraging.IconData:
-        extends: umbrella.Foraging.BaseIconData
-        fields:
-          zoneid:
-            type: string
-          itemObj:
-            type: InventoryItem
-      umbrella.Foraging.ItemDef:
+      umbrella.Foraging.ItemDefinition:
         fields:
           type:
             type: string
@@ -391,26 +522,6 @@ languages:
             type: number
           hungerBonus:
             type: number
-      umbrella.Foraging.SearchIconData:
-        extends: umbrella.Foraging.BaseIconData
-        fields:
-          zoneid:
-            type: string
-          catName:
-            type: string
-          canRollForSearchFocus:
-            type: boolean
-      umbrella.Foraging.WorldIconData:
-        extends: umbrella.Foraging.BaseIconData
-        fields:
-          itemObj:
-            type: InventoryItem
-          itemObjTable:
-            type: table<InventoryItem, InventoryItem>
-          canRollForSearchFocus:
-            type: boolean
-          isTrack:
-            type: boolean
       umbrella.Foraging.UpdateEvent:
         fields:
           method:
@@ -451,7 +562,7 @@ languages:
             type: number
           y2:
             type: number
-      umbrella.Foraging.ZoneDef:
+      umbrella.Foraging.ZoneDefinition:
         fields:
           name:
             type: string
@@ -462,13 +573,6 @@ languages:
           refillPercent:
             type: number
           abundanceSetting:
-            type: string
-      umbrella.Foraging.ZoneIconData:
-        extends: umbrella.Foraging.BaseIconData
-        fields:
-          zoneid:
-            type: string
-          catName:
             type: string
       umbrella.ISBuildIsoEntity.ItemResult:
         fields:
@@ -487,387 +591,6 @@ languages:
           hasTestedInventory:
             type: boolean
             nullable: true
-      umbrella.ISButtonPrompt.Test:
-        fields:
-          sqs:
-            type: IsoGridSquare[]
-          square:
-            type: IsoGridSquare
-      umbrella.ISCraftingUI.IngredientItem:
-        fields:
-          name:
-            type: string
-          available:
-            type: boolean
-          texture:
-            type: Texture
-          item:
-            type: InventoryItem
-          baseItem:
-            type: Item
-          recipe:
-            type: Recipe
-          poison:
-            type: boolean
-      umbrella.ISCraftingUI.RecipeItem:
-        fields:
-          recipe:
-            type: Recipe | EvolvedRecipe
-          category:
-            type: string
-            nullable: true
-          sources:
-            type: "{ items: umbrella.ISCraftingUI.RecipeSourceItem[] }[]"
-            nullable: true
-          available:
-            type: boolean
-            nullable: true
-          favorite:
-            type: boolean
-            nullable: true
-          texture:
-            type: Texture
-            nullable: true
-          itemName:
-            type: string
-            nullable: true
-          typesAvailable:
-            type: table<string, integer>
-            nullable: true
-          baseItem:
-            type: Item
-            nullable: true
-          resultName:
-            type: string
-            nullable: true
-          items:
-            type: umbrella.ISCraftingUI.RecipesListIngredientItem[]
-            nullable: true
-          evolved:
-            type: boolean
-            nullable: true
-          customRecipeName:
-            type: string
-            nullable: true
-          extraItems:
-            type: Item[]
-            nullable: true
-      umbrella.ISCraftingUI.RecipesListIngredientItem:
-        fields:
-          name:
-            type: string
-          available:
-            type: boolean
-          texture:
-            type: Texture
-          fullType:
-            type: string
-            nullable: true
-          itemToAdd:
-            type: InventoryItem
-            nullable: true
-          poison:
-            type: boolean
-            nullable: true
-      umbrella.ISCraftingUI.RecipeSourceItem:
-        fields:
-          name:
-            type: string
-          count:
-            type: number
-          texture:
-            type: Texture
-          fullType:
-            type: string
-          fluidFullType:
-            type: string
-            nullable: true
-          color:
-            type: Color
-            nullable: true
-      umbrella.ISCraftingUI.RecipeSourceItemData:
-        extends: umbrella.ISCraftingUI.RecipeSourceItem
-        fields:
-          selectedItem:
-            type: umbrella.ISCraftingUI.RecipeItem
-          multiple:
-            type: boolean
-      umbrella.ISCraftInventoryPanel.ListItem:
-        fields:
-          isHeader:
-            type: boolean
-          isNode:
-            type: boolean
-          name:
-            type: string
-          text:
-            type: string
-          textWidth:
-            type: number
-          hasExpandArrow:
-            type: boolean
-            nullable: true
-          isUnavailable:
-            type: boolean
-            nullable: true
-          index:
-            type: integer
-            nullable: true
-          script:
-            type: Item
-            nullable: true
-          node:
-            type: HandcraftLogic.InputItemNode
-            nullable: true
-          inventoryItem:
-            type: InventoryItem
-      umbrella.ISComboBox.Option:
-        fields:
-          text:
-            type: string
-          data:
-            type: unknown
-      umbrella.ISContextDisassemble.Data:
-        fields:
-          object:
-            type: IsoObject
-          moveProps:
-            type: ISMoveableSpriteProps
-          square:
-            type: IsoGridSquare
-          chance:
-            type: number
-          perkName:
-            type: string
-          resultScrap:
-            type: umbrella.ISMoveableSpriteProps.CanScrapResult
-      umbrella.ISContextMenu.Option:
-        fields:
-          id:
-            type: integer
-          name:
-            type: string
-          onSelect:
-            type: "fun(target: unknown, ...: unknown)"
-            nullable: true
-          iconTexture:
-            type: Texture
-            nullable: true
-          color:
-            type: umbrella.RGB
-            nullable: true
-          checkMark:
-            type: boolean
-            nullable: true
-          target:
-            type: unknown
-            nullable: true
-          param1:
-            type: unknown
-            nullable: true
-          param2:
-            type: unknown
-            nullable: true
-          param3:
-            type: unknown
-            nullable: true
-          param4:
-            type: unknown
-            nullable: true
-          param5:
-            type: unknown
-            nullable: true
-          param6:
-            type: unknown
-            nullable: true
-          param7:
-            type: unknown
-            nullable: true
-          param8:
-            type: unknown
-            nullable: true
-          param9:
-            type: unknown
-            nullable: true
-          param10:
-            type: unknown
-            nullable: true
-          subOption:
-            type: number
-            nullable: true
-          toolTip:
-            type: ISToolTip
-            nullable: true
-          onHighlight:
-            type: "fun(option: umbrella.ISContextMenu.Option, menu: ISContextMenu, isHighlighted: boolean, ...: unknown)"
-            nullable: true
-          onHighlightParams:
-            type: table
-            nullable: true
-      umbrella.ISDebugPanelBase.PanelInfo:
-        fields:
-          buttonTitle:
-            type: string
-          panelClass:
-            type: ISUIElement
-          ignoreSorting:
-            type: boolean
-            nullable: true
-      umbrella.ISEntityUI.ComponentPanelInfo:
-        fields:
-          panelClass:
-            type: ISUIElement
-          component:
-            type: Component
-          uiStyle:
-            type: XuiSkin.ComponentUiStyle
-      umbrella.ISEntityUI.PlayerTable:
-        fields:
-          windows:
-            type: table<string, umbrella.ISEntityUI.WindowTable>
-      umbrella.ISEntityUI.ReloadTableItem:
-        fields:
-          player:
-            type: IsoPlayer
-          entity:
-            type: GameEntity
-      umbrella.ISEntityUI.WindowTable:
-        fields:
-          instance:
-            type: ISUIElement
-            nullable: true
-          x:
-            type: number
-            nullable: true
-          y:
-            type: number
-            nullable: true
-          width:
-            type: number
-            nullable: true
-          height:
-            type: number
-            nullable: true
-      umbrella.ISFarmingInfo.DiseaseTable:
-        fields:
-          text:
-            type: string
-          "[integer]":
-            type: umbrella.ISFarmingInfo.DiseaseInfo
-            nullable: true
-      umbrella.ISFarmingInfo.DiseaseInfo:
-        fields:
-          name:
-            type: string
-            nullable: true
-          value:
-            type: string
-            nullable: true
-      umbrella.ISFarmingMenu.CheatArgs:
-        fields:
-          var:
-            type: string
-          count:
-            type: integer
-          x:
-            type: number
-            nullable: true
-          y:
-            type: number
-            nullable: true
-          z:
-            type: number
-            nullable: true
-      umbrella.ISFluidContainerPanel.InfoTableItem:
-        fields:
-          tag:
-            type: string
-          value:
-            type: string
-          cache:
-            type: number
-      umbrella.ISFluidContainerPanel.InfoTable:
-        fields:
-          capacity:
-            type: umbrella.ISFluidContainerPanel.InfoTableItem
-          stored:
-            type: umbrella.ISFluidContainerPanel.InfoTableItem
-          free:
-            type: umbrella.ISFluidContainerPanel.InfoTableItem
-      umbrella.ISFluidContainerPanel.TextureItem:
-        fields:
-          texture:
-            type: Texture
-          offsetY:
-            type: number
-      umbrella.ISFluidInfoUI.PlayerTableItem:
-        fields:
-          instance:
-            type: ISFluidInfoUI
-          x:
-            type: number
-          y:
-            type: number
-      umbrella.ISFluidTransferUI.InfoTable:
-        fields:
-          maxTransfer:
-            type: number
-          transferring:
-            type: number
-      umbrella.ISFluidTransferUI.PlayerTableItem:
-        fields:
-          instance:
-            type: ISFluidTransferUI
-          x:
-            type: number
-          y:
-            type: number
-      umbrella.ISHotbar.AttachDefinition:
-        fields:
-          type:
-            type: string
-          name:
-            type: string
-          animset:
-            type: string
-          attachments:
-            type: table<string, string>
-      umbrella.ISHotbar.ReplaceDefinition:
-        fields:
-          type:
-            type: string
-          name:
-            type: string
-          animset:
-            type: string
-          replacements:
-            type: table<string, string>
-      umbrella.ISHotbar.Slot:
-        fields:
-          slotType:
-            type: string
-          name:
-            type: string
-          def:
-            type: umbrella.ISHotbar.AttachDefinition
-      umbrella.ISLayoutManager.Layout:
-        fields:
-          name:
-            type: string
-          x:
-            type: number
-          y:
-            type: number
-          width:
-            type: number
-          height:
-            type: number
-          visible:
-            type: '"true" | "false"'
-            nullable: true
-          pin:
-            type: '"true" | "false"'
-            nullable: true
       umbrella.ISMoveableSpriteProps.CanScrapResult:
         fields:
           canScrap:
@@ -884,143 +607,178 @@ languages:
           haveTool2:
             type: InventoryItem | false
             nullable: true
-      umbrella.ISScrollingListBox.Item:
+      umbrella.MakeUpDefinitions.Category:
         fields:
-          text:
+          name:
             type: string
-          item:
-            type: unknown
-            nullable: true
-          tooltip:
-            type: string
-            nullable: true
-          itemindex:
-            type: integer
-          index:
-            type: integer
-            nullable: true
-          height:
+          avatarZoom:
             type: number
-      umbrella.ISWidgetInput.ScriptValues:
-        extends: umbrella.ISWidgetTooltipInput.ScriptValues
-        fields:
-          isDrain:
-            type: boolean
-          isTool:
-            type: boolean
-          inputFullName:
+          avatarYOffset:
+            type: number
+          avatarXOffset:
+            type: number
+          category:
             type: string
-            nullable: true
-          itemNameLabel:
-            type: ISLabel
-            nullable: true
-          selectInputButton:
-            type: ISButton
-            nullable: true
-      umbrella.ISWidgetRecipeTools.ToolSide:
+      umbrella.RoomDistribution:
         fields:
-          enabled:
-            type: boolean
-          inputScript:
-            type: InputScript
-          inputWidget:
-            type: ISWidgetInput
-            nullable: true
-          icon:
-            type: ISImage
-          label:
-            type: ISLabel
-      umbrella.ISWidgetTooltipInput.ScriptValues:
-        fields:
-          isConsume:
-            type: boolean
-          script:
-            type: InputScript
-          isKeep:
-            type: boolean
-          isCreate:
+          isShop:
             type: boolean
             nullable: true
-          isItemCount:
-            type: boolean
-          iconColor:
-            type: umbrella.RGBA
-          cycleIcons:
-            type: boolean
-          icon:
-            type: ISImage
-          label:
-            type: ISLabel
-          iconText:
-            type: string
-            nullable: true
-          iconTexture:
-            type: Texture
-            nullable: true
-          amount:
+          professionChance:
             type: number
             nullable: true
-          amountStr:
+          professionChanceInt:
+            type: integer
+            nullable: true
+          outfit:
             type: string
             nullable: true
-          inputObjects:
-            type: ArrayList #<Item>
+          outfitFemale:
+            type: string
             nullable: true
-          outputObjects:
-            type: ArrayList #<Item>
+          outfitMale:
+            type: string
             nullable: true
-      umbrella.ISZoneDisplay.Tip:
-        fields:
-          level:
+          outfitChance:
+            type: string
+            nullable: true
+          vehicle:
+            type: string
+            nullable: true
+          vehicles:
+            type: string
+            nullable: true
+          vehicleChance:
             type: integer
-          title:
+            nullable: true
+          vehicleDistribution:
+            type: string
+            nullable: true
+          femaleChance:
+            type: string
+            nullable: true
+          roomTypes:
+            type: string
+            nullable: true
+          containerChance:
+            type: string
+            nullable: true
+          femaleOdds:
+            type: string
+            nullable: true
+          bagType:
+            type: string
+            nullable: true
+          "[string]":
+            type: umbrella.ContainerDistribution
+      umbrella.StashUtil.Stash:
+        fields:
+          name:
+            type: string
+          type:
+            type: string
+          item:
+            type: string
+          customName:
+            type: string
+          buildingX:
+            type: integer
+            nullable: true
+          buildingY:
+            type: integer
+            nullable: true
+          spawnTable:
+            type: string
+            nullable: true
+          zombies:
+            type: integer
+            nullable: true
+          barricades:
+            type: integer
+            nullable: true
+          spawnOnlyOnZed:
+            type: integer
+            nullable: true
+          daysToSpawn:
+            type: string
+            nullable: true
+          traps:
+            type: string
+            nullable: true
+          containers:
+            type: umbrella.StashUtil.StashContainer[]
+            nullable: true
+          annotations:
+            type: umbrella.StashUtil.StashAnnotation[]
+            nullable: true
+      umbrella.StashUtil.StashAnnotation:
+        fields:
+          symbol:
             type: string
           text:
             type: string
-          shown:
-            type: boolean
-      umbrella.WatchWindow.DataItem:
+          x:
+            type: number
+          y:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+      umbrella.StashUtil.StashContainer:
         fields:
-          obj:
-            type: table
-          item:
-            type: "{ key: unknown, value: unknown }"
-      umbrella.WorldMenuContextData:
-        fields:
-          context:
-            type: ISContextMenu
+          room:
+            type: string
             nullable: true
-          playerNum:
+          containerSprite:
+            type: string
+            nullable: true
+          containerType:
+            type: string
+            nullable: true
+          containerItem:
+            type: string
+            nullable: true
+          contX:
             type: integer
             nullable: true
-          player:
-            type: IsoPlayer
+          contY:
+            type: integer
             nullable: true
-          playerRoom:
-            type: IsoRoom
+          contZ:
+            type: integer
             nullable: true
-          inventory:
-            type: ItemContainer
+      umbrella.TrapAnimalDefinition:
+        fields:
+          type:
+            type: string
+          item:
+            type: string
+          minHour:
+            type: integer
+          maxHour:
+            type: integer
+          minSize:
+            type: integer
+          maxSize:
+            type: integer
+          zone:
+            type: table<string, integer>
+          traps:
+            type: table<string, integer>
+          baits:
+            type: table<string, integer>
+          strength:
+            type: integer
             nullable: true
-          object:
-            type: IsoObject
-            nullable: true
-          objects:
-            type: IsoObject[]
-            nullable: true
-          test:
+          canBeAlive:
             type: boolean
             nullable: true
-          isJoypad:
-            type: boolean
+          aliveAnimals:
+            type: string[]
             nullable: true
-          joypadData:
+          aliveBreed:
+            type: string[]
             nullable: true
-          playerData:
-            type: ISPlayerDataObject
-            nullable: true
-          contains:
-            type: table<IsoObject, true?>
-            nullable: true
-          squares:
-            type: IsoGridSquare[]

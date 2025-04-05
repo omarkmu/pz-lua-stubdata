@@ -9,6 +9,11 @@ languages:
         staticFields:
           Type:
             defaultValue: '"CFarmingSystem"'
+          instance:
+            type: CFarmingSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         fields:
           hoursElapsed:
             type: number

@@ -216,13 +216,13 @@ languages:
               - name: name
                 type: string
               - name: layout
-                type: table
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
-                type: table
+                type: umbrella.ISLayoutManager.Layout
         staticMethods:
           - name: initChat
           - name: onSwitchStream

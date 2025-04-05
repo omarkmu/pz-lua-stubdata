@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: subpanel
+                type: RWMPanel
               - name: title
                 type: string
               - name: radioParent
@@ -33,10 +34,14 @@ languages:
             type: integer
           radioParent:
             type: ISRadioWindow
-          fontheight: {}
-          fontheightMed: {}
-          buttonTexture: {}
-          subpanel: {}
+          fontheight:
+            type: number
+          fontheightMed:
+            type: number
+          buttonTexture:
+            type: Texture
+          subpanel:
+            type: RWMPanel
           titleText:
             type: string
           overrideBPrompt:
@@ -56,11 +61,15 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: prerender
           - name: render
@@ -69,6 +78,7 @@ languages:
               - name: _playerNum
                 type: integer
               - name: _radioParent
+                type: ISRadioWindow
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -96,29 +106,32 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: isValidPrompt
             return:
-              - type: boolean
+              - type: boolean | DeviceData
+                nullable: true

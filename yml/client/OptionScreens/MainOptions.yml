@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.MainOptions.KeyTextItem:
+        - type: umbrella.MainOptions.KeyTextElement | umbrella.MainOptions.KeyTextSection
     classes:
       MainOptions:
         extends: ISPanelJoypad
@@ -18,9 +21,9 @@ languages:
           Type:
             defaultValue: '"MainOptions"'
           keys:
-            type: table
+            type: umbrella.KeybindTable[]
           keyText:
-            type: table
+            type: umbrella.MainOptions.KeyTextItem[]
           setKeybindDialog:
             type: ISSetKeybindDialog
             nullable: true
@@ -49,25 +52,30 @@ languages:
             type: ISButton
           saveButton:
             type: ISButton
-          objHighColor: {}
+          objHighColor:
+            type: ISButton
           colorPicker2:
             type: ISColorPicker
-          targetColor: {}
+          targetColor:
+            type: ColorInfo
           colorPicker5:
             type: ISColorPicker
-          noTargetColor: {}
+          noTargetColor:
+            type: ColorInfo
           colorPicker6:
             type: ISColorPicker
           keyButtonWidth:
             type: number
           keyTickBoxes:
-            type: table
+            type: ISTickBox[]
           sprintBtn:
             type: ISButton
-          goodHighColor: {}
+          goodHighColor:
+            type: ISButton
           colorPicker3:
             type: ISColorPicker
-          badHighColor: {}
+          badHighColor:
+            type: ISButton
           colorPicker4:
             type: ISColorPicker
           stuffBelowControllerTickbox:
@@ -80,25 +88,27 @@ languages:
             type: ISButton
           controllerTestPanel:
             type: ISControllerTestPanel
-          mpColor: {}
+          mpColor:
+            type: ISButton
           colorPicker:
             type: ISColorPicker
           gameSounds:
             type: ISGameSounds
           modal:
-            type: ISModalDialog | ISConfirmMonitorSettingsDialog
+            type: ISUIElement
             nullable: true
           cover:
             type: ISPanel
           monitorSettings:
-            type: table
+            type: umbrella.MainOptions.MonitorSettings
           resetLua:
             type: boolean
           restartRequired:
             type: boolean
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
           gameOptions:
-            type: table
+            type: GameOptions
         methods:
           - name: initialise
           - name: instantiate
@@ -138,13 +148,16 @@ languages:
               - name: name
                 type: string
               - name: options
-                type: table
+                type: string[]
               - name: selected
-                type: number
+                type: integer
                 nullable: true
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: umbrella.ISComboBox.OnChange
+                nullable: true
             return:
               - type: ISComboBox
           - name: addTitle
@@ -162,6 +175,7 @@ languages:
               - name: y
                 type: number
               - name: text
+                type: string
           - name: addTextEntry
             parameters:
               - name: x
@@ -171,6 +185,7 @@ languages:
               - name: name
                 type: string
               - name: _text
+                type: string
             return:
               - type: ISTextEntryBox
           - name: addVolumeControl
@@ -189,7 +204,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: umbrella.ISVolumeControl.TargetFunction
+                nullable: true
             return:
               - type: ISVolumeControl
           - name: addTickBox
@@ -227,8 +245,10 @@ languages:
               - name: name
                 type: string
               - name: color
-                type: table
+                type: umbrella.RGBA
               - name: onClick
+                type: umbrella.ISButton.OnClick
+                nullable: true
             return:
               - type: ISButton
           - name: addButton
@@ -277,7 +297,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: umbrella.ISMegaVolumeControl.TargetFunction
+                nullable: true
             return:
               - type: ISMegaVolumeControl
           - name: addVolumeIndicator
@@ -296,7 +319,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: function
+                nullable: true
             return:
               - type: ISVolumeIndicator
           - name: addPage
@@ -355,31 +381,52 @@ languages:
           - name: pickedObjHighlightColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedModColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedMPTextColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedGoodHighlightColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedBadHighlightColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedTargetColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: pickedNoTargetColor
             parameters:
               - name: color
+                type: umbrella.RGB
               - name: mouseUp
+                type: boolean
+                nullable: true
           - name: onReloadGameSounds
           - name: onGameSounds
           - name: toUI
@@ -394,6 +441,7 @@ languages:
           - name: showConfirmMonitorSettingsDialog
             parameters:
               - name: closeAfter
+                type: boolean
             return:
               - type: boolean
           - name: onConfirmMonitorSettingsClick
@@ -401,14 +449,17 @@ languages:
               - name: button
                 type: ISButton
               - name: closeAfter
+                type: boolean
           - name: showRestartRequiredDialog
             parameters:
               - name: closeAfter
+                type: boolean
           - name: onRestartRequiredClick
             parameters:
               - name: button
                 type: ISButton
               - name: closeAfter
+                type: boolean
           - name: onMouseWheel
             parameters:
               - name: del
@@ -417,6 +468,8 @@ languages:
               - type: boolean
           - name: onMouseWheelCurrentTab
             parameters:
+              - name: self
+                type: ISPanelJoypad
               - name: del
                 type: number
             return:
@@ -442,6 +495,7 @@ languages:
           - name: apply
             parameters:
               - name: closeAfter
+                type: boolean
             return:
               - type: boolean
                 nullable: true
@@ -455,9 +509,13 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: centerKeybindings
           - name: centerTabChildrenX
             parameters:
@@ -466,33 +524,45 @@ languages:
           - name: centerChildrenX
             parameters:
               - name: panel
+                type: ISUIElement
           - name: tableContains
             parameters:
               - name: tbl
+                type: table
               - name: x
+                type: unknown
             return:
               - type: boolean
           - name: onTabsActivateView
             parameters:
               - name: tabs
+                type: ISTabPanel
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
                 type: JoypadData
           - name: onGainJoypadFocusCurrentTab
             parameters:
+              - name: self
+                type: ISPanelJoypad
               - name: joypadData
                 type: JoypadData
           - name: onLoseJoypadFocusCurrentTab
             parameters:
+              - name: self
+                type: ISPanelJoypad
               - name: joypadData
                 type: JoypadData
           - name: onJoypadBeforeDeactivateCurrentTab
             parameters:
+              - name: self
+                type: ISPanelJoypad
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDownCurrentTab
             parameters:
+              - name: self
+                type: ISPanelJoypad
               - name: button
                 type: ISButton
               - name: joypadData
@@ -505,7 +575,9 @@ languages:
           - name: sortModes
             parameters:
               - name: a
+                type: string
               - name: b
+                type: string
             return:
               - type: boolean
           - name: upgradeKeysIni
@@ -516,10 +588,11 @@ languages:
                 type: integer
                 nullable: true
               - name: defaultKey
+                type: integer
               - name: version
-                type: number
+                type: integer
             return:
-              - type: number
+              - type: integer
                 nullable: true
           - name: loadKeys
             return:
@@ -533,20 +606,59 @@ languages:
           - name: doLanguageToolTip
             parameters:
               - name: languages
+                type: string[]
             return:
-              - type: table
+              - type: table<string, string>
           - name: getGeneralTranslators
             parameters:
               - name: _language
             return:
-              - type: table
+              - type: string[]
           - name: getAvailableLanguage
             return:
-              - type: table
-              - type: number
+              - type: string[]
+              - type: integer
           - name: OnGamepadConnect
             parameters:
               - name: index
+                type: integer
           - name: OnGamepadDisconnect
             parameters:
               - name: index
+                type: integer
+      umbrella.MainOptions.KeyTextElement:
+        fields:
+          txt:
+            type: ISLabel
+          keyCode:
+            type: integer
+          defaultKeyCode:
+            type: integer
+            nullable: true
+          altCode:
+            type: integer
+          btn:
+            type: ISButton
+          left:
+            type: boolean
+          isModBind:
+            type: boolean
+            nullable: true
+      umbrella.MainOptions.KeyTextSection:
+        fields:
+          value:
+            type: string
+      umbrella.MainOptions.MonitorSettings:
+        fields:
+          changed:
+            type: boolean
+          fullscreen:
+            type: boolean
+          borderless:
+            type: boolean
+          width:
+            type: boolean
+          height:
+            type: boolean
+          vsync:
+            type: boolean

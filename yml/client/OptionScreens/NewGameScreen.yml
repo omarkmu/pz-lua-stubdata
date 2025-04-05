@@ -21,7 +21,8 @@ languages:
             type: NewGameScreen
             nullable: true
         fields:
-          mainPanel: {}
+          mainPanel:
+            type: ISPanelJoypad
           survival:
             type: ISLabel
           buttonMods:
@@ -32,24 +33,33 @@ languages:
             type: ISButton
           nextButton:
             type: ISButton
-          richText: {}
+          richText:
+            type: ISRichTextPanel
           selectedItem:
             type: ISLabel
           fadeOut:
+            type: number
             nullable: true
-          fadeIn: {}
+          fadeIn:
+            type: number
+            nullable: true
           overBottomPanelButton:
+            type: ISUIElement
             nullable: true
           MouseEnterMainMenuItem:
+            type: integer
             nullable: true
           modal:
             nullable: true
-          joypadButtons: {}
-          joypadFocused: {}
+          joypadButtons:
+            type: ISButton[]
+          joypadFocused:
+            type: boolean
+            nullable: true
           itemheightoverride:
             type: table
           selected:
-            type: number
+            type: integer
           startY:
             type: number
         methods:
@@ -90,12 +100,17 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: onResetLua
             parameters:
               - name: reason
+                type: string
           - name: onJoypadBeforeDeactivate
             parameters:
               - name: joypadData
@@ -104,6 +119,7 @@ languages:
           - name: onChooseDifficulty
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y
@@ -111,6 +127,7 @@ languages:
           - name: dblClickTutorial
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y
@@ -118,6 +135,7 @@ languages:
           - name: dblClickPlaystyle
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y
@@ -125,6 +143,7 @@ languages:
           - name: dblClickChallenge
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y
@@ -132,6 +151,7 @@ languages:
           - name: dblClickDifficulty
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y
@@ -139,6 +159,7 @@ languages:
           - name: dblClickSurvival
             parameters:
               - name: item
+                type: ISLabel
               - name: x
                 type: number
               - name: y

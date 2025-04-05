@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISPlayerStatsAddXPUI.OnClick:
+        - type: "fun(target: unknown?, button: ISButton, perk: PerkFactory.Perk, amount:
+            string, addGlobalXP: boolean, useMultipliers: boolean)"
     classes:
       ISPlayerStatsAddXPUI:
         extends: ISPanel
@@ -18,12 +22,14 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISPlayerStatsAddXPUI.OnClick
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsAddXPUI"'
         fields:
           perkList:
-            type: table
+            type: PerkFactory.Perk[]
           combo:
             type: ISComboBox
           entry:
@@ -39,8 +45,12 @@ languages:
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          zOffsetSmallFont: {}
+          onclick:
+            type: umbrella.ISPlayerStatsAddXPUI.OnClick
+            nullable: true
+          zOffsetSmallFont:
+            type: number
+            nullable: true
         methods:
           - name: initialise
           - name: setVisible

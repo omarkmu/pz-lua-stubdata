@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISVolumeControl.TargetFunction:
+        - type: "fun(target: unknown, control: ISVolumeControl, volume: number)"
     classes:
       ISVolumeControl:
         extends: ISPanel
@@ -16,22 +19,32 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: targetFunc
+                type: umbrella.ISVolumeControl.TargetFunction
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISVolumeControl"'
         fields:
           dragging:
             type: boolean
+            nullable: true
           tooltipUI:
             type: ISToolTip
+            nullable: true
           volume:
             type: number
-          joypadFocused: {}
+          joypadFocused:
+            type: boolean
           target:
             type: unknown
-          targetFunc: {}
-          fade: {}
+            nullable: true
+          targetFunc:
+            type: umbrella.ISVolumeControl.TargetFunction
+            nullable: true
+          fade:
+            type: UITransition
           isSlider:
             type: boolean
         methods:
@@ -62,8 +75,9 @@ languages:
           - name: getVolumeAtX
             parameters:
               - name: x
+                type: number
             return:
-              - type: number
+              - type: integer
           - name: prerender
           - name: render
           - name: getVolume
@@ -76,6 +90,7 @@ languages:
           - name: setJoypadFocused
             parameters:
               - name: focused
+                type: boolean
           - name: onJoypadDirLeft
             parameters:
               - name: joypadData

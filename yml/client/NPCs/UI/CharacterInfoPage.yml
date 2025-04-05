@@ -15,14 +15,17 @@ languages:
               - name: height
                 type: number
               - name: desc
+                type: SurvivorDesc
         staticFields:
           Type:
             defaultValue: '"CharacterInfoPage"'
         fields:
           avatarPanel:
             type: ISPanel
-          avatar: {}
-          desc: {}
+          avatar:
+            type: IsoSurvivor
+          desc:
+            type: SurvivorDesc
         methods:
           - name: initialise
           - name: createChildren
@@ -33,3 +36,4 @@ languages:
           - name: doInfo
             parameters:
               - name: desc
+                type: SurvivorDesc

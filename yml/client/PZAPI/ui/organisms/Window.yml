@@ -21,7 +21,9 @@ languages:
           - name: setCollapsed
             parameters:
               - name: collapsed
-      PZAPI:
+                type: boolean
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.Window:
+          Window:
             type: UI.Window

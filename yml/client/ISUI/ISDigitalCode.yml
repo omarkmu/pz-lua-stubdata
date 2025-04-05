@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISDigitalCode.OnClick:
+        - type: "fun(target: unknown, button: ISButton, character: IsoPlayer, padlock:
+            InventoryItem?, thumpable: IsoThumpable)"
     classes:
       ISDigitalCode:
         extends: ISPanelJoypad
@@ -18,8 +22,12 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISDigitalCode.OnClick
+                nullable: true
               - name: player
+                type: integer
               - name: padlock
+                type: InventoryItem
                 nullable: true
               - name: thumpable
                 type: IsoThumpable
@@ -49,21 +57,30 @@ languages:
             type: ISButton
           ok:
             type: ISButton
-          joypadButtons: {}
+          joypadButtons:
+            type: ISButton[]
+            nullable: true
           new:
             type: boolean
           character:
+            type: IsoPlayer
             nullable: true
           name:
             nullable: true
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          player: {}
-          playerX: {}
-          playerY: {}
+          onclick:
+            type: umbrella.ISDigitalCode.OnClick
+            nullable: true
+          player:
+            type: integer
+          playerX:
+            type: number
+          playerY:
+            type: number
           padlock:
+            type: InventoryItem
             nullable: true
           thumpable:
             type: IsoThumpable
@@ -92,7 +109,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getCode
             return:
               - type: number

@@ -19,7 +19,7 @@ languages:
             defaultValue: '"ISOnScreenKeyboard"'
         fields:
           toggleButtonBG:
-            type: table
+            type: umbrella.RGBA
           entry:
             type: OnScreenKeyboardEntry
           buttonPadY:
@@ -36,7 +36,8 @@ languages:
             type: boolean
           playerNum:
             type: integer
-          textEntryBox: {}
+          textEntryBox:
+            type: ISTextEntryBox
           bSelectDefaultKey:
             type: boolean
           setBlockMovement:
@@ -48,10 +49,13 @@ languages:
           - name: KeyFunction_Char
             parameters:
               - name: chLower
+                type: string
               - name: chUpper
+                type: string
           - name: KeyFunction_KeyCode
             parameters:
               - name: keyCode
+                type: integer
           - name: KeyFunction_CapsLock
           - name: KeyFunction_Enter
           - name: KeyFunction_Hide
@@ -61,6 +65,7 @@ languages:
           - name: shrinkWrap
             parameters:
               - name: panel
+                type: ISUIElement
           - name: prerender
           - name: update
           - name: setButtonNames
@@ -81,14 +86,16 @@ languages:
               - name: playerNum
                 type: integer
               - name: textEntryBox
+                type: ISTextEntryBox
               - name: joypadData
                 type: JoypadData
           - name: setMultipleLine
             parameters:
               - name: multipleLine
+                type: boolean
           - name: getCurrentText
             return:
-              - type: unknown
+              - type: string
           - name: focusOnEntry
             parameters:
               - name: joypadData
@@ -119,31 +126,34 @@ languages:
           - name: focus
             return:
               - type: unknown
+                nullable: true
           - name: unfocus
             return:
               - type: unknown
+                nullable: true
           - name: isFocused
             return:
-              - type: unknown
+              - type: boolean
           - name: getText
             return:
-              - type: unknown
+              - type: string
           - name: getInternalText
             return:
-              - type: unknown
+              - type: string
           - name: setText
             parameters:
               - name: str
                 type: string
           - name: getCursorLine
             return:
-              - type: unknown
+              - type: integer
           - name: setCursorLine
             parameters:
               - name: line
+                type: integer
           - name: isMasked
             return:
-              - type: unknown
+              - type: boolean
           - name: setMasked
             parameters:
               - name: masked
@@ -151,9 +161,10 @@ languages:
           - name: setMultipleLine
             parameters:
               - name: multipleLine
+                type: boolean
           - name: isMultipleLine
             return:
-              - type: unknown
+              - type: boolean
           - name: setMaxLines
             parameters:
               - name: max
@@ -161,9 +172,10 @@ languages:
           - name: setCursorPos
             parameters:
               - name: charIndex
+                type: integer
           - name: getCursorPos
             return:
-              - type: unknown
+              - type: integer
           - name: onJoypadDirLeft
             parameters:
               - name: joypadData
@@ -183,7 +195,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       OnScreenKeyboardPanel:
@@ -213,10 +225,11 @@ languages:
           buttonPadY:
             type: number
           rowOfButtons:
-            type: table
-          defaultButton: {}
+            type: ISButton[]
+          defaultButton:
+            type: ISButton
           backgroundColorPressed:
-            type: table
+            type: umbrella.RGBA
           parent:
             type: ISOnScreenKeyboard
         methods:
@@ -224,20 +237,27 @@ languages:
           - name: createButton_Char
             parameters:
               - name: chLower
+                type: string
               - name: chUpper
+                type: string
             return:
-              - type: unknown
+              - type: ISButton
           - name: createButton
             parameters:
               - name: textLower
+                type: string
               - name: textUpper
+                type: string
               - name: keyFunction
+                type: function
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
             return:
-              - type: unknown
+              - type: ISButton
           - name: createButton2
             parameters:
               - name: x
@@ -249,11 +269,15 @@ languages:
               - name: h
                 type: number
               - name: text
+                type: string
               - name: keyFunction
+                type: function
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
             return:
               - type: ISButton
           - name: renderButton
@@ -273,7 +297,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
       OnScreenKeyboard:

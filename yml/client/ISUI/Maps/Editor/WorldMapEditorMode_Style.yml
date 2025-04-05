@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: WorldMapEditor
         staticFields:
           Type:
             defaultValue: '"WorldMapEditorMode_Style"'
@@ -20,8 +21,9 @@ languages:
           zoomEntry:
             type: ISTextEntryBox
           editors:
-            type: table
+            type: table<string, WorldMapStyleEditor>
           currentEditor:
+            type: WorldMapStyleEditor
             nullable: true
         methods:
           - name: createChildren
@@ -79,6 +81,7 @@ languages:
           - name: onListboxEvent
             parameters:
               - name: action
+                type: string
           - name: onAdd
           - name: onRemove
           - name: onMoveUp
@@ -90,17 +93,21 @@ languages:
           - name: setCurrentEditor
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
+                nullable: true
           - name: generateLuaScript
             return:
               - type: string
           - name: generateLuaScript_FillStops
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
             return:
               - type: string
           - name: generateLuaScript_TextureStops
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
             return:
               - type: string
       WorldMapStyleEditor:
@@ -108,21 +115,28 @@ languages:
         constructors:
           - parameters:
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor"'
         fields:
           layer:
+            type: WorldMapStyleV1.WorldMapStyleLayerV1
             nullable: true
-          editorMode: {}
-          mapUI: {}
-          mapAPI: {}
-          styleAPI: {}
+          editorMode:
+            type: WorldMapEditorMode_Style
+          mapUI:
+            type: WorldMapEditor
+          mapAPI:
+            type: UIWorldMapV1
+          styleAPI:
+            type: WorldMapStyleV1
         methods:
           - name: shrinkWrap
           - name: display
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: undisplay
           - name: onKeyPress
             parameters:
@@ -140,11 +154,17 @@ languages:
           Type:
             defaultValue: '"WorldMapStyleEditor_TabPanel"'
         fields:
-          layer: {}
-          editorMode: {}
-          mapUI: {}
-          mapAPI: {}
-          styleAPI: {}
+          layer:
+            type: WorldMapStyleV1.WorldMapStyleLayerV1
+            nullable: true
+          editorMode:
+            type: WorldMapEditorMode_Style
+          mapUI:
+            type: WorldMapEditor
+          mapAPI:
+            type: UIWorldMapV1
+          styleAPI:
+            type: WorldMapStyleV1
         methods:
           - name: undisplay
           - name: onMouseDownMap
@@ -196,14 +216,17 @@ languages:
           - name: populateList
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: getEntryClamped
             parameters:
               - name: entry
+                type: ISTextEntryBox
               - name: min
+                type: number
               - name: max
+                type: number
             return:
               - type: number
-                nullable: true
       WorldMapStyleEditor_FilterPanel:
         extends: WorldMapStyleEditor_TabPanel
         constructors:
@@ -211,6 +234,7 @@ languages:
               - name: width
                 type: number
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_FilterPanel"'
@@ -224,6 +248,7 @@ languages:
           - name: populateList
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: onKeyEntered
           - name: onValueEntered
       WorldMapStyleEditor_ColorStopsPanel:
@@ -233,6 +258,7 @@ languages:
               - name: width
                 type: number
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_ColorStopsPanel"'
@@ -254,6 +280,7 @@ languages:
           - name: onListboxEvent
             parameters:
               - name: action
+                type: string
           - name: onAdd
           - name: onRemove
           - name: onMoveUp
@@ -262,6 +289,7 @@ languages:
           - name: populateList
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: onZoomEntered
           - name: onRedEntered
           - name: onGreenEntered
@@ -269,38 +297,38 @@ languages:
           - name: onAlphaEntered
           - name: getSelectedIndex
             return:
-              - type: number
+              - type: integer
                 nullable: true
           - name: getSelectedZoom
             return:
-              - type: unknown
+              - type: number
                 nullable: true
           - name: getSelectedRed
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: getSelectedGreen
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: getSelectedBlue
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: getSelectedAlpha
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: setRGBA
             parameters:
               - name: r
-                type: number
+                type: integer
               - name: g
-                type: number
+                type: integer
               - name: b
-                type: number
+                type: integer
               - name: a
-                type: number
+                type: integer
       WorldMapStyleEditor_TextureStopsPanel:
         extends: WorldMapStyleEditor_TabPanel
         constructors:
@@ -308,6 +336,7 @@ languages:
               - name: width
                 type: number
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_TextureStopsPanel"'
@@ -356,6 +385,7 @@ languages:
           - name: onListboxEvent
             parameters:
               - name: action
+                type: string
           - name: onAdd
           - name: onRemove
           - name: onMoveUp
@@ -364,21 +394,22 @@ languages:
           - name: populateList
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: getSelectedIndex
             return:
-              - type: number
+              - type: integer
                 nullable: true
           - name: getSelectedZoom
             return:
-              - type: unknown
+              - type: number
                 nullable: true
           - name: getSelectedTexturePath
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSelectedTexture
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true
           - name: onTexturePathEntered
           - name: onZoomEntered
@@ -389,6 +420,7 @@ languages:
               - name: width
                 type: number
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_TexturePanel"'
@@ -402,7 +434,7 @@ languages:
           textureMode:
             type: ISComboBox
           snapButtons:
-            type: table
+            type: table<string, ISButton>
           mode:
             type: string
             nullable: true
@@ -422,6 +454,7 @@ languages:
           - name: populateList
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: onMouseDownMap
             parameters:
               - name: x
@@ -489,6 +522,7 @@ languages:
         constructors:
           - parameters:
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_PolygonLayerPanel"'
@@ -506,6 +540,7 @@ languages:
           - name: display
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: undisplay
           - name: render
           - name: onMouseDownMap
@@ -516,6 +551,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseUpMap
             parameters:
               - name: x
@@ -524,6 +560,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseUpOutsideMap
             parameters:
               - name: x
@@ -532,6 +569,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseMoveMap
             parameters:
               - name: dx
@@ -540,6 +578,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onRightMouseDownMap
             parameters:
               - name: x
@@ -548,11 +587,13 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
       WorldMapStyleEditor_TextureLayerPanel:
         extends: WorldMapStyleEditor
         constructors:
           - parameters:
               - name: editorMode
+                type: WorldMapEditorMode_Style
         staticFields:
           Type:
             defaultValue: '"WorldMapStyleEditor_TextureLayerPanel"'
@@ -568,6 +609,7 @@ languages:
           - name: display
             parameters:
               - name: layer
+                type: WorldMapStyleV1.WorldMapStyleLayerV1
           - name: undisplay
           - name: render
           - name: onMouseDownMap
@@ -578,6 +620,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseUpMap
             parameters:
               - name: x
@@ -586,6 +629,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseUpOutsideMap
             parameters:
               - name: x
@@ -594,6 +638,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onMouseMoveMap
             parameters:
               - name: dx
@@ -602,6 +647,7 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onRightMouseDownMap
             parameters:
               - name: x
@@ -610,9 +656,11 @@ languages:
                 type: number
             return:
               - type: unknown
+                nullable: true
           - name: onKeyPress
             parameters:
               - name: key
                 type: integer
             return:
               - type: unknown
+                nullable: true

@@ -4,8 +4,10 @@ languages:
     classes:
       ISInventoryPaneContextMenu:
         staticFields:
-          tooltipPool: {}
-          tooltipsUsed: {}
+          tooltipPool:
+            type: ISToolTip[]
+          tooltipsUsed:
+            type: ISToolTip[]
           ghs:
             defaultValue: '"<GHC>"'
           bhs:
@@ -14,7 +16,7 @@ languages:
             type: ISToolTipInv
             nullable: true
           ItemInstances:
-            type: table
+            type: table<string, InventoryItem>
             nullable: true
           placeItemCursor:
             type: ISPlace3DItemCursor
@@ -25,7 +27,9 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
           - name: onWriteSomethingClick
             parameters:
               - name: button
@@ -35,28 +39,35 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
           - name: onRenameBagClick
             parameters:
               - name: button
                 type: ISButton
               - name: player
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticMethods:
           - name: createMenu
             parameters:
               - name: player
+                type: integer
               - name: isInPlayerInventory
                 type: boolean
               - name: items
-                type: table
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: x
                 type: number
               - name: y
                 type: number
               - name: origin
+                type: ISUIElement
+                nullable: true
             return:
-              - type: unknown
+              - type: ISContextMenu
                 nullable: true
           - name: createMenuNoItems
             parameters:
@@ -69,7 +80,7 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: ISContextMenu
                 nullable: true
           - name: doStoveMenu
             parameters:
@@ -88,105 +99,155 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: doBandageMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: canRipItem
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: addFishRodOptions
             parameters:
               - name: fishingRod
+                type: InventoryItem
               - name: haveLure
+                type: boolean
               - name: context
                 type: ISContextMenu
               - name: player
+                type: integer
           - name: removeLure
             parameters:
               - name: player
+                type: integer
               - name: fishingRod
+                type: InventoryItem
           - name: addLure
             parameters:
               - name: player
+                type: integer
               - name: fishingRod
+                type: InventoryItem
               - name: lure
           - name: changeHook
             parameters:
               - name: player
+                type: integer
               - name: fishingRod
+                type: InventoryItem
               - name: hook
+                type: InventoryItem
           - name: changeLine
             parameters:
               - name: player
+                type: integer
               - name: fishingRod
+                type: InventoryItem
               - name: line
+                type: InventoryItem
           - name: onInspectClothing
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: clothing
+                type: Clothing
           - name: onInspectClothingUI
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
           - name: doClothingPatchMenu
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: context
                 type: ISContextMenu
           - name: removePatch
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: part
+                type: BloodBodyPartType
               - name: needle
+                type: InventoryItem
           - name: removeAllPatches
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: parts
+                type: BloodBodyPartType[]
               - name: needle
+                type: InventoryItem
           - name: repairClothing
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: part
+                type: BloodBodyPartType
               - name: fabric
+                type: InventoryItem
               - name: thread
+                type: InventoryItem
               - name: needle
+                type: InventoryItem
           - name: repairAllClothing
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: parts
+                type: BloodBodyPartType[]
               - name: fabric
+                type: InventoryItem
               - name: thread
+                type: InventoryItem
               - name: needle
+                type: InventoryItem
               - name: onlyHoles
+                type: boolean
           - name: doWearClothingTooltip
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: newItem
+                type: InventoryItem
               - name: currentItem
+                type: InventoryItem
               - name: option
+                type: umbrella.ISContextMenu.Option
             return:
-              - type: table
+              - type: InventoryItem[]
                 nullable: true
           - name: doWearClothingMenu
             parameters:
               - name: player
+                type: integer
               - name: clothing
+                type: Clothing
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: context
                 type: ISContextMenu
           - name: doChangeFireModeMenu
@@ -194,6 +255,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: context
                 type: ISContextMenu
           - name: onChangefiremode
@@ -201,12 +263,15 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: newfiremode
+                type: string
           - name: doReloadMenuForBullets
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: bullet
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
           - name: doReloadMenuForMagazine
@@ -214,6 +279,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: magazine
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
           - name: doBulletMenu
@@ -221,6 +287,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: context
                 type: ISContextMenu
           - name: doReloadMenuForWeapon
@@ -228,6 +295,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: context
                 type: ISContextMenu
           - name: transferIfNeeded
@@ -235,7 +303,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: item
-                type: boolean
+                type: InventoryItem | IsoWorldInventoryObject | ArrayList<InventoryItem>
                 nullable: true
               - name: preventTransferWorldObjects
                 type: boolean
@@ -245,13 +313,17 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
           - name: transferBullets
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: ammoType
+                type: string
               - name: currentAmmo
+                type: number
               - name: maxAmmo
+                type: number
             return:
               - type: number
           - name: onInsertMagazine
@@ -259,27 +331,33 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: magazine
+                type: InventoryItem
           - name: onRackGun
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
           - name: onLoadBulletsIntoFirearm
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
           - name: onUnloadBulletsFromFirearm
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon
           - name: doMagazineMenu
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: magazine
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
           - name: onLoadBulletsInMagazine
@@ -287,101 +365,138 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: magazine
+                type: InventoryItem
               - name: ammoCount
+                type: number
           - name: onUnloadBulletsFromMagazine
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: magazine
+                type: InventoryItem
           - name: getEvoItemCategories
             parameters:
               - name: items
+                type: ArrayList<InventoryItem>
               - name: evorecipe
+                type: EvolvedRecipe
             return:
-              - type: table
+              - type: table<string, Food>
           - name: onPlaceCarBatteryCharger
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: carBatteryCharger
+                type: InventoryItem
           - name: addItemInEvoRecipe
             parameters:
               - name: subMenuRecipe
+                type: ISContextMenu
               - name: baseItem
+                type: InventoryItem
               - name: evoItem
-                nullable: true
+                type: InventoryItem
               - name: extraInfo
                 type: string
               - name: evorecipe2
+                type: EvolvedRecipe
               - name: player
+                type: integer
           - name: addEatTooltip
             parameters:
               - name: option
+                type: umbrella.ISContextMenu.Option
               - name: items
+                type: InventoryItem[]
               - name: percent
+                type: number
           - name: doEatOption
             parameters:
               - name: context
                 type: ISContextMenu
               - name: cmd
+                type: string
               - name: items
+                type: InventoryItem[]
               - name: player
+                type: integer
               - name: playerObj
                 type: IsoPlayer
               - name: foodItems
+                type: InventoryItem[]
           - name: checkConsolidate
             parameters:
               - name: drainable
+                type: DrainableComboItem
+                nullable: true
               - name: playerObj
                 type: IsoPlayer
               - name: context
                 type: ISContextMenu
               - name: previousPourInto
+                type: InventoryItem[]
           - name: onConsolidate
             parameters:
               - name: drainable
+                type: DrainableComboItem
               - name: intoItem
+                type: DrainableComboItem
               - name: playerObj
                 type: IsoPlayer
           - name: onConsolidateAll
             parameters:
               - name: drainable
+                type: DrainableComboItem
               - name: consolidateList
+                type: DrainableComboItem[]
               - name: playerObj
                 type: IsoPlayer
           - name: OnTriggerRemoteController
             parameters:
               - name: remoteController
+                type: InventoryItem
               - name: player
+                type: integer
           - name: OnLinkRemoteController
             parameters:
               - name: itemToLink
+                type: InventoryItem
               - name: remoteController
+                type: InventoryItem
               - name: player
+                type: integer
           - name: isAllFav
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
             return:
               - type: boolean
           - name: isAnyAllowed
             parameters:
               - name: container
+                type: ItemContainer
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
             return:
               - type: boolean
           - name: isAllNoDropMoveable
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
             return:
               - type: boolean
           - name: OnResetRemoteControlID
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onDrinkFluid
             parameters:
               - name: item
+                type: InventoryItem
               - name: percent
+                type: number
               - name: playerObj
                 type: IsoPlayer
           - name: doDrinkFluidMenu
@@ -389,6 +504,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: fluidContainer
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
           - name: doDrinkForThirstMenu
@@ -398,194 +514,283 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: waterContainer
+                type: InventoryItem
           - name: onDrinkForThirst
             parameters:
               - name: waterContainer
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
               - name: percent
+                type: number
           - name: onAddItemInEvoRecipe
             parameters:
               - name: recipe
+                type: EvolvedRecipe
               - name: baseItem
+                type: InventoryItem
               - name: usedItem
+                type: InventoryItem
               - name: player
+                type: integer
           - name: buildFixingMenu
             parameters:
               - name: brokenObject
+                type: InventoryItem
               - name: player
+                type: integer
               - name: fixing
+                type: Fixing
               - name: fixingNum
-                type: number
+                type: integer
               - name: fixOption
+                type: umbrella.ISContextMenu.Option
               - name: subMenuFix
+                type: ISContextMenu
               - name: vehiclePart
+                type: VehiclePart
+                nullable: true
           - name: getContainers
             parameters:
               - name: character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: ArrayList<ItemContainer>
                 nullable: true
           - name: addFixerSubOption
             parameters:
               - name: brokenObject
+                type: InventoryItem
               - name: player
+                type: integer
               - name: fixing
+                type: Fixing
               - name: fixingNum
-                type: number
+                type: integer
               - name: fixer
+                type: Fixing.Fixer
               - name: fixerNum
-                type: number
+                type: integer
               - name: subMenuFix
+                type: ISContextMenu
               - name: vehiclePart
+                type: VehiclePart
+                nullable: true
             return:
-              - type: unknown
+              - type: umbrella.ISContextMenu.Option
           - name: onFix
             parameters:
               - name: brokenObject
+                type: InventoryItem
               - name: player
+                type: integer
               - name: fixingNum
-                type: number
+                type: integer
               - name: fixerNum
-                type: number
+                type: integer
               - name: vehiclePart
+                type: VehiclePart
+                nullable: true
           - name: onDyeHair
             parameters:
               - name: hairDye
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
               - name: beard
+                type: boolean
           - name: onDryMyself
             parameters:
               - name: towels
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onWringClothing
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onSetBombTimer
             parameters:
               - name: trap
+                type: HandWeapon
               - name: player
+                type: integer
           - name: onStopAlarm
             parameters:
               - name: alarm
+                type: AlarmClock | AlarmClockClothing
               - name: player
+                type: integer
           - name: onSetAlarm
             parameters:
               - name: alarm
+                type: AlarmClock | AlarmClockClothing
               - name: player
+                type: integer
           - name: onRenameMap
             parameters:
               - name: map
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onRenameBag
             parameters:
               - name: bag
+                type: InventoryContainer
               - name: player
+                type: integer
           - name: onRenameFood
             parameters:
               - name: food
+                type: Food
               - name: player
+                type: integer
           - name: onCheckMap
             parameters:
               - name: map
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onWriteSomething
             parameters:
               - name: notebook
+                type: Literature
               - name: editable
+                type: boolean
               - name: player
+                type: integer
           - name: dryMyself
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onApplyBandage
             parameters:
               - name: bandages
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: bodyPart
+                type: BodyPart
               - name: player
+                type: integer
           - name: applyBandage
             parameters:
               - name: item
+                type: InventoryItem
               - name: bodyPart
+                type: BodyPart
               - name: player
+                type: integer
           - name: haveDamagePart
             parameters:
               - name: playerId
+                type: integer
             return:
-              - type: table
+              - type: BodyPart[]
           - name: onLiteratureItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: readItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onUnEquip
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: unequipItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onWearItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onActivateItem
             parameters:
               - name: light
+                type: InventoryItem
               - name: player
+                type: integer
           - name: wearItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onPutItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: canMoveTo
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: dest
+                type: InventoryContainer | ItemContainer
               - name: player
+                type: integer
             return:
-              - type: unknown
+              - type: InventoryContainer | ItemContainer
                 nullable: true
           - name: hasRoomForAny
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: container
+                type: InventoryContainer | ItemContainer
               - name: items
+                type: InventoryItem[]
             return:
               - type: boolean
           - name: canUnpack
             parameters:
               - name: items
+                type: InventoryItem[]
               - name: player
+                type: integer
             return:
               - type: boolean
           - name: onFavorite
             parameters:
               - name: items
+                type: InventoryItem[]
               - name: item2
+                type: InventoryItem
               - name: fav
+                type: boolean
           - name: onMoveItemsTo
             parameters:
               - name: items
+                type: InventoryItem[]
               - name: dest
+                type: ItemContainer
               - name: player
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: canAddManyItems
             parameters:
               - name: recipe
+                type: Recipe
               - name: selectedItem
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
             return:
@@ -593,192 +798,280 @@ languages:
           - name: addDynamicalContextMenu
             parameters:
               - name: selectedItem
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
               - name: recipeList
+                type: ArrayList<Recipe>
               - name: player
+                type: integer
               - name: containerList
+                type: ArrayList<ItemContainer>
           - name: addNewCraftingDynamicalContextMenu
             parameters:
               - name: selectedItem
+                type: InventoryItem
               - name: context
                 type: ISContextMenu
               - name: recipeList
+                type: ArrayList<CraftRecipe>
               - name: player
+                type: integer
               - name: containerList
+                type: ArrayList<ItemContainer>
           - name: addToolTip
             return:
-              - type: unknown
+              - type: ISToolTip
           - name: OnNewCraft
             parameters:
               - name: selectedItem
+                type: InventoryItem
               - name: recipe
+                type: CraftRecipe
               - name: player
+                type: integer
               - name: all
+                type: boolean
           - name: OnNewCraftComplete
             parameters:
               - name: logic
+                type: HandcraftLogic
           - name: OnCraft
             parameters:
               - name: selectedItem
+                type: InventoryItem
               - name: recipe
-                nullable: true
+                type: Recipe
               - name: player
+                type: integer
               - name: all
                 type: boolean
           - name: OnCraftComplete
             parameters:
               - name: completedAction
+                type: ISCraftAction
               - name: recipe
+                type: Recipe
               - name: playerObj
                 type: IsoPlayer
               - name: container
+                type: ItemContainer
               - name: containers
+                type: ArrayList<ItemContainer>
               - name: selectedItemType
+                type: string
               - name: selectedItemContainer
+                type: ItemContainer
           - name: eatItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: percentage
+                type: number
               - name: player
+                type: integer
           - name: OnPrimaryWeapon
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onPillsItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: takePill
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onInspectTrack
             parameters:
               - name: player
+                type: integer
               - name: track
+                type: InventoryItem
           - name: OnTwoHandsEquip
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: OnSecondWeapon
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: equipWeapon
             parameters:
               - name: weapon
+                type: InventoryItem
               - name: primary
                 type: boolean
               - name: twoHands
                 type: boolean
               - name: player
+                type: integer
           - name: onInformationItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
           - name: information
             parameters:
               - name: item
+                type: InventoryItem
           - name: removeToolTip
           - name: onEatItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: percentage
+                type: number
               - name: player
+                type: integer
           - name: onPlaceTrap
             parameters:
               - name: weapon
+                type: HandWeapon
               - name: player
+                type: integer
           - name: onRemoveUpgradeWeapon
             parameters:
               - name: weapon
+                type: HandWeapon
               - name: part
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onUpgradeWeapon
             parameters:
               - name: weapon
+                type: HandWeapon
               - name: part
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onDropItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: litCandleExtinguish
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: hurricaneLanternExtinguish
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: dropItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onGrabItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: transferItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: playerInv
+                type: ItemContainer
               - name: player
+                type: integer
               - name: dontWalk
+                type: boolean
+                nullable: true
           - name: onGrabHalfItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onEditItem
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
               - name: item
+                type: InventoryItem
           - name: onGrabOneItems
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onTransferWater
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: itemFrom
+                type: InventoryItem
               - name: itemTo
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onEmptyWaterContainer
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: waterSource
+                type: InventoryItem
               - name: player
+                type: integer
           - name: canReplaceStoreWater
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: canReplaceStoreWater2
             parameters:
               - name: itemType
+                type: string
             return:
               - type: boolean
           - name: onDumpContents
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: startWith
             parameters:
               - name: String
+                type: string
               - name: Start
+                type: string
             return:
               - type: boolean
           - name: getRealEvolvedItemUse
             parameters:
               - name: evoItem
-                nullable: true
+                type: Food
               - name: evorecipe2
+                type: EvolvedRecipe
               - name: cookingLvl
+                type: integer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: doEquipOption
             parameters:
@@ -789,18 +1082,23 @@ languages:
               - name: isWeapon
                 type: boolean
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: onTurnIntoSkeleton
             parameters:
               - name: animal
+                type: InventoryItem
           - name: equipHeavyItem
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: item
+                type: InventoryItem
           - name: onMakeUp
             parameters:
               - name: makeup
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: doGrabMenu
@@ -808,78 +1106,99 @@ languages:
               - name: context
                 type: ISContextMenu
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
           - name: doEvorecipeMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
               - name: evorecipe
+                type: ArrayList<EvolvedRecipe>
               - name: baseItem
+                type: InventoryItem
               - name: containerList
+                type: ArrayList<ItemContainer>
           - name: doMakeUpMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: makeup
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: getItemInstance
             parameters:
               - name: type
+                type: string
             return:
-              - type: unknown
+              - type: InventoryItem
           - name: doClothingItemExtraMenu
             parameters:
               - name: context
                 type: ISContextMenu
               - name: clothingItemExtra
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
           - name: onClothingItemExtra
             parameters:
               - name: item
+                type: InventoryItem
               - name: extra
+                type: string
               - name: playerObj
                 type: IsoPlayer
           - name: doPlace3DItemOption
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
           - name: onPlaceItemOnGround
             parameters:
               - name: items
+                type: (InventoryItem | umbrella.ISInventoryPane.ItemRecord)[]
               - name: playerObj
                 type: IsoPlayer
           - name: AutoDrinkOn
             parameters:
               - name: waterContainer
+                type: InventoryItem
           - name: AutoDrinkOff
             parameters:
               - name: waterContainer
+                type: InventoryItem
           - name: hasOpenFlame
             parameters:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: IsoObject | boolean
           - name: getEatingMask
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: removeMask
+                type: boolean
             return:
               - type: boolean
           - name: onTeleportToKeyOrigin
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: integer
           - name: onResearchRecipe
             parameters:
               - name: item
+                type: InventoryItem
               - name: playerObj
                 type: IsoPlayer
       ISRecipeTooltip:
@@ -889,16 +1208,19 @@ languages:
         staticFields:
           Type:
             defaultValue: '"CraftTooltip"'
-          tooltipPool: {}
-          tooltipsUsed: {}
+          tooltipPool:
+            type: ISRecipeTooltip[]
+          tooltipsUsed:
+            type: ISRecipeTooltip[]
         fields:
           playerNum:
             type: integer
-          containerList: {}
+          containerList:
+            type: ArrayList<ItemContainer>
           typesAvailable:
-            type: table
+            type: table<string, integer>
           contents:
-            type: table
+            type: umbrella.ISRecipeTooltip.ContentsLine[]
             nullable: true
           contentsX:
             type: number
@@ -936,10 +1258,13 @@ languages:
                 type: string
               - name: r
                 type: number
+                nullable: true
               - name: g
                 type: number
+                nullable: true
               - name: b
                 type: number
+                nullable: true
           - name: addImageDirect
             parameters:
               - name: x
@@ -947,35 +1272,46 @@ languages:
               - name: y
                 type: number
               - name: texture
+                type: Texture
               - name: r
                 type: number
+                nullable: true
               - name: g
                 type: number
+                nullable: true
               - name: b
                 type: number
+                nullable: true
           - name: getSingleSourceText
             parameters:
               - name: source
+                type: Recipe.Source
             return:
               - type: string
           - name: isExtraClothingItemOf
             parameters:
               - name: item1
+                type: "{ fullType: string }"
               - name: item2
+                type: "{ fullType: string }"
             return:
               - type: boolean
           - name: isFluidSource
             parameters:
               - name: item
+                type: InventoryItem
               - name: fluid
-                nullable: true
+                type: Fluid
               - name: amount
+                type: number
             return:
               - type: boolean
           - name: isWaterSource
             parameters:
               - name: item
+                type: InventoryItem
               - name: count
+                type: number
             return:
               - type: boolean
           - name: getContainers
@@ -994,5 +1330,29 @@ languages:
         staticMethods:
           - name: addToolTip
             return:
-              - type: unknown
+              - type: ISRecipeTooltip
           - name: releaseAll
+      umbrella.ISRecipeTooltip.ContentsLine:
+        fields:
+          type:
+            type: string
+          x:
+            type: number
+          y:
+            type: number
+          width:
+            type: number
+          height:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          text:
+            type: string
+            nullable: true
+          texture:
+            type: Texture
+            nullable: true

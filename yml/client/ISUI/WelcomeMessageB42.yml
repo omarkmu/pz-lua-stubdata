@@ -23,7 +23,8 @@ languages:
         fields:
           refreshNeeded:
             type: boolean
-          screenshot: {}
+          screenshot:
+            type: Texture
           titleLabel:
             type: ISLabel
           changeLabel:

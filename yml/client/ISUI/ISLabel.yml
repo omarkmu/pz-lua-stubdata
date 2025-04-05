@@ -13,9 +13,9 @@ languages:
               - name: height
                 type: number
               - name: name
-                type: string | number
+                type: string
               - name: r
-                type: number | string
+                type: number
               - name: g
                 type: number
               - name: b
@@ -23,7 +23,8 @@ languages:
               - name: a
                 type: number
               - name: font
-                type: number
+                type: UIFont
+                nullable: true
               - name: bLeft
                 type: boolean
                 nullable: true
@@ -32,9 +33,9 @@ languages:
             defaultValue: '"ISLabel"'
         fields:
           name:
-            type: string | number
+            type: string
           r:
-            type: number | string
+            type: number
           g:
             type: number
           b:
@@ -45,19 +46,24 @@ languages:
             type: boolean
           tooltipUI:
             type: ISToolTip
-          tooltip:
             nullable: true
-          joypadTexture: {}
+          tooltip:
+            type: string
+            nullable: true
+          joypadTexture:
+            type: Texture
+            nullable: true
           translation:
             type: string
             nullable: true
-          width: {}
+          width:
+            type: number
           font:
             type: number
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           originalX:
             type: number
           left:
@@ -66,12 +72,13 @@ languages:
           center:
             type: boolean
           textColor:
+            type: umbrella.RGBA
             nullable: true
         methods:
           - name: initialise
           - name: getName
             return:
-              - type: string | number
+              - type: string
                 nullable: true
           - name: setName
             parameters:
@@ -80,15 +87,21 @@ languages:
           - name: setWidthToName
             parameters:
               - name: minWidth
+                type: number
+                nullable: true
           - name: getFontHeight
             return:
-              - type: unknown
+              - type: number
           - name: setHeightToFont
             parameters:
               - name: minHeight
+                type: number
+                nullable: true
           - name: setHeightToName
             parameters:
               - name: minHeight
+                type: number
+                nullable: true
           - name: setColor
             parameters:
               - name: r
@@ -114,6 +127,7 @@ languages:
           - name: setTooltip
             parameters:
               - name: tooltip
+                type: string
           - name: setJoypadFocused
             parameters:
               - name: focused

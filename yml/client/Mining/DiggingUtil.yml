@@ -17,6 +17,7 @@ languages:
               - name: z
                 type: number
               - name: dir
+                type: IsoDirections
           - name: mining_floorCanDig
             parameters:
               - name: square

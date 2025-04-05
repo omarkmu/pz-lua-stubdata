@@ -7,9 +7,13 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: srcContainer
+                type: ItemContainer
               - name: destContainer
+                type: ItemContainer
               - name: time
                 type: number
                 nullable: true
@@ -21,8 +25,10 @@ languages:
           putSoundTime:
             defaultValue: "0"
           putSound:
+            type: integer
             nullable: true
           putSoundContainer:
+            type: ItemContainer
             nullable: true
         fields:
           dontAdd:
@@ -31,6 +37,7 @@ languages:
             type: number
             nullable: true
           selectedContainer:
+            type: ItemContainer
             nullable: true
           jobType:
             type: string
@@ -38,22 +45,37 @@ languages:
             type: number
           started:
             type: boolean
-          sourceContainerOpened: {}
-          sourceContainerOpenSound: {}
-          destContainerOpened: {}
-          destContainerOpenSound: {}
-          item: {}
+          sourceContainerOpened:
+            type: ItemContainer
+            nullable: true
+          sourceContainerOpenSound:
+            type: integer
+            nullable: true
+          destContainerOpened:
+            type: ItemContainer
+            nullable: true
+          destContainerOpenSound:
+            type: integer
+            nullable: true
+          item:
+            type: InventoryItem
+            nullable: true
           queueList:
-            type: table
-          onCompleteFunc: {}
+            type: umbrella.ISInventoryTransferAction.QueueItem[]
+          onCompleteFunc:
+            type: function
+            nullable: true
           onCompleteArgs:
             type: table
+            nullable: true
           allowMissingItems:
             type: boolean
-          srcContainer: {}
-          destContainer: {}
+          srcContainer:
+            type: ItemContainer
+          destContainer:
+            type: ItemContainer
           transactions:
-            type: table
+            type: umbrella.ISInventoryTransferAction.Transaction
           loopedAction:
             type: boolean
         methods:
@@ -64,6 +86,7 @@ languages:
           - name: doActionAnim
             parameters:
               - name: cont
+                type: ItemContainer
           - name: startActionAnim
           - name: start
           - name: playSourceContainerOpenSound
@@ -79,13 +102,15 @@ languages:
           - name: isAlreadyTransferred
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: boolean
           - name: floorHasRoomFor
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: canDropOnFloor
@@ -97,37 +122,50 @@ languages:
           - name: getNotFullFloorSquare
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: transferItem
             parameters:
               - name: item
+                type: InventoryItem
           - name: setOnComplete
             parameters:
               - name: func
+                type: function
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
               - name: arg5
                 type: unknown
+                nullable: true
               - name: arg6
                 type: unknown
+                nullable: true
               - name: arg7
                 type: unknown
+                nullable: true
               - name: arg8
                 type: unknown
+                nullable: true
           - name: getTimeDelta
             return:
               - type: number
           - name: canMergeAction
             parameters:
               - name: action
+                type: ISBaseTimedAction
             return:
               - type: boolean
           - name: checkQueueList
@@ -137,11 +175,31 @@ languages:
                 type: boolean
           - name: getExtraLogData
             return:
-              - type: table
+              - type: string[]
+      umbrella.ISInventoryTransferAction.QueueItem:
+        fields:
+          items:
+            type: InventoryItem[]
+          time:
+            type: number
+          type:
+            type: string
+      umbrella.ISInventoryTransferAction.Transaction:
+        fields:
+          "[1]":
+            type: InventoryItem
+          "[2]":
+            type: ItemContainer
+          "[3]":
+            type: ItemContainer
     functions:
       - name: javaTransferItems
         parameters:
           - name: character
+            type: IsoPlayer
           - name: item
+            type: InventoryItem
           - name: srcContainer
+            type: ItemContainer
           - name: destContainer
+            type: ItemContainer

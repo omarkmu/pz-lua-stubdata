@@ -46,7 +46,8 @@ languages:
             type: integer
           borderSize:
             type: number
-          bottomHeight: {}
+          bottomHeight:
+            type: number
         methods:
           - name: createChildren
           - name: prerender
@@ -54,6 +55,7 @@ languages:
           - name: setAdornmentsVisible
             parameters:
               - name: visible
+                type: boolean
           - name: setPosition
           - name: onButton1
           - name: onButton2
@@ -74,7 +76,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: RestoreLayout
@@ -82,11 +84,13 @@ languages:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
           - name: SaveLayout
             parameters:
               - name: name
                 type: string
               - name: layout
+                type: umbrella.ISLayoutManager.Layout
       ISMiniMapInner:
         extends: ISUIElement
         constructors:
@@ -105,7 +109,8 @@ languages:
           Type:
             defaultValue: '"ISMiniMapInner"'
         fields:
-          mapAPI: {}
+          mapAPI:
+            type: UIWorldMapV1
           dragging:
             type: boolean
           dragMoved:
@@ -114,15 +119,24 @@ languages:
             type: number
           dragStartY:
             type: number
-          dragStartCX: {}
-          dragStartCY: {}
-          dragStartZoomF: {}
-          dragStartWorldX: {}
-          dragStartWorldY: {}
+          dragStartCX:
+            type: number
+          dragStartCY:
+            type: number
+          dragStartZoomF:
+            type: number
+          dragStartWorldX:
+            type: number
+          dragStartWorldY:
+            type: number
           rightMouseDown:
             type: boolean
           playerNum:
             type: integer
+          javaObject:
+            type: UIWorldMap
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: prerenderHack
@@ -191,7 +205,9 @@ languages:
           - name: onTeleport
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
       ISMiniMapTitleBar:
         extends: ISPanel
         constructors:
@@ -202,8 +218,10 @@ languages:
           Type:
             defaultValue: '"ISMiniMapTitleBar"'
         fields:
-          downX: {}
-          downY: {}
+          downX:
+            type: number
+          downY:
+            type: number
           dragging:
             type: boolean
           miniMap:
@@ -214,7 +232,7 @@ languages:
           - name: prerender
           - name: titleBarHeight
             return:
-              - type: unknown
+              - type: number
           - name: onMouseDown
             parameters:
               - name: x
@@ -254,7 +272,7 @@ languages:
         staticMethods:
           - name: TitleBarHeight
             return:
-              - type: unknown
+              - type: number
       ISMiniMap:
         staticMethods:
           - name: IsAllowed

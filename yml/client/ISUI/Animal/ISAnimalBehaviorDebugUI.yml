@@ -15,13 +15,17 @@ languages:
               - name: height
                 type: number
               - name: animal
+                type: IsoAnimal
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAnimalBehaviorDebugUI"'
         fields:
-          animal: {}
-          chr: {}
+          animal:
+            type: IsoAnimal
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           refreshNeeded:

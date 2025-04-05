@@ -6,3 +6,42 @@ languages:
         staticFields:
           CarList: {}
           PartList: {}
+      umbrella.ISCarMechanicsOverlay.CarListItem:
+        fields:
+          imgPrefix:
+            type: string
+          x:
+            type: integer
+          y:
+            type: integer
+      umbrella.ISCarMechanicsOverlay.PartListItem:
+        fields:
+          img:
+            type: string | string[]
+          vehicles:
+            type: table<string, umbrella.ISCarMechanicsOverlay.PartListRegion>
+          multipleImg:
+            type: boolean
+            nullable: true
+          x:
+            type: integer
+            nullable: true
+          y:
+            type: integer
+            nullable: true
+          x2:
+            type: integer
+            nullable: true
+          y2:
+            type: integer
+            nullable: true
+      umbrella.ISCarMechanicsOverlay.PartListRegion:
+        fields:
+          x:
+            type: integer
+          y:
+            type: integer
+          x2:
+            type: integer
+          y2:
+            type: integer

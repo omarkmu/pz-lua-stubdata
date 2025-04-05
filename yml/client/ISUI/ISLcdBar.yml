@@ -19,8 +19,10 @@ languages:
             defaultValue: "\"
               !\\\"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\\\
               \\]^_\""
-          unsupported: {}
-          special: {}
+          unsupported:
+            type: string[]
+          special:
+            type: string[]
         fields:
           charW:
             type: number
@@ -41,17 +43,19 @@ languages:
           text:
             type: string
           gridColor:
-            type: table
+            type: umbrella.RGBA
           greyCol:
-            type: table
+            type: umbrella.RGBA
           ledColor:
-            type: table
+            type: umbrella.RGBA
           ledTextColor:
-            type: table
+            type: umbrella.RGBA
           lcdwidth:
             type: number
-          lcdfont: {}
-          lcdback: {}
+          lcdfont:
+            type: Texture
+          lcdback:
+            type: Texture
         methods:
           - name: initialise
           - name: createChildren
@@ -64,6 +68,7 @@ languages:
           - name: renderChar
             parameters:
               - name: _pos
+                type: number
               - name: _index
                 type: number
               - name: _r
@@ -77,12 +82,15 @@ languages:
           - name: isSpecial
             parameters:
               - name: _char
+                type: string
             return:
               - type: boolean
           - name: printChar
             parameters:
               - name: _pos
+                type: number
               - name: _char
+                type: string
           - name: render
           - name: renderBackground
             parameters:

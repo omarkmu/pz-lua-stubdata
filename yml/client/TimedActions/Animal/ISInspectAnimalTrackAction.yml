@@ -7,20 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: track
+                type: IsoAnimalTrack | InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISInspectAnimalTrackAction"'
         fields:
-          track: {}
+          track:
+            type: IsoAnimalTrack | InventoryItem
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

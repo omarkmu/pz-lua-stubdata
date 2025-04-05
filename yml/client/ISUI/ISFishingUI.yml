@@ -15,11 +15,14 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
               - name: clickedSquare
+                type: IsoGridSquare
         staticFields:
           Type:
             defaultValue: '"ISFishingUI"'
-          instance: {}
+          instance:
+            type: table<integer, ISFishingUI>
           messages: {}
         fields:
           ok:
@@ -38,7 +41,8 @@ languages:
             type: ISComboBox
           barPadY:
             type: number
-          btnHgt: {}
+          btnHgt:
+            type: number
           padBottom:
             type: number
           barY:
@@ -46,43 +50,58 @@ languages:
           usingSpear:
             type: boolean
           selectedRod:
+            type: InventoryItem
             nullable: true
           luresEnabled:
             type: boolean
             nullable: true
-          checkStuffTime: {}
-          joypadButtons: {}
-          containers: {}
+          checkStuffTime:
+            type: number
+          joypadButtons:
+            type: ISButton[]
+            nullable: true
+          containers:
+            type: ArrayList<InventoryItem>
           zoneProgress:
             type: number
           selectedLure:
+            type: InventoryItem
             nullable: true
-          checkPlayerX: {}
-          checkPlayerY: {}
+          checkPlayerX:
+            type: number
+          checkPlayerY:
+            type: number
           canFishDistance:
             type: boolean
           squareWithSameZone:
-            type: table
+            type: IsoGridSquare[]
           squareWithOtherZone:
-            type: table
+            type: IsoGridSquare[]
           squareWithoutZone:
-            type: table
-          clickedSquare: {}
-          clickedSquareX: {}
-          clickedSquareY: {}
-          clickedSquareZ: {}
+            type: IsoGridSquare[]
+          clickedSquare:
+            type: IsoGridSquare
+          clickedSquareX:
+            type: number
+          clickedSquareY:
+            type: number
+          clickedSquareZ:
+            type: number
           titleY:
             type: number
-          barHgt: {}
-          player: {}
+          barHgt:
+            type: number
+          player:
+            type: IsoPlayer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           fishes:
-            type: table
+            type: umbrella.ISFishingUI.FishItem[]
           maxFish:
             type: number
           rod: {}
-          items_array: {}
+          items_array:
+            type: ArrayList<InventoryItem>
         methods:
           - name: setVisible
             parameters:
@@ -93,11 +112,13 @@ languages:
           - name: clickedRod
             parameters:
               - name: buttons
+                type: ISRadioButtons
               - name: index
+                type: integer
           - name: updateRods
           - name: updateSelectedRod
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: updateLures
           - name: render
@@ -114,10 +135,11 @@ languages:
               - type: boolean
           - name: getSelectedBag
             return:
-              - type: unknown
+              - type: ItemContainer | InventoryItem
           - name: updateButtons
             parameters:
               - name: currentAction
+                type: ISBaseTimedAction
           - name: onClick
             parameters:
               - name: button
@@ -137,10 +159,11 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: setFish
             parameters:
               - name: item
+                type: InventoryItem
           - name: doBagOptions
           - name: updateZoneProgress
             parameters:
@@ -150,6 +173,17 @@ languages:
           - name: pickBestSquare
             parameters:
               - name: squares
+                type: IsoGridSquare[]
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
+      umbrella.ISFishingUI.FishItem:
+        fields:
+          item:
+            type: InventoryItem
+          texture:
+            type: Texture
+          alpha:
+            type: number
+          alphaTimer:
+            type: number

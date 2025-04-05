@@ -11,7 +11,9 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
                 nullable: true
         staticFields:
           Type:
@@ -30,12 +32,13 @@ languages:
           tooltip:
             type: ISToolTip
           vehiclePart:
-            type: table
+            type: table<string, umbrella.ISVehicleMechanics.CategoryTable>
           listWidth:
             type: number
-          generalCondition: {}
+          generalCondition:
+            type: integer
           generalCondRGB:
-            type: table
+            type: umbrella.RGB
           leftListHasFocus:
             type: boolean
           leftListSelection:
@@ -50,7 +53,8 @@ languages:
             type: ISScrollingListBox
           bodyworklist:
             type: ISScrollingListBox
-          selected: {}
+          selected:
+            type: integer
           context:
             type: ISContextMenu
             nullable: true
@@ -65,18 +69,21 @@ languages:
           flashTimerAlphaInc:
             type: boolean
           usedHood:
+            type: VehiclePart
             nullable: true
           drawJoypadFocus:
             type: boolean
-          chr: {}
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           vehicle:
+            type: BaseVehicle
             nullable: true
           partCatRGB:
-            type: table
+            type: umbrella.RGB
           partRGB:
-            type: table
+            type: umbrella.RGB
           title:
             type: string
           xCarTexOffset:
@@ -104,7 +111,7 @@ languages:
           - name: doPartContextMenu
             parameters:
               - name: part
-                nullable: true
+                type: VehiclePart
               - name: x
                 type: number
               - name: y
@@ -112,21 +119,29 @@ languages:
           - name: doMenuTooltip
             parameters:
               - name: part
+                type: VehiclePart
               - name: option
+                type: umbrella.ISContextMenu.Option
               - name: lua
+                type: string
               - name: name
                 type: string
+                nullable: true
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: renderCarOverlay
           - name: selectPart
             parameters:
               - name: part
+                type: VehiclePart
                 nullable: true
           - name: isMouseOverPart
             parameters:
@@ -135,6 +150,7 @@ languages:
               - name: y
                 type: number
               - name: part
+                type: VehiclePart
             return:
               - type: boolean
                 nullable: true
@@ -145,7 +161,7 @@ languages:
               - name: y
                 type: number
             return:
-              - type: unknown
+              - type: VehiclePart
                 nullable: true
           - name: onMouseDown
             parameters:
@@ -162,8 +178,11 @@ languages:
           - name: renderCarOverlayTooltip
             parameters:
               - name: partProps
+                type: umbrella.ISCarMechanicsOverlay.PartListItem
               - name: part
+                type: VehiclePart
               - name: carType
+                type: string
             return:
               - type: boolean
           - name: startFlashRed
@@ -171,6 +190,7 @@ languages:
           - name: roundContainerContentAmount
             parameters:
               - name: part
+                type: VehiclePart
             return:
               - type: number
           - name: prerender
@@ -178,24 +198,29 @@ languages:
           - name: renderPartDetail
             parameters:
               - name: part
+                type: VehiclePart
           - name: getConditionRGB
             parameters:
               - name: condition
+                type: integer
             return:
-              - type: table
+              - type: umbrella.RGB
           - name: setVisible
             parameters:
               - name: bVisible
                 type: boolean
               - name: joypadData
                 type: JoypadData
+                nullable: true
           - name: close
           - name: onListboxJoypadDirUp
             parameters:
               - name: listbox
+                type: ISScrollingListBox
           - name: onListboxJoypadDirDown
             parameters:
               - name: listbox
+                type: ISScrollingListBox
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -203,7 +228,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
           - name: onJoypadDirDown
           - name: onJoypadDirLeft
@@ -224,32 +249,39 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onRepairLightbar
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onTakeEngineParts
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onConfigHeadlight
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: dir
+                type: integer
           - name: onCheatGetKey
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatHotwire
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: hotwired
               - name: broken
           - name: onCheatRepair
@@ -257,6 +289,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatSetRustAux
             parameters:
               - name: target
@@ -266,11 +299,13 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatSetRust
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatRepairPart
             parameters:
               - name: playerObj
@@ -285,11 +320,13 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onCheatSetCondition
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onCheatSetContentAmountAux
             parameters:
               - name: target
@@ -299,24 +336,29 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onCheatSetContentAmount
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: part
+                type: VehiclePart
           - name: onCheatRemoveAux
             parameters:
               - name: dummy
+                nullable: true
               - name: button
                 type: ISButton
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatRemove
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
           - name: onCheatToggle
             parameters:
               - name: playerObj
@@ -324,4 +366,20 @@ languages:
           - name: OnMechanicActionDone
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: success
+                type: boolean
+      umbrella.ISVehicleMechanics.CategoryTable:
+        fields:
+          name:
+            type: string
+          category:
+            type: string
+          parts:
+            type: umbrella.ISVehicleMechanics.PartTable[]
+      umbrella.ISVehicleMechanics.PartTable:
+        fields:
+          name:
+            type: string
+          part:
+            type: VehiclePart

@@ -51,7 +51,7 @@ languages:
           totalRecipes:
             type: integer
           containerList:
-            type: ArrayList #<ItemContainer>
+            type: ArrayList<ItemContainer>
           recipeListHasFocus:
             type: boolean
           refreshTypesAvailableMS:
@@ -172,8 +172,11 @@ languages:
           - name: drawNonEvolvedIngredient
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: isExtraClothingItemOf
@@ -196,8 +199,11 @@ languages:
           - name: drawEvolvedIngredient
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onDblClickIngredientListbox
@@ -280,7 +286,7 @@ languages:
               - name: container
                 type: ItemContainer
               - name: containers
-                type: ArrayList #<ItemContainer>
+                type: ArrayList<ItemContainer>
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -288,7 +294,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
           - name: onJoypadDirDown
           - name: onJoypadDirLeft
@@ -355,3 +361,102 @@ languages:
               - type: unknown
                 nullable: true
           - name: updateTooltip
+      umbrella.ISCraftingUI.IngredientItem:
+        fields:
+          name:
+            type: string
+          available:
+            type: boolean
+          texture:
+            type: Texture
+          item:
+            type: InventoryItem
+          baseItem:
+            type: Item
+          recipe:
+            type: Recipe
+          poison:
+            type: boolean
+      umbrella.ISCraftingUI.RecipeItem:
+        fields:
+          recipe:
+            type: Recipe | EvolvedRecipe
+          category:
+            type: string
+            nullable: true
+          sources:
+            type: "{ items: umbrella.ISCraftingUI.RecipeSourceItem[] }[]"
+            nullable: true
+          available:
+            type: boolean
+            nullable: true
+          favorite:
+            type: boolean
+            nullable: true
+          texture:
+            type: Texture
+            nullable: true
+          itemName:
+            type: string
+            nullable: true
+          typesAvailable:
+            type: table<string, integer>
+            nullable: true
+          baseItem:
+            type: Item
+            nullable: true
+          resultName:
+            type: string
+            nullable: true
+          items:
+            type: umbrella.ISCraftingUI.RecipesListIngredientItem[]
+            nullable: true
+          evolved:
+            type: boolean
+            nullable: true
+          customRecipeName:
+            type: string
+            nullable: true
+          extraItems:
+            type: Item[]
+            nullable: true
+      umbrella.ISCraftingUI.RecipesListIngredientItem:
+        fields:
+          name:
+            type: string
+          available:
+            type: boolean
+          texture:
+            type: Texture
+          fullType:
+            type: string
+            nullable: true
+          itemToAdd:
+            type: InventoryItem
+            nullable: true
+          poison:
+            type: boolean
+            nullable: true
+      umbrella.ISCraftingUI.RecipeSourceItem:
+        fields:
+          name:
+            type: string
+          count:
+            type: number
+          texture:
+            type: Texture
+          fullType:
+            type: string
+          fluidFullType:
+            type: string
+            nullable: true
+          color:
+            type: Color
+            nullable: true
+      umbrella.ISCraftingUI.RecipeSourceItemData:
+        extends: umbrella.ISCraftingUI.RecipeSourceItem
+        fields:
+          selectedItem:
+            type: umbrella.ISCraftingUI.RecipeItem
+          multiple:
+            type: boolean

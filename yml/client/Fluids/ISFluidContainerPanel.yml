@@ -1,6 +1,17 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISFluidContainerPanel.RenderText:
+        - type: "fun(self: ISFluidContainerPanel, s: string, x: number, y: number, r:
+            number, g: number, b: number, a: number, font: UIFont)"
+      umbrella.ISFluidContainerPanel.OnContainerAdd:
+        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel)"
+      umbrella.ISFluidContainerPanel.OnContainerRemove:
+        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel)"
+      umbrella.ISFluidContainerPanel.OnContainerVerify:
+        - type: "fun(target: unknown, item: InventoryItem, panel: ISFluidContainerPanel):
+            boolean"
     classes:
       ISFluidContainerPanel:
         extends: ISPanel
@@ -35,7 +46,7 @@ languages:
           fluidBar:
             type: ISFluidBar
           containerBox:
-            type: "{ x: number, y: number, w: number, h: number }"
+            type: umbrella.XYWH
           itemDropBox:
             type: ISItemDropBox
           container:
@@ -216,3 +227,25 @@ languages:
               - name: _b
                 type: boolean
           - name: onClose
+      umbrella.ISFluidContainerPanel.InfoTableItem:
+        fields:
+          tag:
+            type: string
+          value:
+            type: string
+          cache:
+            type: number
+      umbrella.ISFluidContainerPanel.InfoTable:
+        fields:
+          capacity:
+            type: umbrella.ISFluidContainerPanel.InfoTableItem
+          stored:
+            type: umbrella.ISFluidContainerPanel.InfoTableItem
+          free:
+            type: umbrella.ISFluidContainerPanel.InfoTableItem
+      umbrella.ISFluidContainerPanel.TextureItem:
+        fields:
+          texture:
+            type: Texture
+          offsetY:
+            type: number

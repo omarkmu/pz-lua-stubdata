@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISTextBoxMap.Target:
+        - type: "{ mapUI: umbrella.MapUI, symbolsUI: ISWorldMapSymbols }"
     classes:
       ISTextBoxMap:
         extends: ISCollapsableWindowJoypad
@@ -19,29 +22,39 @@ languages:
               - name: defaultEntryText
                 type: string
               - name: target
-                type: unknown
+                type: umbrella.ISTextBoxMap.Target
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: player
+                type: integer
                 nullable: true
               - name: param1
                 type: unknown
+                nullable: true
               - name: param2
                 type: unknown
+                nullable: true
               - name: param3
                 type: unknown
+                nullable: true
               - name: param4
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTextBoxMap"'
         fields:
           colorButtonInfo:
-            type: table
+            type: umbrella.ISTextBoxMap.ColorButtonInfo[]
           colorButtons:
-            type: table
-          blackColor: {}
-          currentColor: {}
-          fontHgt: {}
+            type: ISButton[]
+          blackColor:
+            type: ColorInfo
+          currentColor:
+            type: ColorInfo
+          fontHgt:
+            type: number
           entry:
             type: ISTextEntryBox
           tickBox:
@@ -50,32 +63,49 @@ languages:
             type: ISButton
           no:
             type: ISButton
-          validateTarget: {}
-          validateFunc: {}
+          validateTarget:
+            type: unknown
+            nullable: true
+          validateFunc:
+            type: umbrella.ISTextBox.ValidateFunction
+            nullable: true
           validateArgs:
             type: table
-          validateTooltipText: {}
+            nullable: true
+          validateTooltipText:
+            type: string
+            nullable: true
           character:
+            type: IsoPlayer
             nullable: true
           name:
             nullable: true
           text:
             type: string
           target:
-            type: unknown
-          mapUI: {}
-          symbolsUI: {}
-          onclick: {}
+            type: umbrella.ISTextBoxMap.Target
+          mapUI:
+            type: umbrella.MapUI
+          symbolsUI:
+            type: ISWorldMapSymbols
+          onclick:
+            type: umbrella.ISButton.OnClick
+            nullable: true
           player:
+            type: integer
             nullable: true
           param1:
             type: unknown
+            nullable: true
           param2:
             type: unknown
+            nullable: true
           param3:
             type: unknown
+            nullable: true
           param4:
             type: unknown
+            nullable: true
           defaultEntryText:
             type: string
         methods:
@@ -83,18 +113,26 @@ languages:
           - name: setOnlyNumbers
             parameters:
               - name: onlyNumbers
+                type: boolean
           - name: setValidateFunction
             parameters:
               - name: target
                 type: unknown
+                nullable: true
               - name: func
+                type: umbrella.ISTextBox.ValidateFunction
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
           - name: setValidateTooltipText
             parameters:
               - name: text
+                type: string
+                nullable: true
           - name: destroy
           - name: onClick
             parameters:
@@ -130,7 +168,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirDown
@@ -142,3 +180,11 @@ languages:
               - name: joypadData
                 type: JoypadData
           - name: close
+      umbrella.ISTextBoxMap.ColorButtonInfo:
+        fields:
+          item:
+            type: string
+          colorInfo:
+            type: ColorInfo
+          tooltip:
+            type: string

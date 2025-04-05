@@ -79,3 +79,21 @@ languages:
               - name: _button
                 type: ISButton
           - name: update
+      umbrella.ClimateColorsDebug.ColorInfo:
+        fields:
+          colorInfo:
+            type: ClimateColorInfo
+          name:
+            type: string
+          isSeasonal:
+            type: boolean
+            nullable: true
+          daySegment:
+            type: number
+            nullable: true
+          temperature:
+            type: number
+            nullable: true
+          season:
+            type: number
+            nullable: true

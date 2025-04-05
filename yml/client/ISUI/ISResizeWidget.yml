@@ -15,7 +15,7 @@ languages:
               - name: height
                 type: number
               - name: resizeTarget
-                type: table
+                type: ISUIElement
               - name: yonly
                 type: boolean
                 nullable: true
@@ -25,15 +25,17 @@ languages:
         fields:
           resizing:
             type: boolean
-          downX: {}
-          downY: {}
+          downX:
+            type: number
+          downY:
+            type: number
           backgroundColorMouseOver:
-            type: table
+            type: umbrella.RGBA
           yonly:
             type: boolean
             nullable: true
           target:
-            type: unknown
+            type: ISUIElement
           resizeFunction:
             type: boolean
         methods:

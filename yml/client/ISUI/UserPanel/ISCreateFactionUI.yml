@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISCreateFactionUI"'
@@ -29,9 +30,10 @@ languages:
             type: ISButton
           ok:
             type: ISButton
-          player: {}
+          player:
+            type: IsoPlayer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
         methods:
           - name: initialise
           - name: render

@@ -4,30 +4,30 @@ languages:
     classes:
       ISVehicleRegulator:
         staticFields:
-          xPressed: {}
-          changedSpeed: {}
+          xPressed:
+            type: table<integer, boolean>
+          changedSpeed:
+            type: table<integer, boolean>
         staticMethods:
           - name: onJoypadPressUp
             parameters:
               - name: joypadData
                 type: JoypadData
-                nullable: true
             return:
               - type: boolean
           - name: onJoypadPressDown
             parameters:
               - name: joypadData
                 type: JoypadData
-                nullable: true
             return:
               - type: boolean
           - name: onJoypadPressX
             parameters:
               - name: buttonPrompt
+                type: ISButtonPrompt
               - name: joypadData
                 type: JoypadData
           - name: onJoypadReleaseX
             parameters:
               - name: joypadData
                 type: JoypadData
-                nullable: true

@@ -11,6 +11,7 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISVehicleRoadtripDebug"'
@@ -19,10 +20,13 @@ languages:
             type: ISButton
           stop:
             type: ISButton
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           startedTrip:
             type: boolean
-          startTimer: {}
+          startTimer:
+            type: integer
+            nullable: true
           stopTimer:
             nullable: true
           initialGas:
@@ -30,13 +34,15 @@ languages:
           initialBattery:
             type: number
           partsCondition:
-            type: table
-          previousSq: {}
+            type: table<string, umbrella.ISVehicleRoadtripDebug.ConditionInfo>
+          previousSq:
+            type: IsoGridSquare
           totalDist:
             type: number
           playerNum:
             type: integer
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: createChildren
           - name: update
@@ -50,6 +56,15 @@ languages:
               - name: y
                 type: number
               - name: startingListY
+                type: integer
             return:
               - type: number
               - type: number
+      umbrella.ISVehicleRoadtripDebug.ConditionInfo:
+        fields:
+          id:
+            type: string
+          item:
+            type: InventoryItem
+          condition:
+            type: integer

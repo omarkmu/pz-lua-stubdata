@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: WorldMapEditor
         staticFields:
           Type:
             defaultValue: '"WorldMapEditorResizer"'
@@ -21,13 +22,16 @@ languages:
             type: number
           resizing:
             type: boolean
-          editor: {}
-          mapUI: {}
-          mapAPI: {}
+          editor:
+            type: WorldMapEditor
+          mapUI:
+            type: WorldMapEditor
+          mapAPI:
+            type: UIWorldMapV1
           snapMode:
             type: string
           originalBounds:
-            type: table
+            type: umbrella.WorldMapEditorResizer.Bounds
         methods:
           - name: setBounds
             parameters:
@@ -53,8 +57,11 @@ languages:
           - name: onMouseMove
             parameters:
               - name: mx
+                type: number
               - name: my
+                type: number
               - name: hitTest
+                type: string
             return:
               - type: boolean
                 nullable: true
@@ -62,6 +69,7 @@ languages:
           - name: snap
             parameters:
               - name: xy
+                type: number
             return:
               - type: number
           - name: render
@@ -74,3 +82,13 @@ languages:
                 type: number
               - name: a
                 type: number
+      umbrella.WorldMapEditorResizer.Bounds:
+        fields:
+          x1:
+            type: number
+          y1:
+            type: number
+          x2:
+            type: number
+          y2:
+            type: number

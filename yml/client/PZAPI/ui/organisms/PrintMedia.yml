@@ -34,9 +34,11 @@ languages:
           - name: setCollapsed
             parameters:
               - name: collapsed
+                type: boolean
           - name: onClickNewspaperButton
           - name: onClickMapButton
-      PZAPI:
+      PZAPI.UI:
+        local: true
         staticFields:
-          UI.PrintMedia:
+          PrintMedia:
             type: UI.PrintMedia

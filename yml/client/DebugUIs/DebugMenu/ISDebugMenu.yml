@@ -30,7 +30,7 @@ languages:
             type: ISUIElement[]
         fields:
           buttons:
-            type: "{ title: string, func: function, tab: string, marginTop?: number }[]"
+            type: "{ title: string, func: function, tab: string, marginTop: number? }[]"
           mainButton:
             type: ISButton
           devButton:
@@ -59,7 +59,7 @@ languages:
                 type: number
                 nullable: true
             return:
-              - type: "{ title: string, func: function, tab: string, marginTop?: number }"
+              - type: "{ title: string, func: function, tab: string, marginTop: number? }"
           - name: bringToTop
             parameters:
               - name: _buttonInfo

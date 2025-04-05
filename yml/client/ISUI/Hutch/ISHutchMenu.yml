@@ -7,37 +7,54 @@ languages:
           - name: OnFillWorldObjectContextMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
           - name: onPutAnimalInsideHutch
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer
           - name: setDirt
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer
               - name: perc
+                type: number
           - name: setNestDirt
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer
               - name: perc
+                type: number
           - name: onInfo
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: chr
+                type: IsoPlayer
           - name: onToggleDoor
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer
           - name: onToggleEggHatchDoor
             parameters:
               - name: hutch
+                type: IsoHutch
               - name: player
+                type: IsoPlayer

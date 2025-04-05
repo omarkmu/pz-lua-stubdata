@@ -21,8 +21,10 @@ languages:
             defaultValue: '"ISRadialMenu"'
         fields:
           slices:
-            type: table
-          hideWhenButtonReleased: {}
+            type: umbrella.ISRadialMenu.Slice[]
+          hideWhenButtonReleased:
+            type: ISButton
+            nullable: true
           innerRadius:
             type: number
           outerRadius:
@@ -30,9 +32,13 @@ languages:
           playerNum:
             type: integer
           sounds:
-            type: table
+            type: table<string, string>
           disableJoypadNavigation:
             type: boolean
+          javaObject:
+            type: RadialMenu
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: onMouseDown
@@ -54,34 +60,52 @@ languages:
           - name: addSlice
             parameters:
               - name: text
+                type: string
+                nullable: true
               - name: texture
+                type: Texture
+                nullable: true
               - name: command
+                type: function
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
               - name: arg5
                 type: unknown
+                nullable: true
               - name: arg6
                 type: unknown
+                nullable: true
           - name: setSliceText
             parameters:
               - name: sliceIndex
+                type: integer
               - name: text
+                type: string
+                nullable: true
           - name: setSliceTexture
             parameters:
               - name: sliceIndex
+                type: integer
               - name: texture
+                type: Texture
+                nullable: true
           - name: getSliceCommand
             parameters:
               - name: sliceIndex
-                type: number
+                type: integer
             return:
-              - type: unknown
+              - type: table
                 nullable: true
           - name: center
           - name: onGainJoypadFocus
@@ -91,17 +115,28 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: setHideWhenButtonReleased
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadButtonReleased
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: undisplay
+      umbrella.ISRadialMenu.Slice:
+        fields:
+          text:
+            type: string
+            nullable: true
+          texture:
+            type: Texture
+            nullable: true
+          command:
+            type: table
+            nullable: true

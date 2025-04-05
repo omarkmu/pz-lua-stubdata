@@ -49,6 +49,7 @@ languages:
           - name: OnZombieUpdate
             parameters:
               - name: zombie
+                type: IsoZombie
           - name: EveryHours
           - name: EveryDays
           - name: OnInitWorld

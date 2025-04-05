@@ -1,40 +1,56 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISQueueActionsAction.AddActionsFunction:
+        - type: "fun(character: IsoPlayer, ...: unknown?)"
     classes:
       ISQueueActionsAction:
         extends: ISBaseTimedAction
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: addActionsFunction
+                type: umbrella.ISQueueActionsAction.AddActionsFunction
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
               - name: arg5
                 type: unknown
+                nullable: true
               - name: arg6
                 type: unknown
+                nullable: true
               - name: arg7
                 type: unknown
+                nullable: true
               - name: arg8
                 type: unknown
+                nullable: true
               - name: arg9
                 type: unknown
+                nullable: true
               - name: arg10
                 type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISQueueActionsAction"'
         fields:
           isAddingActions:
             type: boolean
-          addActionsFunction: {}
+          addActionsFunction:
+            type: umbrella.ISQueueActionsAction.AddActionsFunction
           args:
             type: table
         methods:

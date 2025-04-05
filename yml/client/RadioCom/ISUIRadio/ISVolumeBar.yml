@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISVolumeBar.OnVolumeChange:
+        - type: "fun(target: unknown?, hoverVolume: integer)"
     classes:
       ISVolumeBar:
         extends: ISPanel
@@ -15,8 +18,11 @@ languages:
               - name: height
                 type: number
               - name: onVolumeChange
+                type: umbrella.ISVolumeBar.OnVolumeChange
+                nullable: true
               - name: onVolumeChangeTarget
-                type: RWMVolume
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISVolumeBar"'
@@ -24,15 +30,15 @@ languages:
           dragInside:
             type: boolean
           hoverVolume:
-            type: number
+            type: integer
           enableControls:
             type: boolean
           joyMeter:
-            type: number
+            type: integer
           volume:
-            type: number
+            type: integer
           volumeSteps:
-            type: number
+            type: integer
           posChange:
             type: boolean
           dimChange:
@@ -42,20 +48,23 @@ languages:
           innerMargin:
             type: number
           greyCol:
-            type: table
+            type: umbrella.RGBA
           elBackgroundColor:
-            type: table
+            type: umbrella.RGBA
           elHighlightColor:
-            type: table
+            type: umbrella.RGBA
           elHoverColor:
-            type: table
+            type: umbrella.RGBA
           elBorderColor:
-            type: table
+            type: umbrella.RGBA
           elBorderHighlightColor:
-            type: table
-          onVolumeChange: {}
+            type: umbrella.RGBA
+          onVolumeChange:
+            type: umbrella.ISVolumeBar.OnVolumeChange
+            nullable: true
           onVolumeChangeTarget:
-            type: RWMVolume
+            type: unknown
+            nullable: true
           mouseEnabled:
             type: boolean
         methods:
@@ -99,20 +108,21 @@ languages:
             parameters:
               - name: _x
             return:
-              - type: number
+              - type: integer
           - name: setEnableControls
             parameters:
               - name: b
                 type: boolean
           - name: getHoverVolume
             return:
-              - type: number
+              - type: integer
           - name: setHoverVolume
             parameters:
               - name: _vol
+                type: integer
           - name: getVolume
             return:
-              - type: number
+              - type: integer
           - name: setVolumeJoypad
             parameters:
               - name: _up
@@ -120,21 +130,25 @@ languages:
           - name: setVolume
             parameters:
               - name: vol
+                type: integer
           - name: getVolumeSteps
             return:
-              - type: number
+              - type: integer
           - name: setVolumeSteps
             parameters:
               - name: vol
+                type: integer
           - name: update
           - name: prerender
           - name: render
           - name: setX
             parameters:
               - name: x
+                type: number
           - name: setY
             parameters:
               - name: y
+                type: number
           - name: setWidth
             parameters:
               - name: w
@@ -142,3 +156,4 @@ languages:
           - name: setHeight
             parameters:
               - name: h
+                type: number

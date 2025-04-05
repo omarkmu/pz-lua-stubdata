@@ -18,10 +18,12 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: function
+                nullable: true
               - name: username
                 type: string
               - name: suspicionActivity
-                type: table
+                type: umbrella.ISPlayerStatsSuspicionActivityUI.SuspicionActivity[]
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsSuspicionActivityUI"'
@@ -34,21 +36,23 @@ languages:
           ok:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
-          onclick: {}
+          onclick:
+            type: function
+            nullable: true
           username:
             type: string
           suspicionActivity:
-            type: table
+            type: umbrella.ISPlayerStatsSuspicionActivityUI.SuspicionActivity[]
           zOffsetSmallFont:
             type: number
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           windows:
-            type: table
+            type: ISUIElement[]
         methods:
           - name: initialise
           - name: setVisible
@@ -60,8 +64,11 @@ languages:
           - name: drawLog
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onOptionMouseDown
@@ -76,9 +83,18 @@ languages:
           - name: populate
             parameters:
               - name: self
+                type: ISPlayerStatsSuspicionActivityUI
           - name: receiveSuspicionActivity
             parameters:
               - name: username
                 type: string
               - name: userLog
+                type: UserLog
               - name: suspiciousActivity
+                type: table<string, number>
+      umbrella.ISPlayerStatsSuspicionActivityUI.SuspicionActivity:
+        fields:
+          type:
+            type: string
+          amount:
+            type: number

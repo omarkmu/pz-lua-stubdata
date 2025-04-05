@@ -51,3 +51,4 @@ languages:
               - name: playerNum
                 type: integer
               - name: dir
+                type: string

@@ -26,25 +26,25 @@ languages:
           schema:
             type: table
           pages:
-            type: table
+            type: ArrayList<DBResult>[]
           fullPages:
-            type: table
+            type: DBResult[]
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           columnSize:
-            type: table
+            type: table<string, number>
           currentPage:
-            type: number
+            type: integer
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           filters:
-            type: table
+            type: ISUIElement[]
           filtered:
             type: boolean
           totalResult:
-            type: number
+            type: integer
           entriesPerPages:
-            type: number
+            type: integer
           datas:
             type: ISScrollingListBox
           pagePanel:
@@ -67,6 +67,10 @@ languages:
             type: ISComboBox
           loading:
             type: boolean
+          columns:
+            type: umbrella.DBSchemaEntry[]
+            tags:
+              - StubGen_Extra
         methods:
           - name: initialise
           - name: render
@@ -88,21 +92,40 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
         staticMethods:
           - name: onNbrPerPageChange
             parameters:
               - name: entry
+                type: ISTextEntryBox
           - name: onFilterChange
             parameters:
               - name: entry
+                type: ISTextEntryBox | ISWhitelistTable
               - name: combo
+                type: ISComboBox
+                nullable: true
           - name: getTableResult
             parameters:
               - name: datas
+                type: ArrayList<DBResult>
               - name: rowId
+                type: integer
               - name: tableName
                 type: string
+      umbrella.ISWhitelistTable.ListBoxItem:
+        fields:
+          datas:
+            type: umbrella.ISWhitelistTable.UserData
+      umbrella.ISWhitelistTable.UserData:
+        fields:
+          username:
+            type: string
+          "[string]":
+            type: unknown

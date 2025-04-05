@@ -16,13 +16,17 @@ languages:
               - name: height
                 type: number
               - name: model
+                type: ModSelector.Model
         staticFields:
           Type:
             defaultValue: '"MapOrderUI"'
         fields:
-          model: {}
-          upTexture: {}
-          downTexture: {}
+          model:
+            type: ModSelector.Model
+          upTexture:
+            type: Texture
+          downTexture:
+            type: Texture
           modList:
             type: ModSelector.MapOrderListBox
           backButton:
@@ -31,7 +35,8 @@ languages:
             type: ISButton
           helpButton:
             type: ISButton
-          joypadIndex: {}
+          joypadIndex:
+            type: integer
         methods:
           - name: instantiate
           - name: getTooltip
@@ -58,7 +63,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp

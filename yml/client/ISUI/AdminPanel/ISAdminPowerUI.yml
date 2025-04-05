@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISAdminPowerUI.SetFunction:
+        - type: "fun(self: ISAdminPowerUI, selected: boolean)"
     classes:
       ISAdminPowerUI:
         extends: ISPanel
@@ -15,11 +18,13 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISAdminPowerUI"'
           messages: {}
-          cheatTooltips: {}
+          cheatTooltips:
+            type: table<string, string>
           instance:
             type: ISAdminPowerUI
             nullable: true
@@ -31,20 +36,26 @@ languages:
           richText:
             type: ISRichTextLayout
           setFunction:
-            type: table
-          player: {}
+            type: table<integer, umbrella.ISAdminPowerUI.SetFunction>
+          player:
+            type: IsoPlayer
         methods:
           - name: initialise
           - name: addAdminPowerOptions
           - name: addOption
             parameters:
               - name: text
+                type: string
               - name: selected
+                type: boolean
               - name: setFunction
+                type: umbrella.ISAdminPowerUI.SetFunction
           - name: onTicked
             parameters:
               - name: index
+                type: integer
               - name: selected
+                type: boolean
           - name: render
           - name: prerender
           - name: onClick

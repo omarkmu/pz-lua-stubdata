@@ -86,7 +86,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getCode
             return:
               - type: number

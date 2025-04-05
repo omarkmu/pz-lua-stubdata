@@ -21,7 +21,7 @@ languages:
             defaultValue: "20"
         fields:
           __Class:
-            type: ISPanel
+            type: ISUIElement
           playerNum:
             type: integer
         methods:
@@ -36,38 +36,50 @@ languages:
           - name: setPlayerNum
             parameters:
               - name: _num
-                type: number
+                type: integer
           - name: setBucket
             parameters:
               - name: _bool
+                type: boolean
           - name: setZOrder
             parameters:
               - name: _z
+                type: number
           - name: orderJoypadChildren
             parameters:
               - name: _recursive
+                type: boolean
+                nullable: true
           - name: setDefaultEventTarget
             parameters:
               - name: _target
                 type: unknown
+                nullable: true
           - name: setEventCallback
             parameters:
               - name: _name
                 type: string
               - name: _func
+                type: function
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
           - name: setEventPromptText
             parameters:
               - name: _name
                 type: string
               - name: _text
+                type: string
+                nullable: true
           - name: addChild
             parameters:
               - name: otherElement
+                type: ISUIElement
           - name: removeChild
             parameters:
               - name: otherElement
+                type: ISUIElement
           - name: clearChildren
           - name: onLoseJoypadFocus
             parameters:
@@ -101,39 +113,41 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: unfocusRecursive
             parameters:
               - name: _focus
+                type: ISUIElement
               - name: _playerNum
                 type: integer
           - name: setFocusJoypadSelf
             parameters:
               - name: _bool
+                type: boolean
           - name: unfocusJoypadSelf
           - name: focusJoypadSelf
           - name: isValidPrompt
@@ -148,15 +162,19 @@ languages:
           - name: Wrap
             parameters:
               - name: _Class
+                type: ISUIElement
               - name: ...
             return:
-              - type: unknown
+              - type: ISUIElementJoypad
                 nullable: true
           - name: Inject
             parameters:
               - name: _NewClass
+                type: table
+                nullable: true
               - name: _Class
+                type: ISUIElement
               - name: ...
             return:
-              - type: unknown
+              - type: ISUIElementJoypad
                 nullable: true

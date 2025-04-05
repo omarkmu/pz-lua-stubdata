@@ -23,48 +23,58 @@ languages:
         fields:
           searchEntry:
             type: ISTextEntryBox
-          listbox: {}
+          listbox:
+            type: ISScrollingListBox
           controls:
-            type: table
+            type: table<string, ISUIElement>
           groupBox:
-            type: table
+            type: table<string, ISUIElement>
           customui:
-            type: table
+            type: ISUIElement[]
           closeButton:
             type: ISButton
           applyButton:
             type: ISButton
           currentPanel:
+            type: ISUIElement
             nullable: true
-          options: {}
+          options:
+            type: SandboxOptions
         methods:
           - name: doSearch
           - name: createChildren
           - name: createPanel
             parameters:
               - name: page
+                type: umbrella.ServerSettingsScreen.SettingsPage
             return:
-              - type: unknown
+              - type: ISUIElement
           - name: onTickBoxSelected
             parameters:
               - name: _
+                type: integer
               - name: value
+                type: boolean
               - name: optionName
                 type: string
           - name: onComboBoxSelected
             parameters:
               - name: combo
+                type: ISComboBox
               - name: optionName
                 type: string
           - name: settingsToUI
             parameters:
               - name: options
+                type: SandboxOptions
           - name: settingsFromUI
             parameters:
               - name: options
+                type: SandboxOptions
           - name: onMouseDownListbox
             parameters:
               - name: item
+                type: umbrella.ISServerSandboxOptionsUI.ListBoxItem
           - name: destroy
           - name: onButtonApply
           - name: onButtonClose
@@ -72,3 +82,10 @@ languages:
           - name: searchPrerender
             parameters:
               - name: self
+                type: ISTextEntryBox
+      umbrella.ISServerSandboxOptionsUI.ListBoxItem:
+        fields:
+          page:
+            type: umbrella.ServerSettingsScreen.SettingsPage
+          panel:
+            type: ISUIElement

@@ -2,25 +2,75 @@ version: "1.1"
 languages:
   lua:
     classes:
+      PZAPI.UI:
+        local: true
+        staticFields:
+          instances:
+            type: table<table, UI.Node>
+          _mt:
+            type: UI._mt
+        staticMethods:
+          - name: _copyValue
+            parameters:
+              - name: obj
+                type: unknown
+              - name: seen
+                type: table
+                nullable: true
+            return:
+              - type: unknown
+          - name: _mergeTables
+            parameters:
+              - name: ...
+                type: table
+            return:
+              - type: table
+          - name: _setParentChildRelationship
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _initElement
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _createAtomObjs
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _internalInit
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _initResize
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _applyHooks
+            parameters:
+              - name: ui
+                type: UI.Node
+          - name: _addChild
+            parameters:
+              - name: parent
+                type: UI.Node
+              - name: child
+                type: UI.Node
+      UI._mt:
+        local: true
+        staticMethods:
+          - name: init
+          - name: __call
+            parameters:
+              - name: self
+                type: table
+              - name: _args
+                type: table
+            return:
+              - type: unknown
+          - name: instantiate
+            parameters:
+              - name: self
       PZAPI:
         staticFields:
-          UI.instances: {}
-          UI._copyValue:
-            defaultValue: function(obj, seen) end
-          UI._mergeTables:
-            defaultValue: function(...) end
-          UI._setParentChildRelationship:
-            defaultValue: function(ui) end
-          UI._initElement:
-            defaultValue: function(ui) end
-          UI._createAtomObjs:
-            defaultValue: function(ui) end
-          UI._internalInit:
-            defaultValue: function(ui) end
-          UI._initResize:
-            defaultValue: function(ui) end
-          UI._applyHooks:
-            defaultValue: function(ui) end
-          UI._addChild:
-            defaultValue: function(parent, child) end
-          UI._mt: {}
+          UI:
+            type: PZAPI.UI

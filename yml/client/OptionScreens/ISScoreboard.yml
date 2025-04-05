@@ -19,6 +19,7 @@ languages:
             defaultValue: '"ISScoreboard"'
           buttonsList: {}
           isAdmin:
+            type: boolean
             nullable: true
           instance:
             type: ISScoreboard
@@ -26,8 +27,10 @@ languages:
         fields:
           maxNameWid:
             type: number
-          listboxYScroll: {}
-          itemheight: {}
+          listboxYScroll:
+            type: number
+          itemheight:
+            type: number
           listbox:
             type: ISScrollingListBox
           closeButton:
@@ -53,18 +56,22 @@ languages:
           voipmuteButton:
             type: ISButton
           buttonPos:
-            type: table
+            type: table<ISButton, umbrella.XY>
           playersConnected:
-            type: number
+            type: integer
           selectedPlayer:
+            type: string
             nullable: true
         methods:
           - name: initialise
           - name: fillList
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>
           - name: onOptionMouseDown
             parameters:
               - name: button
@@ -94,8 +101,11 @@ languages:
           - name: drawMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: create
@@ -103,6 +113,9 @@ languages:
           - name: onScoreboardUpdate
             parameters:
               - name: usernames
+                type: ArrayList<string>
               - name: displayNames
+                type: ArrayList<string>
               - name: steamIDs
+                type: ArrayList<string>
           - name: recreate

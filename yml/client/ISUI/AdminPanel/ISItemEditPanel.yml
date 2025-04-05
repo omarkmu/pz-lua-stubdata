@@ -1,6 +1,12 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISItemEditPanel.Element:
+        - type: umbrella.ISItemEditPanel.BooleanElement
+        - type: umbrella.ISItemEditPanel.ColorElement
+        - type: umbrella.ISItemEditPanel.NumberElement
+        - type: umbrella.ISItemEditPanel.StringElement
     classes:
       ISItemEditPanel:
         extends: ISPanel
@@ -15,111 +21,160 @@ languages:
               - name: height
                 type: number
               - name: admin
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISItemEditPanel"'
         fields:
           usedElems:
-            type: table
+            type: umbrella.ISItemEditPanel.Element[]
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
-          admin: {}
-          item: {}
-          isWeapon: {}
-          isFood: {}
-          isDrainable: {}
+          admin:
+            type: IsoPlayer
+          item:
+            type: InventoryItem
+          isWeapon:
+            type: boolean
+          isFood:
+            type: boolean
+          isDrainable:
+            type: boolean
           elems:
-            type: table
+            type: umbrella.ISItemEditPanel.Element[]
         methods:
           - name: initElements
           - name: initAttributes
           - name: registerAttributeBool
             parameters:
               - name: _attributeType
+                type: AttributeType
               - name: _attribute
+                type: AttributeInstance
             return:
-              - type: table
+              - type: umbrella.ISItemEditPanel.BooleanElement
           - name: registerBoolean
             parameters:
               - name: _text
+                type: string
               - name: _funcGet
+                type: false | string
+                nullable: true
               - name: _funcSet
+                type: false | string
+                nullable: true
               - name: _canEdit
+                type: boolean
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISItemEditPanel.BooleanElement
           - name: registerAttributeNumber
             parameters:
               - name: _attributeType
+                type: AttributeType
               - name: _attribute
+                type: AttributeInstance
           - name: registerNumber
             parameters:
               - name: _text
+                type: string
               - name: _funcGet
+                type: false | string
+                nullable: true
               - name: _funcSet
+                type: false | string
+                nullable: true
               - name: _min
+                type: false | number
+                nullable: true
               - name: _max
+                type: false | number
+                nullable: true
               - name: _round
+                type: false | number
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISItemEditPanel.NumberElement
           - name: registerAttributeString
             parameters:
               - name: _attributeType
+                type: AttributeType
               - name: _attribute
+                type: AttributeInstance
           - name: registerString
             parameters:
               - name: _text
+                type: string
               - name: _funcGet
+                type: false | string
+                nullable: true
               - name: _funcSet
+                type: false | string
+                nullable: true
               - name: _canEdit
+                type: boolean
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISItemEditPanel.StringElement
           - name: registerColor
             parameters:
               - name: _text
+                type: string
               - name: _funcGet
+                type: false | string
+                nullable: true
               - name: _funcSet
+                type: false | string
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISItemEditPanel.ColorElement
           - name: onSaveHunger
           - name: onSaveWeight
           - name: onSaveCondition
           - name: onSaveColor
           - name: validateColor
             return:
-              - type: unknown
+              - type: boolean
           - name: validateMinRangeRanged
             return:
-              - type: unknown
+              - type: boolean
           - name: validateMinRange
             return:
               - type: boolean
           - name: validateWeapon
             return:
-              - type: unknown
+              - type: boolean
           - name: validateFood
             return:
-              - type: unknown
+              - type: boolean
           - name: validateDrainable
             return:
-              - type: unknown
+              - type: boolean
           - name: initialise
           - name: getTextWidth
             parameters:
               - name: _s
+                type: string
               - name: _f
+                type: UIFont
+                nullable: true
             return:
-              - type: unknown
+              - type: number
           - name: getTextHeight
             parameters:
               - name: _s
+                type: string
               - name: _f
+                type: UIFont
+                nullable: true
             return:
-              - type: unknown
+              - type: number
           - name: createChildren
           - name: render
           - name: prerender
@@ -129,3 +184,65 @@ languages:
             parameters:
               - name: button
                 type: ISButton
+      umbrella.ISItemEditPanel.BaseElement:
+        fields:
+          type:
+            type: integer
+          text:
+            type: string
+          funcGet:
+            type: false | string
+          funcSet:
+            type: false | string
+          funcOnSave:
+            type: "false | fun(panel: ISItemEditPanel)"
+          funcValidate:
+            type: "false | fun(panel: ISItemEditPanel): boolean"
+          editable:
+            type: boolean
+          isAttribute:
+            type: boolean
+            nullable: true
+          attributeType:
+            type: AttributeType
+            nullable: true
+          attribute:
+            type: AttributeInstance
+            nullable: true
+      umbrella.ISItemEditPanel.BooleanElement:
+        extends: umbrella.ISItemEditPanel.BaseElement
+        fields:
+          type:
+            type: "4"
+      umbrella.ISItemEditPanel.ColorElement:
+        extends: umbrella.ISItemEditPanel.BaseElement
+        fields:
+          type:
+            type: "3"
+      umbrella.ISItemEditPanel.NumberElement:
+        extends: umbrella.ISItemEditPanel.BaseElement
+        fields:
+          type:
+            type: "1"
+          boxWidth:
+            type: number
+          funcMin:
+            type: false | string
+          funcMax:
+            type: false | string
+          min:
+            type: false | number
+            nullable: true
+          max:
+            type: false | number
+            nullable: true
+          round:
+            type: false | number
+            nullable: true
+      umbrella.ISItemEditPanel.StringElement:
+        extends: umbrella.ISItemEditPanel.BaseElement
+        fields:
+          type:
+            type: "2"
+          boxWidth:
+            type: number

@@ -404,6 +404,12 @@ languages:
           - name: onJoypadButtonReleased
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
+      umbrella.ISButtonPrompt.Test:
+        fields:
+          sqs:
+            type: IsoGridSquare[]
+          square:
+            type: IsoGridSquare

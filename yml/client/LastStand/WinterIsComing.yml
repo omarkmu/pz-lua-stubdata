@@ -29,11 +29,13 @@ languages:
           - name: OnInitSeasons
             parameters:
               - name: _season
+                type: ErosionSeason
           - name: OnInitWorld
           - name: EveryHours
           - name: RemovePlayer
             parameters:
               - name: p
+                type: IsoPlayer
           - name: AddPlayer
             parameters:
               - name: playerNum

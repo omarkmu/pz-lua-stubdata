@@ -7,42 +7,51 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISTimedActionQueue"'
           IDMax:
             defaultValue: "1"
-          queues: {}
+          queues:
+            type: table<IsoPlayer, ISTimedActionQueue>
           shouldResetGameSpeed:
             type: boolean
             nullable: true
         fields:
           current:
+            type: ISBaseTimedAction
             nullable: true
-          character: {}
+          character:
+            type: IsoPlayer
           queue:
-            type: table
+            type: ISBaseTimedAction[]
         methods:
           - name: addToQueue
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: indexOf
             parameters:
               - name: action
+                type: ISBaseTimedAction
             return:
-              - type: number
+              - type: integer
           - name: indexOfType
             parameters:
               - name: type
+                type: string
             return:
-              - type: number
+              - type: integer
           - name: removeFromQueue
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: clearQueue
           - name: onCompleted
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: resetQueue
           - name: cancelQueue
           - name: tick
@@ -53,70 +62,90 @@ languages:
           - name: getTimedActionQueue
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: ISTimedActionQueue
           - name: add
             parameters:
               - name: action
-                type: table
+                type: ISBaseTimedAction
             return:
               - type: ISTimedActionQueue
                 nullable: true
           - name: addAfter
             parameters:
               - name: previousAction
+                type: ISBaseTimedAction
               - name: action
+                type: ISBaseTimedAction
             return:
               - type: ISTimedActionQueue
                 nullable: true
-              - type: unknown
+              - type: ISBaseTimedAction
                 nullable: true
           - name: queueActions
             parameters:
               - name: character
+                type: IsoPlayer
               - name: addActionsFunction
+                type: umbrella.ISQueueActionsAction.AddActionsFunction
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
               - name: arg5
                 type: unknown
+                nullable: true
               - name: arg6
                 type: unknown
+                nullable: true
               - name: arg7
                 type: unknown
+                nullable: true
               - name: arg8
                 type: unknown
+                nullable: true
               - name: arg9
                 type: unknown
+                nullable: true
               - name: arg10
                 type: unknown
+                nullable: true
             return:
               - type: ISTimedActionQueue
                 nullable: true
           - name: addGetUpAndThen
             parameters:
               - name: character
+                type: IsoPlayer
               - name: action
-                type: table
+                type: ISBaseTimedAction
           - name: clear
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: ISTimedActionQueue
           - name: hasAction
             parameters:
               - name: action
+                type: ISBaseTimedAction
             return:
               - type: boolean
           - name: hasActionType
             parameters:
               - name: character
+                type: IsoPlayer
               - name: type
+                type: string
             return:
               - type: boolean
           - name: isPlayerDoingAction

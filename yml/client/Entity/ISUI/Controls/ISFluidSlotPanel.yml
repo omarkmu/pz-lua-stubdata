@@ -38,7 +38,7 @@ languages:
           - name: addResources
             parameters:
               - name: _resources
-                type: ArrayList #<ResourceFluid>
+                type: ArrayList<ResourceFluid>
               - name: _styleFluidSlot
                 type: string
                 nullable: true

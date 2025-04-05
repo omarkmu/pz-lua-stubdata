@@ -49,7 +49,7 @@ languages:
           itemCount:
             type: number
           itemList:
-            type: ArrayList #<InventoryItem>
+            type: ArrayList<InventoryItem>
             nullable: true
           currentTimestamp:
             type: number
@@ -73,7 +73,7 @@ languages:
           distanceToPlayer:
             type: number
           isoMarker:
-            type: IsoMarkers.IsoMarker
+            type: IsoMarker
             nullable: true
           worldMarker:
             type: WorldMarkers.PlayerHomingPoint
@@ -384,3 +384,42 @@ languages:
                 nullable: true
           - name: initAltTexture
           - name: initialise
+      umbrella.Foraging.BaseIconData:
+        fields:
+          id:
+            type: string
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
+          itemType:
+            type: string
+          isBonusIcon:
+            type: boolean
+      umbrella.Foraging.IconData:
+        extends: umbrella.Foraging.BaseIconData
+        fields:
+          zoneid:
+            type: string
+          itemObj:
+            type: InventoryItem
+      umbrella.Foraging.WorldIconData:
+        extends: umbrella.Foraging.BaseIconData
+        fields:
+          itemObj:
+            type: InventoryItem
+          itemObjTable:
+            type: table<InventoryItem, InventoryItem>
+          canRollForSearchFocus:
+            type: boolean
+          isTrack:
+            type: boolean
+      umbrella.Foraging.ZoneIconData:
+        extends: umbrella.Foraging.BaseIconData
+        fields:
+          zoneid:
+            type: string
+          catName:
+            type: string

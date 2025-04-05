@@ -22,7 +22,8 @@ languages:
             type: ISRichTextPanel
           ok:
             type: ISButton
-          texture: {}
+          texture:
+            type: Texture
         methods:
           - name: createChildren
           - name: prerender
@@ -34,7 +35,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: doRightJoystickScrolling

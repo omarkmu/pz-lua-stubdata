@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
               - name: owner
                 type: ISCharacterScreen
         staticFields:
@@ -35,7 +36,8 @@ languages:
             type: ISLiteratureGrowingList
           drawJoypadFocus:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
           owner:
@@ -47,6 +49,7 @@ languages:
           - name: setMediaLists
             parameters:
               - name: scriptItems
+                type: table<string, Item[]>
           - name: prerender
           - name: onGainJoypadFocus
             parameters:
@@ -59,7 +62,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirUp
             parameters:
               - name: button
@@ -88,17 +91,22 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISListeratureList"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
       ISLiteratureMediaList:
@@ -114,19 +122,25 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISListeratureMediaList"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
           scriptItem:
+            type: Item
             nullable: true
         methods:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
       ISLiteratureGrowingList:
@@ -142,16 +156,21 @@ languages:
               - name: height
                 type: number
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISListeratureGrowingList"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
         methods:
           - name: doDrawItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number

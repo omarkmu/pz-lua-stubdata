@@ -19,13 +19,15 @@ languages:
         fields:
           richText:
             type: ISRichTextPanel
-          tex: {}
+          tex:
+            type: Texture
         methods:
           - name: render
           - name: createChildren
           - name: setModInfo
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
       ModInfoPanel:
         staticFields:
           Desc:

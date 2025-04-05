@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: chr
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISEquippedItem"'
@@ -43,44 +44,82 @@ languages:
             nullable: true
           infopanel:
             nullable: true
-          chr: {}
-          safety: {}
-          handMainTexture: {}
-          HandSecondaryTexture: {}
-          inventoryTexture: {}
-          inventoryTextureOn: {}
-          heartIcon: {}
-          heartIconOn: {}
-          craftingIcon: {}
-          craftingIconOn: {}
-          moveableIconBuild: {}
-          moveableIconBuildOn: {}
-          movableIcon: {}
-          movableIconOff: {}
-          movableIconPickup: {}
-          movableIconPlace: {}
-          movableIconRotate: {}
-          movableIconScrap: {}
-          moveableIconRepair: {}
-          searchIcon: {}
-          searchIconOn: {}
-          zoneIcon: {}
-          zoneIconOn: {}
-          mapIconOff: {}
-          mapIconOn: {}
-          debugIcon: {}
-          debugIconOn: {}
-          clientIcon: {}
-          clientIconOn: {}
-          adminIcon: {}
-          adminIconOn: {}
-          warActive: {}
-          warInactive: {}
-          warSoon: {}
-          lockTexture: {}
-          offTexture: {}
-          onTexture: {}
-          disableTexture: {}
+          chr:
+            type: IsoPlayer
+          safety:
+            type: Safety
+          handMainTexture:
+            type: Texture
+          HandSecondaryTexture:
+            type: Texture
+          inventoryTexture:
+            type: Texture
+          inventoryTextureOn:
+            type: Texture
+          heartIcon:
+            type: Texture
+          heartIconOn:
+            type: Texture
+          craftingIcon:
+            type: Texture
+          craftingIconOn:
+            type: Texture
+          moveableIconBuild:
+            type: Texture
+          moveableIconBuildOn:
+            type: Texture
+          movableIcon:
+            type: Texture
+          movableIconOff:
+            type: Texture
+          movableIconPickup:
+            type: Texture
+          movableIconPlace:
+            type: Texture
+          movableIconRotate:
+            type: Texture
+          movableIconScrap:
+            type: Texture
+          moveableIconRepair:
+            type: Texture
+          searchIcon:
+            type: Texture
+          searchIconOn:
+            type: Texture
+          zoneIcon:
+            type: Texture
+          zoneIconOn:
+            type: Texture
+          mapIconOff:
+            type: Texture
+          mapIconOn:
+            type: Texture
+          debugIcon:
+            type: Texture
+          debugIconOn:
+            type: Texture
+          clientIcon:
+            type: Texture
+          clientIconOn:
+            type: Texture
+          adminIcon:
+            type: Texture
+          adminIconOn:
+            type: Texture
+          warActive:
+            type: Texture
+          warInactive:
+            type: Texture
+          warSoon:
+            type: Texture
+          lockTexture:
+            type: Texture
+          offTexture:
+            type: Texture
+          onTexture:
+            type: Texture
+          disableTexture:
+            type: Texture
           healthIconOscillatorDecelerator:
             type: number
           healthIconOscillatorRate:
@@ -89,9 +128,10 @@ languages:
             type: number
           healthIconOscillatorStartLevel:
             type: number
-          sidebarSizeOption: {}
+          sidebarSizeOption:
+            type: integer
           mouseOverList:
-            type: table
+            type: umbrella.ISEquippedItem.MouseOverItem[]
           mainHand:
             type: ISImage
           offHand:
@@ -138,13 +178,13 @@ languages:
           - name: prerender
           - name: getDraggedEquippableItem
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getDraggedEquippableItems
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: render
           - name: renderFPS
@@ -160,10 +200,13 @@ languages:
           - name: doToolTip
             parameters:
               - name: _state
+                type: boolean
               - name: _text
+                type: string
           - name: checkBounds
             parameters:
               - name: _boundsItem
+                type: table
               - name: _x
                 type: number
               - name: _y
@@ -273,8 +316,10 @@ languages:
           Type:
             defaultValue: '"ISMapPopup"'
         fields:
-          texMap: {}
-          texMiniMap: {}
+          texMap:
+            type: Texture
+          texMiniMap:
+            type: Texture
         methods:
           - name: prerender
           - name: render
@@ -294,6 +339,12 @@ languages:
                 type: number
             return:
               - type: boolean
+      umbrella.ISEquippedItem.MouseOverItem:
+        fields:
+          object:
+            type: table
+          displayString:
+            type: string
     functions:
       - name: launchEquippedItem
         parameters:

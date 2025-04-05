@@ -34,7 +34,8 @@ languages:
             type: boolean
           incomingSignal:
             type: boolean
-          fontheight: {}
+          fontheight:
+            type: number
           addTestButton:
             type: boolean
         methods:
@@ -49,9 +50,13 @@ languages:
           - name: readFromObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _deviceObject
+                type: InventoryItem | IsoObject | VehiclePart
               - name: _deviceData
+                type: DeviceData
               - name: _deviceType
+                type: string
             return:
               - type: boolean
           - name: update

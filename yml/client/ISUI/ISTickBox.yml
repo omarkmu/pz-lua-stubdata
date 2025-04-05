@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISTickBox.OnChange:
+        - type: "fun(target: unknown, index: integer, selected: boolean, arg1: unknown?,
+            arg2: unknown?, tickbox: ISTickBox)"
     classes:
       ISTickBox:
         extends: ISPanel
@@ -17,51 +21,56 @@ languages:
               - name: name
                 type: string
               - name: changeOptionTarget
-                type: table
+                type: unknown
                 nullable: true
               - name: changeOptionMethod
-                type: function
+                type: umbrella.ISTickBox.OnChange
                 nullable: true
               - name: changeOptionArg1
+                type: unknown
                 nullable: true
               - name: changeOptionArg2
+                type: unknown
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTickBox"'
         fields:
           joypadIndex:
-            type: number
+            type: integer
           selected:
-            type: table
+            type: table<integer, boolean>
           _textColor:
-            type: table
+            type: umbrella.RGBA
           tooltipUI:
             type: ISToolTip
           clickedOption:
-            type: number
+            type: integer
             nullable: true
           mouseDownOverOption:
             nullable: true
           mouseOverOption:
-            type: number
+            type: integer
           disabledOptions:
-            type: table
+            type: table<string, boolean>
           options:
-            type: table
+            type: string[]
           optionsIndex:
-            type: table
+            type: table<integer, string>
           textures:
-            type: table
+            type: table<integer, Texture>
           optionData:
-            type: table
+            type: table<integer, unknown>
           optionCount:
+            type: integer
+          font:
+            type: UIFont
+          fontHgt:
             type: number
-          font: {}
-          fontHgt: {}
-          tickTexture: {}
+          tickTexture:
+            type: Texture
           choicesColor:
-            type: table
+            type: umbrella.RGBA
           name:
             type: string
           leftMargin:
@@ -77,12 +86,13 @@ languages:
           isTickBox:
             type: boolean
           tooltip:
+            type: string
             nullable: true
           changeOptionMethod:
-            type: function
+            type: umbrella.ISTickBox.OnChange
             nullable: true
           changeOptionTarget:
-            type: table
+            type: unknown
             nullable: true
           changeOptionArgs:
             type: table
@@ -107,20 +117,22 @@ languages:
           - name: setSelected
             parameters:
               - name: index
-                type: number
+                type: integer
               - name: selected
                 type: boolean
           - name: isSelected
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
               - type: boolean
           - name: render
           - name: getTextColor
             parameters:
               - name: index
+                type: integer
               - name: color
+                type: table
           - name: onMouseUp
             parameters:
               - name: x
@@ -168,20 +180,25 @@ languages:
               - name: name
                 type: string
               - name: data
-                type: string | number | table
+                type: unknown
                 nullable: true
               - name: texture
+                type: Texture
+                nullable: true
             return:
-              - type: number
+              - type: integer
           - name: getOptionCount
             return:
-              - type: number
+              - type: integer
           - name: getOptionData
             parameters:
               - name: index
+                type: integer
             return:
               - type: unknown
+                nullable: true
           - name: setFont
             parameters:
               - name: font
+                type: UIFont
           - name: setWidthToFit

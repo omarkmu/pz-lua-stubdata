@@ -101,8 +101,11 @@ languages:
           - name: drawVarItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onVarSelected
@@ -126,8 +129,11 @@ languages:
           - name: drawElementItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onElementSelected
@@ -147,8 +153,11 @@ languages:
           - name: drawConfigItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onConfigSelected
@@ -158,8 +167,11 @@ languages:
           - name: drawColorItem
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onColorSelected

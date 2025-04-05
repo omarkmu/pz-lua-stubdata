@@ -35,8 +35,10 @@ languages:
             type: number
           panning:
             type: boolean
-          xpos: {}
-          ypos: {}
+          xpos:
+            type: number
+          ypos:
+            type: number
           zoom:
             type: number
         methods:
@@ -45,6 +47,8 @@ languages:
           - name: close
           - name: onMapMouseDown
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -53,18 +57,24 @@ languages:
               - type: boolean
           - name: onMapMouseUp
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
                 type: number
           - name: onMapMouseUpOutside
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
                 type: number
           - name: onMapMouseMove
             parameters:
+              - name: self
+                type: ISPanel
               - name: dx
                 type: number
               - name: dy
@@ -73,6 +83,8 @@ languages:
               - type: boolean
           - name: onMapRightMouseDown
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -82,16 +94,23 @@ languages:
           - name: onAddWorldSound
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: onTeleport
             parameters:
               - name: worldX
+                type: number
               - name: worldY
+                type: number
           - name: onChangeOption
             parameters:
               - name: option
+                type: ConfigOption
           - name: onMapRightMouseUp
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -100,6 +119,8 @@ languages:
               - type: boolean
           - name: onMapRightMouseUpOutside
             parameters:
+              - name: self
+                type: ISPanel
               - name: x
                 type: number
               - name: y
@@ -108,6 +129,8 @@ languages:
               - type: boolean
           - name: onRenderMouseWheel
             parameters:
+              - name: self
+                type: ISPanel
               - name: del
                 type: number
             return:

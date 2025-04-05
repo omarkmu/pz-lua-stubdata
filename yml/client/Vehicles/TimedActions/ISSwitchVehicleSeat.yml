@@ -7,19 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: seatTo
-                type: number
-                nullable: true
+                type: integer
               - name: seatFrom
+                type: integer
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISSwitchVehicleSeat"'
         fields:
           seatTo:
-            type: number
-            nullable: true
+            type: integer
           seatFrom:
+            type: integer
             nullable: true
         methods:
           - name: isValid

@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: reason
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISServerDisconnectUI"'
@@ -18,7 +19,8 @@ languages:
             type: ISButton
           buttonQuit:
             type: ISButton
-          reason: {}
+          reason:
+            type: string
         methods:
           - name: createChildren
           - name: configButton
@@ -34,14 +36,19 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
     functions:
       - name: ISServerDisconnectUI_OnServerDisconnectUI
         parameters:
           - name: reason
+            type: string

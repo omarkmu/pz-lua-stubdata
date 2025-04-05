@@ -117,15 +117,17 @@ languages:
           showCountdownForJoin:
             type: boolean
           itemheightoverride:
-            type: table
+            type: table<string, number>
           entryBoxes:
-            type: table
+            type: ISTextEntryBox[]
           NoLabel:
             type: boolean
         methods:
           - name: create
           - name: onMouseDown_Tabs
             parameters:
+              - name: self
+                type: ISTabPanel
               - name: x
                 type: number
               - name: y
@@ -153,27 +155,36 @@ languages:
           - name: emptyServerFile
             parameters:
               - name: server
+                nullable: true
               - name: append
+                nullable: true
           - name: writeServerOnFile
             parameters:
               - name: server
+                type: Server
               - name: append
                 type: boolean
           - name: erase
           - name: onClickServer
             parameters:
               - name: item
+                type: umbrella.MultiplayerScreen.ServerItem
           - name: fillFields
             parameters:
               - name: item
+                type: Server
           - name: trimFields
             parameters:
               - name: item
+                nullable: true
           - name: drawMap
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onGainJoypadFocus
@@ -183,7 +194,7 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onJoypadDirUp
@@ -227,17 +238,25 @@ languages:
           - name: onResolutionChange
             parameters:
               - name: oldw
+                type: number
               - name: oldh
+                type: number
               - name: neww
+                type: number
               - name: newh
+                type: number
           - name: OnConnectFailed
             parameters:
               - name: message
+                type: string
               - name: detail
+                type: string
+                nullable: true
           - name: OnConnected
           - name: OnQRReceived
             parameters:
               - name: message
+                type: string
           - name: pingServers
             parameters:
               - name: init
@@ -245,19 +264,21 @@ languages:
           - name: setServerDescription
             parameters:
               - name: item
-                type: table
+                type: umbrella.MultiplayerScreen.ServerItem
           - name: countMods
             parameters:
               - name: modString
+                type: string
             return:
               - type: number
           - name: setServerMods
             parameters:
               - name: item
-                type: table
+                type: umbrella.MultiplayerScreen.ServerItem
           - name: addServerToList
             parameters:
               - name: server
+                type: Server
           - name: refreshList
           - name: onJoypadBeforeDeactivate
             parameters:
@@ -267,27 +288,41 @@ languages:
           - name: onResetLua
             parameters:
               - name: reason
+                type: string
           - name: ServerPinged
             parameters:
               - name: ip
+                type: string
               - name: users
+                type: string
           - name: OnSteamServerResponded2
             parameters:
               - name: host
+                type: string
               - name: port
+                type: integer
               - name: server2
+                type: Server
           - name: OnSteamServerFailedToRespond2
             parameters:
               - name: host
+                type: string
               - name: port
+                type: integer
           - name: OnSteamRulesRefreshComplete
             parameters:
               - name: host
+                type: string
               - name: port
+                type: integer
               - name: rules
+                type: umbrella.ServerProperties
     functions:
       - name: OnConnectFailed
         parameters:
           - name: message
+            type: string
           - name: detail
+            type: string
+            nullable: true
       - name: OnConnected

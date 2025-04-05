@@ -15,8 +15,11 @@ languages:
               - name: height
                 type: number
               - name: text
-                type: string | boolean
+                type: string
+                nullable: true
               - name: font
+                type: UIFont
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISProgressBar"'
@@ -27,27 +30,35 @@ languages:
             type: number
           text:
             type: string
-          textW: {}
-          textH: {}
+            nullable: true
+          textW:
+            type: number
+            nullable: true
+          textH:
+            type: number
+            nullable: true
           backgroundColor:
-            type: table
+            type: umbrella.RGBA
           borderColor:
-            type: table
+            type: umbrella.RGBA
           progressColor:
-            type: table
+            type: umbrella.RGBA
           textColor:
-            type: table
+            type: umbrella.RGBA
           textBackColor:
-            type: table
+            type: umbrella.RGBA
           moveWithMouse:
             type: boolean
-          font: {}
+          font:
+            type: UIFont
           isVertical:
             type: boolean
           doRenderTexture:
             type: boolean
-          horizontalTexture: {}
-          verticalTexture: {}
+          horizontalTexture:
+            type: Texture
+          verticalTexture:
+            type: Texture
           doTextBackdrop:
             type: boolean
           paddingTop:
@@ -69,10 +80,11 @@ languages:
             parameters:
               - name: _text
                 type: string
+                nullable: true
           - name: prerender
           - name: getRenderTexture
             return:
-              - type: unknown
+              - type: Texture
                 nullable: true
           - name: renderTexture
             parameters:
@@ -85,3 +97,4 @@ languages:
               - name: _h
                 type: number
               - name: _vertical
+                type: boolean

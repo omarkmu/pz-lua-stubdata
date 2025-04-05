@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISScrollingListBox.MouseCallback:
+        - type: "fun(target: unknown, item: unknown)"
     classes:
       ISScrollingListBox:
         extends: ISPanelJoypad
@@ -25,7 +28,7 @@ languages:
           stopPrerender:
             type: boolean
           selected:
-            type: number
+            type: integer
             nullable: true
           selectedBeforeReset:
             type: number
@@ -34,13 +37,15 @@ languages:
             type: number
           count:
             type: number
-          onmousedown: {}
+          onmousedown:
+            type: umbrella.ISScrollingListBox.MouseCallback
           target:
             type: unknown
+            nullable: true
           onmousedblclick:
-            type: function
+            type: umbrella.ISScrollingListBox.MouseCallback
           items:
-            type: table
+            type: umbrella.ISScrollingListBox.Item[]
           itemheightoverride:
             type: table
           smoothScrollY:
@@ -54,21 +59,22 @@ languages:
           listHeight:
             type: number
           font:
-            type: string
-          fontHgt: {}
+            type: UIFont
+          fontHgt:
+            type: number
           itemPadY:
             type: number
           itemheight:
             type: number
           altBgColor:
-            type: table
+            type: umbrella.RGBA
             nullable: true
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           drawBorder:
             type: boolean
           columns:
-            type: table
+            type: umbrella.ISScrollingListBox.Column[]
         methods:
           - name: initialise
           - name: setJoypadFocused
@@ -93,30 +99,28 @@ languages:
               - name: y
                 type: number
             return:
-              - type: number
+              - type: integer
           - name: topOfItem
             parameters:
               - name: index
-                type: number
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: prevVisibleIndex
             parameters:
               - name: index
-                type: number
-                nullable: true
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: nextVisibleItem
             parameters:
               - name: index
-                type: number
-                nullable: true
+                type: integer
             return:
-              - type: number
+              - type: integer
           - name: isMouseOverScrollBar
             return:
-              - type: unknown
+              - type: boolean
           - name: onMouseMove
             parameters:
               - name: dx
@@ -146,49 +150,61 @@ languages:
               - name: name
                 type: string
               - name: item
-                type: table
+                type: unknown
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISScrollingListBox.Item
           - name: insertItem
             parameters:
               - name: index
+                type: integer
               - name: name
                 type: string
               - name: item
+                type: unknown
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.ISScrollingListBox.Item
           - name: removeItem
             parameters:
               - name: itemText
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISScrollingListBox.Item
                 nullable: true
           - name: removeItemByIndex
             parameters:
               - name: itemIndex
+                type: integer
             return:
-              - type: unknown
+              - type: umbrella.ISScrollingListBox.Item
                 nullable: true
           - name: removeFirst
           - name: size
             return:
-              - type: number
+              - type: integer
           - name: setOnMouseDownFunction
             parameters:
               - name: target
                 type: unknown
+                nullable: true
               - name: onmousedown
+                type: umbrella.ISScrollingListBox.MouseCallback
+                nullable: true
           - name: setOnMouseDoubleClick
             parameters:
               - name: target
                 type: unknown
+                nullable: true
               - name: onmousedblclick
-                type: function
+                type: umbrella.ISScrollingListBox.MouseCallback
+                nullable: true
           - name: doDrawItem
             parameters:
               - name: y
                 type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
                 type: boolean
             return:
@@ -228,11 +244,12 @@ languages:
           - name: ensureVisible
             parameters:
               - name: index
+                type: integer
           - name: render
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
           - name: onLoseJoypadFocus
@@ -242,18 +259,45 @@ languages:
           - name: setFont
             parameters:
               - name: font
-                type: string
+                type: UIFont | string
               - name: padY
                 type: number
+                nullable: true
           - name: addColumn
             parameters:
               - name: columnName
                 type: string
               - name: size
+                type: number
         staticMethods:
           - name: sortByName
             parameters:
               - name: a
+                type: umbrella.ISScrollingListBox.Item
               - name: b
+                type: umbrella.ISScrollingListBox.Item
             return:
               - type: boolean
+      umbrella.ISScrollingListBox.Column:
+        fields:
+          name:
+            type: string
+          size:
+            type: number
+      umbrella.ISScrollingListBox.Item:
+        fields:
+          text:
+            type: string
+          item:
+            type: unknown
+            nullable: true
+          tooltip:
+            type: string
+            nullable: true
+          itemindex:
+            type: integer
+          index:
+            type: integer
+            nullable: true
+          height:
+            type: number

@@ -21,7 +21,7 @@ languages:
           addY:
             type: number
           mainPanel:
-            type: table
+            type: ISPanelJoypad
           tabs:
             type: ISTabPanel
           maxLabelWidth:
@@ -33,6 +33,7 @@ languages:
           volumesChanged:
             type: boolean
           previewControl:
+            type: ISUIElement
             nullable: true
         methods:
           - name: addCombo
@@ -48,10 +49,15 @@ languages:
               - name: name
                 type: string
               - name: options
+                type: string[]
               - name: selected
+                type: integer
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: umbrella.ISComboBox.OnChange
+                nullable: true
             return:
               - type: ISComboBox
           - name: addVolumeControl
@@ -67,9 +73,13 @@ languages:
               - name: name
                 type: string
               - name: volume
+                type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onchange
+                type: umbrella.ISGameSoundVolumeControl.TargetFunction
+                nullable: true
             return:
               - type: ISGameSoundVolumeControl
           - name: onMouseWheel
@@ -86,7 +96,9 @@ languages:
           - name: onVolumeChanged
             parameters:
               - name: control
+                type: ISGameSoundVolumeControl
               - name: volume
+                type: number
           - name: onStopSound
           - name: onClose
           - name: onReload
@@ -103,3 +115,4 @@ languages:
           - name: onPlaySound
             parameters:
               - name: args
+                type: "[ISGameSounds, ISUIElement]"

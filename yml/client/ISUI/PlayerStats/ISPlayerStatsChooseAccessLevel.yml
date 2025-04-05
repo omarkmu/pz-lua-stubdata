@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISPlayerStatsChooseAccessLevelUI.OnClick:
+        - type: "fun(target: unknown?, button: ISButton, roleName: string)"
     classes:
       ISPlayerStatsChooseAccessLevelUI:
         extends: ISPanel
@@ -18,8 +21,12 @@ languages:
                 type: unknown
                 nullable: true
               - name: onclick
+                type: umbrella.ISPlayerStatsChooseAccessLevelUI.OnClick
+                nullable: true
               - name: player
+                type: IsoPlayer
               - name: admin
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsChooseAccessLevelUI"'
@@ -31,15 +38,19 @@ languages:
           cancel:
             type: ISButton
           variableColor:
-            type: table
+            type: umbrella.RGBA
           target:
             type: unknown
             nullable: true
-          onclick: {}
-          chr: {}
-          admin: {}
+          onclick:
+            type: umbrella.ISPlayerStatsChooseAccessLevelUI.OnClick
+            nullable: true
+          chr:
+            type: IsoPlayer
+          admin:
+            type: IsoPlayer
           comboList:
-            type: table
+            type: "{ type: string, label: string }[]"
           zOffsetSmallFont:
             type: number
         methods:

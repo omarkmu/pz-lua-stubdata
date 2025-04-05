@@ -11,21 +11,29 @@ languages:
               - name: y
                 type: number
               - name: character
+                type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
         staticFields:
           Type:
             defaultValue: '"ISFireplaceInfoWindow"'
-          windows: {}
+          windows:
+            type: table<IsoPlayer, ISFireplaceInfoWindow>
         fields:
           panel:
             type: ISToolTip
-          object: {}
-          spriteName: {}
-          fuelAmount: {}
-          isLit: {}
+          object:
+            type: IsoFireplace
+          spriteName:
+            type: string
+          fuelAmount:
+            type: number
+          isLit:
+            type: boolean
           drawJoypadFocus:
             type: boolean
-          character: {}
+          character:
+            type: IsoPlayer
           playerNum:
             type: integer
         methods:
@@ -34,10 +42,11 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: setObject
             parameters:
               - name: fireplace
+                type: IsoFireplace
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData

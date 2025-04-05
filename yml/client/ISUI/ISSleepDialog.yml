@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: text
+                type: string
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISSleepDialog"'
@@ -28,14 +30,18 @@ languages:
           no:
             type: ISButton
             nullable: true
-          player: {}
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
-          playerX: {}
-          playerY: {}
+          playerX:
+            type: number
+          playerY:
+            type: number
           name:
             nullable: true
-          text: {}
+          text:
+            type: string
         methods:
           - name: initialise
           - name: destroy
@@ -51,5 +57,5 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: update

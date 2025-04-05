@@ -12,10 +12,12 @@ languages:
           Type:
             defaultValue: '"CGlobalObjectSystem"'
         fields:
-          system: {}
+          system:
+            type: GlobalObjectSystem
           systemName:
             type: string
-          wantNoise: {}
+          wantNoise:
+            type: boolean
         methods:
           - name: noise
             parameters:
@@ -25,21 +27,29 @@ languages:
           - name: initLuaObjects
           - name: getLuaObjectCount
             return:
-              - type: boolean
+              - type: integer | false
           - name: getLuaObjectByIndex
             parameters:
               - name: index
+                type: integer
             return:
-              - type: unknown
+              - type: table
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
+            overloads:
+              - parameters:
+                  - name: IsoObject
+                    type: IsoObject
+                return:
+                  - type: boolean
           - name: getIsoObjectOnSquare
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getIsoObjectAt
             parameters:
@@ -50,11 +60,18 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
+            overloads:
+              - parameters:
+                  - name: globalObject
+                    type: GlobalObject
+                return:
+                  - type: CGlobalObject
           - name: newLuaObjectAt
             parameters:
               - name: x
@@ -64,11 +81,11 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
-                nullable: true
+              - type: CGlobalObject
           - name: removeLuaObject
             parameters:
               - name: luaObject
+                type: CGlobalObject
           - name: removeLuaObjectAt
             parameters:
               - name: x
@@ -86,30 +103,35 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: CGlobalObject
                 nullable: true
           - name: getLuaObjectOnSquare
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: CGlobalObject
                 nullable: true
           - name: OnLuaObjectUpdated
             parameters:
               - name: luaObject
+                type: CGlobalObject
           - name: sendCommand
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: command
+                type: string
               - name: args
+                type: table
           - name: OnServerCommand
             parameters:
               - name: command
+                type: string
               - name: args
+                type: table
         staticMethods:
           - name: RegisterSystemClass
             parameters:
               - name: luaClass
-                type: table
+                type: CGlobalObjectSystem

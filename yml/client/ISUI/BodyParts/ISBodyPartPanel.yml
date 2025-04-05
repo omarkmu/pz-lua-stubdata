@@ -1,12 +1,16 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISBodyPartPanel.OnPartSelected:
+        - type: "fun(target: unknown?, bp: umbrella.ISBodyPartPanel.BodyPartTable)"
     classes:
       ISBodyPartPanel:
         extends: ISPanelJoypad
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
               - name: x
                 type: number
               - name: y
@@ -15,15 +19,16 @@ languages:
                 type: unknown
                 nullable: true
               - name: onPartSelected
-                type: function
+                type: umbrella.ISBodyPartPanel.OnPartSelected
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBodyPartPanel"'
         fields:
-          cacheColor: {}
+          cacheColor:
+            type: Color
           bps:
-            type: table
+            type: umbrella.ISBodyPartPanel.BodyPartTable[]
           selectedBp:
             type: boolean
           lockedSelection:
@@ -39,13 +44,19 @@ languages:
           backgroundAlpha:
             type: number
           colorScheme:
-            type: table
-          player: {}
+            type: umbrella.ISBodyPartPanel.ColorSchemeTable[]
+          player:
+            type: IsoPlayer
           playerNum:
             type: integer
-          bFemale: {}
-          baseTexture: {}
-          outlineTex: {}
+          bFemale:
+            type: boolean
+          baseTexture:
+            type: Texture
+            nullable: true
+          outlineTex:
+            type: Texture
+            nullable: true
           minValue:
             type: number
           maxValue:
@@ -53,18 +64,19 @@ languages:
           canSelect:
             type: boolean
           selectlines:
-            type: table
+            type: "{ enabled: boolean, anchorX: number?, anchorY: number? }"
           drawSelectedHitbox:
             type: boolean
           nodes:
-            type: table
+            type: "{ enabled: boolean, onlySelected: boolean, nodeText: Texture?,
+              nodeOutlineTex: Texture? }"
           onPartSelected:
-            type: function
+            type: umbrella.ISBodyPartPanel.OnPartSelected
             nullable: true
           drawDebugLines:
             type: boolean
           functionTarget:
-            type: ISClothingInsPanel | ISCharacterProtection
+            type: unknown
             nullable: true
           doToolTip:
             type: boolean
@@ -84,9 +96,11 @@ languages:
           - name: getPartForCoordinate
             parameters:
               - name: mx
+                type: number
               - name: my
+                type: number
             return:
-              - type: boolean
+              - type: false | umbrella.ISBodyPartPanel.BodyPartTable
           - name: setSelected
             parameters:
               - name: mx
@@ -135,18 +149,21 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: setEnableSelectLines
             parameters:
               - name: _b
                 type: boolean
               - name: _defaultAnchorX
+                type: number
               - name: _defaultAnchorY
                 type: number
           - name: setSelectLinesAnchor
             parameters:
               - name: _anchorX
+                type: number
               - name: _anchorY
+                type: number
           - name: enableNodes
             parameters:
               - name: _nodeTex
@@ -156,6 +173,7 @@ languages:
           - name: overrideNodeTexture
             parameters:
               - name: _bodyPartType
+                type: BodyPartType
               - name: _nodeTex
                 type: string
               - name: _nodeOutlineTex
@@ -163,19 +181,27 @@ languages:
           - name: setAlphas
             parameters:
               - name: _defaultAlpha
+                type: number
               - name: _nodeAlpha
+                type: number
               - name: _selectedAlpha
+                type: number
               - name: _deselectedAlpha
+                type: number
               - name: _backgroundAlpha
+                type: number
+                nullable: true
           - name: getBodyPartColor
             parameters:
               - name: _bodyPartType
+                type: BodyPartType
             return:
-              - type: unknown
+              - type: Color
                 nullable: true
           - name: setValue
             parameters:
               - name: _bodyPartType
+                type: BodyPartType
               - name: _value
                 type: number
               - name: _force
@@ -184,17 +210,64 @@ languages:
           - name: setColorForValue
             parameters:
               - name: _val
+                type: number
               - name: _color
+                type: Color
             return:
-              - type: unknown
+              - type: Color
           - name: getRgbForValue
             parameters:
               - name: _val
+                type: number
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: number
+              - type: number
+              - type: number
           - name: setColorScheme
             parameters:
               - name: _colorScheme
-                type: table
+                type: umbrella.ISBodyPartPanel.ColorSchemeTable[]
+      umbrella.ISBodyPartPanel.BodyPartTable:
+        fields:
+          texture:
+            type: Texture
+          bodyPartType:
+            type: BodyPartType
+          bodyPart:
+            type: BodyPart
+          value:
+            type: number
+          selected:
+            type: boolean
+          color:
+            type: Color
+          alpha:
+            type: number
+          offsetX:
+            type: number
+          offsetY:
+            type: number
+          nodeOffsetX:
+            type: number
+          nodeOffsetY:
+            type: number
+          width:
+            type: number
+          height:
+            type: number
+          centerX:
+            type: number
+          centerY:
+            type: number
+          nodeTexture:
+            nullable: true
+          z:
+            type: integer
+          enabled:
+            type: boolean
+      umbrella.ISBodyPartPanel.ColorSchemeTable:
+        fields:
+          val:
+            type: number
+          Color:
+            type: Color

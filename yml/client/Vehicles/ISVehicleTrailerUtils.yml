@@ -9,12 +9,13 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: ignoreVehicle
+                type: BaseVehicle
               - name: attachmentA
                 type: string
               - name: attachmentB
                 type: string
             return:
-              - type: unknown
+              - type: BaseVehicle
                 nullable: true
           - name: onTrailerPathFail
             parameters:
@@ -25,8 +26,10 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: attachment
+                type: string
               - name: nextAction
-                type: ISAttachTrailerToVehicle | ISDetachTrailerFromVehicle
+                type: ISBaseTimedAction
             return:
               - type: boolean

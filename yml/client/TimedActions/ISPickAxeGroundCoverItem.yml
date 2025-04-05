@@ -7,15 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISPickAxeGroundCoverItem"'
         fields:
           spriteFrame:
             type: number
-          pickAxe: {}
-          item: {}
+          pickAxe:
+            type: InventoryItem
+          item:
+            type: IsoObject
           objectType:
             nullable: true
           cornerCounter:
@@ -26,7 +30,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -34,4 +38,6 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string

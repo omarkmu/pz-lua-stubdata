@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISServerOptions"'
@@ -37,11 +38,12 @@ languages:
             type: ISButton
           modifying:
             type: boolean
-          player: {}
+          player:
+            type: IsoPlayer
           variableColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           zOffsetSmallFont:
             type: number
         methods:
@@ -63,14 +65,19 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onServerOptionChange
             parameters:
               - name: option
+                type: ServerOptions.ServerOption
               - name: newValue
+                type: string
           - name: onOptionMouseDown
             parameters:
               - name: button

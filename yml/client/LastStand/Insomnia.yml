@@ -56,6 +56,7 @@ languages:
               - name: playerNum
                 type: integer
               - name: dir
+                type: string
     functions:
       - name: removeInsomnia
       - name: injectInsomnia

@@ -24,15 +24,15 @@ languages:
             nullable: true
         fields:
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           totalResult:
             type: number
           filterWidgets:
-            type: table
+            type: ISUIElement[]
           filterWidgetMap:
-            type: table
+            type: table<string, ISUIElement>
           viewer:
             type: ISItemsListViewer
           datas:
@@ -54,6 +54,7 @@ languages:
           - name: addItem
             parameters:
               - name: item
+                type: Item
           - name: onOptionMouseDown
             parameters:
               - name: button
@@ -67,57 +68,74 @@ languages:
               - name: button
                 type: ISButton
               - name: item
+                type: Item
           - name: initList
             parameters:
               - name: module
-                type: table
+                type: Item[]
           - name: update
           - name: filterDisplayCategory
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: filterCategory
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: filterName
             parameters:
               - name: widget
+                type: ISTextEntryBox
               - name: scriptItem
+                type: Item
             return:
-              - type: unknown
+              - type: boolean
           - name: filterType
             parameters:
               - name: widget
+                type: ISTextEntryBox
               - name: scriptItem
+                type: Item
             return:
-              - type: unknown
+              - type: boolean
           - name: filterLootCategory
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: filterCraft
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: filterForage
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: filterLoot
             parameters:
               - name: widget
+                type: ISComboBox
               - name: scriptItem
+                type: Item
             return:
               - type: boolean
           - name: onOtherKey
@@ -127,11 +145,15 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
         staticMethods:
           - name: onFilterChange
             parameters:
               - name: widget
+                type: ISUIElement

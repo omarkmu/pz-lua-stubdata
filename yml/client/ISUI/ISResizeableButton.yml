@@ -17,10 +17,17 @@ languages:
               - name: title
                 type: string
               - name: clicktarget
-                type: ISInventoryPane
+                type: unknown
+                nullable: true
               - name: onclick
+                type: umbrella.ISButton.OnClick
+                nullable: true
               - name: onmousedown
+                type: umbrella.ISButton.MouseCallback
+                nullable: true
               - name: allowMouseUpProcessing
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISResizableButton"'
@@ -34,6 +41,7 @@ languages:
           maximumWidth:
             nullable: true
           onresize:
+            type: table
             nullable: true
         methods:
           - name: onMouseDown
@@ -69,3 +77,4 @@ languages:
           - name: resize
             parameters:
               - name: width
+                type: number

@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: hook
+                type: IsoButcherHook
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISButcherHookUI"'
@@ -26,8 +28,11 @@ languages:
           configJoypadLater:
             type: boolean
           animal3D:
+            type: IsoAnimal
             nullable: true
-          knife: {}
+          knife:
+            type: InventoryItem
+            nullable: true
           biggestWidth:
             type: number
           biggestLabelWidth:
@@ -40,6 +45,7 @@ languages:
           progress:
             type: number
           leather:
+            type: boolean
             nullable: true
           blood:
             type: number
@@ -48,8 +54,10 @@ languages:
             type: boolean
             nullable: true
           meat:
+            type: boolean
             nullable: true
-          animalSize: {}
+          animalSize:
+            type: number
           avatarX:
             type: number
           avatarY:
@@ -64,7 +72,8 @@ languages:
             type: ISButton
           animalPanel:
             type: ISPanel
-          originalAnimalPanelHeight: {}
+          originalAnimalPanelHeight:
+            type: number
           removeCorpseBtn:
             type: ISButton
           leatherLabel:
@@ -96,8 +105,10 @@ languages:
           avatarPanel:
             type: ISCharacterScreenAvatar
             nullable: true
-          hook: {}
-          chr: {}
+          hook:
+            type: IsoButcherHook
+          chr:
+            type: IsoPlayer
           playerNum:
             type: integer
           corpse:
@@ -111,16 +122,21 @@ languages:
           - name: renderDebugStuff
             parameters:
               - name: yoffset
+                type: number
             return:
               - type: number
           - name: updatePositions
             parameters:
               - name: test
+                type: boolean
               - name: button
                 type: ISButton
               - name: label
+                type: ISLabel
               - name: infoLabel
+                type: ISLabel
               - name: yoffset
+                type: number
             return:
               - type: number
           - name: updateCorpseDatas
@@ -128,59 +144,69 @@ languages:
           - name: updateProgressBar
             parameters:
               - name: progress
+                type: number
           - name: setAnimalAvatar
             parameters:
               - name: newModData
+                type: table
                 nullable: true
               - name: newCorpse
+                type: IsoAnimal | IsoDeadBody
                 nullable: true
           - name: onClickAddCorpse
           - name: onAddedCorpse
             parameters:
               - name: corpse
+                type: IsoAnimal | IsoDeadBody
                 nullable: true
             return:
-              - type: unknown
+              - type: IsoAnimal | IsoDeadBody
                 nullable: true
           - name: onClickRemoveCorpse
             return:
-              - type: unknown
+              - type: IsoDeadBody
                 nullable: true
           - name: resetCorpse
           - name: createCorpse
             parameters:
               - name: item
+                type: IsoAnimal | IsoDeadBody | InventoryItem
             return:
-              - type: unknown
+              - type: IsoAnimal | IsoDeadBody
+                nullable: true
           - name: isCorpseValid
             parameters:
               - name: corpse
+                type: IsoDeadBody | InventoryItem
             return:
               - type: boolean
           - name: lookForCorpse
             return:
-              - type: table
+              - type: (IsoDeadBody | InventoryItem)[]
           - name: onRemoveLeather
           - name: onRemoveHead
           - name: onRemoveMeat
           - name: addCorpseAction
             parameters:
               - name: corpse
+                type: IsoDeadBody | InventoryItem
           - name: removeCorpseAction
           - name: getBuckets
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: onCutCorpse
           - name: onRemoveBlood
           - name: onBleedAnimal
           - name: onSelectBucketForBlood
             parameters:
               - name: bucket
+                type: InventoryItem
           - name: initialise
           - name: close
           - name: setVisible
             parameters:
               - name: vis
+                type: boolean
           - name: onGainJoypadFocus
             parameters:
               - name: joypadData
@@ -188,14 +214,17 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
           - name: onStopBleedingAnimal
             parameters:
               - name: self
+                type: ISButcherHookUI
           - name: onReattachAnimal
             parameters:
               - name: hook
+                type: IsoButcherHook
               - name: animal
+                type: IsoAnimal

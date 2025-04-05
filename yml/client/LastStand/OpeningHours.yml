@@ -75,19 +75,25 @@ languages:
           - name: CheckMetalGates
             parameters:
               - name: area
+                type: string
           - name: CheckHordeSpawn
             parameters:
               - name: regionName
                 type: string
               - name: regionSpawn
+                type: umbrella.OpeningHours.Spawn
               - name: regionSpawnX
+                type: integer
               - name: regionSpawnY
+                type: integer
               - name: regionSpawnZ
+                type: integer
           - name: EveryDays
           - name: EveryTenMinutes
           - name: RemovePlayer
             parameters:
               - name: p
+                type: IsoPlayer
           - name: AddPlayer
             parameters:
               - name: playerNum
@@ -95,3 +101,13 @@ languages:
               - name: playerObj
                 type: IsoPlayer
           - name: Render
+      umbrella.OpeningHours.Spawn:
+        fields:
+          x:
+            type: integer
+          y:
+            type: integer
+          x2:
+            type: integer
+          y2:
+            type: integer

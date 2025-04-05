@@ -7,15 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: editor
+                type: ISMultiplayerZoneEditor
         staticFields:
           Type:
             defaultValue: '"MultiplayerZoneEditorMode"'
         fields:
-          editor: {}
-          mapUI: {}
-          mapAPI: {}
-          styleAPI: {}
-          symbolsAPI: {}
+          editor:
+            type: ISMultiplayerZoneEditor
+          mapUI:
+            type: ISMultiplayerZoneEditor
+          mapAPI:
+            type: UIWorldMapV3
+          styleAPI:
+            nullable: true
+          symbolsAPI:
+            nullable: true
         methods:
           - name: display
           - name: undisplay

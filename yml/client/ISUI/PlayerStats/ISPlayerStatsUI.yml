@@ -15,7 +15,9 @@ languages:
               - name: height
                 type: number
               - name: playerChecked
+                type: IsoPlayer
               - name: admin
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPlayerStatsUI"'
@@ -24,6 +26,7 @@ languages:
             nullable: true
         fields:
           selectedPerk:
+            type: umbrella.ISPlayerStatsUI.PerkTable
             nullable: true
           syncWeightTimer:
             type: number
@@ -63,24 +66,26 @@ languages:
             type: ISButton
           warningPoint:
             type: number
-          char: {}
+          char:
+            type: IsoPlayer
           variableColor:
-            type: table
-          admin: {}
+            type: umbrella.RGBA
+          admin:
+            type: IsoPlayer
           listHeaderColor:
-            type: table
+            type: umbrella.RGBA
           buttonBorderColor:
-            type: table
+            type: umbrella.RGBA
           traits:
-            type: table
+            type: ISImage[]
           traitsRemoveButtons:
-            type: table
+            type: table<string, ISButton>
           perks:
             type: table
           perksAddXPButtons:
             type: table
           userlogs:
-            type: table
+            type: umbrella.ISPlayerStatsUI.Userlog[]
           buttonOffset:
             type: number
           buttonWidth:
@@ -90,7 +95,7 @@ languages:
           buttonHeight:
             type: number
           windows:
-            type: table
+            type: ISUIElement[]
         methods:
           - name: initialise
           - name: setVisible
@@ -127,27 +132,33 @@ languages:
               - name: button
                 type: ISButton
               - name: reason
+                type: string
               - name: amount
+                type: string
           - name: onAddTrait
             parameters:
               - name: button
                 type: ISButton
               - name: trait
+                type: TraitFactory.Trait
           - name: onChangeProfession
             parameters:
               - name: button
                 type: ISButton
               - name: prof
+                type: ProfessionFactory.Profession
           - name: onChangeAccessLevel
             parameters:
               - name: button
                 type: ISButton
               - name: accessLevel
+                type: string
           - name: onChangeName
             parameters:
               - name: button
                 type: ISButton
               - name: player
+                type: IsoPlayer
               - name: changedName
                 type: string
           - name: onChangeWeight
@@ -155,6 +166,7 @@ languages:
               - name: button
                 type: ISButton
               - name: player
+                type: IsoPlayer
           - name: onRemoveTrait
             parameters:
               - name: button
@@ -166,8 +178,11 @@ languages:
           - name: drawPerk
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onAddXP
@@ -175,17 +190,23 @@ languages:
               - name: button
                 type: ISButton
               - name: perk
+                type: PerkFactory.Perk
               - name: amount
+                type: string
               - name: addGlobalXP
+                type: boolean
               - name: useMultipliers
+                type: boolean
           - name: updateColumns
         staticMethods:
           - name: loadTraits
             parameters:
               - name: self
+                type: ISPlayerStatsUI
           - name: loadProfession
             parameters:
               - name: self
+                type: ISPlayerStatsUI
           - name: loadPerks
             parameters:
               - name: self
@@ -193,9 +214,37 @@ languages:
           - name: loadUserlog
             parameters:
               - name: self
+                type: ISPlayerStatsUI
           - name: receiveUserLog
             parameters:
               - name: username
                 type: string
               - name: logs
+                type: ArrayList<Userlog>
           - name: OnOpenPanel
+      umbrella.ISPlayerStatsUI.PerkTable:
+        fields:
+          perk:
+            type: PerkFactory.Perk
+          name:
+            type: string
+          level:
+            type: integer
+          xpToLevel:
+            type: number
+          xp:
+            type: number
+          boost:
+            type: string
+          multiplier:
+            type: number
+      umbrella.ISPlayerStatsUI.Userlog:
+        fields:
+          type:
+            type: string
+          text:
+            type: string
+          issuedBy:
+            type: string
+          amount:
+            type: integer

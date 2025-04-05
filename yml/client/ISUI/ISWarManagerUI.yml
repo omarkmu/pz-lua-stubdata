@@ -15,6 +15,7 @@ languages:
               - name: height
                 type: number
               - name: player
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISWarManagerUI"'
@@ -36,7 +37,8 @@ languages:
             type: ISScrollingListBox
           scrollBarSpacing:
             type: number
-          player: {}
+          player:
+            type: IsoPlayer
           itemheight:
             type: number
         methods:
@@ -45,13 +47,17 @@ languages:
           - name: drawDatas
             parameters:
               - name: y
+                type: number
               - name: item
+                type: umbrella.ISScrollingListBox.Item
               - name: alt
+                type: boolean
             return:
               - type: number
           - name: onSelectWar
             parameters:
               - name: _item
+                type: WarManager.War
           - name: prerender
           - name: onClick
             parameters:

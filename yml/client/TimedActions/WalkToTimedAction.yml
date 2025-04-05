@@ -1,34 +1,49 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISWalkToTimedAction.AdditionalTest:
+        - type: "fun(additionalContext: unknown?): boolean"
     classes:
       ISWalkToTimedAction:
         extends: ISBaseTimedAction
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: location
-                nullable: true
+                type: IsoGridSquare
               - name: additionalTest
+                type: umbrella.ISWalkToTimedAction.AdditionalTest
+                nullable: true
               - name: additionalContext
+                type: unknown
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWalkToTimedAction"'
         fields:
-          result: {}
+          result:
+            type: BehaviorResult
+            nullable: true
           onCompleteFunc:
             type: function
+            nullable: true
           onCompleteArgs:
             type: table
+            nullable: true
           character:
-            nullable: true
+            type: IsoPlayer
           location:
-            nullable: true
+            type: IsoGridSquare
           pathIndex:
             type: number
-          additionalTest: {}
-          additionalContext: {}
+          additionalTest:
+            type: umbrella.ISWalkToTimedAction.AdditionalTest
+            nullable: true
+          additionalContext:
+            type: unknown
+            nullable: true
         methods:
           - name: isValid
             return:
@@ -41,11 +56,16 @@ languages:
             parameters:
               - name: func
                 type: function
+                nullable: true
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
+                nullable: true
               - name: arg4
                 type: unknown
+                nullable: true

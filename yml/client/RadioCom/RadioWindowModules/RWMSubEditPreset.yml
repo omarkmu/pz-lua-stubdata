@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.RWMSubEditPreset.OnSave:
+        - type: "fun(target: unknown?, value: number, text: string)"
     classes:
       RWMSubEditPreset:
         extends: ISPanel
@@ -16,7 +19,10 @@ languages:
                 type: number
               - name: target
                 type: unknown
+                nullable: true
               - name: onSave
+                type: umbrella.RWMSubEditPreset.OnSave
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"RWMSubEditPreset"'
@@ -30,24 +36,28 @@ languages:
           saveButton:
             type: ISButton
           joypadStepIndex:
-            type: number
+            type: integer
           linePairs:
-            type: table
+            type: umbrella.RWMSubEditPreset.LinePair[]
           linePadding:
             type: number
           lineHeight:
             type: number
           target:
             type: unknown
-          onSave: {}
+            nullable: true
+          onSave:
+            type: umbrella.RWMSubEditPreset.OnSave
+            nullable: true
           joypadSteps:
-            type: table
+            type: integer[]
         methods:
           - name: initialise
           - name: createChildren
           - name: onSliderChange
             parameters:
               - name: value
+                type: number
           - name: setValues
             parameters:
               - name: name
@@ -67,7 +77,9 @@ languages:
           - name: addLinePair
             parameters:
               - name: _text
+                type: string
               - name: _UIelement
+                type: ISUIElement
           - name: calcLinePairs
           - name: render
           - name: clearJoypadFocus
@@ -77,19 +89,29 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: boolean
               - type: boolean
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
+      umbrella.RWMSubEditPreset.LinePair:
+        fields:
+          ui:
+            type: ISUIElement
+          text:
+            type: string
+            nullable: true
+          textLen:
+            type: number
+            nullable: true

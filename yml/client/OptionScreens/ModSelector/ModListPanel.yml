@@ -16,11 +16,13 @@ languages:
               - name: height
                 type: number
               - name: model
+                type: ModSelector.Model
         staticFields:
           Type:
             defaultValue: '"ModListPanel"'
         fields:
-          model: {}
+          model:
+            type: ModSelector.Model
           joypadListFocus:
             type: boolean
           filterCombo:
@@ -37,7 +39,9 @@ languages:
             type: ModSelector.ModListBox
           isFavoriteMode:
             type: boolean
-          joypadFocused: {}
+          joypadFocused:
+            type: boolean
+            nullable: true
         methods:
           - name: updateView
           - name: render
@@ -75,6 +79,7 @@ languages:
           - name: setJoypadFocused
             parameters:
               - name: val
+                type: boolean
           - name: onJoypadDirUp
             parameters:
               - name: joypadData
@@ -102,13 +107,14 @@ languages:
           - name: onJoypadDown
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: joypadData
                 type: JoypadData
         staticMethods:
           - name: setText
             parameters:
               - name: self
+                type: ISTextEntryBox
               - name: str
                 type: string
       ModSelector:

@@ -1,89 +1,113 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ModSelector.FinalFunction:
+        - type: "fun(data: umbrella.ModSelector.FinalizedData)"
     classes:
       ModSelector.Model:
         local: true
         constructors:
           - parameters:
               - name: view
+                type: ModSelector
         staticFields:
           categories: {}
         fields:
-          view: {}
+          view:
+            type: ModSelector
           mods:
-            type: table
+            type: table<string, umbrella.ModSelector.ModData>
           sortedMods:
-            type: table
+            type: umbrella.ModSelector.ModData[]
           presets:
-            type: table
+            type: table<string, table<string, string>>
           favs:
-            type: table
+            type: table<string, string>
           currentMods:
-            type: table
+            type: umbrella.ModSelector.ModData[]
           isUnsupportedModsVisible:
             type: boolean
-          mapGroups: {}
+          mapGroups:
+            type: MapGroups
           loadGameFolder:
+            type: string
             nullable: true
-          serverSettingsFinishFunc: {}
+          serverSettingsFinishFunc:
+            type: umbrella.ModSelector.FinalFunction
+            nullable: true
           isServerSettingsMods:
             type: boolean
-          serverSettingsMods: {}
-          ModsEnabled: {}
+          serverSettingsMods:
+            type: ActiveMods
+          ModsEnabled:
+            type: boolean
           incompatibles:
-            type: table
+            type: table<string, table<string, boolean>>
           requirements:
-            type: table
+            type: table<string, umbrella.ModSelector.RequirementsTable>
         methods:
           - name: showUnsupportedMods
             parameters:
               - name: value
+                type: boolean
           - name: setExistingSavefile
             parameters:
               - name: folder
+                type: string
           - name: setServerSettingsMods
             parameters:
               - name: data
+                type: umbrella.ModSelector.FinalizedData[]
               - name: finishFunc
+                type: umbrella.ModSelector.FinalFunction
           - name: setFavorite
             parameters:
               - name: id
+                type: string
               - name: val
+                type: string
           - name: reloadMods
           - name: refreshMods
           - name: correctAndSaveModOrder
             parameters:
               - name: data
+                type: string[]
           - name: checkMapConflicts
             return:
-              - type: unknown
+              - type: boolean
           - name: getAllMapsInOrder
             return:
-              - type: unknown
+              - type: ArrayList<string>
           - name: getMapConflicts
             parameters:
               - name: mapName
                 type: string
             return:
-              - type: unknown
+              - type: ArrayList<string>
           - name: filterMods
             parameters:
               - name: category
+                type: string
               - name: searchWord
+                type: string
               - name: favoriteMode
+                type: boolean
               - name: onlyEnabled
+                type: boolean
           - name: isModActive
             parameters:
               - name: id
+                type: string
             return:
-              - type: unknown
+              - type: boolean
           - name: getActiveMods
             return:
-              - type: unknown
+              - type: ActiveMods
           - name: setModActive
             parameters:
               - name: id
+                type: string
               - name: active
                 type: boolean
           - name: acceptChanges
@@ -102,9 +126,39 @@ languages:
           - name: forceActivateMods
             parameters:
               - name: modInfo
+                type: ChooseGameInfo.Mod
               - name: activate
                 type: boolean
       ModSelector:
         staticFields:
           Model:
             type: ModSelector.Model
+      umbrella.ModSelector.RequirementsTable:
+        fields:
+          dependsOn:
+            type: table<string, boolean>
+          neededFor:
+            type: table<string, boolean>
+      umbrella.ModSelector.FinalizedData:
+        fields:
+          modID:
+            type: string
+          modInfo:
+            type: ChooseGameInfo.Mod
+      umbrella.ModSelector.ModData:
+        fields:
+          modId:
+            type: string
+          modInfo:
+            type: ChooseGameInfo.Mod
+          name:
+            type: string
+          icon:
+            type: string
+          category:
+            type: string
+          defaultActive:
+            type: boolean
+          defaultFav:
+            type: boolean
+            nullable: true

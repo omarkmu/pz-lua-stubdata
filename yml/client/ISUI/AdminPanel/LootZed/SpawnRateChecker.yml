@@ -4,48 +4,86 @@ languages:
     classes:
       LootZedTool:
         staticFields:
-          SpawnItemCheckerList: {}
-          SpawnItemChecker: {}
+          SpawnItemCheckerList:
+            type: table<string, table<string, number>>
+          SpawnItemChecker:
+            type: umbrella.LootZedTool.SpawnItemChecker
         staticMethods:
           - name: rollProceduralItem_CalcChances
             parameters:
               - name: proceduralItems
+                type: umbrella.Distributions.ProceduralItem[]
               - name: container
+                type: ItemContainer
               - name: _
                 type: number
               - name: character
+                type: IsoPlayer
               - name: roomDist
+                type: umbrella.RoomDistribution
+                nullable: true
           - name: doRollItem_CalcChances
             parameters:
               - name: containerDist
+                type: umbrella.ContainerDistribution
               - name: _
+                type: unknown
               - name: _
-                type: number
+                type: unknown
               - name: character
+                type: IsoPlayer
               - name: _
+                type: unknown
               - name: isJunk
                 type: boolean
               - name: _
+                type: unknown
           - name: rollItem_CalcChances
             parameters:
               - name: containerDist
-                nullable: true
+                type: umbrella.ContainerDistribution
               - name: container
+                type: ItemContainer
               - name: doItemContainer
                 type: boolean
               - name: player
+                type: IsoPlayer
               - name: roomDist
+                type: umbrella.RoomDistribution
                 nullable: true
           - name: fillContainerType_CalcChances
             parameters:
               - name: roomDist
-                type: table
+                type: umbrella.RoomDistribution
               - name: container
+                type: ItemContainer
               - name: roomName
                 type: string
-                nullable: true
               - name: player
+                type: IsoPlayer
           - name: fillContainer_CalcChances
             parameters:
               - name: container
+                type: ItemContainer
               - name: player
+                type: IsoPlayer
+      umbrella.LootZedTool.SpawnItemChecker:
+        fields:
+          forceForRooms:
+            type: string
+            nullable: true
+          forceForTiles:
+            type: string
+            nullable: true
+          forceForZones:
+            type: string
+            nullable: true
+          forceForItems:
+            type: string
+            nullable: true
+          containerType:
+            type: string
+            nullable: true
+          roomName:
+            type: string
+            nullable: true

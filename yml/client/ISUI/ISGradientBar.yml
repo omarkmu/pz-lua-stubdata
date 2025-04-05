@@ -18,14 +18,18 @@ languages:
           Type:
             defaultValue: '"ISGradientBar"'
         fields:
-          gradientTex: {}
+          gradientTex:
+            type: Texture
           value:
             type: number
-          highlightTex: {}
-          highlightTex_L: {}
-          highlightTex_R: {}
+          highlightTex:
+            type: Texture
+          highlightTex_L:
+            type: Texture
+          highlightTex_R:
+            type: Texture
           settings:
-            type: table
+            type: umbrella.ISGradientBar.Settings
         methods:
           - name: initialise
           - name: createChildren
@@ -34,6 +38,7 @@ languages:
           - name: setGradientTexture
             parameters:
               - name: _tex
+                type: Texture
           - name: setHighlightRadius
             parameters:
               - name: _rad
@@ -70,3 +75,15 @@ languages:
             parameters:
               - name: _v
                 type: number
+      umbrella.ISGradientBar.Settings:
+        fields:
+          radius:
+            type: integer
+          darkAlpha:
+            type: number
+          colBorder:
+            type: umbrella.RGBA
+          colBorderInner:
+            type: umbrella.RGBA
+          doKnob:
+            type: boolean
