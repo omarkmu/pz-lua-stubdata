@@ -7,13 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
         staticFields:
           Type:
             defaultValue: '"ISLockVehicleDoor"'
         fields:
-          vehicle: {}
-          part: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
         methods:
           - name: isValid
             return:

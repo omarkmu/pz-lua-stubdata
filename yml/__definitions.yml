@@ -18,6 +18,8 @@ languages:
         - type: NestBox
       HandcraftLogic.InputItemNode:
         - type: InputItemNode
+      MultiStageBuilding.Stage:
+        - type: Stage
       PerkFactory.Perk:
         - type: Perk
       ProfessionFactory.Profession:
@@ -72,18 +74,9 @@ languages:
         - type: EntityUiStyle
       XuiSkinScript.ComponentUiScript:
         - type: ComponentUiScript
-      umbrella.ClothingSelectionDefinition:
-        - type: table<string, umbrella.ClothingSelectionDefinitionTable>
       umbrella.ContainerDistribution:
         - type: umbrella.Distributions.ItemsContainerDistribution
         - type: umbrella.Distributions.ListContainerDistribution
-      umbrella.Foraging.ValidateFunction:
-        - type: "fun(square: IsoGridSquare, itemDef: umbrella.Foraging.ItemDefinition, catDef: umbrella.Foraging.CategoryDefinition): boolean"
-      umbrella.Foraging.SpawnFunction:
-        - type: "fun(character: IsoPlayer, inventory: ItemContainer, itemDef: umbrella.Foraging.ItemDefinition, itemList: ArrayList<InventoryItem>)"
-      umbrella.KeybindTable:
-        - type: umbrella.KeybindElement
-        - type: umbrella.KeybindSection
     classes:
       umbrella.HSB:
         fields:
@@ -148,86 +141,6 @@ languages:
             type: string
           pvp:
             type: '"0" | "1"'
-      umbrella.SpawnPoint:
-        fields:
-          posX:
-            type: integer
-          posY:
-            type: integer
-          posZ:
-            type: integer
-          worldX:
-            type: integer
-            nullable: true
-          worldY:
-            type: integer
-            nullable: true
-      umbrella.SpawnRegion:
-        fields:
-          name:
-            type: string
-          points:
-            type: umbrella.SpawnPoint
-      umbrella.KeybindSection:
-        fields:
-          value:
-            type: string
-      umbrella.KeybindElement:
-        fields:
-          key:
-            type: integer
-          value:
-            type: string
-      umbrella.AnimalAvatarDefinition:
-        fields:
-          zoom:
-            type: integer
-          xoffset:
-            type: number
-          yoffset:
-            type: number
-          avatarWidth:
-            type: integer
-          avatarDir:
-            type: IsoDirections
-          trailerDir:
-            type: IsoDirections
-          trailerZoom:
-            type: number
-          trailerXoffset:
-            type: number
-          trailerYoffset:
-            type: number
-          hook:
-            type: boolean
-            nullable: true
-          butcherHookZoom:
-            type: integer
-            nullable: true
-          butcherHookXoffset:
-            type: number
-            nullable: true
-          butcherHookYoffset:
-            type: number
-            nullable: true
-          animalPositionSize:
-            type: number
-            nullable: true
-          animalPositionX:
-            type: number
-            nullable: true
-          animalPositionY:
-            type: number
-            nullable: true
-          animalPositionZ:
-            type: number
-            nullable: true
-      umbrella.ClothingSelectionDefinitionTable:
-        fields:
-          chance:
-            type: integer
-          items:
-            type: string[]
       umbrella.Distributions.ProceduralItem:
         fields:
           name:
@@ -363,217 +276,6 @@ languages:
           harvestPosition:
             type: '"Low" | "Mid" | "High"'
             nullable: true
-      umbrella.FitnessExercises.Exercise:
-        fields:
-          type:
-            type: string
-          name:
-            type: string
-          tooltip:
-            type: string
-          stiffness:
-            type: string
-          metabolics:
-            type: Metabolics
-          xpMod:
-            type: number
-          item:
-            type: string
-            nullable: true
-          prop:
-            type: string
-            nullable: true
-      umbrella.Foraging.CategoryDefinition:
-        fields:
-          name:
-            type: string
-          chance:
-            type: number
-          typeCategory:
-            type: string
-          identifyCategoryPerk:
-            type: string
-          identifyCategoryLevel:
-            type: number
-          categoryHidden:
-            type: boolean
-          validFloors:
-            type: string[]
-          validFunc:
-            type: umbrella.Foraging.ValidateFunction
-          rainChance:
-            type: number
-          hasRainedChance:
-            type: number
-          snowChance:
-            type: number
-          dayChance:
-            type: number
-          nightChance:
-            type: number
-          zoneChance:
-            type: table<string, integer>
-          spriteAffinities:
-            type: table<string, string[]>
-          chanceToMoveIcon:
-            type: number
-          chanceToCreateIcon:
-            type: number
-          focusChanceMin:
-            type: number
-          focusChanceMax:
-            type: number
-      umbrella.Foraging.ItemDefinition:
-        fields:
-          type:
-            type: string
-          minCount:
-            type: integer
-          maxCount:
-            type: integer
-          skill:
-            type: number
-          perks:
-            type: string[]
-          xp:
-            type: number
-          recipes:
-            type: string[]
-          traits:
-            type: string[]
-          itemTags:
-            type: string[]
-          categories:
-            type: string[]
-          rainChance:
-            type: number
-          hasRainedChance:
-            type: number
-          snowChance:
-            type: number
-          dayChance:
-            type: number
-          nightChance:
-            type: number
-          zones:
-            type: table<string, integer>
-          months:
-            type: integer[]
-          bonusMonths:
-            type: integer[]
-          malusMonths:
-            type: integer[]
-          spawnFuncs:
-            type: umbrella.Foraging.SpawnFunction[]
-          forceOutside:
-            type: boolean
-          isOnWater:
-            type: boolean
-          forceOnWater:
-            type: boolean
-          isMover:
-            type: boolean
-          canBeAboveFloor:
-            type: boolean
-          doIsoMarkerObject:
-            type: boolean
-          doIsoMarkerSprite:
-            type: boolean
-          canBeOnTreeSquare:
-            type: boolean
-          poisonChance:
-            type: number
-          poisonPowerMin:
-            type: number
-          poisonPowerMax:
-            type: number
-          poisonDetectionLevel:
-            type: number
-          itemSizeModifier:
-            type: number
-          isItemOverrideSize:
-            type: boolean
-          altWorldTexture:
-            type: string | string[] | Texture
-            nullable: true
-      umbrella.Foraging.Modifiers:
-        fields:
-          levelBonus:
-            type: number
-          traitBonus:
-            type: number
-          professionBonus:
-            type: number
-          panic:
-            type: number
-          body:
-            type: number
-          exhaustion:
-            type: number
-          clothing:
-            type: number
-          difficulty:
-            type: number
-          size:
-            type: number
-          weather:
-            type: number
-          categoryBonus:
-            type: number
-          hungerBonus:
-            type: number
-      umbrella.Foraging.UpdateEvent:
-        fields:
-          method:
-            type: string
-          tick:
-            type: integer
-          breakTick:
-            type: boolean
-      umbrella.Foraging.ZoneData:
-        fields:
-          id:
-            type: string
-          name:
-            type: string
-          x:
-            type: number
-          y:
-            type: number
-          z:
-            type: number
-          size:
-            type: number
-          bounds:
-            type: umbrella.Foraging.ZoneDataBounds
-          itemsTotal:
-            type: number
-          itemsLeft:
-            type: number
-          forageIcons:
-            type: table<string, umbrella.Foraging.ZoneIconData>
-      umbrella.Foraging.ZoneDataBounds:
-        fields:
-          x1:
-            type: number
-          y1:
-            type: number
-          x2:
-            type: number
-          y2:
-            type: number
-      umbrella.Foraging.ZoneDefinition:
-        fields:
-          name:
-            type: string
-          densityMin:
-            type: number
-          densityMax:
-            type: number
-          refillPercent:
-            type: number
-          abundanceSetting:
-            type: string
       umbrella.ISBuildIsoEntity.ItemResult:
         fields:
           count:
@@ -591,34 +293,6 @@ languages:
           hasTestedInventory:
             type: boolean
             nullable: true
-      umbrella.ISMoveableSpriteProps.CanScrapResult:
-        fields:
-          canScrap:
-            type: boolean
-          containerFull:
-            type: boolean
-            nullable: true
-          craftValid:
-            type: boolean
-            nullable: true
-          haveTool:
-            type: InventoryItem | false
-            nullable: true
-          haveTool2:
-            type: InventoryItem | false
-            nullable: true
-      umbrella.MakeUpDefinitions.Category:
-        fields:
-          name:
-            type: string
-          avatarZoom:
-            type: number
-          avatarYOffset:
-            type: number
-          avatarXOffset:
-            type: number
-          category:
-            type: string
       umbrella.RoomDistribution:
         fields:
           isShop:
@@ -671,85 +345,6 @@ languages:
             nullable: true
           "[string]":
             type: umbrella.ContainerDistribution
-      umbrella.StashUtil.Stash:
-        fields:
-          name:
-            type: string
-          type:
-            type: string
-          item:
-            type: string
-          customName:
-            type: string
-          buildingX:
-            type: integer
-            nullable: true
-          buildingY:
-            type: integer
-            nullable: true
-          spawnTable:
-            type: string
-            nullable: true
-          zombies:
-            type: integer
-            nullable: true
-          barricades:
-            type: integer
-            nullable: true
-          spawnOnlyOnZed:
-            type: integer
-            nullable: true
-          daysToSpawn:
-            type: string
-            nullable: true
-          traps:
-            type: string
-            nullable: true
-          containers:
-            type: umbrella.StashUtil.StashContainer[]
-            nullable: true
-          annotations:
-            type: umbrella.StashUtil.StashAnnotation[]
-            nullable: true
-      umbrella.StashUtil.StashAnnotation:
-        fields:
-          symbol:
-            type: string
-          text:
-            type: string
-          x:
-            type: number
-          y:
-            type: number
-          r:
-            type: number
-          g:
-            type: number
-          b:
-            type: number
-      umbrella.StashUtil.StashContainer:
-        fields:
-          room:
-            type: string
-            nullable: true
-          containerSprite:
-            type: string
-            nullable: true
-          containerType:
-            type: string
-            nullable: true
-          containerItem:
-            type: string
-            nullable: true
-          contX:
-            type: integer
-            nullable: true
-          contY:
-            type: integer
-            nullable: true
-          contZ:
-            type: integer
-            nullable: true
       umbrella.TrapAnimalDefinition:
         fields:
           type:
@@ -781,4 +376,22 @@ languages:
             nullable: true
           aliveBreed:
             type: string[]
+            nullable: true
+      umbrella.TrapDefinition:
+        fields:
+          type:
+            type: string
+          sprite:
+            type: string
+          closedSprite:
+            type: string
+          trapStrength:
+            type: integer
+          destroyItem:
+            type: string[]
+          northSprite:
+            type: string
+            nullable: true
+          northClosedSprite:
+            type: string
             nullable: true

@@ -7,27 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: sourceContainer
                 type: ISFluidContainer
                 nullable: true
               - name: sourceFluidObject
-                nullable: true
+                type: FluidContainer | ResourceFluid
               - name: targetContainer
                 type: ISFluidContainer
                 nullable: true
               - name: targetFluidObject
-                nullable: true
+                type: FluidContainer | ResourceFluid
               - name: amount
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISFluidTransferAction"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           amount:
             type: number
           sourceFluidObject:
+            type: FluidContainer | ResourceFluid
             nullable: true
           targetFluidObject:
+            type: FluidContainer | ResourceFluid
             nullable: true
           source:
             type: ISFluidContainer
@@ -36,8 +42,10 @@ languages:
             type: unknown
             nullable: true
           sourceOwner:
+            type: GameEntity
             nullable: true
           targetOwner:
+            type: GameEntity
             nullable: true
         methods:
           - name: isValid

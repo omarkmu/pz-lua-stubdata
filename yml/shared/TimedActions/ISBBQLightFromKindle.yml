@@ -9,25 +9,33 @@ languages:
               - name: character
                 nullable: true
               - name: plank
+                type: InventoryItem
               - name: item
+                type: InventoryItem
               - name: bbq
+                type: IsoBarbecue
         staticFields:
           Type:
             defaultValue: '"ISBBQLightFromKindle"'
         fields:
-          item: {}
-          plank: {}
-          sound: {}
-          bbq: {}
-          isOutdoorsMan: {}
+          item:
+            type: InventoryItem
+          plank:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
+          bbq:
+            type: IsoBarbecue
+          isOutdoorsMan:
+            type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -38,7 +46,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

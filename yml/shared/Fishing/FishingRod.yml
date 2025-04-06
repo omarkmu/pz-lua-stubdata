@@ -5,25 +5,30 @@ languages:
       Fishing:
         staticFields:
           FishingRod:
-            type: FishingRod
-      FishingRod:
+            type: Fishing.FishingRod
+      Fishing.FishingRod:
         local: true
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
         fields:
-          player: {}
-          skillLevel: {}
-          strengthSkill: {}
+          player:
+            type: IsoPlayer
+          skillLevel:
+            type: integer
+          strengthSkill:
+            type: integer
           isFirstFishing:
             type: boolean
           rodItem:
-            nullable: true
-          rodItemType: {}
+            type: InventoryItem
+          rodItemType:
+            type: string
           rodItemTypeBend:
             type: string
           bobber:
-            type: Bobber
+            type: Fishing.Bobber
             nullable: true
           spawnBobberDelayTimer:
             type: number
@@ -70,14 +75,13 @@ languages:
           - name: getTension
             return:
               - type: number
-                nullable: true
           - name: isReel
             return:
               - type: boolean
           - name: reel
           - name: isReleaseLine
             return:
-              - type: unknown
+              - type: boolean
           - name: releaseLine
           - name: isRodMove
             return:
@@ -93,7 +97,6 @@ languages:
           - name: getLineTypeCoeff
             return:
               - type: number
-                nullable: true
           - name: damageLine
           - name: brokeLine
           - name: missFish

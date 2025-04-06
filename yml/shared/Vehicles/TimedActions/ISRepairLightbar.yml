@@ -7,17 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: maxTime
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISRepairLightbar"'
         fields:
-          vehicle: {}
-          part: {}
-          item: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          item:
+            type: InventoryItem
           jobType:
             type: string
         methods:
@@ -26,7 +32,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

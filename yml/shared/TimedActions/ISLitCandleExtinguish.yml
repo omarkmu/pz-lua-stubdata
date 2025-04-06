@@ -7,14 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISLitCandleExtinguish"'
         fields:
           started:
             type: boolean
-          item: {}
+          item:
+            type: InventoryItem
         methods:
           - name: isValid
             return:

@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: sq
                 type: IsoGridSquare
               - name: radius
@@ -16,8 +18,10 @@ languages:
           Type:
             defaultValue: '"ISScything"'
         fields:
-          sound: {}
-          item: {}
+          sound:
+            type: integer
+          item:
+            type: InventoryItem
           radius:
             type: number
           sq:

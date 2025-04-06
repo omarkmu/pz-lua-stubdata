@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: fixingNum
                 type: number
               - name: fixerNum
@@ -16,19 +18,22 @@ languages:
           Type:
             defaultValue: '"ISFixAction"'
         fields:
-          item: {}
+          item:
+            type: InventoryItem
           fixingNum:
             type: number
           fixerNum:
             type: number
-          fixing: {}
-          fixer: {}
+          fixing:
+            type: Fixing
+          fixer:
+            type: Fixing.Fixer
           jobType:
             type: string
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

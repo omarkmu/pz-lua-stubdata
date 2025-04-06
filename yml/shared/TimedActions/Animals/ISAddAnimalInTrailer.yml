@@ -7,27 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: animal
+                type: IsoAnimal | IsoDeadBody | AnimalInventoryItem
               - name: fromHand
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISAddAnimalInTrailer"'
         fields:
-          vehicle: {}
-          animal: {}
+          vehicle:
+            type: BaseVehicle
+          animal:
+            type: IsoAnimal | IsoDeadBody | AnimalInventoryItem
           fromHand:
             type: boolean
-          animalInventoryItem: {}
+          animalInventoryItem:
+            type: IsoDeadBody | AnimalInventoryItem
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

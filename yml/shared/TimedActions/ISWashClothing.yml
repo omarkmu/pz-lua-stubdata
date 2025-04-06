@@ -7,27 +7,38 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: sink
+                type: IsoObject
               - name: soaps
+                type: InventoryItem[]
               - name: item
+                type: InventoryItem
               - name: bloodAmount
                 type: number
               - name: dirtAmount
                 type: number
               - name: noSoap
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISWashClothing"'
         fields:
-          sound: {}
-          sink: {}
-          item: {}
+          sound:
+            type: integer
+            nullable: true
+          sink:
+            type: IsoObject
+          item:
+            type: InventoryItem
           bloodAmount:
             type: number
           dirtAmount:
             type: number
-          soaps: {}
-          noSoap: {}
+          soaps:
+            type: InventoryItem[]
+          noSoap:
+            type: boolean
           forceProgressBar:
             type: boolean
         methods:
@@ -41,7 +52,9 @@ languages:
           - name: useSoap
             parameters:
               - name: item
+                type: InventoryItem
               - name: part
+                type: BloodBodyPartType
                 nullable: true
             return:
               - type: boolean
@@ -56,16 +69,18 @@ languages:
           - name: GetSoapRemaining
             parameters:
               - name: soaps
-                type: table
+                type: InventoryItem[]
             return:
               - type: number
           - name: GetRequiredSoap
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: number
           - name: GetRequiredWater
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: number

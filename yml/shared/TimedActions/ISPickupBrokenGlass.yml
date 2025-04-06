@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: glass
+                type: IsoBrokenGlass
         staticFields:
           Type:
             defaultValue: '"ISPickupBrokenGlass"'
         fields:
-          glass: {}
+          glass:
+            type: IsoBrokenGlass
           square:
             type: IsoGridSquare
         methods:
@@ -21,7 +24,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

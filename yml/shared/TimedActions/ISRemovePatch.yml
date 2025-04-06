@@ -7,24 +7,32 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: clothing
+                type: Clothing
               - name: part
+                type: BloodBodyPartType
               - name: needle
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISRemovePatch"'
         fields:
-          clothing: {}
-          needle: {}
-          sound: {}
+          clothing:
+            type: Clothing
+          needle:
+            type: InventoryItem
+          sound:
+            type: integer
           fabricType:
+            type: integer
             nullable: true
-          part: {}
+          part:
+            type: BloodBodyPartType
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop
@@ -39,5 +47,6 @@ languages:
           - name: chanceToGetPatchBack
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: number

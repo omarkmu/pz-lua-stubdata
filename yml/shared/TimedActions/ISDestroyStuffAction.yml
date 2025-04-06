@@ -7,25 +7,31 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: IsoObject
               - name: cornerCounter
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISDestroyStuffAction"'
         fields:
           spriteFrame:
             type: number
-          sledge: {}
+          sledge:
+            type: InventoryItem
+            nullable: true
           cornerCounter:
-            type: number
-          item: {}
+            type: integer
+          item:
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -33,13 +39,16 @@ languages:
           - name: getCornerWallSprite
             parameters:
               - name: wallSprite
+                type: IsoSprite
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: complete
             return:
               - type: boolean

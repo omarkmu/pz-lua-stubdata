@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: targetSquare
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISDropCorpseAction"'
@@ -17,7 +19,7 @@ languages:
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
               - type: boolean

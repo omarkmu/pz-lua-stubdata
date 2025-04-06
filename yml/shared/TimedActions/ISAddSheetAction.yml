@@ -9,18 +9,20 @@ languages:
               - name: character
                 nullable: true
               - name: item
+                type: IsoDoor | IsoWindow | IsoWindowFrame | IsoThumpable
         staticFields:
           Type:
             defaultValue: '"ISAddSheetAction"'
         fields:
-          item: {}
+          item:
+            type: IsoDoor | IsoWindow | IsoWindowFrame | IsoThumpable
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

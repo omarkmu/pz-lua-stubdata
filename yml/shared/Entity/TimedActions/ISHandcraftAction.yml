@@ -1,37 +1,74 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISHandcraftAction.OnStart:
+        - type: "fun(target: unknown?, action: ISHandcraftAction)"
     classes:
       ISHandcraftAction:
         extends: ISBaseTimedAction
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: craftRecipe
+                type: CraftRecipe
               - name: containers
+                type: ArrayList<ItemContainer>
               - name: isoObject
+                type: IsoObject
               - name: craftBench
+                type: CraftBench
               - name: manualInputs
+                type: table<integer, ArrayList<InventoryItem>> | false
+                nullable: true
               - name: items
+                type: ArrayList<InventoryItem>
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISHandcraftAction"'
         fields:
-          logic: {}
-          items: {}
-          sound: {}
-          onStartFunc: {}
-          onStartTarget: {}
-          onCompleteFunc: {}
-          onCompleteTarget: {}
-          onCancelFunc: {}
-          onCancelTarget: {}
-          isoObject: {}
-          craftBench: {}
-          containers: {}
-          manualInputs: {}
-          craftRecipe: {}
-          actionScript: {}
+          logic:
+            type: HandcraftLogic
+            nullable: true
+          items:
+            type: ArrayList<InventoryItem>
+            nullable: true
+          sound:
+            type: integer
+            nullable: true
+          onStartFunc:
+            type: umbrella.ISHandcraftAction.OnStart
+            nullable: true
+          onStartTarget:
+            type: unknown
+            nullable: true
+          onCompleteFunc:
+            type: function
+            nullable: true
+          onCompleteTarget:
+            type: unknown
+            nullable: true
+          onCancelFunc:
+            type: function
+            nullable: true
+          onCancelTarget:
+            type: unknown
+            nullable: true
+          isoObject:
+            type: IsoObject
+          craftBench:
+            type: CraftBench
+          containers:
+            type: ArrayList<ItemContainer>
+          manualInputs:
+            type: table<integer, ArrayList<InventoryItem>> | false
+            nullable: true
+          craftRecipe:
+            type: CraftRecipe
+          actionScript:
+            type: TimedActionScript
         methods:
           - name: isValid
             return:
@@ -55,26 +92,37 @@ languages:
           - name: setOnStart
             parameters:
               - name: _func
+                type: umbrella.ISHandcraftAction.OnStart
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
           - name: setOnComplete
             parameters:
               - name: _func
+                type: function
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
           - name: setOnCancel
             parameters:
               - name: _func
+                type: function
+                nullable: true
               - name: _target
                 type: unknown
+                nullable: true
         staticMethods:
           - name: FromLogicMultiple
             parameters:
               - name: handcraftLogic
+                type: HandcraftLogic
             return:
               - type: ISHandcraftAction
           - name: FromLogic
             parameters:
               - name: handcraftLogic
+                type: HandcraftLogic
             return:
               - type: ISHandcraftAction

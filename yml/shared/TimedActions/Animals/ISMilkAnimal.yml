@@ -7,23 +7,34 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: bucket
+                type: InventoryItem
+                nullable: true
               - name: right
                 type: boolean
               - name: all
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISMilkAnimal"'
         fields:
-          bucket: {}
+          bucket:
+            type: InventoryItem
+            nullable: true
           timer:
             type: number
           lastTimer:
             type: number
-          sound: {}
-          animal: {}
-          all: {}
+          sound:
+            type: integer
+            nullable: true
+          animal:
+            type: IsoAnimal
+          all:
+            type: boolean
           timePerLiter:
             type: number
           milkAnim:
@@ -34,7 +45,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: stress
             return:
               - type: boolean
@@ -50,7 +61,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

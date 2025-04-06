@@ -7,28 +7,39 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: clothing
+                type: Clothing
               - name: part
+                type: BloodBodyPartType
               - name: fabric
+                type: InventoryItem
               - name: thread
+                type: InventoryItem
               - name: needle
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISRepairClothing"'
         fields:
-          clothing: {}
-          fabric: {}
-          needle: {}
-          thread: {}
+          clothing:
+            type: Clothing
+          fabric:
+            type: InventoryItem
+          needle:
+            type: InventoryItem
+          thread:
+            type: InventoryItem
           started:
             type: boolean
-          sound: {}
-          part: {}
+          sound:
+            type: integer
+          part:
+            type: BloodBodyPartType
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

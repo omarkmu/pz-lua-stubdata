@@ -7,7 +7,9 @@ languages:
           - name: butcherAnimalFromGround
             parameters:
               - name: carcass
+                type: IsoDeadBody
               - name: player
+                type: IsoPlayer
               - name: keepCorpse
                 type: boolean
                 nullable: true
@@ -19,24 +21,30 @@ languages:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: getHead
             parameters:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: getSkull
             parameters:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: addAnimalPart
             parameters:
               - name: part
+                type: umbrella.AnimalPartsTable
               - name: player
+                type: IsoPlayer
               - name: carcass
+                type: IsoDeadBody
               - name: fromGround
                 type: boolean
             return:
@@ -44,69 +52,92 @@ languages:
           - name: getCarcassName
             parameters:
               - name: carcass
+                type: IsoDeadBody
             return:
               - type: string
           - name: giveMeatModified
             parameters:
               - name: meatDef
+                type: umbrella.AnimalMeatDefinition
               - name: nb
+                type: integer
               - name: player
+                type: IsoPlayer
               - name: meatRatio
+                type: number
               - name: carcass
+                type: IsoDeadBody
               - name: fromGround
+                type: boolean
               - name: rotten
+                type: boolean
               - name: deathAge
+                type: number
             return:
               - type: string
           - name: getPartChance
             parameters:
               - name: baseChance
+                type: integer
               - name: size
+                type: number
               - name: meatRatio
+                type: number
               - name: player
+                type: IsoPlayer
             return:
               - type: number
           - name: modifyMeat
             parameters:
               - name: item
+                type: InventoryItem
               - name: size
+                type: number
               - name: meatRatio
+                type: number
               - name: hungerBoost
+                type: number
               - name: rotten
+                type: boolean
               - name: deathAge
+                type: number
             return:
               - type: string
           - name: getAnimalBones
             parameters:
               - name: carcass
+                type: IsoDeadBody
               - name: player
+                type: IsoPlayer
           - name: getAllBonesDef
             parameters:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: umbrella.AnimalPartsTable[]
           - name: getAllPartsDef
             parameters:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: umbrella.AnimalPartsTable[]
           - name: getAnimalDef
             parameters:
               - name: name
                 type: string
             return:
-              - type: unknown
+              - type: umbrella.AnimalPartsDefinition
                 nullable: true
     functions:
       - name: setAnimalBodyData
         parameters:
           - name: died
+            type: IsoAnimal
           - name: modData
+            type: table
       - name: roundButcher
         parameters:
           - name: x
             type: number
         return:
-          - type: unknown
+          - type: integer

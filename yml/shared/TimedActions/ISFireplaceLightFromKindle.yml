@@ -9,26 +9,33 @@ languages:
               - name: character
                 nullable: true
               - name: plank
+                type: InventoryItem
               - name: item
+                type: InventoryItem
               - name: fireplace
+                type: IsoFireplace
         staticFields:
           Type:
             defaultValue: '"ISFireplaceLightFromKindle"'
         fields:
           item:
+            type: InventoryItem
+          plank:
+            type: InventoryItem
+          sound:
+            type: integer
             nullable: true
-          plank: {}
-          sound: {}
-          fireplace: {}
-          isOutdoorsMan: {}
+          fireplace:
+            type: IsoFireplace
+          isOutdoorsMan:
+            type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: updateKindling
           - name: start
@@ -40,7 +47,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

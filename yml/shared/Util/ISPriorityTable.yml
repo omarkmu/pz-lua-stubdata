@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISPriorityTable.IndexIterator:
+        - type: "fun(): integer?, unknown?, unknown?"
     tables:
       ISPriorityTable:
         staticMethods:
@@ -10,42 +13,54 @@ languages:
     classes:
       ISPriorityTable:
         local: true
+        overloads:
+          - return:
+              - type: umbrella.ISPriorityTable.IndexIterator
         staticMethods:
           - name: setDefaultZvalue
             parameters:
               - name: _z
+                type: integer
           - name: add
             parameters:
               - name: _k
+                type: unknown
               - name: _v
+                type: unknown
               - name: _z
+                type: integer
+                nullable: true
           - name: get
             parameters:
               - name: _k
+                type: unknown
             return:
               - type: unknown
                 nullable: true
           - name: getIndex
             parameters:
               - name: _index
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: remove
             parameters:
               - name: _k
+                type: unknown
           - name: removeIndex
             parameters:
               - name: _index
+                type: integer
           - name: size
             return:
-              - type: number
+              - type: integer
           - name: toString
             return:
               - type: string
           - name: indexIterator
             return:
-              - type: function
+              - type: umbrella.ISPriorityTable.IndexIterator
           - name: keyIterator
             return:
-              - type: function
+              - type: "fun(): unknown?, unknown?"

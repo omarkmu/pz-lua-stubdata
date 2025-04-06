@@ -7,10 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: campfire
+                type: SCampfireGlobalObject
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: fuelAmt
                 type: number
         staticFields:
@@ -18,19 +19,21 @@ languages:
             defaultValue: '"ISAddFuelAction"'
         fields:
           item:
+            type: InventoryItem
+          sound:
+            type: integer
             nullable: true
-          sound: {}
-          campfire: {}
+          campfire:
+            type: SCampfireGlobalObject
           fuelAmt:
             type: number
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

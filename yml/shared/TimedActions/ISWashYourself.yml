@@ -7,20 +7,28 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: sink
+                type: IsoObject
               - name: soaps
+                type: InventoryItem[]
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISWashYourself"'
         fields:
-          sound: {}
-          sink: {}
-          soaps: {}
+          sound:
+            type: integer
+            nullable: true
+          sink:
+            type: IsoObject
+          soaps:
+            type: InventoryItem[]
+            nullable: true
           useSoap:
             type: boolean
           maxTime:
             type: number
-            nullable: true
           forceProgressBar:
             type: boolean
         methods:
@@ -34,13 +42,16 @@ languages:
           - name: washPart
             parameters:
               - name: visual
+                type: HumanVisual
               - name: part
+                type: BloodBodyPartType
             return:
               - type: boolean
           - name: removeAllMakeup
           - name: removeMakeup
             parameters:
               - name: item
+                type: InventoryItem
           - name: perform
           - name: complete
             return:
@@ -48,15 +59,16 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true
         staticMethods:
           - name: GetRequiredSoap
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: number
           - name: GetRequiredWater
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: number

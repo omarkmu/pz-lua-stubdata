@@ -7,21 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: chum
+                type: Food
               - name: square
                 type: IsoGridSquare
         staticFields:
           Type:
             defaultValue: '"AddChumToWaterAction"'
         fields:
-          chum: {}
+          chum:
+            type: Food
           square:
             type: IsoGridSquare
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

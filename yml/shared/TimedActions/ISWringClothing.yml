@@ -7,14 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISWringClothing"'
         fields:
-          sound: {}
-          item: {}
-          maxTime: {}
+          sound:
+            type: integer
+            nullable: true
+          item:
+            type: InventoryItem
+          maxTime:
+            type: number
           forceProgressBar:
             type: boolean
         methods:

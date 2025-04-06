@@ -7,19 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: thumpable
                 type: IsoThumpable
               - name: paintPot
+                type: InventoryItem
               - name: painting
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISPaintAction"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           thumpable:
             type: IsoThumpable
-          painting: {}
-          paintPot: {}
+          painting:
+            type: string
+          paintPot:
+            type: InventoryItem
           isThump:
             type: boolean
         methods:
@@ -28,7 +35,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

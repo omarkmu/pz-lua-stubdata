@@ -7,18 +7,27 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: slot
+                type: string
               - name: slotIndex
+                type: integer
               - name: slotDef
+                type: umbrella.ISHotbar.AttachDefinition
         staticFields:
           Type:
             defaultValue: '"ISAttachItemHotbar"'
         fields:
-          item: {}
-          slot: {}
-          slotIndex: {}
-          slotDef: {}
+          item:
+            type: InventoryItem
+          slot:
+            type: string
+          slotIndex:
+            type: integer
+          slotDef:
+            type: umbrella.ISHotbar.AttachDefinition
           fromHotbar:
             type: boolean
           hotbar:
@@ -32,8 +41,7 @@ languages:
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: serverStart
@@ -45,4 +53,6 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string

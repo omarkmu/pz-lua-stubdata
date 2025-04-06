@@ -398,6 +398,32 @@ languages:
             type: string
           isBonusIcon:
             type: boolean
+      umbrella.Foraging.Modifiers:
+        fields:
+          levelBonus:
+            type: number
+          traitBonus:
+            type: number
+          professionBonus:
+            type: number
+          panic:
+            type: number
+          body:
+            type: number
+          exhaustion:
+            type: number
+          clothing:
+            type: number
+          difficulty:
+            type: number
+          size:
+            type: number
+          weather:
+            type: number
+          categoryBonus:
+            type: number
+          hungerBonus:
+            type: number
       umbrella.Foraging.IconData:
         extends: umbrella.Foraging.BaseIconData
         fields:

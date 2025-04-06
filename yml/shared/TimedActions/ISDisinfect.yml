@@ -7,26 +7,38 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: alcohol
+                type: InventoryItem
               - name: bodyPart
+                type: BodyPart
         staticFields:
           Type:
             defaultValue: '"ISDisinfect"'
         fields:
-          alcohol: {}
-          sound: {}
-          doctor: {}
-          otherPlayer: {}
-          doctorLevel: {}
-          bodyPart: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          alcohol:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
+          doctor:
+            type: IsoPlayer
+          otherPlayer:
+            type: IsoPlayer
+          doctorLevel:
+            type: integer
+          bodyPart:
+            type: BodyPart
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
               - type: boolean

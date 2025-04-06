@@ -13,8 +13,11 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: destContainer
+                type: ItemContainer
             return:
               - type: boolean
           - name: canDropOnFloor
@@ -22,39 +25,52 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: character
+                type: IsoPlayer
             return:
               - type: boolean
           - name: getNotFullFloorSquare
             parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: destContainer
+                type: ItemContainer
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: removeItemOnCharacter
             parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: transferItem
             parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: srcContainer
+                type: ItemContainer
               - name: destContainer
+                type: ItemContainer
               - name: dropSquare
+                type: IsoGridSquare
                 nullable: true
             return:
-              - type: unknown
+              - type: InventoryItem
         staticMethods:
           - name: GetDropItemOffset
             parameters:
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: item
+                type: InventoryItem
             return:
               - type: number
               - type: number

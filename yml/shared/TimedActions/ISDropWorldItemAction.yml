@@ -7,34 +7,46 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: sq
                 type: IsoGridSquare
               - name: xoffset
+                type: number
               - name: yoffset
+                type: number
               - name: zoffset
+                type: number
               - name: rotation
+                type: number
               - name: isMultiple
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISDropWorldItemAction"'
         fields:
-          item: {}
-          sound: {}
+          item:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
           sq:
             type: IsoGridSquare
-          xoffset: {}
-          yoffset: {}
-          zoffset: {}
-          rotation: {}
+          xoffset:
+            type: number
+          yoffset:
+            type: number
+          zoffset:
+            type: number
+          rotation:
+            type: number
           isMultiple:
             type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

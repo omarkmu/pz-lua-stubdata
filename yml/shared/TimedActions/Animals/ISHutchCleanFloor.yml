@@ -7,24 +7,41 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: hutch
+                type: IsoHutch
               - name: water
+                type: InventoryItem
               - name: mop
+                type: InventoryItem
+                nullable: true
               - name: bleach
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISHutchCleanFloor"'
         fields:
-          water: {}
-          bleach: {}
+          water:
+            type: InventoryItem
+            nullable: true
+          bleach:
+            type: InventoryItem
+            nullable: true
           timer:
             type: number
           lastTimer:
             type: number
-          sound: {}
-          hutch: {}
-          playerInv: {}
-          mop: {}
+          sound:
+            type: integer
+            nullable: true
+          hutch:
+            type: IsoHutch
+          playerInv:
+            type: ItemContainer
+          mop:
+            type: InventoryItem
+            nullable: true
           timePerDirt:
             type: number
         methods:
@@ -33,7 +50,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: clean
           - name: update
           - name: start
@@ -45,7 +62,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

@@ -7,20 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: weapon
+                type: HandWeapon
         staticFields:
           Type:
             defaultValue: '"ISPlaceTrap"'
         fields:
-          weapon: {}
+          weapon:
+            type: HandWeapon
           square:
             type: IsoGridSquare
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

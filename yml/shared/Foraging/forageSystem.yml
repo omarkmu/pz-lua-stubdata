@@ -1,18 +1,29 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.Foraging.TestFunction:
+        - type: "fun(character: IsoPlayer, skillDef: umbrella.Foraging.SkillDefinition,
+            bonusEffect: string)"
     classes:
       forageSystem:
         staticFields:
           isInitialised:
             defaultValue: "false"
-          itemDefs: {}
-          catDefs: {}
-          zoneDefs: {}
-          skillDefs: {}
-          lootTables: {}
+          itemDefs:
+            type: table<string, umbrella.Foraging.ItemDefinition>
+          catDefs:
+            type: table<string, umbrella.Foraging.CategoryDefinition>
+          zoneDefs:
+            type: table<string, umbrella.Foraging.ZoneDefinition>
+          skillDefs:
+            type: table<"occupation" | "trait", table<string,
+              umbrella.Foraging.SkillDefinition>>
+          lootTables:
+            type: table<string, table<integer, table<string, table<string,
+              umbrella.Foraging.LootTable>>>>
           lootTableMonth:
-            type: number
+            type: integer
             nullable: true
           currentMonth:
             defaultValue: "0"
@@ -76,32 +87,40 @@ languages:
             defaultValue: "5"
           worldSprites: {}
           itemBlacklist:
+            type: ArrayList<string>
             nullable: true
           statisticsTable:
-            type: table
+            type: table<"zones", table<string, table<integer, table<string, table<string,
+              table<string, umbrella.Foraging.StatisticsTableItem>>>>>>
             nullable: true
         staticMethods:
           - name: integrityCheck
           - name: doItemDefCheck
             parameters:
               - name: _doItemFile
+                type: boolean
+                nullable: true
           - name: clearTables
           - name: init
           - name: setOptionValues
           - name: createZoneData
             parameters:
               - name: _forageZone
+                type: Zone
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
-              - type: table
+              - type: umbrella.Foraging.ZoneData
           - name: checkMetaZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
             return:
               - type: boolean
           - name: zoneContains
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _x
                 type: number
               - name: _y
@@ -113,6 +132,7 @@ languages:
           - name: zoneIntersects
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _x
                 type: number
               - name: _y
@@ -128,36 +148,51 @@ languages:
           - name: fillZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: checkRefillZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: updateZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: takeItem
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _number
                 type: number
             return:
-              - type: unknown
+              - type: integer
           - name: getWorldAge
             return:
-              - type: unknown
+              - type: integer
           - name: statisticsDebug
             parameters:
               - name: _createDebugLog
+                type: boolean
+                nullable: true
               - name: _doItemStats
+                type: boolean
+                nullable: true
           - name: createDebugLog
             parameters:
               - name: _doItemStats
+                type: boolean
+                nullable: true
           - name: createForageIcons
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _recreate
+                type: boolean
+                nullable: true
               - name: _count
+                type: integer
+                nullable: true
             return:
-              - type: table
+              - type: umbrella.Foraging.ZoneIconData[]
           - name: updateTimeValues
           - name: checkIfRecreateIcons
             return:
@@ -167,45 +202,53 @@ languages:
           - name: debugRefreshZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: getZoneData
             parameters:
               - name: _forageZone
+                type: Zone
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
               - name: _x
                 type: number
               - name: _y
                 type: number
             return:
-              - type: table
+              - type: umbrella.Foraging.ZoneData
                 nullable: true
           - name: pickRandomItemType
             parameters:
               - name: _lootTable
+                type: umbrella.Foraging.LootTable
             return:
-              - type: unknown
+              - type: string
                 nullable: true
-              - type: unknown
+              - type: string
                 nullable: true
           - name: lootTableUpdate
           - name: generateLootTable
           - name: addItemDef
             parameters:
               - name: _itemDef
+                type: table
             return:
-              - type: unknown
+              - type: string
                 nullable: true
               - type: boolean
                 nullable: true
           - name: removeItemDef
             parameters:
               - name: _itemDef
+                type: table
           - name: modifyItemDef
             parameters:
               - name: _itemDef
+                type: table
           - name: populateScavengeDefs
           - name: populateItemDefs
             parameters:
               - name: _itemDefs
+                type: umbrella.Foraging.ItemDefinition[]
           - name: createForageZone
             parameters:
               - name: _x
@@ -213,8 +256,10 @@ languages:
               - name: _y
                 type: number
               - name: _defZone
+                type: Zone
+                nullable: true
             return:
-              - type: boolean | table
+              - type: umbrella.Foraging.ZoneData
           - name: getForageZoneAt
             parameters:
               - name: _x
@@ -222,27 +267,34 @@ languages:
               - name: _y
                 type: number
             return:
-              - type: table | boolean
+              - type: umbrella.Foraging.ZoneData
                 nullable: true
           - name: getRandomCoord
             parameters:
               - name: _x1
+                type: integer
               - name: _x2
+                type: integer
               - name: _y1
+                type: integer
               - name: _y2
+                type: integer
             return:
-              - type: number
-              - type: number
+              - type: integer
+              - type: integer
           - name: getZoneRandomCoord
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
             return:
-              - type: number
-              - type: number
+              - type: integer
+              - type: integer
           - name: getZoneRandomCoordNearPoint
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _minDist
+                type: number
               - name: _x
                 type: number
               - name: _y
@@ -257,72 +309,98 @@ languages:
               - name: _y
                 type: number
             return:
-              - type: boolean
-              - type: boolean
+              - type: umbrella.Foraging.ZoneDefinition | false
+              - type: Zone | false
           - name: getRefillBonus
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
             return:
               - type: number
           - name: importDef
             parameters:
               - name: _def
+                type: table
               - name: _defaultDef
                 type: table
             return:
-              - type: unknown
+              - type: table
           - name: getZoneDefByType
             parameters:
               - name: _zoneName
                 type: string
             return:
-              - type: unknown
+              - type: umbrella.Foraging.ZoneDefinition
           - name: getZoneDef
             parameters:
               - name: _definedZone
+                type: Zone
             return:
-              - type: unknown
+              - type: umbrella.Foraging.ZoneDefinition
           - name: addZoneDef
             parameters:
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
               - name: _overwrite
+                type: boolean
+                nullable: true
           - name: populateZoneDefs
             parameters:
               - name: _zoneDefs
+                type: umbrella.Foraging.ZoneDefinition[]
+                nullable: true
           - name: populateMixedZoneCategories
           - name: addCatDef
             parameters:
               - name: _catDef
+                type: table
               - name: _overwrite
+                type: boolean
+                nullable: true
           - name: populateCatDefs
             parameters:
               - name: _catDefs
+                type: umbrella.Foraging.CategoryDefinition[]
+                nullable: true
           - name: addSkillDef
             parameters:
               - name: _skillDef
+                type: table
               - name: _overwrite
+                type: boolean
+                nullable: true
           - name: populateSkillDefs
             parameters:
               - name: _skillDefs
+                type: table
+                nullable: true
           - name: getItemDefSize
             parameters:
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: number
           - name: addOrDropItems
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _items
+                type: ArrayList<InventoryItem>
               - name: _discardItems
+                type: boolean
+                nullable: true
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: isValidFloor
             parameters:
               - name: _square
                 type: IsoGridSquare
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _catDef
+                type: umbrella.Foraging.CategoryDefinition
             return:
               - type: boolean
           - name: isValidSquare
@@ -330,79 +408,97 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _catDef
+                type: umbrella.Foraging.CategoryDefinition
             return:
               - type: boolean
           - name: getCategoryBonus
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _catDef
+                type: umbrella.Foraging.CategoryDefinition
             return:
               - type: number
           - name: getLevelVisionBonus
             parameters:
               - name: _perkLevel
+                type: integer
             return:
               - type: number
           - name: getAimVisionBonus
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getSneakVisionBonus
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getMovementVisionPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getHungerBonus
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: number
           - name: getItemSizePenalty
             parameters:
               - name: _itemSize
+                type: number
             return:
               - type: number
           - name: getDifficultyPenalty
             parameters:
               - name: _perkLevel
+                type: integer
             return:
               - type: number
           - name: getBodyPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: number
           - name: getClothingPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: number
           - name: getPanicPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: number
           - name: getExhaustionPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: number
           - name: getWeatherEffectReduction
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getWeatherPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
             return:
@@ -410,39 +506,51 @@ languages:
           - name: getDarknessEffectReduction
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getLightLevelPenalty
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _doReduction
+                type: boolean
             return:
               - type: number
           - name: getProfessionVisionBonus
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getTraitVisionBonus
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: isValidSkillDefEffect
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _skillDef
+                type: umbrella.Foraging.SkillDefinition
               - name: _bonusEffect
+                type: string
             return:
               - type: boolean
           - name: getMonthBonus
             parameters:
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _month
+                type: integer
               - name: _monthBonus
+                type: integer
               - name: _monthMalus
+                type: integer
             return:
               - type: number
           - name: getTimeOfDay
@@ -451,6 +559,7 @@ languages:
           - name: getTimeOfDayBonus
             parameters:
               - name: _def
+                type: umbrella.Foraging.ItemDefinition | umbrella.Foraging.CategoryDefinition
               - name: _isDay
                 type: boolean
                 nullable: true
@@ -462,6 +571,7 @@ languages:
           - name: getWeatherBonus
             parameters:
               - name: _def
+                type: umbrella.Foraging.ItemDefinition | umbrella.Foraging.CategoryDefinition
               - name: _isRaining
                 type: boolean
                 nullable: true
@@ -469,187 +579,449 @@ languages:
                 type: boolean
                 nullable: true
               - name: _hasRained
+                type: boolean
+                nullable: true
             return:
               - type: number
           - name: hasRequiredItems
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: boolean
           - name: hasNeededTraits
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: boolean
           - name: hasNeededRecipes
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: boolean
           - name: getPerkLevel
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
             return:
               - type: number
           - name: isItemTypeExist
             parameters:
               - name: _itemType
+                type: string
             return:
               - type: boolean
           - name: hasNeededPerks
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
               - type: boolean
           - name: isItemExist
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
               - type: boolean
           - name: isItemScriptValid
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
               - type: boolean
           - name: isItemInZone
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
               - type: boolean
           - name: isValidMonth
             parameters:
               - name: _
+                nullable: true
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
               - name: _month
+                type: integer
             return:
               - type: boolean
           - name: setScriptItemFocusCategories
             parameters:
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _scriptItem
+                type: Item
           - name: isForageable
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _zoneDef
+                type: umbrella.Foraging.ZoneDefinition
             return:
               - type: boolean
           - name: addForageDef
             parameters:
               - name: _itemType
+                type: string
               - name: _forageDef
                 type: table
           - name: itemFound
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemType
+                type: string
               - name: _amount
+                type: number
           - name: giveItemXP
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _amount
+                type: number
           - name: doEndurancePenalty
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _amount
+                type: number
             return:
               - type: number
           - name: doFatiguePenalty
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _amount
+                type: number
             return:
               - type: number
           - name: doGlassesCheck
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _skillDef
+                type: umbrella.Foraging.SkillDefinition
               - name: _bonusEffect
+                type: string
             return:
               - type: boolean
           - name: doPoisonItemSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doRandomAgeSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doWorldAgeSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doWildFoodSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doWildCropSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doJunkWeaponSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doGenericItemSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doClothingItemSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
           - name: doDeadTrapAnimalSpawn
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _inventory
+                type: ItemContainer
               - name: _itemDef
+                type: umbrella.Foraging.ItemDefinition
               - name: _items
+                type: ArrayList<InventoryItem>
             return:
-              - type: unknown
+              - type: ArrayList<InventoryItem>
+      umbrella.Foraging.ItemDefinition:
+        fields:
+          type:
+            type: string
+          minCount:
+            type: integer
+          maxCount:
+            type: integer
+          skill:
+            type: number
+          perks:
+            type: string[]
+          xp:
+            type: number
+          recipes:
+            type: string[]
+          traits:
+            type: string[]
+          itemTags:
+            type: string[]
+          categories:
+            type: string[]
+          rainChance:
+            type: number
+          hasRainedChance:
+            type: number
+          snowChance:
+            type: number
+          dayChance:
+            type: number
+          nightChance:
+            type: number
+          zones:
+            type: table<string, integer>
+          months:
+            type: integer[]
+          bonusMonths:
+            type: integer[]
+          malusMonths:
+            type: integer[]
+          spawnFuncs:
+            type: umbrella.Foraging.SpawnFunction[]
+          forceOutside:
+            type: boolean
+          isOnWater:
+            type: boolean
+          forceOnWater:
+            type: boolean
+          isMover:
+            type: boolean
+          canBeAboveFloor:
+            type: boolean
+          doIsoMarkerObject:
+            type: boolean
+          doIsoMarkerSprite:
+            type: boolean
+          canBeOnTreeSquare:
+            type: boolean
+          poisonChance:
+            type: number
+          poisonPowerMin:
+            type: number
+          poisonPowerMax:
+            type: number
+          poisonDetectionLevel:
+            type: number
+          itemSizeModifier:
+            type: number
+          isItemOverrideSize:
+            type: boolean
+          altWorldTexture:
+            type: string | string[] | Texture
+            nullable: true
+      umbrella.Foraging.LootTable:
+        fields:
+          categories:
+            type: table<string, umbrella.Foraging.LootTableCategory>
+          categoriesIndexed:
+            type: umbrella.Foraging.LootTableIndexedCategoryEntry[]
+          totalChance:
+            type: number
+      umbrella.Foraging.LootTableCategory:
+        fields:
+          category:
+            type: string
+          chance:
+            type: number
+          totalChance:
+            type: number
+          items:
+            type: umbrella.Foraging.LootTableItem[]
+      umbrella.Foraging.LootTableIndexedCategoryEntry:
+        fields:
+          catName:
+            type: string
+          chance:
+            type: number
+          totalChance:
+            type: number
+          items:
+            type: umbrella.Foraging.LootTableItem[]
+      umbrella.Foraging.LootTableItem:
+        fields:
+          itemType:
+            type: string
+          chance:
+            type: number
+      umbrella.Foraging.SkillDefinition:
+        fields:
+          name:
+            type: string
+          type:
+            type: '"occupation" | "trait"'
+          visionBonus:
+            type: number
+          weatherEffect:
+            type: number
+          darknessEffect:
+            type: number
+          specialisations:
+            type: table<string, integer>
+          testFuncs:
+            type: umbrella.Foraging.TestFunction[]
+            nullable: true
+      umbrella.Foraging.StatisticsTableItem:
+        fields:
+          items:
+            type: table<umbrella.Foraging.LootTableItem, integer>
+          chance:
+            type: number
+      umbrella.Foraging.ZoneData:
+        fields:
+          id:
+            type: string
+          name:
+            type: string
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
+          size:
+            type: number
+          bounds:
+            type: umbrella.Foraging.ZoneDataBounds
+          itemsTotal:
+            type: number
+          itemsLeft:
+            type: number
+          forageIcons:
+            type: table<string, umbrella.Foraging.ZoneIconData>
+          metaZone:
+            type: Zone
+            nullable: true
+          lastAction:
+            type: integer
+            nullable: true
+      umbrella.Foraging.ZoneDataBounds:
+        fields:
+          x1:
+            type: number
+          y1:
+            type: number
+          x2:
+            type: number
+          y2:
+            type: number
+      umbrella.Foraging.ZoneDefinition:
+        fields:
+          name:
+            type: string
+          densityMin:
+            type: number
+          densityMax:
+            type: number
+          refillPercent:
+            type: number
+          abundanceSetting:
+            type: string

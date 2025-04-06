@@ -7,13 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: alarm
+                type: AlarmClock | AlarmClock | IsoWorldInventoryObject
         staticFields:
           Type:
             defaultValue: '"ISStopAlarmClockAction"'
         fields:
-          alarm: {}
-          stopOnWalk: {}
+          alarm:
+            type: AlarmClock | AlarmClock | IsoWorldInventoryObject
+          stopOnWalk:
+            type: boolean
         methods:
           - name: isValid
             return:

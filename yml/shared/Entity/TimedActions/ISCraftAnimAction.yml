@@ -7,10 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: entity
+                type: IsoObject
               - name: component
+                type: Component
               - name: craftProcessor
+                type: CraftLogic
               - name: recipe
+                type: CraftRecipe
         staticFields:
           Type:
             defaultValue: '"ISCraftAnimAction"'

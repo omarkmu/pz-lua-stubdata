@@ -24,6 +24,7 @@ languages:
           nameSkill:
             nullable: true
           perk:
+            type: PerkFactory.Perk
             nullable: true
           levelSkill:
             type: number
@@ -35,21 +36,21 @@ languages:
             type: boolean
             nullable: true
           toolString:
-            type: table
+            type: string[]
             nullable: true
           tool2:
             nullable: true
           hasTool2:
-            type: boolean
+            type: InventoryItem | false
             nullable: true
           tool2String:
-            type: table
+            type: string[]
             nullable: true
           hasRepairParts:
             type: boolean
             nullable: true
           partsString:
-            type: table
+            type: string[]
             nullable: true
           scrapChance:
             type: number
@@ -67,41 +68,57 @@ languages:
             type: boolean
             nullable: true
           tooHot:
+            type: boolean
             nullable: true
           itemsOnSurface:
             type: boolean
             nullable: true
           hasWater:
+            type: boolean
             nullable: true
           notEmpty:
+            type: boolean
             nullable: true
           doorBarricaded:
+            type: boolean
             nullable: true
           doorInFrame:
+            type: boolean
             nullable: true
           floorAtTopOfStairs:
             type: boolean
             nullable: true
           windowOpen:
+            type: boolean
             nullable: true
           windowBarricaded:
+            type: boolean
             nullable: true
           windowInFrame:
+            type: boolean
             nullable: true
           needStandingInside:
+            type: boolean
             nullable: true
           mustPlaceRoomRoof:
+            type: boolean
             nullable: true
           isOperational:
+            type: boolean
             nullable: true
           removePropane:
+            type: boolean
             nullable: true
-      SpriteGridCache: {}
+      SpriteGridCache:
+        fields:
+          "[integer]":
+            type: umbrella.SpriteGridCache.Item
       ISMoveableSpriteProps:
         staticFields:
           debug:
             defaultValue: "false"
-          itemInstances: {}
+          itemInstances:
+            type: table<string, InventoryItem>
           multiSpriteFloorRadius:
             defaultValue: "3"
           ghc:
@@ -111,57 +128,76 @@ languages:
         fields:
           sprite:
             type: string
-          spriteProps: {}
-          spriteName: {}
-          blocksPlacement: {}
-          isHigh: {}
-          isLow: {}
-          isTable: {}
-          isTableTop: {}
-          isStackable: {}
-          isWaterCollector: {}
-          material: {}
+          spriteProps:
+            type: PropertyContainer
+          spriteName:
+            type: string
+          blocksPlacement:
+            type: boolean
+          isHigh:
+            type: boolean
+          isLow:
+            type: boolean
+          isTable:
+            type: boolean
+          isTableTop:
+            type: boolean
+          isStackable:
+            type: boolean
+          isWaterCollector:
+            type: boolean
+          material:
+            type: string
           material2:
             type: boolean
-            nullable: true
           material3:
             type: boolean
-            nullable: true
           canScrap:
             type: boolean
           scrapUseTool:
             type: boolean
+            nullable: true
           scrapUseSkill:
             type: boolean
+            nullable: true
           scrapSize:
             type: string
+            nullable: true
           scrapToolUses:
             type: number
+            nullable: true
           surface:
             type: number
-            nullable: true
-          surfaceIsOffset: {}
+          surfaceIsOffset:
+            type: boolean
           yOffsetCursor:
             type: number
           isMoveable:
             type: boolean
           facing:
+            type: '"N" | "E" | "S" | "W"'
             nullable: true
           isoType:
             type: string
           groupName:
+            type: string
             nullable: true
           name:
             type: string
           customItem:
+            type: string
             nullable: true
           type:
             type: string
+            nullable: true
           pickUpTool:
+            type: string
             nullable: true
           placeTool:
+            type: string
             nullable: true
           canBreak:
+            type: boolean
             nullable: true
           pickUpLevel:
             type: number
@@ -171,8 +207,10 @@ languages:
             nullable: true
           weight:
             type: number
+            nullable: true
           isClosedState:
             type: boolean
+            nullable: true
           Noffset:
             type: number
             nullable: true
@@ -189,22 +227,37 @@ languages:
             type: number
             nullable: true
           linkedLoc:
+            type: string
             nullable: true
-          wallOverlay: {}
-          ignoreSurfaceSnap: {}
-          isGridExtensionTile: {}
-          allowDoorFrame: {}
+          wallOverlay:
+            type: boolean
+            nullable: true
+          ignoreSurfaceSnap:
+            type: boolean
+            nullable: true
+          isGridExtensionTile:
+            type: boolean
+            nullable: true
+          allowDoorFrame:
+            type: boolean
+            nullable: true
           isMultiSprite:
             type: boolean
+            nullable: true
           isForceSingleItem:
             type: boolean
-          sheetName: {}
+            nullable: true
+          sheetName:
+            type: string
+            nullable: true
           spriteID:
             type: number
             nullable: true
           container:
+            type: string
             nullable: true
           keyId:
+            type: integer
             nullable: true
         methods:
           - name: getYOffsetCursor
@@ -215,42 +268,48 @@ languages:
               - name: _spriteNameOverride
                 type: string
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getFaceDirectionFromSpriteName
             parameters:
               - name: _face
+                type: string
             return:
-              - type: unknown
+              - type: '"N" | "E" | "S" | "W"'
+                nullable: true
           - name: hasFaces
             return:
               - type: boolean
           - name: getFaces
             return:
-              - type: table
+              - type: table<"N" | "E" | "S" | "W", string>
           - name: getIndexedFaces
             return:
-              - type: table
+              - type: string[]
           - name: getFaceIndex
             return:
-              - type: number
+              - type: integer
           - name: getObjectHealth
             return:
               - type: number
           - name: getBreakChance
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: number
           - name: doBreakTest
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: boolean
           - name: playBreakSound
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _object
+                type: IsoObject
           - name: addBreakDebris
             parameters:
               - name: _square
@@ -260,82 +319,104 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _item
+                type: string
               - name: _max
+                type: integer
               - name: _chance
+                type: number
           - name: getActionTime
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _mode
+                type: string
             return:
               - type: number
           - name: hasRequiredSkill
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _mode
                 type: string
             return:
               - type: boolean
-              - type: unknown
+              - type: string
                 nullable: true
-              - type: unknown
+              - type: PerkFactory.Perk
                 nullable: true
           - name: hasTool
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _mode
                 type: string
             return:
-              - type: boolean
+              - type: boolean | InventoryItem
                 nullable: true
           - name: getInfoPanelDescription
             parameters:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _player
+                type: IsoPlayer
               - name: _mode
+                type: string
             return:
-              - type: table
+              - type: umbrella.ISMoveableSpriteProps.InfoTableItem
                 nullable: true
           - name: getToolString
             parameters:
               - name: _itemTypes
-                nullable: true
+                type: string[]
               - name: _itemNames
+                type: table<string, string>
             return:
-              - type: table
+              - type: string[]
           - name: getPartsString
             parameters:
               - name: _inventory
+                type: ItemContainer
               - name: _parts
-                type: table
+                type: umbrella.ISMoveableDefinitions.RepairPart[]
             return:
-              - type: table
+              - type: string[]
           - name: getAllRepairParts
             return:
               - type: table
           - name: getRepairPartsForMaterial
             parameters:
               - name: _material
+                type: string
               - name: _partTable
+                type: umbrella.ISMoveableDefinitions.RepairPart[]
               - name: _damageFactor
+                type: number
               - name: _objectCount
+                nullable: true
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.RepairPart[]
           - name: getInfoPanelFlagsGeneral
             parameters:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _player
+                type: IsoPlayer
               - name: _mode
+                type: string
           - name: getInfoPanelFlagsPerTile
             parameters:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _player
+                type: IsoPlayer
               - name: _mode
+                type: string
           - name: findOnSquare
             parameters:
               - name: _square
@@ -343,17 +424,18 @@ languages:
               - name: _spriteName
                 type: string
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
-              - type: unknown
+              - type: IsoSpriteInstance
                 nullable: true
           - name: findInInventory
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _spriteName
                 type: string
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getObjectMoveProps
             parameters:
@@ -371,6 +453,7 @@ languages:
           - name: objectNoContainerOrEmpty
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
           - name: getSpriteGridCache
@@ -380,6 +463,7 @@ languages:
               - name: _verifyOnly
                 type: boolean
               - name: _getWorldObjects
+                type: boolean
             return:
               - type: boolean
           - name: getSpriteGridInfo
@@ -389,40 +473,46 @@ languages:
               - name: _getWorldObjects
                 type: boolean
             return:
-              - type: SpriteGridCache | table
+              - type: SpriteGridCache
                 nullable: true
           - name: canPickUpMoveable
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
                 nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: canPickUpMoveableInternal
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
+                nullable: true
               - name: _isMulti
                 type: boolean
             return:
               - type: boolean
-                nullable: true
           - name: pickUpMoveableViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
                 type: string
               - name: _moveCursor
+                type: ISMoveableCursor
           - name: pickUpMoveable
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _createItem
@@ -430,28 +520,33 @@ languages:
               - name: _forceAllow
                 type: boolean
             return:
-              - type: boolean | table
+              - type: InventoryItem[] | false
                 nullable: true
           - name: pickUpMoveableInternal
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _sprInstance
+                type: IsoSpriteInstance
               - name: _spriteName
                 type: string
               - name: _createItem
+                type: boolean
               - name: _rotating
+                type: boolean
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getTopTable
             parameters:
               - name: _square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getTotalTableHeight
             parameters:
@@ -462,20 +557,22 @@ languages:
           - name: findInInventoryMultiSprite
             parameters:
               - name: _character
+                type: IsoObject
               - name: _spriteName
                 type: string
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
-              - type: string
+              - type: string | ItemContainer
                 nullable: true
           - name: canPlaceMoveable
             parameters:
               - name: _character
-                type: string
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _item
+                type: InventoryItem
                 nullable: true
             return:
               - type: boolean
@@ -483,6 +580,7 @@ languages:
           - name: isWallBetweenParts
             parameters:
               - name: _spriteGrid
+                type: IsoSpriteGrid
               - name: _x
                 type: number
               - name: _y
@@ -500,18 +598,22 @@ languages:
           - name: canPlaceMoveableInternal
             parameters:
               - name: _character
-                nullable: true
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _item
+                type: InventoryItem
                 nullable: true
               - name: _forceTypeObject
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
           - name: placeMoveableViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
@@ -521,6 +623,7 @@ languages:
           - name: placeMoveable
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
@@ -533,10 +636,11 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _item
+                type: InventoryItem
               - name: _spriteName
                 type: string
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: snapFaceToSquare
             parameters:
@@ -550,20 +654,21 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _dir
-                type: string
-                nullable: true
+                type: '"N" | "E" | "S" | "W"'
               - name: _mode
                 type: string
+                nullable: true
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getMoveableOverlayFromObject
             parameters:
               - name: _object
+                type: IsoObject
             return:
-              - type: unknown
+              - type: IsoSpriteInstance
                 nullable: true
-              - type: unknown
+              - type: IsoSprite
                 nullable: true
           - name: getSpecificMoveableObjectFromSquare
             parameters:
@@ -572,11 +677,12 @@ languages:
               - name: _objectType
                 type: string
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getFaceSpriteFromParentObject
             parameters:
               - name: _object
+                type: IsoObject
                 nullable: true
             return:
               - type: string
@@ -592,6 +698,7 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
                 nullable: true
               - name: _origProps
                 type: ISMoveableSpriteProps
@@ -602,20 +709,24 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
           - name: rotateMoveableViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
                 type: string
               - name: _moveCursor
+                type: ISMoveableCursor
                 nullable: true
           - name: rotateMoveable
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
@@ -623,6 +734,7 @@ languages:
           - name: rotateMoveableInternal
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
@@ -630,6 +742,7 @@ languages:
           - name: walkAdj
             parameters:
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: keepActions
@@ -640,9 +753,11 @@ languages:
           - name: walkToAndEquip
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _mode
+                type: string
             return:
               - type: boolean
           - name: getSoundFromTool
@@ -650,9 +765,11 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _character
+                type: IsoPlayer
               - name: _mode
+                type: string
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: getScrapToolUses
             return:
@@ -660,35 +777,45 @@ languages:
           - name: scrapWalkToAndEquip
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: boolean
                 nullable: true
           - name: getScrapItemsList
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: table
+              - type: umbrella.ISMoveableSpriteProps.ScrapItemLists
                 nullable: true
           - name: addScrapItemToList
             parameters:
               - name: _list
+                type: string[]
               - name: _item
+                type: string
               - name: _max
+                type: number
               - name: _chance
+                type: number
               - name: _skillMod
+                type: number
               - name: _doSizeMod
+                type: boolean
             return:
               - type: number
           - name: addOrDropItem
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _item
+                type: InventoryItem
           - name: addAllScrapItemsToInventory
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _list
-                type: table
-                nullable: true
+                type: umbrella.ISMoveableSpriteProps.ScrapItemLists
             return:
               - type: number
           - name: addAllScrapItemsToSquare
@@ -696,57 +823,71 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _list
-                type: table
-                nullable: true
+                type: umbrella.ISMoveableSpriteProps.ScrapItemLists
             return:
               - type: number
           - name: scrapObject
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: boolean
                 nullable: true
           - name: getAdditionalObjects
             parameters:
               - name: _object
+                type: IsoObject
+                nullable: true
             return:
-              - type: table
+              - type: IsoObject[]
           - name: repairObject
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: boolean
                 nullable: true
           - name: repairObjectInternal
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: boolean
                 nullable: true
           - name: getRepairDamageFactor
             parameters:
               - name: _object
+                type: IsoObject
+                nullable: true
             return:
               - type: number
               - type: number
           - name: repairHaloNoteCheck
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _didRepair
+                type: boolean
           - name: scrapHaloNoteCheck
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _itemsAdded
                 type: number
           - name: scrapObjectInternal
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _scrapDef
+                type: umbrella.ISMoveableDefinitions.ScrapDefinition
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _scrapResult
+                type: umbrella.ISMoveableSpriteProps.CanScrapResult
               - name: _chance
+                type: number
               - name: _perkName
                 type: string
             return:
@@ -754,153 +895,190 @@ languages:
           - name: scrapGiveXp
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _scrapDef
-                type: boolean
+                type: umbrella.ISMoveableSpriteProps.CanScrapResult
           - name: getChanceByDef
             parameters:
               - name: scrapDef
+                type: umbrella.ISMoveableDefinitions.ScrapDefinition
               - name: chr
+                type: IsoPlayer
             return:
               - type: number
           - name: canScrapObject
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: table
+              - type: umbrella.ISMoveableSpriteProps.CanScrapResult
               - type: number
-              - type: unknown
+              - type: string
+                nullable: true
           - name: canScrapObjectInternal
             parameters:
               - name: _result
+                type: table
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
           - name: isFloorAtTopOfStairs
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: getScrapSkillChance
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: number
-              - type: unknown
+              - type: string
+                nullable: true
           - name: hasScrapTool
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _doSecond
+                type: boolean
             return:
-              - type: boolean
+              - type: InventoryItem | boolean
           - name: getScrapActionTime
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: number
           - name: getScrapSound
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: scrapObjectViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
                 type: string
               - name: _moveCursor
+                type: ISMoveableCursor
           - name: startScrapAction
             parameters:
               - name: _action
+                type: ISBaseTimedAction
             return:
               - type: boolean
           - name: canRepairObject
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: table
+              - type: umbrella.ISMoveableSpriteProps.CanRepairResult
               - type: number
-              - type: unknown
+              - type: string
+                nullable: true
           - name: canRepairObjectInternal
             parameters:
               - name: _result
+                type: table
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
           - name: getRepairSkillChance
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: number
-              - type: unknown
+              - type: string
           - name: checkForRepairPart
             parameters:
               - name: _inventory
+                type: ItemContainer
               - name: _itemType
+                type: string
               - name: _amount
+                type: number
               - name: _consume
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: consumeRepairPart
             parameters:
               - name: _inventory
+                type: ItemContainer
               - name: _itemType
+                type: string
               - name: _amount
+                type: number
             return:
               - type: boolean
           - name: hasRepairParts
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: boolean
           - name: hasRepairTool
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _doSecond
             return:
-              - type: boolean
+              - type: InventoryItem | boolean
           - name: getRepairActionTime
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
               - type: number
           - name: getRepairSound
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: repairObjectViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
                 type: string
               - name: _moveCursor
+                type: ISMoveableCursor
           - name: isBreakablePlant
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: boolean
         staticMethods:
           - name: fromObject
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: ISThumpableSpriteProps | ISMoveableSpriteProps
           - name: fromObjectForRepair
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: ISMoveableSpriteProps | ISThumpableSpriteProps
           - name: addLineToInfoTable
             parameters:
               - name: _table
-                type: table
+                type: umbrella.ISMoveableSpriteProps.InfoTableItem[]
               - name: _lineA
                 type: string
               - name: _rA
@@ -922,13 +1100,17 @@ languages:
                 type: number
                 nullable: true
             return:
-              - type: table
+              - type: umbrella.ISMoveableSpriteProps.InfoTableItem[]
           - name: OnDynamicMovableRecipe
             parameters:
               - name: _sprite
+                type: string
               - name: _recipe
+                type: MovableRecipe
               - name: _item
+                type: Moveable
               - name: _player
+                type: IsoPlayer
           - name: new
             parameters:
               - name: _sprite
@@ -936,29 +1118,42 @@ languages:
             return:
               - type: ISMoveableSpriteProps
       ISThumpableSpriteProps:
+        extends: ISMoveableSpriteProps
         fields:
-          sprite: {}
-          spriteName: {}
+          sprite:
+            type: IsoSprite
+          spriteName:
+            type: string
+            nullable: true
           isFromObject:
             type: boolean
-          object: {}
+          object:
+            type: IsoObject
+            nullable: true
           name:
             type: string
             nullable: true
           material:
             type: string
+            nullable: true
           material2:
-            type: string | boolean
+            type: string
+            nullable: true
           material3:
-            type: string | boolean
+            type: string
+            nullable: true
           groupName:
+            type: string
             nullable: true
           customName:
+            type: string
             nullable: true
           canScrap:
             type: boolean
+            nullable: true
           scrapThumpable:
             type: boolean
+            nullable: true
         methods:
           - name: getYOffsetCursor
             return:
@@ -968,62 +1163,127 @@ languages:
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _player
+                type: IsoPlayer
               - name: _mode
+                type: string
             return:
-              - type: table
-                nullable: true
+              - type: umbrella.ISMoveableSpriteProps.InfoTableItem[]
           - name: addToolString
             parameters:
               - name: infoTable
+                type: umbrella.ISMoveableSpriteProps.InfoTableItem[]
               - name: tag
+                type: string
               - name: hasTool
+                type: boolean
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableSpriteProps.InfoTableItem[]
                 nullable: true
           - name: walkToAndEquip
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _mode
+                type: string
             return:
               - type: boolean
           - name: getScrapActionTime
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
               - type: number
           - name: getScrapSound
             parameters:
               - name: _character
+                type: IsoPlayer
             return:
-              - type: unknown
+              - type: integer
                 nullable: true
           - name: scrapObjectViaCursor
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _origSpriteName
                 type: string
               - name: _moveCursor
+                type: ISMoveableCursor
           - name: canScrapObject
             parameters:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: table
+              - type: "{ canScrap: boolean }"
               - type: number
               - type: string
           - name: startScrapAction
             parameters:
               - name: _action
+                type: ISBaseTimedAction
             return:
               - type: boolean
         staticMethods:
           - name: new
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: ISThumpableSpriteProps
+      umbrella.ISMoveableSpriteProps.BaseCheckResult:
+        fields:
+          containerFull:
+            type: boolean
+            nullable: true
+          craftValid:
+            type: boolean
+            nullable: true
+          haveTool:
+            type: InventoryItem | false
+            nullable: true
+          haveTool2:
+            type: InventoryItem | false
+            nullable: true
+      umbrella.ISMoveableSpriteProps.CanRepairResult:
+        extends: umbrella.ISMoveableSpriteProps.BaseCheckResult
+        fields:
+          canRepair:
+            type: boolean
+          hasParts:
+            type: boolean
+            nullable: true
+      umbrella.ISMoveableSpriteProps.CanScrapResult:
+        extends: umbrella.ISMoveableSpriteProps.BaseCheckResult
+        fields:
+          canScrap:
+            type: boolean
+      umbrella.ISMoveableSpriteProps.InfoTableItem:
+        extends: umbrella.RGB
+        fields:
+          txt:
+            type: string
+      umbrella.ISMoveableSpriteProps.ScrapItemLists:
+        fields:
+          usable:
+            type: string[]
+          unusable:
+            type: string[]
+      umbrella.SpriteGridCache.Item:
+        fields:
+          square:
+            type: IsoGridSquare
+          object:
+            type: IsoObject
+          sprInstance:
+            type: IsoSpriteInstance
+          sprite:
+            type: IsoSprite
+          x:
+            type: number
+          y:
+            type: number

@@ -7,24 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
-                type: boolean
-                nullable: true
+                type: InventoryItem
               - name: maxTime
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISUnequipAction"'
         fields:
-          sound: {}
-          item:
-            type: boolean
+          sound:
+            type: integer
             nullable: true
+          item:
+            type: InventoryItem
           ignoreHandsWounds:
             type: boolean
           clothingAction:
             type: boolean
           hotbar:
+            type: ISHotbar
             nullable: true
           fromHotbar:
             type: boolean
@@ -42,7 +44,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: perform
           - name: complete
             return:
@@ -50,4 +54,3 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true

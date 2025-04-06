@@ -7,14 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISWaitWhileGettingUp"'
         fields:
           onCompleteFunc:
             type: function
+            nullable: true
           onCompleteArgs:
             type: table
+            nullable: true
           useProgressBar:
             type: boolean
         methods:
@@ -35,7 +38,9 @@ languages:
             parameters:
               - name: func
                 type: function
+                nullable: true
               - name: p1
+                nullable: true
               - name: p2
                 nullable: true
               - name: p3
@@ -55,6 +60,7 @@ languages:
               - name: p10
                 nullable: true
               - name: ...
+                nullable: true
           - name: getDuration
             return:
               - type: number

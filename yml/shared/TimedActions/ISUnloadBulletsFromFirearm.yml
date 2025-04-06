@@ -7,17 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
         staticFields:
           Type:
             defaultValue: '"ISUnloadBulletsFromFirearm"'
         fields:
-          ammoCountStart: {}
+          ammoCountStart:
+            type: integer
+            nullable: true
           unloadFinished:
             type: boolean
           playedEjectAmmoStartSound:
             type: boolean
-          gun: {}
+          gun:
+            type: HandWeapon
           useProgressBar:
             type: boolean
         methods:
@@ -37,6 +42,8 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: stop
           - name: perform

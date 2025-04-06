@@ -7,6 +7,7 @@ languages:
           - name: stringStarts
             parameters:
               - name: String
+                type: string
               - name: Start
                 type: string
             return:
@@ -14,7 +15,9 @@ languages:
           - name: stringEnds
             parameters:
               - name: String
+                type: string
               - name: End
+                type: string
             return:
               - type: boolean
           - name: trim
@@ -22,32 +25,41 @@ languages:
               - name: s
                 type: string
             return:
-              - type: unknown
+              - type: string
           - name: split
             parameters:
               - name: pString
+                type: string
               - name: pPattern
+                type: string
             return:
-              - type: table
+              - type: string[]
           - name: indexOf
             parameters:
               - name: table1
+                type: string
               - name: value
+                type: unknown
             return:
-              - type: number
+              - type: integer
           - name: tableContains
             parameters:
               - name: table2
+                type: string
               - name: value
+                type: unknown
             return:
               - type: boolean
           - name: getNextTiles
             parameters:
               - name: cell
+                type: IsoCell
               - name: startingGrid
+                type: IsoGridSquare
               - name: range
+                type: number
             return:
-              - type: table
+              - type: IsoGridSquare[]
           - name: walk
             parameters:
               - name: playerObj
@@ -55,6 +67,8 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: keepActions
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -68,9 +82,10 @@ languages:
                 type: boolean
                 nullable: true
               - name: excludeList
+                type: IsoGridSquare[]
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: walkAdjTest
             parameters:
               - name: playerObj
@@ -79,7 +94,6 @@ languages:
                 type: IsoGridSquare
             return:
               - type: boolean
-                nullable: true
           - name: walkAdjAltTest
             parameters:
               - name: playerObj
@@ -87,10 +101,13 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: altSquare
+                type: IsoGridSquare
+                nullable: true
               - name: keepActions
+                type: boolean
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: getCorrectSquareForWall
             parameters:
               - name: playerObj
@@ -98,7 +115,7 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoGridSquare
           - name: walkAdjWall
             parameters:
               - name: playerObj
@@ -106,10 +123,12 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
               - name: keepActions
+                type: boolean
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: walkAdjWindowOrDoor
             parameters:
               - name: playerObj
@@ -117,10 +136,12 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: item
+                type: IsoObject
               - name: keepActions
+                type: boolean
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: walkAdjFence
             parameters:
               - name: playerObj
@@ -128,13 +149,16 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: object
+                type: IsoObject
               - name: keepActions
+                type: boolean
+                nullable: true
             return:
               - type: boolean
-                nullable: true
           - name: walkToContainer
             parameters:
               - name: container
+                type: ItemContainer
               - name: playerNum
                 type: integer
             return:
@@ -142,8 +166,12 @@ languages:
           - name: haveToBeTransfered
             parameters:
               - name: player
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: dontWalk
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -152,78 +180,115 @@ languages:
               - name: num
                 type: number
               - name: idp
+                type: integer
+                nullable: true
             return:
-              - type: unknown
+              - type: number
           - name: updatePerksXp
             parameters:
               - name: perks
+                type: PerkFactory.Perk
               - name: player
+                type: IsoPlayer
           - name: equipItems
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _primItemToEquip
+                type: InventoryItem | string
+                nullable: true
               - name: _scndItemToEquip
+                type: InventoryItem | string
+                nullable: true
             return:
-              - type: unknown
-              - type: unknown
+              - type: InventoryItem
+                nullable: true
+              - type: InventoryItem
+                nullable: true
           - name: okModal
             parameters:
               - name: _text
+                type: string
               - name: _centered
+                type: boolean
               - name: _width
                 type: number
+                nullable: true
               - name: _height
                 type: number
+                nullable: true
               - name: _posX
+                type: number
+                nullable: true
               - name: _posY
+                type: number
+                nullable: true
           - name: walkToObject
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _object
+                type: IsoObject
               - name: _cancelTA
+                type: boolean
+                nullable: true
             return:
               - type: boolean
           - name: weaponLowerCondition
             parameters:
               - name: _weapon
+                type: HandWeapon
               - name: _character
+                type: IsoPlayer
               - name: _replace
+                type: boolean
+                nullable: true
               - name: _chance
+                type: integer
+                nullable: true
           - name: isEquipped
             parameters:
               - name: _item
+                type: InventoryItem
               - name: _player
+                type: IsoPlayer
             return:
-              - type: number
+              - type: 0 | 1 | 2 | 3
           - name: getConditionRGB
             parameters:
               - name: condition
+                type: integer
             return:
-              - type: table
+              - type: umbrella.RGB
           - name: isSquareAdjacentToSquare
             parameters:
               - name: _square1
+                type: IsoGridSquare
               - name: _square2
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: countItemsRecursive
             parameters:
               - name: _containerList
-                type: table
+                type: ItemContainer[]
               - name: _itemsNum
-                type: number
-            return:
-              - type: number
+                type: integer
                 nullable: true
+            return:
+              - type: integer
           - name: findRootInventory
             parameters:
               - name: _inventory
+                type: ItemContainer
             return:
-              - type: unknown
+              - type: ItemContainer
           - name: roughlyEqual
             parameters:
               - name: _value
+                type: number
               - name: _value2
+                type: number
               - name: _delta
                 type: number
             return:
@@ -231,8 +296,13 @@ languages:
           - name: lerp
             parameters:
               - name: _sourceValue
+                type: number
               - name: _destinationValue
+                type: number
               - name: _stepRate
+                type: number
               - name: _finalStepRatio
+                type: number
+                nullable: true
             return:
               - type: number

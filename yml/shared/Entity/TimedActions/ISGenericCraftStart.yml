@@ -7,18 +7,27 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: entity
+                type: IsoObject
               - name: component
+                type: Component
               - name: funcCanStart
+                type: umbrella.ISEntityUI.CraftCanStart
               - name: funcStart
+                type: umbrella.ISEntityUI.CraftStart
         staticFields:
           Type:
             defaultValue: '"ISGenericCraftStart"'
         fields:
-          entity: {}
-          component: {}
-          funcCanStart: {}
-          funcStart: {}
+          entity:
+            type: IsoObject
+          component:
+            type: Component
+          funcCanStart:
+            type: umbrella.ISEntityUI.CraftCanStart
+          funcStart:
+            type: umbrella.ISEntityUI.CraftStart
         methods:
           - name: isValid
             return:

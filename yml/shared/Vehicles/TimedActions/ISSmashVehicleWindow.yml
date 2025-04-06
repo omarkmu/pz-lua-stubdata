@@ -7,21 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
         staticFields:
           Type:
             defaultValue: '"ISSmashVehicleWindow"'
         fields:
-          vehicle: {}
-          part: {}
-          window: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          window:
+            type: VehicleWindow
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

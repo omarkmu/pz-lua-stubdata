@@ -7,26 +7,32 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: body
+                type: IsoDeadBody | AnimalInventoryItem
               - name: hook
+                type: IsoButcherHook
               - name: luaHook
                 type: ISButcherHookUI
         staticFields:
           Type:
             defaultValue: '"ISPutAnimalOnHook"'
         fields:
-          body: {}
-          hook: {}
+          body:
+            type: IsoDeadBody | AnimalInventoryItem
+          hook:
+            type: IsoButcherHook
           luaHook:
             type: ISButcherHookUI
-          perkLevel: {}
+          perkLevel:
+            type: integer
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

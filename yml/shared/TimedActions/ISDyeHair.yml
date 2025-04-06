@@ -7,19 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: hairDye
+                type: InventoryItem
               - name: beard
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISDyeHair"'
         fields:
-          hairDye: {}
-          beard: {}
+          hairDye:
+            type: InventoryItem
+          beard:
+            type: boolean
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

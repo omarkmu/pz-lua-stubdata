@@ -7,18 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
               - name: magazine
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISInsertMagazine"'
         fields:
-          magazine: {}
+          magazine:
+            type: InventoryItem
           loadFinished:
             type: boolean
           useProgressBar:
             type: boolean
-          gun: {}
+          gun:
+            type: HandWeapon
         methods:
           - name: isValid
             return:
@@ -37,6 +42,8 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: stop
           - name: perform

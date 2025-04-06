@@ -9,10 +9,16 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: table<string, string>
           - name: initObjectModData
             parameters:
               - name: isoObject
+                type: IsoObject
               - name: trapDef
+                type: umbrella.TrapDefinition
               - name: north
+                type: boolean
+                nullable: true
               - name: player
+                type: IsoPlayer
+                nullable: true

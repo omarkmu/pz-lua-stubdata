@@ -8,20 +8,27 @@ languages:
           - parameters:
               - name: character
               - name: drainable
+                type: DrainableComboItem
               - name: intoItem
+                type: DrainableComboItem
               - name: otherItems
+                type: DrainableComboItem[]
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISConsolidateDrainable"'
         fields:
-          intoItem: {}
+          intoItem:
+            type: DrainableComboItem
           drainable:
-            nullable: true
+            type: DrainableComboItem
           otherItems:
+            type: DrainableComboItem[]
             nullable: true
-          fromStart: {}
-          intoStart: {}
+          fromStart:
+            type: number
+          intoStart:
+            type: number
           fromTarget:
             type: number
           intoTarget:
@@ -29,8 +36,7 @@ languages:
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -38,10 +44,12 @@ languages:
           - name: runAgain
             parameters:
               - name: drainable
+                type: DrainableComboItem
               - name: intoItem
+                type: DrainableComboItem
           - name: nextItem
             return:
-              - type: unknown
+              - type: DrainableComboItem
                 nullable: true
           - name: serverStop
           - name: complete

@@ -7,21 +7,24 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: trap
+                type: IsoTrap
               - name: time
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTakeTrap"'
         fields:
-          trap: {}
+          trap:
+            type: IsoTrap
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

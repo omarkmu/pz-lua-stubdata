@@ -7,22 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: bait
+                type: Food
               - name: trap
+                type: CTrapGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISAddBaitAction"'
         fields:
-          trap: {}
-          bait: {}
+          trap:
+            type: CTrapGlobalObject
+          bait:
+            type: Food
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

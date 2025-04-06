@@ -2,4 +2,39 @@ version: "1.1"
 languages:
   lua:
     classes:
-      RecMedia: {}
+      RecMedia:
+        fields:
+          "[string]":
+            type: table<string, umbrella.RecMediaItem>
+      umbrella.RecMediaItem:
+        fields:
+          itemDisplayName:
+            type: string
+          title:
+            type: string
+          subtitle:
+            type: string
+            nullable: true
+          category:
+            type: string
+          author:
+            type: string
+            nullable: true
+          extra:
+            type: string
+            nullable: true
+          spawning:
+            type: integer
+            nullable: true
+      umbrella.RecMediaLine:
+        fields:
+          text:
+            type: string
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+          codes:
+            type: string

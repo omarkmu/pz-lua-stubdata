@@ -7,27 +7,31 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: cleaner
+                type: InventoryItem
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISCleanBlood"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           square:
             type: IsoGridSquare
           cleaner:
+            type: InventoryItem
             nullable: true
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

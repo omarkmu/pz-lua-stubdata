@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: itemFrom
+                type: InventoryItem
               - name: itemTo
+                type: InventoryItem
               - name: itemFromEndingDelta
                 type: number
               - name: itemToEndingDelta
@@ -17,11 +20,14 @@ languages:
           Type:
             defaultValue: '"ISTransferWaterAction"'
         fields:
-          itemTo: {}
+          itemTo:
+            type: InventoryItem
           itemFromEndingDelta:
             type: number
-          itemFrom: {}
-          itemFromBeginDelta: {}
+          itemFrom:
+            type: InventoryItem
+          itemFromBeginDelta:
+            type: number
           itemToBeginDelta:
             type: number
           itemToEndingDelta:

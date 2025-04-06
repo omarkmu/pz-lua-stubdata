@@ -7,18 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: rod
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"AIRemoveLureAction"'
         fields:
-          rod: {}
-          sound: {}
+          rod:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

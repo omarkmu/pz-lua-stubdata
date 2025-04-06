@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoCombinationWasherDryer
         staticFields:
           Type:
             defaultValue: '"ISToggleComboWasherDryer"'
         fields:
-          object: {}
+          object:
+            type: IsoCombinationWasherDryer
         methods:
           - name: isValid
             return:

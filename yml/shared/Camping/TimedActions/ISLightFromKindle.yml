@@ -7,28 +7,36 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: plank
+                type: InventoryItem
               - name: item
+                type: InventoryItem
               - name: campfire
+                type: SCampfireGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISLightFromKindle"'
         fields:
           item:
+            type: InventoryItem
             nullable: true
-          plank: {}
-          sound: {}
-          campfire: {}
-          isOutdoorsMan: {}
+          plank:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
+          campfire:
+            type: SCampfireGlobalObject
+          isOutdoorsMan:
+            type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: updateKindling
           - name: start
@@ -40,7 +48,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

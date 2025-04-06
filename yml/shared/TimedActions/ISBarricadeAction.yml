@@ -7,8 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: BarricadeAble
               - name: isMetal
                 type: boolean
               - name: isMetalBar
@@ -21,7 +22,8 @@ languages:
             nullable: true
           isStarted:
             type: boolean
-          item: {}
+          item:
+            type: BarricadeAble
           maxTime:
             type: number
             nullable: true
@@ -35,7 +37,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

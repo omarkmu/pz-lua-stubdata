@@ -7,10 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: fireplace
+                type: IsoFireplace
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: fuelAmt
                 type: number
         staticFields:
@@ -18,19 +19,22 @@ languages:
             defaultValue: '"ISFireplaceAddFuel"'
         fields:
           item:
+            type: InventoryItem
             nullable: true
-          sound: {}
-          fireplace: {}
+          sound:
+            type: integer
+            nullable: true
+          fireplace:
+            type: IsoFireplace
           fuelAmt:
             type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

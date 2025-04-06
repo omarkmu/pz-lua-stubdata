@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: shear
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISShearAnimal"'
@@ -17,9 +20,13 @@ languages:
             type: number
           lastTimer:
             type: number
-          sound: {}
-          animal: {}
-          shear: {}
+          sound:
+            type: integer
+            nullable: true
+          animal:
+            type: IsoAnimal
+          shear:
+            type: InventoryItem
           timePerLiter:
             type: number
         methods:
@@ -28,7 +35,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: stress
           - name: update
           - name: start
@@ -41,7 +48,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

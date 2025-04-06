@@ -7,7 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: wallVine
@@ -19,9 +19,11 @@ languages:
         fields:
           spriteFrame:
             type: number
-          weapon: {}
-          character:
+          weapon:
+            type: InventoryItem
             nullable: true
+          character:
+            type: IsoPlayer
           square:
             type: IsoGridSquare
           wallVine:
@@ -33,7 +35,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -41,22 +43,24 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: getBushObject
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getWallVineObject
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
-              - type: number
+              - type: integer
                 nullable: true
           - name: perform
           - name: complete

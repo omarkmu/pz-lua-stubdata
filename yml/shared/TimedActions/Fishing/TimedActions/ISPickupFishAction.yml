@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: rod
+                type: InventoryItem
               - name: fish
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISPickupFishAction"'
@@ -17,8 +20,10 @@ languages:
             type: boolean
           fishInInv:
             type: boolean
-          rod: {}
-          item: {}
+          rod:
+            type: InventoryItem
+          item:
+            type: InventoryItem
           isFish:
             type: boolean
           startShowModel:
@@ -27,7 +32,6 @@ languages:
             type: number
           maxTime:
             type: number
-            nullable: true
         methods:
           - name: isValid
             return:
@@ -35,7 +39,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: PickupFishUpdate
           - name: update
           - name: serverStart
@@ -48,4 +54,3 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true

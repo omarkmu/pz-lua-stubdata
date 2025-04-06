@@ -7,18 +7,24 @@ languages:
           - name: logPerkLevelChange
             parameters:
               - name: _character
+                type: IsoPlayer
               - name: _perk
+                type: PerkFactory.Perk
               - name: _perkLevel
+                type: integer
           - name: logAllPerks
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: logCreatePlayer
             parameters:
               - name: _player
           - name: logLogin
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: logDeath
             parameters:
               - name: _character
+                type: IsoPlayer
           - name: init

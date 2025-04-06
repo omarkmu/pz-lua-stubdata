@@ -7,17 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
         staticFields:
           Type:
             defaultValue: '"ISReloadWeaponAction"'
         fields:
-          ammoCountStart: {}
-          bullets: {}
-          ammoCount: {}
+          ammoCountStart:
+            type: integer
+          bullets:
+            type: InventoryItem
+            nullable: true
+          ammoCount:
+            type: integer
+            nullable: true
           playedInsertAmmoStartSound:
             type: boolean
-          gun: {}
+          gun:
+            type: HandWeapon
           reloading:
             type: boolean
           useProgressBar:
@@ -41,18 +49,22 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: loadAmmo
           - name: ejectSpentRounds
         staticMethods:
           - name: canRack
             parameters:
               - name: weapon
+                type: HandWeapon
             return:
               - type: boolean
           - name: setReloadSpeed
             parameters:
               - name: character
+                type: IsoPlayer
               - name: rack
                 type: boolean
           - name: ReloadBestMagazine
@@ -60,36 +72,48 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: gun
+                type: HandWeapon
           - name: BeginAutomaticReload
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: gun
+                type: HandWeapon
           - name: OnPressReloadButton
             parameters:
               - name: player
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
           - name: OnPressRackButton
             parameters:
               - name: player
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
               - name: shift
           - name: canShoot
             parameters:
               - name: weapon
+                type: HandWeapon
             return:
               - type: boolean
           - name: attackHook
             parameters:
               - name: character
+                type: IsoPlayer
               - name: chargeDelta
+                type: number
               - name: weapon
+                type: HandWeapon
           - name: onShoot
             parameters:
               - name: player
               - name: weapon
+                type: HandWeapon
           - name: OnPlayerAttackFinished
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: weapon
+                type: HandWeapon

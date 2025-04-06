@@ -7,24 +7,28 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISDryMyself"'
         fields:
           tick:
             type: number
-          item: {}
+          item:
+            type: InventoryItem
+            nullable: true
           started:
             type: boolean
-          serverStartTime: {}
+          serverStartTime:
+            type: number
           timer:
             type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

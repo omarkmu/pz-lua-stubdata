@@ -7,21 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: containerObject
+                type: FluidContainer | ResourceFluid
         staticFields:
           Type:
             defaultValue: '"ISFluidEmptyAction"'
         fields:
-          sound: {}
-          containerObject: {}
+          sound:
+            type: integer
+            nullable: true
+          containerObject:
+            type: FluidContainer | ResourceFluid
           container:
             type: ISFluidContainer
-          amount: {}
+          amount:
+            type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

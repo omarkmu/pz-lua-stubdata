@@ -7,21 +7,32 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: bandage
+                type: InventoryItem
               - name: bodyPart
+                type: BodyPart
         staticFields:
           Type:
             defaultValue: '"ISCleanBurn"'
         fields:
-          sound: {}
-          otherPlayer: {}
+          sound:
+            type: integer
+            nullable: true
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
             type: number
-          bodyPart: {}
-          bandage: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          bodyPart:
+            type: BodyPart
+          bandage:
+            type: InventoryItem
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:

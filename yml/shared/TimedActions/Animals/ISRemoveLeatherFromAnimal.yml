@@ -7,9 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: body
-                nullable: true
+                type: IsoAnimal
               - name: hook
+                type: IsoButcherHook
               - name: luaHook
                 type: ISButcherHookUI
         staticFields:
@@ -17,21 +19,24 @@ languages:
             defaultValue: '"ISRemoveLeatherFromAnimal"'
         fields:
           body:
-            nullable: true
-          hook: {}
+            type: IsoAnimal
+          hook:
+            type: IsoButcherHook
           luaHook:
             type: ISButcherHookUI
           animalDef:
-            nullable: true
-          perkLevel: {}
-          xp: {}
+            type: umbrella.AnimalPartsDefinition
+          perkLevel:
+            type: integer
+          xp:
+            type: integer
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

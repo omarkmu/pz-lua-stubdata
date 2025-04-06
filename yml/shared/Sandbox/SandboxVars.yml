@@ -1,6 +1,549 @@
 version: "1.1"
 languages:
   lua:
+    classes:
+      SandboxVars:
+        tags:
+          - StubGen_Extra
+        fields:
+          "[string]":
+            type: unknown
+          Basement:
+            type: umbrella.SandboxVars.Basement
+          Map:
+            type: umbrella.SandboxVars.Map
+          MultiplierConfig:
+            type: umbrella.SandboxVars.MultiplierConfig
+          ZombieConfig:
+            type: umbrella.SandboxVars.ZombieConfig
+          ZombieLore:
+            type: umbrella.SandboxVars.ZombieLore
+          Zombies:
+            type: integer
+          Distribution:
+            type: integer
+          ZombieRespawn:
+            type: integer
+          ZombieMigrate:
+            type: boolean
+          DayLength:
+            type: integer
+          StartYear:
+            type: integer
+          StartMonth:
+            type: integer
+          StartDay:
+            type: integer
+          StartTime:
+            type: integer
+          WaterShut:
+            type: integer
+          ElecShut:
+            type: integer
+          AlarmDecay:
+            type: integer
+          WaterShutModifier:
+            type: integer
+          ElecShutModifier:
+            type: integer
+          AlarmDecayModifier:
+            type: integer
+          FoodLootNew:
+            type: number
+          LiteratureLootNew:
+            type: number
+          MedicalLootNew:
+            type: number
+          SurvivalGearsLootNew:
+            type: number
+          CannedFoodLootNew:
+            type: number
+          WeaponLootNew:
+            type: number
+          RangedWeaponLootNew:
+            type: number
+          AmmoLootNew:
+            type: number
+          MechanicsLootNew:
+            type: number
+          OtherLootNew:
+            type: number
+          ClothingLootNew:
+            type: number
+          ContainerLootNew:
+            type: number
+          KeyLootNew:
+            type: number
+          MediaLootNew:
+            type: number
+          MementoLootNew:
+            type: number
+          CookwareLootNew:
+            type: number
+          MaterialLootNew:
+            type: number
+          FarmingLootNew:
+            type: number
+          ToolLootNew:
+            type: number
+          RollsMultiplier:
+            type: number
+          LootItemRemovalList:
+            type: string
+          RemoveStoryLoot:
+            type: boolean
+          RemoveZombieLoot:
+            type: boolean
+          ZombiePopLootEffect:
+            type: integer
+          InsaneLootFactor:
+            type: number
+          ExtremeLootFactor:
+            type: number
+          RareLootFactor:
+            type: number
+          NormalLootFactor:
+            type: number
+          CommonLootFactor:
+            type: number
+          AbundantLootFactor:
+            type: number
+          Temperature:
+            type: integer
+          Rain:
+            type: integer
+          ErosionSpeed:
+            type: integer
+          ErosionDays:
+            type: integer
+          Farming:
+            type: integer
+          CompostTime:
+            type: integer
+          StatsDecrease:
+            type: integer
+          NatureAbundance:
+            type: integer
+          Alarm:
+            type: integer
+          LockedHouses:
+            type: integer
+          StarterKit:
+            type: boolean
+          Nutrition:
+            type: boolean
+          FoodRotSpeed:
+            type: integer
+          FridgeFactor:
+            type: integer
+          SeenHoursPreventLootRespawn:
+            type: integer
+          HoursForLootRespawn:
+            type: integer
+          MaxItemsForLootRespawn:
+            type: integer
+          ConstructionPreventsLootRespawn:
+            type: boolean
+          WorldItemRemovalList:
+            type: string
+          HoursForWorldItemRemoval:
+            type: number
+          ItemRemovalListBlacklistToggle:
+            type: boolean
+          TimeSinceApo:
+            type: integer
+          PlantResilience:
+            type: integer
+          PlantAbundance:
+            type: integer
+          EndRegen:
+            type: integer
+          Helicopter:
+            type: integer
+          MetaEvent:
+            type: integer
+          SleepingEvent:
+            type: integer
+          GeneratorFuelConsumption:
+            type: number
+          GeneratorSpawning:
+            type: integer
+          AnnotatedMapChance:
+            type: integer
+          CharacterFreePoints:
+            type: integer
+          ConstructionBonusPoints:
+            type: integer
+          NightDarkness:
+            type: integer
+          NightLength:
+            type: integer
+          BoneFracture:
+            type: boolean
+          InjurySeverity:
+            type: integer
+          HoursForCorpseRemoval:
+            type: number
+          DecayingCorpseHealthImpact:
+            type: integer
+          ZombieHealthImpact:
+            type: boolean
+          BloodLevel:
+            type: integer
+          ClothingDegradation:
+            type: integer
+          FireSpread:
+            type: boolean
+          DaysForRottenFoodRemoval:
+            type: integer
+          AllowExteriorGenerator:
+            type: boolean
+          MaxFogIntensity:
+            type: integer
+          MaxRainFxIntensity:
+            type: integer
+          EnableSnowOnGround:
+            type: boolean
+          AttackBlockMovements:
+            type: boolean
+          SurvivorHouseChance:
+            type: integer
+          VehicleStoryChance:
+            type: integer
+          ZoneStoryChance:
+            type: integer
+          AllClothesUnlocked:
+            type: boolean
+          EnableTaintedWaterText:
+            type: boolean
+          EnableVehicles:
+            type: boolean
+          CarSpawnRate:
+            type: integer
+          ZombieAttractionMultiplier:
+            type: number
+          VehicleEasyUse:
+            type: boolean
+          InitialGas:
+            type: integer
+          FuelStationGasInfinite:
+            type: boolean
+          FuelStationGasMin:
+            type: number
+          FuelStationGasMax:
+            type: number
+          FuelStationGasEmptyChance:
+            type: integer
+          LockedCar:
+            type: integer
+          CarGasConsumption:
+            type: number
+          CarGeneralCondition:
+            type: integer
+          CarDamageOnImpact:
+            type: integer
+          DamageToPlayerFromHitByACar:
+            type: integer
+          TrafficJam:
+            type: boolean
+          CarAlarm:
+            type: integer
+          PlayerDamageFromCrash:
+            type: boolean
+          SirenShutoffHours:
+            type: number
+          ChanceHasGas:
+            type: integer
+          RecentlySurvivorVehicles:
+            type: integer
+          MultiHitZombies:
+            type: boolean
+          RearVulnerability:
+            type: integer
+          SirenEffectsZombies:
+            type: boolean
+          AnimalStatsModifier:
+            type: integer
+          AnimalMetaStatsModifier:
+            type: integer
+          AnimalPregnancyTime:
+            type: integer
+          AnimalAgeModifier:
+            type: integer
+          AnimalMilkIncModifier:
+            type: integer
+          AnimalWoolIncModifier:
+            type: integer
+          AnimalRanchChance:
+            type: integer
+          AnimalGrassRegrowTime:
+            type: integer
+          AnimalMetaPredator:
+            type: boolean
+          AnimalMatingSeason:
+            type: boolean
+          AnimalEggHatch:
+            type: integer
+          AnimalSoundAttractZombies:
+            type: boolean
+          MaximumRatIndex:
+            type: integer
+          DaysUntilMaximumRatIndex:
+            type: integer
+          MetaKnowledge:
+            type: integer
+          SeeNotLearntRecipe:
+            type: boolean
+          MaximumLootedBuildingRooms:
+            type: integer
+          EnablePoisoning:
+            type: integer
+          MaggotSpawn:
+            type: integer
+          LightBulbLifespan:
+            type: number
+          FishAbundance:
+            type: integer
+          LevelForMediaXPCutoff:
+            type: integer
+          LevelForDismantleXPCutoff:
+            type: integer
+          BloodSplatLifespanDays:
+            type: integer
+          LiteratureCooldown:
+            type: integer
+          NegativeTraitsPenalty:
+            type: integer
+          MinutesPerPage:
+            type: number
+          KillInsideCrops:
+            type: boolean
+          PlantGrowingSeasons:
+            type: boolean
+          PlaceDirtAboveground:
+            type: boolean
+          FarmingSpeedNew:
+            type: number
+          FarmingAmountNew:
+            type: number
+          MaximumLooted:
+            type: integer
+          DaysUntilMaximumLooted:
+            type: integer
+          RuralLooted:
+            type: number
+          MaximumDiminishedLoot:
+            type: integer
+          DaysUntilMaximumDiminishedLoot:
+            type: integer
+          MuscleStrainFactor:
+            type: number
+          DiscomfortFactor:
+            type: number
+          WoundInfectionFactor:
+            type: number
+          NoBlackClothes:
+            type: boolean
+          EasyClimbing:
+            type: boolean
+          MaximumFireFuelHours:
+            type: integer
+          FirearmUseDamageChance:
+            type: boolean
+          FirearmNoiseMultiplier:
+            type: number
+          FirearmJamMultiplier:
+            type: number
+          FirearmMoodleMultiplier:
+            type: number
+          FirearmWeatherMultiplier:
+            type: number
+          FirearmHeadGearEffect:
+            type: boolean
+          ClayLakeChance:
+            type: number
+          ClayRiverChance:
+            type: number
+      umbrella.SandboxVars.Basement:
+        fields:
+          SpawnFrequency:
+            type: integer
+      umbrella.SandboxVars.Map:
+        fields:
+          AllowMiniMap:
+            type: boolean
+          AllowWorldMap:
+            type: boolean
+          MapAllKnown:
+            type: boolean
+          MapNeedsLight:
+            type: boolean
+      umbrella.SandboxVars.MultiplierConfig:
+        fields:
+          Global:
+            type: number
+          GlobalToggle:
+            type: boolean
+          Fitness:
+            type: number
+          Strength:
+            type: number
+          Sprinting:
+            type: number
+          Lightfoot:
+            type: number
+          Nimble:
+            type: number
+          Sneak:
+            type: number
+          Axe:
+            type: number
+          Blunt:
+            type: number
+          SmallBlunt:
+            type: number
+          LongBlade:
+            type: number
+          SmallBlade:
+            type: number
+          Spear:
+            type: number
+          Maintenance:
+            type: number
+          Woodwork:
+            type: number
+          Carving:
+            type: number
+          Cooking:
+            type: number
+          Farming:
+            type: number
+          Electricity:
+            type: number
+          Doctor:
+            type: number
+          MetalWelding:
+            type: number
+          Masonry:
+            type: number
+          Mechanics:
+            type: number
+          Pottery:
+            type: number
+          Tailoring:
+            type: number
+          Aiming:
+            type: number
+          Reloading:
+            type: number
+          Fishing:
+            type: number
+          Trapping:
+            type: number
+          PlantScavenging:
+            type: number
+          FlintKnapping:
+            type: number
+          Husbandry:
+            type: number
+          Tracking:
+            type: number
+          Blacksmith:
+            type: number
+          Butchering:
+            type: number
+          Glassmaking:
+            type: number
+      umbrella.SandboxVars.ZombieConfig:
+        fields:
+          PopulationMultiplier:
+            type: number
+          PopulationStartMultiplier:
+            type: number
+          PopulationPeakMultiplier:
+            type: number
+          PopulationPeakDay:
+            type: integer
+          RespawnHours:
+            type: number
+          RespawnUnseenHours:
+            type: number
+          RespawnMultiplier:
+            type: number
+          RedistributeHours:
+            type: number
+          FollowSoundDistance:
+            type: integer
+          RallyGroupSize:
+            type: integer
+          RallyGroupSizeVariance:
+            type: integer
+          RallyTravelDistance:
+            type: integer
+          RallyGroupSeparation:
+            type: integer
+          RallyGroupRadius:
+            type: integer
+          ZombiesCountBeforeDelete:
+            type: integer
+      umbrella.SandboxVars.ZombieLore:
+        fields:
+          Speed:
+            type: integer
+          SprinterPercentage:
+            type: integer
+          Strength:
+            type: integer
+          Toughness:
+            type: integer
+          Transmission:
+            type: integer
+          Mortality:
+            type: integer
+          Reanimate:
+            type: integer
+          Cognition:
+            type: integer
+          CrawlUnderVehicle:
+            type: integer
+          Memory:
+            type: integer
+          Sight:
+            type: integer
+          Hearing:
+            type: integer
+          SpottedLogic:
+            type: boolean
+          ThumpNoChasing:
+            type: boolean
+          ThumpOnConstruction:
+            type: boolean
+          ActiveOnly:
+            type: integer
+          TriggerHouseAlarm:
+            type: boolean
+          ZombiesDragDown:
+            type: boolean
+          ZombiesCrawlersDragDown:
+            type: boolean
+          ZombiesFenceLunge:
+            type: boolean
+          DisableFakeDead:
+            type: integer
+          ZombiesArmorFactor:
+            type: number
+          ZombiesMaxDefense:
+            type: integer
+          ChanceOfAttachedWeapon:
+            type: integer
+          ZombiesFallDamage:
+            type: number
+          PlayerSpawnZombieRemoval:
+            type: integer
+          FenceThumpersRequired:
+            type: integer
+          FenceDamageMultiplier:
+            type: number
     fields:
       SandboxVars:
         defaultValue: require("Sandbox/Survival")

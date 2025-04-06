@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: maxTime
                 type: number
               - name: primary
@@ -19,8 +21,11 @@ languages:
           Type:
             defaultValue: '"ISEquipWeaponAction"'
         fields:
-          item: {}
-          sound: {}
+          item:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
           primary:
             type: boolean
           twoHands:
@@ -29,8 +34,10 @@ languages:
           ignoreHandsWounds:
             type: boolean
           hotbar:
+            type: ISHotbar
             nullable: true
           fromHotbar:
+            type: boolean
             nullable: true
           useProgressBar:
             type: boolean
@@ -42,13 +49,14 @@ languages:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: stop
           - name: isAlreadyEquipped
             return:
@@ -65,9 +73,11 @@ languages:
       - name: isForceDropHeavyItem
         parameters:
           - name: item
+            type: InventoryItem
             nullable: true
         return:
           - type: boolean
       - name: forceDropHeavyItems
         parameters:
           - name: character
+            type: IsoPlayer

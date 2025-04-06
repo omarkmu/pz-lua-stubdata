@@ -7,20 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: corpse
+                type: IsoDeadBody
         staticFields:
           Type:
             defaultValue: '"ISBurnCorpseAction"'
         fields:
-          lighter: {}
-          petrol: {}
-          corpse: {}
+          lighter:
+            type: InventoryItem
+            nullable: true
+          petrol:
+            type: InventoryItem
+            nullable: true
+          corpse:
+            type: IsoDeadBody
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

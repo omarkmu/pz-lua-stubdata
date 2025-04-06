@@ -7,19 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: rod
+                type: InventoryItem
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISChangeFishingRodEquip"'
         fields:
-          item: {}
-          rod: {}
+          item:
+            type: InventoryItem
+          rod:
+            type: InventoryItem
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

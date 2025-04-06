@@ -7,39 +7,52 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
-                nullable: true
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISAddGasolineToVehicle"'
         fields:
           amountSent:
             type: number
-          sound: {}
-          tankStart: {}
-          itemStart: {}
+          sound:
+            type: integer
+            nullable: true
+          tankStart:
+            type: number
+            nullable: true
+          itemStart:
+            type: number
+            nullable: true
           tankTarget:
             type: number
           itemTarget:
             type: number
-          vehicle: {}
-          part: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
           item:
-            nullable: true
-          fluidCont: {}
+            type: InventoryItem
+          fluidCont:
+            type: FluidContainer
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: start
           - name: stop

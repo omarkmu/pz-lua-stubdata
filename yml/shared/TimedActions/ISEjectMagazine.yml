@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
         staticFields:
           Type:
             defaultValue: '"ISEjectMagazine"'
         fields:
-          gun: {}
+          gun:
+            type: HandWeapon
           useProgressBar:
             type: boolean
         methods:
@@ -33,6 +36,8 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: stop
           - name: perform

@@ -7,8 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: bed
-                nullable: true
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISGetOnBedAction"'
@@ -16,14 +17,14 @@ languages:
           forceProgressBar:
             type: boolean
           bed:
-            nullable: true
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

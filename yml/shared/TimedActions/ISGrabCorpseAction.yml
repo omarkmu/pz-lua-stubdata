@@ -7,17 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: corpseBody
-                nullable: true
+                type: IsoDeadBody
         staticFields:
           Type:
             defaultValue: '"ISGrabCorpseAction"'
         fields:
-          sound: {}
-          corpseBody:
+          sound:
+            type: integer
             nullable: true
-          corpse: {}
+          corpseBody:
+            type: IsoDeadBody
+          corpse:
+            type: InventoryItem
           forceProgressBar:
             type: boolean
         methods:
@@ -26,7 +29,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

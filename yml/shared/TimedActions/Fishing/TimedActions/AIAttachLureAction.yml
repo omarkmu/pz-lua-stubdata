@@ -7,20 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: rod
+                type: InventoryItem
               - name: lure
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"AIAttachLureAction"'
         fields:
-          lure: {}
-          rod: {}
-          sound: {}
+          lure:
+            type: InventoryItem
+          rod:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

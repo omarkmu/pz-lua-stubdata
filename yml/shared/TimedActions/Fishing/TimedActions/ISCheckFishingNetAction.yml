@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: trap
+                type: IsoObject
               - name: hours
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISCheckFishingNetAction"'
         fields:
-          trap: {}
-          hours: {}
+          trap:
+            type: IsoObject
+          hours:
+            type: integer
           maxTime:
             type: number
             nullable: true
@@ -32,4 +37,3 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true

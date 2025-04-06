@@ -7,18 +7,22 @@ languages:
           - name: CreateCharacterInstance
             parameters:
               - name: s
+                type: IsoSurvivor
           - name: CreateCharacterStats
             parameters:
               - name: desc
+                type: SurvivorDesc
           - name: DoTraits
           - name: SetTraitDescription
             parameters:
               - name: trait
+                type: TraitFactory.Trait
           - name: DoObservations
           - name: DoProfessions
           - name: SetProfessionDescription
             parameters:
               - name: prof
+                type: ProfessionFactory.Profession
           - name: DoSurname
           - name: DoFemaleForename
           - name: DoMaleForename
@@ -29,3 +33,4 @@ languages:
       - name: doMetalWorkerRecipes
         parameters:
           - name: metalworker
+            type: TraitFactory.Trait

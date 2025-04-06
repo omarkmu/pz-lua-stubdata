@@ -7,30 +7,35 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: lighter
+                type: InventoryItem
               - name: campfire
+                type: SCampfireGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISLightFromLiterature"'
         fields:
-          lighter: {}
+          lighter:
+            type: InventoryItem
           item:
+            type: InventoryItem
+          sound:
+            type: integer
             nullable: true
-          sound: {}
-          campfire: {}
+          campfire:
+            type: SCampfireGlobalObject
           fuelAmt:
             type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

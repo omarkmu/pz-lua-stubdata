@@ -25,21 +25,22 @@ languages:
           - name: doWalkTo
             parameters:
               - name: _player
+                type: IsoPlayer
               - name: _container
                 type: ISFluidContainer
               - name: _dist
+                type: number
             return:
               - type: boolean
-                nullable: true
           - name: getContainerOwner
             parameters:
               - name: _container
+                type: FluidContainer | ResourceFluid
             return:
-              - type: unknown
-                nullable: true
+              - type: GameEntity
           - name: getTransferActionTimePerLiter
             return:
-              - type: unknown
+              - type: number
           - name: getMinTransferActionTime
             return:
-              - type: unknown
+              - type: number

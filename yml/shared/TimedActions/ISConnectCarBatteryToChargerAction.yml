@@ -7,23 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: charger
+                type: IsoCarBatteryCharger
               - name: battery
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISConnectCarBatteryToChargerAction"'
         fields:
-          battery: {}
-          charger: {}
+          battery:
+            type: InventoryItem
+          charger:
+            type: IsoCarBatteryCharger
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: start
           - name: update
           - name: stop

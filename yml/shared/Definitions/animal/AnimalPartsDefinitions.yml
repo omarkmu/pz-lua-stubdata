@@ -6,3 +6,55 @@ languages:
         staticFields:
           animals: {}
           meat: {}
+      umbrella.AnimalMeatDefinition:
+        fields:
+          variants:
+            type: umbrella.AnimalMeatVariants[]
+      umbrella.AnimalMeatVariants:
+        fields:
+          item:
+            type: string
+          baseChance:
+            type: integer
+          hungerBoost:
+            type: integer
+          baseName:
+            type: string
+          extraName:
+            type: string
+      umbrella.AnimalPartsDefinition:
+        fields:
+          xpPerItem:
+            type: integer
+          parts:
+            type: umbrella.AnimalPartsTable[]
+          bones:
+            type: umbrella.AnimalPartsTable[]
+          noSkeleton:
+            type: boolean
+            nullable: true
+          head:
+            type: string
+            nullable: true
+          skull:
+            type: string
+            nullable: true
+          leather:
+            type: string
+            nullable: true
+          feather:
+            type: string
+            nullable: true
+      umbrella.AnimalPartsTable:
+        fields:
+          item:
+            type: string
+          nb:
+            type: integer
+            nullable: true
+          minNb:
+            type: integer
+            nullable: true
+          maxNb:
+            type: integer
+            nullable: true

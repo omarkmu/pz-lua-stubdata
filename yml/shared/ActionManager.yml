@@ -7,8 +7,26 @@ languages:
           - name: addOrDropItem
             parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
           - name: build
             parameters:
               - name: character
+                type: IsoPlayer
               - name: args
+                type: umbrella.Actions.BuildArgs
+      umbrella.Actions.BuildArgs:
+        fields:
+          x:
+            type: number
+          y:
+            type: number
+          z:
+            type: number
+          north:
+            type: boolean
+          spriteName:
+            type: string
+          item:
+            type: ISBuildingObject

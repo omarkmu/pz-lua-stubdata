@@ -7,28 +7,31 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: magazine
+                type: InventoryItem
               - name: ammoCount
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISLoadBulletsInMagazine"'
         fields:
-          ammoCountStart: {}
+          ammoCountStart:
+            type: integer
           playedInsertAmmoStartSound:
             type: boolean
           loadFinished:
             type: boolean
-          magazine: {}
+          magazine:
+            type: InventoryItem
           useProgressBar:
             type: boolean
           ammoCount:
-            type: number
+            type: integer
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: start
           - name: update
           - name: initVars
@@ -45,6 +48,8 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: stop
           - name: perform

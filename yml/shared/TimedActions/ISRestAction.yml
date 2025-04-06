@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: bed
+                type: IsoObject
               - name: useAnimations
                 type: boolean
         staticFields:
@@ -15,12 +17,14 @@ languages:
             defaultValue: '"ISRestAction"'
         fields:
           sideStr:
+            type: string
             nullable: true
           delayStart:
             type: number
           forceProgressBar:
             type: boolean
-          bed: {}
+          bed:
+            type: IsoObject
           mul:
             type: number
           useAnimations:
@@ -45,15 +49,18 @@ languages:
           - name: furnitureHasSittingData
             parameters:
               - name: bed
+                type: IsoObject
             return:
               - type: boolean
           - name: setBeforeSitDirection
           - name: calculateSitOnFurnitureDirection
             parameters:
               - name: character
+                type: IsoPlayer
               - name: bed
+                type: IsoObject
             return:
-              - type: unknown
-              - type: unknown
+              - type: IsoDirections
+              - type: string
                 nullable: true
           - name: setWhileSittingDirection

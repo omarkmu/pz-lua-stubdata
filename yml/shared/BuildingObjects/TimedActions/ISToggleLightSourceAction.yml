@@ -7,18 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: lightSource
+                type: IsoThumpable
         staticFields:
           Type:
             defaultValue: '"ISToggleLightSourceAction"'
         fields:
-          lightSource: {}
+          lightSource:
+            type: IsoThumpable
           ignoreHandsWounds:
             type: boolean
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: start
           - name: update
           - name: stop

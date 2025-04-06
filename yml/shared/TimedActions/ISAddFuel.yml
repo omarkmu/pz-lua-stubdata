@@ -9,7 +9,9 @@ languages:
               - name: character
                 nullable: true
               - name: generator
+                type: IsoGenerator
               - name: petrol
+                type: InventoryItem
               - name: maxTime
                 type: number
                 nullable: true
@@ -17,17 +19,23 @@ languages:
           Type:
             defaultValue: '"ISAddFuel"'
         fields:
-          sound: {}
-          petrol: {}
-          fluidCont: {}
-          generator: {}
+          sound:
+            type: integer
+            nullable: true
+          petrol:
+            type: InventoryItem
+          fluidCont:
+            type: FluidContainer
+            nullable: true
+          generator:
+            type: IsoGenerator
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

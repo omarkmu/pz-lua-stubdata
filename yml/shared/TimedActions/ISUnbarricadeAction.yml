@@ -7,22 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: BarricadeAble
         staticFields:
           Type:
             defaultValue: '"ISUnbarricadeAction"'
         fields:
           sound:
+            type: integer
             nullable: true
-          item: {}
+          item:
+            type: BarricadeAble
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

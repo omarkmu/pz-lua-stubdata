@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: body
-                nullable: true
+                type: IsoAnimal
               - name: hook
               - name: luaHook
                 type: ISButcherHookUI
               - name: bucket
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISGatherBloodFromAnimal"'
@@ -21,10 +24,13 @@ languages:
             type: number
           lastTimer:
             type: number
-          bucket: {}
-          body:
+          bucket:
+            type: InventoryItem
             nullable: true
-          hook: {}
+          body:
+            type: IsoAnimal
+          hook:
+            type: IsoButcherHook
           luaHook:
             type: ISButcherHookUI
           timePerLiter:
@@ -32,16 +38,18 @@ languages:
           literPerTick:
             type: number
           animalDef:
-            nullable: true
-          perkLevel: {}
-          xp: {}
+            type: umbrella.AnimalPartsDefinition
+          perkLevel:
+            type: integer
+          xp:
+            type: integer
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: forceStop

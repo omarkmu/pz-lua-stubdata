@@ -4,5 +4,29 @@ languages:
     classes:
       MakeUpDefinitions:
         staticFields:
-          categories: {}
-          makeup: {}
+          categories:
+            type: table<string, umbrella.MakeUpDefinitions.Category>
+          makeup:
+            type: umbrella.MakeUpDefinition[]
+      umbrella.MakeUpDefinition:
+        fields:
+          name:
+            type: string
+          category:
+            type: string
+          item:
+            type: string
+          makeuptypes:
+            type: table<string, boolean>
+      umbrella.MakeUpDefinitions.Category:
+        fields:
+          name:
+            type: string
+          avatarZoom:
+            type: number
+          avatarYOffset:
+            type: number
+          avatarXOffset:
+            type: number
+          category:
+            type: string

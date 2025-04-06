@@ -7,33 +7,45 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: fuelStation
-                nullable: true
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISRefuelFromGasPump"'
         fields:
           amountSent:
             type: number
-          sound: {}
-          tankStart: {}
-          pumpStart: {}
+          sound:
+            type: integer
+            nullable: true
+          tankStart:
+            type: number
+            nullable: true
+          pumpStart:
+            type: number
+            nullable: true
           tankTarget:
             type: number
+            nullable: true
           pumpTarget:
             type: number
-          vehicle: {}
-          part: {}
-          fuelStation:
             nullable: true
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          fuelStation:
+            type: IsoObject
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

@@ -7,14 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
         staticFields:
           Type:
             defaultValue: '"ISRemoveBurntVehicle"'
         fields:
-          sound: {}
-          item: {}
-          vehicle: {}
+          sound:
+            type: integer
+            nullable: true
+          item:
+            type: InventoryItem
+          vehicle:
+            type: BaseVehicle
         methods:
           - name: isValid
             return:
@@ -30,7 +36,9 @@ languages:
           - name: checkAddItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: baseChance
+                type: integer
             return:
               - type: boolean
           - name: getDuration

@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gun
+                type: HandWeapon
         staticFields:
           Type:
             defaultValue: '"ISRackFirearm"'
@@ -16,7 +18,8 @@ languages:
             type: boolean
           useProgressBar:
             type: boolean
-          gun: {}
+          gun:
+            type: HandWeapon
         methods:
           - name: isValid
             return:
@@ -39,4 +42,6 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string

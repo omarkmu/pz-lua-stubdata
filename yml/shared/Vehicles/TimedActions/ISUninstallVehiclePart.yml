@@ -7,19 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: workTime
                 type: number
-                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISUninstallVehiclePart"'
         fields:
-          vehicle: {}
-          part: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
           workTime:
             type: number
-            nullable: true
           jobType:
             type: string
         methods:

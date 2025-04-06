@@ -7,15 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: remove
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISAttachAnimalToPlayer"'
         fields:
-          sound: {}
-          animal: {}
+          sound:
+            type: integer
+            nullable: true
+          animal:
+            type: IsoAnimal
           remove:
             type: boolean
         methods:
@@ -24,7 +29,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

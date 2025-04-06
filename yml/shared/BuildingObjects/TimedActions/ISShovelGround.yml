@@ -7,31 +7,41 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: emptyBag
+                type: InventoryItem
               - name: sandTile
+                type: IsoObject
               - name: newSprite
                 type: string
               - name: newBag
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISShovelGround"'
         fields:
-          emptyBag: {}
-          sound: {}
-          sandTile: {}
+          emptyBag:
+            type: InventoryItem
+            nullable: true
+          sound:
+            type: integer
+            nullable: true
+          sandTile:
+            type: IsoObject
+            nullable: true
           newSprite:
             type: string
-          newBag: {}
+          newBag:
+            type: string
           item:
             type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

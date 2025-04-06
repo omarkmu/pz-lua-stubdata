@@ -5,23 +5,26 @@ languages:
       Fishing:
         staticFields:
           Bobber:
-            type: Bobber
-          ServerBobberManager: {}
-      Bobber:
+            type: Fishing.Bobber
+          ServerBobberManager:
+            type: table<integer, Fishing.Bobber>
+      Fishing.Bobber:
         local: true
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
               - name: fishingRod
-                type: FishingRod
+                type: Fishing.FishingRod
               - name: x
                 type: number
               - name: y
                 type: number
         fields:
-          player: {}
+          player:
+            type: IsoPlayer
           fishingRod:
-            type: FishingRod
+            type: Fishing.FishingRod
           sq:
             type: IsoGridSquare
           dx:
@@ -30,17 +33,20 @@ languages:
             type: number
           z:
             type: number
-          id: {}
-          item: {}
+          id:
+            type: integer
+          item:
+            type: InventoryItem
           attractTimer:
-            type: number
-            nullable: true
+            type: integer
           nibbleTimer:
-            type: number
-          lure: {}
-          fishingLvl: {}
+            type: integer
+          lure:
+            type: string
+          fishingLvl:
+            type: integer
           fish:
-            type: Fish
+            type: Fishing.Fish
             nullable: true
         methods:
           - name: getX
@@ -54,8 +60,7 @@ languages:
               - type: number
           - name: getNibbleTime
             return:
-              - type: number
-                nullable: true
+              - type: integer
           - name: update
           - name: getFreeWaterDirection
             return:
@@ -72,7 +77,7 @@ languages:
               - type: boolean
           - name: grabFish
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: isOnGround
             return:
@@ -82,3 +87,32 @@ languages:
           - name: onFishingActionMPUpdate
             parameters:
               - name: data
+      umbrella.FishingActionUpdateData:
+        fields:
+          player:
+            type: IsoPlayer
+          Reject:
+            type: boolean
+          UpdateFish:
+            type: boolean
+          UpdateBobberParameters:
+            type: boolean
+          CreateBobber:
+            type: boolean
+          DestroyBobber:
+            type: boolean
+          fish:
+            type: Fishing.Fish
+            nullable: true
+          fishItem:
+            type: InventoryItem
+            nullable: true
+          bobberItem:
+            type: InventoryItem
+            nullable: true
+          bobberX:
+            type: string
+            nullable: true
+          bobberY:
+            type: string
+            nullable: true

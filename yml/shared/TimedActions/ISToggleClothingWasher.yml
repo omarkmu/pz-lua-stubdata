@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoClothingWasher
         staticFields:
           Type:
             defaultValue: '"ISToggleClothingWasher"'
         fields:
-          object: {}
+          object:
+            type: IsoClothingWasher
         methods:
           - name: isValid
             return:

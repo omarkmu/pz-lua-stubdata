@@ -7,13 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: object
+                type: IsoWindow
         staticFields:
           Type:
             defaultValue: '"ISOpenCloseWindow"'
         fields:
-          object: {}
+          object:
+            type: IsoWindow
           useProgressBar:
             type: boolean
           ignoreHandsWounds:
@@ -24,7 +26,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

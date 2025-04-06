@@ -7,17 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: hairStyle
+                type: string
               - name: item
+                type: InventoryItem
+                nullable: true
               - name: maxTime
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISCutHair"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           hairStyle:
             type: string
-          item: {}
+          item:
+            type: InventoryItem
+            nullable: true
         methods:
           - name: isValid
             return:

@@ -9,5 +9,6 @@ languages:
               - name: str
                 type: string
               - name: desc
+                type: SurvivorDesc
             return:
               - type: string

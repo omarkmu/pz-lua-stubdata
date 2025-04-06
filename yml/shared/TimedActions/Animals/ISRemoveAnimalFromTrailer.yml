@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: animal
+                type: IsoAnimal
                 nullable: true
               - name: grab
                 type: boolean
@@ -17,8 +20,10 @@ languages:
           Type:
             defaultValue: '"ISRemoveAnimalFromTrailer"'
         fields:
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           animal:
+            type: IsoAnimal
             nullable: true
           grab:
             type: boolean
@@ -29,7 +34,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

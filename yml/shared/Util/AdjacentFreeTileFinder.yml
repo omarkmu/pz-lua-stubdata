@@ -7,12 +7,15 @@ languages:
           - name: privTrySquareForWalls
             parameters:
               - name: src
+                type: IsoGridSquare
               - name: test
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: privTrySquareForWalls2
             parameters:
               - name: src
+                type: IsoGridSquare
               - name: x
                 type: number
               - name: y
@@ -24,87 +27,105 @@ languages:
           - name: privTrySquare
             parameters:
               - name: src
+                type: IsoGridSquare
               - name: test
+                type: IsoGridSquare
               - name: excludeList
-                type: table
+                type: IsoGridSquare[]
                 nullable: true
             return:
               - type: boolean
           - name: isTileOrAdjacent8
             parameters:
               - name: a
+                type: IsoGridSquare
               - name: b
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: isTileOrAdjacent
             parameters:
               - name: a
-                nullable: true
+                type: IsoGridSquare
               - name: b
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: Find
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
               - name: excludeList
+                type: IsoGridSquare[]
                 nullable: true
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: FindClosest
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: FindWindowOrDoor
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: window
+                type: IsoObject
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: FindWall
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: north
+                type: boolean
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: FindEdge
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: dir
-                nullable: true
+                type: IsoDirections
               - name: playerObj
                 type: IsoPlayer
               - name: preferSameSquare
                 type: boolean
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: privTrySquareWindow
             parameters:
               - name: src
+                type: IsoGridSquare
               - name: test
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: privCanStand
             parameters:
               - name: test
+                type: IsoGridSquare
             return:
               - type: boolean
           - name: privGetNorth
             parameters:
               - name: gridSquare
+                type: IsoGridSquare
               - name: object
+                type: IsoObject
             return:
               - type: boolean

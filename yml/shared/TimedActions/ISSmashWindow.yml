@@ -7,16 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: window
+                type: IsoWindow | VehicleWindow
               - name: vehiclePart
+                type: VehiclePart
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISSmashWindow"'
         fields:
           vehiclePart:
+            type: VehiclePart
             nullable: true
-          window: {}
+          window:
+            type: IsoWindow | VehicleWindow
           useProgressBar:
             type: boolean
         methods:
@@ -25,7 +30,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: serverStart

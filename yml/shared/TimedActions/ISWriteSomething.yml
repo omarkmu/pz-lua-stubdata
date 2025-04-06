@@ -7,19 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: Literature
         staticFields:
           Type:
             defaultValue: '"ISWriteSomething"'
         fields:
-          item: {}
+          item:
+            type: Literature
           ignoreHandsWounds:
             type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop
@@ -32,7 +34,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: isBook
             parameters:
               - name: item

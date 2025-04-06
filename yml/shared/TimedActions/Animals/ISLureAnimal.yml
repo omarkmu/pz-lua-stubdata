@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISLureAnimal"'
@@ -23,8 +26,10 @@ languages:
             type: number
           lastTimer:
             type: number
-          animal: {}
-          item: {}
+          animal:
+            type: IsoAnimal
+          item:
+            type: InventoryItem
           useProgressBar:
             type: boolean
           luringTick:
@@ -35,11 +40,12 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: luredAnimal
             parameters:
               - name: animal
+                type: IsoAnimal
           - name: start
           - name: stopSound
           - name: stop
@@ -51,7 +57,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: getDuration
             return:

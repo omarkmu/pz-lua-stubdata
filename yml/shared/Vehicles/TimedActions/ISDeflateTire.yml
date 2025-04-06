@@ -7,17 +7,24 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: psiTarget
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISDeflateTire"'
         fields:
-          psiSent: {}
-          vehicle: {}
-          part: {}
-          psiStart: {}
+          psiSent:
+            type: number
+            nullable: true
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          psiStart:
+            type: number
           psiTarget:
             type: number
           jobType:

@@ -161,6 +161,12 @@ languages:
         staticFields:
           Type:
             defaultValue: '"ISVehicleAnimal3DModel"'
+        fields:
+          animal:
+            type: IsoAnimal
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: instantiate
           - name: onMouseDown

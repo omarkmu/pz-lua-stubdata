@@ -7,14 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISWearClothing"'
         fields:
-          equipSound: {}
-          item: {}
-          sound: {}
+          equipSound:
+            type: integer
+            nullable: true
+          item:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
           fromHotbar:
             type: boolean
           clothingAction:
@@ -23,7 +30,6 @@ languages:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop
@@ -34,6 +40,7 @@ languages:
           - name: isAlreadyEquipped
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: getDuration
@@ -90,3 +97,5 @@ languages:
             defaultValue: '"Pullover"'
           Tshirt:
             defaultValue: '"Pullover"'
+          "[string]":
+            type: string

@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: type
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISApplyMakeUp"'
         fields:
-          item: {}
-          type: {}
+          item:
+            type: InventoryItem
+          type:
+            type: string
         methods:
           - name: isValid
             return:

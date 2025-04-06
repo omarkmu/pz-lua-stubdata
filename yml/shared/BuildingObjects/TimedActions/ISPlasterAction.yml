@@ -7,18 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: thumpable
                 type: IsoThumpable
               - name: plasterBucket
+                type: InventoryItem
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISPlasterAction"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           thumpable:
             type: IsoThumpable
           plasterBucket:
+            type: InventoryItem
             nullable: true
         methods:
           - name: isValid

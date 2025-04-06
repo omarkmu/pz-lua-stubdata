@@ -7,16 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: sq
                 type: IsoGridSquare
               - name: radius
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISPickupDung"'
         fields:
-          item: {}
-          radius: {}
+          item:
+            type: InventoryItem
+          radius:
+            type: integer
           sq:
             type: IsoGridSquare
         methods:

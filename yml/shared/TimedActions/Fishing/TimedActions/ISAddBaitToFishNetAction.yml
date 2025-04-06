@@ -7,19 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: fishNet
+                type: IsoObject
               - name: bait
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISAddBaitToFishNetAction"'
         fields:
-          bait: {}
-          fishNet: {}
+          bait:
+            type: InventoryItem
+          fishNet:
+            type: IsoObject
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

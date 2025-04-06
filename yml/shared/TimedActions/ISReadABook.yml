@@ -7,19 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: Literature
         staticFields:
           Type:
             defaultValue: '"ISReadABook"'
         fields:
           pageTimer:
             type: number
-          item: {}
+          item:
+            type: Literature
           stats:
-            type: table
-          isLiteratureRead:
+            type: umbrella.ISReadABook.Stats
             nullable: true
-          startPage: {}
+          isLiteratureRead:
+            type: boolean
+            nullable: true
+          startPage:
+            type: integer
           playerNum:
             type: integer
           minutesPerPage:
@@ -34,7 +40,6 @@ languages:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: isUsingTimeout
             return:
               - type: boolean
@@ -48,10 +53,13 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: isBook
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: serverStart
@@ -66,4 +74,14 @@ languages:
           - name: checkLevel
             parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: Literature
+      umbrella.ISReadABook.Stats:
+        fields:
+          boredom:
+            type: number
+          unhappyness:
+            type: number
+          stress:
+            type: number

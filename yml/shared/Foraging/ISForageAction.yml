@@ -7,29 +7,40 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: icon
                 type: ISForageIcon
               - name: targetContainer
+                type: ItemContainer
               - name: discardItems
                 type: boolean
               - name: itemType
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISForageAction"'
         fields:
-          itemCount: {}
-          targetContainer: {}
+          itemCount:
+            type: integer
+          targetContainer:
+            type: ItemContainer
           discardItems:
             type: boolean
           icon:
             type: ISForageIcon
-          iconID: {}
-          itemType: {}
-          manager: {}
+          iconID:
+            type: string
+          itemType:
+            type: string
+          manager:
+            type: ISSearchManager
           forageIcon:
             type: ISForageIcon
-          zoneData: {}
-          itemDef: {}
+          zoneData:
+            type: umbrella.Foraging.ZoneData
+            nullable: true
+          itemDef:
+            type: umbrella.Foraging.ItemDefinition
           maxTime:
             type: number
             nullable: true
@@ -43,7 +54,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: stop
           - name: start

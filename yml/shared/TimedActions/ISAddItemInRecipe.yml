@@ -7,24 +7,32 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: recipe
+                type: EvolvedRecipe
               - name: baseItem
+                type: InventoryItem
               - name: usedItem
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISAddItemInRecipe"'
         fields:
-          baseItem: {}
-          sound: {}
-          recipe: {}
-          usedItem: {}
+          baseItem:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
+          recipe:
+            type: EvolvedRecipe
+          usedItem:
+            type: InventoryItem
           jobType:
             type: string
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop
@@ -39,9 +47,14 @@ languages:
           - name: checkTemperature
             parameters:
               - name: baseItem
+                type: InventoryItem
               - name: usedItem
+                type: InventoryItem
               - name: recipe
+                type: EvolvedRecipe
           - name: checkName
             parameters:
               - name: baseItem
+                type: InventoryItem
               - name: recipe
+                type: EvolvedRecipe

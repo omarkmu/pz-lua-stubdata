@@ -7,15 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: charger
+                type: IsoCarBatteryCharger
               - name: activate
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISActivateCarBatteryChargerAction"'
         fields:
-          charger: {}
+          charger:
+            type: IsoCarBatteryCharger
           activate:
             type: boolean
         methods:
@@ -24,7 +26,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: start
           - name: update
           - name: stop

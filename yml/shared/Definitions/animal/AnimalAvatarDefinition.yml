@@ -34,3 +34,47 @@ languages:
           raccoonkit: {}
           raccoonboar: {}
           raccoonsow: {}
+      umbrella.AnimalAvatarDefinition:
+        fields:
+          zoom:
+            type: integer
+          xoffset:
+            type: number
+          yoffset:
+            type: number
+          avatarWidth:
+            type: integer
+          avatarDir:
+            type: IsoDirections
+          trailerDir:
+            type: IsoDirections
+          trailerZoom:
+            type: number
+          trailerXoffset:
+            type: number
+          trailerYoffset:
+            type: number
+          hook:
+            type: boolean
+            nullable: true
+          butcherHookZoom:
+            type: integer
+            nullable: true
+          butcherHookXoffset:
+            type: number
+            nullable: true
+          butcherHookYoffset:
+            type: number
+            nullable: true
+          animalPositionSize:
+            type: number
+            nullable: true
+          animalPositionX:
+            type: number
+            nullable: true
+          animalPositionY:
+            type: number
+            nullable: true
+          animalPositionZ:
+            type: number
+            nullable: true

@@ -6,11 +6,17 @@ languages:
         fields:
           annotations:
             type: table
+            tags:
+              - StubGen_Hidden
           containers:
             type: table
+            tags:
+              - StubGen_Hidden
         methods:
           - name: addStamp
             parameters:
+              - name: self
+                type: umbrella.StashUtil.Stash
               - name: symbol
                 type: string
                 nullable: true
@@ -29,6 +35,8 @@ languages:
                 type: number
           - name: addContainer
             parameters:
+              - name: self
+                type: umbrella.StashUtil.Stash
               - name: containerType
                 type: string
                 nullable: true
@@ -62,4 +70,98 @@ languages:
               - name: customName
                 type: string
             return:
-              - type: table
+              - type: umbrella.StashUtil.NewStash
+      umbrella.StashUtil.NewStash:
+        extends: umbrella.StashUtil.Stash
+        staticFields:
+          addStamp:
+            defaultValue: StashUtil.addStamp
+          addContainer:
+            defaultValue: StashUtil.addContainer
+      umbrella.StashUtil.Stash:
+        fields:
+          name:
+            type: string
+          type:
+            type: string
+          item:
+            type: string
+          customName:
+            type: string
+          buildingX:
+            type: integer
+            nullable: true
+          buildingY:
+            type: integer
+            nullable: true
+          spawnTable:
+            type: string
+            nullable: true
+          zombies:
+            type: integer
+            nullable: true
+          barricades:
+            type: integer
+            nullable: true
+          spawnOnlyOnZed:
+            type: integer
+            nullable: true
+          daysToSpawn:
+            type: string
+            nullable: true
+          traps:
+            type: string
+            nullable: true
+          containers:
+            type: umbrella.StashUtil.StashContainer[]
+            nullable: true
+          annotations:
+            type: umbrella.StashUtil.StashAnnotation[]
+            nullable: true
+      umbrella.StashUtil.StashAnnotation:
+        fields:
+          symbol:
+            type: string
+            nullable: true
+          text:
+            type: string
+            nullable: true
+          x:
+            type: number
+          y:
+            type: number
+          r:
+            type: number
+          g:
+            type: number
+          b:
+            type: number
+      umbrella.StashUtil.StashContainer:
+        fields:
+          room:
+            type: string
+            nullable: true
+          containerSprite:
+            type: string
+            nullable: true
+          containerType:
+            type: string
+            nullable: true
+          containerItem:
+            type: string
+            nullable: true
+          contX:
+            type: integer
+            nullable: true
+          contY:
+            type: integer
+            nullable: true
+          contZ:
+            type: integer
+            nullable: true
+    fields:
+      StashDescriptions:
+        type: umbrella.StashUtil.NewStash[]
+        nullable: true
+        tags:
+          - StubGen_Extra

@@ -7,25 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: bodyPart
+                type: BodyPart
         staticFields:
           Type:
             defaultValue: '"ISComfreyCataplasm"'
         fields:
-          item: {}
-          otherPlayer: {}
+          item:
+            type: InventoryItem
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
             type: number
-          bodyPart: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          bodyPart:
+            type: BodyPart
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
               - type: boolean

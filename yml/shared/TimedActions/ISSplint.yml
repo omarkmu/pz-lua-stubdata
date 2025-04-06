@@ -7,12 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: rippedSheet
+                type: InventoryItem
                 nullable: true
               - name: plank
+                type: InventoryItem
                 nullable: true
               - name: bodyPart
+                type: BodyPart
               - name: doIt
                 type: boolean
         staticFields:
@@ -20,24 +25,32 @@ languages:
             defaultValue: '"ISSplint"'
         fields:
           rippedSheet:
+            type: InventoryItem
             nullable: true
           plank:
+            type: InventoryItem
             nullable: true
-          sound: {}
-          otherPlayer: {}
+          sound:
+            type: integer
+            nullable: true
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
-            type: number
+            type: integer
           doIt:
             type: boolean
-          doctor: {}
-          bodyPart: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          doctor:
+            type: IsoPlayer
+          bodyPart:
+            type: BodyPart
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
               - type: boolean

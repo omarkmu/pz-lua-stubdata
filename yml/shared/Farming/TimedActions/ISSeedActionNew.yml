@@ -7,22 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: seed
-                type: table
+                type: InventoryItem
               - name: typeOfSeed
-              - name: plant
                 type: string
+              - name: plant
+                type: CPlantGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISSeedActionNew"'
         fields:
-          sound: {}
-          character:
+          sound:
+            type: integer
             nullable: true
+          character:
+            type: IsoPlayer
           seed:
-            type: table
-          typeOfSeed: {}
+            type: InventoryItem
+          typeOfSeed:
+            type: string
           plant:
             type: string
         methods:
@@ -31,7 +35,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

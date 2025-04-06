@@ -8,18 +8,24 @@ languages:
           - parameters:
               - name: character
               - name: animal
+                type: IsoAnimal
               - name: food
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISFeedAnimalFromHand"'
         fields:
-          sound: {}
-          animal: {}
-          food: {}
+          sound:
+            type: integer
+            nullable: true
+          animal:
+            type: IsoAnimal
+          food:
+            type: InventoryItem
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: forceStop

@@ -7,21 +7,29 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: Food
               - name: percentage
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISEatFoodAction"'
         fields:
           eatAudio:
             type: number
-          scrapeSound: {}
+          scrapeSound:
+            type: integer
+            nullable: true
           playedScrapeSound:
             type: boolean
-          item: {}
+          item:
+            type: Food
           percentage:
             type: number
-          carLighter: {}
+          carLighter:
+            type: boolean
+            nullable: true
           openFlame:
             type: boolean
           useUtensil:
@@ -41,8 +49,7 @@ languages:
               - type: boolean
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -53,12 +60,14 @@ languages:
               - type: boolean
           - name: getRequiredItem
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: eat
             parameters:
               - name: food
+                type: Food
               - name: percentage
+                type: number
           - name: getDuration
             return:
               - type: number
@@ -66,5 +75,6 @@ languages:
           - name: isEatingRemaining
             parameters:
               - name: item
+                type: Food
             return:
               - type: boolean

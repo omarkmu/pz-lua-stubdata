@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: nestbox
+                type: IsoHutch.NestBox | integer
               - name: hutch
+                type: IsoHutch
         staticFields:
           Type:
             defaultValue: '"ISHutchGrabEgg"'
@@ -17,18 +20,22 @@ languages:
             type: number
           lastTimer:
             type: number
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           timePerEgg:
             type: number
-          nestbox: {}
-          hutch: {}
+          nestbox:
+            type: IsoHutch.NestBox
+          hutch:
+            type: IsoHutch
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -37,7 +44,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: complete
             return:
               - type: boolean

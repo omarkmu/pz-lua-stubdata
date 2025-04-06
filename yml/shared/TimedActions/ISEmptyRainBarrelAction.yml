@@ -7,21 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISEmptyRainBarrelAction"'
         fields:
-          sound: {}
-          startAmount: {}
-          object: {}
+          sound:
+            type: integer
+          startAmount:
+            type: number
+          object:
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: start
           - name: update
           - name: stop

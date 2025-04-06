@@ -70,4 +70,26 @@ languages:
           Mob: {}
           Cultists: {}
           SecretLab: {}
-          Default: {}
+          Default:
+            type: umbrella.ZombiesZoneDefinition[]
+      umbrella.ZombiesZoneDefinition:
+        fields:
+          name:
+            type: string
+          chance:
+            type: number
+          gender:
+            type: string
+            nullable: true
+          room:
+            type: string
+            nullable: true
+          beardStyles:
+            type: string
+            nullable: true
+          mandatory:
+            type: string
+            nullable: true
+          toSpawn:
+            type: number
+            nullable: true

@@ -7,19 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: part
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISUpgradeWeapon"'
         fields:
-          part: {}
-          weapon: {}
+          part:
+            type: InventoryItem
+          weapon:
+            type: HandWeapon
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

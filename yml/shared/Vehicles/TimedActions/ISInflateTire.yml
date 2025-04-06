@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: psiTarget
                 type: number
         staticFields:
@@ -17,11 +20,17 @@ languages:
         fields:
           totalPsi:
             type: number
-          psiSent: {}
-          vehicle: {}
-          part: {}
-          item: {}
-          psiStart: {}
+          psiSent:
+            type: number
+            nullable: true
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          item:
+            type: InventoryItem
+          psiStart:
+            type: number
           psiTarget:
             type: number
           jobType:

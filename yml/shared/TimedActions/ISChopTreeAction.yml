@@ -7,14 +7,18 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: tree
+                type: IsoTree
         staticFields:
           Type:
             defaultValue: '"ISChopTreeAction"'
         fields:
-          axe: {}
-          tree: {}
+          axe:
+            type: InventoryItem
+            nullable: true
+          tree:
+            type: IsoTree
           spriteFrame:
             type: number
           forceProgressBar:
@@ -25,7 +29,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -39,6 +43,8 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: useEndurance
           - name: serverStart

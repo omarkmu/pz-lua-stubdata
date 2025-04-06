@@ -7,17 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: part
-                nullable: true
+                type: VehiclePart
         staticFields:
           Type:
             defaultValue: '"ISOpenVehicleDoor"'
         fields:
-          vehicle: {}
+          vehicle:
+            type: BaseVehicle
           part:
-            nullable: true
-          seat: {}
+            type: VehiclePart
+          seat:
+            type: integer
           ignoreHandsWounds:
             type: boolean
         methods:

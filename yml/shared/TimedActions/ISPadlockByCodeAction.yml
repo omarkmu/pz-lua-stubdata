@@ -7,20 +7,27 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: thump
+                type: IsoThumpable
               - name: padlock
+                type: InventoryItem
               - name: lock
                 type: boolean
               - name: code
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISPadlockByCodeAction"'
         fields:
-          thump: {}
-          padlock: {}
+          thump:
+            type: IsoThumpable
+          padlock:
+            type: InventoryItem
           lock:
             type: boolean
-          code: {}
+          code:
+            type: integer
         methods:
           - name: isValid
             return:

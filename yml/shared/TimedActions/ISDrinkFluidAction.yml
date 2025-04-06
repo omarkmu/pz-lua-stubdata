@@ -7,18 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem | IsoWorldInventoryObject
               - name: percentage
+                type: number
         staticFields:
           Type:
             defaultValue: '"ISDrinkFluidAction"'
         fields:
           eatAudio:
             type: number
-          item: {}
+          item:
+            type: InventoryItem
           eatSound:
             type: string
-          fluidContainer: {}
+          fluidContainer:
+            type: FluidContainer
           percentage:
             type: number
           useUtensil:
@@ -34,8 +39,7 @@ languages:
               - type: boolean
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -47,7 +51,9 @@ languages:
           - name: eat
             parameters:
               - name: food
+                type: InventoryItem
               - name: percentage
+                type: number
           - name: getDuration
             return:
               - type: number

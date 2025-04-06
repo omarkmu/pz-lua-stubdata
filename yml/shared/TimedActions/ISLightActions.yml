@@ -10,7 +10,9 @@ languages:
                 type: string
               - name: character
               - name: lightswitch
+                type: IsoLightSwitch
               - name: item
+                type: InventoryItem
                 nullable: true
         staticFields:
           Type:
@@ -20,8 +22,10 @@ languages:
         fields:
           mode:
             type: string
-          lightswitch: {}
+          lightswitch:
+            type: IsoLightSwitch
           item:
+            type: InventoryItem
             nullable: true
           ignoreHandsWounds:
             type: boolean
@@ -40,23 +44,20 @@ languages:
           - name: isValidAddLightBulb
             return:
               - type: boolean
-                nullable: true
           - name: completeAddLightBulb
           - name: isValidRemoveLightBulb
             return:
-              - type: unknown
+              - type: boolean
           - name: completeRemoveLightBulb
           - name: isValidModifyLamp
             return:
               - type: boolean
-                nullable: true
           - name: completeModifyLamp
           - name: isValidAddBattery
             return:
               - type: boolean
-                nullable: true
           - name: completeAddBattery
           - name: isValidRemoveBattery
             return:
-              - type: unknown
+              - type: boolean
           - name: completeRemoveBattery

@@ -7,20 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: compost
+                type: IsoCompost
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISGetCompost"'
         fields:
-          item: {}
-          compost: {}
+          item:
+            type: InventoryItem
+          compost:
+            type: IsoCompost
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

@@ -538,3 +538,11 @@ languages:
                 type: ISContextMenu
               - name: _worldObjects
                 type: IsoObject[]
+      umbrella.Foraging.UpdateEvent:
+        fields:
+          method:
+            type: string
+          tick:
+            type: integer
+          breakTick:
+            type: boolean

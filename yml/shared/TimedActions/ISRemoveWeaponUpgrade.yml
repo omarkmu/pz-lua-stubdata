@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: partType
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISRemoveWeaponUpgrade"'
         fields:
-          weapon: {}
-          partType: {}
+          weapon:
+            type: HandWeapon
+          partType:
+            type: string
         methods:
           - name: isValid
             return:

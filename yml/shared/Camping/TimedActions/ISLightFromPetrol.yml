@@ -7,26 +7,32 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: campfire
+                type: SCampfireGlobalObject
               - name: lighter
+                type: InventoryItem
               - name: petrol
+                type: InventoryItem
               - name: maxTime
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISLightFromPetrol"'
         fields:
-          campfire: {}
-          lighter: {}
-          petrol: {}
+          campfire:
+            type: SCampfireGlobalObject
+          lighter:
+            type: InventoryItem
+          petrol:
+            type: InventoryItem
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

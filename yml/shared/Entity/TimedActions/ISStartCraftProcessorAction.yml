@@ -7,16 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: entity
+                type: IsoObject
               - name: component
+                type: Component
               - name: craftProcessor
+                type: CraftLogic
         staticFields:
           Type:
             defaultValue: '"ISStartCraftProcessorAction"'
         fields:
-          entity: {}
-          component: {}
-          craftProcessor: {}
+          entity:
+            type: IsoObject
+          component:
+            type: Component
+          craftProcessor:
+            type: CraftLogic
         methods:
           - name: isValid
             return:

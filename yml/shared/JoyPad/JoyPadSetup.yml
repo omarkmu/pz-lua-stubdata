@@ -4,13 +4,17 @@ languages:
     classes:
       JoypadState:
         staticFields:
-          controllers: {}
-          players: {}
-          joypads: {}
+          controllers:
+            type: table<integer, JoypadControllerData>
+          players:
+            type: table<integer, JoypadData>
+          joypads:
+            type: table<integer, JoypadData>
           forceActivate:
+            type: integer
             nullable: true
           saveFocus:
-            type: table
+            type: table<integer, ISUIElement>
             nullable: true
           debugUI:
             type: ISJoypadDebugUI
@@ -19,13 +23,15 @@ languages:
           - name: onGamepadConnect
             parameters:
               - name: id
+                type: integer
           - name: onGamepadDisconnect
             parameters:
               - name: id
+                type: integer
           - name: useKeyboardMouse
           - name: getMainMenuJoypad
             return:
-              - type: unknown
+              - type: JoypadData
                 nullable: true
           - name: saveAllFocus
           - name: restoreAllFocus
@@ -81,20 +87,22 @@ languages:
         constructors:
           - parameters:
               - name: id
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"JoypadControllerData"'
         fields:
           joypad:
+            type: JoypadData
             nullable: true
           id:
-            type: number
+            type: integer
           pressed:
-            type: table
+            type: table<integer, boolean>
           wasPressed:
-            type: table
-          connected: {}
+            type: table<integer, boolean>
+          connected:
+            type: boolean
           timedown:
             type: number
           down:
@@ -136,7 +144,7 @@ languages:
           dtprocright:
             type: number
           pressedTime:
-            type: table
+            type: table<integer, number>
         methods:
           - name: setJoypad
             parameters:
@@ -147,21 +155,21 @@ languages:
           - name: onPressButtonNoFocus
             parameters:
               - name: button
-                type: ISButton
+                type: integer
           - name: onPressButton
             parameters:
               - name: button
-                type: number
+                type: integer
           - name: onHoldButton
             parameters:
               - name: button
-                type: ISButton
+                type: integer
               - name: time
                 type: number
           - name: onReleaseButton
             parameters:
               - name: button
-                type: number
+                type: integer
           - name: onPressUp
           - name: onReleaseUp
           - name: onPressDown
@@ -173,6 +181,7 @@ languages:
           - name: update
             parameters:
               - name: time
+                type: number
       JoypadData:
         extends: ISBaseObject
         constructors:
@@ -182,37 +191,46 @@ languages:
             defaultValue: '"JoypadData"'
         fields:
           id:
-            type: number
+            type: integer
           controller:
+            type: JoypadControllerData
             nullable: true
           isActive:
             type: boolean
           isDoingNavigation:
             type: boolean
           currentNavigateUI:
+            type: ISUIElement
             nullable: true
           player:
+            type: integer
             nullable: true
           focus:
+            type: ISUIElement
             nullable: true
           lastfocus:
+            type: ISUIElement
             nullable: true
           prevfocus:
+            type: ISUIElement
             nullable: true
           prevprevfocus:
+            type: ISUIElement
             nullable: true
           inMainMenu:
             type: boolean
           listBox:
+            type: ISJoypadListBox
             nullable: true
         methods:
           - name: setController
             parameters:
               - name: controller
+                type: JoypadControllerData
           - name: clearController
           - name: isConnected
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: setActive
             parameters:
@@ -221,6 +239,7 @@ languages:
           - name: isFocusOnElementOrDescendant
             parameters:
               - name: ui
+                type: ISUIElement
             return:
               - type: boolean
           - name: startNavigation
@@ -231,42 +250,45 @@ languages:
           - name: playerNum
             type: integer
         return:
-          - type: unknown
+          - type: ISUIElement
             nullable: true
       - name: isJoypadFocusOnElementOrDescendant
         parameters:
           - name: playerNum
             type: integer
           - name: ui
-            type: ISBaseEntityWindow
+            type: ISUIElement
         return:
-          - type: unknown
+          - type: boolean
             nullable: true
       - name: getJoypadData
         parameters:
           - name: playerID
+            type: integer
         return:
-          - type: unknown
+          - type: JoypadData
       - name: getJoypadFocus
         parameters:
           - name: playerID
+            type: integer
         return:
-          - type: unknown
+          - type: ISUIElement
             nullable: true
       - name: setJoypadFocus
         parameters:
           - name: playerID
-            type: number
-            nullable: true
+            type: integer
           - name: control
-            type: table
+            type: ISUIElement
             nullable: true
       - name: setPrevFocusForPlayer
         parameters:
           - name: playerID
+            type: integer
       - name: setPrevPrevFocusForPlayer
         parameters:
           - name: playerID
+            type: integer
       - name: updateJoypadFocus
         parameters:
           - name: joypadData
@@ -275,21 +297,28 @@ languages:
       - name: onJoypadRenderTick
         parameters:
           - name: ticks
+            nullable: true
       - name: onJoypadActivate
         parameters:
           - name: id
+            type: integer
       - name: onJoypadActivateUI
         parameters:
           - name: id
+            type: integer
       - name: onJoypadBeforeDeactivate
         parameters:
           - name: id
+            type: integer
       - name: onJoypadDeactivate
         parameters:
           - name: id
+            type: integer
       - name: onJoypadBeforeReactivate
         parameters:
           - name: id
+            type: integer
       - name: onJoypadReactivate
         parameters:
           - name: id
+            type: integer

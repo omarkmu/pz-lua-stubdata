@@ -7,17 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: uses
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISDrinkFromBottle"'
         fields:
           eatAudio:
-            type: number
-          item: {}
+            type: integer
+          item:
+            type: InventoryItem
           uses:
-            type: number
+            type: integer
           eatSound:
             type: string
           tick:
@@ -30,7 +34,6 @@ languages:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop
@@ -38,6 +41,7 @@ languages:
           - name: drink
             parameters:
               - name: food
+                type: InventoryItem
               - name: percentage
                 type: number
           - name: complete

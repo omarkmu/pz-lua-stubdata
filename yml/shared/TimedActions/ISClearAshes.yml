@@ -7,26 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: ashes
-                nullable: true
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISClearAshes"'
         fields:
           character:
-            nullable: true
+            type: IsoPlayer
           spriteFrame:
             type: number
           ashes:
-            nullable: true
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

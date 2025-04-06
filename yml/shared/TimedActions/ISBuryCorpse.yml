@@ -7,25 +7,29 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: graves
+                type: IsoThumpable
               - name: shovel
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISBuryCorpse"'
         fields:
-          graves: {}
-          shovel: {}
+          graves:
+            type: IsoThumpable
+          shovel:
+            type: InventoryItem
         methods:
           - name: isValidStart
             return:
               - type: boolean
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

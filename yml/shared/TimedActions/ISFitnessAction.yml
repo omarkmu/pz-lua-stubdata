@@ -7,20 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: exercise
                 type: string
               - name: timeToExe
                 type: number
-                nullable: true
               - name: exeData
+                type: umbrella.FitnessExercises.Exercise
               - name: exeDataType
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISFitnessAction"'
         fields:
           repnb:
             type: number
-          fitness: {}
+          fitness:
+            type: Fitness
           switchTime:
             type: number
           switchHandUsed:
@@ -29,10 +32,12 @@ languages:
             type: string
           timeToExe:
             type: number
-            nullable: true
-          exeData: {}
-          exeDataType: {}
-          startMS: {}
+          exeData:
+            type: umbrella.FitnessExercises.Exercise
+          exeDataType:
+            type: string
+          startMS:
+            type: number
           endMS:
             type: number
         methods:
@@ -59,7 +64,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: setFitnessSpeed
           - name: getDuration
             return:

@@ -7,25 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: cleaner
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISCleanGraffiti"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           square:
             type: IsoGridSquare
-          cleaner: {}
-          object: {}
+          cleaner:
+            type: InventoryItem
+            nullable: true
+          object:
+            type: IsoObject
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

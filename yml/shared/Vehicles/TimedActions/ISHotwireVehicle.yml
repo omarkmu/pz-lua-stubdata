@@ -7,11 +7,14 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISHotwireVehicle"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: isValid
             return:

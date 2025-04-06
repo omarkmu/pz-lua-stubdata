@@ -7,13 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: trap
+                type: CTrapGlobalObject
         staticFields:
           Type:
             defaultValue: '"ISCheckTrapAction"'
         fields:
-          trap: {}
+          trap:
+            type: CTrapGlobalObject
         methods:
           - name: isValid
             return:

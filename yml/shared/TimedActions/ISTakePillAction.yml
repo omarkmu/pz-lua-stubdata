@@ -7,19 +7,21 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISTakePillAction"'
         fields:
-          item: {}
+          item:
+            type: InventoryItem
           isEating:
             type: boolean
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: update
           - name: start
           - name: stop

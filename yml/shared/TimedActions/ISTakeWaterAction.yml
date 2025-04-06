@@ -7,23 +7,34 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
                 nullable: true
               - name: waterObject
+                type: IsoObject
               - name: waterTaintedCL
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISTakeWaterAction"'
         fields:
-          sound: {}
+          sound:
+            type: integer
           item:
+            type: InventoryItem
             nullable: true
-          waterObject: {}
-          waterTaintedCL: {}
-          waterUnit: {}
+          waterObject:
+            type: IsoObject
+          waterTaintedCL:
+            type: boolean
+          waterUnit:
+            type: number
           startUsedAmount:
             type: number
-          endUsedAmount: {}
+          endUsedAmount:
+            type: number
+            nullable: true
           maxTime:
             type: number
             nullable: true
@@ -33,7 +44,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stopSound
@@ -50,4 +61,3 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true

@@ -10,38 +10,47 @@ languages:
             type: Fishing.FishConfig
           isSizeLimit:
             defaultValue: "false"
-          fishes: {}
-          trashItems: {}
+          fishes:
+            type: Fishing.FishConfig[]
+          trashItems:
+            type: string[]
           line: {}
           hook: {}
           rods: {}
           breakRodReplacement: {}
-          fishNet: {}
-          fishNetWithBait: {}
+          fishNet:
+            type: string[]
+          fishNetWithBait:
+            type: string[]
         staticMethods:
           - name: IndexAllLures
           - name: IsLure
             parameters:
               - name: item
+                type: string
             return:
               - type: boolean
           - name: IsArtificalLure
             parameters:
               - name: item
+                type: string
             return:
               - type: boolean
           - name: onCreateFish
             parameters:
               - name: item
+                type: InventoryItem
           - name: onCreateFishingRod
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: onCreateChum
             parameters:
               - name: item
+                type: InventoryItem
       Fishing.FishConfig:
         local: true
         constructors:
@@ -52,7 +61,7 @@ languages:
           itemType:
             type: string
           lure:
-            type: table
+            type: table<string, number>
           minLength:
             type: number
           isHaveDifferentSizes:
@@ -61,11 +70,12 @@ languages:
             type: boolean
           isLake:
             type: boolean
-          maxLength: {}
+          maxLength:
+            type: integer
           maxWeight:
-            type: number
+            type: integer
           fishesSizeData:
-            type: table
+            type: umbrella.FishSizeData[]
         methods:
           - name: setLocation
             parameters:
@@ -76,29 +86,47 @@ languages:
           - name: setMaxLength
             parameters:
               - name: length
-                type: number
+                type: integer
           - name: setMaxWeight
             parameters:
               - name: weight
-                type: number
+                type: integer
           - name: addLures
             parameters:
               - name: itemTable
-                type: table
+                type: table<string, umbrella.FishLureTable>
               - name: chanceCoeff
                 type: number
           - name: clearLures
           - name: getLureChance
             parameters:
               - name: item
+                type: string
             return:
-              - type: unknown
+              - type: number
           - name: initFishSizeData
           - name: getFishSizeData
             parameters:
               - name: smallChance
+                type: number
               - name: mediumChance
+                type: number
               - name: bigChance
+                type: number
             return:
-              - type: unknown
+              - type: number
                 nullable: true
+      umbrella.FishSizeData:
+        fields:
+          size:
+            type: '"Small" | "Medium" | "Big"'
+          length:
+            type: integer
+          weight:
+            type: integer
+      umbrella.FishLureTable:
+        fields:
+          chanceModifier:
+            type: number
+          amountOfFoodHunger:
+            type: integer

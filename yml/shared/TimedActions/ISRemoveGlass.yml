@@ -7,25 +7,36 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: bodyPart
+                type: BodyPart
+              - name: hands
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISRemoveGlass"'
         fields:
-          sound: {}
-          otherPlayer: {}
+          sound:
+            type: integer
+            nullable: true
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
             type: number
-          bodyPart: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
-          doctor: {}
+          bodyPart:
+            type: BodyPart
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
+          doctor:
+            type: IsoPlayer
           handPain:
             type: boolean
           maxTime:
             type: number
-            nullable: true
         methods:
           - name: isValid
             return:
@@ -43,5 +54,4 @@ languages:
           - name: getDuration
             return:
               - type: number
-                nullable: true
           - name: stopSound

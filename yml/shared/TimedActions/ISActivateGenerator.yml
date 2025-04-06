@@ -7,8 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: generator
+                type: IsoGenerator
               - name: activate
                 type: boolean
         staticFields:
@@ -17,14 +18,15 @@ languages:
         fields:
           activate:
             type: boolean
-          generator: {}
+          generator:
+            type: IsoGenerator
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

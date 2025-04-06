@@ -7,17 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: entity
+                type: IsoObject
               - name: item
+                type: InventoryItem
               - name: resource
+                type: Resource
         staticFields:
           Type:
             defaultValue: '"ISItemSlotAddAction"'
         fields:
-          entity: {}
-          item: {}
-          resource: {}
+          entity:
+            type: IsoObject
+          item:
+            type: InventoryItem
+          resource:
+            type: Resource
           itemSlot:
+            type: ISItemSlot
             nullable: true
         methods:
           - name: isValid

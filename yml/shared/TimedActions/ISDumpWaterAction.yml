@@ -7,26 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISDumpWaterAction"'
         fields:
-          item: {}
-          startUsedDelta: {}
-          sound: {}
+          item:
+            type: InventoryItem
+          startUsedDelta:
+            type: number
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: start
           - name: updateDumpingWater
           - name: update
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: stop
           - name: perform

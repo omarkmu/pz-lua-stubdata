@@ -7,7 +7,9 @@ languages:
           - name: HandleHandler
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
               - name: newItemString
                 type: string
               - name: breakItem
@@ -15,7 +17,9 @@ languages:
           - name: HeadHandler
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
               - name: newItemString
                 type: string
               - name: stickIn
@@ -33,435 +37,653 @@ languages:
           - name: GroundHandler
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
               - name: newItemString
                 type: string
               - name: bonusCount
+                type: number
+                nullable: true
           - name: AxeStone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BallPeenHammer
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BaseballBat
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BaseballBat_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BaseballBat_Sawblade
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BaseballBat_Rakehead
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BaseballBat_RailSpike
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Clawhammer
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: ClubHammer
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: HandAxe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: HandScythe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GardenHoe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: HandleSpade
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: HuntingKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: KitchenKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LargeKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongHandle
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongHandle_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongHandle_RakeHead
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongStick
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Machete
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: MeatCleaver
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: PickAxe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SmallHandle
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Sapling
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Sledgehammer
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Spade
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SledgehammerNoShaft
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearBreadKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearButterKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearCrude
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearCrudeLong
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearFightingKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearFork
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearHandFork
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearHuntingKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearIcePick
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearLargeKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearLetterOpener
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearKitchenKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearLong
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearMachete
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearScalpel
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearScissors
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearScrapKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearScrewdriver
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearSmallKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearSpoon
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearSteakKnife
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearShort
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearStone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SpearStoneLong
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Rake
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: WoodAxe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BrokenGlass
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: HammerStone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LargeBranch
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LargeBranch_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: StoneAxeLarge
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: StoneMaul
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GuitarElectric
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GuitarElectricBass
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GuitarAcoustic
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Banjo
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GardenFork
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GardenFork_Forged
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: GardenTool
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Katana
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Katana_Broken
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Sword
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Sword_Broken
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: ShortSword
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: CrudeSword
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: CrudeSword_Broken
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: CrudeShortSword
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Sword_Scrap
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: ShortBat_RakeHead
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: JawboneBovide_Axe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: JawboneBovide_Club
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: FieldHockeyStick
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: WoodenStick
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: WoodenStick_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: MetalPipe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: TableLeg
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: TableLeg_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: CanoePadelX2
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Plank
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Plank_Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SmithingHammer
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: FlintNodule
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: BrassScrap
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Hatchet_Bone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: FireAxe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: OldAxe
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: MetalBar
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SteelRodHalf
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SteelBar
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: SteelBarHalf
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: IronRod
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: IronRodHalf
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: IronBar
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: IronBarHalf
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Nails
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: Mace
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: MaceStone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongMace
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer
           - name: LongMaceStone
             parameters:
               - name: item
+                type: InventoryItem
               - name: player
+                type: IsoPlayer

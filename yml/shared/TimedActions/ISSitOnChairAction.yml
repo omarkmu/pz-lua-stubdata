@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: unknown
         staticFields:
           Type:
             defaultValue: '"ISSitOnChairAction"'
         fields:
-          item: {}
+          item:
+            type: unknown
         methods:
           - name: isValid
             return:

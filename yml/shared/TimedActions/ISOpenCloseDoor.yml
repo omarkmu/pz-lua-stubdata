@@ -7,13 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: IsoDoor | IsoThumpable
         staticFields:
           Type:
             defaultValue: '"ISOpenCloseDoor"'
         fields:
-          item: {}
+          item:
+            type: IsoDoor | IsoThumpable
           ignoreHandsWounds:
             type: boolean
         methods:

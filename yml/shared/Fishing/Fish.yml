@@ -5,27 +5,32 @@ languages:
       Fishing:
         staticFields:
           Fish:
-            type: Fish
-      Fish:
+            type: Fishing.Fish
+      Fishing.Fish:
         local: true
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: lure
+                type: string
               - name: x
                 type: number
               - name: y
                 type: number
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
           x:
             type: number
           y:
             type: number
           isRiver:
             type: boolean
-          lure: {}
-          fishingLvl: {}
+          lure:
+            type: string
+          fishingLvl:
+            type: integer
           splashTimer:
             type: number
           timer:
@@ -40,7 +45,9 @@ languages:
             type: number
           isTrash:
             type: boolean
-          fishItem: {}
+          fishItem:
+            type: InventoryItem
+            nullable: true
         methods:
           - name: update
             parameters:
@@ -50,14 +57,12 @@ languages:
                 type: number
           - name: getFishByLure
             return:
-              - type: unknown
-                nullable: true
+              - type: Fishing.FishConfig | string
               - type: boolean
-                nullable: true
           - name: createFish
             parameters:
               - name: fishConfig
-                nullable: true
+                type: Fishing.FishConfig
             return:
-              - type: unknown
+              - type: InventoryItem
           - name: getFish

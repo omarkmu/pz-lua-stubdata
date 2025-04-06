@@ -7,17 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: maxTime
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISTakeEngineParts"'
         fields:
-          vehicle: {}
-          part: {}
-          item: {}
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
+          item:
+            type: InventoryItem
           jobType:
             type: string
         methods:
@@ -33,10 +39,11 @@ languages:
               - type: boolean
           - name: getExtraLogData
             return:
-              - type: table
+              - type: string[]
                 nullable: true
           - name: getDuration
             parameters:
               - name: maxTime
+                type: number
             return:
               - type: number

@@ -7,10 +7,14 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: wall
+                type: IsoObject
               - name: paintPot
+                type: InventoryItem
                 nullable: true
               - name: sign
+                type: integer
               - name: r
                 type: number
               - name: g
@@ -21,11 +25,15 @@ languages:
           Type:
             defaultValue: '"ISPaintSignAction"'
         fields:
-          sound: {}
+          sound:
+            type: integer
+            nullable: true
           sign:
-            type: number
-          wall: {}
+            type: integer
+          wall:
+            type: IsoObject
           paintPot:
+            type: InventoryItem
             nullable: true
           r:
             type: number

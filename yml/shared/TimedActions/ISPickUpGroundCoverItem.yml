@@ -7,9 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: object
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISPickUpGroundCoverItem"'
@@ -18,8 +20,10 @@ languages:
             type: number
           square:
             type: IsoGridSquare
-          object: {}
+          object:
+            type: IsoObject
           objectType:
+            type: string
             nullable: true
         methods:
           - name: isValid
@@ -27,14 +31,16 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: perform
           - name: complete
             return:
@@ -48,6 +54,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: trashItemWeight
+                type: number
             return:
               - type: number
       GroundCoverItems:

@@ -7,10 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: uses
-                type: number
+                type: integer
               - name: sq
                 type: IsoGridSquare
               - name: maxTime
@@ -20,13 +21,16 @@ languages:
             defaultValue: '"ISWaterPlantAction"'
         fields:
           uses:
-            type: number
+            type: integer
           usesUsed:
             type: number
-          item: {}
-          sound: {}
-          character:
+          item:
+            type: InventoryItem
+          sound:
+            type: integer
             nullable: true
+          character:
+            type: IsoPlayer
           deltaPerUse:
             type: number
           sq:
@@ -37,7 +41,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

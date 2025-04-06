@@ -7,20 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: IsoCurtain | IsoDoor
         staticFields:
           Type:
             defaultValue: '"ISRemoveSheetAction"'
         fields:
-          item: {}
+          item:
+            type: IsoCurtain | IsoDoor
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

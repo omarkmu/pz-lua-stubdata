@@ -7,7 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: _fluidObject
-                nullable: true
+                type: FluidContainer | ResourceFluid
         staticFields:
           Type:
             defaultValue: '"ISFluidContainer"'
@@ -15,8 +15,10 @@ languages:
           isFluidResource:
             type: boolean
           fluidContainer:
+            type: FluidContainer
             nullable: true
           fluidResource:
+            type: ResourceFluid
             nullable: true
           isInventoryItem:
             type: boolean
@@ -26,10 +28,10 @@ languages:
           - name: initFromObject
             parameters:
               - name: _fluidObject
+                type: FluidContainer | ResourceFluid
           - name: copy
             return:
               - type: ISFluidContainer
-                nullable: true
           - name: isItem
             return:
               - type: boolean
@@ -38,7 +40,7 @@ languages:
               - type: boolean
           - name: getFluidResource
             return:
-              - type: unknown
+              - type: ResourceFluid
                 nullable: true
           - name: isIsoPanel
             return:
@@ -49,14 +51,14 @@ languages:
               - type: boolean
           - name: getFluidContainer
             return:
-              - type: unknown
+              - type: FluidContainer
                 nullable: true
           - name: getOwner
             return:
-              - type: unknown
+              - type: GameEntity
                 nullable: true
           - name: getFluidObject
             return:
-              - type: unknown
+              - type: FluidContainer | ResourceFluid
                 nullable: true
           - name: sync

@@ -7,19 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: body
+                type: IsoDeadBody
         staticFields:
           Type:
             defaultValue: '"ISGetAnimalBones"'
         fields:
-          body: {}
+          body:
+            type: IsoDeadBody
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

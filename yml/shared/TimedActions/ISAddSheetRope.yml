@@ -7,21 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: window
+                type: IsoObject
               - name: sheetRope
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISAddSheetRope"'
         fields:
-          window: {}
-          sheetRope: {}
+          window:
+            type: IsoObject
+          sheetRope:
+            type: boolean
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

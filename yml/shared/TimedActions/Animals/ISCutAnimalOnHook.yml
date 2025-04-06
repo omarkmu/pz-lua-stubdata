@@ -8,25 +8,33 @@ languages:
           - parameters:
               - name: character
               - name: body
-                nullable: true
+                type: IsoAnimal
               - name: hook
+                type: IsoButcherHook
               - name: luaHook
                 type: ISButcherHookUI
               - name: bucket
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISCutAnimalOnHook"'
         fields:
           body:
-            nullable: true
-          hook: {}
+            type: IsoAnimal
+          hook:
+            type: IsoButcherHook
           luaHook:
             type: ISButcherHookUI
-          bucket: {}
-          animalDef:
+          bucket:
+            type: InventoryItem
             nullable: true
-          perkLevel: {}
-          xp: {}
+          animalDef:
+            type: umbrella.AnimalPartsDefinition
+          perkLevel:
+            type: integer
+          xp:
+            type: integer
         methods:
           - name: isValid
             return:

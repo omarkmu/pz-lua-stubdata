@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoLightSwitch
         staticFields:
           Type:
             defaultValue: '"ISToggleLightAction"'
         fields:
-          object: {}
+          object:
+            type: IsoLightSwitch
           useProgressBar:
             type: boolean
         methods:

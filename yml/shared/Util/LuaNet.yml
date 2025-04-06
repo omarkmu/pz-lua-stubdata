@@ -14,6 +14,7 @@ languages:
           - name: setDebug
             parameters:
               - name: _debug
+                type: boolean
           - name: getDebug
             return:
               - type: boolean
@@ -28,10 +29,53 @@ languages:
               - name: _name
                 type: string
               - name: _debug
+                type: boolean
             return:
-              - type: unknown
+              - type: umbrella.LuaNetModule
           - name: onInitAdd
             parameters:
               - name: _func
+                type: function
           - name: Init
           - name: destroy
+      umbrella.LuaNetModule:
+        staticMethods:
+          - name: addCommandHandler
+            parameters:
+              - name: _command
+                type: string
+              - name: _handler
+                type: "fun(player: IsoPlayer | false, ...: unknown)"
+          - name: listen
+            parameters:
+              - name: _package
+                type: umbrella.LuaNetPackage
+              - name: _player
+                type: IsoPlayer
+                nullable: true
+          - name: send
+            parameters:
+              - name: _command
+                type: string
+              - name: ...
+                type: unknown
+                nullable: true
+          - name: sendPlayer
+            parameters:
+              - name: _player
+                type: IsoPlayer | false
+              - name: _command
+                type: string
+              - name: ...
+                type: unknown
+                nullable: true
+      umbrella.LuaNetPackage:
+        fields:
+          command:
+            type: string
+          recipient:
+            type: string | false
+          source:
+            type: string | false
+          payload:
+            type: table

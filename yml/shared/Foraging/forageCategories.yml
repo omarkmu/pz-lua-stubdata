@@ -1,6 +1,10 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.Foraging.ValidateFunction:
+        - type: "fun(square: IsoGridSquare, itemDef: umbrella.Foraging.ItemDefinition,
+            catDef: umbrella.Foraging.CategoryDefinition): boolean"
     classes:
       forageCategories:
         staticFields:
@@ -31,3 +35,43 @@ languages:
           Ammunition: {}
           Medical: {}
           Trash: {}
+      umbrella.Foraging.CategoryDefinition:
+        fields:
+          name:
+            type: string
+          chance:
+            type: number
+          typeCategory:
+            type: string
+          identifyCategoryPerk:
+            type: string
+          identifyCategoryLevel:
+            type: number
+          categoryHidden:
+            type: boolean
+          validFloors:
+            type: string[]
+          validFunc:
+            type: umbrella.Foraging.ValidateFunction
+          rainChance:
+            type: number
+          hasRainedChance:
+            type: number
+          snowChance:
+            type: number
+          dayChance:
+            type: number
+          nightChance:
+            type: number
+          zoneChance:
+            type: table<string, integer>
+          spriteAffinities:
+            type: table<string, string[]>
+          chanceToMoveIcon:
+            type: number
+          chanceToCreateIcon:
+            type: number
+          focusChanceMin:
+            type: number
+          focusChanceMax:
+            type: number

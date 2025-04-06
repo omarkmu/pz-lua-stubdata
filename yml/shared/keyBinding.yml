@@ -1,5 +1,22 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.KeybindTable:
+        - type: umbrella.KeybindElement
+        - type: umbrella.KeybindSection
     classes:
-      keyBinding: {}
+      keyBinding:
+        fields:
+          "[integer]":
+            type: umbrella.KeybindTable
+      umbrella.KeybindElement:
+        fields:
+          key:
+            type: integer
+          value:
+            type: string
+      umbrella.KeybindSection:
+        fields:
+          value:
+            type: string

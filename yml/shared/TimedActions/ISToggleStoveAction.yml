@@ -7,12 +7,15 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoStove
         staticFields:
           Type:
             defaultValue: '"ISToggleStoveAction"'
         fields:
-          object: {}
+          object:
+            type: IsoStove
         methods:
           - name: isValid
             return:

@@ -7,20 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: window
+                type: IsoWindow
         staticFields:
           Type:
             defaultValue: '"ISRemoveBrokenGlass"'
         fields:
-          window: {}
+          window:
+            type: IsoWindow
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

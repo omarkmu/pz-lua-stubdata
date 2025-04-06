@@ -7,10 +7,14 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
                 nullable: true
               - name: bodyPart
+                type: BodyPart
               - name: doIt
                 type: boolean
         staticFields:
@@ -18,22 +22,29 @@ languages:
             defaultValue: '"ISStitch"'
         fields:
           item:
+            type: InventoryItem
             nullable: true
-          sound: {}
-          otherPlayer: {}
+          sound:
+            type: integer
+            nullable: true
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
             type: number
           doIt:
             type: boolean
-          bodyPart: {}
-          doctor: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          bodyPart:
+            type: BodyPart
+          doctor:
+            type: IsoPlayer
+          bandagedPlayerX:
+            type: number
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
               - type: boolean

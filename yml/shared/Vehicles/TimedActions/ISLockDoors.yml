@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: locked
+                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISLockDoors"'
         fields:
-          vehicle: {}
-          locked: {}
+          vehicle:
+            type: BaseVehicle
+          locked:
+            type: boolean
         methods:
           - name: isValid
             return:

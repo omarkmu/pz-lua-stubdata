@@ -7,23 +7,31 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: gridSquare
+                type: IsoGridSquare
               - name: item
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISPlowAction"'
         fields:
-          item: {}
-          sound: {}
-          gridSquare: {}
+          item:
+            type: InventoryItem
+            nullable: true
+          sound:
+            type: integer
+            nullable: true
+          gridSquare:
+            type: IsoGridSquare
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -38,6 +46,9 @@ languages:
       - name: wormCheck
         parameters:
           - name: character
+            type: IsoPlayer
           - name: item
+            type: InventoryItem
+            nullable: true
           - name: square
             type: IsoGridSquare

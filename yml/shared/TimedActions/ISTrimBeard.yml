@@ -7,14 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: beardStyle
+                type: string
               - name: item
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISTrimBeard"'
         fields:
-          item: {}
-          sound: {}
+          item:
+            type: InventoryItem
+            nullable: true
+          sound:
+            type: integer
+            nullable: true
           beardStyle:
             type: string
         methods:
@@ -30,7 +38,9 @@ languages:
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: complete
             return:
               - type: boolean

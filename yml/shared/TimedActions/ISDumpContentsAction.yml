@@ -7,18 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISDumpContentsAction"'
         fields:
-          item: {}
-          sound: {}
+          item:
+            type: InventoryItem
+            nullable: true
+          sound:
+            type: integer
+            nullable: true
         methods:
           - name: isValid
             return:
-              - type: unknown
-                nullable: true
+              - type: boolean
           - name: start
           - name: update
           - name: stop
@@ -27,6 +32,7 @@ languages:
           - name: finalItem
             parameters:
               - name: itemType
+                type: string
             return:
               - type: unknown
                 nullable: true

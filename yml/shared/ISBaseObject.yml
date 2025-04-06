@@ -9,7 +9,7 @@ languages:
           Type:
             type: string
           __eventListeners:
-            type: table
+            type: table<string, table<function, unknown>>
             nullable: true
         methods:
           - name: initialise
@@ -22,15 +22,21 @@ languages:
           - name: addEventListener
             parameters:
               - name: _event
+                type: string
               - name: _callback
+                type: function
               - name: _target
                 type: unknown
           - name: removeEventListener
             parameters:
               - name: _event
+                type: string
               - name: _callback
+                type: function
           - name: triggerEvent
             parameters:
               - name: _event
+                type: string
               - name: ...
+                type: unknown
           - name: clearEventListeners

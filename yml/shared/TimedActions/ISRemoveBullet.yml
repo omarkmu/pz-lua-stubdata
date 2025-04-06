@@ -7,20 +7,30 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: otherPlayer
+                type: IsoPlayer
               - name: bodyPart
+                type: BodyPart
         staticFields:
           Type:
             defaultValue: '"ISRemoveBullet"'
         fields:
-          sound: {}
-          doctor: {}
-          otherPlayer: {}
+          sound:
+            type: integer
+            nullable: true
+          doctor:
+            type: IsoPlayer
+          otherPlayer:
+            type: IsoPlayer
           doctorLevel:
+            type: integer
+          bodyPart:
+            type: BodyPart
+          bandagedPlayerX:
             type: number
-          bodyPart: {}
-          bandagedPlayerX: {}
-          bandagedPlayerY: {}
+          bandagedPlayerY:
+            type: number
         methods:
           - name: isValid
             return:

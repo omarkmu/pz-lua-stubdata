@@ -4,33 +4,53 @@ languages:
     classes:
       DamageModelDefinitions:
         staticFields:
-          list: {}
+          list:
+            type: umbrella.DamageModelDefinition[]
         staticMethods:
           - name: addDefinition
             parameters:
               - name: texture
                 type: string
               - name: bodyPart
+                type: BodyPartType
               - name: damageCategories
-                type: table
+                type: string[]
               - name: criticalHit
                 type: boolean
                 nullable: true
           - name: OnHitZombie
             parameters:
               - name: zombie
+                type: IsoZombie
               - name: wielder
+                type: IsoGameCharacter
               - name: bodyPart
+                type: BodyPartType
               - name: weapon
+                type: HandWeapon
           - name: checkCategory
             parameters:
               - name: weapon
+                type: HandWeapon
               - name: damageCategories
+                type: string[]
             return:
               - type: boolean
           - name: checkCrit
             parameters:
               - name: wielder
+                type: IsoGameCharacter
               - name: damage
+                type: umbrella.DamageModelDefinition
             return:
               - type: boolean
+      umbrella.DamageModelDefinition:
+        fields:
+          texture:
+            type: string
+          bodyPart:
+            type: BodyPartType
+          damageCategories:
+            type: string[]
+          criticalHit:
+            type: boolean

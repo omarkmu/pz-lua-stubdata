@@ -7,17 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: campfire
+                type: SCampfireGlobalObject
               - name: maxTime
-                type: number
+                type: integer
         staticFields:
           Type:
             defaultValue: '"ISRemoveCampfireAction"'
         fields:
           character:
-            nullable: true
-          campfire: {}
+            type: IsoPlayer
+          campfire:
+            type: SCampfireGlobalObject
         methods:
           - name: isValid
             return:

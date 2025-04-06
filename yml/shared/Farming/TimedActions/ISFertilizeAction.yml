@@ -7,27 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
-                nullable: true
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
               - name: plant
+                type: CPlantGlobalObject
               - name: maxTime
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISFertilizeAction"'
         fields:
-          sound: {}
-          character:
+          sound:
+            type: integer
             nullable: true
-          item: {}
-          plant: {}
+          character:
+            type: IsoPlayer
+          item:
+            type: InventoryItem
+          plant:
+            type: CPlantGlobalObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

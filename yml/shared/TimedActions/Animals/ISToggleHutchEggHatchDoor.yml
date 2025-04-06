@@ -7,13 +7,18 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: hutch
+                type: IsoHutch
         staticFields:
           Type:
             defaultValue: '"ISToggleHutchEggHatchDoor"'
         fields:
-          sound: {}
-          hutch: {}
+          sound:
+            type: integer
+            nullable: true
+          hutch:
+            type: IsoHutch
         methods:
           - name: isValid
             return:

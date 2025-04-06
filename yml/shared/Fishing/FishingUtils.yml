@@ -4,4 +4,143 @@ languages:
     classes:
       Fishing:
         staticFields:
-          Utils: {}
+          Utils:
+            type: Fishing.Utils
+      Fishing.Utils:
+        local: true
+        staticFields:
+          stopFishingKeysKeyboard: {}
+          tempVec2:
+            defaultValue: Vector2.new()
+          fishSizeChancesBySkillLevel: {}
+        staticMethods:
+          - name: isWaterCoords
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: getAimCoords
+            parameters:
+              - name: player
+            return:
+              - type: number
+                nullable: true
+              - type: number
+                nullable: true
+          - name: isStopFishingButtonPressed
+            parameters:
+              - name: joypad
+                type: integer
+            return:
+              - type: boolean
+          - name: isPlayerAimOnWater
+            parameters:
+              - name: player
+                type: IsoPlayer
+              - name: autoAim
+                type: boolean
+                nullable: true
+            return:
+              - type: boolean
+          - name: facePlayerToAim
+            parameters:
+              - name: player
+                type: IsoPlayer
+          - name: FacePlayerToBobber
+            parameters:
+              - name: player
+                type: IsoPlayer
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: isCastButtonPressed
+            parameters:
+              - name: joypad
+                type: integer
+            return:
+              - type: boolean
+                nullable: true
+          - name: isNearShore
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: boolean
+          - name: getFishSizeChancesBySkillLevel
+            parameters:
+              - name: lvl
+                type: integer
+              - name: isNearShore
+                type: boolean
+              - name: fishNum
+                type: number
+                nullable: true
+            return:
+              - type: number
+              - type: number
+              - type: number
+          - name: getTemperatureParams
+            parameters:
+              - name: player
+                type: IsoPlayer
+            return:
+              - type: umbrella.Fishing.TemperatureParams
+          - name: getWeatherParams
+            return:
+              - type: umbrella.Fishing.WeatherParams
+          - name: getTimeParams
+            return:
+              - type: umbrella.Fishing.TimeParams
+          - name: getHookParams
+            parameters:
+              - name: hookType
+            return:
+              - type: umbrella.Fishing.HookParams
+          - name: getFishNumParams
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+            return:
+              - type: umbrella.Fishing.FishNumParams
+      umbrella.Fishing.TemperatureParams:
+        fields:
+          temperature:
+            type: number
+          coeff:
+            type: number
+      umbrella.Fishing.WeatherParams:
+        fields:
+          isFog:
+            type: boolean
+          isWind:
+            type: boolean
+          isRain:
+            type: boolean
+          coeff:
+            type: number
+      umbrella.Fishing.TimeParams:
+        fields:
+          time:
+            type: integer
+          coeff:
+            type: number
+      umbrella.Fishing.HookParams:
+        fields:
+          hook:
+            type: string
+          coeff:
+            type: number
+      umbrella.Fishing.FishNumParams:
+        fields:
+          value:
+            type: integer
+          coeff:
+            type: number

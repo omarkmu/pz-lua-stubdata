@@ -1,6 +1,9 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ClothingSelectionDefinition:
+        - type: table<string, umbrella.ClothingSelectionDefinitionTable>
     classes:
       ClothingSelectionDefinitions:
         staticFields:
@@ -26,3 +29,9 @@ languages:
           metalworker: {}
           engineer: {}
           mechanics: {}
+      umbrella.ClothingSelectionDefinitionTable:
+        fields:
+          chance:
+            type: integer
+          items:
+            type: string[]

@@ -7,32 +7,38 @@ languages:
           - name: getScrapableObjects
             parameters:
               - name: _char
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: umbrella.ISMoveableTools.ObjectListItem[]
           - name: getObjectList
             parameters:
               - name: _square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: umbrella.ISMoveableTools.ObjectListItem[]
           - name: canPlayerPickUpMoveable
             parameters:
               - name: _char
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
               - name: _moveProps
+                type: ISMoveableSpriteProps
             return:
-              - type: unknown
+              - type: ISMoveableSpriteProps
                 nullable: true
           - name: canPlayerPickUpObject
             parameters:
               - name: _char
+                type: IsoPlayer
               - name: _square
                 type: IsoGridSquare
               - name: _object
+                type: IsoObject
             return:
               - type: ISMoveableSpriteProps
                 nullable: true
@@ -41,6 +47,7 @@ languages:
           - name: isObjectMoveable
             parameters:
               - name: _object
+                type: IsoObject
             return:
               - type: ISMoveableSpriteProps
                 nullable: true
@@ -51,4 +58,15 @@ languages:
               - name: _square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: umbrella.ISMoveableTools.MoveableListItem[]
+      umbrella.ISMoveableTools.MoveableListItem:
+        extends: umbrella.ISMoveableTools.ObjectListItem
+        fields:
+          isOverlay:
+            type: boolean
+      umbrella.ISMoveableTools.ObjectListItem:
+        fields:
+          object:
+            type: IsoObject
+          moveProps:
+            type: ISMoveableSpriteProps

@@ -17,32 +17,32 @@ languages:
         local: true
         fields:
           floorReplaceSprites:
-            type: table
+            type: string[]
           toolDefinitions:
-            type: table
+            type: table<string, umbrella.ISMoveableDefinitions.ToolDefinition>
           matsDefinitions:
-            type: table
+            type: table<string, umbrella.ISMoveableDefinitions.MaterialDefinition>
           scrapDefinitions:
-            type: table
+            type: table<string, umbrella.ISMoveableDefinitions.ScrapDefinition>
           healthDefinitions:
-            type: table
+            type: table<string, number>
           repairDefinitions:
-            type: table
+            type: table<string, umbrella.ISMoveableDefinitions.RepairDefinition>
         staticMethods:
           - name: parseItemTypes
             parameters:
               - name: _types
-                type: table
+                type: string[]
             return:
-              - type: table
+              - type: string[]
           - name: addToolDefinition
             parameters:
               - name: _name
                 type: string
               - name: _items
-                type: table
+                type: string[]
               - name: _perk
-                nullable: true
+                type: PerkFactory.Perk
               - name: _baseActionTime
                 type: number
               - name: _sound
@@ -52,10 +52,9 @@ languages:
           - name: getToolDefinition
             parameters:
               - name: _name
-                type: string | boolean
-                nullable: true
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.ToolDefinition
                 nullable: true
           - name: removeToolDefinition
             parameters:
@@ -74,12 +73,14 @@ languages:
           - name: getMaterialDefinition
             parameters:
               - name: _material
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.MaterialDefinition
                 nullable: true
           - name: removeMaterialDefinition
             parameters:
               - name: _material
+                type: string
           - name: addFloorReplaceSprite
             parameters:
               - name: _spriteName
@@ -99,20 +100,23 @@ languages:
           - name: getHealthDefinition
             parameters:
               - name: _material
+                type: string
             return:
               - type: number
           - name: removeHealthDefinition
             parameters:
               - name: _material
+                type: string
           - name: addScrapDefinition
             parameters:
               - name: _material
                 type: string
               - name: _tools
-                type: table
+                type: string[]
               - name: _tools2
-                type: table
+                type: string[]
               - name: _perk
+                type: PerkFactory.Perk
               - name: _baseActionTime
                 type: number
               - name: _sound
@@ -128,12 +132,14 @@ languages:
           - name: getScrapDefinition
             parameters:
               - name: _material
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.ScrapDefinition
                 nullable: true
           - name: removeScrapDefinition
             parameters:
               - name: _material
+                type: string
           - name: isScrapDefinitionValid
             parameters:
               - name: _material
@@ -156,18 +162,20 @@ languages:
           - name: getScrapItems
             parameters:
               - name: _material
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.ScrapReturnItem[]
                 nullable: true
           - name: addRepairDefinition
             parameters:
               - name: _material
                 type: string
               - name: _tools
-                type: table
+                type: string[]
               - name: _tools2
-                type: table
+                type: string[]
               - name: _perk
+                type: PerkFactory.Perk
               - name: _baseActionTime
                 type: number
               - name: _sound
@@ -193,18 +201,18 @@ languages:
           - name: getRepairDefinition
             parameters:
               - name: _material
-                type: boolean
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.ISMoveableDefinitions.RepairDefinition
                 nullable: true
           - name: removeRepairDefinition
             parameters:
               - name: _material
+                type: string
           - name: isRepairDefinitionValid
             parameters:
               - name: _material
-                type: boolean
-                nullable: true
+                type: string
             return:
               - type: boolean
           - name: reset
@@ -214,3 +222,91 @@ languages:
           - name: resetHealth
           - name: resetRepair
           - name: resetFloorReplaceSprites
+      umbrella.ISMoveableDefinitions.BaseDefinition:
+        fields:
+          name:
+            type: string
+          tools:
+            type: string[]
+          tools2:
+            type: string[]
+          perk:
+            type: PerkFactory.Perk
+          perkName:
+            type: string
+          baseActionTime:
+            type: number
+          sound:
+            type: string
+          isWav:
+            type: boolean
+          baseChance:
+            type: number
+            nullable: true
+      umbrella.ISMoveableDefinitions.MaterialDefinition:
+        fields:
+          returnItem:
+            type: string
+          maxAmount:
+            type: number
+          chancePerRoll:
+            type: number
+      umbrella.ISMoveableDefinitions.RepairDefinition:
+        extends: umbrella.ISMoveableDefinitions.BaseDefinition
+        fields:
+          parts:
+            type: umbrella.ISMoveableDefinitions.RepairPart[]
+          toolNames:
+            type: table<string, string>
+            nullable: true
+      umbrella.ISMoveableDefinitions.RepairPart:
+        fields:
+          displayName:
+            type: string
+          itemType:
+            type: string
+          amount:
+            type: number
+          required:
+            type: boolean
+          damageAmount:
+            type: number
+            nullable: true
+      umbrella.ISMoveableDefinitions.ScrapDefinition:
+        extends: umbrella.ISMoveableDefinitions.BaseDefinition
+        fields:
+          unusableItem:
+            type: string
+            nullable: true
+          returnItems:
+            type: umbrella.ISMoveableDefinitions.ScrapReturnItem
+          returnItemsStatic:
+            type: umbrella.ISMoveableDefinitions.ScrapReturnItem
+          toolNames:
+            type: table<string, string>
+            nullable: true
+      umbrella.ISMoveableDefinitions.ScrapReturnItem:
+        fields:
+          returnItem:
+            type: string
+          maxAmount:
+            type: number
+          chancePerRoll:
+            type: number
+      umbrella.ISMoveableDefinitions.ToolDefinition:
+        fields:
+          items:
+            type: string[]
+          perk:
+            type: PerkFactory.Perk
+          perkName:
+            type: string
+          baseActionTime:
+            type: number
+          sound:
+            type: string
+          isWav:
+            type: boolean
+          itemNames:
+            type: table<string, string>
+            nullable: true

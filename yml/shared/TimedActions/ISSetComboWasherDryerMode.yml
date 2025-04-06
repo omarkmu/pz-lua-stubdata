@@ -7,14 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: object
+                type: IsoCombinationWasherDryer
               - name: mode
+                type: '"dryer" | "washer"'
         staticFields:
           Type:
             defaultValue: '"ISSetComboWasherDryerMode"'
         fields:
-          object: {}
-          mode: {}
+          object:
+            type: IsoCombinationWasherDryer
+          mode:
+            type: '"dryer" | "washer"'
         methods:
           - name: isValid
             return:

@@ -7,20 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: objectTo
+                type: IsoObject
         staticFields:
           Type:
             defaultValue: '"ISEmptyWaterInTrough"'
         fields:
-          sound: {}
-          objectTo: {}
+          sound:
+            type: integer
+            nullable: true
+          objectTo:
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

@@ -7,9 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: squares
+                type: IsoGridSquare[]
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: usesPerSquare
                 type: number
         staticFields:
@@ -17,15 +19,15 @@ languages:
             defaultValue: '"ISPutOutFire"'
         fields:
           item:
-            nullable: true
-          squares: {}
+            type: InventoryItem
+          squares:
+            type: IsoGridSquare[]
           usesPerSquare:
             type: number
         methods:
           - name: isValid
             return:
               - type: boolean
-                nullable: true
           - name: update
           - name: start
           - name: stop

@@ -7,9 +7,14 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: InventoryItem
               - name: objectTo
+                type: IsoObject
               - name: itemFrom
+                type: InventoryItem
               - name: all
+                type: boolean
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISAddWaterToTrough"'
@@ -18,26 +23,34 @@ languages:
             type: number
           lastTimer:
             type: number
-          itemFrom: {}
-          sound: {}
-          objectTo: {}
+          itemFrom:
+            type: InventoryItem
+          sound:
+            type: integer
+            nullable: true
+          objectTo:
+            type: IsoObject
           timePerUse:
             type: number
-          all: {}
+          all:
+            type: boolean
+            nullable: true
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: updateAddingWater
           - name: relaunch
           - name: update
           - name: animEvent
             parameters:
               - name: event
+                type: string
               - name: parameter
+                type: string
           - name: serverStart
           - name: start
           - name: stop

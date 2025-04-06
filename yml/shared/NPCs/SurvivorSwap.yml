@@ -13,12 +13,78 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: data
+                type: umbrella.SurvivorSwap.CharacterData
           - name: applyLoadout
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: data
+                type: umbrella.SurvivorSwap.LoadoutData
           - name: applyVehicle
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: data
+                type: umbrella.SurvivorSwap.VehicleData
+      umbrella.SurvivorSwap.CharacterData:
+        fields:
+          forename:
+            type: string
+            nullable: true
+          surname:
+            type: string
+            nullable: true
+          profession:
+            type: string
+            nullable: true
+          traits:
+            type: TraitFactory.Trait[]
+            nullable: true
+          perks:
+            type: table<PerkFactory.Perk, integer>
+            nullable: true
+          weight:
+            type: integer
+            nullable: true
+          hairColor:
+            type: "[number, number, number, number]"
+            nullable: true
+          female:
+            type: boolean
+            nullable: true
+          voiceType:
+            type: integer
+            nullable: true
+          voicePitch:
+            type: integer
+            nullable: true
+          skinTexture:
+            type: integer
+            nullable: true
+          beardModel:
+            type: string
+            nullable: true
+          hairModel:
+            type: string
+            nullable: true
+      umbrella.SurvivorSwap.LoadoutData:
+        fields:
+          worn:
+            type: string[]
+            nullable: true
+          inventory:
+            type: string[]
+            nullable: true
+          setup:
+            type: "fun(player: IsoPlayer, inventory: ItemContainer)"
+            nullable: true
+      umbrella.SurvivorSwap.VehicleData:
+        fields:
+          script:
+            type: string
+          color:
+            type: "[number, number, number]"
+          parts:
+            type: table<string, string>
+          containers:
+            type: "table<string, fun(container: ItemContainer)>"

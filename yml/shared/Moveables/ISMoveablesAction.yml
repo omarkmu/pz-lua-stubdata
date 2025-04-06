@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: square
                 type: IsoGridSquare
               - name: mode
@@ -15,9 +16,12 @@ languages:
                 type: string
                 nullable: true
               - name: object
+                type: IsoObject
                 nullable: true
               - name: direction
+                type: '"N" | "E" | "S" | "W"'
               - name: item
+                type: InventoryItem
                 nullable: true
               - name: moveCursor
                 type: ISMoveableCursor
@@ -27,6 +31,7 @@ languages:
             defaultValue: '"ISMoveablesAction"'
         fields:
           sound:
+            type: integer
             nullable: true
           playerNum:
             type: integer
@@ -40,9 +45,12 @@ languages:
           mode:
             type: string
           object:
+            type: IsoObject
             nullable: true
-          direction: {}
+          direction:
+            type: '"N" | "E" | "S" | "W"'
           item:
+            type: InventoryItem
             nullable: true
           moveProps:
             type: ISMoveableSpriteProps
@@ -64,7 +72,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: setActionSound
           - name: start

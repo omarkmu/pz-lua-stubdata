@@ -7,26 +7,33 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: animal
+                type: IsoAnimal
               - name: tree
+                type: IsoObject
               - name: remove
                 type: boolean
         staticFields:
           Type:
             defaultValue: '"ISAttachAnimalToTree"'
         fields:
-          sound: {}
-          animal: {}
+          sound:
+            type: integer
+            nullable: true
+          animal:
+            type: IsoAnimal
           remove:
             type: boolean
-          tree: {}
+          tree:
+            type: IsoObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

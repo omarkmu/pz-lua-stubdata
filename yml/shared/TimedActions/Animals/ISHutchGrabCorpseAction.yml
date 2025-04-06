@@ -7,16 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: index
+                type: integer
               - name: hutch
+                type: IsoHutch
         staticFields:
           Type:
             defaultValue: '"ISHutchGrabCorpseAction"'
         fields:
-          corpse: {}
-          animal: {}
-          index: {}
-          hutch: {}
+          corpse:
+            type: InventoryItem
+          animal:
+            type: IsoAnimal
+          index:
+            type: integer
+          hutch:
+            type: IsoHutch
           forceProgressBar:
             type: boolean
           ignoreHandsWounds:

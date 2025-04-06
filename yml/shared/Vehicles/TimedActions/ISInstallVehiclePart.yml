@@ -7,17 +7,23 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: maxTime
                 type: number
         staticFields:
           Type:
             defaultValue: '"ISInstallVehiclePart"'
         fields:
-          item: {}
-          vehicle: {}
-          part: {}
+          item:
+            type: InventoryItem
+          vehicle:
+            type: BaseVehicle
+          part:
+            type: VehiclePart
           jobType:
             type: string
         methods:

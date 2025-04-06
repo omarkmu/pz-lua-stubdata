@@ -1,6 +1,11 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.Foraging.SpawnFunction:
+        - type: "fun(character: IsoPlayer, inventory: ItemContainer, itemDef:
+            umbrella.Foraging.ItemDefinition, itemList:
+            ArrayList<InventoryItem>)"
     classes:
       forageDefaultDefs:
         staticFields:

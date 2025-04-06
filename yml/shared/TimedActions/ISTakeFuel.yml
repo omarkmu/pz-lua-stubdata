@@ -7,21 +7,28 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: fuelStation
+                type: IsoObject
               - name: petrolCan
-                nullable: true
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISTakeFuel"'
         fields:
-          sound: {}
-          fuelStation: {}
+          sound:
+            type: integer
+            nullable: true
+          fuelStation:
+            type: IsoObject
           square:
             type: IsoGridSquare
           petrolCan:
-            nullable: true
-          amount: {}
-          itemStart: {}
+            type: InventoryItem
+          amount:
+            type: number
+          itemStart:
+            type: number
           itemTarget:
             type: number
         methods:
@@ -30,7 +37,7 @@ languages:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

@@ -7,11 +7,13 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
-                nullable: true
+                type: InventoryItem
               - name: uses
-                type: number
+                type: integer
               - name: plant
+                type: CPlantGlobalObject
               - name: maxTime
                 type: number
               - name: cure
@@ -20,21 +22,24 @@ languages:
           Type:
             defaultValue: '"ISCurePlantAction"'
         fields:
-          sound: {}
-          item:
+          sound:
+            type: integer
             nullable: true
+          item:
+            type: InventoryItem
           uses:
-            type: number
+            type: integer
           cure:
             type: string
-          plant: {}
+          plant:
+            type: CPlantGlobalObject
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

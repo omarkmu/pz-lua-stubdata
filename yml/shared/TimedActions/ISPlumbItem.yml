@@ -7,19 +7,25 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: itemToPipe
+                type: IsoObject
               - name: wrench
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISPlumbItem"'
         fields:
-          sound: {}
-          itemToPipe: {}
-          wrench: {}
+          sound:
+            type: integer
+          itemToPipe:
+            type: IsoObject
+          wrench:
+            type: InventoryItem
         methods:
           - name: isValid
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop

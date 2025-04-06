@@ -7,19 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: item
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISEquipHeavyItem"'
         fields:
-          item: {}
+          item:
+            type: InventoryItem
         methods:
           - name: isValid
             return:
               - type: boolean
           - name: waitToStart
             return:
-              - type: unknown
+              - type: boolean
           - name: update
           - name: start
           - name: stop
@@ -27,6 +30,7 @@ languages:
           - name: isAlreadyTransferred
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: complete
