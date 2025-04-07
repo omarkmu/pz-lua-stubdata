@@ -76,6 +76,10 @@ languages:
             defaultValue: "50"
           effectReductionMax:
             defaultValue: "75"
+          affinityCooldownMin:
+            defaultValue: "5"
+          affinityCooldownMax:
+            defaultValue: "15"
           lightPenaltyCutoff:
             defaultValue: "50"
           clothingPenalties: {}

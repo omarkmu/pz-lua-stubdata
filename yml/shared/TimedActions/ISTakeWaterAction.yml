@@ -32,6 +32,8 @@ languages:
             type: number
           startUsedAmount:
             type: number
+          startThirst:
+            type: number
           endUsedAmount:
             type: number
             nullable: true
@@ -46,6 +48,10 @@ languages:
             return:
               - type: boolean
           - name: update
+          - name: updateUse
+            parameters:
+              - name: targetDelta
+                type: number
           - name: start
           - name: stopSound
           - name: stop

@@ -59,3 +59,4 @@ languages:
           - name: prerender
           - name: render
           - name: update
+          - name: OnCloseWindow

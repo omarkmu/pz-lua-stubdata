@@ -53,6 +53,10 @@ languages:
           - name: isSeedValid
             return:
               - type: boolean
+          - name: isShovelValid
+            return:
+              - type: boolean
+          - name: onShovelSquareSelected
           - name: isFertilizeValid
             return:
               - type: boolean
@@ -173,6 +177,11 @@ languages:
                 type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
+          - name: isMildewCureValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: onMildewCureSquareSelected
           - name: onMildewCure
             parameters:
               - name: worldobjects
@@ -183,6 +192,11 @@ languages:
                 type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
+          - name: isFliesCureValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: onFliesCureSquareSelected
           - name: onFliesCure
             parameters:
               - name: worldobjects
@@ -193,6 +207,11 @@ languages:
                 type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
+          - name: isSlugsCureValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: onSlugsCureSquareSelected
           - name: onSlugsCure
             parameters:
               - name: worldobjects
@@ -203,6 +222,11 @@ languages:
                 type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
+          - name: isAphidCureValid
+            return:
+              - type: boolean
+                nullable: true
+          - name: onAphidsCureSquareSelected
           - name: onAphidsCure
             parameters:
               - name: worldobjects
@@ -213,6 +237,8 @@ languages:
                 type: IsoGridSquare
               - name: playerObj
                 type: IsoPlayer
+              - name: context
+                type: ISContextMenu
           - name: onInfo
             parameters:
               - name: worldobjects
@@ -237,6 +263,8 @@ languages:
                 type: CPlantGlobalObject
               - name: sq
                 type: IsoGridSquare
+              - name: context
+                type: ISContextMenu
           - name: getPlantName
             parameters:
               - name: plant
@@ -259,7 +287,7 @@ languages:
             parameters:
               - name: worldobjects
                 type: IsoObject[]
-              - name: player
+              - name: playerObj
                 type: IsoPlayer
               - name: handItem
                 type: InventoryItem
@@ -269,7 +297,7 @@ languages:
                 type: IsoObject[]
               - name: plant
                 type: CPlantGlobalObject
-              - name: player
+              - name: playerObj
                 type: IsoPlayer
               - name: sq
                 type: IsoGridSquare
@@ -309,12 +337,6 @@ languages:
                 type: IsoObject[]
               - name: plant
                 type: SPlantGlobalObject
-          - name: onJoypadFarming
-            parameters:
-              - name: square
-                type: IsoGridSquare
-              - name: player
-                type: IsoPlayer
           - name: onCheat
             parameters:
               - name: worldobjects

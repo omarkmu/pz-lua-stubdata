@@ -26,7 +26,7 @@ languages:
                 type: string
             return:
               - type: string
-          - name: split
+          - name: splitJavaStyle
             parameters:
               - name: pString
                 type: string
@@ -254,6 +254,14 @@ languages:
                 type: IsoPlayer
             return:
               - type: 0 | 1 | 2 | 3
+          - name: split
+            parameters:
+              - name: inputstr
+                type: string
+              - name: sep
+                type: string
+            return:
+              - type: string[]
           - name: getConditionRGB
             parameters:
               - name: condition
@@ -306,3 +314,14 @@ languages:
                 nullable: true
             return:
               - type: number
+          - name: exportGlobals
+            parameters:
+              - name: _print
+                type: boolean
+                nullable: true
+              - name: _save
+                type: boolean
+                nullable: true
+              - name: _test
+                type: boolean
+                nullable: true

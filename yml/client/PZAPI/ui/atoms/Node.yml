@@ -136,6 +136,10 @@ languages:
             parameters:
               - name: value
                 type: boolean
+          - name: centerOnScreen
+            parameters:
+              - name: playerNum
+                type: integer
           - name: instantiate
             tags:
               - StubGen_Extra

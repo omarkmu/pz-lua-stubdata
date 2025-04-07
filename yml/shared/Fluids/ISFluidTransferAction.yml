@@ -27,8 +27,6 @@ languages:
           sound:
             type: integer
             nullable: true
-          amount:
-            type: number
           sourceFluidObject:
             type: FluidContainer | ResourceFluid
             nullable: true
@@ -47,6 +45,10 @@ languages:
           targetOwner:
             type: GameEntity
             nullable: true
+          sourceStartAmount:
+            type: number
+          amount:
+            type: number
         methods:
           - name: isValid
             return:

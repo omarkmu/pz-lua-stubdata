@@ -35,6 +35,9 @@ languages:
             type: boolean
           skipBuildAction:
             type: boolean
+          joypadFarming:
+            type: JoypadData
+            nullable: true
         methods:
           - name: create
             parameters:
@@ -61,6 +64,17 @@ languages:
           - name: deactivate
           - name: hideTooltip
           - name: renderTooltip
+          - name: getAPrompt
+            return:
+              - type: string
+          - name: getLBPrompt
+            return:
+              - type: string
+                nullable: true
+          - name: getRBPrompt
+            return:
+              - type: string
+                nullable: true
         staticMethods:
           - name: IsVisible
             return:

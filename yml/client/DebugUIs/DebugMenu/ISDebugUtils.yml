@@ -102,6 +102,27 @@ languages:
             return:
               - type: number
               - type: ISTextEntryBox
+          - name: addLabelNoReturnOffset
+            parameters:
+              - name: _self
+                type: ISUIElement
+              - name: _data
+                type: string
+                nullable: true
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _title
+                type: string
+              - name: _font
+                type: UIFont
+                nullable: true
+              - name: _bLeft
+                type: boolean
+                nullable: true
+            return:
+              - type: ISLabel
           - name: addLabel
             parameters:
               - name: _self
@@ -149,6 +170,26 @@ languages:
             return:
               - type: number
               - type: ISTickBox
+          - name: addSliderNoReturnOffset
+            parameters:
+              - name: _self
+                type: ISUIElement
+              - name: _data
+                type: string
+                nullable: true
+              - name: _x
+                type: number
+              - name: _y
+                type: number
+              - name: _w
+                type: number
+              - name: _h
+                type: number
+              - name: _func
+                type: "fun(target: unknown, value: number, slider: ISSliderPanel)"
+                nullable: true
+            return:
+              - type: ISSliderPanel
           - name: addSlider
             parameters:
               - name: _self

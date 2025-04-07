@@ -413,6 +413,3 @@ languages:
             type: ISButton
           - name: player
             type: integer
-          - name: bed
-            type: unknown
-            nullable: true

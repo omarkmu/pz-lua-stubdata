@@ -156,11 +156,11 @@ languages:
             parameters:
               - name: bad
                 type: boolean
-          - name: mutualyExclusive
+          - name: doTestForMutuallyExclusiveTraits
             parameters:
               - name: trait
                 type: TraitFactory.Trait
-              - name: bAdd
+              - name: isRemovingTrait
                 type: boolean
           - name: isTraitExcluded
             parameters:
@@ -357,3 +357,29 @@ languages:
             parameters:
               - name: text
                 type: unknown
+      CharacterCreationMain:
+        staticMethods:
+          - name: sortByCost
+            parameters:
+              - name: a
+                type: umbrella.ISScrollingListBox.Item
+              - name: b
+                type: umbrella.ISScrollingListBox.Item
+            return:
+              - type: boolean
+          - name: sortByInvertCost
+            parameters:
+              - name: a
+                type: umbrella.ISScrollingListBox.Item
+              - name: b
+                type: umbrella.ISScrollingListBox.Item
+            return:
+              - type: boolean
+          - name: sort
+            parameters:
+              - name: list
+                type: umbrella.ISScrollingListBox.Item[]
+          - name: invertSort
+            parameters:
+              - name: list
+                type: umbrella.ISScrollingListBox.Item[]

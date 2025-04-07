@@ -43,9 +43,6 @@ languages:
             type: boolean
           renderFloorHelper:
             type: boolean
-          action:
-            type: unknown
-            nullable: true
           paperType:
             type: string
         methods:

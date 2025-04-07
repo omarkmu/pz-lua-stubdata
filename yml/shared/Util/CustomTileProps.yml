@@ -13,11 +13,9 @@ languages:
           crafted_04_60: {}
           crafted_01_67: {}
           crafted_05_72: {}
-          crafted_04_34: {}
           crafted_01_73: {}
-          crafted_01_123: {}
           vegetation_drying_01_8: {}
-          vegetation_drying_01_9wddddwaw: {}
+          vegetation_drying_01_9: {}
           crafted_05_75: {}
           crafted_05_111: {}
           crafted_05_85: {}
@@ -25,6 +23,22 @@ languages:
           crafted_05_73: {}
           crafted_02_40: {}
           camping_01_6: {}
+          crafted_01_68: {}
+          crafted_01_69: {}
+          crafted_01_70: {}
+          crafted_01_71: {}
+          crafted_01_120: {}
+          crafted_01_121: {}
+          crafted_01_122: {}
+          crafted_01_123: {}
+          crafted_04_32: {}
+          crafted_04_33: {}
+          crafted_04_34: {}
+          crafted_04_35: {}
+          fixtures_bathroom_01_52: {}
+          fixtures_bathroom_01_53: {}
+          fixtures_bathroom_01_54: {}
+          fixtures_bathroom_01_55: {}
       CustomTileProps_RemovePair:
         staticFields:
           crafted_04_114: {}
@@ -39,3 +53,13 @@ languages:
           crafted_04_125: {}
           crafted_04_126: {}
           crafted_04_127: {}
+      CustomTileProps_SetFlag:
+        staticFields:
+          crafted_01_120: {}
+          crafted_01_121: {}
+          crafted_01_122: {}
+          crafted_01_123: {}
+          fixtures_bathroom_01_52: {}
+          fixtures_bathroom_01_53: {}
+          fixtures_bathroom_01_54: {}
+          fixtures_bathroom_01_55: {}

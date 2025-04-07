@@ -64,6 +64,8 @@ languages:
             type: boolean
           getJoypadFocus:
             type: boolean
+          joypadPromptHgt:
+            type: number
           setMapData:
             type: boolean
           updateMS:
@@ -169,8 +171,18 @@ languages:
           - name: prerender
           - name: render
           - name: renderJoypadIcons
+          - name: renderButtonTextureAndText
+            parameters:
+              - name: texture
+                type: Texture
+              - name: text
+                type: string
+              - name: x
+                type: number
+              - name: y
+                type: number
             return:
-              - type: boolean
+              - type: number
           - name: update
           - name: initMapData
           - name: updateJoypad
@@ -203,6 +215,7 @@ languages:
           __index:
             defaultValue: ISMapWrapper
         methods:
+          - name: instantiate
           - name: isKeyConsumed
             parameters:
               - name: key

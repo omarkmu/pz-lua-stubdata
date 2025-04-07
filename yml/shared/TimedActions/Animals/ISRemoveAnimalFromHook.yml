@@ -18,6 +18,8 @@ languages:
           Type:
             defaultValue: '"ISRemoveAnimalFromHook"'
         fields:
+          sound:
+            type: integer
           body:
             type: IsoAnimal
             nullable: true
@@ -48,3 +50,4 @@ languages:
           - name: getDuration
             return:
               - type: number
+          - name: stopSound

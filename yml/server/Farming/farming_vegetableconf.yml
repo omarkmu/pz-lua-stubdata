@@ -176,3 +176,9 @@ languages:
             nullable: true
           - name: updateNbOfGrow
             type: boolean
+      - name: doesSeasonRecipeExist
+        parameters:
+          - name: recipeName
+            type: string
+        return:
+          - type: boolean

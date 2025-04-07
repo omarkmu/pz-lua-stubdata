@@ -29,6 +29,8 @@ languages:
             type: ISButton
           update:
             type: ISButton
+          currentCounts:
+            type: table<string, integer>
         methods:
           - name: createChildren
           - name: render

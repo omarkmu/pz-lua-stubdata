@@ -296,38 +296,22 @@ languages:
             return:
               - type: integer
                 nullable: true
-          - name: moveItemsOnSeat
+          - name: transferSeatItems
             parameters:
-              - name: seat
-                type: integer
-              - name: newSeat
-                type: integer
-              - name: playerObj
-                type: IsoPlayer
-              - name: moveThem
-                type: boolean
-              - name: itemListIndex
-                type: integer
-            return:
-              - type: integer
-          - name: tryMoveItemsFromSeat
-            parameters:
-              - name: playerObj
+              - name: player
                 type: IsoPlayer
               - name: vehicle
                 type: BaseVehicle
-              - name: seat
-                type: integer
-              - name: moveThem
+              - name: part
+                type: VehiclePart
+              - name: otherPart
+                type: VehiclePart
+              - name: desiredWeight
+                type: number
+              - name: testOnly
                 type: boolean
-              - name: doEnter
-                type: boolean
-              - name: seatTo
-                type: string
-              - name: itemListIndex
-                type: integer
             return:
-              - type: integer
+              - type: number
           - name: moveItemsFromSeat
             parameters:
               - name: playerObj

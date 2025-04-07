@@ -71,6 +71,10 @@ languages:
             nullable: true
           listHeaderColor:
             type: umbrella.RGBA
+          selectionColor:
+            type: umbrella.RGBA
+          mouseOverHighlightColor:
+            type: umbrella.RGBA
           drawBorder:
             type: boolean
           columns:
@@ -165,6 +169,21 @@ languages:
                 nullable: true
             return:
               - type: umbrella.ISScrollingListBox.Item
+          - name: addUniqueItem
+            parameters:
+              - name: name
+                type: string
+              - name: item
+                type: unknown
+            return:
+              - type: umbrella.ISScrollingListBox.Item
+                nullable: true
+          - name: contains
+            parameters:
+              - name: itemText
+                type: string
+            return:
+              - type: boolean
           - name: removeItem
             parameters:
               - name: itemText
@@ -172,6 +191,13 @@ languages:
             return:
               - type: umbrella.ISScrollingListBox.Item
                 nullable: true
+          - name: removeMatchingItems
+            parameters:
+              - name: itemText
+                type: string
+            return:
+              - type: boolean
+              - type: unknown[]
           - name: removeItemByIndex
             parameters:
               - name: itemIndex
@@ -209,6 +235,26 @@ languages:
                 type: boolean
             return:
               - type: number
+          - name: drawSelection
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
+          - name: drawMouseOverHighlight
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+              - name: width
+                type: number
+              - name: height
+                type: number
           - name: clear
           - name: onMouseWheel
             parameters:

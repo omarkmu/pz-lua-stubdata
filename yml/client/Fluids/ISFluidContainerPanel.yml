@@ -80,6 +80,8 @@ languages:
             type: umbrella.RGBA
           invalidColor:
             type: umbrella.RGBA
+          width:
+            type: number
           player:
             type: IsoPlayer
           isItem:

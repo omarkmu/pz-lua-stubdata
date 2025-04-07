@@ -14,6 +14,8 @@ languages:
           Type:
             defaultValue: '"ISButcherAnimal"'
         fields:
+          sound:
+            type: integer
           body:
             type: IsoDeadBody
           perkLevel:
@@ -35,3 +37,4 @@ languages:
           - name: getDuration
             return:
               - type: number
+          - name: stopSound

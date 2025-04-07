@@ -67,6 +67,8 @@ languages:
             type: boolean
           needToBeAgainstWall:
             type: boolean
+          isPole:
+            type: boolean
           previousStages:
             type: ArrayList<string>
           bonusHealth:
@@ -93,6 +95,8 @@ languages:
           completionSound:
             type: string
             nullable: true
+          canBeLockedByPadlock:
+            type: boolean
         methods:
           - name: walkTo
             parameters:
@@ -122,6 +126,14 @@ languages:
                 type: number
               - name: square
                 type: IsoGridSquare
+          - name: isObjectSpriteBlockingWallPlacement
+            parameters:
+              - name: _sprite
+                type: string
+              - name: _north
+                type: boolean
+            return:
+              - type: boolean
           - name: isValidPerSquare
             parameters:
               - name: square

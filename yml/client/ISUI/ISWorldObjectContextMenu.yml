@@ -668,9 +668,6 @@ languages:
                 type: integer
               - name: object
                 type: IsoClothingDryer
-            return:
-              - type: boolean
-                nullable: true
           - name: onToggleClothingDryer
             parameters:
               - name: worldobjects
@@ -689,9 +686,6 @@ languages:
                 type: integer
               - name: object
                 type: IsoClothingWasher
-            return:
-              - type: boolean
-                nullable: true
           - name: onToggleClothingWasher
             parameters:
               - name: worldobjects
@@ -721,9 +715,6 @@ languages:
                 type: IsoPlayer
               - name: object
                 type: IsoCombinationWasherDryer
-            return:
-              - type: boolean
-                nullable: true
           - name: onToggleComboWasherDryer
             parameters:
               - name: playerObj
@@ -1701,14 +1692,33 @@ languages:
                 type: IsoObject
             return:
               - type: string
-          - name: localVariableOverflow
+          - name: doSheetRopeOptions
+            parameters:
+              - name: _context
+                type: ISContextMenu
+              - name: _object
+                type: IsoObject
+              - name: _worldobjects
+                type: IsoObject[]
+              - name: _player
+                type: integer
+              - name: _playerObj
+                type: IsoPlayer
+              - name: _playerInv
+                type: ItemContainer
+              - name: _hasHammer
+                type: boolean
+              - name: _test
+                type: boolean
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: fetchPickupItems
             parameters:
               - name: v
-                type: IsoObject
               - name: props
-                type: PropertyContainer
               - name: playerInv
-                type: ItemContainer
           - name: doFluidContainerMenu
             parameters:
               - name: context

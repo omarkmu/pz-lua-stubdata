@@ -169,6 +169,8 @@ languages:
             parameters:
               - name: animal
                 type: IsoAnimal
+              - name: playerObj
+                type: IsoPlayer
           - name: onKill
             parameters:
               - name: animal
@@ -189,6 +191,8 @@ languages:
             parameters:
               - name: animal
                 type: IsoAnimal
+              - name: playerObj
+                type: IsoPlayer
           - name: onLure
             parameters:
               - name: animal

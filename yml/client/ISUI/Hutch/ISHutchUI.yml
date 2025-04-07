@@ -399,6 +399,8 @@ languages:
                 type: number
               - name: btnGrabOffset
           - name: onTabsActivateView
+          - name: showRoosts
+          - name: showNestBoxes
           - name: isKeyConsumed
             parameters:
               - name: key

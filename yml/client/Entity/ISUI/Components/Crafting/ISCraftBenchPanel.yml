@@ -64,6 +64,7 @@ languages:
                 type: ISUIElement
               - name: joypadData
                 type: JoypadData
+          - name: OnCloseWindow
         staticMethods:
           - name: CanCreatePanelFor
             parameters:

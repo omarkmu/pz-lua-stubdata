@@ -24,8 +24,10 @@ languages:
           Type:
             defaultValue: '"ISWidgetInput"'
         fields:
-          amountWidth: {}
-          amountWidth2: {}
+          amountWidth:
+            type: number
+          amountWidth2:
+            type: number
           textColor:
             type: umbrella.RGBA
           colPartial:
@@ -137,6 +139,18 @@ languages:
                 type: boolean
             return:
               - type: umbrella.ISWidgetInput.ScriptValues
+          - name: onMouseDown
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
+          - name: onMouseDownOutside
+            parameters:
+              - name: x
+                type: number
+              - name: y
+                type: number
           - name: onSelectInputsClicked
             parameters:
               - name: _button

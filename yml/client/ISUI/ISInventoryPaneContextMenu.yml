@@ -1195,6 +1195,12 @@ languages:
                 type: InventoryItem
               - name: player
                 type: integer
+          - name: onDebugCloneItem
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: player
+                type: integer
           - name: onResearchRecipe
             parameters:
               - name: item

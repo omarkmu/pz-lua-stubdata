@@ -85,8 +85,6 @@ languages:
             type: integer
           editable:
             type: boolean
-          text:
-            type: string
           numberOfPages:
             type: integer
           notebook:

@@ -367,6 +367,12 @@ languages:
                 type: InventoryItem
             return:
               - type: boolean
+          - name: getProgressBarWidth
+            return:
+              - type: number
+          - name: getProgressBarHeight
+            return:
+              - type: number
           - name: drawProgressBar
             parameters:
               - name: x

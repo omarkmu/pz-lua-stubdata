@@ -191,6 +191,7 @@ languages:
           - name: lootAll
           - name: removeAll
           - name: toggleStove
+          - name: updateItemCount
           - name: refreshWeight
           - name: syncToggleStove
           - name: setInfo

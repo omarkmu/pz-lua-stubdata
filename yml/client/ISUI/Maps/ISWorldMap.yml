@@ -141,6 +141,8 @@ languages:
             type: ISButton
           symbolsBtn:
             type: ISButton
+          printMediaBtn:
+            type: ISButton
           forgetBtn:
             type: ISButton
           closeBtn:
@@ -149,6 +151,12 @@ languages:
             type: boolean
           joypadPromptHgt:
             type: number
+          mouseOverPrintMedia:
+            type: umbrella.ISWorldMap.MouseOverPrintMedia
+            nullable: true
+          printMedia:
+            type: UI.PrintMedia
+            nullable: true
           dragging:
             type: boolean
           dragMoved:
@@ -172,6 +180,8 @@ languages:
           forgetUI:
             type: ISModalRichText
             nullable: true
+          showPrintMedia:
+            type: boolean
           optionsUI:
             type: WorldMapOptions
           showCellGrid:
@@ -221,6 +231,9 @@ languages:
           - name: createChildren
           - name: prerender
           - name: render
+          - name: renderPrintMedia
+          - name: onMouseUpPrintMedia
+          - name: closePrintMedia
           - name: renderJoypadPrompt
             parameters:
               - name: texture
@@ -302,6 +315,7 @@ languages:
               - name: button
                 type: ISButton
           - name: onToggleSymbols
+          - name: onTogglePrintMedia
           - name: onToggleLegend
           - name: onChangePerspective
           - name: onCenterOnPlayer
@@ -421,3 +435,23 @@ languages:
             parameters:
               - name: playerObj
                 type: IsoPlayer
+      umbrella.ISWorldMap.MouseOverPrintMedia:
+        fields:
+          mediaID:
+            type: string
+          location:
+            type: umbrella.ISWorldMap.PrintMediaLocation
+          x:
+            type: number
+          y:
+            type: number
+      umbrella.ISWorldMap.PrintMediaLocation:
+        fields:
+          x1:
+            type: number
+          x2:
+            type: number
+          y1:
+            type: number
+          y2:
+            type: number

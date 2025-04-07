@@ -14,6 +14,8 @@ languages:
           Type:
             defaultValue: '"ISGetAnimalBones"'
         fields:
+          sound:
+            type: integer
           body:
             type: IsoDeadBody
         methods:
@@ -33,3 +35,4 @@ languages:
           - name: getDuration
             return:
               - type: number
+          - name: stopSound

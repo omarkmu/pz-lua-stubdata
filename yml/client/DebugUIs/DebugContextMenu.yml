@@ -540,3 +540,5 @@ languages:
                 type: IsoGridSquare
               - name: skeleton
                 type: boolean
+              - name: playerObj
+                type: IsoPlayer

@@ -10,6 +10,9 @@ languages:
                 type: IsoPlayer
               - name: hutch
                 type: IsoHutch
+              - name: animal
+                type: IsoAnimal
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISGetHutchInfo"'
@@ -18,6 +21,9 @@ languages:
             type: integer
           hutch:
             type: IsoHutch
+          animal:
+            type: IsoAnimal
+            nullable: true
         methods:
           - name: isValid
             return:

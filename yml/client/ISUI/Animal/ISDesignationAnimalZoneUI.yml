@@ -36,11 +36,7 @@ languages:
             type: ISButton
           infoBtn:
             type: ISButton
-          zOffsetAfterAnimal:
-            type: number
           nbOfAnimals:
-            type: number
-          zOffsetBeforeAnimal:
             type: number
           updateTick:
             type: number
@@ -113,6 +109,27 @@ languages:
             parameters:
               - name: joypadData
                 type: JoypadData
+        staticMethods:
+          - name: queueCheckHutchDoor
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: self
+                type: ISDesignationZoneAnimalZoneUI
+              - name: hutch
+                type: IsoHutch
+              - name: animal
+                type: IsoAnimal
+          - name: queueOpenAnimalInfo
+            parameters:
+              - name: playerObj
+                type: IsoPlayer
+              - name: self
+                type: ISDesignationZoneAnimalZoneUI
+              - name: hutch
+                type: IsoHutch
+              - name: animal
+                type: IsoAnimal
       ISDesignationZoneAnimalZoneUI_AnimalsPanel:
         extends: ISPanelJoypad
         constructors:
@@ -133,6 +150,12 @@ languages:
         fields:
           selected:
             type: integer
+          smoothScrollY:
+            type: number
+            nullable: true
+          smoothScrollTargetY:
+            type: number
+            nullable: true
           ui:
             type: ISDesignationZoneAnimalZoneUI
         methods:
@@ -169,3 +192,8 @@ languages:
             parameters:
               - name: joypadData
                 type: JoypadData
+          - name: ensureVisible
+            parameters:
+              - name: index
+                type: integer
+          - name: updateSmoothScrolling

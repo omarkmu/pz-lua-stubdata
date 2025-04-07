@@ -18,6 +18,8 @@ languages:
           Type:
             defaultValue: '"ISRemoveMeatFromAnimal"'
         fields:
+          sound:
+            type: integer
           body:
             type: IsoAnimal
           hook:
@@ -43,3 +45,4 @@ languages:
           - name: getDuration
             return:
               - type: number
+          - name: stopSound

@@ -35,6 +35,10 @@ languages:
             type: number
           dragging:
             type: boolean
+          width:
+            type: number
+          height:
+            type: number
           player:
             type: IsoPlayer
           values:
