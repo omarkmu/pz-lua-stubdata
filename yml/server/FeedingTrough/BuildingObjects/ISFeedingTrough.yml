@@ -7,21 +7,28 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: integer
               - name: def
+                type: umbrella.ISFeedingTrough.TroughSprite
         staticFields:
           Type:
             defaultValue: '"ISFeedingTrough"'
         fields:
           troughSprite:
-            type: table
-          character: {}
+            type: umbrella.ISFeedingTrough.TroughSprite
+          character:
+            type: IsoPlayer
+            nullable: true
           actionAnim:
             type: string
-          def: {}
+          def:
+            type: umbrella.FeedingTroughDefinition
           doubleSprite:
             type: boolean
-          sq2: {}
-          sprite2: {}
+          sq2:
+            type: IsoGridSquare
+          sprite2:
+            type: string
         methods:
           - name: create
             parameters:
@@ -32,16 +39,19 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getSquare2Pos
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: walkTo
             parameters:
               - name: x
@@ -52,10 +62,10 @@ languages:
                 type: number
             return:
               - type: boolean
-                nullable: true
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: isValid
             parameters:
               - name: square
@@ -83,5 +93,12 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
-              - type: unknown
+              - type: IsoGridSquare
+      umbrella.ISFeedingTrough.TroughSprite:
+        fields:
+          backLeft:
+            type: string
+          backRight:
+            type: string

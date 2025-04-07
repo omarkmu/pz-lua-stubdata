@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
               - name: corner
                 nullable: true
         staticFields:
@@ -16,7 +18,9 @@ languages:
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
           corner:
             nullable: true
           name:
@@ -31,7 +35,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: checkCorner
             parameters:
               - name: x
@@ -41,6 +47,7 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
           - name: addCorner
             parameters:
               - name: x
@@ -50,13 +57,14 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: getHealth
             return:
               - type: number
-                nullable: true
           - name: isValid
             parameters:
               - name: square
@@ -75,4 +83,4 @@ languages:
                 type: IsoGridSquare
           - name: getObjectIndex
             return:
-              - type: number
+              - type: integer

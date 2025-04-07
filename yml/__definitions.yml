@@ -14,10 +14,10 @@ languages:
         - type: ClimateFloat
       Fixing.Fixer:
         - type: Fixer
-      IsoHutch.NestBox:
-        - type: NestBox
       HandcraftLogic.InputItemNode:
         - type: InputItemNode
+      IsoHutch.NestBox:
+        - type: NestBox
       MultiStageBuilding.Stage:
         - type: Stage
       PerkFactory.Perk:
@@ -32,8 +32,12 @@ languages:
         - type: PlayerSearchMode
       ServerOptions.ServerOption:
         - type: ServerOption
+      SpriteConfigManager.FaceInfo:
+        - type: FaceInfo
       SpriteConfigManager.ObjectInfo:
         - type: ObjectInfo
+      SpriteConfigManager.TileInfo:
+        - type: TileInfo
       TraitFactory.Trait:
         - type: Trait
       VehicleScript.Area:
@@ -74,9 +78,6 @@ languages:
         - type: EntityUiStyle
       XuiSkinScript.ComponentUiScript:
         - type: ComponentUiScript
-      umbrella.ContainerDistribution:
-        - type: umbrella.Distributions.ItemsContainerDistribution
-        - type: umbrella.Distributions.ListContainerDistribution
     classes:
       umbrella.HSB:
         fields:
@@ -85,22 +86,6 @@ languages:
           s:
             type: number
           b:
-            type: number
-      umbrella.XY:
-        fields:
-          x:
-            type: number
-          y:
-            type: number
-      umbrella.XYWH:
-        fields:
-          x:
-            type: number
-          y:
-            type: number
-          w:
-            type: number
-          h:
             type: number
       umbrella.Rect:
         fields:
@@ -141,257 +126,19 @@ languages:
             type: string
           pvp:
             type: '"0" | "1"'
-      umbrella.Distributions.ProceduralItem:
+      umbrella.XY:
         fields:
-          name:
-            type: string
-          min:
-            type: integer
-          max:
-            type: integer
-          weightChance:
-            type: integer
-          forceForItems:
-            type: string
-            nullable: true
-          forceForZones:
-            type: string
-            nullable: true
-          forceForTiles:
-            type: string
-            nullable: true
-          forceForRooms:
-            type: string
-            nullable: true
-      umbrella.Distributions.ListContainerDistribution:
-        fields:
-          procedural:
-            type: "true"
-          procList:
-            type: umbrella.Distributions.ProceduralItem[]
-          isShop:
-            type: boolean
-            nullable: true
-      umbrella.Distributions.ItemsContainerDistribution:
-        fields:
-          rolls:
-            type: integer
-          items:
-            type: (string | integer)[]
-          isShop:
-            type: boolean
-            nullable: true
-          noAutoAge:
-            type: boolean
-            nullable: true
-          fillRand:
-            type: integer
-            nullable: true
-          maxMap:
-            type: integer
-            nullable: true
-          stashChance:
-            type: integer
-            nullable: true
-          dontSpawnAmmo:
-            type: boolean
-            nullable: true
-          ignoreZombieDensity:
-            type: boolean
-            nullable: true
-          cookFood:
-            type: boolean
-            nullable: true
-          canBurn:
-            type: boolean
-            nullable: true
-          isTrash:
-            type: boolean
-            nullable: true
-          isWorn:
-            type: boolean
-            nullable: true
-          isRotten:
-            type: boolean
-            nullable: true
-          onlyOne:
-            type: boolean
-            nullable: true
-          defaultInventoryLoot:
-            type: boolean
-            nullable: true
-          junk:
-            type: umbrella.ContainerDistribution
-            nullable: true
-          bags:
-            type: umbrella.ContainerDistribution
-            nullable: true
-      umbrella.Farming.Props:
-        fields:
-          icon:
-            type: string
-          texture:
-            type: string
-          waterLvl:
-            type: integer
-          waterNeeded:
-            type: integer
-          timeToGrow:
-            type: integer
-          minVeg:
-            type: integer
-          maxVeg:
-            type: integer
-          minVegAutorized:
-            type: integer
-          maxVegAutorized:
-            type: integer
-          vegetableName:
-            type: string
-          seedName:
-            type: string
-          seedTypes:
-            type: string[]
-            nullable: true
-          badMonth:
-            type: integer[]
-          sowMonth:
-            type: integer[]
-          bestMonth:
-            type: integer[]
-          riskMonth:
-            type: integer[]
-            nullable: true
-          seasonRecipe:
-            type: string
-          harvestLevel:
-            type: integer
-          mature:
-            type: integer
-          fullGrown:
-            type: integer
-          scytheHarvest:
-            type: boolean
-            nullable: true
-          harvestPosition:
-            type: '"Low" | "Mid" | "High"'
-            nullable: true
-      umbrella.ISBuildIsoEntity.ItemResult:
-        fields:
-          count:
+          x:
             type: number
-          uses:
+          y:
             type: number
-          invCount:
-            type: number
-          invUses:
-            type: number
-          items:
-            type: InventoryItem[]
-          invItems:
-            type: InventoryItem[]
-          hasTestedInventory:
-            type: boolean
-            nullable: true
-      umbrella.RoomDistribution:
+      umbrella.XYWH:
         fields:
-          isShop:
-            type: boolean
-            nullable: true
-          professionChance:
+          x:
             type: number
-            nullable: true
-          professionChanceInt:
-            type: integer
-            nullable: true
-          outfit:
-            type: string
-            nullable: true
-          outfitFemale:
-            type: string
-            nullable: true
-          outfitMale:
-            type: string
-            nullable: true
-          outfitChance:
-            type: string
-            nullable: true
-          vehicle:
-            type: string
-            nullable: true
-          vehicles:
-            type: string
-            nullable: true
-          vehicleChance:
-            type: integer
-            nullable: true
-          vehicleDistribution:
-            type: string
-            nullable: true
-          femaleChance:
-            type: string
-            nullable: true
-          roomTypes:
-            type: string
-            nullable: true
-          containerChance:
-            type: string
-            nullable: true
-          femaleOdds:
-            type: string
-            nullable: true
-          bagType:
-            type: string
-            nullable: true
-          "[string]":
-            type: umbrella.ContainerDistribution
-      umbrella.TrapAnimalDefinition:
-        fields:
-          type:
-            type: string
-          item:
-            type: string
-          minHour:
-            type: integer
-          maxHour:
-            type: integer
-          minSize:
-            type: integer
-          maxSize:
-            type: integer
-          zone:
-            type: table<string, integer>
-          traps:
-            type: table<string, integer>
-          baits:
-            type: table<string, integer>
-          strength:
-            type: integer
-            nullable: true
-          canBeAlive:
-            type: boolean
-            nullable: true
-          aliveAnimals:
-            type: string[]
-            nullable: true
-          aliveBreed:
-            type: string[]
-            nullable: true
-      umbrella.TrapDefinition:
-        fields:
-          type:
-            type: string
-          sprite:
-            type: string
-          closedSprite:
-            type: string
-          trapStrength:
-            type: integer
-          destroyItem:
-            type: string[]
-          northSprite:
-            type: string
-            nullable: true
-          northClosedSprite:
-            type: string
-            nullable: true
+          y:
+            type: number
+          w:
+            type: number
+          h:
+            type: number

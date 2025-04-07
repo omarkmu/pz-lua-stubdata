@@ -15,13 +15,18 @@ languages:
               - name: northSprite2
                 type: string
               - name: equipBothHandItem
+                type: InventoryItem
+                nullable: true
         staticFields:
           Type:
             defaultValue: '"ISEmptyGraves"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+            nullable: true
+          javaObject:
+            type: IsoThumpable
+            nullable: true
           sprite2:
             type: string
           northSprite2:
@@ -30,11 +35,13 @@ languages:
             type: boolean
           ignoreNorth:
             type: boolean
-          equipBothHandItem: {}
+          equipBothHandItem:
+            type: InventoryItem
+            nullable: true
           maxTime:
             type: number
           actionAnim:
-            nullable: true
+            type: CharacterActionAnims
           craftingBank:
             type: string
         methods:
@@ -49,6 +56,7 @@ languages:
               - name: north
                 type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -59,15 +67,18 @@ languages:
                 type: number
             return:
               - type: boolean
-                nullable: true
           - name: setInfo
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
               - name: sprite
+                type: string
               - name: cell
+                type: IsoCell
               - name: spriteType
+                type: string
           - name: getHealth
             return:
               - type: number
@@ -92,17 +103,19 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquare2
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
-              - type: unknown
+              - type: IsoGridSquare
         staticMethods:
           - name: shovelledFloorCanDig
             parameters:
@@ -110,7 +123,6 @@ languages:
                 type: IsoGridSquare
             return:
               - type: boolean
-                nullable: true
           - name: canDigHere
             parameters:
               - name: worldObjects
@@ -120,15 +132,18 @@ languages:
           - name: getMaxCorpses
             parameters:
               - name: grave
+                nullable: true
             return:
               - type: number
           - name: isGraveFullOfCorpses
             parameters:
               - name: grave
+                type: IsoObject
             return:
               - type: boolean
           - name: isGraveFilledIn
             parameters:
               - name: grave
+                type: IsoObject
             return:
               - type: boolean

@@ -9,6 +9,7 @@ languages:
               - name: luaSystem
                 type: STrapSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"STrapGlobalObject"'
@@ -26,7 +27,7 @@ languages:
           baitAmountMulti:
             type: number
           animal:
-            type: table
+            type: table | umbrella.TrapAnimalDefinition
           animalHour:
             type: number
           openSprite:
@@ -36,7 +37,7 @@ languages:
           zone:
             type: string
           zones:
-            type: table
+            type: table<string, string>
           player:
             type: string
           trappingSkill:
@@ -46,15 +47,19 @@ languages:
           bait:
             type: string
             nullable: true
-          def: {}
+          def:
+            type: umbrella.TrapDefinition
+            nullable: true
         methods:
           - name: initNew
           - name: stateFromIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: stateToIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: calculTrap
             parameters:
               - name: square
@@ -82,9 +87,11 @@ languages:
           - name: removeBait
             parameters:
               - name: character
+                nullable: true
           - name: addAliveAnimal
             parameters:
               - name: character
+                type: IsoPlayer
             return:
               - type: unknown
                 nullable: true
@@ -99,7 +106,7 @@ languages:
               - name: zoneType
                 type: string
               - name: animalsList
-                type: table
+                type: umbrella.TrapAnimalDefinition[]
           - name: checkForAnimal
             parameters:
               - name: square
@@ -107,12 +114,16 @@ languages:
           - name: setAnimal
             parameters:
               - name: animal
+                type: umbrella.TrapAnimalDefinition
           - name: addBait
             parameters:
               - name: bait
+                type: string
               - name: age
               - name: baitAmountMulti
+                type: number
               - name: player
+                type: IsoPlayer
           - name: setZones
             parameters:
               - name: square
@@ -121,22 +132,26 @@ languages:
           - name: toObject
             parameters:
               - name: object
+                type: IsoObject
               - name: transmitData
+                type: boolean
           - name: fromModData
             parameters:
               - name: modData
+                type: table
           - name: toModData
             parameters:
               - name: modData
+                type: table
           - name: checkBaitFreshness
             return:
-              - type: unknown
+              - type: boolean
           - name: checkTime
             parameters:
               - name: animal
+                type: umbrella.TrapAnimalDefinition
             return:
               - type: boolean
-                nullable: true
           - name: reinitModData
             parameters:
               - name: square
@@ -152,6 +167,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: object
+                type: IsoObject
         staticMethods:
           - name: SpawnDestroyItems
             parameters:
@@ -159,3 +175,4 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: object
+                type: IsoObject

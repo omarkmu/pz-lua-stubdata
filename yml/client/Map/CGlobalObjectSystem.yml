@@ -33,7 +33,7 @@ languages:
               - name: index
                 type: integer
             return:
-              - type: table
+              - type: CGlobalObject
           - name: isValidIsoObject
             parameters:
               - name: isoObject

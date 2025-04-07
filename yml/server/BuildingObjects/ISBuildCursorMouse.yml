@@ -1,32 +1,48 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISBuildCursorMouse.OnSquareSelected:
+        - type: "fun(square: IsoGridSquare)"
+      umbrella.ISBuildCursorMouse.ValidationFunction:
+        - type: "fun(square: IsoGridSquare): boolean"
     classes:
       ISBuildCursorMouse:
         extends: ISBuildingObject
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: onSquareSelected
+                type: umbrella.ISBuildCursorMouse.OnSquareSelected
               - name: isValid
-                type: boolean
+                type: umbrella.ISBuildCursorMouse.ValidationFunction
         staticFields:
           Type:
             defaultValue: '"ISBuildCursorMouse"'
           spriteRender:
+            type: IsoSprite
             nullable: true
         fields:
           sq:
             type: IsoGridSquare
-          chosenSprite: {}
-          previousSprite: {}
-          tooltip:
+          chosenSprite:
+            type: string
             nullable: true
-          onSquareSelected: {}
+          previousSprite:
+            type: string
+            nullable: true
+          tooltip:
+            type: ISToolTip
+            nullable: true
+          onSquareSelected:
+            type: umbrella.ISBuildCursorMouse.OnSquareSelected
           isValid:
             type: boolean
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           noNeedHammer:
             type: boolean
           skipBuildAction:
@@ -41,7 +57,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: render
             parameters:
               - name: x

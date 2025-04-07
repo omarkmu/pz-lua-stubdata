@@ -5,5 +5,8 @@ languages:
       - name: CreateTrap_OnCreate
         parameters:
           - name: items
+            type: unknown
           - name: result
+            type: unknown
           - name: player
+            type: unknown

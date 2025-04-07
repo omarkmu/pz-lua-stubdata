@@ -7,23 +7,28 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: femaleAnimal
+                type: IsoAnimal
         staticFields:
           Type:
             defaultValue: '"ISAnimalPickMateCursor"'
         fields:
-          femaleAnimal: {}
+          femaleAnimal:
+            type: IsoAnimal
         methods:
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: isValidCharacter
             parameters:
               - name: chr
+                type: IsoMovingObject
             return:
               - type: boolean
                 nullable: true
           - name: onPickCharacter
             parameters:
               - name: chr
+                type: IsoAnimal

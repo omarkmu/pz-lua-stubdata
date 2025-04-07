@@ -9,13 +9,17 @@ languages:
               - name: name
                 type: string
               - name: sprite
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISButcheringHook"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+            nullable: true
+          javaObject:
+            type: IsoButcherHook
+            nullable: true
           name:
             type: string
         methods:
@@ -28,7 +32,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: isValid
             parameters:
               - name: square

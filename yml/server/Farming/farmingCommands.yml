@@ -7,54 +7,79 @@ languages:
           - name: cureFlies
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: cureMildew
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: cureAphids
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: cureSlugs
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: fertilize
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: harvest
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: plow
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: removePlant
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: seed
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: water
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: kill
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: destroy
             parameters:
               - name: player
+                type: IsoPlayer
                 nullable: true
               - name: args
                 type: table
           - name: cheat
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table

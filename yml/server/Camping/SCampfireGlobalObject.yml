@@ -9,6 +9,7 @@ languages:
               - name: luaSystem
                 type: SCampfireSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"SCampfireGlobalObject"'
@@ -38,20 +39,22 @@ languages:
           - name: stateFromIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: stateToIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: getObject
             return:
-              - type: unknown
+              - type: IsoObject
           - name: getContainer
             return:
-              - type: unknown
+              - type: ItemContainer
                 nullable: true
           - name: processContainerItems
           - name: getFireObject
             return:
-              - type: unknown
+              - type: IsoFire
                 nullable: true
           - name: addObject
           - name: removeObject
@@ -66,12 +69,15 @@ languages:
           - name: fromModData
             parameters:
               - name: modData
+                type: table
           - name: toModData
             parameters:
               - name: modData
+                type: table
           - name: fromObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: syncIsoObject
           - name: syncSprite
           - name: syncModData
@@ -90,6 +96,8 @@ languages:
           - name: addFuel
             parameters:
               - name: fuelAmt
+                type: number
           - name: setFuel
             parameters:
               - name: fuelAmt
+                type: number

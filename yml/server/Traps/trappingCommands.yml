@@ -7,28 +7,42 @@ languages:
           - name: add
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: remove
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: removeAnimal
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: addBait
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: addAnimalDebug
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: removeBait
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table
           - name: destroy
             parameters:
               - name: player
+                type: IsoPlayer
               - name: args
+                type: table

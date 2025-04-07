@@ -7,6 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: action
                 type: string
               - name: args
@@ -24,11 +25,19 @@ languages:
             type: number
           renderZ:
             type: number
-          currentSquare: {}
-          plasterSprite: {}
-          signSprite: {}
-          character: {}
-          player: {}
+          currentSquare:
+            type: IsoGridSquare
+            nullable: true
+          plasterSprite:
+            type: IsoSprite
+            nullable: true
+          signSprite:
+            type: IsoSprite
+            nullable: true
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -52,7 +61,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -66,11 +77,15 @@ languages:
           - name: _isWall
             parameters:
               - name: object
+                type: IsoObject
+                nullable: true
             return:
               - type: boolean
           - name: _isDoorFrame
             parameters:
               - name: object
+                type: IsoObject
+                nullable: true
             return:
               - type: boolean
           - name: rotateKey
@@ -96,16 +111,17 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
@@ -118,12 +134,12 @@ languages:
           - name: canPaint
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: hasItems
             return:
               - type: boolean
-                nullable: true
           - name: getObjectList
             return:
-              - type: table
+              - type: IsoObject[]

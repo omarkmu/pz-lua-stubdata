@@ -4,19 +4,32 @@ languages:
     classes:
       Vehicles:
         staticFields:
-          CheckEngine: {}
-          CheckOperate: {}
-          ContainerAccess: {}
-          Create: {}
-          Init: {}
-          InstallComplete: {}
-          InstallTest: {}
-          UninstallComplete: {}
-          UninstallTest: {}
-          Update: {}
-          Use: {}
-          elaspedMinutesForHeater: {}
-          elaspedMinutesForEngine: {}
+          CheckEngine:
+            type: Vehicles.CheckEngine
+          CheckOperate:
+            type: Vehicles.CheckOperate
+          ContainerAccess:
+            type: Vehicles.ContainerAccess
+          Create:
+            type: Vehicles.Create
+          Init:
+            type: Vehicles.Init
+          InstallComplete:
+            type: Vehicles.InstallComplete
+          InstallTest:
+            type: Vehicles.InstallTest
+          UninstallComplete:
+            type: Vehicles.UninstallComplete
+          UninstallTest:
+            type: Vehicles.UninstallTest
+          Update:
+            type: Vehicles.Update
+          Use:
+            type: Vehicles.Use
+          elaspedMinutesForHeater:
+            type: table<integer, number>
+          elaspedMinutesForEngine:
+            type: table<integer, number>
           JerryCanLitres:
             defaultValue: "10"
           newSystemConditionLowerMult:
@@ -25,10 +38,457 @@ languages:
           - name: LowerCondition
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: part
+                type: VehiclePart
               - name: elapsedMinutes
+                type: number
             return:
               - type: number
+      Vehicles.ContainerAccess:
+        local: true
+        staticMethods:
+          - name: TruckBed
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: TruckBedOpen
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: TruckBedOpenInside
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: Seat
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: GloveBox
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: GasTank
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+      Vehicles.Create:
+        local: true
+        staticMethods:
+          - name: Battery
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Door
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: TrunkDoorOpen
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: TrunkDoor
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: GasTank
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Engine
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Headlight
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Radio
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Radio_HAM
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Default
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Brake
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Window
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+      Vehicles.InstallComplete:
+        local: true
+        staticMethods:
+          - name: Radio
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Door
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Window
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Default
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+      Vehicles.UninstallComplete:
+        local: true
+        staticMethods:
+          - name: Radio
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: item
+                type: InventoryItem
+          - name: Door
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: item
+                type: InventoryItem
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: item
+                type: InventoryItem
+          - name: Default
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: item
+                type: InventoryItem
+      Vehicles.Init:
+        local: true
+        staticMethods:
+          - name: Door
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Headlight
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+          - name: Window
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+      Vehicles.Update:
+        local: true
+        staticMethods:
+          - name: EngineDoor
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: TrailerAnimalFood
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: GasTank
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Battery
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Engine
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Headlight
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Heater
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Lightbar
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: PassengerCompartment
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Radio
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Brakes
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Suspension
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Muffler
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+          - name: TrunkDoor
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: elapsedMinutes
+      Vehicles.Use:
+        local: true
+        staticMethods:
+          - name: Door
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: character
+          - name: EngineDoor
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: character
+          - name: TrunkDoorOpen
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: character
+          - name: TrunkDoor
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: character
+      Vehicles.CheckEngine:
+        local: true
+        staticMethods:
+          - name: GasTank
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+            return:
+              - type: boolean
+          - name: Engine
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+            return:
+              - type: boolean
+      Vehicles.CheckOperate:
+        local: true
+        staticMethods:
+          - name: Tire
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+            return:
+              - type: boolean
+      Vehicles.InstallTest:
+        local: true
+        staticMethods:
+          - name: Default
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+      Vehicles.UninstallTest:
+        local: true
+        staticMethods:
+          - name: Battery
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: Default
+            parameters:
+              - name: vehicle
+                type: BaseVehicle
+              - name: part
+                type: VehiclePart
+              - name: chr
+                type: IsoPlayer
+            return:
+              - type: boolean
       VehicleUtils:
         staticMethods:
           - name: getContainers
@@ -36,88 +496,112 @@ languages:
               - name: playerNum
                 type: integer
             return:
-              - type: table
+              - type: ItemContainer[]
           - name: getItems
             parameters:
               - name: playerNum
                 type: integer
             return:
-              - type: table
-              - type: table
+              - type: table<string, InventoryItem[]>
+              - type: table<string, InventoryItem[]>
           - name: split
             parameters:
               - name: string
+                type: string
               - name: pattern
                 type: string
             return:
-              - type: unknown
-              - type: unknown
-              - type: unknown
-              - type: unknown
+              - type: string
+                nullable: true
+              - type: string
+                nullable: true
+              - type: string
+                nullable: true
+              - type: string
+                nullable: true
           - name: testProfession
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: professions
+                type: string
             return:
               - type: boolean
           - name: testPerks
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: perks
+                type: string
             return:
               - type: boolean
           - name: testTraits
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: traits
+                type: string
             return:
               - type: boolean
           - name: testRecipes
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: recipes
+                type: string
             return:
               - type: boolean
           - name: testItems
             parameters:
               - name: chr
+                type: IsoPlayer
               - name: items
+                type: umbrella.VehicleUtils.Item[]
               - name: typeToItem
+                type: table<string, InventoryItem[]>
               - name: tagToItem
+                type: table<string, InventoryItem[]>
             return:
               - type: boolean
           - name: getItemScripts
             parameters:
               - name: items
+                type: umbrella.VehicleUtils.Item[]
             return:
-              - type: table
+              - type: umbrella.VehicleUtils.ScriptResult
           - name: createPartInventoryItem
             parameters:
               - name: part
+                type: VehiclePart
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: createPartInventoryItem_Radio
             parameters:
               - name: part
+                type: VehiclePart
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: createPartInventoryItem_HAMRadio
             parameters:
               - name: part
+                type: VehiclePart
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: getInsideTemperature
             parameters:
               - name: player
+                type: IsoPlayer
             return:
               - type: number
           - name: compareFloats
             parameters:
               - name: a
+                type: number
               - name: b
+                type: number
               - name: precision
                 type: number
             return:
@@ -125,19 +609,25 @@ languages:
           - name: lowerUninstalledItemCondition
             parameters:
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: mechanicSkill
+                type: integer
               - name: chr
+                type: IsoPlayer
           - name: chargeBattery
             parameters:
               - name: vehicle
+                type: BaseVehicle
               - name: delta
                 type: number
           - name: getChildWindow
             parameters:
               - name: part
+                type: VehiclePart
             return:
-              - type: unknown
+              - type: VehiclePart
                 nullable: true
           - name: callLua
             parameters:
@@ -145,60 +635,83 @@ languages:
                 type: string
               - name: arg1
                 type: unknown
+                nullable: true
               - name: arg2
                 type: unknown
+                nullable: true
               - name: arg3
                 type: unknown
                 nullable: true
               - name: arg4
                 type: unknown
+                nullable: true
             return:
               - type: unknown
                 nullable: true
           - name: OnUseVehicle
             parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: pressedNotTapped
+                type: boolean
           - name: RemoveTire
             parameters:
               - name: part
+                type: VehiclePart
               - name: explosion
+                type: boolean
           - name: OnVehicleHorn
             parameters:
               - name: character
+                type: IsoPlayer
               - name: vehicle
+                type: BaseVehicle
               - name: pressed
+                type: boolean
           - name: CheckForUnlockedDoorsWindows
             parameters:
               - name: vehicle
+                type: BaseVehicle
             return:
               - type: boolean
           - name: RequiredKeyNotFound
             parameters:
               - name: part
+                type: VehiclePart
               - name: chr
+                type: IsoPlayer
             return:
               - type: boolean
           - name: anyWorkingHeadlights
             parameters:
               - name: vehicle
+                type: BaseVehicle
             return:
               - type: boolean
           - name: UninstallPart
             parameters:
               - name: part
+                type: VehiclePart
               - name: chr
+                type: IsoPlayer
           - name: InstallPart
             parameters:
               - name: part
+                type: VehiclePart
               - name: item
+                type: InventoryItem
               - name: chr
+                type: IsoPlayer
           - name: calculateInstallationSuccess
             parameters:
               - name: perks
+                type: string
               - name: chr
+                type: IsoPlayer
               - name: chrPerks
+                type: table<string, integer>
             return:
               - type: number
               - type: number
@@ -206,5 +719,30 @@ languages:
             parameters:
               - name: perks
               - name: chr
+                type: IsoPlayer
             return:
-              - type: table
+              - type: table<string, integer>
+      umbrella.VehicleUtils.Item:
+        fields:
+          type:
+            type: string
+          tags:
+            type: string
+            nullable: true
+      umbrella.VehicleUtils.Script:
+        fields:
+          script:
+            type: Item
+            nullable: true
+          unknownTag:
+            type: string
+            nullable: true
+          unknownType:
+            type: string
+            nullable: true
+      umbrella.VehicleUtils.ScriptResult:
+        fields:
+          item:
+            type: umbrella.VehicleUtils.Item
+          scripts:
+            type: umbrella.VehicleUtils.Script[]

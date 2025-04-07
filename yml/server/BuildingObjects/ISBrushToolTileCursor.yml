@@ -11,12 +11,15 @@ languages:
               - name: northSprite
                 type: string
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISBrushToolTileCursor"'
         fields:
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           isTileCursor:
             type: boolean
           spriteName:
@@ -37,7 +40,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: render
             parameters:
               - name: x

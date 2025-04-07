@@ -9,6 +9,7 @@ languages:
               - name: luaSystem
                 type: SRainBarrelSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"SRainBarrelGlobalObject"'
@@ -26,7 +27,9 @@ languages:
           - name: stateFromIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: stateToIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: changeSprite

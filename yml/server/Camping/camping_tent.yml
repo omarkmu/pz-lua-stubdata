@@ -9,32 +9,37 @@ languages:
           - name: findTentSprites
             parameters:
               - name: sprite
-                nullable: true
+                type: string
             return:
-              - type: unknown
+              - type: umbrella.Camping.TentSprites
                 nullable: true
           - name: addTent
             parameters:
               - name: grid
+                type: IsoGridSquare
               - name: sprite
+                type: string
             return:
-              - type: unknown
-                nullable: true
+              - type: IsoThumpable
           - name: removeTent
             parameters:
               - name: tent
+                type: IsoObject
                 nullable: true
           - name: destroyTent
             parameters:
               - name: tent
+                type: IsoObject
           - name: getTentObjects
             parameters:
               - name: tent
+                type: IsoObject
             return:
-              - type: table
+              - type: IsoObject[]
           - name: isTentObject
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: findTentObject
@@ -42,7 +47,7 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: tentAt
             parameters:
@@ -53,11 +58,22 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: getCurrentTent
             parameters:
               - name: grid
+                type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
+      umbrella.Camping.TentSprites:
+        fields:
+          frontLeft:
+            type: string
+          backLeft:
+            type: string
+          frontRight:
+            type: string
+          backRight:
+            type: string

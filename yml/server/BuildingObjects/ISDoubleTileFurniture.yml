@@ -9,17 +9,23 @@ languages:
               - name: name
                 type: string
               - name: sprite
+                type: string
               - name: sprite2
+                type: string
               - name: northSprite
+                type: string
               - name: northSprite2
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISDoubleTileFurniture"'
         fields:
           sq:
             type: IsoGridSquare
-          sprite2: {}
-          northSprite2: {}
+          sprite2:
+            type: string
+          northSprite2:
+            type: string
           name:
             type: string
           buildLow:
@@ -34,7 +40,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -45,13 +53,14 @@ languages:
                 type: number
             return:
               - type: boolean
-                nullable: true
           - name: setInfo
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: removeFromGround
             parameters:
               - name: square
@@ -80,14 +89,16 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquare2
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
-              - type: unknown
+              - type: IsoGridSquare

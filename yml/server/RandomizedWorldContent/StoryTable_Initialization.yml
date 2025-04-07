@@ -7,13 +7,18 @@ languages:
           - name: addItemToClutterTable
             parameters:
               - name: arrayList
+                type: ArrayList<string>
               - name: item
+                type: string
           - name: addClutterTableToArray
             parameters:
               - name: arrayList
+                type: ArrayList<string>
               - name: table
+                type: string[]
           - name: initClutterArray
             parameters:
               - name: arrayList
+                type: ArrayList<string>
               - name: table
-                type: table
+                type: string[]

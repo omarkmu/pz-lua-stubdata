@@ -13,4 +13,6 @@ languages:
               - name: z
                 type: number
               - name: type
+                type: string
               - name: items
+                type: InventoryItem[]

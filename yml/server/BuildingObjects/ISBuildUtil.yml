@@ -10,7 +10,7 @@ languages:
           - name: canBePlace
             parameters:
               - name: ISItem
-                type: ISWoodenDoorFrame
+                type: ISBuildingObject
               - name: square
                 type: IsoGridSquare
             return:
@@ -18,7 +18,7 @@ languages:
           - name: getWoodHealth
             parameters:
               - name: ISItem
-                type: table
+                type: ISBuildingObject
             return:
               - type: number
           - name: checkCorner
@@ -30,9 +30,11 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: thumpable
                 type: IsoThumpable
               - name: item
+                type: ISBuildIsoEntity
           - name: addCorner
             parameters:
               - name: x
@@ -44,33 +46,35 @@ languages:
               - name: thumpable
                 type: IsoThumpable
               - name: item
+                type: ISBuildIsoEntity
           - name: addWoodXp
             parameters:
               - name: ISItem
-                type: RainCollectorBarrel
+                type: ISBuildingObject
           - name: predicateMaterial
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: useDrainable
             parameters:
               - name: item
+                type: DrainableComboItem
               - name: uses
-                type: number
-                nullable: true
+                type: integer
             return:
-              - type: unknown
+              - type: integer
           - name: consumeMaterial
             parameters:
               - name: ISItem
-                type: table
+                type: ISBuildingObject
             return:
-              - type: table
+              - type: InventoryItem[]
           - name: openNailsBox
             parameters:
               - name: ISItem
-                type: table
+                type: ISBuildingObject
             return:
               - type: table
                 nullable: true
@@ -81,29 +85,33 @@ languages:
           - name: getMaterialOnGround
             parameters:
               - name: squareToCheck
+                type: IsoGridSquare
             return:
-              - type: table
+              - type: table<string, InventoryItem[]>
           - name: getMaterialOnGroundCounts
             parameters:
               - name: itemMap
-                type: table
+                type: table<string, InventoryItem[]>
             return:
-              - type: table
+              - type: table<string, integer>
           - name: getMaterialOnGroundUses
             parameters:
               - name: itemMap
+                type: table<string, InventoryItem[]>
             return:
-              - type: table
+              - type: table<string, integer>
           - name: checkMaterialOnGround
             parameters:
               - name: squareToCheck
+                type: IsoGridSquare
             return:
-              - type: table
+              - type: table<string, integer>
           - name: setInfo
             parameters:
               - name: javaObject
+                type: IsoThumpable
               - name: ISItem
-                type: table
+                type: ISBuildingObject
           - name: stairIsBlockingPlacement
             parameters:
               - name: _square
@@ -111,29 +119,36 @@ languages:
               - name: _doAdjacent
                 type: boolean
               - name: _north
+                type: boolean
+                nullable: true
             return:
               - type: boolean
           - name: getStairObjects
             parameters:
               - name: object
+                type: IsoObject
               - name: skipFloor
+                type: boolean
             return:
-              - type: table
+              - type: IsoObject[]
           - name: getDoubleDoorObjects
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: table
+              - type: IsoObject[]
           - name: getGarageDoorObjects
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: table
+              - type: IsoObject[]
           - name: getGraveObjects
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: table
+              - type: IsoObject[]
           - name: setHaveConstruction
             parameters:
               - name: _square

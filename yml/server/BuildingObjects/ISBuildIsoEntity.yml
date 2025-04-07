@@ -7,64 +7,92 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: objectInfo
-                type: boolean
+                type: SpriteConfigManager.ObjectInfo
               - name: nSprite
                 type: number
               - name: containers
-                nullable: true
+                type: ArrayList<ItemContainer>
               - name: logic
+                type: BuildLogic
                 nullable: true
         staticFields:
           Type:
             defaultValue: '"ISBuildIsoEntity"'
         fields:
-          tileCheck: {}
-          isWallLike: {}
+          tileCheck:
+            type: IsoSprite
+            nullable: true
+          isWallLike:
+            type: boolean
           previousStageObject:
+            type: IsoThumpable
             nullable: true
           sq:
             type: IsoGridSquare
-          blockAllTheSquare: {}
-          hoppable: {}
+            nullable: true
+          blockAllTheSquare:
+            type: boolean
+            nullable: true
+          hoppable:
+            type: boolean
+            nullable: true
           isStairs:
             type: boolean
-          isFloor: {}
-          face: {}
-          nSpriteCache:
-            type: number
-          character: {}
-          containers:
             nullable: true
-          name: {}
+          isFloor:
+            type: boolean
+            nullable: true
+          face:
+            type: SpriteConfigManager.FaceInfo
+            nullable: true
+          nSpriteCache:
+            type: integer
+          character:
+            type: IsoPlayer
+          containers:
+            type: ArrayList<ItemContainer>
+          name:
+            type: string
           objectInfo:
             type: boolean
           craftRecipe:
             type: boolean
           buildPanelLogic:
-            nullable: true
+            type: BuildLogic
           dontNeedFrame:
             type: boolean
           needWindowFrame:
             type: boolean
           needToBeAgainstWall:
             type: boolean
-          previousStages: {}
-          bonusHealth: {}
+          previousStages:
+            type: ArrayList<string>
+          bonusHealth:
+            type: integer
           buildLow:
             type: boolean
           spriteCache:
-            type: table
-          tileSprite: {}
+            type: table<string, IsoSprite>
+          tileSprite:
+            type: IsoSprite
+            nullable: true
           blockAfterPlace:
             type: boolean
           corner:
+            type: string
             nullable: true
           noNeedHammer:
             type: boolean
-          maxTime: {}
-          craftingBank: {}
-          completionSound: {}
+          maxTime:
+            type: number
+          craftingBank:
+            type: string
+            nullable: true
+          completionSound:
+            type: string
+            nullable: true
         methods:
           - name: walkTo
             parameters:
@@ -99,6 +127,7 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: tileInfo
+                type: SpriteConfigManager.TileInfo
               - name: _requiresFloor
                 type: boolean
               - name: _extendsN
@@ -107,7 +136,6 @@ languages:
                 type: boolean
             return:
               - type: boolean
-                nullable: true
           - name: isValid
             parameters:
               - name: square
@@ -119,7 +147,7 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: IsoGridSquare[]
           - name: create
             parameters:
               - name: x
@@ -129,7 +157,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
             return:
               - type: boolean
                 nullable: true
@@ -138,49 +168,78 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
               - name: sprite
+                type: string
               - name: openSprite
+                type: string
+                nullable: true
           - name: rotateKey
             parameters:
               - name: key
                 type: integer
           - name: getFace
             return:
-              - type: unknown
+              - type: SpriteConfigManager.FaceInfo
           - name: getOpenFace
             parameters:
               - name: _north
+                type: boolean
             return:
-              - type: unknown
+              - type: SpriteConfigManager.FaceInfo
           - name: cacheSprites
             parameters:
               - name: _face
+                type: SpriteConfigManager.FaceInfo
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
         staticMethods:
           - name: GetAllBuildableEntities
             return:
-              - type: table
+              - type: SpriteConfigManager.ObjectInfo[]
           - name: GetBuildableEntities
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
-              - type: table
-              - type: table
+              - type: SpriteConfigManager.ObjectInfo[]
+              - type: table<string, umbrella.ISBuildIsoEntity.ItemResult>
           - name: ConsumeBuildEntityItems
             parameters:
               - name: _info
+                type: SpriteConfigManager.ObjectInfo
               - name: _player
+                type: IsoPlayer
             return:
               - type: boolean
           - name: predicateMaterial
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: GetAllGroundItemsForPlayer
             parameters:
               - name: _player
+                type: IsoPlayer
             return:
-              - type: table
+              - type: table<string, umbrella.ISBuildIsoEntity.ItemResult>
+      umbrella.ISBuildIsoEntity.ItemResult:
+        fields:
+          count:
+            type: number
+          uses:
+            type: number
+          invCount:
+            type: number
+          invUses:
+            type: number
+          items:
+            type: InventoryItem[]
+          invItems:
+            type: InventoryItem[]
+          hasTestedInventory:
+            type: boolean
+            nullable: true

@@ -9,16 +9,23 @@ languages:
         staticFields:
           Type:
             defaultValue: '"SRainBarrelSystem"'
+          instance:
+            type: SRainBarrelSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: initSystem
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: SRainBarrelGlobalObject
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: convertOldModData

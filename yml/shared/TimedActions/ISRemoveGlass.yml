@@ -12,8 +12,6 @@ languages:
                 type: IsoPlayer
               - name: bodyPart
                 type: BodyPart
-              - name: hands
-                type: boolean
         staticFields:
           Type:
             defaultValue: '"ISRemoveGlass"'

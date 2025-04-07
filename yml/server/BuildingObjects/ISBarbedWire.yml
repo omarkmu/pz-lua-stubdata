@@ -7,14 +7,18 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISBarbedWire"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
           name:
             type: string
         methods:
@@ -27,10 +31,13 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: isValid
             parameters:
               - name: square
@@ -52,16 +59,16 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: number
+              - type: integer
           - name: getWoodenStake
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: number
+              - type: integer
           - name: getObjectIndex
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: number
+              - type: integer

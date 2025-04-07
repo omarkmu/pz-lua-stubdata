@@ -7,3 +7,45 @@ languages:
           doublemetal: {}
           double: {}
           simple: {}
+      umbrella.FeedingTroughDefinition:
+        fields:
+          sprite1:
+            type: string
+          sprite2:
+            type: string
+            nullable: true
+          spriteNorth1:
+            type: string
+          spriteNorth2:
+            type: string
+            nullable: true
+          sprite1FoodOverlay1:
+            type: string
+          sprite1FoodOverlay2:
+            type: string
+          sprite2FoodOverlay1:
+            type: string
+            nullable: true
+          sprite2FoodOverlay2:
+            type: string
+            nullable: true
+          spriteNorth1FoodOverlay1:
+            type: string
+          spriteNorth1FoodOverlay2:
+            type: string
+          spriteNorth2FoodOverlay1:
+            type: string
+            nullable: true
+          spriteNorth2FoodOverlay2:
+            type: string
+            nullable: true
+          planks:
+            type: integer
+          nails:
+            type: integer
+          skill:
+            type: integer
+          maxFeed:
+            type: integer
+          maxWater:
+            type: integer

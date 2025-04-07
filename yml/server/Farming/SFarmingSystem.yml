@@ -9,41 +9,54 @@ languages:
         staticFields:
           Type:
             defaultValue: '"SFarmingSystem"'
+          instance:
+            type: SFarmingSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         fields:
           hoursElapsed:
-            type: number
+            type: integer
           hourElapsedForWater:
-            type: number
+            type: integer
           previousHourHealth:
             type: number
-          previousHour: {}
+          previousHour:
+            type: integer
         methods:
           - name: initSystem
           - name: getInitialStateForClient
             return:
-              - type: table
+              - type: "{ hoursElapsed: integer }"
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: SPlantGlobalObject
           - name: isValidModData
             parameters:
               - name: modData
+                type: table
+                nullable: true
             return:
-              - type: unknown
+              - type: boolean
+                nullable: true
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
-              - type: unknown
+              - type: boolean
           - name: convertOldModData
           - name: OnClientCommand
             parameters:
               - name: command
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: args
+                type: table
           - name: EveryTenMinutes
           - name: lowerWaterLvlAndUpDisease
           - name: changeHealth
@@ -51,18 +64,23 @@ languages:
           - name: plowFadeCheck
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: checkPlant2
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: checkPlantSquare
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: checkWater
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: growPlant
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
               - name: nextGrowing
                 nullable: true
               - name: updateNbOfGrow
@@ -70,28 +88,39 @@ languages:
           - name: harvest
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
               - name: player
+                type: IsoPlayer
           - name: diseaseThis
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: diseaseClosePlant
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
               - name: aphidsBane
+                type: boolean
+                nullable: true
               - name: fliesBane
+                type: boolean
+                nullable: true
               - name: slugsBane
+                type: boolean
+                nullable: true
           - name: destroyOnWalk
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
               - name: square
                 type: IsoGridSquare
           - name: getHealth
             return:
-              - type: unknown
-                nullable: true
+              - type: integer
           - name: changePlayer
             parameters:
               - name: player
+                type: IsoPlayer
           - name: plow
             parameters:
               - name: square
@@ -99,10 +128,13 @@ languages:
           - name: gainXp
             parameters:
               - name: player
+                type: IsoPlayer
               - name: luaObject
+                type: SPlantGlobalObject
           - name: removePlant
             parameters:
               - name: luaObject
+                type: SPlantGlobalObject
           - name: removeTallGrass
             parameters:
               - name: sq
@@ -112,7 +144,9 @@ languages:
               - name: playerObj
                 type: IsoPlayer
               - name: command
+                type: string
               - name: args
+                type: table
           - name: hasWeeds
             parameters:
               - name: square
@@ -122,6 +156,7 @@ languages:
           - name: hasWeeds2
             parameters:
               - name: v
+                type: IsoObject
             return:
               - type: boolean
                 nullable: true

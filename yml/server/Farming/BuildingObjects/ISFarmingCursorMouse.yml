@@ -1,13 +1,18 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ISFarmingCursorMouse.OnSquareSelected:
+        - type: "fun(cursor: ISFarmingCursorMouse, square: IsoGridSquare)"
     classes:
       ISFarmingCursorMouse:
         extends: ISBuildingObject
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: onSquareSelected
+                type: umbrella.ISFarmingCursorMouse.OnSquareSelected
               - name: isValid
                 type: boolean
         staticFields:
@@ -18,11 +23,14 @@ languages:
             type: IsoGridSquare
           tooltip:
             nullable: true
-          onSquareSelected: {}
+          onSquareSelected:
+            type: umbrella.ISFarmingCursorMouse.OnSquareSelected
           isValid:
             type: boolean
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           noNeedHammer:
             type: boolean
           skipBuildAction:
@@ -37,7 +45,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: render
             parameters:
               - name: x
@@ -54,4 +64,5 @@ languages:
         staticMethods:
           - name: IsVisible
             return:
-              - type: ISFarmingCursorMouse | boolean
+              - type: boolean
+                nullable: true

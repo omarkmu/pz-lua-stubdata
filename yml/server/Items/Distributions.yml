@@ -1,8 +1,149 @@
 version: "1.1"
 languages:
   lua:
+    aliases:
+      umbrella.ContainerDistribution:
+        - type: umbrella.Distributions.ItemsContainerDistribution
+        - type: umbrella.Distributions.ListContainerDistribution
     classes:
       Distributions: {}
       SuburbsDistributions: {}
       ClutterTables: {}
       BagsAndContainers: {}
+      umbrella.Distributions.ListContainerDistribution:
+        fields:
+          procedural:
+            type: "true"
+          procList:
+            type: umbrella.Distributions.ProceduralItem[]
+          isShop:
+            type: boolean
+            nullable: true
+      umbrella.Distributions.ItemsContainerDistribution:
+        fields:
+          rolls:
+            type: integer
+          items:
+            type: (string | integer)[]
+          isShop:
+            type: boolean
+            nullable: true
+          noAutoAge:
+            type: boolean
+            nullable: true
+          fillRand:
+            type: integer
+            nullable: true
+          maxMap:
+            type: integer
+            nullable: true
+          stashChance:
+            type: integer
+            nullable: true
+          dontSpawnAmmo:
+            type: boolean
+            nullable: true
+          ignoreZombieDensity:
+            type: boolean
+            nullable: true
+          cookFood:
+            type: boolean
+            nullable: true
+          canBurn:
+            type: boolean
+            nullable: true
+          isTrash:
+            type: boolean
+            nullable: true
+          isWorn:
+            type: boolean
+            nullable: true
+          isRotten:
+            type: boolean
+            nullable: true
+          onlyOne:
+            type: boolean
+            nullable: true
+          defaultInventoryLoot:
+            type: boolean
+            nullable: true
+          junk:
+            type: umbrella.ContainerDistribution
+            nullable: true
+          bags:
+            type: umbrella.ContainerDistribution
+            nullable: true
+      umbrella.Distributions.ProceduralItem:
+        fields:
+          name:
+            type: string
+          min:
+            type: integer
+          max:
+            type: integer
+          weightChance:
+            type: integer
+          forceForItems:
+            type: string
+            nullable: true
+          forceForZones:
+            type: string
+            nullable: true
+          forceForTiles:
+            type: string
+            nullable: true
+          forceForRooms:
+            type: string
+            nullable: true
+      umbrella.RoomDistribution:
+        fields:
+          isShop:
+            type: boolean
+            nullable: true
+          professionChance:
+            type: number
+            nullable: true
+          professionChanceInt:
+            type: integer
+            nullable: true
+          outfit:
+            type: string
+            nullable: true
+          outfitFemale:
+            type: string
+            nullable: true
+          outfitMale:
+            type: string
+            nullable: true
+          outfitChance:
+            type: string
+            nullable: true
+          vehicle:
+            type: string
+            nullable: true
+          vehicles:
+            type: string
+            nullable: true
+          vehicleChance:
+            type: integer
+            nullable: true
+          vehicleDistribution:
+            type: string
+            nullable: true
+          femaleChance:
+            type: string
+            nullable: true
+          roomTypes:
+            type: string
+            nullable: true
+          containerChance:
+            type: string
+            nullable: true
+          femaleOdds:
+            type: string
+            nullable: true
+          bagType:
+            type: string
+            nullable: true
+          "[string]":
+            type: umbrella.ContainerDistribution

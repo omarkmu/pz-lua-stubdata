@@ -4,12 +4,18 @@ languages:
     classes:
       CraftRecipeCode:
         staticFields:
-          butcherHook: {}
-          removeLeather: {}
-          removeBlood: {}
-          removeGrease: {}
-          removeParts: {}
-          removeFeather: {}
+          butcherHook:
+            type: CraftRecipeCode.butcherHook
+          removeLeather:
+            type: CraftRecipeCode.removeLeather
+          removeBlood:
+            type: CraftRecipeCode.removeBlood
+          removeGrease:
+            type: CraftRecipeCode.removeGrease
+          removeParts:
+            type: CraftRecipeCode.removeParts
+          removeFeather:
+            type: CraftRecipeCode.removeFeather
           COLUMN_ANIMAL:
             defaultValue: "0"
           COLUMN_TOOL:
@@ -24,16 +30,124 @@ languages:
           - name: getOutputResourceInProcessor
             parameters:
               - name: _craftProcessor
+                type: unknown
+              - name: name
+                type: string
+            return:
+              - type: InventoryItem
+                nullable: true
+              - type: integer
+                nullable: true
+          - name: getAnimalBody
+            parameters:
+              - name: _craftRecipeData
+                type: CraftRecipeData
+            return:
+              - type: InventoryItem
+                nullable: true
+      CraftRecipeCode.removeFeather:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+      CraftRecipeCode.removeParts:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+      CraftRecipeCode.removeLeather:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftRecipeData
+                type: CraftRecipeData
+          - name: OnTest
+            parameters:
+              - name: _craftRecipeData
+                type: CraftRecipeData
+            return:
+              - type: boolean
+      CraftRecipeCode.removeGrease:
+        local: true
+        staticMethods:
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.removeBlood:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+      CraftRecipeCode.butcherHook:
+        local: true
+        staticMethods:
+          - name: OnTest
+            parameters:
+              - name: _craftRecipeData
+                type: CraftRecipeData
+            return:
+              - type: boolean
+          - name: OnTestModData
+            parameters:
+              - name: _craftProcessor
+                type: unknown
               - name: name
                 type: string
             return:
               - type: unknown
                 nullable: true
-              - type: unknown
-                nullable: true
-          - name: getAnimalBody
+          - name: removeDummyItem
             parameters:
               - name: _craftRecipeData
+                type: CraftRecipeData
+          - name: getAnimalPartDef
+            parameters:
+              - name: _craftRecipeData
+                type: CraftRecipeData
             return:
-              - type: unknown
+              - type: umbrella.AnimalPartsDefinition
                 nullable: true
+              - type: table
+                nullable: true
+              - type: InventoryItem
+                nullable: true
+          - name: createItem
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+              - name: item
+                type: string
+              - name: nb
+                type: number

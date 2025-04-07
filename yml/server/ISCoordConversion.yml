@@ -13,6 +13,7 @@ languages:
               - name: z
                 type: number
               - name: cz
+                type: number
             return:
               - type: number
               - type: number
@@ -25,5 +26,5 @@ languages:
               - name: z
                 type: number
             return:
-              - type: unknown
-              - type: unknown
+              - type: number
+              - type: number

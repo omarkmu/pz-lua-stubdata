@@ -9,12 +9,13 @@ languages:
               - name: luaSystem
                 type: SFeedingTroughSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"SFeedingTroughGlobalObject"'
         fields:
           feedAmount:
-            type: table
+            type: table<string, number>
           linkedX:
             type: number
           linkedY:
@@ -30,48 +31,60 @@ languages:
           - name: OnIsoObjectChangedItself
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: getObject
             return:
-              - type: unknown
+              - type: IsoObject
           - name: stateFromIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: stateToIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: addWater
             parameters:
               - name: amount
+                type: number
           - name: emptyWater
           - name: addObject
             parameters:
               - name: def
+                type: umbrella.FeedingTroughDefinition
               - name: north
+                type: boolean
               - name: slave
+                type: boolean
           - name: getSquare2Pos
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquare2PosReverse
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: addFeed
             parameters:
               - name: type
+                type: string
               - name: feedAmount
+                type: number
       SGlobalObject:
         methods:
           - name: OnModDataChangeItself
             parameters:
               - name: isoObject
+                type: IsoObject

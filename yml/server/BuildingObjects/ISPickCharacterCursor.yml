@@ -7,21 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISPickCharacterCursor"'
         fields:
           objectIndex:
-            type: number
+            type: integer
           squareX:
             type: number
           squareY:
             type: number
           squareZ:
             type: number
-          currentSquare: {}
-          character: {}
-          player: {}
+          currentSquare:
+            type: IsoGridSquare
+            nullable: true
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           noNeedHammer:
             type: boolean
           skipBuildAction:
@@ -36,7 +41,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: rotateKey
             parameters:
               - name: key
@@ -60,30 +67,33 @@ languages:
           - name: isValidCharacter
             parameters:
               - name: chr
+                type: IsoMovingObject
           - name: onPickCharacter
             parameters:
               - name: chr
+                type: IsoMovingObject
           - name: getObjectList
             parameters:
               - name: square
                 type: IsoGridSquare
                 nullable: true
             return:
-              - type: table
+              - type: IsoMovingObject[]
           - name: getHighlightedCharacter
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoMovingObject
                 nullable: true
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true

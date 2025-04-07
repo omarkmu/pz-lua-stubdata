@@ -50,6 +50,7 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
                 type: string
           - name: setInfo
@@ -57,9 +58,13 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: level
+                type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
               - name: luaobject
+                type: ISWoodenStairs
           - name: getHealth
             return:
               - type: number
@@ -84,24 +89,27 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquare3Pos
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquareTopPos
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number

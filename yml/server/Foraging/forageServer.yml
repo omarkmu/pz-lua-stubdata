@@ -9,22 +9,36 @@ languages:
           - name: addZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: removeZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: updateZone
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
           - name: syncForageData
           - name: updateIcon
             parameters:
               - name: _zoneData
+                type: umbrella.Foraging.ZoneData
               - name: _iconID
+                type: string
               - name: _icon
+                type: umbrella.Foraging.ZoneIconData
+                nullable: true
           - name: OnClientCommand
             parameters:
               - name: _module
+                type: string
               - name: _command
+                type: string
               - name: _plObj
+                type: IsoPlayer
               - name: _packet
+                type: table
+                nullable: true
               - name: _clientID
+                type: unknown
+                nullable: true

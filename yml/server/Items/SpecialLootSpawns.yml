@@ -3,483 +3,660 @@ languages:
   lua:
     classes:
       SpecialLootSpawns:
+        staticFields:
+          OnCreateRegion:
+            type: SpecialLootSpawns.OnCreateRegion
         staticMethods:
           - name: OnCreateStockCertificate
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePaperwork
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMonogram
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateIDcard
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateIDcard_Female
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateIDcard_Male
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDogTag
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDogTag_Female
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDogTag_Male
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhoto
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhoto_Secret
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhoto_Racy
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhoto_VeryOld
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSubjectBook
             parameters:
               - name: item
+                type: InventoryItem
               - name: subject
                 type: string
           - name: OnCreateSpecialBook
             parameters:
               - name: item
+                type: InventoryItem
               - name: subject
                 type: string
           - name: GetCoverFromList
             parameters:
               - name: item
+                type: InventoryItem
               - name: hardcover
+                type: boolean
               - name: oldBookList
+                type: string[]
           - name: OnCreateAdventureNonFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateArtBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBaseballBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBibleBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBiographyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBusinessBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateChildsBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateComputerBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateConspiracyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCrimeFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCinemaBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateClassicBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateClassicFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateClassicNonfictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDietBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFantasyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFarmingBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFashionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGeneralNonFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGeneralReferenceBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGolfBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHassBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHistoryBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHorrorBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateLegalBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateLiteraryFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMedicalBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMilitaryBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMilitaryHistoryBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMusicBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateNatureBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateNewAgeBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateOccultBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhilosophyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePlayBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePolicingBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePoliticsBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePoorBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateQuackeryBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateQuigleyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRelationshipBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateReligionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRichBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRomanceBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSadNonFictionBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateScaryBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSchoolTextbookBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateScienceBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSciFiBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSelfHelpBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSexyBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSportsBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTeensBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateThrillerBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTravelBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTrueCrimeBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateWesternBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateComicBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateComicBookRetail
             parameters:
               - name: item
+                type: InventoryItem
           - name: FirstAidKit_New
             parameters:
               - name: item
+                type: InventoryItem
           - name: FirstAidKit_NewPro
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMagazine2
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSubjectMagazine
             parameters:
               - name: item
+                type: InventoryItem
               - name: subject
                 type: string
           - name: OnCreateMagazine3
             parameters:
               - name: item
+                type: InventoryItem
               - name: subject
+                type: unknown
+                nullable: true
               - name: bookList
+                type: string[]
           - name: OnCreateArtMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBusinessMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCarMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateChildsMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCinemaMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCrimeMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFashionMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFirearmMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGamingMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGolfMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHealthMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHobbyMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHorrorMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHumorMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMilitaryMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMusicMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateOutdoorsMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePoliceMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePopularMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRichMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateScienceMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSportsMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTechMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTeensMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHottieZ
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHunkZ
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateScratchTicketWinner
             parameters:
               - name: result
           - name: OnCreateSealedParcel
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateOldNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRecentNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateNewNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDispatchNewNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHeraldNewNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateKnewsNewNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTimesNewNewspaper
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateTVMagazine
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBrochure
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFlier
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateFlier_Nolans
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBusinessCard
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBusinessCard_Nolans
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCatalogue
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRPGmanual
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGenericMail
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateLetterHandwritten
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateScarecrow
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSkeletonDisplay
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateLocket
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDoodle
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDoodleKids
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateGasMask
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRespirator
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSCBA
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateHairDyeBottle
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePopBottle
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePopCan
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateColorFromDefinition
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRandomColor
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSodaCan
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateWaterBottle
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateDogTag_Pet
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePostcard
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateRecipeClipping
             parameters:
               - name: item
+                type: InventoryItem
           - name: CreateSchematic
             parameters:
               - name: item
+                type: InventoryItem
               - name: list
-                type: table
+                type: string[]
               - name: multipleChance
                 type: number
           - name: OnCreateExplosivesSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateMeleeWeaponSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateBSToolsSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateArmorSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateCookwareSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateSurvivalSchematic
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreatePhotoBook
             parameters:
               - name: item
+                type: InventoryItem
           - name: OnCreateChildsPictureBook
             parameters:
               - name: item
+                type: InventoryItem
+      SpecialLootSpawns.OnCreateRegion:
+        local: true
+        staticMethods:
+          - name: Newspaper_Recent
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: region
+                type: string
+          - name: Newspaper_New
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: region
+                type: string

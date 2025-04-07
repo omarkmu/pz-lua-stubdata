@@ -4,4 +4,28 @@ languages:
     classes:
       CraftRecipeCode:
         staticFields:
-          generic: {}
+          generic:
+            type: CraftRecipeCode.generic
+      CraftRecipeCode.generic:
+        local: true
+        staticMethods:
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnStart
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnUpdate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnFailed
+            parameters:
+              - name: _craftProcessor
+                type: unknown

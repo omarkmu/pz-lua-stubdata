@@ -12,30 +12,38 @@ languages:
           IDMax:
             defaultValue: "1"
         fields:
-          javaObject: {}
-          sprite: {}
+          javaObject:
+            type: IsoLuaMover
+          sprite:
+            type: IsoSprite
           states:
             type: ISMoverStateMachine
         methods:
           - name: init
           - name: getSprite
             return:
-              - type: unknown
+              - type: IsoSprite
           - name: playAnim
             parameters:
               - name: name
                 type: string
               - name: seconds
+                type: number
               - name: looped
+                type: boolean
               - name: animate
+                type: boolean
           - name: changeState
             parameters:
               - name: state
+                type: ISBaseState
           - name: update
           - name: postrender
             parameters:
               - name: col
+                type: ColorInfo
               - name: bDoAttached
+                type: boolean
           - name: placeInWorld
             parameters:
               - name: x

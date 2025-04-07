@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: items
+                type: InventoryItem[]
         staticFields:
           Type:
             defaultValue: '"ISPlace3DItemCursor"'
@@ -20,15 +22,21 @@ languages:
             nullable: true
           surfaceSelected:
             type: number
-          keepOnSquareX: {}
-          keepOnSquareY: {}
+          keepOnSquareX:
+            type: integer
+            nullable: true
+          keepOnSquareY:
+            type: integer
+            nullable: true
           render3DItemXOffset:
             type: number
           render3DItemYOffset:
             type: number
           render3DItemZOffset:
             type: number
-          selectedSqDrop: {}
+          selectedSqDrop:
+            type: IsoGridSquare
+            nullable: true
           itemSq:
             nullable: true
           surfacesPossible:
@@ -39,18 +47,26 @@ languages:
             type: number
           rotating:
             type: boolean
-          rotateReverse: {}
-          rotateStart: {}
+          rotateReverse:
+            type: boolean
+            nullable: true
+          rotateStart:
+            type: number
+            nullable: true
           joypadPositionActive:
             type: boolean
           joypadPositionX:
             type: number
           joypadPositionY:
             type: number
-          chr: {}
-          character: {}
-          items: {}
-          player: {}
+          chr:
+            type: IsoPlayer
+          character:
+            type: IsoPlayer
+          items:
+            type: InventoryItem[]
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -69,7 +85,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -112,6 +130,7 @@ languages:
               - name: playerNum
                 type: integer
               - name: ui
+                type: ISEquippedItem
           - name: getSurface
             parameters:
               - name: square
@@ -133,15 +152,18 @@ languages:
           - name: handleRotate
             parameters:
               - name: pressed
+                type: boolean
               - name: reverse
+                type: boolean
           - name: checkPositionJoypad
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirDown
             parameters:
               - name: joypadData
@@ -172,30 +194,31 @@ languages:
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: onObjectLeftMouseButtonDown
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y

@@ -5,5 +5,9 @@ languages:
       - name: SFeedingTroughSystemCommand
         parameters:
           - name: command
+            type: string
           - name: player
+            type: IsoPlayer
           - name: args
+            type: table
+            nullable: true

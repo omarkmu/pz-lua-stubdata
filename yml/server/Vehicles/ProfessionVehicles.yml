@@ -5,7 +5,7 @@ languages:
       ProfessionVehicles:
         staticFields:
           OnCreateRegion:
-            type: table | function
+            type: "fun(region: string, square: IsoGridSquare, direction: IsoDirections)"
           Louisville: {}
           MarchRidge: {}
           Muldraugh: {}
@@ -41,3 +41,4 @@ languages:
           - name: CheckSwap
             parameters:
               - name: vehicle
+                type: BaseVehicle

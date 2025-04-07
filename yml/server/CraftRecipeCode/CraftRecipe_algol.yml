@@ -4,26 +4,39 @@ languages:
     classes:
       CraftRecipeCode:
         staticFields:
-          SharpenBladeGrindstone: {}
-          SharpenHeadGrindstone: {}
-          EntityRepairFull: {}
-          DismantleBlade: {}
-          AssembleBlade: {}
-          DismantleHead: {}
-          AssembleHead: {}
-          CopyKey: {}
-          GenericFixing: {}
-          GenericBetterFixing: {}
-          GenericEvenBetterFixing: {}
+          SharpenBladeGrindstone:
+            type: CraftRecipeCode.SharpenBladeGrindstone
+          SharpenHeadGrindstone:
+            type: CraftRecipeCode.SharpenHeadGrindstone
+          EntityRepairFull:
+            type: CraftRecipeCode.EntityRepairFull
+          DismantleBlade:
+            type: CraftRecipeCode.DismantleBlade
+          AssembleBlade:
+            type: CraftRecipeCode.AssembleBlade
+          DismantleHead:
+            type: CraftRecipeCode.DismantleHead
+          AssembleHead:
+            type: CraftRecipeCode.AssembleHead
+          CopyKey:
+            type: CraftRecipeCode.CopyKey
+          GenericFixing:
+            type: CraftRecipeCode.GenericFixing
+          GenericBetterFixing:
+            type: CraftRecipeCode.GenericBetterFixing
+          GenericEvenBetterFixing:
+            type: CraftRecipeCode.GenericEvenBetterFixing
         staticMethods:
           - name: ONCREATE_TEST
             parameters:
               - name: _craftProcessor
+                type: unknown
               - name: thing2
               - name: thing3
           - name: ONTEST_TEST
             parameters:
               - name: _craftProcessor
+                type: unknown
               - name: thing2
               - name: thing3
             return:
@@ -31,17 +44,126 @@ languages:
           - name: FLAG_TEST
             parameters:
               - name: _craftProcessor
+                type: unknown
               - name: thing2
               - name: thing3
           - name: GenericFixer
             parameters:
               - name: craftRecipeData
+                type: CraftRecipeData
               - name: player
+                type: IsoPlayer
               - name: factor
                 type: number
               - name: item
+                type: InventoryItem
+                nullable: true
               - name: skill
+                type: number
                 nullable: true
               - name: head
                 type: boolean
                 nullable: true
+      CraftRecipeCode.SharpenBladeGrindstone:
+        local: true
+        staticMethods:
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.SharpenHeadGrindstone:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.EntityRepairFull:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+                nullable: true
+          - name: OnTest
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+            return:
+              - type: boolean
+                nullable: true
+      CraftRecipeCode.DismantleBlade:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.AssembleBlade:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.DismantleHead:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.AssembleHead:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.CopyKey:
+        local: true
+        staticMethods:
+          - name: OnTest
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: OnCreate
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+      CraftRecipeCode.GenericFixing:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: IsoPlayer
+      CraftRecipeCode.GenericBetterFixing:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: IsoPlayer
+      CraftRecipeCode.GenericEvenBetterFixing:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: IsoPlayer

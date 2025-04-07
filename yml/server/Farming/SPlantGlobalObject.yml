@@ -9,6 +9,7 @@ languages:
               - name: luaSystem
                 type: SFarmingSystem
               - name: globalObject
+                type: GlobalObject
         staticFields:
           Type:
             defaultValue: '"SPlantGlobalObject"'
@@ -17,7 +18,6 @@ languages:
             type: string
           spriteName:
             type: string
-            nullable: true
           exterior:
             type: boolean
           aphidLvl:
@@ -30,7 +30,8 @@ languages:
             type: number
           nextGrowing:
             type: number
-          lastWaterHour: {}
+          lastWaterHour:
+            type: integer
           waterLvl:
             type: number
           fertilizer:
@@ -47,7 +48,8 @@ languages:
             type: string
           nbOfGrow:
             type: number
-          typeOfSeed: {}
+          typeOfSeed:
+            type: string
           waterNeeded:
             type: number
           hasWeeds:
@@ -58,23 +60,27 @@ languages:
             type: boolean
           hasVegetable:
             type: boolean
-          waterNeededMax: {}
+          waterNeededMax:
+            type: number
           hasSeed:
             type: boolean
           badCare:
             type: boolean
-          owner: {}
+          owner:
+            type: integer
         methods:
           - name: initNew
           - name: stateFromIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: stateToIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: getObject
             return:
-              - type: unknown
+              - type: IsoObject
           - name: setObjectName
             parameters:
               - name: objectName
@@ -83,7 +89,6 @@ languages:
             parameters:
               - name: spriteName
                 type: string
-                nullable: true
           - name: isAlive
             return:
               - type: boolean
@@ -100,7 +105,7 @@ languages:
                 nullable: true
           - name: isColdHardy
             return:
-              - type: unknown
+              - type: boolean
                 nullable: true
           - name: isSowMonth
             return:
@@ -130,39 +135,62 @@ languages:
           - name: lowerWaterLvl
             parameters:
               - name: plant
+                nullable: true
           - name: cureMildew
             parameters:
               - name: mildewCureSource
+                type: InventoryItem
+                nullable: true
               - name: uses
+                type: integer
               - name: skill
+                type: integer
           - name: cureFlies
             parameters:
               - name: fliesCureSource
+                type: InventoryItem
+                nullable: true
               - name: uses
+                type: integer
               - name: skill
+                type: integer
           - name: cureAphids
             parameters:
               - name: aphidsCureSource
+                type: InventoryItem
+                nullable: true
               - name: uses
+                type: integer
               - name: skill
+                type: integer
           - name: cureSlugs
             parameters:
               - name: slugsCureSource
+                type: InventoryItem
+                nullable: true
               - name: uses
+                type: integer
               - name: skill
+                type: integer
           - name: water
             parameters:
               - name: waterSource
+                type: InventoryItem
+                nullable: true
               - name: uses
+                type: integer
           - name: fertilize
             parameters:
               - name: args
+                type: "{ compost: boolean, skill: integer }"
           - name: compostPlant
             parameters:
               - name: skill
+                type: integer
           - name: fertilize2
             parameters:
               - name: skill
+                type: integer
           - name: checkStat
           - name: killThis
           - name: dryThis
@@ -172,25 +200,31 @@ languages:
           - name: seed
             parameters:
               - name: typeOfSeed
+                type: string
               - name: skill
+                type: integer
           - name: initHealth
             parameters:
               - name: skill
+                type: integer
           - name: deadPlant
           - name: addIcon
           - name: saveData
           - name: fromModData
             parameters:
               - name: modData
+                type: table
           - name: toModData
             parameters:
               - name: modData
+                type: table
           - name: fromObject
             parameters:
               - name: object
+                type: IsoObject
           - name: loadGridSquare
         staticMethods:
           - name: initModData
             parameters:
               - name: modData
-                type: SPlantGlobalObject
+                type: table

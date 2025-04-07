@@ -7,25 +7,29 @@ languages:
           - name: getExtinguisherUses
             parameters:
               - name: item
+                type: InventoryItem
                 nullable: true
             return:
               - type: number
           - name: getFluidContainerMillilitresPerUse
             return:
-              - type: number
+              - type: integer
           - name: getWaterUsesFloat
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: number
           - name: getWaterUsesInteger
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: number
+              - type: integer
           - name: isExtinguisher
             parameters:
               - name: item
+                type: InventoryItem
                 nullable: true
             return:
               - type: boolean
@@ -34,7 +38,7 @@ languages:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: InventoryItem
                 nullable: true
           - name: isSquareToExtinguish
             parameters:
@@ -47,5 +51,5 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true

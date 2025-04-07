@@ -5,3 +5,51 @@ languages:
       HutchDefinitions:
         staticFields:
           hutchs: {}
+      umbrella.HutchDefinition:
+        fields:
+          name:
+            type: string
+          planks:
+            type: integer
+          nails:
+            type: integer
+          skill:
+            type: integer
+          enterSpotX:
+            type: integer
+          enterSpotY:
+            type: integer
+          maxAnimals:
+            type: integer
+          maxNestBox:
+            type: integer
+          baseSprite:
+            type: string
+          eggHatchDoors:
+            type: umbrella.HutchDefinition.EggHatchDoorInfo[]
+            nullable: true
+          extraSprites:
+            type: umbrella.HutchDefinition.ExtraSpriteInfo[]
+            nullable: true
+      umbrella.HutchDefinition.BaseSpriteInfo:
+        fields:
+          xoffset:
+            type: integer
+          yoffset:
+            type: integer
+          sprite:
+            type: string
+      umbrella.HutchDefinition.EggHatchDoorInfo:
+        extends: umbrella.HutchDefinition.BaseSpriteInfo
+        fields:
+          zoffset:
+            type: integer
+          closedSprite:
+            type: string
+            nullable: true
+      umbrella.HutchDefinition.ExtraSpriteInfo:
+        extends: umbrella.HutchDefinition.BaseSpriteInfo
+        fields:
+          spriteOpen:
+            type: string
+            nullable: true

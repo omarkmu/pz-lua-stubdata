@@ -7,7 +7,9 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: extinguisher
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISExtinguishCursor"'
@@ -15,9 +17,12 @@ languages:
             nullable: true
         fields:
           extinguisher:
+            type: InventoryItem
             nullable: true
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -36,7 +41,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -65,7 +72,8 @@ languages:
               - type: boolean
           - name: isRunningAction
             return:
-              - type: ISTimedActionQueue | table
+              - type: ISBaseTimedAction
+                nullable: true
           - name: getTopLeftOfSquares
             parameters:
               - name: x
@@ -91,24 +99,25 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSquares
             parameters:
@@ -119,16 +128,17 @@ languages:
               - name: z
                 type: number
             return:
-              - type: table
+              - type: IsoGridSquare[]
           - name: getClosestSquare
             parameters:
               - name: squares
+                type: IsoGridSquare[]
             return:
-              - type: unknown
+              - type: number
                 nullable: true
           - name: getFireObjects
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: IsoFire[]

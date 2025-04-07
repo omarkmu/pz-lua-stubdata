@@ -4,13 +4,137 @@ languages:
     classes:
       BuildRecipeCode:
         staticFields:
-          canBePlastered: {}
-          stairs: {}
-          floor: {}
-          butcheringHook: {}
-          chickenHutch: {}
-          feedingTrough: {}
-          campfire: {}
-          composter: {}
-          windowGlass: {}
-          woodLampPillar: {}
+          canBePlastered:
+            type: BuildRecipeCode.canBePlastered
+          stairs:
+            type: BuildRecipeCode.stairs
+          floor:
+            type: BuildRecipeCode.floor
+          butcheringHook:
+            type: BuildRecipeCode.butcheringHook
+          chickenHutch:
+            type: BuildRecipeCode.chickenHutch
+          feedingTrough:
+            type: BuildRecipeCode.feedingTrough
+          campfire:
+            type: BuildRecipeCode.campfire
+          composter:
+            type: BuildRecipeCode.composter
+          windowGlass:
+            type: BuildRecipeCode.windowGlass
+          woodLampPillar:
+            type: BuildRecipeCode.woodLampPillar
+      BuildRecipeCode.stairs:
+        local: true
+        staticMethods:
+          - name: OnIsValid
+            parameters:
+              - name: params
+                type: umbrella.BuildRecipeCode.IsValidParams
+            return:
+              - type: boolean
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.canBePlastered:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.floor:
+        local: true
+        staticMethods:
+          - name: OnIsValid
+            parameters:
+              - name: params
+                type: umbrella.BuildRecipeCode.IsValidParams
+            return:
+              - type: boolean
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.butcheringHook:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+            return:
+              - type: umbrella.BuildRecipeCode.OnCreateResult
+      BuildRecipeCode.chickenHutch:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+            return:
+              - type: umbrella.BuildRecipeCode.OnCreateResult
+      BuildRecipeCode.feedingTrough:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.campfire:
+        local: true
+        staticMethods:
+          - name: OnIsValid
+            parameters:
+              - name: params
+                type: umbrella.BuildRecipeCode.IsValidParams
+            return:
+              - type: boolean
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.composter:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.windowGlass:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+      BuildRecipeCode.woodLampPillar:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: thumpable
+                type: IsoThumpable
+              - name: craftRecipeData
+              - name: character
+      umbrella.BuildRecipeCode.IsValidParams:
+        fields:
+          square:
+            type: IsoGridSquare
+          tileInfo:
+            type: SpriteConfigManager.TileInfo
+          north:
+            type: boolean
+          canBuildOverWater:
+            type: boolean
+          testCollisions:
+            type: boolean
+      umbrella.BuildRecipeCode.OnCreateResult:
+        fields:
+          replaceObject:
+            type: boolean
+            nullable: true
+          object:
+            type: IsoObject
+            nullable: true

@@ -14,62 +14,81 @@ languages:
           - name: OnEveryHour
             parameters:
               - name: _channel
+                type: RadioChannel
               - name: _gametime
+                type: GameTime
               - name: _radio
+                type: ZomboidRadio
           - name: CreateBroadcast
             parameters:
               - name: _gametime
+                type: GameTime
             return:
-              - type: unknown
+              - type: RadioBroadCast
           - name: FillBroadcast
             parameters:
               - name: _gametime
+                type: GameTime
               - name: _bc
+                type: RadioBroadCast
           - name: AddFuzz
             parameters:
               - name: _c
-                type: table
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: _chance
                 type: number
+                nullable: true
           - name: AddPowerNotice
             parameters:
               - name: _c
-                type: table
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: _force
                 type: boolean
           - name: AddForecasting
             parameters:
               - name: _c
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: _hour
+                type: number
           - name: AddForecast
             parameters:
               - name: _c
-                type: table
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: _forecast
+                type: ClimateForecaster.DayForecast
               - name: _prefix
+                type: string
               - name: _doFog
                 type: boolean
           - name: GetForecastString
             parameters:
               - name: _type
+                type: integer
               - name: _forecast
+                type: ClimateForecaster.DayForecast
             return:
               - type: string
           - name: GetDaySegmentForHour
             parameters:
               - name: _hour
+                type: integer
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: AddExtremesForecasting
             parameters:
               - name: _c
-                type: table
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: offset
                 type: number
               - name: _len
@@ -77,16 +96,21 @@ languages:
           - name: GetRandomString
             parameters:
               - name: _c
-                type: table
+                type: umbrella.RGB
               - name: _bc
+                type: RadioBroadCast
               - name: _doItThreshold
                 type: number
+                nullable: true
               - name: _forceRand
                 type: number
+                nullable: true
           - name: TestAll
             parameters:
               - name: _gametime
+                type: GameTime
               - name: _bc
+                type: RadioBroadCast
       ISDebugUtils:
         staticMethods:
           - name: roundNum

@@ -7,9 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: dismantle
                 type: boolean
               - name: sledgehammer
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISDestroyCursor"'
@@ -26,9 +28,13 @@ languages:
             type: number
           currentObject:
             nullable: true
-          currentSquare: {}
-          character: {}
-          player: {}
+          currentSquare:
+            type: IsoGridSquare
+            nullable: true
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -39,7 +45,8 @@ languages:
             type: boolean
           dismantle:
             type: boolean
-          sledgehammer: {}
+          sledgehammer:
+            type: InventoryItem
         methods:
           - name: create
             parameters:
@@ -50,7 +57,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -61,37 +70,44 @@ languages:
                 type: number
             return:
               - type: boolean
-                nullable: true
           - name: _isWall
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: _isDoorFrame
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: _isDoorN
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: _isDoorW
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: _isDoorWallN
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: unknown
+              - type: boolean
+                nullable: true
           - name: _isDoorWallW
             parameters:
               - name: object
+                type: IsoObject
             return:
-              - type: unknown
+              - type: boolean
+                nullable: true
           - name: rotateKey
             parameters:
               - name: key
@@ -115,16 +131,17 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
@@ -137,6 +154,7 @@ languages:
           - name: couldSeeOpposite
             parameters:
               - name: object
+                type: IsoObject
               - name: square
                 type: IsoGridSquare
             return:
@@ -144,13 +162,15 @@ languages:
           - name: canDestroy
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: isFloorAtTopOfStairs
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: getObjectList
             return:
-              - type: table
+              - type: IsoObject[]

@@ -14,20 +14,23 @@ languages:
           - name: calcWater
             parameters:
               - name: waterMin
+                type: number
               - name: waterLvl
+                type: number
             return:
               - type: number
-                nullable: true
           - name: calcDisease
             parameters:
               - name: diseaseLvl
+                type: number
             return:
               - type: number
           - name: getObjectPhase
             parameters:
               - name: plant
+                type: SPlantGlobalObject
             return:
-              - type: boolean
+              - type: string
           - name: getObjectName
             parameters:
               - name: plant
@@ -44,26 +47,90 @@ languages:
           - name: grow
             parameters:
               - name: planting
+                type: SPlantGlobalObject
               - name: nextGrowing
+                type: number
+                nullable: true
               - name: updateNbOfGrow
+                type: boolean
             return:
-              - type: unknown
+              - type: SPlantGlobalObject
+      umbrella.Farming.Props:
+        fields:
+          icon:
+            type: string
+          texture:
+            type: string
+          waterLvl:
+            type: integer
+          waterNeeded:
+            type: integer
+          timeToGrow:
+            type: integer
+          minVeg:
+            type: integer
+          maxVeg:
+            type: integer
+          minVegAutorized:
+            type: integer
+          maxVegAutorized:
+            type: integer
+          vegetableName:
+            type: string
+          seedName:
+            type: string
+          seedTypes:
+            type: string[]
+            nullable: true
+          badMonth:
+            type: integer[]
+          sowMonth:
+            type: integer[]
+          bestMonth:
+            type: integer[]
+          riskMonth:
+            type: integer[]
+            nullable: true
+          seasonRecipe:
+            type: string
+          harvestLevel:
+            type: integer
+          mature:
+            type: integer
+          fullGrown:
+            type: integer
+          scytheHarvest:
+            type: boolean
+            nullable: true
+          harvestPosition:
+            type: '"Low" | "Mid" | "High"'
+            nullable: true
     functions:
       - name: getNbOfSeed
         parameters:
           - name: nbOfSeed
+            type: number
           - name: typeOfPlant
+            type: string
           - name: container
+            type: ItemContainer
         return:
           - type: number
       - name: getVegetablesNumber
         parameters:
           - name: min
+            type: number
           - name: max
+            type: number
           - name: minAutorized
+            type: number
           - name: maxAutorized
+            type: number
           - name: plant
+            type: SPlantGlobalObject
           - name: skill
+            type: number
+            nullable: true
         return:
           - type: number
       - name: randomGrowthOffset
@@ -72,6 +139,8 @@ languages:
       - name: calcNextGrowing
         parameters:
           - name: nextGrowing
+            type: number
+            nullable: true
           - name: nextTime
             type: number
         return:
@@ -82,18 +151,28 @@ languages:
       - name: growNext
         parameters:
           - name: planting
+            type: SPlantGlobalObject
           - name: nameOfTile
             type: string
           - name: nextGrowing
+            type: number
+            nullable: true
           - name: howManyTime
             type: number
         return:
-          - type: unknown
+          - type: SPlantGlobalObject
       - name: badPlant
         parameters:
           - name: water
+            type: number
           - name: waterMax
+            type: number
           - name: diseaseLvl
+            type: number
           - name: plant
+            type: SPlantGlobalObject
           - name: nextGrowing
+            type: number
+            nullable: true
           - name: updateNbOfGrow
+            type: boolean

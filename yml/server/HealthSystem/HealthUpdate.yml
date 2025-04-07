@@ -5,17 +5,21 @@ languages:
       healthUpdate:
         staticFields:
           lastGrid:
+            type: IsoGridSquare
             nullable: true
           bodyDmg:
+            type: BodyDamage
             nullable: true
         staticMethods:
           - name: update
           - name: scratchFromWindow
             parameters:
               - name: feeler
+                type: IsoGridSquare
           - name: getBrokenWindow
             parameters:
               - name: feeler
+                type: IsoGridSquare
             return:
               - type: unknown
                 nullable: true

@@ -6,13 +6,27 @@ languages:
         staticFields:
           valid:
             defaultValue: "true"
-          scripts: {}
+          scripts:
+            type: umbrella.DynamicRadio.Script[]
           channels: {}
-          cache: {}
+          cache:
+            type: table<string, RadioChannel>
         staticMethods:
           - name: OnLoadRadioScripts
             parameters:
               - name: _scriptManager
+                type: RadioScriptManager
               - name: _isNewGame
                 type: boolean
           - name: OnEveryHour
+      umbrella.DynamicRadio.Script:
+        staticMethods:
+          - name: OnLoadRadioScripts
+          - name: OnEveryHour
+            parameters:
+              - name: channel
+                type: RadioChannel
+              - name: gametime
+                type: GameTime
+              - name: radio
+                type: ZomboidRadio

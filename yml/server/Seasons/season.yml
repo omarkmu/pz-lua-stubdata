@@ -53,12 +53,16 @@ languages:
           - name: updateWeather
             parameters:
               - name: month
+                type: unknown
               - name: currentHour
+                type: unknown
           - name: startRain
           - name: updateMoonState
             parameters:
               - name: currentHour
+                type: unknown
               - name: month
+                type: unknown
           - name: updateMoonPhase
           - name: updateWeatherIcon
           - name: load

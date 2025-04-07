@@ -265,4 +265,4 @@ languages:
     functions:
       - name: getCampingFuelMax
         return:
-          - type: number
+          - type: integer

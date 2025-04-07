@@ -7,17 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: handItem
+                type: InventoryItem
               - name: character
-                nullable: true
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"farmingPlot"'
         fields:
-          handItem: {}
+          handItem:
+            type: InventoryItem
           skipBuildAction:
             type: boolean
           character:
-            nullable: true
+            type: IsoPlayer
           noNeedHammer:
             type: boolean
         methods:
@@ -30,7 +32,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: isValid
             parameters:
               - name: square
@@ -39,15 +43,15 @@ languages:
               - type: boolean
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: render
             parameters:

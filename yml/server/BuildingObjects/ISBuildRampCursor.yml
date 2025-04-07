@@ -7,13 +7,17 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: which
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISBuildRampCursor"'
         fields:
-          character: {}
-          which: {}
+          character:
+            type: IsoPlayer
+          which:
+            type: string
         methods:
           - name: create
             parameters:
@@ -24,7 +28,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: removeRampObjects
             parameters:
               - name: x
@@ -44,7 +50,7 @@ languages:
               - name: spriteName
                 type: string
             return:
-              - type: unknown
+              - type: IsoObject
                 nullable: true
           - name: render
             parameters:

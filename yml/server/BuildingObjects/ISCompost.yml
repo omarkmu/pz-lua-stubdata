@@ -7,7 +7,7 @@ languages:
         constructors:
           - parameters:
               - name: name
-                type: string | number
+                type: string
               - name: sprite
                 type: string
         staticFields:
@@ -16,9 +16,12 @@ languages:
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+            nullable: true
+          javaObject:
+            type: IsoCompost
+            nullable: true
           name:
-            type: string | number
+            type: string
         methods:
           - name: create
             parameters:
@@ -29,7 +32,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getHealth
             return:
               - type: number

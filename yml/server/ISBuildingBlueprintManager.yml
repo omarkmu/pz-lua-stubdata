@@ -17,5 +17,7 @@ languages:
               - name: y
                 type: number
               - name: wx
+                type: number
               - name: wy
+                type: number
           - name: RenderUI

@@ -10,18 +10,26 @@ languages:
           Type:
             defaultValue: '"STrapSystem"'
           removedCache:
+            type: table
             nullable: true
+          instance:
+            type: STrapSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: initSystem
           - name: convertOldModData
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: STrapGlobalObject
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: OnClientCommand
@@ -33,9 +41,11 @@ languages:
           - name: OnObjectAboutToBeRemoved
             parameters:
               - name: isoObject
+                type: IsoObject
           - name: OnDestroyIsoThumpable
             parameters:
               - name: isoObject
+                type: IsoObject
               - name: playerObj
                 type: IsoPlayer
         staticMethods:
@@ -44,6 +54,7 @@ languages:
           - name: isValidModData
             parameters:
               - name: modData
+                type: table
             return:
               - type: boolean
           - name: addSound

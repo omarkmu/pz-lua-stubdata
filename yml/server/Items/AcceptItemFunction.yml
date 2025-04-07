@@ -7,36 +7,48 @@ languages:
           - name: FirstAidKit
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: AmmoStrap_Bullets
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: AmmoStrap_Shells
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: boolean
           - name: KeyRing
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: HolsterShoulder
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
               - type: boolean
           - name: Wallet
             parameters:
               - name: container
+                type: ItemContainer
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: boolean

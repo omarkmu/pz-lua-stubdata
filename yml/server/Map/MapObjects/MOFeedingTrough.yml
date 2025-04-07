@@ -7,3 +7,4 @@ languages:
           - name: generateContainer
             parameters:
               - name: trough
+                type: IsoFeedingTrough

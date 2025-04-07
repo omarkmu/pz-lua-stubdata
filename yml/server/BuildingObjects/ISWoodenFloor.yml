@@ -7,14 +7,18 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISWoodenFloor"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
           buildLow:
             type: boolean
           floor:
@@ -29,7 +33,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: isValid
             parameters:
               - name: square

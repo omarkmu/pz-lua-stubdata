@@ -11,21 +11,30 @@ languages:
               - name: northSprite
                 type: string
               - name: item
+                type: InventoryItem
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISNaturalFloor"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
-          item: {}
-          itemType: {}
-          character: {}
-          player: {}
+          javaObject:
+            type: IsoObject
+            nullable: true
+          item:
+            type: InventoryItem
+          itemType:
+            type: string
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           noNeedHammer:
             type: boolean
-          actionAnim: {}
+          actionAnim:
+            type: CharacterActionAnims
           floorType:
             type: string
             nullable: true
@@ -41,7 +50,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: isValid
             parameters:
               - name: square
@@ -71,6 +82,7 @@ languages:
           - name: getFloorType
             parameters:
               - name: item
+                type: InventoryItem
             return:
               - type: string
                 nullable: true
@@ -80,4 +92,4 @@ languages:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: string[]

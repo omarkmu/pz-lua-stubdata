@@ -5,6 +5,7 @@ languages:
       xpUpdate:
         staticFields:
           characterInfo:
+            type: ISCharacterInfoWindow
             nullable: true
           lastX:
             defaultValue: "0"
@@ -14,22 +15,33 @@ languages:
           - name: onPlayerMove
             parameters:
               - name: player
+                type: IsoPlayer
           - name: OnWeaponHitTree
             parameters:
               - name: owner
+                type: IsoPlayer
               - name: weapon
+                type: HandWeapon
           - name: onWeaponHitXp
             parameters:
               - name: owner
+                type: IsoPlayer
               - name: weapon
+                type: HandWeapon
               - name: hitObject
+                type: IsoMovingObject
               - name: damage
+                type: number
               - name: hitCount
+                type: integer
           - name: onMakeItem
             parameters:
               - name: item
+                type: InventoryItem
               - name: resultItem
+                type: InventoryItem
               - name: recipe
+                type: Recipe
           - name: displayCharacterInfo
             parameters:
               - name: key
@@ -40,26 +52,34 @@ languages:
           - name: addXp
             parameters:
               - name: owner
+                type: IsoPlayer
               - name: type
+                type: PerkFactory.Perk
               - name: amount
+                type: number
           - name: levelPerk
             parameters:
               - name: owner
+                type: IsoPlayer
               - name: perk
+                type: PerkFactory.Perk
               - name: level
+                type: integer
               - name: addBuffer
+                type: boolean
           - name: checkForLosingLevel
             parameters:
               - name: playerObj
                 type: IsoPlayer
               - name: perk
+                type: PerkFactory.Perk
           - name: everyTenMinutes
           - name: getModData
             parameters:
               - name: playerObj
                 type: IsoPlayer
             return:
-              - type: unknown
+              - type: table
                 nullable: true
           - name: onNewGame
             parameters:

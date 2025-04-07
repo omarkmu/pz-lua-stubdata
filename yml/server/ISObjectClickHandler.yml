@@ -8,6 +8,7 @@ languages:
             type: boolean
             nullable: true
           lastClickTime:
+            type: number
             nullable: true
           clickTime:
             type: number
@@ -19,18 +20,22 @@ languages:
             type: number
             nullable: true
           downObject:
+            type: IsoObject
             nullable: true
           lastRClickTime:
+            type: number
             nullable: true
           rclickTime:
             type: number
             nullable: true
           rdownObject:
+            type: IsoObject
             nullable: true
         staticMethods:
           - name: doRDoubleClick
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -38,6 +43,7 @@ languages:
           - name: doRClick
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -45,6 +51,7 @@ languages:
           - name: doDoubleClick
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -52,6 +59,7 @@ languages:
           - name: doClickCurtain
             parameters:
               - name: object
+                type: IsoCurtain
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -61,6 +69,7 @@ languages:
           - name: doClickDoor
             parameters:
               - name: object
+                type: IsoDoor
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -70,6 +79,7 @@ languages:
           - name: doClickLightSwitch
             parameters:
               - name: object
+                type: IsoLightSwitch
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -79,6 +89,7 @@ languages:
           - name: doClickThumpable
             parameters:
               - name: object
+                type: IsoThumpable
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -88,6 +99,7 @@ languages:
           - name: doClickWindow
             parameters:
               - name: object
+                type: IsoWindow
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -97,6 +109,7 @@ languages:
           - name: doClickSpecificObject
             parameters:
               - name: object
+                type: IsoObject
               - name: playerNum
                 type: integer
               - name: playerObj
@@ -106,6 +119,7 @@ languages:
           - name: doClick
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -113,6 +127,7 @@ languages:
           - name: onObjectLeftMouseButtonDown
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -120,6 +135,7 @@ languages:
           - name: onObjectLeftMouseButtonUp
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -127,6 +143,7 @@ languages:
           - name: onObjectRightMouseButtonDown
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -134,6 +151,7 @@ languages:
           - name: onObjectRightMouseButtonUp
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y

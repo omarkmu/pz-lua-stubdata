@@ -7,22 +7,29 @@ languages:
         constructors:
           - parameters:
               - name: player
+                type: IsoPlayer
                 nullable: true
               - name: trap
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"TrapBO"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
-          trapDef: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
+          trapDef:
+            type: umbrella.TrapDefinition
           name:
             type: string
           character:
             nullable: true
-          player: {}
-          trap: {}
+          player:
+            type: IsoPlayer
+          trap:
+            type: InventoryItem
           noNeedHammer:
             type: boolean
           actionAnim:
@@ -39,19 +46,22 @@ languages:
               - name: north
                 type: boolean
               - name: sprite
+                type: string
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: isValid
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: boolean
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: render
             parameters:

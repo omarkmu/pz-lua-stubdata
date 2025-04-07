@@ -7,8 +7,11 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: paperType
+                type: string
               - name: newSprite
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISPaperCursor"'
@@ -21,11 +24,17 @@ languages:
             type: number
           renderZ:
             type: number
-          currentSquare: {}
-          newSpriteSprite: {}
-          newSprite: {}
-          character: {}
-          player: {}
+          currentSquare:
+            type: IsoGridSquare
+          newSpriteSprite:
+            type: IsoSprite
+            nullable: true
+          newSprite:
+            type: string
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -34,8 +43,11 @@ languages:
             type: boolean
           renderFloorHelper:
             type: boolean
-          action: {}
-          paperType: {}
+          action:
+            type: unknown
+            nullable: true
+          paperType:
+            type: string
         methods:
           - name: create
             parameters:
@@ -46,7 +58,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -60,13 +74,18 @@ languages:
           - name: _isWall
             parameters:
               - name: object
+                type: IsoObject
+                nullable: true
             return:
               - type: boolean
           - name: _isDoorFrame
             parameters:
               - name: object
+                type: IsoObject
+                nullable: true
             return:
               - type: boolean
+                nullable: true
           - name: rotateKey
             parameters:
               - name: key
@@ -90,16 +109,17 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getLBPrompt
             return:
               - type: string
@@ -111,6 +131,7 @@ languages:
           - name: canPaper
             parameters:
               - name: object
+                type: IsoObject
             return:
               - type: boolean
           - name: hasItems
@@ -118,4 +139,4 @@ languages:
               - type: boolean
           - name: getObjectList
             return:
-              - type: table
+              - type: IsoObject[]

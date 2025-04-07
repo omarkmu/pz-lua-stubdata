@@ -7,16 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
               - name: corner
+                type: unknown
         staticFields:
           Type:
             defaultValue: '"ISWoodenDoorFrame"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
-          corner: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
+          corner:
+            type: string
           name:
             type: string
         methods:
@@ -29,7 +35,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getHealth
             return:
               - type: number

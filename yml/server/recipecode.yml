@@ -4,218 +4,1606 @@ languages:
     classes:
       Recipe:
         staticFields:
-          GetItemTypes: {}
-          OnCanPerform: {}
-          OnCreate: {}
-          OnGiveXP: {}
-          OnTest: {}
-          WeaponParts: {}
+          GetItemTypes:
+            type: Recipe.GetItemTypes
+          OnCanPerform:
+            type: Recipe.OnCanPerform
+          OnCreate:
+            type: Recipe.OnCreate
+          OnGiveXP:
+            type: Recipe.OnGiveXP
+          OnTest:
+            type: Recipe.OnTest
+          WeaponParts:
+            type: Recipe.WeaponParts
           MysteryCans: {}
           ScratchTicketWinnings: {}
           LowerBodyClothing: {}
           JewelTable: {}
+      Recipe.OnCreate:
+        local: true
+        staticMethods:
+          - name: HotCuppa
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RefillBlowTorch
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RefillLighter
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SetEcruColor
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: TorchBatteryRemoval
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: TorchBatteryInsert
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleFlashlight
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: InheritColorFromMaterial
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: InheritTextureVariation
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: ShotgunSawnoff
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CleanTaintedFood
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: AddBaseIngredientToCookingVessel
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Make4Bowls
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Make2Bowls
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Slice3
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Slice5
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CutFish
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CutFillet
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CutAnimal
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CannedFood
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenCannedFood
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CreateLogStack
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SplitLogStack
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SplitFirewoodBundle
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Dismantle2
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleMiscElectronics
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SpikedBat
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: FixFishingRod
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CreateFishingRod
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenEggCarton
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: PutEggsInCarton
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleRadioSpecial
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleRadioTwoWay
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleRadio
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleRadioTV
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RadioCraft
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RipClothing
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: PickThread
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GatherGunpowder
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: WashClothing
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: PurifyWater
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CarveSpear
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: FireHardenSpear
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: UpgradeSpear
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DismantleSpear
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SliceWatermelon
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SliceHam
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SliceSalami
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenCan
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenMysteryCan
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenMysteryCanKnife
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenWaterCan
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenWaterCanKnife
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenDentedCan
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenDentedCanKnife
+            parameters:
+              - name: items
+                type: unknown
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+              - name: selectedItem
+                type: InventoryItem
+          - name: CloseUmbrella
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GetMuffin
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GetBiscuit
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GetCookies
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SlicePizza
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DynamicMovable
+            parameters:
+              - name: items
+                type: unknown
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+              - name: selectedItem
+                type: InventoryItem
+          - name: OpenSackProduce
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BeanBowl
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MakeOatmeal
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MakeCooked
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CarvePumpkin
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SliceOnion
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenBeer
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenChampagne
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OpenBagFrozenFood
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: AddToPack
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: DrawRandomCard
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RollOneDice
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RollDice
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Roll3d6
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Rolld100
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Propane_RefillRemoval
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Propane_RefillInsert
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: LightHurricaneLantern
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: ExtinguishHurricaneLantern
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: RefillHurricaneLantern
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: ScratchTicket
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MeatPatty
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CreateUnpack
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MakeWireFromBarbedWire
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GasmaskFilterRemoval
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: GasmaskFilterInsert
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: WornGasmaskFilterInsert
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OxygenTankRemoval
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: OxygenTankAttach
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: ScrapJewellery
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: Blacksmith1
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith10
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith20
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith25
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith1_NoProductCondition
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith10_NoProductCondition
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith20_NoProductCondition
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: Blacksmith25_NoProductCondition
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: BlacksmithGeneral
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: BreakOnSmith
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: ChangeSawblade
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BasicCarving
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MinorCarving
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BasicKnapping
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MinorKnapping
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: MinorMasonry
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BasicCondition
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+              - name: characterSkill
+          - name: MinorCondition
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+              - name: characterSkill
+          - name: MakeBlunt
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BasicSawMetal
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: BasicGrindMetal
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SharpenBlade
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: unknown
+          - name: SharpenBladePoor
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: unknown
+          - name: SharpenBladeWithGrindstone
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: unknown
+          - name: RepairBladeWithGrindstone
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: player
+                type: unknown
+          - name: GenericSharpen
+            parameters:
+              - name: player
+                type: unknown
+              - name: item
+                type: InventoryItem
+              - name: skill
+                type: number
+              - name: factor
+                type: number
+          - name: DismantleBlade
+            parameters:
+              - name: entity
+                type: GameEntity
+          - name: RemoveGem
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SliceAnimalHead
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: HollowBook
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: CutChicken
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: EmptyDrainable
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: PlaceInBox
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: UnpackBox
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: KnappFlake
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: SlightlyMoreDurable
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+          - name: UntieHeadband
+            parameters:
+              - name: craftRecipeData
+                type: CraftRecipeData
+              - name: character
+                type: IsoPlayer
+      Recipe.GetItemTypes:
+        local: true
+        staticMethods:
+          - name: AnimalBrain
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: MeatCleaver
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: MixingUtensil
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: AnimalHead
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: CraftLogStack
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: FishingLine
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: CraftSheetRope
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+          - name: DismantleDigitalWatch
+            parameters:
+              - name: scriptItems
+                type: ArrayList<Item>
+      Recipe.OnTest:
+        local: true
+        staticMethods:
+          - name: BottleNotOpened
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: BottleNotOpenedNotTainted
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: BreakGlass
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: HotFluidContainer
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: TaintedFood
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: WholeBreadSlices
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: FullPetrolBottle
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: NotTaintedWater
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: SliceBreadDough
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: CutFish
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: CutFillet
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: WashClothing
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: PurifyWater
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: CanAddToPack
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: IsFull
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: Propane_RefillRemoval
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: Propane_RefillInsert
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: RefillHurricaneLantern
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: ScratchTicket
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: EmptyBag
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: unknown
+          - name: FullRoll
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: GasmaskFilterRemoval
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: GasmaskFilterCraftedRemoval
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: RespiratorFilterRemoval
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: RespiratorFilterRechargedRemoval
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: GasmaskFilterInsert
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: WornGasmaskFilterInsert
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: GasmaskFilterNotFull
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: RespiratorFilterNotFull
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: OxygenTankRemoval
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: OxygenTankAttach
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: OnlyBrokenHandle
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: OnlyBrokenSaw
+            parameters:
+              - name: sourceItem
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: EntityRepairFull
+            parameters:
+              - name: entity
+                type: GameEntity
+            return:
+              - type: boolean
+                nullable: true
+          - name: NotTainted
+            parameters:
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: GenericPacking
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+                nullable: true
+          - name: NormalGoodFullFood
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+          - name: NotWornLowerBody
+            parameters:
+              - name: item
+                type: InventoryItem
+              - name: result
+                type: unknown
+                nullable: true
+            return:
+              - type: boolean
+      Recipe.OnGiveXP:
+        local: true
+        staticMethods:
+          - name: Default
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+          - name: DismantleElectronics
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+          - name: SawLogs
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+          - name: DismantleRadio
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+          - name: RadioCraft
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+          - name: DynamicMovable
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: ingredients
+                type: ArrayList<InventoryItem>
+              - name: result
+                type: unknown
+                nullable: true
+              - name: player
+                type: unknown
+      Recipe.OnCanPerform:
+        local: true
+        staticMethods:
+          - name: Uncooked
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: HalloweenPumpkin
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: SliceCooked
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: HockeyMaskSmashBottle
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+            return:
+              - type: boolean
+          - name: CleanMuffin
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: GetBiscuit
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: unknown
+          - name: SlicePizza
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+          - name: RipClothing
+            parameters:
+              - name: recipe
+                type: Recipe
+              - name: playerObj
+                type: IsoPlayer
+              - name: item
+                type: InventoryItem
+            return:
+              - type: boolean
+                nullable: true
+          - name: OpenFire
+            parameters:
+              - name: recipe
+                type: Recipe
+            return:
+              - type: boolean
+                nullable: true
+      Recipe.WeaponParts:
+        local: true
+        staticMethods:
+          - name: hasScrewdriver
+            parameters:
+              - name: character
+                type: IsoPlayer
+              - name: weapon
+                type: HandWeapon
+              - name: weaponPart
+                type: WeaponPart
+            return:
+              - type: boolean
     functions:
       - name: BSItem_OnCreate
         parameters:
           - name: items
+            type: unknown
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: LightCandle_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: ExtinguishCandle_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CannedFood_OnCooked
         parameters:
           - name: cannedFood
       - name: OnEat_Cigarettes
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
           - name: percent
       - name: OnEat_Cigarillo
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
           - name: percent
       - name: OnEat_Cigar
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
           - name: percent
       - name: OnEat_ChewingTobacco
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
       - name: OnEat_CorrectionFluid
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
       - name: OnEat_RatPoison
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
       - name: OnEat_WildFoodGeneric
         parameters:
           - name: food
+            type: Food
           - name: character
+            type: IsoPlayer
           - name: percent
       - name: DefaultRecipe_OnGiveXP
         parameters:
           - name: recipe
+            type: Recipe
           - name: ingredients
+            type: ArrayList<InventoryItem>
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: CannedFood_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CheckTaintedWater_OnTest
         parameters:
           - name: item
+            type: InventoryItem
         return:
           - type: boolean
       - name: CloseUmbrella
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CutAnimal_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CutFillet_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CutFillet_TestIsValid
         parameters:
           - name: sourceItem
+            type: InventoryItem
           - name: result
+            type: unknown
+            nullable: true
         return:
           - type: boolean
       - name: CutFish_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: CutFish_TestIsValid
         parameters:
           - name: sourceItem
+            type: InventoryItem
           - name: result
+            type: unknown
+            nullable: true
         return:
           - type: boolean
       - name: Dismantle2_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: DismantleRadio_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: DismantleRadio_OnGiveXP
         parameters:
           - name: recipe
+            type: Recipe
           - name: ingredients
+            type: ArrayList<InventoryItem>
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: DismantleElectronics_OnGiveXP
         parameters:
           - name: recipe
+            type: Recipe
           - name: ingredients
+            type: ArrayList<InventoryItem>
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: DismantleRadioSpecial_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: DismantleRadioTV_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: DismantleRadioTwoWay_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: DismantleSpear_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: GiveSawLogsXP
         parameters:
           - name: recipe
+            type: Recipe
           - name: ingredients
+            type: ArrayList<InventoryItem>
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: OpenCannedFood_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: OpenEggCarton_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: RadioCraft_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: RadioCraft_OnGiveXP
         parameters:
           - name: recipe
+            type: Recipe
           - name: ingredients
+            type: ArrayList<InventoryItem>
           - name: result
+            type: unknown
+            nullable: true
           - name: player
+            type: unknown
       - name: RefillBlowTorch_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: RipClothing_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: SliceBreadDough_TestIsValid
         parameters:
           - name: sourceItem
+            type: InventoryItem
           - name: result
+            type: unknown
+            nullable: true
         return:
           - type: boolean
       - name: SliceHam_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: SliceWatermelon_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: SpikedBat_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: TorchBatteryInsert_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: TorchBatteryRemoval_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: TorchDismantle_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: UpgradeSpear_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: WashClothing_OnCreate
         parameters:
           - name: craftRecipeData
+            type: CraftRecipeData
           - name: character
+            type: IsoPlayer
       - name: WashClothing_TestIsValid
         parameters:
           - name: sourceItem
+            type: InventoryItem
           - name: result
+            type: unknown
+            nullable: true
         return:
           - type: boolean
-            nullable: true

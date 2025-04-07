@@ -16,7 +16,8 @@ languages:
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+          javaObject:
+            type: IsoThumpable
           name:
             type: string
           canBeLockedByPadlock:
@@ -33,7 +34,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getHealth
             return:
               - type: number
@@ -43,7 +46,6 @@ languages:
                 type: IsoGridSquare
             return:
               - type: boolean
-                nullable: true
           - name: render
             parameters:
               - name: x

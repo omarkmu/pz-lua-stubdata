@@ -9,48 +9,65 @@ languages:
         staticFields:
           Type:
             defaultValue: '"SCampfireSystem"'
+          instance:
+            type: SCampfireSystem
+            nullable: true
+            tags:
+              - StubGen_Extra
         methods:
           - name: initSystem
           - name: newLuaObject
             parameters:
               - name: globalObject
+                type: GlobalObject
             return:
               - type: SCampfireGlobalObject
           - name: isValidModData
             parameters:
               - name: modData
+                type: table
+                nullable: true
             return:
               - type: boolean
           - name: isValidIsoObject
             parameters:
               - name: isoObject
+                type: IsoObject
             return:
               - type: boolean
           - name: convertOldModData
           - name: addCampfire
             parameters:
               - name: grid
+                type: IsoGridSquare
             return:
-              - type: unknown
+              - type: SCampfireGlobalObject
                 nullable: true
           - name: removeCampfire
             parameters:
               - name: luaObject
+                type: SCampfireGlobalObject
           - name: putOut
             parameters:
               - name: luaObject
+                type: SCampfireGlobalObject
           - name: lowerFirelvl
           - name: lowerFuelAmount
           - name: lowerFuelAmountSpecific
             parameters:
               - name: luaObject
+                type: SCampfireGlobalObject
               - name: amt
+                type: number
           - name: nearCamp
             parameters:
               - name: delay
+                type: number
           - name: OnClientCommand
             parameters:
               - name: command
+                type: string
               - name: playerObj
                 type: IsoPlayer
               - name: args
+                type: table

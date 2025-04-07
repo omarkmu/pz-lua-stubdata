@@ -18,7 +18,9 @@ languages:
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
           name:
             type: string
           buildLow:
@@ -33,7 +35,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: removeFromGround
             parameters:
               - name: square

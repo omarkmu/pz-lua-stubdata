@@ -7,15 +7,20 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: integer
               - name: def
+                type: umbrella.HutchDefinition
         staticFields:
           Type:
             defaultValue: '"ISHutch"'
         fields:
-          character: {}
+          character:
+            type: IsoPlayer
+            nullable: true
           actionAnim:
             type: string
-          def: {}
+          def:
+            type: umbrella.HutchDefinition
         methods:
           - name: create
             parameters:
@@ -26,7 +31,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -37,10 +44,10 @@ languages:
                 type: number
             return:
               - type: boolean
-                nullable: true
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: isValid
             parameters:
               - name: square
@@ -68,14 +75,16 @@ languages:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
               - type: number
               - type: number
-              - type: unknown
+              - type: number
           - name: getSquare2
             parameters:
               - name: square
                 type: IsoGridSquare
               - name: north
+                type: boolean
             return:
-              - type: unknown
+              - type: IsoGridSquare

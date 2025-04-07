@@ -8,19 +8,25 @@ languages:
           Type:
             defaultValue: '"ISBuildingObject"'
           floorCursorSprite:
+            type: IsoSprite
             nullable: true
         fields:
           canPassThrough:
             type: boolean
           northSprite:
+            type: string
             nullable: true
           eastSprite:
+            type: string
             nullable: true
           southSprite:
+            type: string
             nullable: true
           sprite:
+            type: string
             nullable: true
           chosenSprite:
+            type: string
             nullable: true
           dragNilAfterPlace:
             type: boolean
@@ -38,7 +44,7 @@ languages:
             type: IsoGridSquare
             nullable: true
           nSprite:
-            type: number
+            type: integer
           north:
             type: boolean
           south:
@@ -58,6 +64,7 @@ languages:
           isCorner:
             type: boolean
           completionSound:
+            type: string
             nullable: true
           canBeAlwaysPlaced:
             type: boolean
@@ -87,30 +94,41 @@ languages:
             type: boolean
           modData:
             type: table
-          RENDER_SPRITE_FLOOR: {}
-          RENDER_SPRITE: {}
+          RENDER_SPRITE_FLOOR:
+            type: IsoSprite
+            nullable: true
+          RENDER_SPRITE:
+            type: IsoSprite
+            nullable: true
           RENDER_SPRITE_NAME:
+            type: string
             nullable: true
         methods:
           - name: initialise
           - name: setCanPassThrough
             parameters:
               - name: passThrough
+                type: string
           - name: setNorthSprite
             parameters:
               - name: sprite
+                type: string
           - name: setEastSprite
             parameters:
               - name: sprite
+                type: string
           - name: setSouthSprite
             parameters:
               - name: sprite
+                type: string
           - name: setSprite
             parameters:
               - name: sprite
+                type: string
           - name: setDragNilAfterPlace
             parameters:
               - name: nilAfter
+                type: boolean
           - name: tryBuild
             parameters:
               - name: x
@@ -134,9 +152,11 @@ languages:
           - name: onTimedActionStart
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: onTimedActionStop
             parameters:
               - name: action
+                type: ISBaseTimedAction
           - name: updateModData
           - name: haveMaterial
             parameters:
@@ -149,7 +169,7 @@ languages:
           - name: init
           - name: getSprite
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: isValid
             parameters:
@@ -181,10 +201,11 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
           - name: onJoypadDirDown
             parameters:
               - name: joypadData
@@ -203,24 +224,25 @@ languages:
                 type: JoypadData
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getYPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getFloorCursorSprite
             return:
-              - type: unknown
+              - type: IsoSprite
+                nullable: true
           - name: update
           - name: renderOpaqueObjectsInWorld
             parameters:
@@ -236,7 +258,10 @@ languages:
           - name: onDestroy
             parameters:
               - name: thump
+                type: IsoThumpable
               - name: player
+                type: IsoPlayer
+                nullable: true
           - name: removeFromGround
             parameters:
               - name: square
@@ -245,6 +270,7 @@ languages:
       - name: DoTileBuilding
         parameters:
           - name: draggingItem
+            type: ISBuildingObject
           - name: isRender
             type: boolean
           - name: x
@@ -258,6 +284,7 @@ languages:
       - name: DoTileBuildingJoyPad
         parameters:
           - name: draggingItem
+            type: ISBuildingObject
           - name: isRender
             type: boolean
           - name: x

@@ -31,7 +31,7 @@ languages:
           - name: seenZombies
             parameters:
               - name: num
-                type: number
+                type: integer
           - name: shouldChangeTrack
             return:
               - type: boolean

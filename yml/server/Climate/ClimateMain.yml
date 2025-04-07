@@ -10,3 +10,4 @@ languages:
           - name: onClimateManagerInit
             parameters:
               - name: _clim
+                type: ClimateManager

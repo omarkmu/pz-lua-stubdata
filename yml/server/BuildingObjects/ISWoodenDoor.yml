@@ -7,18 +7,26 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
               - name: openSprite
+                type: string
               - name: openNorthSprite
+                type: string
         staticFields:
           Type:
             defaultValue: '"ISWoodenDoor"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
-          openSprite: {}
-          openNorthSprite: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
+          openSprite:
+            type: string
+          openNorthSprite:
+            type: string
           name:
             type: string
         methods:
@@ -31,7 +39,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getHealth
             return:
               - type: number

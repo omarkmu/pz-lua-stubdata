@@ -13,9 +13,12 @@ languages:
               - name: displayname
                 type: string
               - name: type
+                type: string
               - name: inventoryIcon
+                type: string
             return:
-              - type: unknown
+              - type: Item
+                nullable: true
           - name: cloneItemType
             parameters:
               - name: newName
@@ -23,7 +26,9 @@ languages:
               - name: originalFullName
                 type: string
             return:
-              - type: unknown
+              - type: Item
+                nullable: true
           - name: instanceItemType
             parameters:
               - name: item
+                type: string

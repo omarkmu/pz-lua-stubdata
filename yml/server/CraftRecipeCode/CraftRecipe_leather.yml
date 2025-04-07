@@ -4,32 +4,86 @@ languages:
     classes:
       CraftRecipeCode:
         staticFields:
-          removeFlesh: {}
-          removeFur: {}
-          tanLeatherCrude: {}
-          tanLeatherFur: {}
-          dryLeatherCrude: {}
-          dryLeatherFur: {}
+          removeFlesh:
+            type: CraftRecipeCode.removeFlesh
+          removeFur:
+            type: CraftRecipeCode.removeFur
+          tanLeatherCrude:
+            type: CraftRecipeCode.tanLeatherCrude
+          tanLeatherFur:
+            type: CraftRecipeCode.tanLeatherFur
+          dryLeatherCrude:
+            type: CraftRecipeCode.dryLeatherCrude
+          dryLeatherFur:
+            type: CraftRecipeCode.dryLeatherFur
         staticMethods:
           - name: replaceOutputLeather
             parameters:
               - name: _craftProcessor
+                type: unknown
               - name: name
                 type: string
               - name: tag
+                type: string
           - name: replaceOutputLeather2
             parameters:
               - name: _craftProcessor
+                type: unknown
           - name: getInputLeather
             parameters:
               - name: _craftProcessor
+                type: unknown
             return:
               - type: unknown
                 nullable: true
           - name: getLeatherName
             parameters:
               - name: _craftProcessor
+                type: unknown
               - name: tag
+                type: string
             return:
               - type: string
                 nullable: true
+      CraftRecipeCode.removeFlesh:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.removeFur:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.tanLeatherCrude:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.tanLeatherFur:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.dryLeatherCrude:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown
+      CraftRecipeCode.dryLeatherFur:
+        local: true
+        staticMethods:
+          - name: OnCreate
+            parameters:
+              - name: _craftProcessor
+                type: unknown

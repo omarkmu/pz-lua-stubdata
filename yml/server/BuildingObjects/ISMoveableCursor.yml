@@ -7,34 +7,43 @@ languages:
         constructors:
           - parameters:
               - name: _character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISMoveableCursor"'
-          modes: {}
-          cursors: {}
-          mode: {}
-          cacheMode: {}
+          modes:
+            type: "{ tags: string[], titles: string[] }"
+          cursors:
+            type: table<integer, ISMoveableCursor>
+          mode:
+            type: table<integer, string>
+          cacheMode:
+            type: table<integer, string>
           normalColor: {}
           validColor: {}
           invalidColor: {}
         fields:
           objectIndex:
-            type: number
+            type: integer
           objectListCache:
-            type: table | boolean
+            type: umbrella.ISMoveableCursor.ObjectInfo |
+              umbrella.ISMoveableCursor.ObjectInfo[] | false
             nullable: true
           cacheObject:
+            type: IsoObject
             nullable: true
           tryInitialInvItem:
             type: boolean
             nullable: true
           cursorFacing:
-            type: number
+            type: integer
             nullable: true
           joypadFacing:
             type: number
             nullable: true
-          cacheSquare: {}
+          cacheSquare:
+            type: IsoGridSquare
+            nullable: true
           renderX:
             type: number
           renderY:
@@ -54,24 +63,36 @@ languages:
             type: string
             nullable: true
           origSpriteName:
+            type: string
             nullable: true
           colorMod:
-            type: table
+            type: umbrella.RGBA
+            nullable: true
           yOffset:
             type: number
-          currentSquare: {}
-          canSeeCurrentSquare: {}
+          currentSquare:
+            type: IsoGridSquare
+            nullable: true
+          canSeeCurrentSquare:
+            type: boolean
+            nullable: true
           cacheInvObjectSprite:
             type: string
             nullable: true
-          xJoypad: {}
-          yJoypad: {}
+          xJoypad:
+            type: number
+            nullable: true
+          yJoypad:
+            type: number
+            nullable: true
           isMoveableCursor:
             type: boolean
           moveableMode:
             type: string
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           isYButtonResetCursor:
@@ -83,15 +104,16 @@ languages:
           renderFloorHelper:
             type: boolean
           subObjectIndex:
-            type: number
+            type: integer
           cacheInvObjectIndex:
-            type: number
+            type: integer
         methods:
           - name: deactivate
           - name: exitCursor
           - name: onObjectLeftMouseButtonDown
             parameters:
               - name: object
+                type: IsoObject
               - name: x
                 type: number
               - name: y
@@ -101,7 +123,8 @@ languages:
           - name: clearCache
           - name: getMoveableMode
             return:
-              - type: unknown
+              - type: string
+                nullable: true
           - name: tryInitialItem
             parameters:
               - name: _item
@@ -120,23 +143,28 @@ languages:
               - name: _z
                 type: number
               - name: _north
+                type: boolean
               - name: _sprite
+                type: string
           - name: getInfoPanel
             return:
-              - type: unknown
+              - type: ISMoveableInfoWindow
           - name: setInfoPanel
             parameters:
               - name: _square
                 type: IsoGridSquare
+                nullable: true
               - name: _object
+                type: IsoObject
                 nullable: true
               - name: _moveProps
                 type: ISMoveableSpriteProps
                 nullable: true
               - name: _customTexture
+                type: string
                 nullable: true
             return:
-              - type: unknown
+              - type: ISMoveableInfoWindow
                 nullable: true
           - name: render
             parameters:
@@ -164,8 +192,9 @@ languages:
           - name: getDirectionFromItem
             parameters:
               - name: item
+                type: InventoryItem
             return:
-              - type: unknown
+              - type: IsoDirections
           - name: rotateMouse
             parameters:
               - name: x
@@ -175,15 +204,17 @@ languages:
           - name: setCursorFacing
             parameters:
               - name: facing
+                type: integer
           - name: setJoypadFocus
             parameters:
               - name: _window
+                type: ISUIElement
           - name: getRotateableObject
             return:
-              - type: boolean | table
+              - type: umbrella.ISMoveableCursor.ObjectInfo | false
           - name: getInventoryObjectList
             return:
-              - type: table
+              - type: umbrella.ISMoveableCursor.ObjectInfo[]
           - name: shouldAddObject
             parameters:
               - name: _obj
@@ -194,34 +225,35 @@ languages:
               - type: boolean
           - name: getObjectList
             return:
-              - type: table
+              - type: umbrella.ISMoveableCursor.ObjectInfo[]
           - name: getScrapObjectList
             return:
-              - type: table
+              - type: umbrella.ISMoveableCursor.ObjectInfo[]
           - name: getRepairObjectList
             return:
-              - type: table
+              - type: umbrella.ISMoveableCursor.ObjectInfo[]
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getXPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
         staticMethods:
           - name: exitCursorKey
@@ -237,3 +269,12 @@ languages:
               - name: _joyPadTriggered
                 type: boolean
           - name: clearCacheForAllPlayers
+      umbrella.ISMoveableCursor.ObjectInfo:
+        fields:
+          object:
+            type: IsoObject
+          moveProps:
+            type: ISMoveableSpriteProps
+          isWall:
+            type: boolean
+            nullable: true

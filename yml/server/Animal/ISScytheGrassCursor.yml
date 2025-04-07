@@ -7,15 +7,19 @@ languages:
         constructors:
           - parameters:
               - name: character
+                type: IsoPlayer
               - name: scythe
+                type: InventoryItem
         staticFields:
           Type:
             defaultValue: '"ISScytheGrassCursor"'
         fields:
           radius:
             type: number
-          character: {}
-          player: {}
+          character:
+            type: IsoPlayer
+          player:
+            type: integer
           skipBuildAction:
             type: boolean
           noNeedHammer:
@@ -24,7 +28,8 @@ languages:
             type: boolean
           renderFloorHelper:
             type: boolean
-          scythe: {}
+          scythe:
+            type: InventoryItem
           maxRadius:
             type: number
         methods:
@@ -37,7 +42,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: walkTo
             parameters:
               - name: x
@@ -66,7 +73,7 @@ languages:
               - type: boolean
           - name: isRunningAction
             return:
-              - type: ISTimedActionQueue | table
+              - type: ISBaseTimedAction
           - name: getTopLeftOfSquares
             parameters:
               - name: x
@@ -92,23 +99,24 @@ languages:
           - name: onJoypadPressButton
             parameters:
               - name: joypadIndex
+                type: integer
               - name: joypadData
                 type: JoypadData
               - name: button
-                type: ISButton
+                type: integer
             return:
               - type: unknown
                 nullable: true
           - name: getAPrompt
             return:
-              - type: unknown
+              - type: string
           - name: getLBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getRBPrompt
             return:
-              - type: unknown
+              - type: string
                 nullable: true
           - name: getSquares
             parameters:
@@ -119,19 +127,20 @@ languages:
               - name: z
                 type: number
             return:
-              - type: table
+              - type: IsoGridSquare[]
           - name: getClosestSquare
             parameters:
               - name: squares
+                type: IsoGridSquare[]
             return:
-              - type: unknown
+              - type: IsoGridSquare
                 nullable: true
           - name: getGrassObject
             parameters:
               - name: square
                 type: IsoGridSquare
             return:
-              - type: table
+              - type: IsoFire[]
           - name: rotateKey
             parameters:
               - name: key

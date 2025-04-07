@@ -7,16 +7,22 @@ languages:
         constructors:
           - parameters:
               - name: sprite
+                type: string
               - name: northSprite
+                type: string
               - name: character
+                type: IsoPlayer
         staticFields:
           Type:
             defaultValue: '"ISLightSource"'
         fields:
           sq:
             type: IsoGridSquare
-          javaObject: {}
-          character: {}
+          javaObject:
+            type: IsoThumpable
+            nullable: true
+          character:
+            type: IsoPlayer
           name:
             type: string
           fuel:
@@ -35,7 +41,9 @@ languages:
               - name: z
                 type: number
               - name: north
+                type: boolean
               - name: sprite
+                type: string
           - name: getHealth
             return:
               - type: number

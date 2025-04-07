@@ -7,11 +7,14 @@ languages:
           - name: doTrapMenu
             parameters:
               - name: player
+                type: integer
               - name: context
                 type: ISContextMenu
               - name: worldobjects
                 type: IsoObject[]
               - name: test
+                type: boolean
+                nullable: true
             return:
               - type: boolean
                 nullable: true
@@ -20,34 +23,47 @@ languages:
               - name: worldobjects
                 type: IsoObject[]
               - name: trap
+                type: CTrapGlobalObject
               - name: player
+                type: IsoPlayer
           - name: onAddBait
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: bait
               - name: trap
+                type: CTrapGlobalObject
               - name: player
+                type: IsoPlayer
           - name: onCheckTrap
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: trap
+                type: CTrapGlobalObject
               - name: player
+                type: IsoPlayer
           - name: addAnimalDebug
             parameters:
               - name: trap
+                type: CTrapGlobalObject
               - name: player
+                type: IsoPlayer
               - name: animal
+                type: umbrella.TrapAnimalDefinition
           - name: onRemoveTrap
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: trap
+                type: CTrapGlobalObject
               - name: player
+                type: IsoPlayer
           - name: onPlaceTrap
             parameters:
               - name: worldobjects
                 type: IsoObject[]
               - name: trap
+                type: InventoryItem
               - name: player
+                type: IsoPlayer

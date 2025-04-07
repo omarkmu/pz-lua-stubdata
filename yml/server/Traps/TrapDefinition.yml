@@ -4,3 +4,53 @@ languages:
     classes:
       Traps: {}
       TrapAnimals: {}
+      umbrella.TrapAnimalDefinition:
+        fields:
+          type:
+            type: string
+          item:
+            type: string
+          minHour:
+            type: integer
+          maxHour:
+            type: integer
+          minSize:
+            type: integer
+          maxSize:
+            type: integer
+          zone:
+            type: table<string, integer>
+          traps:
+            type: table<string, integer>
+          baits:
+            type: table<string, integer>
+          strength:
+            type: integer
+            nullable: true
+          canBeAlive:
+            type: boolean
+            nullable: true
+          aliveAnimals:
+            type: string[]
+            nullable: true
+          aliveBreed:
+            type: string[]
+            nullable: true
+      umbrella.TrapDefinition:
+        fields:
+          type:
+            type: string
+          sprite:
+            type: string
+          closedSprite:
+            type: string
+          trapStrength:
+            type: integer
+          destroyItem:
+            type: string[]
+          northSprite:
+            type: string
+            nullable: true
+          northClosedSprite:
+            type: string
+            nullable: true

@@ -15,6 +15,8 @@ languages:
           - name: postrender
             parameters:
               - name: col
+                type: ColorInfo
               - name: bDoAttached
+                type: boolean
     functions:
       - name: testCreateRabbit
