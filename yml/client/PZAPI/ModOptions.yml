@@ -32,188 +32,280 @@ languages:
         fields:
           data:
             type: umbrella.ModOptions.Element[]
+            notes: Array of option objects
           dict:
             type: table<string, umbrella.ModOptions.OptionElement>
+            notes: Dictionary of options by ID
           modOptionsID:
             type: string
+            notes: Unique identifier for this options set
           name:
             type: string
+            notes: Display name for this options set
         methods:
           - name: apply
+            notes: Apply the options (placeholder function)
           - name: getOption
             parameters:
               - name: id
                 type: string
+                notes: The option ID
             return:
               - type: umbrella.ModOptions.OptionElement
                 nullable: true
+                notes: The option or nil if not found
+            notes: Get an option by ID
           - name: addTitle
             parameters:
               - name: name
                 type: string
+                notes: The title text
+            notes: Add a title to the options
           - name: addDescription
             parameters:
               - name: text
                 type: string
+                notes: The description text (will be processed by getText)
+            notes: Add a description to the options
           - name: addSeparator
           - name: addTextEntry
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: value
                 type: string
+                notes: Initial value
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.TextEntry
+                name: option
+                notes: Object representing the text entry
+            notes: Add a text entry option
           - name: addTickBox
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: value
                 type: boolean
+                notes: Initial value
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.TickBox
+                name: option
+                notes: Object representing the tick box
+            notes: Add a tick box (checkbox) option
           - name: addMultipleTickBox
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.MultipleTickBox
+                name: option
+                notes: Object representing the multiple tick box
+            notes: Add a multiple tick box option
           - name: addComboBox
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.ComboBox
+                name: option
+                notes: Object representing the combo box
+            notes: Add a combo box option
           - name: addColorPicker
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: r
                 type: number
+                notes: Red component (0-1)
               - name: g
                 type: number
+                notes: Green component (0-1)
               - name: b
                 type: number
+                notes: Blue component (0-1)
               - name: a
                 type: number
+                notes: Alpha component (0-1)
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.ColorPicker
+                name: option
+                notes: The created option
+            notes: Add a color picker option
           - name: addKeyBind
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: key
                 type: integer
+                notes: Initial key code
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.Keybind
+                name: option
+                notes: Object representing the key bind
+            notes: Add a key bind option
           - name: addSlider
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: min
                 type: number
+                notes: Minimum value
               - name: max
                 type: number
+                notes: Maximum value
               - name: step
                 type: number
+                notes: Step size
               - name: value
                 type: number
+                notes: Initial value
               - name: _tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
             return:
               - type: umbrella.ModOptions.Slider
+                name: option
+                notes: Object representing the slider
+            notes: Add a slider option
           - name: addButton
             parameters:
               - name: id
                 type: string
+                notes: Unique identifier for this option
               - name: name
                 type: string
+                notes: Display name for this option
               - name: tooltip
                 type: string
                 nullable: true
+                notes: Optional tooltip text
               - name: onclickfunc
                 type: umbrella.ISButton.OnClick
                 nullable: true
+                notes: Function to call when button is clicked
               - name: target
                 type: unknown
                 nullable: true
+                notes: Optional target object for the onclick function
               - name: arg1
                 type: unknown
                 nullable: true
+                notes: Optional first argument for the onclick function
               - name: arg2
                 type: unknown
                 nullable: true
+                notes: Optional second argument for the onclick function
               - name: arg3
                 type: unknown
                 nullable: true
+                notes: Optional third argument for the onclick function
               - name: arg4
                 type: unknown
                 nullable: true
+                notes: Optional fourth argument for the onclick function
             return:
               - type: umbrella.ModOptions.Button
+                name: option
+                notes: Object representing the button
+            notes: Add a button option
       PZAPI.ModOptions:
         local: true
+        notes: ModOptions module for managing mod configuration options
         staticFields:
           Data:
             type: PZAPI.ModOptions.Options[]
+            notes: List of all mod options
           Dict:
             type: table<string, PZAPI.ModOptions.Options>
+            notes: Dictionary of mod options by ID
           OtherOptions:
             type: table
+            notes: Other options not managed by this module
           Options:
             type: PZAPI.ModOptions.Options
+            notes: Options class
         methods:
           - name: create
             parameters:
               - name: modOptionsID
                 type: string
+                notes: Unique identifier for the mod options
               - name: name
                 type: string
                 nullable: true
+                notes: Optional display name for the mod options. Defaults to the modOptionsID if not provided.
             return:
               - type: PZAPI.ModOptions.Options
+                name: options
+                notes: The created options instance
+            notes: Creates a new mod options instance
           - name: getOptions
             parameters:
               - name: modOptionsID
                 type: string
+                notes: Unique identifier for the mod options
             return:
               - type: PZAPI.ModOptions.Options
                 nullable: true
+                notes: The options instance or nil if not found
+            notes: Gets an existing mod options instance by ID
           - name: save
+            notes: Saves all mod options to ModOptions.ini
           - name: load
+            notes: Loads all mod options from ModOptions.ini
       umbrella.ModOptions.Title:
         fields:
           type:
@@ -234,11 +326,14 @@ languages:
         fields:
           id:
             type: string
+            notes: Unique identifier for the option
           name:
             type: string
+            notes: Display name for the option
           tooltip:
             type: string
             nullable: true
+            notes: Optional tooltip text
           element:
             type: table
             nullable: true
